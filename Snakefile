@@ -1,4 +1,4 @@
-rule numberofquestions:
+rule test:
     input: 
         "src/scripts/compute_basic_statistics.py"
     output: 
