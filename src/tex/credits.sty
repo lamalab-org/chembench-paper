@@ -1,0 +1,240 @@
+% credits.sty
+%
+% This package permits creating simple contributor statements, as
+% proposed by CRediT, the contributor roles taxonomy. The initial
+% version of this taxonomy was inspired by Dan O'Shea (@djoshea).
+%
+% Copyright 2023 Bastian Rieck
+%
+% Redistribution and use in source and binary forms, with or without
+% modification, are permitted provided that the following conditions are
+% met:
+%
+% 1. Redistributions of source code must retain the above copyright
+%    notice, this list of conditions and the following disclaimer.
+%
+% 2. Redistributions in binary form must reproduce the above copyright
+%    notice, this list of conditions and the following disclaimer in the
+%    documentation and/or other materials provided with the
+%    distribution.
+%
+% 3. Neither the name of the copyright holder nor the names of its
+%    contributors may be used to endorse or promote products derived
+%    from this software without specific prior written permission.
+%
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+% “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+% LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+% A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+% HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+% SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+% LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+% OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{credits}[2023/02/21 LaTeX package for contributor statements following CRediT, the contributor roles taxonomy]
+
+\RequirePackage{ifthen}
+\RequirePackage{kvoptions}
+\RequirePackage{pgfkeys}
+\RequirePackage{tikz}
+
+\SetupKeyvalOptions{%
+  family = CREDITS,
+  prefix = CREDITS@
+}
+
+\DeclareBoolOption{horizontal}
+\DeclareBoolOption{skipempty}
+
+\DeclareStringOption[black]{role}
+\DeclareStringOption[white]{grid}
+\DeclareStringOption[;]    {separator}
+
+\ProcessKeyvalOptions*
+
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+
+\def\concepts{%
+  Conceptualization,
+  Data curation,
+  Formal analysis,
+  Funding acquisition,
+  Investigation,
+  Methodology,
+  Project administration,
+  Resources,
+  Software,
+  Supervision,
+  Validation,
+  Visualization,
+  Writing -- original draft,
+  Writing -- review \& editing%
+}
+
+\let\credits\relax
+
+\newcommand{\credit}[2]{%
+  \ifx\credits\relax%
+  \def\credits{#1/{#2}}%
+  \else%
+    \xdef\credits{\credits,#1/{#2}}%
+  \fi%
+}
+
+\tikzset{
+    /credits/tile/.style = {
+        align=center,
+        minimum size=5mm,
+        anchor=north west,
+    },
+}
+
+\ifCREDITS@horizontal%
+ \tikzset{
+    /credits/author/.style = {%
+        anchor = north east,
+        xshift = 1.5em,
+    },%
+    /credits/concept/.style = {%
+      anchor = north west,
+      rotate = 90,
+      xshift = -1.5em,
+    },
+  }
+\else%
+  \tikzset{
+    /credits/author/.style = {%
+      anchor = north west,
+      rotate = 45,
+      %
+      xshift = -0.50em,
+      yshift = -0.25em,
+    },%
+    %
+    /credits/concept/.style = {%
+      anchor = north east,
+      xshift = 1.5em, 
+    },
+}
+\fi
+
+
+\newcommand{\insertcredits}{%
+  \begin{tikzpicture}[scale = 0.5]
+    \tikzset{%
+      author/.style  = /credits/author,
+      concept/.style = /credits/concept,
+      tile/.style    = /credits/tile,
+    }
+
+    % First draw the author names
+    \foreach \name/\column [count=\n] in \credits {%
+      % Put an author label here. If you want to *rotate* names in
+      % a different way because you are using abbreviations, it is
+      % sufficient to update the `author` style.
+      \ifCREDITS@horizontal%
+        \node[author] at (0, -\n) {\name};
+      \else
+        \node[author] at (\n, 0) {\name};
+      \fi
+    }
+
+    % Next, count the number of contributors per concept
+    \newcounter{row}
+    \foreach \concept [count = \i] in \concepts {%
+      \setcounter{CREDITS@concepts}{0}%
+      \foreach \name/\column in \credits {%
+        \foreach \entry [count=\m] in \column {%
+          \ifthenelse{\i = \m}{%
+            \pgfmathparse{\entry > 0 ? 1 : 0}%
+            \ifthenelse{\pgfmathresult > 0}{%
+              \addtocounter{CREDITS@concepts}{1}%
+            }{}%
+          }%
+          {}%
+        }%
+      }%
+     % Add concept if >0 contributors or if we don't skip empty concepts
+     \pgfmathparse{\value{CREDITS@concepts}>0 || \ifCREDITS@skipempty 0\else 1\fi}
+     \ifnum\pgfmathresult=1\relax
+        \addtocounter{row}{1}
+        \ifCREDITS@horizontal%
+          \node[concept] at (\value{row}, 0) {\concept};
+        \else%
+          \node[concept] at (0, -\value{row}) {\concept};
+        \fi%
+      \fi
+        \foreach \name/\column [count=\n] in \credits {%
+          \foreach \entry [count = \m] in \column {%
+            \pgfmathparse{\entry*100}
+            \colorlet{fill}{\CREDITS@role!\pgfmathresult}
+            \colorlet{grid}{\CREDITS@grid}
+            \pgfmathparse{\value{CREDITS@concepts}>0 || \ifCREDITS@skipempty 0\else 1\fi && \m==\i ? 1 : 0}
+            \ifnum\pgfmathresult=1\relax
+                \ifCREDITS@horizontal
+                  \node[fill = fill, draw = grid, tile] (tile) at (\value{row}, -\n) {};
+                \else%
+                  \node[fill = fill, draw = grid, tile] (tile) at (\n, -\value{row}) {};
+                \fi
+              \fi
+            }
+        }%
+    }%
+  \end{tikzpicture}
+}
+
+
+
+% Required to ensure that we can count active concepts later on when
+% generating text statements.
+\newcounter{CREDITS@concepts}
+% Initialize a counter for the number of already-added authors
+\newcounter{CREDITSADDED@concepts}
+
+\newcommand{\insertcreditsstatement}{%
+  \foreach \concept [count = \i] in \concepts {% 
+    \setcounter{CREDITS@concepts}{0}%
+    \setcounter{CREDITSADDED@concepts}{0}%
+    \foreach \name/\column [count=\n] in \credits {%
+      \foreach \entry [count=\m] in \column {%
+        \ifthenelse{\i = \m}{%
+          \pgfmathparse{\entry > 0 ? 1 : 0}%
+          \ifthenelse{\pgfmathresult > 0}{%
+            \addtocounter{CREDITS@concepts}{1}%
+          }{}%
+        }%
+        {}%
+      }%
+    }%
+    \pgfmathparse{\value{CREDITS@concepts}>0 || \ifCREDITS@skipempty 0\else 1\fi}
+    \ifnum\pgfmathresult=1\relax
+    {\bfseries\concept: }%
+    \foreach \name/\column [count=\n] in \credits {%
+      \foreach \entry [count=\m] in \column {%
+        \ifthenelse{\i = \m}{%
+          % Check if the author contributed to the concept
+          % If yes, add a comma before the author acronym if >=1 author was already added
+          \pgfmathparse{int(\entry > 0) && \value{CREDITSADDED@concepts} > 0 && \value{CREDITS@concepts} > 1 ? ", " : ""}%
+          \pgfmathresult
+          % Add the author acronym if they contributed to the concept
+          \pgfmathparse{\entry > 0 ? "\name" : ""}%
+          \pgfmathresult
+          \ifdim\entry pt > 0pt
+              \addtocounter{CREDITSADDED@concepts}{1}%
+           \fi
+        }%
+        {}%
+      }%
+    }%
+    \ifthenelse{\i < 14}{%
+      \CREDITS@separator{}
+    }%
+    {}%
+    \fi
+  }%
+}
