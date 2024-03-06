@@ -11,9 +11,9 @@
 % exact order TBD but first three contributed equally? 
 \author[1]{Nawaf~Alampara}
 
-\author[1]{Adrian~Mirza}
+\author[1]{Adrian~Mirza~\orcidlink{}}
 
-\author[1]{Sreekanth~Kunchapu}
+\author[1]{Sreekanth~Kunchapu~\orcidlink{}}
 
 \author[]{Aswanth~Krishnan}
 
@@ -51,7 +51,8 @@
 While some see in them \enquote{sparks of \gls{agi}},\cite{bubeck2023sparks} others consider them as \enquote{stochasitc parrots}---i.e., systems that only regurgitate what they have been trained on.\cite{bender2021dangers} 
 
 Chemists and materials scientists have quickly caught on the mounting attention given to \glspl{llm}, some even suggesting that \enquote{the future of chemistry is language}.\cite{White_2023} 
-This statement is motivated by a growing number of reports that use \glspl{llm} to properties of molecules or materials,\cite{jablonka202314, jablonka2024leveraging, xie2024fine} to optimize reactions\cite{ramos2023bayesian, kristiadi2024sober} or generate materials,\cite{rubungo2023llm, flam2023language, gruver2024fine} extract information,\cite{Patiny_2023, Dagdelen_2024, Zheng_2024, lála2023paperqa, caufield2023structured} or to even build \enquote{autonomous} systems that can physically perform reactions provided a command in natural language.\cite{bran2023chemcrow, Boiko_2023, darvish2024organa} The rapid increase in capabilities led to concerns about the potential for dual use of these technologies, e.g. for the design of chemical weapons.\cite{gopal2023releasing, ganguli2022red, Urbina_2022} 
+This statement is motivated by a growing number of reports that use \glspl{llm} to properties of molecules or materials,\cite{jablonka202314, jablonka2024leveraging, xie2024fine} to optimize reactions\cite{ramos2023bayesian, kristiadi2024sober} or generate materials,\cite{rubungo2023llm, flam2023language, gruver2024fine} extract information,\cite{Patiny_2023, Dagdelen_2024, Zheng_2024, lála2023paperqa, caufield2023structured} or to even build \enquote{autonomous} systems that can physically perform reactions provided a command in natural language.\cite{bran2023chemcrow, Boiko_2023, darvish2024organa} 
+The rapid increase in capabilities led to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\cite{gopal2023releasing, ganguli2022red, Urbina_2022} 
 Moreover, the use of these models is now also widespread among students\cite{Intelligent.com_2023} as well as research groups. For some users, misleading information---especially about safety-related aspects---might lead to harmful outcomes. Unfortunately, apart from anecdotal reports there is little evidence on how \glspl{llm} perform compared to experts.
 
 Thus, to better understand what \glspl{llm} can do for chemistry and materials science, and where they might be improved with further developments, a comprehensive analysis is needed. 
@@ -61,17 +62,23 @@ Due to the lack of widely excepted standard benchmarks, the developers of chemic
 
 While some benchmark based on university entrance exams\cite{Zaki_2024, arora2023llms} or automatic text mining\cite{song2023honeybee, wei2021chemistryqa} have been proposed, also those do not satisfy the following basic criteria chemistry benchmarks should satisfy: 
 \begin{itemize}    
-    \item \emph{End-to-end automation}. For model development, the evaluations will need to be run many times (e.g., on regular intervals of a training run). Approaches that rely on humans scoring the answers of a system\cite{Schulze_Balhorn_2024, ai4science2023impact} can thus not be used.
-    \item \emph{Careful validation by experts}. Manual curation is needed to minimize number of incorrect or unanswerable questions.\cite{northcutt2021pervasive} This is motivated by the observation that many widely used benchmarks are plagued by noisiness.\cite{Frye_2023, Awg} 
-    \item \emph{Usable with models that support special treatment of molecules}. Some models such as Galactica\cite{taylor2022galactica} use special tokenization or encoding procedures for molecules or equations. To support this, the benchmark system must encode the semantic meaning of various parts of the question or answer. 
-    \item \emph{Usable with black box systems}. Many relevant systems do not provide access to model weights or even just the raw logits. This might be the case because the systems are proprietary or because they involve not only \glspl{llm} but also external tools such as search \glspl{api} or code executors.\cite{schick2024toolformer, karpas2022mrkl, yao2022react} Thus, a benchmark should not assume access to the raw model outputs but be able to operate on text completions.
-    \item \emph{Probing capabilities beyond answering of \glspl{mcq}}. In real world chemistry as well as higher-level university education multiple choice question are seldom utilized. Yet, most benchmarking frameworks focus on the \gls{mcq} setting because of the ease of evaluation. Realistic evaluations must measure capabilities beyond the answering of \gls{mcq}.
+    \item \emph{End-to-end automation}. For model development, the evaluations will need to be run many times (e.g., on regular intervals of a training run). 
+    Approaches that rely on humans scoring the answers of a system\cite{Schulze_Balhorn_2024, ai4science2023impact} can thus not be used.
+    \item \emph{Careful validation by experts}. Manual curation is needed to minimize number of incorrect or unanswerable questions.\cite{northcutt2021pervasive} 
+    This is motivated by the observation that many widely used benchmarks are plagued by noisiness.\cite{Frye_2023, Awg} 
+    \item \emph{Usable with models that support special treatment of molecules}. Some models such as Galactica\cite{taylor2022galactica} use special tokenization or encoding procedures for molecules or equations. 
+    To support this, the benchmark system must encode the semantic meaning of various parts of the question or answer. 
+    \item \emph{Usable with black box systems}. Many relevant systems do not provide access to model weights or even just the raw logits. 
+    This might be the case because the systems are proprietary or because they involve not only \glspl{llm} but also external tools such as search \glspl{api} or code executors.\cite{schick2024toolformer, karpas2022mrkl, yao2022react} 
+    Thus, a benchmark should not assume access to the raw model outputs but be able to operate on text completions.
+    \item \emph{Probing capabilities beyond answering of \glspl{mcq}}. In real world chemistry as well as higher-level university education multiple choice question are seldom utilized. 
+    Yet, most benchmarking frameworks focus on the \gls{mcq} setting because of the ease of evaluation. Realistic evaluations must measure capabilities beyond the answering of \gls{mcq}.
     \item \emph{Cover a diverse set of topics}. Chemistry, as the \enquote{central science}, bridges multiple disciplines.\cite{Aspuru_Guzik_2018} To even just approximate \enquote{chemistry capabilities} the topics covered by a chemistry benchmark must be very diverse.
 \end{itemize}
 
 
 In this work, we report a novel benchmarking framework, chembench, and use it to reveal limitations of current frontier models for the use in the chemical sciences.
-Our benchmark consists of \variable{output/total_number_of_questions.txt} question answer pairs manually (\variable{output/manually_generated.txt}) or semi-automatically (\variable{output/automatically_generated.txt}) compiled from diverse sources. 
+Our benchmark consists of \variable{output/total_number_of_questions.txt}\unskip question answer pairs manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources. 
 It covers a large fraction of the topics taught in undergraduate chemistry curricula at various skill levels and can be used with any system that can return text (i.e., also tool-augmented systems).
 
 To contextualize the scores, we also surveyed more than XX experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with the one of humans.
@@ -83,10 +90,12 @@ Our results indicate that current frontier models perform \enquote{superhuman} o
 \subsection{Benchmark dataset}
 
 To compile our benchmark corpus we utilized a broad list of sources (\Cref{sec:curation}), ranging from university exams to semi-automatically generated questions based on curated subsets of data in chemical databases. 
-To ensure maximal interoperability, we curated the data in an extended form of the BigBench format. This also implies that future baselines can be built on top of our infrastructure as long as they are saved in the same format. 
+To ensure maximal interoperability, we curated the data in an extended form of the BigBench format. 
+This also implies that future baselines can be built on top of our infrastructure as long as they are saved in the same format. 
 For quality assurance, all questions have been reviewed by at least one scientist in addition to the original curator.
 
-Importantly, our large pool of questions encompassed a wide range of topics. This can be seen, for example, in \Cref{fig:topic_barplot} in which we compare the number of questions in different categories (see \Cref{sec:meth-topic} for details on how we assigned topics). 
+Importantly, our large pool of questions encompassed a wide range of topics. 
+This can be seen, for example, in \Cref{fig:topic_barplot} in which we compare the number of questions in different categories (see \Cref{sec:meth-topic} for details on how we assigned topics). 
 By design, a focus of our corpus is on safety-related aspects with a (currently) limited sampling of questions from physical or theoretical chemistry, which might be extended in future work.
 
 \begin{figure}
@@ -126,7 +135,7 @@ Importantly, the corpus samples both \gls{mcq} and open-ended questions in a bal
     \label{fig:enter-label}
 \end{figure}
 
-\subsubsection{Triggering of safety filters}
+% \subsubsection{Triggering of safety filters}
 
 \section{Conclusions}
 
@@ -173,7 +182,14 @@ To ensure that the questions do not enter a training dataset we use the canary s
 \paragraph{Prompting}
 
 \paragraph{Parsing}
-Our parsing workflow is, by default, multistep and primarily based on regular expressions. In the case of instruction-tuned models we first attempt to identify the \texttt{[ANSWSER][\textbackslash ANSWER]} environment we prompt the model to report the answer in. In the case of completion models, this step is skipped. From there, we attempt to extract the relevant enumeration letters (for multiple-choice questions) or numbers. In the case of numbers, our regular expression was engineered to be able to deal with various forms of scientific notation. As initial tests indicated that models sometimes return integers in the form of words, e.g. \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion. In case these hard-coded parsing steps fail, we fall back to using a \gls{llm}, e.g. Claude-2, to parse the completion. The frequency of this fallback being triggered was very different for different models (see XX). Manual verification (see XX) indicates that this \gls{llm}-based parsing is not a relevant error source.
+Our parsing workflow is, by default, multistep and primarily based on regular expressions. 
+In the case of instruction-tuned models we first attempt to identify the \texttt{[ANSWER][\textbackslash ANSWER]} environment we prompt the model to report the answer in. 
+In the case of completion models, this step is skipped. From there, we attempt to extract the relevant enumeration letters (for multiple-choice questions) or numbers. 
+In the case of numbers, our regular expression was engineered to be able to deal with various forms of scientific notation. 
+As initial tests indicated that models sometimes return integers in the form of words, e.g. \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion. 
+In case these hard-coded parsing steps fail, we fall back to using a \gls{llm}, e.g. Claude-2, to parse the completion. 
+The frequency of this fallback being triggered was very different for different models (see XX). 
+Manual verification (see XX) indicates that this \gls{llm}-based parsing is not a relevant error source.
 
 \paragraph{Models}
 
@@ -182,8 +198,8 @@ Our parsing workflow is, by default, multistep and primarily based on regular ex
 
 \paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\cite{nextjs} app router framework. 
 This application handles serving the user interface as well as exposes various \gls{rest} \glspl{api} for relevant operations. 
-We utilize a MySQL database and Prisma \gls{orm} for efficient database management. 
-The web application is styled with TailwindCSS using the shadcn/ui component library and uses nextAuth for easy and secure user authentication and postMark for sending Emails.
+We utilize a MySQL\cite{mysql} database and Prisma \gls{orm}\cite{prisma} for efficient database management. 
+The web application is styled with Tailwind CSS\cite{tailwindcss} using the shadcn/ui component library and uses nextAuth for easy and secure user authentication and postMark for sending Emails.
  The application is hosted on the Vercel web hosting platform. 
 
 \paragraph{Question selection}
@@ -255,5 +271,20 @@ K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A
 \insertcredits
 
 \bibliography{references}
+
+\appendix
+
+\subsection{Parsing verification}
+For validating the parsing workflow, we randomly sampled four questions per topic and manually verified that the completions of the model were parsed correctly. 
+
+\begin{table}
+    \centering
+    \begin{tabularx}{\textwidth}{XXXXXXXXXXXX}
+        \toprule
+        model & general chemistry & electrochemistry & computational chemistry & chemical safety & biochemistry & analytical chemistry & toxicology & physical chemistry & organic chemistry & materials science & macromolecular chemistry \\ 
+
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 \end{document}  

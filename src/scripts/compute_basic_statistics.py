@@ -25,7 +25,7 @@ def load_data():
     manually_generated = df[~df["is_semiautomatically_generated"]]
     with open(output / "manually_generated.txt", "w") as f:
         f.write(str(len(manually_generated)))
-
+ 
     df.to_csv(output / "questions.csv")
     df.to_pickle(output / "questions.pkl")
 
