@@ -4,4 +4,5 @@ dependencies:
   - pip:
       - matplotlib
       - numpy==1.26.3
+      - seaborn
       - git+https://github.com/lamalab-org/chem-bench.git@humanbench

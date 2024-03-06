@@ -20,7 +20,7 @@ def question_count_barplot(df):
 
     df_mcq = df[df["is_classification"]]
     df_not_mcq = df[~df["is_classification"]]
-
+    print(len(df_mcq), len(df_not_mcq))
     topics_mcq, counts_mcq = (
         df_mcq["topic"].value_counts().index,
         df_mcq["topic"].value_counts().values,
@@ -30,11 +30,12 @@ def question_count_barplot(df):
         df_not_mcq["topic"].value_counts().values,
     )
     # ensure general topics are in the same order as mcq topics. Sort keys and values accordingly
-    topics_general, counts_general = zip(
-        *sorted(
-            zip(topics_general, counts_general), key=lambda x: topics_mcq.get_loc(x[0])
-        )
-    )
+    # by the order of the keys in topics_mcq
+    print(topics_general, topics_mcq)
+    sort_idx = np.argsort(topics_general)
+    print(sort_idx)
+    topics_general = topics_general[sort_idx]
+    counts_general = counts_general[sort_idx]
 
     all_counts = np.concatenate([counts_mcq, counts_general])
 

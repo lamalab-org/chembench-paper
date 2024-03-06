@@ -18,10 +18,11 @@ def obtain_chembench_repo():
     if not os.path.exists(os.path.join(data, "chem-bench")):
         os.chdir(data)
         os.system("git clone https://github.com/lamalab-org/chem-bench.git --depth 1")
-        os.system("git checkout -b humanbench")
+        os.system("git pull origin humanbench")
+        os.system("git checkout humanbench")
     else:
         os.chdir(os.path.join(data, "chem-bench"))
-        os.system("git checkout -b humanbench")
-        os.system("git pull")
+        os.system("git checkout  humanbench")
+        os.system("git pull origin humanbench")
     os.chdir(cwd)
     return os.path.join(data, "chem-bench")
