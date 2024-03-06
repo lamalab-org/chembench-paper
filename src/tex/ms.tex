@@ -58,7 +58,8 @@ Moreover, the use of these models is now also widespread among students\cite{Int
 Thus, to better understand what \glspl{llm} can do for chemistry and materials science, and where they might be improved with further developments, a comprehensive analysis is needed. 
 For the development of \glspl{llm}, such evaluation is currently mostly performed via standardized benchmarks such as BigBench\cite{srivastava2022beyond} or the LM Eval Harness.\cite{eval-harness} 
 The former contains, among 204 tasks, only two tasks classified as \enquote{chemistry related} whereas the latter contains no specific chemistry tasks. 
-Due to the lack of widely excepted standard benchmarks, the developers of chemical language models\cite{jablonka2024leveraging, guo2023large, ahmad2022chemberta2, Cai_2024} frequently utilize language-interfaced\cite{dinh2022lift} tabular datasets such as the ones reported in MoleculeNet,\cite{wu2018moleculenet} Therapeutic Data Commons\cite{huang2021therapeutics} or MatBench.\cite{dunn2020benchmarking} While those evaluations can measure how well models can make predictions for very specific tasks, they only give a poor measure of how useful those models might be as a chemical assistant. 
+Due to the lack of widely excepted standard benchmarks, the developers of chemical language models\cite{jablonka2024leveraging, guo2023large, ahmad2022chemberta2, Cai_2024} frequently utilize language-interfaced\cite{dinh2022lift} tabular datasets such as the ones reported in MoleculeNet,\cite{wu2018moleculenet} Therapeutic Data Commons\cite{huang2021therapeutics} or MatBench.\cite{dunn2020benchmarking} 
+While those evaluations can measure how well models can make predictions for very specific tasks, they only give a poor measure of how useful those models might be as a chemical assistant. 
 
 While some benchmark based on university entrance exams\cite{Zaki_2024, arora2023llms} or automatic text mining\cite{song2023honeybee, wei2021chemistryqa} have been proposed, also those do not satisfy the following basic criteria chemistry benchmarks should satisfy: 
 \begin{itemize}    
@@ -81,7 +82,7 @@ In this work, we report a novel benchmarking framework, chembench, and use it to
 Our benchmark consists of \variable{output/total_number_of_questions.txt}\unskip question answer pairs manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources. 
 It covers a large fraction of the topics taught in undergraduate chemistry curricula at various skill levels and can be used with any system that can return text (i.e., also tool-augmented systems).
 
-To contextualize the scores, we also surveyed more than XX experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with the one of humans.
+To contextualize the scores, we also surveyed more than \variable{output/number_experts.txt}\unskip experts in chemistry (for a total of number of more than \variable{output/number_experts.txt}\unskip) on a subset of the benchmark corpus to be able to compare the performance of current frontier models with the one of humans.
 Our results indicate that current frontier models perform \enquote{superhuman} on some aspects of chemistry but in many cases, included safety-related ones, might be very misleading. 
 
 
@@ -189,7 +190,7 @@ In the case of numbers, our regular expression was engineered to be able to deal
 As initial tests indicated that models sometimes return integers in the form of words, e.g. \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion. 
 In case these hard-coded parsing steps fail, we fall back to using a \gls{llm}, e.g. Claude-2, to parse the completion. 
 The frequency of this fallback being triggered was very different for different models (see XX). 
-Manual verification (see XX) indicates that this \gls{llm}-based parsing is not a relevant error source.
+Manual verification (see \Cref{sec:manually-verified-parsing}) indicates that this \gls{llm}-based parsing is not a relevant error source.
 
 \paragraph{Models}
 
@@ -199,8 +200,8 @@ Manual verification (see XX) indicates that this \gls{llm}-based parsing is not 
 \paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\cite{nextjs} app router framework. 
 This application handles serving the user interface as well as exposes various \gls{rest} \glspl{api} for relevant operations. 
 We utilize a MySQL\cite{mysql} database and Prisma \gls{orm}\cite{prisma} for efficient database management. 
-The web application is styled with Tailwind CSS\cite{tailwindcss} using the shadcn/ui component library and uses nextAuth for easy and secure user authentication and postMark for sending Emails.
- The application is hosted on the Vercel web hosting platform. 
+The web application is styled with Tailwind CSS\cite{tailwindcss} using the shadcn/ui component library and uses NextAuth\cite{nextauth} for easy and secure user authentication and postMark for sending Emails.
+The application is hosted on the Vercel web hosting platform. 
 
 \paragraph{Question selection}
 Since we anticipated that we will not be able to collect enough responses for every question to allow for a meaningful statistical analysis, we decided on showing a relevant subset of all questions to the human scorers. 
@@ -260,21 +261,22 @@ K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A
 \credit{Amir Elahi}{0,1,0,0,0,0,0,0,0,0,0,0,0,0}
 \credit{Dinga Wonanke}{0,1,0,0,0,0,0,0,0,0,0,0,0,0}
 \credit{Juliane Eberhardt}{0,1,0,0,0,0,0,0,0,0,0,0,0,0}
+\credit{Christina Glaubitz}{0,1,0,0,0,0,0,0,0,0,0,0,0,0}
 \credit{Mara~Wilhemli}{0,1,0,0,1,0,0,0,0,0,0,0,0,0}
 \credit{Macjonathan~Oreke}{0,1,0,0,1,0,0,0,0,0,0,0,0,0}
 \credit{Benedict~Emoekabu}{0,1,0,0,1,0,0,0,0,0,0,0,0,0}
-\credit{Michael~Pieler}{1,0,0,0,0,0,0,0,0,0,0,0,0,0}
+\credit{Michael~Pieler}{1,0,0,0,0,0,0,0,0,0,0,0,a0,0}
 \credit{Aswanth~Krishnan}{0,0,0,0,0,0,0,0,1,0,0,0,0,0}
 \credit{Philippe~Schwaller}{1,1,0,1,1,0,0,0,0,1,0,0,0,0}
 \credit{Kevin Maik Jablonka}{1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 
-\insertcredits
+% \insertcredits
 
 \bibliography{references}
 
-\appendix
+% \appendix
 
-\subsection{Parsing verification}
+\subsection{Parsing verification} \label{sec:manually-verified-parsing}
 For validating the parsing workflow, we randomly sampled four questions per topic and manually verified that the completions of the model were parsed correctly. 
 
 \begin{table}
@@ -286,5 +288,15 @@ For validating the parsing workflow, we randomly sampled four questions per topi
         \bottomrule
     \end{tabularx}
 \end{table}
+
+
+\subsection{Human baseline}
+
+\begin{figure}
+    \centering 
+    \includegraphics{figures/human_timing.pdf}
+    \script{analyze_human_data.py}
+    \label{fig:human_timing}
+\end{figure}
 
 \end{document}  
