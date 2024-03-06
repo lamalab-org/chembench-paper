@@ -1,7 +1,7 @@
 dependencies:
-  - conda-forge::numpy=1.19.2
   - conda-forge::pip=21.0.1
-  - conda-forge::python=3.9
+  - conda-forge::python=3.10
   - pip:
-      - matplotlib==3.4.3
-      - git+https://github.com/lamalab-org/chem-bench.git
+      - matplotlib
+      - numpy==1.26.3
+      - git+https://github.com/lamalab-org/chem-bench.git@humanbench

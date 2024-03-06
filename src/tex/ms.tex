@@ -71,7 +71,7 @@ While some benchmark based on university entrance exams\cite{Zaki_2024, arora202
 
 
 In this work, we report a novel benchmarking framework, chembench, and use it to reveal limitations of current frontier models for the use in the chemical sciences.
-Our benchmark consists of \variable{output/total_number_of_questions} question answer pairs manually or semi-automatically compiled from diverse sources. 
+Our benchmark consists of \variable{output/total_number_of_questions.txt} question answer pairs manually (\variable{output/manually_generated.txt}) or semi-automatically (\variable{output/automatically_generated.txt}) compiled from diverse sources. 
 It covers a large fraction of the topics taught in undergraduate chemistry curricula at various skill levels and can be used with any system that can return text (i.e., also tool-augmented systems).
 
 To contextualize the scores, we also surveyed more than XX experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with the one of humans.
@@ -91,10 +91,10 @@ By design, a focus of our corpus is on safety-related aspects with a (currently)
 
 \begin{figure}
     \centering
-    % hook://file/bfmlTXsQJ?p=Y2hlbS1iZW5jaC9zY3JhdGNo&n=data%5Fanalysis%2Eipynb
-    \includegraphics{figures/topics.pdf}
+    \includegraphics{figures/question_count_barplot.pdf}
     \caption{\textbf{Number of questions for different topics.} The topics have been assigned using a combination of a rule-based system (mostly based on the source the question has been sampled from) as well as a classifier operating on a word-embedding of the question. The figure shows that not all aspects of chemistry are equally represented in our corpus. The corpus currently focuses on safety-related aspects.}
     \label{fig:topic_barplot}
+    \script{plot_statistics.py}
 \end{figure}
 
 Importantly, the corpus samples both \gls{mcq} and open-ended questions in a balanced way (). As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\num{57\pm18}). \cite{kincaid1975derivation}
@@ -113,7 +113,7 @@ Importantly, the corpus samples both \gls{mcq} and open-ended questions in a bal
 
 \begin{figure}
     \centering
-    \includegraphics{figures/chem-bench-completely-correct-per-topic.pdf}
+    %\includegraphics{figures/chem-bench-completely-correct-per-topic.pdf}
     \caption{Caption}
     \label{fig:enter-label}
 \end{figure}
@@ -180,7 +180,11 @@ Our parsing workflow is, by default, multistep and primarily based on regular ex
 
 \subsection{Human baseline}
 
-\paragraph{App} To facilitate the collection of responses, we developed a responsive web application using NextJS/React and Postgresql. This app also rendered molecules using XX, wherefore users were not required to parse SMILES.
+\paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\cite{nextjs} app router framework. 
+This application handles serving the user interface as well as exposes various \gls{rest} \glspl{api} for relevant operations. 
+We utilize a MySQL database and Prisma \gls{orm} for efficient database management. 
+The web application is styled with TailwindCSS using the shadcn/ui component library and uses nextAuth for easy and secure user authentication and postMark for sending Emails.
+ The application is hosted on the Vercel web hosting platform. 
 
 \paragraph{Question selection}
 Since we anticipated that we will not be able to collect enough responses for every question to allow for a meaningful statistical analysis, we decided on showing a relevant subset of all questions to the human scorers. 

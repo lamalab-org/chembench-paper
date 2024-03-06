@@ -33,8 +33,6 @@ datasets:
 dependencies:
   # src/scripts/my_script.py:
   #   - src/data/dataset_for_my_script.dat
-  src/tex/ms.tex:
-    - src/tex/output/manually_generated.txt
   
 # Name of the `.tex` manuscript and corresponding `.pdf` article
 ms_name: ms
