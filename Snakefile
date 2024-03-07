@@ -31,6 +31,6 @@ rule wordcloud:
     input: 
         "src/tex/output/questions.pkl"
     output:
-        "src/tex/figures/wordcloud.pdf"
+        ["src/tex/figures/wordcloud.pdf", "src/tex/figures/flesch_kincaid_reading_ease.pdf", "src/tex/output/flesch_kincaid_reading_ease.txt"]
     script:
         "src/scripts/wordcloud.py"

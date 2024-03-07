@@ -80,7 +80,7 @@ By design, a focus of our corpus is on safety-related aspects with a (currently)
     \script{plot_statistics.py}
 \end{figure}
 
-Importantly, the corpus samples both \gls{mcq} and open-ended questions in a balanced way (). As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\num{57\pm18}). \cite{kincaid1975derivation}
+Importantly, the corpus samples both \gls{mcq} and open-ended questions in a balanced way (). As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\variable{ouput/flesch_kincaid_reading_ease.txt}). \cite{kincaid1975derivation}
 
 
 \begin{figure}
@@ -160,6 +160,18 @@ To obtain the answers for false options we sampled from the set of number of iso
 
 \paragraph{Prompting}
 
+\subparagraph{Completion models}
+\texttt{Galactica-120b}\cite{taylor2022galactica}
+
+
+\subparagraph{Instruction-tuned models} \texttt{Claude 2} \texttt{Claude3 (Opus)}\cite{anthropicClaudeModelFamily2024}
+\texttt{GPT-4}\cite{openai2024gpt4}
+\texttt{GPT-3.5-turbo}\cite{brown2020language}
+\texttt{Gemini Pro}\cite{gemini}
+\texttt{Mixtral-8x7b}\cite{jiang2024mixtral}
+\texttt{Llama2-70b}\cite{touvron2023llama}
+\texttt{pplx-7b-chat}
+
 \paragraph{Parsing}
 Our parsing workflow is, by default, multistep and primarily based on regular expressions. 
 In the case of instruction-tuned models we first attempt to identify the \texttt{[ANSWER][\textbackslash ANSWER]} environment we prompt the model to report the answer in. 
@@ -171,6 +183,15 @@ The frequency of this fallback being triggered was very different for different 
 Manual verification (see \Cref{sec:manually-verified-parsing}) indicates that this \gls{llm}-based parsing is not a relevant error source.
 
 \paragraph{Models}
+
+
+
+\subparagraph{Tool augmented models}
+In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
+For this we, on the one hand, investigated the \texttt{online} model of Perplexity.AI and, on the other hand, \texttt{gpt-3.5-turbo} as well as \texttt{claude-2}, with ReAct-style tool augmentation.\cite{yao2023react}
+The latter two models had access to WolframAlpha, the ArXiv \gls{api}, a Python interpreter, as well as web search (using DuckDuckGo).
+We implemented the system using Langchain with the default prompts and constrained the system to a maximum of ten \gls{llm} calls. 
+
 
 
 \subsection{Human baseline}
@@ -257,6 +278,15 @@ K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A
 \bibliography{references}
 
 % \appendix
+
+\subsection{Questions}
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/flesch_kincaid_reading_ease.pdf}
+    \caption{Example question.}
+    \label{fig:flesch_kincaid_reading_ease}
+\end{figure}
 
 \subsection{Parsing verification} \label{sec:manually-verified-parsing}
 For validating the parsing workflow, we randomly sampled four questions per topic and manually verified that the completions of the model were parsed correctly. 
