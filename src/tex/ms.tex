@@ -8,34 +8,7 @@
 
 \title{\textsf{Are frontier models superhuman chemists?}}
 
-% exact order TBD but first three contributed equally? 
-\author[1]{Nawaf~Alampara}
-
-\author[1]{Adrian~Mirza~\orcidlink{}}
-
-\author[1]{Sreekanth~Kunchapu~\orcidlink{}}
-
-\author[]{Aswanth~Krishnan}
-
-\author[1]{Mara~Willhelmi}
-
-\author[1]{Macjonathan~Oreke}
-
-\author[]{Benedict~Emoekabu}
-
-\author[5]{Tanya~Gupta}
-
-\author[5]{Philippe~Schwaller~\orcidlink{0000-0003-3046-6576}}
-
-\author[]{Michael Pieler~\orcidlink{0000-0001-9186-7045}}
-
-\author[1,2, 3]{Kevin~Maik~Jablonka~\orcidlink{0000-0003-4894-4660}}
-\affil[1]{Laboratory of Organic and Macromolecular Chemistry (IOMC), Friedrich Schiller University Jena, Humboldtstrasse 10, 07743 Jena, Germany}
-\affil[2]{Center for Energy and Environmental Chemistry Jena (CEEC Jena), Friedrich Schiller University Jena, Philosophenweg 7a, 07743 Jena, Germany}
-\affil[3]{Helmholtz Institute for Polymers in Energy Applications (HIPOLE), Philosophenweg 7a, 07743 Jena, Germany}
-\affil[]{\texttt{mail@kjablonka.com}}
-
-
+\input{authors.tex}
 \begin{document}
 \maketitle
 
@@ -82,7 +55,7 @@ In this work, we report a novel benchmarking framework, chembench, and use it to
 Our benchmark consists of \variable{output/total_number_of_questions.txt}\unskip question answer pairs manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources. 
 It covers a large fraction of the topics taught in undergraduate chemistry curricula at various skill levels and can be used with any system that can return text (i.e., also tool-augmented systems).
 
-To contextualize the scores, we also surveyed more than \variable{output/number_experts.txt}\unskip experts in chemistry (for a total of number of more than \variable{output/number_experts.txt}\unskip) on a subset of the benchmark corpus to be able to compare the performance of current frontier models with the one of humans.
+To contextualize the scores, we also surveyed more than \variable{output/number_experts.txt} experts in chemistry (for a total of number of more than \variable{output/total_hours.txt}\unskip) on a subset of the benchmark corpus to be able to compare the performance of current frontier models with the one of humans.
 Our results indicate that current frontier models perform \enquote{superhuman} on some aspects of chemistry but in many cases, included safety-related ones, might be very misleading. 
 
 
@@ -113,8 +86,9 @@ Importantly, the corpus samples both \gls{mcq} and open-ended questions in a bal
 \begin{figure}
     \centering 
     \includegraphics{figures/wordcloud.pdf}
-    \caption{\textbf{Co-occurrence graph of entities across questions.}}
+    \caption{\textbf{Wordcloud.}}
     \label{fig:wordcloud}
+    \script{wordcloud.py}
 \end{figure}
 
 
@@ -151,9 +125,11 @@ Importantly, the corpus samples both \gls{mcq} and open-ended questions in a bal
 
 \subsection{Curation workflow} \label{sec:curation}
 % ToDo: we should not call the first item in the figure curation 
-For our dataset we curated questions from existing exams, but also programatically created new questions. Questions were added via Pull Requests on our GitHub repository and only merged into the main collection after passing manual review.
+For our dataset we curated questions from existing exams, but also programatically created new questions. 
+Questions were added via Pull Requests on our GitHub repository and only merged into the main collection after passing manual review.
 
-To ensure that the questions do not enter a training dataset we use the canary string of the Big Bench project. This requires that \Gls{llm} developers filter their training dataset for this canary string.  
+To ensure that the questions do not enter a training dataset we use the canary string of the Big Bench project.
+This requires that \Gls{llm} developers filter their training dataset for this canary string.  
 
 \begin{figure}
     \includegraphics[width=\textwidth]{figures/chem-bench.pdf}
@@ -168,15 +144,17 @@ To ensure that the questions do not enter a training dataset we use the canary s
 
 \subparagraph{Electron counts}
 
-\paragraph{Programatically generated questions} 
+\paragraph{Programmatically generated questions} 
 \subparagraph{Number of NMR peaks} To generate tasks about the number of NMR peaks, we randomly sampled SMILES from the ZINC dataset and then used OpenChemLib\cite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
+We then sampled from the set of number of peaks (excluding the correct answer) to obtain the false answer options.
 
 \subparagraph{GHS classification}
 
 \subparagraph{Hazard statements}
 
 \subparagraph{Number of isomers}
-
+We used MAYGEN\cite{Yirik_2021} to compute the number of isomers for a set of randomly sampled SMILES from the ZINC dataset.
+To obtain the answers for false options we sampled from the set of number of isomers.
 
 \subsection{Model evaluation workflow}
 
@@ -219,7 +197,9 @@ For our initial study we wanted to maximize the response rate given our availabl
 
 
 \subsection{Classification of questions into topics} \label{sec:meth-topic} When curating our dataset we systematically recorded keywords and sources. 
-To allow for analysis of the model performance as a function of the topic, we leverage this information together with sequence classification models. For questions which can easily be assigned to a topic based on the source (e.g., number of NMR peaks, chemical compatibility, toxicology exam questions) we use this information to make the assignment. For the remaining ones, e.g., from chemistry olympiad questions, we use zero-short sequence classification\cite{zeroshotsequence} using the BART model\cite{bart, FacebookBART}, which our preliminary analysis found to be more robust than topic modeling based on embeddings from OpenAI's \texttt{ada} model or Cohere's \texttt{Cohembed-english-v3.0} model. 
+To allow for analysis of the model performance as a function of the topic, we leverage this information together with sequence classification models. 
+For questions which can easily be assigned to a topic based on the source (e.g., number of NMR peaks, chemical compatibility, toxicology exam questions) we use this information to make the assignment. 
+For the remaining ones, e.g., from chemistry olympiad questions, we use zero-short sequence classification\cite{zeroshotsequence} using the BART model\cite{bart, FacebookBART}, which our preliminary analysis found to be more robust than topic modeling based on embeddings from OpenAI's \texttt{ada} model or Cohere's \texttt{Cohembed-english-v3.0} model. 
 
 
 
@@ -262,6 +242,8 @@ K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A
 \credit{Dinga Wonanke}{0,1,0,0,0,0,0,0,0,0,0,0,0,0}
 \credit{Juliane Eberhardt}{0,1,0,0,0,0,0,0,0,0,0,0,0,0}
 \credit{Christina Glaubitz}{0,1,0,0,0,0,0,0,0,0,0,0,0,0}
+\credit{Fabian Alexander Kreth}{0,1,0,0,0,0,0,0,0,0,0,0,0,0}
+%ORCID ID:  0000-0002-5968-8706 Affiliation:    Institute for Technical Chemistry and Environmental Chemistry (ITUC) and Center for Energy and Environmental Chemistry Jena (CEEC Jena), Friedrich Schiller University Jena, Philosophenweg 7a, 07743 Jena, Germany
 \credit{Mara~Wilhemli}{0,1,0,0,1,0,0,0,0,0,0,0,0,0}
 \credit{Macjonathan~Oreke}{0,1,0,0,1,0,0,0,0,0,0,0,0,0}
 \credit{Benedict~Emoekabu}{0,1,0,0,1,0,0,0,0,0,0,0,0,0}
@@ -279,15 +261,15 @@ K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A
 \subsection{Parsing verification} \label{sec:manually-verified-parsing}
 For validating the parsing workflow, we randomly sampled four questions per topic and manually verified that the completions of the model were parsed correctly. 
 
-\begin{table}
-    \centering
-    \begin{tabularx}{\textwidth}{XXXXXXXXXXXX}
-        \toprule
-        model & general chemistry & electrochemistry & computational chemistry & chemical safety & biochemistry & analytical chemistry & toxicology & physical chemistry & organic chemistry & materials science & macromolecular chemistry \\ 
+% \begin{table}
+%     \centering
+%     \begin{tabularx}{\textwidth}{XXXXXXXXXXXX}
+%         \toprule
+%         model & general chemistry & electrochemistry & computational chemistry & chemical safety & biochemistry & analytical chemistry & toxicology & physical chemistry & organic chemistry & materials science & macromolecular chemistry \\ 
 
-        \bottomrule
-    \end{tabularx}
-\end{table}
+%         \bottomrule
+%     \end{tabularx}
+% \end{table}
 
 
 \subsection{Human baseline}
@@ -297,6 +279,18 @@ For validating the parsing workflow, we randomly sampled four questions per topi
     \includegraphics{figures/human_timing.pdf}
     \script{analyze_human_data.py}
     \label{fig:human_timing}
+    \caption{}
+\end{figure}
+
+
+Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (Spearman's $\rho \approx \variable{output/spearman_experience_score.txt}$, $p \approx \variable{output/spearman_experience_score_p.txt}$).
+
+\begin{figure}
+    \centering 
+    \includegraphics{figures/experience_vs_correctness.pdf}
+    \script{analyze_human_data.py}
+    \label{fig:experience_vs_correctness}
+    \caption{}
 \end{figure}
 
 \end{document}  
