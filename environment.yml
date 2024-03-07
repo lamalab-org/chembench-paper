@@ -5,4 +5,6 @@ dependencies:
       - matplotlib
       - numpy==1.26.3
       - seaborn
+      - textacy
+      - wordcloud
       - git+https://github.com/lamalab-org/chem-bench.git@humanbench
