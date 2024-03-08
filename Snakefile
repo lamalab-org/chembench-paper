@@ -40,6 +40,6 @@ rule analyze_model_reports:
     input: 
         "src/scripts/analyze_model_reports.py"
     output: 
-        ["src/tex/output/intersection.txt", "src/text/figures/all_questions_models_completely_correct_radar.pdf"]
+        ["src/tex/output/intersection.txt", "src/tex/figures/all_questions_models_completely_correct_radar.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar.pdf"]
     script:
         "src/scripts/analyze_model_reports.py"
