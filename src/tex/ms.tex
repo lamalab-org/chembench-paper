@@ -144,11 +144,58 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 
 \paragraph{Manually curated questions}
 
+\subparagraph{Analytical chemistry}
+The questions are sourced from the master student examination paper at the University of Jena, Germany. These questions focus on the principles and techniques employed in analytical chemistry.
+
+\subparagraph{Combustion engineering}
+These questions are derived from the master student examination paper at the University of Magdeburg, Germany. They explore topics related to combustion processes and engineering principles.
+
+\subparagraph{Functional materials and nano-materials}
+The questions are gathered from a seminar conducted at the University of Jena, delving into topics concerning functional materials and nano-materials, exploring their properties and applications.
+
+\subparagraph{General chemistry}
+The questions originate from examinations for grade X at Marist Comprehensive Academy Uturu, Nigeria. They cover fundamental concepts in chemistry suitable for students at the secondary school level.
+
+\subparagraph{International Chemical Olympiad (\gls{ICHO})}
+The questions are sourced from various countries' Chemical Olympiads, including those held in the USA, UK, and Moldova, providing challenging problems for competitive chemistry.
+
+\subparagraph{Material synthesis}
+These questions are derived from seminars on material synthesis at the University of Jena, focusing on the methods and techniques employed in the synthesis of various materials.
+
+\subparagraph{Organic reactivity}
+The questions are primarily sourced from tutorial papers from the Technical University of Munich, Germany, exploring reactions and mechanisms in organic chemistry.
+
+\subparagraph{Periodic table}
+The questions are framed based on the reference periodic table from the Royal Society of Chemistry (\url{https://www.rsc.org/periodic-table/}), covering various aspects and trends of the periodic table.
+
+\subparagraph{Polymer chemistry}
+Questions are sourced from examinations held at the University of Hamburg, covering topics related to polymer chemistry and its applications.
+
+\subparagraph{Chemical reactivity}
+These questions are framed based on information from the Cameo Chemicals website (\url{https://cameochemicals.noaa.gov/reactivity}), exploring the reactivity of various chemicals and compounds.
+
+\subparagraph{Chemical safety}
+The questions encompass various aspects of safety, including lab safety, toxicology, material safety data sheets, carcinogens, sourced from reputable safety resources.
+
+\subparagraph{Shape of molecules}
+The questions are sourced from examinations held at the Technical University of Munich, Germany, focusing on determining the shape and geometry of molecules.
+
+\subparagraph{\gls{NMR} spectroscopy}
+Questions are sourced from the twitter page called (\url{https://twitter.com/NMRspectroscopy}), focusing on concepts and applications of nuclear magnetic resonance spectroscopy.
+
+
 \paragraph{Semi-programatically generated questions}
 
 \subparagraph{Oxidation states}
-
-\subparagraph{Electron counts}
+The questions regarding oxidation states are extracted from the website \url{https://www.cheminfo.org/}. These exercises focus on determining the number of isomers for specific molecules. To perform these calculations, we utilize the RDKit package \cite{bento2020open}.
+\subparagraph{Electron count of atoms}
+Questions pertaining to the electron count of atoms are gathered from the website \url{https://www.cheminfo.org/}. These inquiries involve determining the electron count of atoms in various chemical contexts. The calculations for these tasks are facilitated using the RDKit package \cite{bento2020open}.
+\subparagraph{Number of isomers}
+The questions concerning the number of isomers are sourced from the website \url{https://www.cheminfo.org/}. These exercises aim to determine the number of isomers for given molecules. The calculations for these assessments are conducted using the RDKit package \cite{bento2020open}.
+\subparagraph{Point group for molecules}
+Questions involve predicting the point group for molecules. The ChemCaption tool (\url{https://github.com/lamalab-org/chem-caption/tree/main}) is utilized for data generation. Given a molecule, predict its point group.
+\subparagraph{SMILES-IUPAC}
+Web scrapped SMILES IUPAC pairs from the PubChem database \cite{pubchem} and then framed questions involve converting SMILES notation to IUPAC nomenclature, utilizing information from the PubChem database.
 
 \paragraph{Programmatically generated questions} 
 \subparagraph{Number of NMR peaks} To generate tasks about the number of \gls{nmr} peaks, we randomly sampled SMILES from the ZINC dataset and then used OpenChemLib\cite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
