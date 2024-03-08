@@ -4,9 +4,9 @@ import os
 from plotutils import radar_factory, model_color_map
 import numpy as np
 import matplotlib.pyplot as plt
-from paths import figures, output
+from paths import figures, output, scripts
 
-plt.style.use("lamalab.mplstyle")
+plt.style.use(scripts / "lamalab.mplstyle")
 
 
 def load_reports():
@@ -14,27 +14,31 @@ def load_reports():
     claude2 = load_all_reports(
         os.path.join(
             chembench, "reports/claude2/reports/7536581a-d92d-43d3-b946-39e4a7213b7f"
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     claude2_react = load_all_reports(
         os.path.join(
             chembench,
             "reports/claude2-react/reports/700ed9b4-995c-4cfd-aa63-0a6e84b3a815",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     claude2_zero_t = load_all_reports(
         os.path.join(
             chembench,
             "reports/claude2-zero-T/reports/412657cc-7a11-4d73-80e9-03d6f05cd63e",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     claude3 = load_all_reports(
         os.path.join(
             chembench, "reports/claude3/reports/702e03be-5cd8-4451-b52c-8d7b9b694304"
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     galactica_120b = load_all_reports
@@ -42,89 +46,102 @@ def load_reports():
         os.path.join(
             chembench,
             "reports/galactica-120b/reports/d7ce25da-bbce-4f06-8a5b-43e6cfb01c30",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     gemini_pro_zero_t = load_all_reports(
         os.path.join(
             chembench,
             "reports/gemini-pro-zero-T/reports/1e5457ad-96b5-4bc8-bd6c-bad3eb6deb7a",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     gemini_pro = load_all_reports(
         os.path.join(
             chembench, "reports/gemini-pro/reports/ebde051c-6d66-456a-a207-a1c65eceaf40"
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     gpt35turbo = load_all_reports(
         os.path.join(
             chembench,
             "reports/gpt-3.5-turbo/reports/f76bf17d-3e12-47c5-b879-9cc0c78be989",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     gpt35turbo_zero_t = load_all_reports(
         os.path.join(
             chembench,
             "reports/gpt-3.5-turbo-zero-T/reports/44cf2a6b-a7bc-43ee-8f16-9576d1547c76",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     gpt35turbo_react = load_all_reports(
         os.path.join(
             chembench,
             "reports/gpt-3.5-turbo-react/reports/e4964803-79cb-44bc-b5b2-e22aa3f40607",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     gpt4 = load_all_reports(
         os.path.join(
             chembench, "reports/gpt-4/reports/76c5bdd4-e893-43d4-b37d-2ade66c20308"
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     gpt4zero_t = load_all_reports(
         os.path.join(
             chembench,
             "reports/gpt-4-zero-T/reports/76c5bdd4-e893-43d4-b37d-2ade66c20308",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     llama70b = load_all_reports(
         os.path.join(
             chembench,
             "reports/llama-2-70b-chat/reports/a2d0b2d7-2381-4e75-8c8b-8baadf054073",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     mixtral = load_all_reports(
         os.path.join(
             chembench,
             "reports/mixtral-8x7b-instruct/reports/8409294f-de26-4c05-bd50-2cfb2148ec65",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     pplx7b_chat = load_all_reports(
         os.path.join(
             chembench,
             "reports/pplx-7b-chat/reports/d63fb4e2-3dd6-432e-bbe7-8bc1c23115d3",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     pplx7b_online = load_all_reports(
         os.path.join(
             chembench,
             "reports/pplx-7b-online/reports/309c0ecb-bd79-406d-bd2d-b5d434053f2f",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     random_baseline = load_all_reports(
         os.path.join(
             chembench,
             "reports/random_baseline/reports/4e0b0e2f-0d4e-4d9e-8c5e-6c3e3d9f1d3b",
-        )
+        ),
+        os.path.join(chembench, "data"),
     )
 
     # to make fair comparisons, we only look at the runs
