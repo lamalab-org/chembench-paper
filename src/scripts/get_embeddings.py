@@ -43,5 +43,5 @@ if __name__ == "__main__":
  
     # BART example
     q_classifier_ = QClassifier(embedding_model="gpt", topics=TOPICS, save_embeddings=True)
-    classified = q_classifier_.classify_inputs(df.sample)
+    classified = q_classifier_.classify_inputs(df)
     classified.to_csv("gpt.csv", index=False)
