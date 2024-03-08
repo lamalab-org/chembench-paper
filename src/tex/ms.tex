@@ -80,7 +80,8 @@ By design, a focus of our corpus is on safety-related aspects with a (currently)
     \script{plot_statistics.py}
 \end{figure}
 
-Importantly, the corpus samples both \gls{mcq} and open-ended questions in a balanced way (). As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\variable{ouput/flesch_kincaid_reading_ease.txt}). \cite{kincaid1975derivation}
+Importantly, the corpus samples both \gls{mcq} and open-ended questions in a balanced way (XX \gls{mcq} questions vs. XX open-ended questions). 
+As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\variable{output/flesch_kincaid_reading_ease.txt}). \cite{kincaid1975derivation}
 
 
 \begin{figure}
@@ -125,7 +126,7 @@ Importantly, the corpus samples both \gls{mcq} and open-ended questions in a bal
 
 \subsection{Curation workflow} \label{sec:curation}
 % ToDo: we should not call the first item in the figure curation 
-For our dataset we curated questions from existing exams, but also programatically created new questions. 
+For our dataset we curated questions from existing exams, but also programmatically created new questions. 
 Questions were added via Pull Requests on our GitHub repository and only merged into the main collection after passing manual review.
 
 To ensure that the questions do not enter a training dataset we use the canary string of the Big Bench project.
@@ -145,13 +146,13 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 \subparagraph{Electron counts}
 
 \paragraph{Programmatically generated questions} 
-\subparagraph{Number of NMR peaks} To generate tasks about the number of NMR peaks, we randomly sampled SMILES from the ZINC dataset and then used OpenChemLib\cite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
+\subparagraph{Number of NMR peaks} To generate tasks about the number of \gls{nmr} peaks, we randomly sampled SMILES from the ZINC dataset and then used OpenChemLib\cite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
 We then sampled from the set of number of peaks (excluding the correct answer) to obtain the false answer options.
 
 \subparagraph{GHS, hazard statements and DAI}
 The \gls{ghs} classification, hazard statements and  \gls{dai} data have been extracted from PubChem. \cite{pubchem}
 The former two have been mined via the PubChem \gls{api}, while the latter has been manually compiled.
-The \glspl{dai} have been curated to contain only records approved by the \gls{who} 
+The \glspl{dai} have been curated to contain only records approved by the \gls{who}. 
 The chemicals in this class of questions belong to one of the three classes: pesticides (e.g., calcium arsenate), insecticides (e.g., cyfluthrin) or herbicides (e.g. 2,4-D). 
 All data was saved in tabular form, and then we programmatically created questions (\variable{output/num_h_statements.txt} hazard statement definitions, \variable{output/num_pictograms.txt} chemical-\gls{ghs} pictogram matching, \variable{output/num_dai.txt} \glspl{dai}).
 

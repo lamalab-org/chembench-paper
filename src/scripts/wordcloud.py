@@ -71,7 +71,7 @@ def plot_reading_ease(df):
 
     with open(output / "flesch_kincaid_reading_ease.txt", "w") as f:
         f.write(
-            f"\num{{{np.mean(flesch_kincaid_reading_ease):.2f}}} \pm \num{{{np.std(flesch_kincaid_reading_ease):.2f}}}"
+            f"\num{{{np.mean(flesch_kincaid_reading_ease):.2f} \pm {np.std(flesch_kincaid_reading_ease):.2f}}}"
             + "\endinput"
         )
 
@@ -81,3 +81,4 @@ if __name__ == "__main__":
 
     df = pd.read_pickle(output / "questions.pkl")
     create_wordcloud(df)
+    plot_reading_ease(df)
