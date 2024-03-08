@@ -4,7 +4,7 @@ from paths import output, figures, scripts
 
 plt.style.use(scripts / "lamalab.mplstyle")
 import pandas as pd
-
+from glob import glob
 
 import numpy as np
 from plotutils import range_frame

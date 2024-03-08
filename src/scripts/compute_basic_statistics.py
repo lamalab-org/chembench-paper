@@ -1,6 +1,7 @@
 from utils import obtain_chembench_repo
 from chembench.analysis import classify_questions
 from paths import output
+from glob import glob
 
 
 def load_data():
@@ -28,6 +29,23 @@ def load_data():
 
     df.to_csv(output / "questions.csv")
     df.to_pickle(output / "questions.pkl")
+
+    dai_data = glob(chembench_repo / "data" / "safety" / "pubchem_data" / "DAI*.json")
+    h_statements = glob(
+        chembench_repo / "data" / "safety" / "pubchem_data" / "h_state*.json"
+    )
+    pictograms = glob(
+        chembench_repo / "data" / "safety" / "pubchem_data" / "pictogram*.json"
+    )
+
+    with open(output / "num_dai.txt", "w") as f:
+        f.write(str(len(dai_data)) + "\endinput")
+
+    with open(output / "num_h_statements.txt", "w") as f:
+        f.write(str(len(h_statements)) + "\endinput")
+
+    with open(output / "num_pictograms.txt", "w") as f:
+        f.write(str(len(pictograms)) + "\endinput")
 
 
 if __name__ == "__main__":
