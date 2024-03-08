@@ -1,6 +1,12 @@
 from chembench.analysis import load_all_reports
 from utils import obtain_chembench_repo
 import os
+from plotutils import radar_factory, model_color_map
+import numpy as np
+import matplotlib.pyplot as plt
+from paths import figures, output
+
+plt.style.use("lamalab.mplstyle")
 
 
 def load_reports():
@@ -166,6 +172,9 @@ def load_reports():
         & random_baseline_run_names
     )
 
+    with open(output / "intersection.txt", "w") as f:
+        f.write(f"{len(intersection)}" + "\endinput")
+
     # now we filter the dataframes to only contain the runs
     # that are in the intersection
     claude2 = claude2[claude2[("name", 0)].isin(intersection)]
@@ -191,3 +200,152 @@ def load_reports():
     pplx7b_chat = pplx7b_chat[pplx7b_chat[("name", 0)].isin(intersection)]
     pplx7b_online = pplx7b_online[pplx7b_online[("name", 0)].isin(intersection)]
     random_baseline = random_baseline[random_baseline[("name", 0)].isin(intersection)]
+
+    # return dictionary with the dataframes
+    return {
+        "claude2": claude2,
+        "claude2_react": claude2_react,
+        "claude2_zero_t": claude2_zero_t,
+        "claude3": claude3,
+        "galactica_120b": galactica_120b,
+        "gemini_pro_zero_t": gemini_pro_zero_t,
+        "gemini_pro": gemini_pro,
+        "gpt35turbo": gpt35turbo,
+        "gpt35turbo_zero_t": gpt35turbo_zero_t,
+        "gpt35turbo_react": gpt35turbo_react,
+        "gpt4": gpt4,
+        "gpt4zero_t": gpt4zero_t,
+        "llama70b": llama70b,
+        "mixtral": mixtral,
+        "pplx7b_chat": pplx7b_chat,
+        "pplx7b_online": pplx7b_online,
+        "random_baseline": random_baseline,
+    }
+
+
+def make_overall_performance_radar_plot(df_dict):
+
+    claude2_mean = df_dict["claude2"].groupby("topic")["all_correct_"].mean()
+    claude2_react_mean = (
+        df_dict["claude2_react"].groupby("topic")["all_correct_"].mean()
+    )
+    claude2_zero_t_mean = (
+        df_dict["claude2_zero_t"].groupby("topic")["all_correct_"].mean()
+    )
+    claude3_mean = df_dict["claude3"].groupby("topic")["all_correct_"].mean()
+    galactica_120b_mean = (
+        df_dict["galactica_120b"].groupby("topic")["all_correct_"].mean()
+    )
+    gemini_pro_zero_t_mean = (
+        df_dict["gemini_pro_zero_t"].groupby("topic")["all_correct_"].mean()
+    )
+    gemini_pro_mean = df_dict["gemini_pro"].groupby("topic")["all_correct_"].mean()
+    gpt35turbo_mean = df_dict["gpt35turbo"].groupby("topic")["all_correct_"].mean()
+    gpt35turbo_zero_t_mean = (
+        df_dict["gpt35turbo_zero_t"].groupby("topic")["all_correct_"].mean()
+    )
+    gpt35turbo_react_mean = (
+        df_dict["gpt35turbo_react"].groupby("topic")["all_correct_"].mean()
+    )
+    gpt4_mean = df_dict["gpt4"].groupby("topic")["all_correct_"].mean()
+    gpt4zero_t_mean = df_dict["gpt4zero_t"].groupby("topic")["all_correct_"].mean()
+    llama70b_mean = df_dict["llama70b"].groupby("topic")["all_correct_"].mean()
+    mixtral_mean = df_dict["mixtral"].groupby("topic")["all_correct_"].mean()
+    pplx7b_chat_mean = df_dict["pplx7b_chat"].groupby("topic")["all_correct_"].mean()
+    pplx7b_online_mean = (
+        df_dict["pplx7b_online"].groupby("topic")["all_correct_"].mean()
+    )
+    random_baseline_mean = (
+        df_dict["random_baseline"].groupby("topic")["all_correct_"].mean()
+    )
+
+    # Sort the data based on the maximum value in each group
+    sorted_data = sorted(
+        zip(
+            [
+                gpt4_mean,
+                claude2_mean,
+                claude2_react_mean,
+                claude3_mean,
+                gemini_pro_mean,
+                gpt35turbo_mean,
+                gpt35turbo_react_mean,
+                llama70b_mean,
+                galactica_120b_mean,
+                mixtral_mean,
+                pplx7b_chat_mean,
+                pplx7b_online_mean,
+                random_baseline_mean,
+            ],
+            [
+                "GPT-4",
+                "Claude2",
+                "Claude2-ReAct",
+                "Claude3",
+                "Gemini-Pro",
+                "GPT-3.5-Turbo",
+                "GPT-3.5-Turbo-ReAct",
+                "LLAMA-2-70B",
+                "Galactica-120B",
+                "MixTRAL-8x7B",
+                "PPLX-7B-Chat",
+                "PPLX-7B-Online",
+                "Random Baseline",
+            ],
+            [
+                model_color_map["gpt4"],
+                model_color_map["claude2"],
+                model_color_map["claude2_react"],
+                model_color_map["claude3"],
+                model_color_map["gemini_pro"],
+                model_color_map["gpt35turbo"],
+                model_color_map["gpt35turbo_react"],
+                model_color_map["llama70b"],
+                model_color_map["galactica_120b"],
+                model_color_map["mixtral"],
+                model_color_map["pplx7b_chat"],
+                model_color_map["pplx7b_online"],
+                model_color_map["random_baseline"],
+            ],
+        ),
+        key=lambda x: np.max(x[0]),
+        reverse=True,
+    )
+
+    theta = radar_factory(len(claude2_mean), frame="polygon")
+
+    # Adjust the layout to leave space for labels
+    fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(projection="radar"))
+
+    for data, label, color in sorted_data:
+        # Plot the filled area
+        ax.fill(theta, data, alpha=0.2, label=label, color=color)
+
+        # Plot the line
+        ax.plot(theta, data, color=color)
+
+    # Rotate labels
+    ax.set_varlabels(claude2_mean.index)
+    ax.tick_params(pad=30)
+    plt.xticks(
+        rotation=45, ha="center"
+    )  # Adjust horizontal alignment for better readability
+
+    # Remove unnecessary grid lines
+    ax.set_yticklabels([])
+    ax.set_yticks([])
+
+    # Improve legend placement
+    ax.legend(loc=(-0.1, 1.2), ncols=4)
+
+    fig.tight_layout()
+
+    fig.savefig(
+        figures / "all_questions_models_completely_correct_radar.pdf",
+        bbox_inches="tight",
+    )
+
+
+if __name__ == "__main__":
+    df_dict = load_reports()
+    make_overall_performance_radar_plot(df_dict)

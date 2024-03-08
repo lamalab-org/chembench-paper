@@ -246,13 +246,13 @@ K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A
 
 \section*{Author contributions}
 
-\insertcredits
+%\insertcredits
 
 \bibliography{references}
 
-% \appendix
+\appendix
 
-\subsection{Questions}
+\subsection{Benchmark corpus}
 
 \begin{figure}
     \centering
@@ -274,6 +274,15 @@ For validating the parsing workflow, we randomly sampled four questions per topi
 %     \end{tabularx}
 % \end{table}
 
+\subsection{Model performance}
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/all_questions_models_completely_correct_radar.pdf}
+    \caption{Caption}
+    \label{fig:all_questions_models_completely_correct_radar}
+    \script{src/scripts/analyze_model_reports.py}
+\end{figure}
 
 \subsection{Human baseline}
 
