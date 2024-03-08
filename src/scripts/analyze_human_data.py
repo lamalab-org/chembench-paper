@@ -107,7 +107,7 @@ def make_human_time_score_plot(long_df):
             [grouped_by_user["all_correct"].min(), grouped_by_user["all_correct"].max()]
         ),
     )
-    fig.tight_layout()
+    # fig.tight_layout()
     fig.savefig(figures / "experience_vs_correctness.pdf", bbox_inches="tight")
 
     spearman = spearmanr(grouped_by_user["experience"], grouped_by_user["all_correct"])
