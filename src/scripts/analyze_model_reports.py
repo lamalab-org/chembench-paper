@@ -1,4 +1,8 @@
-from chembench.analysis import load_all_reports
+from chembench.analysis import (
+    load_all_reports,
+    get_human_scored_questions_with_at_least_n_scores,
+    all_correct,
+)
 from utils import obtain_chembench_repo
 import os
 from plotutils import radar_factory, model_color_map
@@ -7,6 +11,196 @@ import matplotlib.pyplot as plt
 from paths import figures, output, scripts
 
 plt.style.use(scripts / "lamalab.mplstyle")
+
+
+def combine_scores_for_model(
+    folder, datafolder, human_baseline_folder=None, min_human_responses: int = 100
+):
+
+    df = load_all_reports(folder, datafolder)
+    if human_baseline_folder is not None:
+        relevant_questions = get_human_scored_questions_with_at_least_n_scores(
+            human_baseline_folder, min_human_responses
+        )
+        df = df[df[("name", 0)].isin(relevant_questions)]
+    df["all_correct"] = df.apply(all_correct, axis=1)
+
+    return df
+
+
+def load_human_aligned_reports():
+    chembench = obtain_chembench_repo()
+    human_baseline_folder = os.path.join(chembench, "reports/humans")
+    datafolder = os.path.join(chembench, "data")
+
+    claude2 = combine_scores_for_model(
+        os.path.join(
+            chembench, "reports/claude2/reports/7536581a-d92d-43d3-b946-39e4a7213b7f"
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    claude2_react = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/claude2-react/reports/700ed9b4-995c-4cfd-aa63-0a6e84b3a815",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    claude2_zero_t = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/claude2-zero-T/reports/412657cc-7a11-4d73-80e9-03d6f05cd63e",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    claude3 = combine_scores_for_model(
+        os.path.join(
+            chembench, "reports/claude3/reports/702e03be-5cd8-4451-b52c-8d7b9b694304"
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    galactica_120b = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/galactica-120b/reports/d7ce25da-bbce-4f06-8a5b-43e6cfb01c30",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    gemini_pro_zero_t = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/gemini-pro-zero-T/reports/1e5457ad-96b5-4bc8-bd6c-bad3eb6deb7a",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    gemini_pro = combine_scores_for_model(
+        os.path.join(
+            chembench, "reports/gemini-pro/reports/ebde051c-6d66-456a-a207-a1c65eceaf40"
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    gpt35turbo = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/gpt-3.5-turbo/reports/f76bf17d-3e12-47c5-b879-9cc0c78be989",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    gpt35turbo_zero_t = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/gpt-3.5-turbo-zero-T/reports/44cf2a6b-a7bc-43ee-8f16-9576d1547c76",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    gpt35turbo_react = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/gpt-3.5-turbo-react/reports/e4964803-79cb-44bc-b5b2-e22aa3f40607",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    gpt4 = combine_scores_for_model(
+        os.path.join(
+            chembench, "reports/gpt-4/reports/76c5bdd4-e893-43d4-b37d-2ade66c20308"
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    gpt4zero_t = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/gpt-4-zero-T/reports/76c5bdd4-e893-43d4-b37d-2ade66c20308",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    llama70b = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/llama-2-70b-chat/reports/a2d0b2d7-2381-4e75-8c8b-8baadf054073",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    mixtral = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/mixtral-8x7b-instruct/reports/8409294f-de26-4c05-bd50-2cfb2148ec65",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    pplx7b_chat = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/pplx-7b-chat/reports/d63fb4e2-3dd6-432e-bbe7-8bc1c23115d3",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    pplx7b_online = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/pplx-7b-online/reports/309c0ecb-bd79-406d-bd2d-b5d434053f2f",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    random_baseline = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/random_baseline/reports/4e0b0e2f-0d4e-4d9e-8c5e-6c3e3d9f1d3b",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    return {
+        "claude2": claude2,
+        "claude2_react": claude2_react,
+        "claude2_zero_t": claude2_zero_t,
+        "claude3": claude3,
+        "galactica_120b": galactica_120b,
+        "gemini_pro_zero_t": gemini_pro_zero_t,
+        "gemini_pro": gemini_pro,
+        "gpt35turbo": gpt35turbo,
+        "gpt35turbo_zero_t": gpt35turbo_zero_t,
+        "gpt35turbo_react": gpt35turbo_react,
+        "gpt4": gpt4,
+        "gpt4zero_t": gpt4zero_t,
+        "llama70b": llama70b,
+        "mixtral": mixtral,
+        "pplx7b_chat": pplx7b_chat,
+        "pplx7b_online": pplx7b_online,
+        "random_baseline": random_baseline,
+    }
 
 
 def load_reports():
