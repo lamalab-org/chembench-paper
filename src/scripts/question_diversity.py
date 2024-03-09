@@ -3,11 +3,13 @@ import matplotlib.pyplot as plt
 plt.style.use("lamalab.mplstyle")
 from sklearn.decomposition import PCA
 import seaborn as sns
+from paths import data
+
 
 def load_embeddings_and_labels():
     # read npy file
-    embeddings = np.load("gpt_save/embeddings.npy")
-    labels = np.load("gpt_save/labels.npy")
+    embeddings = np.load(data/"gpt_embeddings/embeddings.npy")
+    labels = np.load(data/"gpt_embeddings/labels.npy")
     return embeddings, labels
 
 
