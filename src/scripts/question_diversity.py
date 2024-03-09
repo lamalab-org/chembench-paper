@@ -30,7 +30,7 @@ def plot_pca_map():
     # place legend outside of the plot
 
     plt.axis('off')
-    sns.scatterplot(x=pca_1, y=pca_2, hue=labels, s=100, alpha=0.5)
+    sns.scatterplot(x=pca_1, y=pca_2, hue=labels, s=100, alpha=0.7)
     f.savefig("question_diversity.pdf", bbox_inches='tight')
 
 if __name__ == "__main__":
