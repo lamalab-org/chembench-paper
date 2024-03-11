@@ -20,18 +20,32 @@
 \section{Introduction}
 \Glspl{llm} are frontier \gls{ml} models trained on massive amounts of text to complete sentences.
 While some see in them \enquote{sparks of \gls{agi}},\cite{bubeck2023sparks} others consider them as \enquote{stochasitc parrots}---i.e., systems that only regurgitate what they have been trained on.\cite{bender2021dangers}
+In any case, the promise of so-called foundation models (the leading ones being called frontier models) is that they can solve a wide variety of tasks they have not been explicitly trained on.\cite{bommasani2021opportunities, anderljung2023frontier}
+In addition, there is tremendous economic interest and investment in those generative models is said to lead to a market of more than \$1.3 trillion (almost \$30 billion for drug discovery applications) by 2032.\cite{bloomberg}
 
 Chemists and materials scientists have quickly caught on the mounting attention given to \glspl{llm}, some even suggesting that \enquote{the future of chemistry is language}.\cite{White_2023}
 This statement is motivated by a growing number of reports that use \glspl{llm} to properties of molecules or materials,\cite{jablonka202314, jablonka2024leveraging, xie2024fine} to optimize reactions\cite{ramos2023bayesian, kristiadi2024sober} or generate materials,\cite{rubungo2023llm, flam2023language, gruver2024fine} extract information,\cite{Patiny_2023, Dagdelen_2024, Zheng_2024, lála2023paperqa, caufield2023structured} or to even build \enquote{autonomous} systems that can physically perform reactions provided a command in natural language.\cite{bran2023chemcrow, Boiko_2023, darvish2024organa}
-The rapid increase in capabilities led to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\cite{gopal2023releasing, ganguli2022red, Urbina_2022}
-Moreover, the use of these models is now also widespread among students\cite{Intelligent.com_2023} as well as research groups. For some users, misleading information---especially about safety-related aspects---might lead to harmful outcomes. Unfortunately, apart from anecdotal reports there is little evidence on how \glspl{llm} perform compared to experts.
+But even more than that, since a lot---if not most---of the information about chemistry is currently stored and communicated in text. 
+Most insights in chemical research does not directly originate from data stored in databases but rather from the scientists and their ability to interpret data. 
+Most of these insights are in form of text in scientific publications. 
+Thus, operating on such text might be our best way of \enquote{unlocking} and learning from these insights.
+This might ultimately lead to \enquote{copilots} for chemists that can provide answers to questions or even suggest new experiments.
+However, the rapid increase in capabilities of chemical \gls{ml} models, led to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\cite{gopal2023releasing, ganguli2022red, Urbina_2022}
+To some extent, this is not surprising as any technology, that, for instance, can predict the toxicity of molecules (to be used in drug discovery) can also be used to predict the toxicity of molecules (to be used in chemical warfare).
 
-Thus, to better understand what \glspl{llm} can do for chemistry and materials science, and where they might be improved with further developments, a comprehensive analysis is needed.
+It is important to realize that the user base of such models is not only limited to experts in chemistry and materials science. 
+For example, many students frequently consolidate those tools---perhaps even to prepare chemical experiments.\cite{Intelligent.com_2023}
+This also implies to users from the general public, who might consider using \glspl{llm} to answer questions about the safety of chemicals.
+Thus, for some users, misleading information---especially about safety-related aspects---might lead to harmful outcomes. 
+Unfortunately, apart from anecdotal reports there is little evidence on how \glspl{llm} perform compared to experts.
+
+Thus, to better understand what \glspl{llm} can do for chemistry and materials science, and where they might be improved with further developments, evaluation frameworks are needed that allow to systematically measure progress and mitigate potential harms.
 For the development of \glspl{llm}, such evaluation is currently mostly performed via standardized benchmarks such as BigBench\cite{srivastava2022beyond} or the LM Eval Harness.\cite{eval-harness}
 The former contains, among 204 tasks, only two tasks classified as \enquote{chemistry related} whereas the latter contains no specific chemistry tasks.
 Due to the lack of widely excepted standard benchmarks, the developers of chemical language models\cite{jablonka2024leveraging, guo2023large, ahmad2022chemberta2, Cai_2024} frequently utilize language-interfaced\cite{dinh2022lift} tabular datasets such as the ones reported in MoleculeNet,\cite{wu2018moleculenet} Therapeutic Data Commons\cite{huang2021therapeutics} or MatBench.\cite{dunn2020benchmarking}
-While those evaluations can measure how well models can make predictions for very specific tasks, they only give a poor measure of how useful those models might be as a chemical assistant.
+While those evaluations can measure how well models can make predictions for very specific tasks (e.g., predicting solubility for a given molecule reported as \gls{smiles}), they only give a poor measure of how useful those models might be as a chemical assistant.
 
+%ToDo: this is too technical and should be moved to the methods
 While some benchmark based on university entrance exams\cite{Zaki_2024, arora2023llms} or automatic text mining\cite{song2023honeybee, wei2021chemistryqa} have been proposed, also those do not satisfy the following basic criteria chemistry benchmarks should satisfy:
 \begin{itemize}
     \item \emph{End-to-end automation}. For model development, the evaluations will need to be run many times (e.g., on regular intervals of a training run).
@@ -61,14 +75,15 @@ Our results indicate that current frontier models perform \enquote{superhuman} o
 
 \subsection{Benchmark dataset}
 
-To compile our benchmark corpus we utilized a broad list of sources (\Cref{sec:curation}), ranging from university exams to semi-automatically generated questions based on curated subsets of data in chemical databases.
-To ensure maximal interoperability, we curated the data in an extended form of the BigBench format.
+To compile our benchmark corpus we utilized a broad list of sources (see \Cref{sec:curation}), ranging from university exams to semi-automatically generated questions based on curated subsets of data in chemical databases.
+To ensure maximal interoperability, we curated the data in an extended form of the widely used BigBench format.
 This also implies that future baselines can be built on top of our infrastructure as long as they are saved in the same format.
-For quality assurance, all questions have been reviewed by at least one scientist in addition to the original curator.
+
 
 Importantly, our large pool of questions encompassed a wide range of topics.
 This can be seen, for example, in \Cref{fig:topic_barplot} in which we compare the number of questions in different categories (see \Cref{sec:meth-topic} for details on how we assigned topics).
 By design, a focus of our corpus is on safety-related aspects with a (currently) limited sampling of questions from physical or theoretical chemistry, which might be extended in future work.
+For quality assurance, all questions have been reviewed by at least one scientist in addition to the original curator.
 
 \begin{figure}
     \centering
@@ -78,7 +93,7 @@ By design, a focus of our corpus is on safety-related aspects with a (currently)
     \script{plot_statistics.py}
 \end{figure}
 
-Importantly, the corpus samples both \gls{mcq} and open-ended questions in a balanced way (XX \gls{mcq} questions vs. XX open-ended questions).
+Importantly, the corpus samples both \gls{mcq} and open-ended questions in a balanced way (\variable{output/mcq_questions.txt} \gls{mcq} questions vs. \variable{output/non_mcq_questions.txt} open-ended questions).
 As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\variable{output/flesch_kincaid_reading_ease.txt}).~\cite{kincaid1975derivation}
 
 
@@ -93,7 +108,9 @@ As one might expect, most questions are difficult to read according to the Flesc
 
 \subsection{\enquote{Tiny} subset}
 It is important to note that for routine evaluations, a smaller subset of the corpus might be more practical.\cite{polo2024tinybenchmarks}
-For instance,~\citet{liang2023holistic} report costs of more than 10,000 USD for \gls{api} calls for a single evaluation on the \gls{helm} benchmark.
+For instance,~\citet{liang2023holistic} report costs of more than 10,000 USD for \gls{api} calls for a single evaluation on the \gls{helm} benchmark on a model. 
+To address this, we also provide a subset (\variable{output/num_tiny_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus (see \Cref{sec:subset-selection} for details on the curation process).
+We also used this subset to seed the app we used for the human baseline study. 
 
 
 \subsection{Model evaluation}
@@ -166,10 +183,10 @@ To obtain the answers for false options we sampled from the set of number of iso
 \paragraph{Prompting}
 
 To maintain the consistency with the training, we employ distinct prompt templates in general tailored for completion models and instruction-tuned models. 
-We pose instruction or impose constraints on the models within these templates to receive response in a specific format so that a robust, fair and consistent parsing can be performed as explained in \Graf{sec:parsing}.
+We pose instruction or impose constraints on the models within these templates to receive response in a specific format so that a robust, fair and consistent parsing can be performed as explained in \Cref{sec:parsing}.
 Certain models are trained with special annotations and LaTeX syntax for scientific notations, chemical reactions, or symbols embedded within the text. 
-For example, all the SMILES representations are encapsulated within \texttt{[START_SMILES][\text backslash END_SMILES]} in Galactica\cite{taylor2022galactica}.
-Our prompting strategy consistently adheres to  these details in a model-specific manner by post-processing \latex syntax, chemical symbols, chemical equations and physical units (by either adding or removing wrappers).
+For example, all the SMILES representations are encapsulated within \texttt{[START\_SMILES][\text backslash END\_SMILES]} in Galactica\cite{taylor2022galactica}.
+Our prompting strategy consistently adheres to  these details in a model-specific manner by post-processing \LaTeX syntax, chemical symbols, chemical equations and physical units (by either adding or removing wrappers).
 
 \subparagraph{Completion models}
 \texttt{Galactica-120b}\cite{taylor2022galactica}
@@ -211,7 +228,7 @@ We utilize a MySQL\cite{mysql} database and Prisma \gls{orm}\cite{prisma} for ef
 The web application is styled with Tailwind CSS\cite{tailwindcss} using the shadcn/ui component library and uses NextAuth\cite{nextauth} for easy and secure user authentication and postMark for sending Emails.
 The application is hosted on the Vercel web hosting platform.
 
-\paragraph{Question selection}
+\paragraph{Question selection} \label{sec:subset-selection}
 Since we anticipated that we will not be able to collect enough responses for every question to allow for a meaningful statistical analysis, we decided on showing a relevant subset of all questions to the human scorers.
 For selecting the subset, we decided on addressing two questions:
 \begin{itemize}
@@ -233,16 +250,21 @@ For the remaining ones, e.g., from chemistry olympiad questions, we use zero-sho
 
 
 \section*{Data and code availability}
+The code and data for chembench is available at \url{https://github.com/lamalab-org/chem-bench} and archived at \url{XXX}.
+The code for the app for our human baseline study is available at \url{https://github.com/lamalab-org/chem-bench-app}. 
+To ensure reproducibility, this manuscript was generated using the \href{https://show-your.work/en/latest/}{showyourwork!} framework.\cite{Luger2021}
+The code to rebuild the paper (including code for all figures and numbers next to which there is a GitHub icon) can be found at \url{https://github.com/lamalab-org/chembench-paper}.
 
 \section*{Acknowledgements}
 This work was supported by the Carl Zeiss Foundation and a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena.
 We also want to acknowledge access to the HPC cluster of Stability.AI.
 
 \section*{Conflicts of interest}
-K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A.M.\ and N.A.\ are paid contractors of Stability.ai.
+K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A.M.\ and N.A.\ are paid contractors of Stability.AI.
 
 \section*{Author contributions}
 
+%\insertcredits
 
 \bibliography{references}
 
@@ -282,7 +304,7 @@ For validating the parsing workflow, we randomly sampled four questions per topi
 \end{figure}
 
 
-Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (Spearman's \(\rho \approx \variable{output/spearman_\experience_score.txt}\), \(p \approx \variable{output/spearman_\experience_score_p.txt}\)).
+Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
 \begin{figure}
     \centering
