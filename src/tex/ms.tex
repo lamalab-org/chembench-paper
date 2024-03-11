@@ -165,6 +165,12 @@ To obtain the answers for false options we sampled from the set of number of iso
 
 \paragraph{Prompting}
 
+To maintain the consistency with the training, we employ distinct prompt templates in general tailored for completion models and instruction-tuned models. 
+We pose instruction or impose constraints on the models within these templates to receive response in a specific format so that a robust, fair and consistent parsing can be performed as explained in \Graf{sec:parsing}.
+Certain models are trained with special annotations and LaTeX syntax for scientific notations, chemical reactions, or symbols embedded within the text. 
+For example, all the SMILES representations are encapsulated within \texttt{[START_SMILES][\text backslash END_SMILES]} in Galactica\cite{taylor2022galactica}.
+Our prompting strategy consistently adheres to  these details in a model-specific manner by post-processing \latex syntax, chemical symbols, chemical equations and physical units (by either adding or removing wrappers).
+
 \subparagraph{Completion models}
 \texttt{Galactica-120b}\cite{taylor2022galactica}
 
