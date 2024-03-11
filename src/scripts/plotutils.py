@@ -199,3 +199,19 @@ tab20_colors = [
     ["#bcbd22", "#dbdb8d"],  # yellow
     ["#17becf", "#9edae5"],  # teal
 ]
+
+
+model_color_map = {
+    "human": tab20_colors[0][0],
+    "claude2": tab20_colors[1][0],
+    "claude2_react": tab20_colors[1][1],
+    "claude3": tab20_colors[2][0],
+    "gpt4": tab20_colors[3][0],
+    "gemini_pro": tab20_colors[4][0],
+    "gpt35turbo": tab20_colors[5][0],
+    "llama70b": tab20_colors[6][0],
+    "pplx7b_chat": tab20_colors[7][0],
+    "ppx7b_online": tab20_colors[7][1],
+    "mixtral": tab20_colors[8][0],
+    "random_baseline": tab20_colors[9][0],
+}

@@ -3,7 +3,7 @@ rule question_statistics:
         "src/scripts/compute_basic_statistics.py"
     output: 
         # for caching perhaps generate directory https://github.com/showyourwork/showyourwork/issues/119
-        ["src/tex/output/total_number_of_questions.txt", "src/tex/output/automatically_generated.txt", "src/tex/output/manually_generated.txt", "src/tex/output/questions.csv", "src/tex/output/questions.pkl", "src/tex/output/num_dai.txt","src/tex/output/num_h_statements.txt", "src/tex/output/num_pictograms.txt"]
+        ["src/tex/output/total_number_of_questions.txt", "src/tex/output/automatically_generated.txt", "src/tex/output/manually_generated.txt", "src/tex/output/questions.csv", "src/tex/output/questions.pkl", "num_dai.txt","src/tex/output/num_h_statements.txt", "src/tex/output/num_pictograms.txt"]
     script: 
         "src/scripts/compute_basic_statistics.py"
 
@@ -34,3 +34,12 @@ rule wordcloud:
         ["src/tex/figures/wordcloud.pdf", "src/tex/figures/flesch_kincaid_reading_ease.pdf", "src/tex/output/flesch_kincaid_reading_ease.txt"]
     script:
         "src/scripts/wordcloud.py"
+
+
+rule analyze_model_reports: 
+    input: 
+        "src/scripts/analyze_model_reports.py"
+    output: 
+        ["src/tex/output/intersection.txt", "src/tex/figures/all_questions_models_completely_correct_radar.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar.pdf"]
+    script:
+        "src/scripts/analyze_model_reports.py"
