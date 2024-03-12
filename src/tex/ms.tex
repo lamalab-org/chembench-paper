@@ -93,7 +93,8 @@ As one might expect, most questions are difficult to read according to the Flesc
 It is important to note that for routine evaluations, a smaller subset of the corpus might be more practical.\cite{polo2024tinybenchmarks}
 For instance,~\citet{liang2023holistic} report costs of more than 10,000 USD for \gls{api} calls for a single evaluation on the \gls{helm} benchmark on a model. 
 To address this, we also provide a subset (\variable{output/num_tiny_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus (see \Cref{sec:subset-selection} for details on the curation process).
-We also used this subset to seed the app we used for the human baseline study. 
+We also used this subset to seed the app we used for the human baseline study. The results shown in the main text are based on this subset. 
+Results for the full corpus can be found in the appendix.
 
 
 \subsection{Model evaluation}
@@ -108,9 +109,11 @@ This is also important with the growing number of tool-augmented systems that us
 In those cases, the \gls{llm} that returns the probabilities for various tokens (that are conventionally used for model evaluations) is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
 The text completions, however, are the final outputs of the system that would also be used in a real-world application (e.g., in a copilot system for chemists).
 
-To understand the current capabilities of \glspl{llm} in the chemical sciences, we evaluated a wide range of models on the chembench corpus, including systems augmented with external tools.
-An overview of the results of this evaluation is shown in \Cref{fig:all_questions_models_completely_correct_radar}.
-
+To understand the current capabilities of \glspl{llm} in the chemical sciences, we evaluated a wide range of leading models\cite{Huggingface} on the chembench corpus, including systems augmented with external tools.
+An overview of the results of this evaluation is shown in \Cref{fig:human_vs_models_bar}. In this figure, we show the percentage of questions that the models answered completely correctly.
+We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance with vertical lines.
+The figure shows that the leading \gls{llm}, GPT-4, outperforms the best human in our study in this overall metric.
+Many other models also outperform the average human performance.
 % Bar chart
 
 \begin{figure}
@@ -150,7 +153,7 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 
 \begin{figure}
     \includegraphics[width = \textwidth]{figures/chem-bench.pdf}
-        \caption{\textbf{Data curation workflow}.}
+    \caption{\textbf{Data curation workflow}.}
 \end{figure}
 
 \paragraph{Manually curated questions}
@@ -241,9 +244,15 @@ From those we picked X diverse one using greedy MaxMin sampling on the embedding
 \paragraph{Study design}
 For our initial study we wanted to maximize the response rate given our available resources. 
 For this reason, we did not opt for a highly controlled study setting. 
-hat is, while users were prompted to not use external tools other than a calculator and to not consult with other humans, we do not have any way to verify that the participants complied with those rules. 
+That is, while users were prompted to not use external tools other than a calculator and to not consult with other humans, we do not have any way to verify that the participants complied with those rules. 
 Note that users were also allowed to skip questions.
 
+
+\paragraph{Participants}
+Users were open to report about their experience in chemistry. 
+\variable{output/num_users_with_education_info.txt} did so. 
+Out of those, \variable{output/num_human_phd.txt} reported to have been awarded a Ph.D.
+\variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree, and \variable{output/num_human_bachelor.txt} have a bachelor's degree and for \variable{output/num_human_highschool.txt} the highest awarded degree is from high school.
 
 \subsection{Classification of questions into topics}\label{sec:meth-topic} When curating our dataset we systematically recorded keywords and sources.
 To allow for analysis of the model performance as a function of the topic, we leverage this information together with sequence classification models.

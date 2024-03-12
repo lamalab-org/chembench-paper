@@ -225,8 +225,7 @@ def load_reports():
         os.path.join(chembench, "data"),
     )
 
-    galactica_120b = load_all_reports
-    (
+    galactica_120b = load_all_reports(
         os.path.join(
             chembench,
             "reports/galactica-120b/reports/d7ce25da-bbce-4f06-8a5b-43e6cfb01c30",

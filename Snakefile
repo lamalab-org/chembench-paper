@@ -21,7 +21,7 @@ rule human_statistics:
     input: 
         "src/scripts/analyze_human_data.py"
     output: 
-        ["src/tex/output/number_experts.txt", "src/tex/output/total_hours.txt", "src/tex/figures/human_timing.pdf", "src/tex/figures/experience_vs_correctness.pdf","src/tex/output/spearman_experience_score.txt", "src/tex/output/spearman_experience_score_p.txt" ]
+        ["src/tex/output/number_experts.txt", "src/tex/output/total_hours.txt", "src/tex/figures/human_timing.pdf", "src/tex/figures/experience_vs_correctness.pdf","src/tex/output/spearman_experience_score.txt", "src/tex/output/spearman_experience_score_p.txt", "src/tex/output/num_human_phd.txt", "src/tex/output/num_human_master.txt", "src/tex/output/num_human_bachelor.txt", "src/tex/output/num_human_highschool.txt", "src/tex/output/num_human_postdoc.txt", "src/tex/output/num_users_with_education_info.txt" ]
         # "src/tex/output/human_questions.csv", "src/tex/output/human_questions.pkl"
     script: 
         "src/scripts/analyze_human_data.py"
