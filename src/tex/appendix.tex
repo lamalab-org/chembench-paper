@@ -23,12 +23,12 @@ This also implies that future baselines can be built on top of our infrastructur
 \begin{figure}
     \centering
     \includegraphics{figures/flesch_kincaid_reading_ease.pdf}
-    \caption{Example question.}
+    \caption{\textbf{Distribution of Flesch-Kincaid reading ease scores of the questions.} The Flesch-Kincaid reading ease score\cite{flesch1948new} is a measure of how easy a text is to read. It is calculated based on the average number of syllables per word and the average number of words per sentence. The higher the score, the easier the text is to read. The distribution of the scores of the questions is shown in the histogram. The mean score is \variable{output/flesch_kincaid_mean.txt} and the median score is \variable{output/flesch_kincaid_median.txt}.}
     \label{fig:flesch_kincaid_reading_ease}
 \end{figure}
 
-\subsection{Parsing verification}\label{sec:manually-verified-parsing}
-For validating the parsing workflow, we randomly sampled four questions per topic and manually verified that the completions of the model were parsed correctly.
+% \subsection{Parsing verification}\label{sec:manually-verified-parsing}
+% For validating the parsing workflow, we randomly sampled four questions per topic and manually verified that the completions of the model were parsed correctly.
 
 
 \subsection{Model performance}
@@ -48,7 +48,7 @@ For validating the parsing workflow, we randomly sampled four questions per topi
     \includegraphics{figures/human_timing.pdf}
     \script{analyze_human_data.py}
     \label{fig:human_timing}
-    \caption{}
+    \caption{\textbf{Time taken by human scorers to answer questions vs.\ correctness of their answers.} From the plot it is clear that there is no clear dependence of the correctness of the answers on the time taken by the human scorers to answer the questions.}
 \end{figure}
 
 
@@ -59,5 +59,5 @@ Interestingly, we found no significant correlation between the experience of the
     \includegraphics{figures/experience_vs_correctness.pdf}
     \script{analyze_human_data.py}
     \label{fig:experience_vs_correctness}
-    \caption{}
+    \caption{\textbf{Experience of human  scorers vs.\ correctness of their answers.} The experience (in number of years since the first university-level chemistry course) of the human scorers was not significantly correlated with the correctness of their answers (Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), \(p \approx \variable{output/spearman_experience_score_p.txt}\)).}
 \end{figure}
