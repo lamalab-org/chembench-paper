@@ -114,7 +114,7 @@ def load_human_aligned_reports():
     gpt35turbo_react = combine_scores_for_model(
         os.path.join(
             chembench,
-            "reports/gpt-3.5-turbo-react/reports/e4964803-79cb-44bc-b5b2-e22aa3f40607",
+            "reports/gpt-35-turbo-react/reports/e4964803-79cb-44bc-b5b2-e22aa3f40607",
         ),
         datafolder,
         human_baseline_folder,
@@ -123,15 +123,6 @@ def load_human_aligned_reports():
     gpt4 = combine_scores_for_model(
         os.path.join(
             chembench, "reports/gpt-4/reports/76c5bdd4-e893-43d4-b37d-2ade66c20308"
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    gpt4zero_t = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/gpt-4-zero-T/reports/76c5bdd4-e893-43d4-b37d-2ade66c20308",
         ),
         datafolder,
         human_baseline_folder,
@@ -176,7 +167,7 @@ def load_human_aligned_reports():
     random_baseline = combine_scores_for_model(
         os.path.join(
             chembench,
-            "reports/random_baseline/reports/4e0b0e2f-0d4e-4d9e-8c5e-6c3e3d9f1d3b",
+            "reports/random_baseline/reports/56255cd7-294b-4441-b389-e4a1eb044107_random",
         ),
         datafolder,
         human_baseline_folder,
@@ -194,7 +185,6 @@ def load_human_aligned_reports():
         "gpt35turbo_zero_t": gpt35turbo_zero_t,
         "gpt35turbo_react": gpt35turbo_react,
         "gpt4": gpt4,
-        "gpt4zero_t": gpt4zero_t,
         "llama70b": llama70b,
         "mixtral": mixtral,
         "pplx7b_chat": pplx7b_chat,
@@ -278,7 +268,7 @@ def load_reports():
     gpt35turbo_react = load_all_reports(
         os.path.join(
             chembench,
-            "reports/gpt-3.5-turbo-react/reports/e4964803-79cb-44bc-b5b2-e22aa3f40607",
+            "reports/gpt-35-turbo-react/reports/e4964803-79cb-44bc-b5b2-e22aa3f40607",
         ),
         os.path.join(chembench, "data"),
     )
@@ -286,14 +276,6 @@ def load_reports():
     gpt4 = load_all_reports(
         os.path.join(
             chembench, "reports/gpt-4/reports/76c5bdd4-e893-43d4-b37d-2ade66c20308"
-        ),
-        os.path.join(chembench, "data"),
-    )
-
-    gpt4zero_t = load_all_reports(
-        os.path.join(
-            chembench,
-            "reports/gpt-4-zero-T/reports/76c5bdd4-e893-43d4-b37d-2ade66c20308",
         ),
         os.path.join(chembench, "data"),
     )
@@ -333,7 +315,7 @@ def load_reports():
     random_baseline = load_all_reports(
         os.path.join(
             chembench,
-            "reports/random_baseline/reports/4e0b0e2f-0d4e-4d9e-8c5e-6c3e3d9f1d3b",
+            "reports/random_baseline/reports/56255cd7-294b-4441-b389-e4a1eb044107_random",
         ),
         os.path.join(chembench, "data"),
     )
@@ -355,7 +337,6 @@ def load_reports():
     gpt35turbo_zero_t_run_names = set(gpt35turbo_zero_t[("name", 0)])
     gpt35turbo_react_run_names = set(gpt35turbo_react[("name", 0)])
     gpt4_run_names = set(gpt4[("name", 0)])
-    gpt4zero_t_run_names = set(gpt4zero_t[("name", 0)])
     llama70b_run_names = set(llama70b[("name", 0)])
     mixtral_run_names = set(mixtral[("name", 0)])
     pplx7b_chat_run_names = set(pplx7b_chat[("name", 0)])
@@ -375,7 +356,6 @@ def load_reports():
         & gpt35turbo_zero_t_run_names
         & gpt35turbo_react_run_names
         & gpt4_run_names
-        & gpt4zero_t_run_names
         & llama70b_run_names
         & mixtral_run_names
         & pplx7b_chat_run_names
@@ -405,7 +385,6 @@ def load_reports():
         gpt35turbo_react[("name", 0)].isin(intersection)
     ]
     gpt4 = gpt4[gpt4[("name", 0)].isin(intersection)]
-    gpt4zero_t = gpt4zero_t[gpt4zero_t[("name", 0)].isin(intersection)]
     llama70b = llama70b[llama70b[("name", 0)].isin(intersection)]
     mixtral = mixtral[mixtral[("name", 0)].isin(intersection)]
     pplx7b_chat = pplx7b_chat[pplx7b_chat[("name", 0)].isin(intersection)]
@@ -425,7 +404,6 @@ def load_reports():
         "gpt35turbo_zero_t": gpt35turbo_zero_t,
         "gpt35turbo_react": gpt35turbo_react,
         "gpt4": gpt4,
-        "gpt4zero_t": gpt4zero_t,
         "llama70b": llama70b,
         "mixtral": mixtral,
         "pplx7b_chat": pplx7b_chat,
@@ -615,10 +593,6 @@ def radarplot_requires_calculation(df_dict):
 
     gpt4_mean = (
         df_dict["gpt4"].groupby("requires_calculation")["all_correct_"].mean()[1]
-    )
-
-    gpt4zero_t_mean = (
-        df_dict["gpt4zero_t"].groupby("requires_calculation")["all_correct_"].mean()[1]
     )
 
     llama70b_mean = (
