@@ -1,11 +1,53 @@
+rule classify_questions:
+    input: 
+        "src/scripts/classify_questions.py"
+    cache: 
+        True
+    output:
+        "src/tex/data/questions.pkl"
+    script: 
+        "src/scripts/classify_questions.py"
+
 rule question_statistics:
     input: 
-        "src/scripts/compute_basic_statistics.py"
+        "src/tex/data/questions.pkl"
     output: 
         # for caching perhaps generate directory https://github.com/showyourwork/showyourwork/issues/119
-        ["src/tex/output/total_number_of_questions.txt", "src/tex/output/automatically_generated.txt", "src/tex/output/manually_generated.txt", "src/tex/output/questions.csv", "src/tex/output/questions.pkl", "src/tex/output/num_h_statements.txt", "src/tex/output/num_pictograms.txt", "src/tex/output/num_tiny_questions.txt", "src/tex/output/non_mcq_questions.txt","src/tex/output/mcq_questions.txt"]
+        ["src/tex/output/total_number_of_questions.txt", "src/tex/output/automatically_generated.txt", "src/tex/output/manually_generated.txt",   "src/tex/output/num_h_statements.txt", "src/tex/output/num_pictograms.txt", "src/tex/output/num_tiny_questions.txt", "src/tex/output/non_mcq_questions.txt","src/tex/output/mcq_questions.txt"]
     script: 
         "src/scripts/compute_basic_statistics.py"
+
+
+# collect the raw human scores and aggregate them 
+rule collect_human_scores: 
+    input: 
+        "src/scripts/collect_human_scores.py"
+    output: 
+        ["src/tex/output/num_humans_with_more_than_100_scores.txt", "src/tex/output/num_humans_with_204_scores.txt", directory("src/tex/output/human_scores")]
+    script: 
+        "src/scripts/collect_human_scores.py"
+
+# collect the raw model scores and aggregate them 
+rule model_statistics: 
+    input: 
+        "src/scripts/collect_model_scores.py"
+    cache: 
+        True
+    output:
+        directory("src/tex/output/overall_model_scores")
+    script: 
+        "src/scripts/collect_model_scores.py"
+
+# collect model scores on the questions that at least 4 humans answered 
+rule model_human_statistics: 
+    input: 
+        "src/scripts/collect_model_scores_human_subset.py"
+    cache: 
+        True
+    output:
+        directory("src/tex/output/human_subset_model_scores")
+    script: 
+        "src/scripts/collect_model_scores_human_subset.py"
 
 
 rule question_plots:
@@ -16,7 +58,6 @@ rule question_plots:
     script: 
         "src/scripts/plot_statistics.py" 
 
-
 rule human_statistics: 
     input: 
         "src/scripts/analyze_human_data.py"
@@ -25,6 +66,7 @@ rule human_statistics:
         # "src/tex/output/human_questions.csv", "src/tex/output/human_questions.pkl"
     script: 
         "src/scripts/analyze_human_data.py"
+
 
 
 rule wordcloud: 

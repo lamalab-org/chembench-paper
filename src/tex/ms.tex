@@ -93,8 +93,7 @@ As one might expect, most questions are difficult to read according to the Flesc
 It is important to note that for routine evaluations, a smaller subset of the corpus might be more practical.\cite{polo2024tinybenchmarks}
 For instance,~\citet{liang2023holistic} report costs of more than 10,000 USD for \gls{api} calls for a single evaluation on the \gls{helm} benchmark on a model. 
 To address this, we also provide a subset (\variable{output/num_tiny_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus (see \Cref{sec:subset-selection} for details on the curation process).
-We also used this subset to seed the app we used for the human baseline study. The results shown in the main text are based on this subset. 
-Results for the full corpus can be found in the appendix.
+We also used this subset to seed the app we used for the human baseline study. 
 
 
 \subsection{Model evaluation}
@@ -129,6 +128,8 @@ Given the large interest in tool-augmented systems, the bad performance of these
 Their lack of performance, however, is partially due to the fact that we limited the system to a maximum of ten \gls{llm} calls.
 With the default tool augmented setup (using the so-called ReAct method), however, this often did not allow the system to find the correct answer (e.g., because it repeatedly tried to search for the answer on the web).
 This observation highlights the importance of transparency not only in predictive performance but also computational cost (e.g., in terms of \gls{api} calls) for tool-augmented systems.
+
+%% Note also while the performance of the systems is better than what humans do, it is still far from perfect 
 
 % Radar chart
 To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
@@ -257,7 +258,7 @@ Manual verification (see \Cref{sec:manually-verified-parsing}) indicates that th
 
 \paragraph{Models}
 \subparagraph{Completion models}
-\texttt{Galactica-120b}\cite{taylor2022galactica}
+We used \texttt{Galactica-120b}\cite{taylor2022galactica} with the default settings 
 
 
 \subparagraph{Instruction-tuned models} \texttt{Claude 2} \texttt{Claude3 (Opus)}\cite{anthropicClaudeModelFamily2024}
@@ -306,9 +307,16 @@ Note that users were also allowed to skip questions.
 
 \paragraph{Participants}
 Users were open to report about their experience in chemistry. 
-\variable{output/num_users_with_education_info.txt} did so. 
+Overall, \variable{output/num_users_with_education_info.txt} did so. 
 Out of those, \variable{output/num_human_phd.txt} reported to have been awarded a Ph.D.
 \variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree, and \variable{output/num_human_bachelor.txt} have a bachelor's degree and for \variable{output/num_human_highschool.txt} the highest awarded degree is from high school.
+
+
+\paragraph{Comparison with models}
+To compare the performance of humans (who might have answered only some questions) with the performance of models (which answered all questions), we focussed on questions which at least four humans answered and limited the pool of human scorers to those who answered at least 100 questions (i.e., \variable{output/num_humans_with_more_than_100_scores.txt} humans). 
+The latter threshold was chosen to limit it to humans who made serious attempts at systematically answering a part of the questions. 
+This analysis might lead to potential biases, most likely in favor of humans as they were allowed to skip questions. \variable{output/num_humans_with_204_scores.txt} humans answered more than 200 questions.
+
 
 \subsection{Classification of questions into topics}\label{sec:meth-topic} When curating our dataset we systematically recorded keywords and sources.
 To allow for analysis of the model performance as a function of the topic, we leverage this information together with sequence classification models.

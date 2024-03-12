@@ -1,19 +1,13 @@
 from utils import obtain_chembench_repo
-from chembench.analysis import classify_questions
-from paths import output
+from paths import output, data
 from glob import glob
 import os
 import pandas as pd
 
 
 def load_data():
-    # Load the data
     chembench_repo = obtain_chembench_repo()
-
-    # Load the data
-    data = f"{chembench_repo}/data"
-
-    df = classify_questions(data, debug=True)
+    df = pd.read_pickle(data / "questions.pkl")
 
     total_number_of_questions = len(df)
 
@@ -36,9 +30,6 @@ def load_data():
     non_mcq_questions = df[~df["is_classification"]]
     with open(output / "non_mcq_questions.txt", "w") as f:
         f.write(str(len(non_mcq_questions)) + "\endinput")
-
-    df.to_csv(output / "questions.csv")
-    df.to_pickle(output / "questions.pkl")
 
     dai_data = glob(
         os.path.join(chembench_repo, "data", "safety", "pubchem_data", "DAI*.json")

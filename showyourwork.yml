@@ -31,8 +31,8 @@ datasets:
 
 # Custom file dependencies
 dependencies:
-  # src/scripts/my_script.py:
-  #   - src/data/dataset_for_my_script.dat
+  src/scripts/compute_basic_statistics.py:
+    - src/tex/output/question.pkl
   
 # Name of the `.tex` manuscript and corresponding `.pdf` article
 ms_name: ms
@@ -97,7 +97,7 @@ tectonic_args: []
 # preprocess_arxiv_script: my_preprocess_script.sh
 
 # Enable verbose output?
-verbose: false
+verbose: true
 
 # Version of `showyourwork` used to create this workflow
 version: 0.4.3
