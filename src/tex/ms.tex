@@ -98,6 +98,20 @@ We also used this subset to seed the app we used for the human baseline study.
 
 \subsection{Model evaluation}
 
+Because the text used in scientific settings is different from typical natural language, many models have been developed that deal with such text in a special way.
+For instance, Galactica\cite{taylor2022galactica} uses special tokenization or encoding procedures for molecules or equations.
+To support this, chembench is designed to encode the semantic meaning of various parts of the question or answer.  
+For instance, molecules represented in \gls{smiles} are encapsulated in \texttt{[START\_SMILES][\textbackslash END\_SMILES]}.
+
+Because many widely utilized systems do only provide access to text completions (and not the raw model outputs), chembench is designed to operate on text completions.
+This is also important with the growing number of tool-augmented systems that use external tools such as search \glspl{api} or code executors.\cite{schick2024toolformer, karpas2022mrkl, yao2022react}
+In those cases, the \gls{llm} that returns the probabilities for various tokens (that are conventionally used for model evaluations) is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
+The text completions, however, are the final outputs of the system that would also be used in a real-world application (e.g., in a copilot system for chemists).
+
+To understand the current capabilities of \glspl{llm} in the chemical sciences, we evaluated a wide range of models on the chembench corpus, including systems augmented with external tools.
+An overview of the results of this evaluation is shown in \Cref{fig:all_questions_models_completely_correct_radar}.
+
+% Bar chart
 
 \begin{figure}
     \centering
@@ -105,6 +119,8 @@ We also used this subset to seed the app we used for the human baseline study.
     \label{fig:enter-label}
 \end{figure}
 
+% Radar chart
+To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models on different topics.
 
 \begin{figure}
     \centering
