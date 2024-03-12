@@ -118,12 +118,21 @@ Many other models also outperform the average human performance.
 
 \begin{figure}
     \centering
-    \caption{Caption}
-    \label{fig:enter-label}
+    \caption{\textbf{Performance of models and humans on chembench.} The figure shows the percentage of questions that the models answered completely correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
+    Since the humans did not answer all the questions, this plot is based on the subset of questions that most humans answered.
+    The metric we use here is harsh as it only considers a question answered completely correctly or completely incorrectly, partially correct answers are also considered as incorrect.}
+    \label{fig:human_vs_models_bar}
 \end{figure}
 
+Given the large interest in tool-augmented systems, the bad performance of these systems in our benchmark is striking. 
+Their lack of performance, however, is partially due to the fact that we limited the system to a maximum of ten \gls{llm} calls.
+With the default ReAct setup, however, this often did not allow the system to find the correct answer (e.g., because it repeatedly tried to search for the answer on the web).
+This observation highlights the importance of transparency not only in predictive performance but also computational cost (e.g., in terms of \gls{api} calls) for tool-augmented systems.
+
 % Radar chart
-To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models on different topics.
+To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
+For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and classified the questions into these topics.
+We then computed the percentage of questions that the models, or humans, answered completely correctly for each topic.
 
 \begin{figure}
     \centering
@@ -133,7 +142,31 @@ To obtain a more detailed understanding of the performance of the models, we als
 \end{figure}
 
 
-\section{Conclusions}
+% Calculation vs. no calculation
+Given that some of the questions in chembench require elaborate calculations, we also analyzed if the models perform differently on those questions.
+For this, we manually annotated the questions that require calculations and performed the analysis on only those questions. 
+
+
+% Estimate of difficulty
+One might wonder whether the models are capable of estimating if they will be able to answer a question correctly.
+To investigate this, we prompted some of the top-performing models to estimate the on an ordinal scale their confidence in their ability to answer the question correctly.
+
+\begin{figure}
+    \centering
+    %\includegraphics{figures/estimated_difficulty.pdf}
+    \caption{Caption}
+    \label{fig:estimated_difficulty}
+\end{figure}
+
+In \Cref{fig:estimated_difficulty} we show that there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
+For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the models' outputs.\cite{Li_2023}
+
+\section{Discussion and Conclusions}
+Our findings also lay the groundwork for discussions for the chemical education in the future. 
+Given that the models outperform the average human in our study, it is clear that we need to rethink the way we teach and examine chemistry.
+Critical reasoning is increasingly important and rote solving of problems or memorization of facts is clearly a domain in which \glspl{llm} will continue to outperform humans.
+
+
 
 % \subsection{Future work}
 % - Advanced prompting techniques such as CoT and test time strategies
@@ -164,7 +197,6 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 
 \subparagraph{Electron counts}
 
-\paragraph{Programmatically generated questions}
 \subparagraph{Number of NMR peaks} To generate tasks about the number of \gls{nmr} peaks, we randomly sampled SMILES from the ZINC dataset and then used OpenChemLib\cite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms.
 We then sampled from the set of number of peaks (excluding the correct answer) to obtain the false answer options.
 
