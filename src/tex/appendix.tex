@@ -23,7 +23,7 @@ This also implies that future baselines can be built on top of our infrastructur
 \begin{figure}
     \centering
     \includegraphics{figures/flesch_kincaid_reading_ease.pdf}
-    \caption{\textbf{Distribution of Flesch-Kincaid reading ease scores of the questions.} The Flesch-Kincaid reading ease score\cite{flesch1948new} is a measure of how easy a text is to read. It is calculated based on the average number of syllables per word and the average number of words per sentence. The higher the score, the easier the text is to read. The distribution of the scores of the questions is shown in the histogram. The mean score is \variable{output/flesch_kincaid_mean.txt} and the median score is \variable{output/flesch_kincaid_median.txt}.}
+    \caption{\textbf{Distribution of Flesch-Kincaid reading ease scores of the questions.} The Flesch-Kincaid reading ease score\cite{flesch1948new} is a measure of how easy a text is to read. It is calculated based on the average number of syllables per word and the average number of words per sentence. The higher the score, the easier the text is to read. The distribution of the scores of the questions is shown in the histogram. }
     \label{fig:flesch_kincaid_reading_ease}
 \end{figure}
 
@@ -32,6 +32,14 @@ This also implies that future baselines can be built on top of our infrastructur
 
 
 \subsection{Model performance}
+We also evaluated the model performance on the entire chembench corpus. 
+\Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered completely correctly by the models. 
+
+\begin{figure}
+    \label{fig:barplot_all_correct_all_questions}
+\end{figure}
+
+\Cref{fig:all_questions_models_completely_correct_radar} shows the performance of the models on the different topics of the chembench corpus.
 
 \begin{figure}
     \centering
@@ -59,5 +67,5 @@ Interestingly, we found no significant correlation between the experience of the
     \includegraphics{figures/experience_vs_correctness.pdf}
     \script{analyze_human_data.py}
     \label{fig:experience_vs_correctness}
-    \caption{\textbf{Experience of human  scorers vs.\ correctness of their answers.} The experience (in number of years since the first university-level chemistry course) of the human scorers was not significantly correlated with the correctness of their answers (Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), \(p \approx \variable{output/spearman_experience_score_p.txt}\)).}
+    \caption{\textbf{Experience of human  scorers vs.\ correctness of their answers.} The experience (in number of years since the first university-level chemistry course) of the human scorers was not significantly correlated with the correctness of their answers.}
 \end{figure}

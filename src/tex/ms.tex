@@ -31,7 +31,7 @@ For instance, most insights in chemical research does not directly originate fro
 Most of these insights are in form of text in scientific publications. 
 Thus, operating on such text might be our best way of unlocking and \emph{learning} from these insights.
 This might ultimately lead to copilot systems for chemists that can provide answers to questions or even suggest new experiments based on vastly more information than a human could ever read.
-Such a usage mode is especially interesting in the face of recent advanced in autonomous laboratories.\cite{Boiko_2023, bran2023chemcrow, darvish2024organa, granda2018controlling, Angello_2022, coley2019robotic, Burger_2020}
+Such a usage mode is especially interesting in the face of recent advanced in autonomous laboratories.\cite{Boiko_2023, bran2023chemcrow, darvish2024organa, granda2018controlling, Angello_2022, coley2019robotic, Burger_2020, seifrid2022autonomous}
 However, the rapid increase in capabilities of chemical \gls{ml} models led (even before the recent interest in \glspl{llm}) to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\cite{gopal2023releasing, ganguli2022red, Urbina_2022, campbell2023censoring, moulange2023towards, urbina2022teachable}
 To some extent, this is not surprising as any technology, that, for instance, can predict the toxicity of molecules (to be used in drug discovery) can also be used to predict the toxicity of molecules (to be used in chemical warfare).
 
@@ -104,16 +104,17 @@ For instance, Galactica\cite{taylor2022galactica} uses special tokenization or e
 To support this, chembench is designed to encode the semantic meaning of various parts of the question or answer.  
 For instance, molecules represented in \gls{smiles} are encapsulated in \texttt{[START\_SMILES][\textbackslash END\_SMILES]}.
 
-Because many widely utilized systems do only provide access to text completions (and not the raw model outputs), chembench is designed to operate on text completions.
+Since many widely utilized systems do only provide access to text completions (and not the raw model outputs), chembench is designed to operate on text completions.
 This is also important with the growing number of tool-augmented systems that use external tools such as search \glspl{api} or code executors.\cite{schick2024toolformer, karpas2022mrkl, yao2022react}
-In those cases, the \gls{llm} that returns the probabilities for various tokens (that are conventionally used for model evaluations) is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
+In those cases, the \gls{llm} that returns the probabilities for various tokens (that are often used for model evaluations\cite{Fourrier_Habib_Launay_Wolf}) is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
 The text completions, however, are the final outputs of the system that would also be used in a real-world application (e.g., in a copilot system for chemists).
 
 To understand the current capabilities of \glspl{llm} in the chemical sciences, we evaluated a wide range of leading models\cite{Huggingface} on the chembench corpus, including systems augmented with external tools.
-An overview of the results of this evaluation is shown in \Cref{fig:human_vs_models_bar}. In this figure, we show the percentage of questions that the models answered completely correctly.
-We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance with vertical lines.
-The figure shows that the leading \gls{llm}, GPT-4, outperforms the best human in our study in this overall metric.
-Many other models also outperform the average human performance.
+An overview of the results of this evaluation is shown in \Cref{fig:human_vs_models_bar}. 
+In this figure, we show the percentage of questions that the models answered completely correctly.
+We use horizontal bars to indicate the performance of various models and highlight statistics (e.g., the average) of the human performance with vertical lines.
+Remarkably, the figure shows that the leading \gls{llm}, GPT-4, outperforms the best human in our study in this overall metric and vastly exceeds the average performance of our human scores.
+Many other models also outperform the average human performance. It is, however, interesting to note that the Galactica model that was trained specifically for scientific applications is outperformed by more general models.
 % Bar chart
 
 \begin{figure}
@@ -126,12 +127,12 @@ Many other models also outperform the average human performance.
 
 Given the large interest in tool-augmented systems, the bad performance of these systems in our benchmark is striking. 
 Their lack of performance, however, is partially due to the fact that we limited the system to a maximum of ten \gls{llm} calls.
-With the default ReAct setup, however, this often did not allow the system to find the correct answer (e.g., because it repeatedly tried to search for the answer on the web).
+With the default tool augmented setup (using the so-called ReAct method), however, this often did not allow the system to find the correct answer (e.g., because it repeatedly tried to search for the answer on the web).
 This observation highlights the importance of transparency not only in predictive performance but also computational cost (e.g., in terms of \gls{api} calls) for tool-augmented systems.
 
 % Radar chart
 To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
-For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and classified the questions into these topics.
+For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and classified the questions into these topics based and hand-crafted rules as well as classifier models.
 We then computed the percentage of questions that the models, or humans, answered completely correctly for each topic.
 
 \begin{figure}
@@ -140,6 +141,18 @@ We then computed the percentage of questions that the models, or humans, answere
     \caption{Caption}
     \label{fig:performance_by_topic}
 \end{figure}
+
+In this spider chart, the worst score for every dimension is 0 (no question answered completely correctly) and the best score is 1 (all questions answered correctly). 
+Thus, a larger colored area indicates a better performance. 
+One can observe that this performance varies widely across models and topics. 
+While computational chemistry and biochemistry receive relatively high scores for many models, this is not the cases for topics such as chemical safety or analytical chemistry.
+In the subfield of analytical chemistry the prediction of the number of peaks observable in a \gls{nmr} spectrum proved difficult for the models. 
+While this question is relatively easy () for trained humans given a drawing of the compounds, models that are only shown the \gls{smiles} string of a compound have to use this to reason about the symmetry of the compound. 
+This is mirrored in the questions about point groups of compounds ... 
+
+For all topics in chembench, proprietary models outperform their open counterparts.
+
+% Can we say something how this links to changes we have to make to the training data
 
 
 % Calculation vs. no calculation
@@ -154,7 +167,8 @@ For this, we manually annotated the questions that require calculations and perf
 \end{figure}
 
 % Estimate of difficulty
-One might wonder whether the models are capable of estimating if they will be able to answer a question correctly.
+One might wonder whether the models are capable of estimating if they will be able to answer a question correctly. 
+If they were able to do so, incorrect answers would be less problematic as one would be able to detect when an answer is incorrect.
 To investigate this, we prompted some of the top-performing models to estimate the on an ordinal scale their confidence in their ability to answer the question correctly.
 
 \begin{figure}
@@ -259,6 +273,9 @@ For this we, on the one hand, investigated the \texttt{online} model of Perplexi
 The latter two models had access to WolframAlpha, the ArXiv \gls{api}, a Python interpreter, as well as web search (using DuckDuckGo).
 We implemented the system using Langchain with the default prompts and constrained the system to a maximum of ten \gls{llm} calls.
 
+
+\subsection{Confidence estimate}
+To estimate the models' confidence we prompted them with the question (and answer options for \gls{mcq}) and the task to rate their confidence to produce the right answer on a scale from 1 to 5. 
 
 \subsection{Human baseline}
 
