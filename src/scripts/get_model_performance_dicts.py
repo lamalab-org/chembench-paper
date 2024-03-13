@@ -2,13 +2,14 @@ from chembench.analysis import (
     load_all_reports,
     get_human_scored_questions_with_at_least_n_scores,
     all_correct,
+    merge_with_topic_info,
 )
 from utils import obtain_chembench_repo
 import os
-from plotutils import radar_factory, model_color_map
-import numpy as np
 import matplotlib.pyplot as plt
-from paths import figures, output, scripts
+from paths import output, scripts, data
+import pickle
+import pandas as pd
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
@@ -28,7 +29,7 @@ def combine_scores_for_model(
     return df
 
 
-def load_human_aligned_reports():
+def load_human_aligned_reports(topics):
     chembench = obtain_chembench_repo()
     human_baseline_folder = os.path.join(chembench, "reports/humans")
     datafolder = os.path.join(chembench, "data")
@@ -172,6 +173,22 @@ def load_human_aligned_reports():
         datafolder,
         human_baseline_folder,
     )
+
+    claude2 = merge_with_topic_info(claude2, topic_frame)
+    claude2_react = merge_with_topic_info(claude2_react, topic_frame)
+    claude2_zero_t = merge_with_topic_info(claude2_zero_t, topic_frame)
+    claude3 = merge_with_topic_info(claude3, topic_frame)
+    galactica_120b = merge_with_topic_info(galactica_120b, topic_frame)
+    gemini_pro_zero_t = merge_with_topic_info(gemini_pro_zero_t, topic_frame)
+    gemini_pro = merge_with_topic_info(gemini_pro, topic_frame)
+    gpt35turbo = merge_with_topic_info(gpt35turbo, topic_frame)
+    gpt35turbo_zero_t = merge_with_topic_info(gpt35turbo_zero_t, topic_frame)
+    gpt4 = merge_with_topic_info(gpt4, topic_frame)
+    llama70b = merge_with_topic_info(llama70b, topic_frame)
+    mixtral = merge_with_topic_info(mixtral, topic_frame)
+    pplx7b_chat = merge_with_topic_info(pplx7b_chat, topic_frame)
+    pplx7b_online = merge_with_topic_info(pplx7b_online, topic_frame)
+    random_baseline = merge_with_topic_info(random_baseline, topic_frame)
 
     return {
         "claude2": claude2,
@@ -390,6 +407,22 @@ def load_reports():
     pplx7b_online = pplx7b_online[pplx7b_online[("name", 0)].isin(intersection)]
     random_baseline = random_baseline[random_baseline[("name", 0)].isin(intersection)]
 
+    claude2 = merge_with_topic_info(claude2, topic_frame)
+    claude2_react = merge_with_topic_info(claude2_react, topic_frame)
+    claude2_zero_t = merge_with_topic_info(claude2_zero_t, topic_frame)
+    claude3 = merge_with_topic_info(claude3, topic_frame)
+    galactica_120b = merge_with_topic_info(galactica_120b, topic_frame)
+    gemini_pro_zero_t = merge_with_topic_info(gemini_pro_zero_t, topic_frame)
+    gemini_pro = merge_with_topic_info(gemini_pro, topic_frame)
+    gpt35turbo = merge_with_topic_info(gpt35turbo, topic_frame)
+    gpt35turbo_zero_t = merge_with_topic_info(gpt35turbo_zero_t, topic_frame)
+    gpt4 = merge_with_topic_info(gpt4, topic_frame)
+    llama70b = merge_with_topic_info(llama70b, topic_frame)
+    mixtral = merge_with_topic_info(mixtral, topic_frame)
+    pplx7b_chat = merge_with_topic_info(pplx7b_chat, topic_frame)
+    pplx7b_online = merge_with_topic_info(pplx7b_online, topic_frame)
+    random_baseline = merge_with_topic_info(random_baseline, topic_frame)
+
     # return dictionary with the dataframes
     return {
         "claude2": claude2,
@@ -412,4 +445,11 @@ def load_reports():
 
 
 if __name__ == "__main__":
+    topic_frame = pd.read_pickle(data / "questions.pkl")
     df_dict = load_reports()
+    df_dict_human_aligned = load_human_aligned_reports()
+
+    results = {"overall": df_dict, "human_aligned": df_dict_human_aligned}
+
+    with open(data / "model_score_dicts.pkl", "wb") as handle:
+        pickle.dump(results, handle)

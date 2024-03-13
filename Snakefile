@@ -1,3 +1,4 @@
+# use hard-coded rules and embeddings to assign topics
 rule classify_questions:
     input: 
         "src/scripts/classify_questions.py"
@@ -8,11 +9,11 @@ rule classify_questions:
     script: 
         "src/scripts/classify_questions.py"
 
+# output some basic statistics about our corpus of questions
 rule question_statistics:
     input: 
         "src/tex/data/questions.pkl"
     output: 
-        # for caching perhaps generate directory https://github.com/showyourwork/showyourwork/issues/119
         ["src/tex/output/total_number_of_questions.txt", "src/tex/output/automatically_generated.txt", "src/tex/output/manually_generated.txt",   "src/tex/output/num_h_statements.txt", "src/tex/output/num_pictograms.txt", "src/tex/output/num_tiny_questions.txt", "src/tex/output/non_mcq_questions.txt","src/tex/output/mcq_questions.txt"]
     script: 
         "src/scripts/compute_basic_statistics.py"
@@ -49,7 +50,7 @@ rule model_human_statistics:
     script: 
         "src/scripts/collect_model_scores_human_subset.py"
 
-
+# plot the  number of questions in different topics
 rule question_plots:
     input: 
         "src/tex/data/questions.pkl"
@@ -58,17 +59,16 @@ rule question_plots:
     script: 
         "src/scripts/plot_statistics.py" 
 
+# output basic statistics about the human baseline
 rule human_statistics: 
     input: 
         "src/scripts/analyze_human_data.py"
     output: 
         ["src/tex/output/number_experts.txt", "src/tex/output/total_hours.txt", "src/tex/figures/human_timing.pdf", "src/tex/figures/experience_vs_correctness.pdf","src/tex/output/spearman_experience_score.txt", "src/tex/output/spearman_experience_score_p.txt", "src/tex/output/num_human_phd.txt", "src/tex/output/num_human_master.txt", "src/tex/output/num_human_bachelor.txt", "src/tex/output/num_human_highschool.txt", "src/tex/output/num_human_postdoc.txt", "src/tex/output/num_users_with_education_info.txt" ]
-        # "src/tex/output/human_questions.csv", "src/tex/output/human_questions.pkl"
     script: 
         "src/scripts/analyze_human_data.py"
 
-
-
+# create a wordcloud based on the question bank
 rule wordcloud: 
     input: 
         "src/tex/data/questions.pkl"
@@ -80,7 +80,7 @@ rule wordcloud:
 
 # loads reports for every model 
 # scores them again (to ensure consistency)
-# aligns with the questions in the current questionbank (to ensure consistency)
+# aligns with the questions in the current question bank (to ensure consistency)
 # also adds the previously obtained topics
 rule get_model_performance_dicts: 
     input: 

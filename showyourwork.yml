@@ -4,7 +4,7 @@ cache_on_zenodo: true
 # Workflow graph (DAG) generation
 dag:
   # Generate `dag.pdf` on each build?
-  render: false
+  render: true
   # Graphviz layout engine
   engine: sfdp
   # Group files by type into plates?
@@ -32,8 +32,10 @@ datasets:
 # Custom file dependencies
 dependencies:
   src/scripts/compute_basic_statistics.py:
-    - src/tex/output/question.pkl
-  
+    - src/tex/data/question.pkl
+  src/scripts/get_model_performance_dicts.py:
+    - src/tex/data/question.pkl
+
 # Name of the `.tex` manuscript and corresponding `.pdf` article
 ms_name: ms
 

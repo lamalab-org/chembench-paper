@@ -1,15 +1,9 @@
 import matplotlib.pyplot as plt
-from chembench.analysis import (
-    load_all_reports,
-    get_human_scored_questions_with_at_least_n_scores,
-    all_correct,
-)
-from utils import obtain_chembench_repo
-import os
 from plotutils import radar_factory, model_color_map
 import numpy as np
 import matplotlib.pyplot as plt
-from paths import figures, output, scripts
+from paths import figures, data
+import pickle
 
 
 def make_overall_performance_radar_plot(df_dict):
@@ -306,4 +300,8 @@ def radarplot_requires_calculation(df_dict):
 
 
 if __name__ == "__main__":
-    ...
+    with open(data / "model_score_dicts.pkl", "rb") as handle:
+        df_dicts = pickle.load(handle)
+
+    make_overall_performance_radar_plot(df_dicts["overall"])
+    radarplot_requires_calculation(df_dicts["overall"])
