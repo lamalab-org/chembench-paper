@@ -1,3 +1,10 @@
+# in several cases, we store intermediate results in pkl files 
+# while pickle files are not ideal for data sharing 
+# we believe that they are very convenient for caching 
+# and since we ship the environment, there should also not be too big 
+# problems with opening those files
+
+
 # use hard-coded rules and embeddings to assign topics
 rule classify_questions:
     input: 
@@ -85,11 +92,28 @@ rule wordcloud:
 rule get_model_performance_dicts: 
     input: 
         "src/tex/data/questions.pkl"
+    cache: 
+        True
     output: 
         "src/data/model_score_dicts.pkl"
     script: 
         "src/scripts/get_model_performance_dicts.py"
 
+# similar to the script above, but for the human scores
+# for this, we start by treating each human that answered more than 100 
+# questions as "model"
+# we can subsequently groupby topic and then average those topic-aggregated scores 
+# for further analysis 
+
+rule get_human_performance_dicts: 
+    input: 
+        "src/data/questions.pkl"
+    cache: 
+        True
+    output: 
+        "scrc/data/human_score_dicts.pkl"
+    script:
+        "src/scripts/get_human_performance_dicts.py"
 
 # plots the performance in various ways
 rule analyze_model_reports: 

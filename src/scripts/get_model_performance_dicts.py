@@ -6,16 +6,13 @@ from chembench.analysis import (
 )
 from utils import obtain_chembench_repo
 import os
-import matplotlib.pyplot as plt
-from paths import output, scripts, data
+from paths import data
 import pickle
 import pandas as pd
 
-plt.style.use(scripts / "lamalab.mplstyle")
-
 
 def combine_scores_for_model(
-    folder, datafolder, human_baseline_folder=None, min_human_responses: int = 100
+    folder, datafolder, human_baseline_folder=None, min_human_responses: int = 4
 ):
 
     df = load_all_reports(folder, datafolder)

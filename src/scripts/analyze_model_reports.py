@@ -2,8 +2,10 @@ import matplotlib.pyplot as plt
 from plotutils import radar_factory, model_color_map
 import numpy as np
 import matplotlib.pyplot as plt
-from paths import figures, data
+from paths import figures, data, scripts
 import pickle
+
+plt.style.use(scripts / "lamalab.mplstyle")
 
 
 def make_overall_performance_radar_plot(df_dict):
