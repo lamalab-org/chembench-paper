@@ -10,7 +10,7 @@ if __name__ == "__main__":
     reports = glob(
         os.path.join(chembench_repo, "reports", "**", "reports", "**", "*.json")
     )
-    models = [Path(p).parent for p in reports]
+    models = list(set([Path(p).parent for p in reports]))
     outpath = os.path.join(output, "human_subset_model_scores")
     if not os.path.exists(outpath):
         os.mkdir(outpath)

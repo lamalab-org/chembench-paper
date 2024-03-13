@@ -132,3 +132,11 @@ rule plot_overview_performance:
         ['src/tex/figures/overall_performance.pdf', 'src/tex/figures/human_subset_performance.pdf']
     script: 
         "src/scripts/plot_overview_performance_plot.py"
+
+rule analyze_performance_per_source:
+    input: 
+       "src/data/model_score_dicts.pkl" 
+    output: 
+        directory('src/tex/output/subset_scores')
+    script:
+        "src/scripts/analyze_performance_per_source.py"

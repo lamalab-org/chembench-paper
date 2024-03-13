@@ -6,8 +6,8 @@ import numpy as np
 from pathlib import Path
 import seaborn as sns
 import os
-from paths import scripts, data, output, figures
-from scipy.stats import pearsonr, spearmanr
+from paths import scripts, output, figures
+from scipy.stats import spearmanr
 from plotutils import range_frame
 from utils import (
     obtain_chembench_repo,

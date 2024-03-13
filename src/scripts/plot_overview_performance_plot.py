@@ -69,6 +69,7 @@ def collect_model_scores(reportdir):
 
 
 def plot_performance(model_scores, outname, human_scores=None):
+    model_scores = sorted(model_scores, key=lambda x: x[1])
     fig, ax = plt.subplots()
     ax.hlines(
         np.arange(len(model_scores)),
@@ -88,7 +89,9 @@ def plot_performance(model_scores, outname, human_scores=None):
         alpha=0.6,
     )
 
-    range_frame(ax, np.array([0, 0.4]), np.arange(len(model_scores)), pad=0.1)
+    scores = [s[1] for s in model_scores]
+
+    range_frame(ax, np.array([0, max(scores)]), np.arange(len(model_scores)), pad=0.1)
     ax.set_yticks(np.arange(len(model_scores)))
     ax.set_yticklabels([s[0] for s in model_scores])
 
