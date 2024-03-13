@@ -8,7 +8,7 @@ import pickle
 plt.style.use(scripts / "lamalab.mplstyle")
 
 
-def make_overall_performance_radar_plot(df_dict):
+def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
 
     claude2_mean = df_dict["claude2"].groupby("topic")["all_correct_"].mean()
     claude2_react_mean = (
@@ -43,60 +43,114 @@ def make_overall_performance_radar_plot(df_dict):
     random_baseline_mean = (
         df_dict["random_baseline"].groupby("topic")["all_correct_"].mean()
     )
-
-    # Sort the data based on the maximum value in each group
-    sorted_data = sorted(
-        zip(
-            [
-                gpt4_mean,
-                claude2_mean,
-                claude2_react_mean,
-                claude3_mean,
-                gemini_pro_mean,
-                gpt35turbo_mean,
-                gpt35turbo_react_mean,
-                llama70b_mean,
-                galactica_120b_mean,
-                mixtral_mean,
-                pplx7b_chat_mean,
-                pplx7b_online_mean,
-                random_baseline_mean,
-            ],
-            [
-                "GPT-4",
-                "Claude2",
-                "Claude2-ReAct",
-                "Claude3",
-                "Gemini-Pro",
-                "GPT-3.5-Turbo",
-                "GPT-3.5-Turbo-ReAct",
-                "LLAMA-2-70B",
-                "Galactica-120B",
-                "MixTRAL-8x7B",
-                "PPLX-7B-Chat",
-                "PPLX-7B-Online",
-                "Random Baseline",
-            ],
-            [
-                model_color_map["gpt4"],
-                model_color_map["claude2"],
-                model_color_map["claude2_react"],
-                model_color_map["claude3"],
-                model_color_map["gemini_pro"],
-                model_color_map["gpt35turbo"],
-                model_color_map["gpt35turbo_react"],
-                model_color_map["llama70b"],
-                model_color_map["galactica_120b"],
-                model_color_map["mixtral"],
-                model_color_map["pplx7b_chat"],
-                model_color_map["pplx7b_online"],
-                model_color_map["random_baseline"],
-            ],
-        ),
-        key=lambda x: np.max(x[0]),
-        reverse=True,
-    )
-
+    if human_dicts is None:
+        # Sort the data based on the maximum value in each group
+        sorted_data = sorted(
+            zip(
+                [
+                    gpt4_mean,
+                    claude2_mean,
+                    claude2_react_mean,
+                    claude3_mean,
+                    gemini_pro_mean,
+                    gpt35turbo_mean,
+                    gpt35turbo_react_mean,
+                    llama70b_mean,
+                    galactica_120b_mean,
+                    mixtral_mean,
+                    pplx7b_chat_mean,
+                    pplx7b_online_mean,
+                    random_baseline_mean,
+                ],
+                [
+                    "GPT-4",
+                    "Claude2",
+                    "Claude2-ReAct",
+                    "Claude3",
+                    "Gemini-Pro",
+                    "GPT-3.5-Turbo",
+                    "GPT-3.5-Turbo-ReAct",
+                    "LLAMA-2-70B",
+                    "Galactica-120B",
+                    "MixTRAL-8x7B",
+                    "PPLX-7B-Chat",
+                    "PPLX-7B-Online",
+                    "Random Baseline",
+                ],
+                [
+                    model_color_map["gpt4"],
+                    model_color_map["claude2"],
+                    model_color_map["claude2_react"],
+                    model_color_map["claude3"],
+                    model_color_map["gemini_pro"],
+                    model_color_map["gpt35turbo"],
+                    model_color_map["gpt35turbo_react"],
+                    model_color_map["llama70b"],
+                    model_color_map["galactica_120b"],
+                    model_color_map["mixtral"],
+                    model_color_map["pplx7b_chat"],
+                    model_color_map["pplx7b_online"],
+                    model_color_map["random_baseline"],
+                ],
+            ),
+            key=lambda x: np.max(x[0]),
+            reverse=True,
+        )
+    else:
+        sorted_data = sorted(
+            zip(
+                [
+                    gpt4_mean,
+                    claude2_mean,
+                    claude2_react_mean,
+                    claude3_mean,
+                    gemini_pro_mean,
+                    gpt35turbo_mean,
+                    gpt35turbo_react_mean,
+                    llama70b_mean,
+                    galactica_120b_mean,
+                    mixtral_mean,
+                    pplx7b_chat_mean,
+                    pplx7b_online_mean,
+                    random_baseline_mean,
+                    human_dicts,
+                ],
+                [
+                    "GPT-4",
+                    "Claude2",
+                    "Claude2-ReAct",
+                    "Claude3",
+                    "Gemini-Pro",
+                    "GPT-3.5-Turbo",
+                    "GPT-3.5-Turbo-ReAct",
+                    "LLAMA-2-70B",
+                    "Galactica-120B",
+                    "MixTRAL-8x7B",
+                    "PPLX-7B-Chat",
+                    "PPLX-7B-Online",
+                    "Random Baseline",
+                    "Average Human",
+                ],
+                [
+                    model_color_map["gpt4"],
+                    model_color_map["claude2"],
+                    model_color_map["claude2_react"],
+                    model_color_map["claude3"],
+                    model_color_map["gemini_pro"],
+                    model_color_map["gpt35turbo"],
+                    model_color_map["gpt35turbo_react"],
+                    model_color_map["llama70b"],
+                    model_color_map["galactica_120b"],
+                    model_color_map["mixtral"],
+                    model_color_map["pplx7b_chat"],
+                    model_color_map["pplx7b_online"],
+                    model_color_map["random_baseline"],
+                    model_color_map["human"],
+                ],
+            ),
+            key=lambda x: np.max(x[0]),
+            reverse=True,
+        )
     theta = radar_factory(len(claude2_mean), frame="polygon")
 
     # Adjust the layout to leave space for labels
@@ -126,12 +180,12 @@ def make_overall_performance_radar_plot(df_dict):
     fig.tight_layout()
 
     fig.savefig(
-        figures / "all_questions_models_completely_correct_radar.pdf",
+        figures / f"all_questions_models_completely_correct_radar_{suffix}.pdf",
         bbox_inches="tight",
     )
 
 
-def radarplot_requires_calculation(df_dict):
+def radarplot_requires_calculation(df_dict, suffix):
     # to get subset that requires calculation, we can filter
     # model_df.groupby('requires_calculation')['all_correct_'].mean()[1]
     # for each model
@@ -216,57 +270,114 @@ def radarplot_requires_calculation(df_dict):
     )
 
     # Sort the data based on the maximum value in each group
-    sorted_data = sorted(
-        zip(
-            [
-                gpt4_mean,
-                claude2_mean,
-                claude2_react_mean,
-                claude3_mean,
-                gemini_pro_mean,
-                gpt35turbo_mean,
-                gpt35turbo_react_mean,
-                llama70b_mean,
-                galactica_120b_mean,
-                mixtral_mean,
-                pplx7b_chat_mean,
-                pplx7b_online_mean,
-                random_baseline_mean,
-            ],
-            [
-                "GPT-4",
-                "Claude2",
-                "Claude2-ReAct",
-                "Claude3",
-                "Gemini-Pro",
-                "GPT-3.5-Turbo",
-                "GPT-3.5-Turbo-ReAct",
-                "LLAMA-2-70B",
-                "Galactica-120B",
-                "MixTRAL-8x7B",
-                "PPLX-7B-Chat",
-                "PPLX-7B-Online",
-                "Random Baseline",
-            ],
-            [
-                model_color_map["gpt4"],
-                model_color_map["claude2"],
-                model_color_map["claude2_react"],
-                model_color_map["claude3"],
-                model_color_map["gemini_pro"],
-                model_color_map["gpt35turbo"],
-                model_color_map["gpt35turbo_react"],
-                model_color_map["llama70b"],
-                model_color_map["galactica_120b"],
-                model_color_map["mixtral"],
-                model_color_map["pplx7b_chat"],
-                model_color_map["pplx7b_online"],
-                model_color_map["random_baseline"],
-            ],
-        ),
-        key=lambda x: np.max(x[0]),
-        reverse=True,
-    )
+    if human_dicts is None:
+        # Sort the data based on the maximum value in each group
+        sorted_data = sorted(
+            zip(
+                [
+                    gpt4_mean,
+                    claude2_mean,
+                    claude2_react_mean,
+                    claude3_mean,
+                    gemini_pro_mean,
+                    gpt35turbo_mean,
+                    gpt35turbo_react_mean,
+                    llama70b_mean,
+                    galactica_120b_mean,
+                    mixtral_mean,
+                    pplx7b_chat_mean,
+                    pplx7b_online_mean,
+                    random_baseline_mean,
+                ],
+                [
+                    "GPT-4",
+                    "Claude2",
+                    "Claude2-ReAct",
+                    "Claude3",
+                    "Gemini-Pro",
+                    "GPT-3.5-Turbo",
+                    "GPT-3.5-Turbo-ReAct",
+                    "LLAMA-2-70B",
+                    "Galactica-120B",
+                    "MixTRAL-8x7B",
+                    "PPLX-7B-Chat",
+                    "PPLX-7B-Online",
+                    "Random Baseline",
+                ],
+                [
+                    model_color_map["gpt4"],
+                    model_color_map["claude2"],
+                    model_color_map["claude2_react"],
+                    model_color_map["claude3"],
+                    model_color_map["gemini_pro"],
+                    model_color_map["gpt35turbo"],
+                    model_color_map["gpt35turbo_react"],
+                    model_color_map["llama70b"],
+                    model_color_map["galactica_120b"],
+                    model_color_map["mixtral"],
+                    model_color_map["pplx7b_chat"],
+                    model_color_map["pplx7b_online"],
+                    model_color_map["random_baseline"],
+                ],
+            ),
+            key=lambda x: np.max(x[0]),
+            reverse=True,
+        )
+    else:
+        sorted_data = sorted(
+            zip(
+                [
+                    gpt4_mean,
+                    claude2_mean,
+                    claude2_react_mean,
+                    claude3_mean,
+                    gemini_pro_mean,
+                    gpt35turbo_mean,
+                    gpt35turbo_react_mean,
+                    llama70b_mean,
+                    galactica_120b_mean,
+                    mixtral_mean,
+                    pplx7b_chat_mean,
+                    pplx7b_online_mean,
+                    random_baseline_mean,
+                    human_dicts,
+                ],
+                [
+                    "GPT-4",
+                    "Claude2",
+                    "Claude2-ReAct",
+                    "Claude3",
+                    "Gemini-Pro",
+                    "GPT-3.5-Turbo",
+                    "GPT-3.5-Turbo-ReAct",
+                    "LLAMA-2-70B",
+                    "Galactica-120B",
+                    "MixTRAL-8x7B",
+                    "PPLX-7B-Chat",
+                    "PPLX-7B-Online",
+                    "Random Baseline",
+                    "Average Human",
+                ],
+                [
+                    model_color_map["gpt4"],
+                    model_color_map["claude2"],
+                    model_color_map["claude2_react"],
+                    model_color_map["claude3"],
+                    model_color_map["gemini_pro"],
+                    model_color_map["gpt35turbo"],
+                    model_color_map["gpt35turbo_react"],
+                    model_color_map["llama70b"],
+                    model_color_map["galactica_120b"],
+                    model_color_map["mixtral"],
+                    model_color_map["pplx7b_chat"],
+                    model_color_map["pplx7b_online"],
+                    model_color_map["random_baseline"],
+                    model_color_map["human"],
+                ],
+            ),
+            key=lambda x: np.max(x[0]),
+            reverse=True,
+        )
 
     theta = radar_factory(len(claude2_mean), frame="polygon")
 
@@ -296,7 +407,7 @@ def radarplot_requires_calculation(df_dict):
     fig.tight_layout()
 
     fig.savefig(
-        figures / "all_questions_models_requires_calculation_radar.pdf",
+        figures / f"all_questions_models_requires_calculation_radar_{suffix}.pdf",
         bbox_inches="tight",
     )
 
@@ -305,5 +416,11 @@ if __name__ == "__main__":
     with open(data / "model_score_dicts.pkl", "rb") as handle:
         df_dicts = pickle.load(handle)
 
-    make_overall_performance_radar_plot(df_dicts["overall"])
-    radarplot_requires_calculation(df_dicts["overall"])
+    with open(data / "src/data/humans_as_models_scores.pkl", "rb") as handle:
+        human_dicts = pickle.load(handle)
+
+    make_overall_performance_radar_plot(df_dicts["overall"], "overall")
+    radarplot_requires_calculation(df_dicts["overall"], "overall")
+
+    make_overall_performance_radar_plot(df_dicts["human_aligned"], "human", human_dicts)
+    radarplot_requires_calculation(df_dicts["human_aligned"], "human", human_dicts)

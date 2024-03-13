@@ -120,6 +120,6 @@ rule analyze_model_reports:
     input: 
         ["src/data/model_score_dicts.pkl", "src/data/humans_as_models_scores.pkl"]
     output: 
-        ["src/tex/figures/all_questions_models_completely_correct_radar.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar.pdf"]
+        ["src/tex/figures/all_questions_models_completely_correct_radar_overall.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar_overall.pdf", "src/tex/figures/all_questions_models_completely_correct_radar_human_aligned.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar_human_aligned.pdf"]
     script:
         "src/scripts/analyze_model_reports.py"
