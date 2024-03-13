@@ -127,7 +127,7 @@ rule analyze_model_reports:
 # plot the overall performance 
 rule plot_overview_performance: 
     input:
-        [directory("src/tex/output/human_subset_model_scores"), directory("src/tex/output/human_scores"), directory("src/tex/output/overall_model_scores")]
+        ["src/tex/output/human_subset_model_scores/*.json", "src/tex/output/human_scores/*.json", "src/tex/output/overall_model_scores/*.json"]
     output: 
         ['src/tex/figures/overall_performance.pdf', 'src/tex/figures/human_subset_performance.pdf']
     script: 

@@ -55,7 +55,7 @@ def load_data():
     # read number of questions in "tiny" subset
     df = pd.read_csv(os.path.join(chembench_repo, "reports", "humans", "questions.csv"))
 
-    with open("num_tiny_questions.txt", "w") as f:
+    with open(output / "num_tiny_questions.txt", "w") as f:
         f.write(str(len(df)) + "\endinput")
 
 

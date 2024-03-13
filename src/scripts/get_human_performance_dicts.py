@@ -33,9 +33,11 @@ def find_all_human_scores():
     chembench_repo = obtain_chembench_repo()
 
     human_files = os.listdir(os.path.join(chembench_repo, "reports", "humans"))
-    human_files = [os.path.join("reports", "humans", p) for p in human_files]
+    human_files = [
+        os.path.join(chembench_repo, "reports", "humans", p) for p in human_files
+    ]
     human_files = [p for p in human_files if len(glob(os.path.join(p, "*.json"))) > 100]
-
+    print(f"Found {len(human_files)} files from human scorers")
     return human_files
 
 
@@ -48,6 +50,8 @@ def obtain_scores_for_folder(folder, topic_frame):
 
     scores = merge_with_topic_info(scores, topic_frame)
 
+    return scores
+
 
 def score_all_humans():
     topic_frame = pd.read_pickle(data / "questions.pkl")
@@ -56,9 +60,12 @@ def score_all_humans():
 
     all_scores = {}
     for folder in folders:
-        score = obtain_scores_for_folder(folder, topic_frame)
-        name = Path(folder).stem
-        all_scores[name] = score
+        try:
+            score = obtain_scores_for_folder(folder, topic_frame)
+            name = Path(folder).stem
+            all_scores[name] = score
+        except Exception:
+            pass
 
     results = {}
     results["raw_scores"] = all_scores
@@ -70,7 +77,8 @@ def score_all_humans():
         aggregrated_by_topic[name] = grouped
         grouped_scores.append(grouped)
 
-    mean_over_all_models = pd.concat(grouped).groupby(grouped[0].index).mean()
+    grouped_scores_frame = pd.concat(grouped_scores).to_frame()
+    mean_over_all_models = grouped_scores_frame.groupby("topic").mean()
 
     results["topic_mean"] = mean_over_all_models
     with open(data / "humans_as_models_scores.pkl", "wb") as handle:

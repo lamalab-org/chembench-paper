@@ -30,10 +30,11 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
         df_dict["gpt35turbo_zero_t"].groupby("topic")["all_correct_"].mean()
     )
     gpt35turbo_react_mean = (
-        df_dict["gpt35turbo_react"].groupby("topic")["all_correct_"].mean()
+        
+        
     )
     gpt4_mean = df_dict["gpt4"].groupby("topic")["all_correct_"].mean()
-    gpt4zero_t_mean = df_dict["gpt4zero_t"].groupby("topic")["all_correct_"].mean()
+    # gpt4zero_t_mean = df_dict["gpt4zero_t"].groupby("topic")["all_correct_"].mean()
     llama70b_mean = df_dict["llama70b"].groupby("topic")["all_correct_"].mean()
     mixtral_mean = df_dict["mixtral"].groupby("topic")["all_correct_"].mean()
     pplx7b_chat_mean = df_dict["pplx7b_chat"].groupby("topic")["all_correct_"].mean()
@@ -416,7 +417,7 @@ if __name__ == "__main__":
     with open(data / "model_score_dicts.pkl", "rb") as handle:
         df_dicts = pickle.load(handle)
 
-    with open(data / "src/data/humans_as_models_scores.pkl", "rb") as handle:
+    with open(data / "humans_as_models_scores.pkl", "rb") as handle:
         human_dicts = pickle.load(handle)
 
     make_overall_performance_radar_plot(df_dicts["overall"], "overall")
