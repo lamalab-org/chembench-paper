@@ -379,9 +379,6 @@ def load_reports():
         & random_baseline_run_names
     )
 
-    with open(output / "intersection.txt", "w") as f:
-        f.write(f"{len(intersection)}" + "\endinput")
-
     # now we filter the dataframes to only contain the runs
     # that are in the intersection
     claude2 = claude2[claude2[("name", 0)].isin(intersection)]

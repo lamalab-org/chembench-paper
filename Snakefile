@@ -96,6 +96,6 @@ rule analyze_model_reports:
     input: 
         "src/data/model_score_dicts.pkl"
     output: 
-        ["src/tex/output/intersection.txt", "src/tex/figures/all_questions_models_completely_correct_radar.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar.pdf"]
+        ["src/tex/figures/all_questions_models_completely_correct_radar.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar.pdf"]
     script:
         "src/scripts/analyze_model_reports.py"
