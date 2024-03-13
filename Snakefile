@@ -52,7 +52,7 @@ rule model_human_statistics:
 
 rule question_plots:
     input: 
-        "src/tex/output/questions.pkl"
+        "src/tex/data/questions.pkl"
     output: 
         "src/tex/figures/question_count_barplot.pdf"
     script: 
@@ -71,16 +71,30 @@ rule human_statistics:
 
 rule wordcloud: 
     input: 
-        "src/tex/output/questions.pkl"
+        "src/tex/data/questions.pkl"
     output:
         ["src/tex/figures/wordcloud.pdf", "src/tex/figures/flesch_kincaid_reading_ease.pdf", "src/tex/output/flesch_kincaid_reading_ease.txt"]
     script:
         "src/scripts/wordcloud.py"
 
 
+# loads reports for every model 
+# scores them again (to ensure consistency)
+# aligns with the questions in the current questionbank (to ensure consistency)
+# also adds the previously obtained topics
+rule get_model_performance_dicts: 
+    input: 
+        "src/tex/data/questions.pkl"
+    output: 
+        "src/data/model_score_dicts.pkl"
+    script: 
+        "src/scripts/get_model_performance_dicts.py"
+
+
+# plots the performance in various ways
 rule analyze_model_reports: 
     input: 
-        "src/scripts/analyze_model_reports.py"
+        "src/data/model_score_dicts.pkl"
     output: 
         ["src/tex/output/intersection.txt", "src/tex/figures/all_questions_models_completely_correct_radar.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar.pdf"]
     script:
