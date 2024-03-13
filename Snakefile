@@ -123,3 +123,12 @@ rule analyze_model_reports:
         ["src/tex/figures/all_questions_models_completely_correct_radar_overall.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar_overall.pdf", "src/tex/figures/all_questions_models_completely_correct_radar_human_aligned.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar_human_aligned.pdf"]
     script:
         "src/scripts/analyze_model_reports.py"
+
+# plot the overall performance 
+rule plot_overview_performance: 
+    input:
+        [directory("src/tex/output/human_subset_model_scores"), directory("src/tex/output/human_scores"), directory("src/tex/output/overall_model_scores")]
+    output: 
+        ['src/tex/figures/overall_performance.pdf', 'src/tex/figures/human_subset_performance.pdf']
+    script: 
+        "src/scripts/plot_overview_performance_plot.py"
