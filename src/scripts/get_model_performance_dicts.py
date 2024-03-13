@@ -26,7 +26,7 @@ def combine_scores_for_model(
     return df
 
 
-def load_human_aligned_reports(topics):
+def load_human_aligned_reports(topic_frame):
     chembench = obtain_chembench_repo()
     human_baseline_folder = os.path.join(chembench, "reports/humans")
     datafolder = os.path.join(chembench, "data")
@@ -207,7 +207,7 @@ def load_human_aligned_reports(topics):
     }
 
 
-def load_reports():
+def load_reports(topic_frame):
     chembench = obtain_chembench_repo()
     claude2 = load_all_reports(
         os.path.join(
@@ -440,8 +440,8 @@ def load_reports():
 
 if __name__ == "__main__":
     topic_frame = pd.read_pickle(data / "questions.pkl")
-    df_dict = load_reports()
-    df_dict_human_aligned = load_human_aligned_reports()
+    df_dict = load_reports(topic_frame)
+    df_dict_human_aligned = load_human_aligned_reports(topic_frame)
 
     results = {"overall": df_dict, "human_aligned": df_dict_human_aligned}
 

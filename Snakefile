@@ -12,14 +12,14 @@ rule classify_questions:
     cache: 
         True
     output:
-        "src/tex/data/questions.pkl"
+        "src/data/questions.pkl"
     script: 
         "src/scripts/classify_questions.py"
 
 # output some basic statistics about our corpus of questions
 rule question_statistics:
     input: 
-        "src/tex/data/questions.pkl"
+        "src/data/questions.pkl"
     output: 
         ["src/tex/output/total_number_of_questions.txt", "src/tex/output/automatically_generated.txt", "src/tex/output/manually_generated.txt",   "src/tex/output/num_h_statements.txt", "src/tex/output/num_pictograms.txt", "src/tex/output/num_tiny_questions.txt", "src/tex/output/non_mcq_questions.txt","src/tex/output/mcq_questions.txt"]
     script: 
@@ -60,7 +60,7 @@ rule model_human_statistics:
 # plot the  number of questions in different topics
 rule question_plots:
     input: 
-        "src/tex/data/questions.pkl"
+        "src/data/questions.pkl"
     output: 
         "src/tex/figures/question_count_barplot.pdf"
     script: 
@@ -78,7 +78,7 @@ rule human_statistics:
 # create a wordcloud based on the question bank
 rule wordcloud: 
     input: 
-        "src/tex/data/questions.pkl"
+        "src/data/questions.pkl"
     output:
         ["src/tex/figures/wordcloud.pdf", "src/tex/figures/flesch_kincaid_reading_ease.pdf", "src/tex/output/flesch_kincaid_reading_ease.txt"]
     script:
@@ -91,7 +91,7 @@ rule wordcloud:
 # also adds the previously obtained topics
 rule get_model_performance_dicts: 
     input: 
-        "src/tex/data/questions.pkl"
+        "src/data/questions.pkl"
     cache: 
         True
     output: 
@@ -111,14 +111,14 @@ rule get_human_performance_dicts:
     cache: 
         True
     output: 
-        "scrc/data/human_score_dicts.pkl"
+        "src/data/humans_as_models_scores.pkl"
     script:
         "src/scripts/get_human_performance_dicts.py"
 
 # plots the performance in various ways
 rule analyze_model_reports: 
     input: 
-        "src/data/model_score_dicts.pkl"
+        ["src/data/model_score_dicts.pkl", "src/data/humans_as_models_scores.pkl"]
     output: 
         ["src/tex/figures/all_questions_models_completely_correct_radar.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar.pdf"]
     script:
