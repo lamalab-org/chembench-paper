@@ -7,7 +7,9 @@ from paths import output
 
 if __name__ == "__main__":
     chembench_repo = obtain_chembench_repo()
-    reports = glob(os.path.join(chembench_repo, "reports", "*.json"))
+    reports = glob(
+        os.path.join(chembench_repo, "reports", "**", "reports", "**", "*.json")
+    )
     models = [Path(p).parent for p in reports]
     outpath = os.path.join(output, "human_subset_model_scores")
     if not os.path.exists(outpath):
@@ -19,7 +21,7 @@ if __name__ == "__main__":
 
     for file in models:
         try:
-            p = Path(file).parts[-1]
+            p = Path(file).parts[-3]
             outfile = os.path.join(outpath, p + ".json")
             subprocess.run(
                 f"python {scriptpath} {file} {outfile} --datafolder={datafolder} --human_baseline_folder={human_baseline_folder}",
