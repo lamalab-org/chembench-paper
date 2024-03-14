@@ -152,3 +152,14 @@ rule plot_confidence_score_distributions:
         "src/tex/figures/confidence_score_distributions.pdf"
     script: 
         "src/scripts/plot_confidence_score_distributions.py"
+
+
+rule obtain_embeddings: 
+    input: 
+        "src/scripts/embed_questions.py"
+    output:
+        "src/data/embeddings.pkl"
+    cache:
+        True
+    script: 
+        "src/scripts/embed_questions.py"

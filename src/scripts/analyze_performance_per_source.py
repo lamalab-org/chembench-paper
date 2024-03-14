@@ -104,4 +104,5 @@ if __name__ == "__main__":
 
     fig, ax = plt.subplots(1, 1)
     sns.heatmap(score_heatmap, ax=ax)
+    fig.tight_layout()
     fig.savefig(figures / "performance_per_topic.pdf", bbox_inches="tight")
