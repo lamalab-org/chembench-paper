@@ -43,10 +43,19 @@ We also evaluated the model performance on the entire chembench corpus.
 
 \begin{figure}
     \centering
-    \includegraphics{figures/all_questions_models_completely_correct_radar.pdf}
+    \includegraphics{figures/all_questions_models_completely_correct_radar_overall.pdf}
     \caption{Caption}
-    \label{fig:all_questions_models_completely_correct_radar}
+    \label{fig:all_questions_models_completely_correct_radar_overall}
     \script{analyze_model_reports.py}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/performance_per_topic.pdf}
+    \caption{Caption}
+    \label{fig:performance_per_topic}
+    \script{analyze_performance_per_source.py}
 \end{figure}
 
 \subsection{Human baseline}
@@ -82,5 +91,5 @@ Since it is important to understand if models can provide an indication of wheth
     \includegraphics{figures/confidence_score_distributions.pdf}
     \caption{\textbf{Distribution of confidence scores reported by \glspl{llm}.}} 
     \label{fig:confidence_score_distributions}
-    \scripts{plot_confidence_score_distributions.py}
+    \script{plot_confidence_score_distributions.py}
 \end{figure}

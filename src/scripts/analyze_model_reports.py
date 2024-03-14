@@ -52,14 +52,14 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                     [
                         gpt4_mean,
                         claude2_mean,
-                        claude2_react_mean,
+                        # claude2_react_mean,
                         claude3_mean,
                         gemini_pro_mean,
                         gpt35turbo_mean,
-                        gpt35turbo_react_mean,
-                        llama70b_mean,
-                        galactica_120b_mean,
-                        mixtral_mean,
+                        # gpt35turbo_react_mean,
+                        # llama70b_mean,
+                        # galactica_120b_mean,
+                        # mixtral_mean,
                         pplx7b_chat_mean,
                         pplx7b_online_mean,
                         random_baseline_mean,
@@ -67,14 +67,14 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                     [
                         "GPT-4",
                         "Claude2",
-                        "Claude2-ReAct",
+                        # "Claude2-ReAct",
                         "Claude3",
                         "Gemini-Pro",
                         "GPT-3.5-Turbo",
-                        "GPT-3.5-Turbo-ReAct",
-                        "LLAMA-2-70B",
-                        "Galactica-120B",
-                        "MixTRAL-8x7B",
+                        # "GPT-3.5-Turbo-ReAct",
+                        # "LLAMA-2-70B",
+                        # "Galactica-120B",
+                        # "MixTRAL-8x7B",
                         "PPLX-7B-Chat",
                         "PPLX-7B-Online",
                         "Random Baseline",
@@ -82,14 +82,14 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                     [
                         model_color_map["gpt4"],
                         model_color_map["claude2"],
-                        model_color_map["claude2_react"],
+                        # model_color_map["claude2_react"],
                         model_color_map["claude3"],
                         model_color_map["gemini_pro"],
                         model_color_map["gpt35turbo"],
-                        model_color_map["gpt35turbo_react"],
-                        model_color_map["llama70b"],
-                        model_color_map["galactica_120b"],
-                        model_color_map["mixtral"],
+                        # model_color_map["gpt35turbo_react"],
+                        # model_color_map["llama70b"],
+                        # model_color_map["galactica_120b"],
+                        # model_color_map["mixtral"],
                         model_color_map["pplx7b_chat"],
                         model_color_map["pplx7b_online"],
                         model_color_map["random_baseline"],
@@ -106,14 +106,14 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                     [
                         gpt4_mean,
                         claude2_mean,
-                        claude2_react_mean,
+                        # claude2_react_mean,
                         claude3_mean,
                         gemini_pro_mean,
                         gpt35turbo_mean,
                         gpt35turbo_react_mean,
-                        llama70b_mean,
-                        galactica_120b_mean,
-                        mixtral_mean,
+                        # llama70b_mean,
+                        # galactica_120b_mean,
+                        # mixtral_mean,
                         pplx7b_chat_mean,
                         pplx7b_online_mean,
                         random_baseline_mean,
@@ -122,14 +122,14 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                     [
                         "GPT-4",
                         "Claude2",
-                        "Claude2-ReAct",
+                        # "Claude2-ReAct",
                         "Claude3",
                         "Gemini-Pro",
                         "GPT-3.5-Turbo",
-                        "GPT-3.5-Turbo-ReAct",
-                        "LLAMA-2-70B",
-                        "Galactica-120B",
-                        "MixTRAL-8x7B",
+                        # "GPT-3.5-Turbo-ReAct",
+                        # "LLAMA-2-70B",
+                        # "Galactica-120B",
+                        # "MixTRAL-8x7B",
                         "PPLX-7B-Chat",
                         "PPLX-7B-Online",
                         "Random Baseline",
@@ -138,14 +138,14 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                     [
                         model_color_map["gpt4"],
                         model_color_map["claude2"],
-                        model_color_map["claude2_react"],
+                        # model_color_map["claude2_react"],
                         model_color_map["claude3"],
                         model_color_map["gemini_pro"],
                         model_color_map["gpt35turbo"],
-                        model_color_map["gpt35turbo_react"],
+                        # model_color_map["gpt35turbo_react"],
                         model_color_map["llama70b"],
-                        model_color_map["galactica_120b"],
-                        model_color_map["mixtral"],
+                        # model_color_map["galactica_120b"],
+                        # model_color_map["mixtral"],
                         model_color_map["pplx7b_chat"],
                         model_color_map["pplx7b_online"],
                         model_color_map["random_baseline"],
@@ -158,15 +158,15 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
         )
     theta = radar_factory(len(claude2_mean), frame="polygon")
 
+    print(sorted_data)
     # Adjust the layout to leave space for labels
-    fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(projection="radar"))
-
-    for data, label, color in sorted_data:
+    fig, ax = plt.subplots(1, 1, figsize=(6, 6), subplot_kw=dict(projection="radar"))
+    for data_, label, color in sorted_data:
         # Plot the filled area
-        ax.fill(theta, data, alpha=0.2, label=label, color=color)
+        ax.fill(theta, data_, alpha=0.2, label=label, color=color)
 
         # Plot the line
-        ax.plot(theta, data, color=color)
+        ax.plot(theta, data_, color=color)
 
     # Rotate labels
     ax.set_varlabels(claude2_mean.index)
@@ -194,7 +194,7 @@ def radarplot_requires_calculation(df_dict, suffix):
     # to get subset that requires calculation, we can filter
     # model_df.groupby('requires_calculation')['all_correct_'].mean()[1]
     # for each model
-    print(df_dict["claude2"].groupby("requires_calculation")["all_correct_"].mean())
+
     claude2_mean = (
         df_dict["claude2"].groupby("requires_calculation")["all_correct_"].mean()[1]
     )
@@ -283,12 +283,12 @@ def radarplot_requires_calculation(df_dict, suffix):
                 [
                     gpt4_mean,
                     claude2_mean,
-                    claude2_react_mean,
+                    # claude2_react_mean,
                     claude3_mean,
                     gemini_pro_mean,
                     gpt35turbo_mean,
-                    gpt35turbo_react_mean,
-                    llama70b_mean,
+                    # gpt35turbo_react_mean,
+                    # llama70b_mean,
                     galactica_120b_mean,
                     mixtral_mean,
                     pplx7b_chat_mean,
@@ -298,14 +298,14 @@ def radarplot_requires_calculation(df_dict, suffix):
                 [
                     "GPT-4",
                     "Claude2",
-                    "Claude2-ReAct",
+                    # "Claude2-ReAct",
                     "Claude3",
                     "Gemini-Pro",
                     "GPT-3.5-Turbo",
-                    "GPT-3.5-Turbo-ReAct",
-                    "LLAMA-2-70B",
+                    # "GPT-3.5-Turbo-ReAct",
+                    # "LLAMA-2-70B",
                     "Galactica-120B",
-                    "MixTRAL-8x7B",
+                    # "MixTRAL-8x7B",
                     "PPLX-7B-Chat",
                     "PPLX-7B-Online",
                     "Random Baseline",
@@ -313,14 +313,14 @@ def radarplot_requires_calculation(df_dict, suffix):
                 [
                     model_color_map["gpt4"],
                     model_color_map["claude2"],
-                    model_color_map["claude2_react"],
+                    # model_color_map["claude2_react"],
                     model_color_map["claude3"],
                     model_color_map["gemini_pro"],
                     model_color_map["gpt35turbo"],
-                    model_color_map["gpt35turbo_react"],
-                    model_color_map["llama70b"],
+                    # model_color_map["gpt35turbo_react"],
+                    # model_color_map["llama70b"],
                     model_color_map["galactica_120b"],
-                    model_color_map["mixtral"],
+                    # model_color_map["mixtral"],
                     model_color_map["pplx7b_chat"],
                     model_color_map["pplx7b_online"],
                     model_color_map["random_baseline"],
@@ -335,14 +335,14 @@ def radarplot_requires_calculation(df_dict, suffix):
                 [
                     gpt4_mean,
                     claude2_mean,
-                    claude2_react_mean,
+                    # claude2_react_mean,
                     claude3_mean,
                     gemini_pro_mean,
                     gpt35turbo_mean,
-                    gpt35turbo_react_mean,
-                    llama70b_mean,
+                    # gpt35turbo_react_mean,
+                    # llama70b_mean,
                     galactica_120b_mean,
-                    mixtral_mean,
+                    # mixtral_mean,
                     pplx7b_chat_mean,
                     pplx7b_online_mean,
                     random_baseline_mean,
@@ -351,14 +351,14 @@ def radarplot_requires_calculation(df_dict, suffix):
                 [
                     "GPT-4",
                     "Claude2",
-                    "Claude2-ReAct",
+                    # "Claude2-ReAct",
                     "Claude3",
                     "Gemini-Pro",
                     "GPT-3.5-Turbo",
-                    "GPT-3.5-Turbo-ReAct",
-                    "LLAMA-2-70B",
+                    # "GPT-3.5-Turbo-ReAct",
+                    # "LLAMA-2-70B",
                     "Galactica-120B",
-                    "MixTRAL-8x7B",
+                    # "MixTRAL-8x7B",
                     "PPLX-7B-Chat",
                     "PPLX-7B-Online",
                     "Random Baseline",
@@ -367,14 +367,14 @@ def radarplot_requires_calculation(df_dict, suffix):
                 [
                     model_color_map["gpt4"],
                     model_color_map["claude2"],
-                    model_color_map["claude2_react"],
+                    # model_color_map["claude2_react"],
                     model_color_map["claude3"],
                     model_color_map["gemini_pro"],
                     model_color_map["gpt35turbo"],
-                    model_color_map["gpt35turbo_react"],
-                    model_color_map["llama70b"],
+                    # model_color_map["gpt35turbo_react"],
+                    # model_color_map["llama70b"],
                     model_color_map["galactica_120b"],
-                    model_color_map["mixtral"],
+                    # model_color_map["mixtral"],
                     model_color_map["pplx7b_chat"],
                     model_color_map["pplx7b_online"],
                     model_color_map["random_baseline"],
@@ -388,7 +388,7 @@ def radarplot_requires_calculation(df_dict, suffix):
     theta = radar_factory(len(claude2_mean), frame="polygon")
 
     # Adjust the layout to leave space for labels
-    fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(projection="radar"))
+    fig, ax = plt.subplots(1, 1, figsize=(6, 6), subplot_kw=dict(projection="radar"))
 
     for data, label, color in sorted_data:
         # Plot the filled area
@@ -426,7 +426,11 @@ if __name__ == "__main__":
         human_dicts = pickle.load(handle)
 
     make_overall_performance_radar_plot(df_dicts["overall"], "overall")
-    radarplot_requires_calculation(df_dicts["overall"], "overall")
+    # radarplot_requires_calculation(df_dicts["overall"], "overall")
 
-    make_overall_performance_radar_plot(df_dicts["human_aligned"], "human", human_dicts)
-    radarplot_requires_calculation(df_dicts["human_aligned"], "human", human_dicts)
+    # make_overall_performance_radar_plot(
+    #     df_dicts["human_aligned"], "human", human_dicts["topic_mean"]
+    # )
+    # radarplot_requires_calculation(
+    #     df_dicts["human_aligned"], "human", human_dicts["topic_mean"]
+    # )

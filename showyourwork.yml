@@ -4,7 +4,7 @@ cache_on_zenodo: true
 # Workflow graph (DAG) generation
 dag:
   # Generate `dag.pdf` on each build?
-  render: true
+  render: false
   # Graphviz layout engine
   engine: sfdp
   # Group files by type into plates?

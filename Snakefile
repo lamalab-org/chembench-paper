@@ -140,7 +140,7 @@ rule analyze_performance_per_source:
     input: 
        "src/data/model_score_dicts.pkl" 
     output: 
-        directory('src/tex/output/subset_scores')
+        [directory('src/tex/output/subset_scores'), 'src/tex/figures/performance_per_topic.pdf']
     script:
         "src/scripts/analyze_performance_per_source.py"
 
