@@ -69,3 +69,16 @@ Interestingly, we found no significant correlation between the experience of the
     \label{fig:experience_vs_correctness}
     \caption{\textbf{Experience of human  scorers vs.\ correctness of their answers.} The experience (in number of years since the first university-level chemistry course) of the human scorers was not significantly correlated with the correctness of their answers.}
 \end{figure}
+
+
+\subsection{Confidence estimates}
+
+Since it is important to understand if models can provide an indication of whether their answer might likely be incorrect, we prompted some of our top performing \glspl{llm} to return the confidence in providing a correct answer on an ordinal scale. 
+
+\Cref{XX} plots the distribution of those scores.
+
+\begin{figure} 
+    \centering
+    \caption{\textbf{Distribution of confidence scores reported by \glspl{llm}.}} 
+    \label{fig:confidence_score_distributions}
+\end{figure}
