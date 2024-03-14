@@ -147,14 +147,9 @@ In this spider chart, the worst score for every dimension is 0 (no question answ
 Thus, a larger colored area indicates a better performance. 
 One can observe that this performance varies widely across models and topics. 
 While computational chemistry and biochemistry receive relatively high scores for many models, this is not the cases for topics such as chemical safety or analytical chemistry.
-In the subfield of analytical chemistry the prediction of the number of peaks observable in a \gls{nmr} spectrum proved difficult for the models. 
-While this question is relatively easy () for trained humans given a drawing of the compounds, models that are only shown the \gls{smiles} string of a compound have to use this to reason about the symmetry of the compound. 
-This is mirrored in the questions about point groups of compounds ... 
-
-For all topics in chembench, proprietary models outperform their open counterparts.
-
-% Can we say something how this links to changes we have to make to the training data
-
+In the subfield of analytical chemistry the prediction of the number of peaks observable in a \gls{nmr} spectrum proved difficult for the models (e.g., \SI{\variable{outputs/subset_scores/is_number_nmr_peaks_gpt-4.txt}}{\percent}). 
+While this question is relatively easy (\SI{\variable{outputs/human_subset_scores/is_number_nmr_peaks.txt}}{\percent}) for trained humans given a drawing of the compounds, models that are only shown the \gls{smiles} string of a compound have to use this to reason about the symmetry of the compound. 
+This is mirrored in the questions about point groups of compounds, which is models struggle with more than humans ().
 
 % Calculation vs. no calculation
 Given that some of the questions in chembench require elaborate calculations, we also analyzed if the models perform differently on those questions.

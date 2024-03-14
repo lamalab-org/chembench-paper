@@ -198,6 +198,11 @@ tab20_colors = [
     ["#7f7f7f", "#c7c7c7"],  # gray
     ["#bcbd22", "#dbdb8d"],  # yellow
     ["#17becf", "#9edae5"],  # teal
+    ["#ff6347", "#ffa07a"],  # tomato and light salmon
+    ["#4682b4", "#b0c4de"],  # steel blue and light steel blue
+    ["#556b2f", "#8fbc8f"],  # dark olive green and dark sea green
+    ["#6a5acd", "#b0e0e6"],  # slate blue and powder blue
+    ["#483d8b", "#8470ff"],  # dark slate blue and light slate blue
 ]
 
 
@@ -209,9 +214,11 @@ model_color_map = {
     "gpt4": tab20_colors[3][0],
     "gemini_pro": tab20_colors[4][0],
     "gpt35turbo": tab20_colors[5][0],
+    "gpt35turbo_react": tab20_colors[5][1],
     "llama70b": tab20_colors[6][0],
     "pplx7b_chat": tab20_colors[7][0],
-    "ppx7b_online": tab20_colors[7][1],
+    "pplx7b_online": tab20_colors[7][1],
     "mixtral": tab20_colors[8][0],
     "random_baseline": tab20_colors[9][0],
+    "galactica_120b": tab20_colors[12][0],
 }

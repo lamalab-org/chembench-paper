@@ -357,50 +357,69 @@ def load_reports(topic_frame):
     pplx7b_online_run_names = set(pplx7b_online[("name", 0)])
     random_baseline_run_names = set(random_baseline[("name", 0)])
 
-    # now we take the intersection of these sets
-    intersection = (
-        claude2_run_names
-        & claude2_react_run_names
-        & claude2_zero_t_run_names
-        & claude3_run_names
-        & galactica_120b_run_names
-        & gemini_pro_zero_t_run_names
-        & gemini_pro_run_names
-        & gpt35turbo_run_names
-        & gpt35turbo_zero_t_run_names
-        & gpt35turbo_react_run_names
-        & gpt4_run_names
-        & llama70b_run_names
-        & mixtral_run_names
-        & pplx7b_chat_run_names
-        & pplx7b_online_run_names
-        & random_baseline_run_names
+    print(
+        "RUN COUNTS",
+        len(claude2_run_names),
+        len(claude2_react_run_names),
+        len(claude2_zero_t_run_names),
+        len(claude3_run_names),
+        len(galactica_120b_run_names),
+        len(gemini_pro_zero_t_run_names),
+        len(gemini_pro_run_names),
+        len(gpt35turbo_run_names),
+        len(gpt35turbo_zero_t_run_names),
+        len(gpt35turbo_react_run_names),
+        len(gpt4_run_names),
+        len(llama70b_run_names),
+        len(mixtral_run_names),
+        len(pplx7b_chat_run_names),
+        len(pplx7b_online_run_names),
+        len(random_baseline_run_names),
     )
+    # now we take the intersection of these sets
+    # intersection = (
+    #     claude2_run_names
+    #     & claude2_react_run_names
+    #     & claude2_zero_t_run_names
+    #     & claude3_run_names
+    #     & galactica_120b_run_names
+    #     & gemini_pro_zero_t_run_names
+    #     & gemini_pro_run_names
+    #     & gpt35turbo_run_names
+    #     & gpt35turbo_zero_t_run_names
+    #     & gpt35turbo_react_run_names
+    #     & gpt4_run_names
+    #     & llama70b_run_names
+    #     & mixtral_run_names
+    #     & pplx7b_chat_run_names
+    #     & pplx7b_online_run_names
+    #     & random_baseline_run_names
+    # )
 
-    # now we filter the dataframes to only contain the runs
-    # that are in the intersection
-    claude2 = claude2[claude2[("name", 0)].isin(intersection)]
-    claude2_react = claude2_react[claude2_react[("name", 0)].isin(intersection)]
-    claude2_zero_t = claude2_zero_t[claude2_zero_t[("name", 0)].isin(intersection)]
-    claude3 = claude3[claude3[("name", 0)].isin(intersection)]
-    galactica_120b = galactica_120b[galactica_120b[("name", 0)].isin(intersection)]
-    gemini_pro_zero_t = gemini_pro_zero_t[
-        gemini_pro_zero_t[("name", 0)].isin(intersection)
-    ]
-    gemini_pro = gemini_pro[gemini_pro[("name", 0)].isin(intersection)]
-    gpt35turbo = gpt35turbo[gpt35turbo[("name", 0)].isin(intersection)]
-    gpt35turbo_zero_t = gpt35turbo_zero_t[
-        gpt35turbo_zero_t[("name", 0)].isin(intersection)
-    ]
-    gpt35turbo_react = gpt35turbo_react[
-        gpt35turbo_react[("name", 0)].isin(intersection)
-    ]
-    gpt4 = gpt4[gpt4[("name", 0)].isin(intersection)]
-    llama70b = llama70b[llama70b[("name", 0)].isin(intersection)]
-    mixtral = mixtral[mixtral[("name", 0)].isin(intersection)]
-    pplx7b_chat = pplx7b_chat[pplx7b_chat[("name", 0)].isin(intersection)]
-    pplx7b_online = pplx7b_online[pplx7b_online[("name", 0)].isin(intersection)]
-    random_baseline = random_baseline[random_baseline[("name", 0)].isin(intersection)]
+    # # now we filter the dataframes to only contain the runs
+    # # that are in the intersection
+    # claude2 = claude2[claude2[("name", 0)].isin(intersection)]
+    # claude2_react = claude2_react[claude2_react[("name", 0)].isin(intersection)]
+    # claude2_zero_t = claude2_zero_t[claude2_zero_t[("name", 0)].isin(intersection)]
+    # claude3 = claude3[claude3[("name", 0)].isin(intersection)]
+    # galactica_120b = galactica_120b[galactica_120b[("name", 0)].isin(intersection)]
+    # gemini_pro_zero_t = gemini_pro_zero_t[
+    #     gemini_pro_zero_t[("name", 0)].isin(intersection)
+    # ]
+    # gemini_pro = gemini_pro[gemini_pro[("name", 0)].isin(intersection)]
+    # gpt35turbo = gpt35turbo[gpt35turbo[("name", 0)].isin(intersection)]
+    # gpt35turbo_zero_t = gpt35turbo_zero_t[
+    #     gpt35turbo_zero_t[("name", 0)].isin(intersection)
+    # ]
+    # gpt35turbo_react = gpt35turbo_react[
+    #     gpt35turbo_react[("name", 0)].isin(intersection)
+    # ]
+    # gpt4 = gpt4[gpt4[("name", 0)].isin(intersection)]
+    # llama70b = llama70b[llama70b[("name", 0)].isin(intersection)]
+    # mixtral = mixtral[mixtral[("name", 0)].isin(intersection)]
+    # pplx7b_chat = pplx7b_chat[pplx7b_chat[("name", 0)].isin(intersection)]
+    # pplx7b_online = pplx7b_online[pplx7b_online[("name", 0)].isin(intersection)]
+    # random_baseline = random_baseline[random_baseline[("name", 0)].isin(intersection)]
 
     claude2 = merge_with_topic_info(claude2, topic_frame)
     claude2_react = merge_with_topic_info(claude2_react, topic_frame)
