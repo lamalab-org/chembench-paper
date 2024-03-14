@@ -15,7 +15,7 @@ plt.style.use(scripts / "lamalab.mplstyle")
 
 
 def plot():
-    chemnbench = obtain_chembench_repo
+    chemnbench = obtain_chembench_repo()
     gpt = pd.read_csv(
         os.path.join(
             chemnbench,
