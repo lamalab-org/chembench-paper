@@ -71,14 +71,16 @@ Interestingly, we found no significant correlation between the experience of the
 \end{figure}
 
 
-\subsection{Confidence estimates}
+\subsection{Confidence estimates} \label{sec:confidence_estimates}
 
 Since it is important to understand if models can provide an indication of whether their answer might likely be incorrect, we prompted some of our top performing \glspl{llm} to return the confidence in providing a correct answer on an ordinal scale. 
 
-\Cref{XX} plots the distribution of those scores.
+\Cref{fig:confidence_score_distributions} plots the distribution of those scores.
 
 \begin{figure} 
     \centering
+    \includegraphics{figures/confidence_score_distributions.pdf}
     \caption{\textbf{Distribution of confidence scores reported by \glspl{llm}.}} 
     \label{fig:confidence_score_distributions}
+    \scripts{plot_confidence_score_distributions.py}
 \end{figure}

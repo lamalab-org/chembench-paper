@@ -133,6 +133,9 @@ rule plot_overview_performance:
     script: 
         "src/scripts/plot_overview_performance_plot.py"
 
+
+# save txt files with the average number of completely correctly
+# answered questions per subset and model 
 rule analyze_performance_per_source:
     input: 
        "src/data/model_score_dicts.pkl" 
@@ -140,3 +143,12 @@ rule analyze_performance_per_source:
         directory('src/tex/output/subset_scores')
     script:
         "src/scripts/analyze_performance_per_source.py"
+
+# plot the confidence score distributions 
+rule plot_confidence_score_distributions: 
+    input: 
+        "src/scripts/plot_confidence_score_distributions.py"
+    output: 
+        "src/tex/figures/confidence_score_distributions.pdf"
+    script: 
+        "src/scripts/plot_confidence_score_distributions.py"
