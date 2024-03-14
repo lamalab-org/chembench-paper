@@ -11,7 +11,7 @@ from plotutils import range_frame, model_color_map
 import os
 import numpy as np
 
-plt.style.use(scripts / "lamalab.org")
+plt.style.use(scripts / "lamalab.mplstyle")
 
 
 def plot():
