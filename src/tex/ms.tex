@@ -97,7 +97,7 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
 \end{figure}
 
 While many of the existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
-For this reason, \chembench samples both \gls{mcq} and open-ended questions in a balanced way (\variable{output/mcq_questions.txt} \gls{mcq} questions vs. \variable{output/non_mcq_questions.txt} open-ended questions).
+For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions vs. \variable{output/non_mcq_questions.txt} open-ended questions).
 As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\variable{output/flesch_kincaid_reading_ease.txt}).\cite{kincaid1975derivation}
 
 
@@ -363,9 +363,12 @@ K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A
 \insertcredits
 \normalsize
 
-\bibliography{references}
+
 
 \appendix
+\section{Appendix}
 \input{appendix.tex}
+
+\bibliography{references}
 
 \end{document}
