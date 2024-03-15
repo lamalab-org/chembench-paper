@@ -1,0 +1,102 @@
+
+\subsection{Desired properties of a chemistry benchmark} \label{sec:desired-properties}
+
+\begin{itemize}
+    \item \emph{End-to-end automation}. For model development, the evaluations will need to be run many times (e.g., on regular intervals of a training run).
+    Approaches that rely on humans scoring the answers of a system\cite{Schulze_Balhorn_2024, ai4science2023impact, castro2023large} can thus not be used.
+    \item \emph{Careful validation by experts}. Manual curation is needed to minimize number of incorrect or unanswerable questions.\cite{northcutt2021pervasive}
+    This is motivated by the observation that many widely used benchmarks are plagued by noisiness.\cite{Frye_2023, Awg}
+    \item \emph{Usable with models that support special treatment of molecules}. Some models such as Galactica\cite{taylor2022galactica} use special tokenization or encoding procedures for molecules or equations.
+    To support this, the benchmark system must encode the semantic meaning of various parts of the question or answer.
+    \item \emph{Usable with black box systems}. Many relevant systems do not provide access to model weights or even just the raw logits.
+    This might be the case because the systems are proprietary or because they involve not only \glspl{llm} but also external tools such as search \glspl{api} or code executors.\cite{schick2024toolformer, karpas2022mrkl, yao2022react}
+    Thus, a benchmark should not assume access to the raw model outputs but be able to operate on text completions.
+    \item \emph{Probing capabilities beyond answering of \glspl{mcq}}. In real world chemistry as well as higher-level university education multiple choice question are seldom utilized.
+    Yet, most benchmarking frameworks focus on the \gls{mcq} setting because of the ease of evaluation. Realistic evaluations must measure capabilities beyond the answering of \gls{mcq}.
+    \item \emph{Cover a diverse set of topics}. Chemistry, as the \enquote{central science}, bridges multiple disciplines.\cite{Aspuru_Guzik_2018} To even just approximate \enquote{chemistry capabilities} the topics covered by a chemistry benchmark must be very diverse.
+\end{itemize}
+
+\subsection{Related work}
+Existing benchmarks such as those from \citet{guo2023large}, \cite{sun2023scieval}, \citet{Schulze_Balhorn_2024}, \citet{Cai_2024} fail to comply with most of the requirements stipulated above (see \Cref{tab:existing benchmarks}). 
+While these benchmarks could provide useful insights in the short-term, they cannot follow the rapid additions to the \gls{llm} space. 
+ChemBench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, special focus on chemical safety, employment of diverse prompting strategies and specialized notation for molecules and mathematical symbols. 
+Moreover, we believe that our robust framework will engage the community in open-source contributions.
+
+
+\subsection{Benchmark corpus}
+To ensure maximal interoperability with existing benchmarks or tools, we curated the data in an extended form of the widely used BigBench format.\cite{srivastava2022beyond}
+This also implies that future baselines can be built on top of our infrastructure as long as they are saved in the same format.
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/flesch_kincaid_reading_ease.pdf}
+    \caption{\textbf{Distribution of Flesch-Kincaid reading ease scores of the questions.} The Flesch-Kincaid reading ease score\cite{flesch1948new} is a measure of how easy a text is to read. It is calculated based on the average number of syllables per word and the average number of words per sentence. The higher the score, the easier the text is to read. The distribution of the scores of the questions is shown in the histogram. }
+    \label{fig:flesch_kincaid_reading_ease}
+\end{figure}
+
+% \subsection{Parsing verification}\label{sec:manually-verified-parsing}
+% For validating the parsing workflow, we randomly sampled four questions per topic and manually verified that the completions of the model were parsed correctly.
+
+
+\subsection{Model performance}
+We also evaluated the model performance on the entire chembench corpus. 
+\Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered completely correctly by the models. 
+
+\begin{figure}
+    \label{fig:barplot_all_correct_all_questions}
+\end{figure}
+
+\Cref{fig:all_questions_models_completely_correct_radar} shows the performance of the models on the different topics of the chembench corpus.
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/all_questions_models_completely_correct_radar_overall.pdf}
+    \caption{Caption}
+    \label{fig:all_questions_models_completely_correct_radar_overall}
+    \script{analyze_model_reports.py}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/performance_per_topic.pdf}
+    \caption{Caption}
+    \label{fig:performance_per_topic}
+    \script{analyze_performance_per_source.py}
+\end{figure}
+
+\subsection{Human baseline}
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/human_timing.pdf}
+    \script{analyze_human_data.py}
+    \label{fig:human_timing}
+    \caption{\textbf{Time taken by human scorers to answer questions vs.\ correctness of their answers.} From the plot it is clear that there is no clear dependence of the correctness of the answers on the time taken by the human scorers to answer the questions.}
+\end{figure}
+
+
+Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/experience_vs_correctness.pdf}
+    \script{analyze_human_data.py}
+    \label{fig:experience_vs_correctness}
+    \caption{\textbf{Experience of human  scorers vs.\ correctness of their answers.} The experience (in number of years since the first university-level chemistry course) of the human scorers was not significantly correlated with the correctness of their answers.}
+\end{figure}
+
+
+\subsection{Confidence estimates} \label{sec:confidence_estimates}
+
+Since it is important to understand if models can provide an indication of whether their answer might likely be incorrect, we prompted some of our top performing \glspl{llm} to return the confidence in providing a correct answer on an ordinal scale. 
+
+\Cref{fig:confidence_score_distributions} plots the distribution of those scores.
+
+\begin{figure} 
+    \centering
+    \includegraphics{figures/confidence_score_distributions.pdf}
+    \caption{\textbf{Distribution of confidence scores reported by \glspl{llm}.}} 
+    \label{fig:confidence_score_distributions}
+    \script{plot_confidence_score_distributions.py}
+\end{figure}
