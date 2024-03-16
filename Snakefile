@@ -158,8 +158,17 @@ rule obtain_embeddings:
     input: 
         "src/scripts/embed_questions.py"
     output:
-        "src/data/embeddings.pkl"
+        "src/data/embeddings.npy"
     cache:
         True
     script: 
         "src/scripts/embed_questions.py"
+
+
+rule plot_embeddings: 
+    input: 
+        "src/data/embeddings.npy"
+    output: 
+        "src/tex/figures/question_diversity.pdf"
+    script: 
+        "src/scripts/plot_question_diversity.py"

@@ -7,13 +7,14 @@ from utils import obtain_chembench_repo
 import os
 import pickle
 from paths import data
+import numpy as np
 
 load_dotenv("../.env")
 set_llm_cache(SQLiteCache(database_path=".langchain.db"))
 
 if __name__ == "__main__":
 
-    repo = obtain_chembench_repo
+    repo = obtain_chembench_repo()
     JSON_PATHS = glob(os.path.join(repo, "data/**/*.json"), recursive=True)
 
     df = build_question_df(JSON_PATHS)
@@ -34,10 +35,9 @@ if __name__ == "__main__":
 
     # BART example
     q_classifier_ = QClassifier(embedding_model="bart", topics=TOPICS)
-
+    q_classifier_.batch_size = 32
     embeddings = q_classifier_.get_embedding(df["formatted"].to_list())
 
     names = df["name"].to_list()
 
-    with open(data / "embeddings.pkl") as handle:
-        pickle.dumps({"names": names, "embeddings": embeddings}, handle)
+    np.save(data / "embeddings.npy", embeddings)

@@ -96,6 +96,14 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
     \script{plot_statistics.py}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics{figures/question_diversity.pdf}
+    \caption{\textbf{Principal component projection of embeddings of questions in the \chembench corpus.}}
+    \label{fig:question_diversity}
+    \script{plot_question_diversity.py}
+\end{figure}
+
 While many of the existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
 For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions vs. \variable{output/non_mcq_questions.txt} open-ended questions).
 As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\variable{output/flesch_kincaid_reading_ease.txt}).\cite{kincaid1975derivation}
