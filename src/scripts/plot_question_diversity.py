@@ -1,8 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+import pandas as pd
 
 from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
 import seaborn as sns
 from paths import data, scripts, figures
 from utils import ONE_COL_GOLDEN_RATIO_HEIGHT_INCH, ONE_COL_WIDTH_INCH
@@ -12,8 +13,11 @@ plt.style.use(scripts / "lamalab.mplstyle")
 
 def load_embeddings_and_labels():
     # read npy file
-    embeddings = np.load(data / "gpt_embeddings/embeddings.npy")
-    labels = np.load(data / "gpt_embeddings/labels.npy")
+    embeddings = np.load(data / "embeddings.npy")
+    scaler = StandardScaler()
+    embeddings = scaler.fit_transform(embeddings)
+    df = pd.read_pickle(data / "questions.pkl")
+    labels = df["topic"].values
     return embeddings, labels
 
 

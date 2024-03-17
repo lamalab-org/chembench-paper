@@ -4,11 +4,10 @@ from utils import (
     TWO_COL_WIDTH_INCH,
 )
 import matplotlib.pyplot as plt
-from paths import output, figures, scripts
+from paths import output, figures, scripts, data
 
 plt.style.use(scripts / "lamalab.mplstyle")
 import pandas as pd
-from glob import glob
 
 import numpy as np
 from plotutils import range_frame
@@ -20,17 +19,20 @@ def overall_question_count_barplot(df):
     )
 
     topics, counts = df["topic"].value_counts().index, df["topic"].value_counts().values
-
-    ax.hlines(topics, xmin=0, xmax=topics, linewidth=5, alpha=0.2)
+    print(topics, counts)
+    ax.hlines(topics, xmin=0, xmax=counts, linewidth=5, alpha=0.2)
     ax.plot(counts, topics, "o", markersize=5, alpha=0.6)
     ax.set_xscale("log")
     range_frame(ax, counts, np.arange(len(topics)))
 
     ax.set_xlabel("Number of Questions")
 
-    fig.tight_layout()
+    # fig.tight_layout()
 
     fig.savefig(figures / "question_count_barplot.pdf", bbox_inches="tight")
+
+    with open(output / "num_topics.txt", "w") as f:
+        f.write(f"{len(topics)}" + "\endinput")
 
 
 def question_count_barplot(df):
@@ -80,9 +82,10 @@ def question_count_barplot(df):
 
 
 def plot_question_statistics():
-    df = pd.read_pickle(output / "questions.pkl")
-    overall_question_count_barplot(df)
+    df = pd.read_pickle(data / "questions.pkl")
     question_count_barplot(df)
+
+    overall_question_count_barplot(df)
 
 
 if __name__ == "__main__":

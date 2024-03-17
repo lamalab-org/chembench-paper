@@ -21,7 +21,7 @@
     Here, we introduce \enquote{\chembench,} an automated framework designed to rigorously evaluate the chemical knowledge and reasoning abilities of state-of-the-art LLMs, including GPT-4, against the expertise of human chemists.
 
     We curated more than 6000 question answer pairs about a wide array of subfields, evaluated leading models such as GPT-4, and found that the best models, on average, outperform the best human chemists in our study. 
-    The models, however, struggle with some chemical reasoning tasks that are easy for human experts and give overconfident misleading predictions, e.g. about the safety profile of chemicals. 
+    The models, however, struggle with some chemical reasoning tasks that are easy for human experts and give overconfident misleading predictions, e.g., about the safety profile of chemicals. 
 
     These findings underscore the dual reality that, although LLMs demonstrate remarkable proficiency in chemical tasks, there is a critical need for further research to enhance their safety and utility in chemical sciences.
     Our findings also indicate a need for adaptation to chemistry curricula and highlight the importance of continued development of evaluation frameworks for systematic improvement of safe and useful LLMs.
@@ -67,7 +67,7 @@ On top of that, the existing benchmarks are not designed to be used with models 
 
 In this work, we report a novel benchmarking framework, which we call \chembench, and use it to reveal limitations of current frontier models for the use in the chemical sciences.
 Our benchmark consists of \variable{output/total_number_of_questions.txt}\unskip question answer pairs manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources.
-Our corpus large fraction of the topics taught in undergraduate and graduate chemistry curricula and can be used to evaluate any system that can return text (i.e., also an tool-augmented systems).
+Our corpus large fraction of the topics taught in undergraduate and graduate chemistry curricula and can be used to evaluate any system that can return text (i.e., also tool-augmented systems).
 
 To contextualize the scores, we also surveyed more than \variable{output/number_experts.txt} experts in chemistry (for a total of number of more than \variable{output/total_hours.txt}\unskip) on a subset of the benchmark corpus to be able to compare the performance of current frontier models with the one of humans.
 Our results indicate that current frontier models perform \enquote{superhuman} on some aspects of chemistry but in many cases, included safety-related ones, might be very misleading.
@@ -83,7 +83,7 @@ For quality assurance, all questions have been reviewed by at least one scientis
 Importantly, our large pool of questions encompasses a wide range of topics.
 This can be seen, for example, in \Cref{fig:topic_barplot} in which we compare the number of questions in different subfields of the chemical sciences (see \Cref{sec:meth-topic} for details on how we assigned topics).
 The distribution of topics is also evident from \Cref{fig:pca} in which we visualize the questions in a two-dimensional space using a \gls{pca} on the embeddings of the questions.
-In this representation, semantically similar questions are close to each other, and we color the points based on a classification into XX topics. 
+In this representation, semantically similar questions are close to each other, and we color the points based on a classification into \variable{output/num_topics.txt} topics. 
 It is clear that a focus of \chembench (by design) lies on safety-related aspects which in \Cref{fig:pca} appear as large distinct clusters.
 
 
@@ -99,7 +99,7 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
 \begin{figure}
     \centering
     \includegraphics{figures/question_diversity.pdf}
-    \caption{\textbf{Principal component projection of embeddings of questions in the \chembench corpus.}}
+    \caption{\textbf{Principal component projection of embeddings of questions in the \chembench corpus.} To obtain this figure, we embedded question and answers using the BART model (using other embeddings, such as of OpenAI's ada model leads to qualitatively similar results). We then project the embeddings into a two-dimensional space using \gls{pca}. We color the points based on a classification into topics.}
     \label{fig:question_diversity}
     \script{plot_question_diversity.py}
 \end{figure}
@@ -146,7 +146,7 @@ Many other models also outperform the average human performance. It is, however,
 
 Given the large interest in tool-augmented systems, the bad performance of these systems in our benchmark is striking. 
 Their lack of performance, however, is partially due to the fact that we limited the system to a maximum of ten \gls{llm} calls.
-With the default tool augmented setup (using the so-called ReAct method), however, this often did not allow the system to find the correct answer (e.g., because it repeatedly tried to search for the answer on the web).
+With the default tool augmented setup (using the so-called ReAct method\cite{yao2023react}), however, this often did not allow the system to find the correct answer (e.g., because it repeatedly tried to search for the answer on the web).
 This observation highlights the importance of transparency not only in predictive performance but also computational cost (e.g., in terms of \gls{api} calls) for tool-augmented systems.
 
 %% Note also while the performance of the systems is better than what humans do, it is still far from perfect 
@@ -164,7 +164,7 @@ We then computed the percentage of questions that the models, or humans, answere
     \label{fig:performance_by_topic}
 \end{figure}
 
-In this spider chart, the worst score for every dimension is 0 (no question answered completely correctly) and the best score is 1 (all questions answered correctly). 
+In this spider chart, the worst score for every dimension is zero (no question answered completely correctly) and the best score is one (all questions answered correctly). 
 Thus, a larger colored area indicates a better performance. 
 One can observe that this performance varies widely across models and topics. 
 While computational chemistry and biochemistry receive relatively high scores for many models, this is not the cases for topics such as chemical safety or analytical chemistry.

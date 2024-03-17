@@ -62,7 +62,7 @@ rule question_plots:
     input: 
         "src/data/questions.pkl"
     output: 
-        "src/tex/figures/question_count_barplot.pdf"
+        ["src/tex/figures/question_count_barplot.pdf", "src/text/output/num_topics.txt", "src/tex/figures/question_count_barplot_mcq_vs_general.pdf"]
     script: 
         "src/scripts/plot_statistics.py" 
 
