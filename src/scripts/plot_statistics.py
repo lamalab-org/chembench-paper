@@ -1,4 +1,8 @@
-from utils import ONE_COL_GOLDEN_RATIO_HEIGHT_INCH, ONE_COL_WIDTH_INCH
+from utils import (
+    ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
+    ONE_COL_WIDTH_INCH,
+    TWO_COL_WIDTH_INCH,
+)
 import matplotlib.pyplot as plt
 from paths import output, figures, scripts
 
@@ -10,11 +14,30 @@ import numpy as np
 from plotutils import range_frame
 
 
+def overall_question_count_barplot(df):
+    fig, ax = plt.subplots(
+        1, 1, figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
+    )
+
+    topics, counts = df["topic"].value_counts().index, df["topic"].value_counts().values
+
+    ax.hlines(topics, xmin=0, xmax=topics, linewidth=5, alpha=0.2)
+    ax.plot(counts, topics, "o", markersize=5, alpha=0.6)
+    ax.set_xscale("log")
+    range_frame(ax, counts, np.arange(len(topics)))
+
+    ax.set_xlabel("Number of Questions")
+
+    fig.tight_layout()
+
+    fig.savefig(figures / "question_count_barplot.pdf", bbox_inches="tight")
+
+
 def question_count_barplot(df):
     fig, ax = plt.subplots(
-        1,
         2,
-        figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH),
+        1,
+        figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH),
         sharex=True,
     )
 
@@ -51,11 +74,14 @@ def question_count_barplot(df):
 
     ax[0].set_xlabel("Number of Questions")
 
-    fig.savefig(figures / "question_count_barplot.pdf", bbox_inches="tight")
+    fig.savefig(
+        figures / "question_count_barplot_mcq_vs_general.pdf", bbox_inches="tight"
+    )
 
 
 def plot_question_statistics():
     df = pd.read_pickle(output / "questions.pkl")
+    overall_question_count_barplot(df)
     question_count_barplot(df)
 
 

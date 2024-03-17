@@ -35,7 +35,6 @@ if __name__ == "__main__":
 
     # BART example
     q_classifier_ = QClassifier(embedding_model="bart", topics=TOPICS)
-    q_classifier_.batch_size = 32
     embeddings = q_classifier_.get_embedding(df["formatted"].to_list())
 
     names = df["name"].to_list()
