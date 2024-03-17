@@ -1,18 +1,13 @@
 from utils import obtain_chembench_repo
-from chembench.analysis import classify_questions
-from paths import output
+from paths import output, data
 from glob import glob
 import os
+import pandas as pd
 
 
 def load_data():
-    # Load the data
     chembench_repo = obtain_chembench_repo()
-
-    # Load the data
-    data = f"{chembench_repo}/data"
-
-    df = classify_questions(data, debug=True)
+    df = pd.read_pickle(data / "questions.pkl")
 
     total_number_of_questions = len(df)
 
@@ -28,8 +23,13 @@ def load_data():
     with open(output / "manually_generated.txt", "w") as f:
         f.write(str(len(manually_generated)) + "\endinput")
 
-    df.to_csv(output / "questions.csv")
-    df.to_pickle(output / "questions.pkl")
+    mcq_questions = df[df["is_classification"]]
+    with open(output / "mcq_questions.txt", "w") as f:
+        f.write(str(len(mcq_questions)) + "\endinput")
+
+    non_mcq_questions = df[~df["is_classification"]]
+    with open(output / "non_mcq_questions.txt", "w") as f:
+        f.write(str(len(non_mcq_questions)) + "\endinput")
 
     dai_data = glob(
         os.path.join(chembench_repo, "data", "safety", "pubchem_data", "DAI*.json")
@@ -51,6 +51,12 @@ def load_data():
 
     with open(output / "num_pictograms.txt", "w") as f:
         f.write(str(len(pictograms)) + "\endinput")
+
+    # read number of questions in "tiny" subset
+    df = pd.read_csv(os.path.join(chembench_repo, "reports", "humans", "questions.csv"))
+
+    with open(output / "num_tiny_questions.txt", "w") as f:
+        f.write(str(len(df)) + "\endinput")
 
 
 if __name__ == "__main__":

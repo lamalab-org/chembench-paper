@@ -6,8 +6,8 @@ import numpy as np
 from pathlib import Path
 import seaborn as sns
 import os
-from paths import scripts, data, output, figures
-from scipy.stats import pearsonr, spearmanr
+from paths import scripts, output, figures
+from scipy.stats import spearmanr
 from plotutils import range_frame
 from utils import (
     obtain_chembench_repo,
@@ -117,6 +117,37 @@ def make_human_time_score_plot(long_df):
 
     with open(output / "spearman_experience_score_p.txt", "w") as f:
         f.write(str(np.round(spearman.pvalue, 2)) + "\endinput")
+
+    # find educational background for each user and write this to files
+    edu_dict = {}
+    for user in grouped_by_user.index:
+        edu_dict[user] = long_df[long_df["userid"] == user]["highest_education"].values[
+            0
+        ]
+
+    with open(output / "num_human_phd.txt", "w") as f:
+        f.write(str(list(edu_dict.values()).count("doctorate")) + "\endinput")
+
+    with open(output / "num_human_master.txt", "w") as f:
+        f.write(str(list(edu_dict.values()).count("MSc")) + "\endinput")
+
+    with open(output / "num_human_bachelor.txt", "w") as f:
+        f.write(str(list(edu_dict.values()).count("BSc")) + "\endinput")
+
+    with open(output / "num_human_highschool.txt", "w") as f:
+        f.write(str(list(edu_dict.values()).count("high-school")) + "\endinput")
+
+    with open(output / "num_human_postdoc.txt", "w") as f:
+        f.write(str(list(edu_dict.values()).count("post-doctorate")) + "\endinput")
+
+    with open(output / "num_users_with_education_info.txt", "w") as f:
+        # take those user for which the education info is one of the above categories
+        users_with_education_info = [
+            k
+            for k, v in edu_dict.items()
+            if v in ["doctorate", "MSc", "BSc", "high-school", "post-doctorate"]
+        ]
+        f.write(str(len(users_with_education_info)) + "\endinput")
 
 
 if __name__ == "__main__":
