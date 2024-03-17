@@ -1,8 +1,7 @@
 import os
-from glob import glob
 from utils import obtain_chembench_repo
 from paths import output as output_path
-
+from loguru import logger 
 
 def count_json_files_in_directory(directory):
     json_files = []
@@ -23,17 +22,22 @@ def process_directory(directory):
             elif sub_dir == 'icho':
                 num_json_files = count_json_files_in_directory(sub_dir_path)
                 total_json_files += num_json_files
-                with open(output_path / "json_file_counts.txt", 'a') as f:
-                    f.write(f'{sub_dir} has {num_json_files} .json files\n')
+                with open(output_path / f"json_file_counts_{sub_dir}.txt", 'a') as f:
+                    f.write(f'{sub_dir}' + '\endinput')
+
+                logger.info(f"Number of json files in {sub_dir}: {num_json_files}")
             else:
                 num_json_files = count_json_files_in_directory(sub_dir_path)
                 total_json_files += num_json_files
-                with open(output_path / "json_file_counts.txt", 'a') as f:
-                    f.write(f'{sub_dir} has {num_json_files} .json files\n')
+                with open(output_path / f"json_file_counts_{sub_dir}.txt", 'a') as f:
+                    f.write(f'{sub_dir}' + '\endinput')
 
+                logger.info(f"Number of json files in {sub_dir}: {num_json_files}")
+    
     with open(output_path / "json_file_counts.txt", 'a') as f:
-        f.write(f'Total number of JSON files in {directory}: {total_json_files}\n')
+        f.write(f'{total_json_files}' + '\endinput')
 
+    logger.info(f"Total number of json files: {total_json_files}")
 
 def process_safety_directory(safety_dir):
     total_safety_json_files = 0
@@ -42,8 +46,10 @@ def process_safety_directory(safety_dir):
         if os.path.isdir(safety_subdir_path):
             num_json_files = count_json_files_in_directory(safety_subdir_path)
             total_safety_json_files += num_json_files
-            with open(output_path / "json_file_counts.txt", 'a') as f:
-                f.write(f'{safety_subdir} of safety has {num_json_files} .json files\n')
+            with open(output_path / f"json_file_counts_{safety_subdir}.txt", 'a') as f:
+                f.write(f'{safety_subdir}' + '\endinput')
+
+            logger.info(f"Number of json files in {safety_subdir}: {num_json_files}")
 
     return total_safety_json_files
 

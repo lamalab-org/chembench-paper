@@ -190,18 +190,18 @@ Questions are sourced from the twitter page called (\url{https://twitter.com/NMR
 \paragraph{Semi-programatically generated questions}
 
 \subparagraph{Oxidation states}
-The questions regarding oxidation states are extracted from the website \url{https://www.cheminfo.org/}. These exercises focus on determining the number of isomers for specific molecules. To perform these calculations, we utilize the RDKit package \cite{bento2020open}.
+The questions regarding oxidation states are extracted from the website \url{https://www.cheminfo.org/}. These exercises focus on determining the number of isomers for specific molecules. To perform these calculations, we utilize the RDKit package \cite{rdkit}.
 \subparagraph{Electron count of atoms}
-Questions pertaining to the electron count of atoms are gathered from the website \url{https://www.cheminfo.org/}. These inquiries involve determining the electron count of atoms in various chemical contexts. The calculations for these tasks are facilitated using the RDKit package \cite{bento2020open}.
+Questions pertaining to the electron count of atoms are gathered from the website \url{https://www.cheminfo.org/}. These inquiries involve determining the electron count of atoms in various chemical contexts. The calculations for these tasks are facilitated using the RDKit package \cite{rdkit}.
 \subparagraph{Number of isomers}
-The questions concerning the number of isomers are sourced from the website \url{https://www.cheminfo.org/}. These exercises aim to determine the number of isomers for given molecules. The calculations for these assessments are conducted using the RDKit package \cite{bento2020open}.
+The questions concerning the number of isomers are sourced from the website \url{https://www.cheminfo.org/}. These exercises aim to determine the number of isomers for given molecules. The calculations for these assessments are conducted using the RDKit package \cite{rdkit}.
 \subparagraph{Point group for molecules}
 Questions involve predicting the point group for molecules. The ChemCaption tool (\url{https://github.com/lamalab-org/chem-caption/tree/main}) is utilized for data generation. Given a molecule, predict its point group.
 \subparagraph{SMILES-IUPAC}
-Web scrapped SMILES IUPAC pairs from the PubChem database \cite{pubchem} and then framed questions involve converting SMILES notation to IUPAC nomenclature, utilizing information from the PubChem database.
+Web scrapped \gls{smiles} \gls{iupac} pairs from the PubChem database \cite{pubchem} and then framed questions involve converting \gls{smiles} notation to \gls{iupac} nomenclature, utilizing information from the PubChem database.
 
 \paragraph{Programmatically generated questions} 
-\subparagraph{Number of NMR peaks} To generate tasks about the number of \gls{nmr} peaks, we randomly sampled SMILES from the ZINC dataset and then used OpenChemLib\cite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
+\subparagraph{Number of NMR peaks} To generate tasks about the number of \gls{nmr} peaks, we randomly sampled \gls{smiles} from the ZINC database\cite{Irwin_2012} and then used OpenChemLib\cite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
 We then sampled from the set of number of peaks (excluding the correct answer) to obtain the false answer options.
 
 \subparagraph{GHS, hazard statements and DAI}
