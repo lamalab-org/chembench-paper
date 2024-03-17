@@ -236,84 +236,84 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 \paragraph{Manually curated questions}
 
 \subparagraph{Analytical chemistry}
-The questions are based on master student examination papers at the University of Jena (Germany). 
+The \variable{output/question_count_per_dir/json_file_counts_analytical_chemistry.txt} questions are based on master student examination papers at the University of Jena (Germany). 
 These questions focus on the principles and techniques employed in analytical chemistry.
 
 \subparagraph{Combustion engineering}
-These questions are based on master student examination papers at the University of Magdeburg (Germany). 
+These \variable{output/question_count_per_dir/json_file_counts_combustion_engineering.txt} questions are based on master student examination papers at the University of Magdeburg (Germany). 
 They explore topics related to combustion processes and engineering principles.
 
 \subparagraph{Functional materials and nanomaterials}
-The questions based on exercises in a seminar conducted at the University of Jena (Germany), delving into topics concerning functional materials and nanomaterials, exploring their properties and applications.
+The \variable{output/question_count_per_dir/json_file_counts_func_mats_and_nanomats.txt}  questions are based on exercises in a seminar conducted at the University of Jena (Germany), delving into topics concerning functional materials and nanomaterials, exploring their properties and applications.
 
 \subparagraph{General chemistry}
-The questions originate from examinations for grade 10 at Marist Comprehensive Academy Uturu (Nigeria). 
+\variable{output/question_count_per_dir/json_file_counts_Gen_Chem_MCA.txt} questions originate from examinations for grade 10 at Marist Comprehensive Academy Uturu (Nigeria). 
 They cover fundamental concepts in chemistry suitable for students at the secondary school level.
-In addition, we included questions based on the general chemistry courses of the Bachelor of Science in Chemistry at the Technical University of Munich (Germany).
+In addition, we included questions based on the general chemistry courses of the Bachelor of Science in Chemistry at the Technical University of Munich (Germany), focusing on inorganic chemistry (\variable{output/question_count_per_dir/json_file_counts_ac_faessler_tum.txt}) and principles of chemistry (\variable{output/question_count_per_dir/json_file_counts_pum_tum.txt}).
 
 \subparagraph{International Chemical Olympiad (\gls{ICHO})}
-The questions are based on various countries' Chemical Olympiads, including those held in the USA, UK, and Moldova.
+\variable{output/question_count_per_dir/json_file_counts_icho.txt} questions are based on various countries' Chemical Olympiads, including those held in the USA, UK, and Moldova.
 
 \subparagraph{Material synthesis}
-These questions are based on seminars on material synthesis at the University of Jena (Germany), focusing on the methods and techniques employed in the synthesis of various materials.
+\variable{output/question_count_per_dir/json_file_counts_materials_synthesis.txt} questions are based on seminars on material synthesis at the University of Jena (Germany), focusing on the methods and techniques employed in the synthesis of various materials.
 
 \subparagraph{Organic reactivity}
-The questions are primarily sourced from tutorials and exam papers at for the Bachelor of Science in Chemistry at the Technical University of Munich (Germany), exploring reactions and mechanisms in organic chemistry.
+\variable{output/question_count_per_dir/json_file_counts_organic_reactivity.txt}  questions are primarily sourced from tutorials and exam papers at for the Bachelor of Science in Chemistry at the Technical University of Munich (Germany), exploring reactions and mechanisms in organic chemistry.
 
 \subparagraph{Periodic table}
-The questions are manually created to cover various aspects and trends of the periodic table.
+\variable{output/question_count_per_dir/json_file_counts_periodic_table_properties.txt} questions are manually created to cover various aspects and trends of the periodic table.
 
 \subparagraph{Polymer chemistry}
-Questions are based on examinations held at the University of Hamburg (Germany), covering topics related to polymer chemistry and its applications.
+\variable{output/question_count_per_dir/json_file_counts_polymer_chemistry.txt} questions are based on examinations held at the University of Hamburg (Germany), covering topics related to polymer chemistry and its applications.
 
 \subparagraph{Chemical reactivity}
-These questions are framed based on information from the Cameo Chemicals website (\url{https://cameochemicals.noaa.gov/reactivity}), exploring the reactivity of various chemicals and compounds.
+\variable{output/question_count_per_dir/json_file_counts_reactive_groups.txt} questions are framed based on information from the Cameo Chemicals website (\url{https://cameochemicals.noaa.gov/reactivity}), exploring the reactivity of various chemicals and compounds.
 
-\subparagraph{Chemical safety}
-This category comprises a total of 4792 questions, covering areas such as GHS classification, hazard statements, \gls{dai}, and pictograms from the PubChem database \cite{pubchem}, contributing 976 questions. 
-Additionally, it explores crucial topics like materials' compatibility, with 3200 questions, essential for understanding the hazardous impact of mixing certain materials and chemicals. 
-Furthermore, it includes inquiries about the Federal/State Working Group on Chemical Safety (BLAC), consisting of 90 questions. These questions are based on the question bank used for the \enquote{Sachkundeprüfung} (expertise examination) according to \§ 11 of the \enquote{Chemikalien-Verbotsverordnung} (Chemical Prohibition Ordinance).
-Moreover, this category addresses questions related to chemical storage and compatibility, totaling 297 questions, and covers topics such as pharmacology, toxicology, material safety data sheets, and chemical safety data sheets. 
+\subparagraph{Chemical safety} 
+This category comprises a total of \variable{output/question_count_per_dir/json_file_counts_safety.txt} questions, including semi-programmatically created questions covering areas such as GHS classification, hazard statements, \gls{dai}, and pictograms from the PubChem database \cite{pubchem} (see below for details). 
+Additionally, it explores crucial topics like materials' compatibility (\variable{output/question_count_per_dir/json_file_counts_materials_compatibility.txt} questions) and chemical compatibility (\variable{output/question_count_per_dir/json_file_counts_chem_chem_comp.txt} questions), essential for understanding the hazardous impact of mixing certain materials and chemicals. 
+Furthermore, it includes inquiries about the Federal/State Working Group on Chemical Safety (BLAC), consisting of \variable{output/question_count_per_dir/json_file_counts_blac_gfk.txt} questions. 
+These questions are based on the question bank used for the \enquote{Sachkundeprüfung} (expertise examination) according to \§ 11 of the \enquote{Chemikalien-Verbotsverordnung} (Chemical Prohibition Ordinance).
+Moreover, this category addresses questions lab safety and topics such as pharmacology, toxicology, material safety data sheets, and chemical safety data sheets. 
 The chemical safety category stands out as one of the primary focus areas within the \chembench corpus.
 
 \subparagraph{\gls{NMR} spectroscopy}
-Questions are sourced from the twitter page called (\url{https://twitter.com/NMRspectroscopy}), focusing on concepts and applications of nuclear magnetic resonance spectroscopy.
+Questions are based on images shared via the Twitter account \url{https://twitter.com/NMRspectroscopy}, focusing choosing appropriate \gls{nmr} experiments.
 
 
 \paragraph{Semi-programatically generated questions}
 
 \subparagraph{Oxidation states}
-The questions regarding oxidation states are extracted from the website \url{https://www.cheminfo.org/}. 
-These exercises focus on determining the number of isomers for specific molecules. To perform these calculations, we utilize the RDKit package \cite{rdkit}.
+\variable{output/question_count_per_dir/json_file_counts_oxidation_states.txt} questions regarding oxidation states are based on data from the website \url{https://www.cheminfo.org/}. 
 
-\subparagraph{Electron count of atoms}
-Questions pertaining to the electron count of atoms are gathered from the website \url{https://www.cheminfo.org/}. 
+\subparagraph{Total electron count of molecules}
+\variable{output/question_count_per_dir/json_file_counts_electron_counts.txt} questions pertaining to the total electron count of molecules are based on data from the website \url{https://www.cheminfo.org/}. 
 These inquiries involve determining the electron count of atoms in various chemical contexts. The calculations for these tasks are facilitated using the RDKit package \cite{rdkit}.
 
 \subparagraph{Number of isomers}
-The questions concerning the number of isomers are sourced from the website \url{https://www.cheminfo.org/}. 
-These exercises aim to determine the number of isomers for given molecules. The calculations for these assessments are conducted using the RDKit package \cite{rdkit}.
+We used MAYGEN\cite{Yirik_2021} to compute the number of isomers for a set of randomly sampled \gls{smiles} from the ZINC dataset.\cite{Irwin_2012}
+To obtain the answers for false options we sampled from the set of number of isomers. In total, we generated \variable{output/question_count_per_dir/json_file_counts_number_of_isomers.txt} questions.
 
 \subparagraph{Point group for molecules}
-Questions involve predicting the point group for molecules. The ChemCaption tool (\url{https://github.com/lamalab-org/chem-caption/tree/main}) is utilized for data generation. Given a molecule, predict its point group.
-\subparagraph{SMILES-IUPAC}
-Web scrapped \gls{smiles} \gls{iupac} pairs from the PubChem database \cite{pubchem} and then framed questions involve converting \gls{smiles} notation to \gls{iupac} nomenclature, utilizing information from the PubChem database.
+\variable{output/question_count_per_dir/json_file_counts_point_group.txt} questions involve predicting the point group for molecules. Our ChemCaption tool (\url{https://github.com/lamalab-org/chem-caption}) is utilized for data generation. 
+Given a molecule, it uses spglib\cite{spglib} to identify the point group. 
+Assigned point groups were manually verified to only include well-defined cases.
 
-\paragraph{Programmatically generated questions} 
-\subparagraph{Number of NMR peaks} To generate tasks about the number of \gls{nmr} peaks, we randomly sampled \gls{smiles} from the ZINC database\cite{Irwin_2012} and then used OpenChemLib\cite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
+\subparagraph{SMILES-IUPAC}
+We scraped pairs of \gls{smiles} and \gls{iupac} names from the PubChem database \cite{pubchem} and then framed \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} questions involve converting \gls{smiles} notation to \gls{iupac} nomenclature.
+\variable{output/question_count_per_dir/json_file_counts_name_to_smiles.txt} questions involve the reverse task, i.e., converting \gls{iupac} nomenclature to \gls{smiles} notation.
+
+
+\subparagraph{Number of NMR peaks} 
+To generate the \variable{output/question_count_per_dir/json_file_counts_name_to_smiles.txt}  tasks about the number of \gls{nmr} peaks, we randomly sampled \gls{smiles} from the ZINC database\cite{Irwin_2012} and then used OpenChemLib\cite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
 We then sampled from the set of number of peaks (excluding the correct answer) to obtain the false answer options.
 
 \subparagraph{GHS, hazard statements and DAI}
-The \gls{ghs} classification, hazard statements and \gls{dai} data have been extracted from PubChem.~\cite{pubchem}
-The former two have been mined via the PubChem \gls{api}, while the latter has been manually compiled.
+The \gls{ghs} classification, hazard statements and \gls{dai} data have been extracted from PubChem.\cite{pubchem}
+The former two have been mined via the PubChem \gls{api}, while the latter has been manually compiled. 
+In total, we generated \variable{output/question_count_per_dir/json_file_counts_pictograms.txt} questions about the \gls{ghs} classification of chemicals, \variable{output/question_count_per_dir/json_file_counts_h_statements.txt} questions about definition of hazard statements, and \variable{output/question_count_per_dir/json_file_counts_dai.txt} questions about \glspl{dai}.
 The \glspl{dai} have been curated to contain only records approved by the \gls{who}.
 The chemicals in this class of questions belong to one of the three classes: pesticides (e.g., calcium arsenate), insecticides (e.g., cyfluthrin) or herbicides (e.g. 2,4-D).
-All data was saved in tabular form, and then we programmatically created questions (\variable{output/num_h_statements.txt} hazard statement definitions, \variable{output/num_pictograms.txt} chemical-\gls{ghs} pictogram matching, \variable{output/num_dai.txt} \glspl{dai}).
-
-
-\subparagraph{Number of isomers}
-We used MAYGEN\cite{Yirik_2021} to compute the number of isomers for a set of randomly sampled \gls{smiles} from the ZINC dataset.\cite{Irwin_2012}
-To obtain the answers for false options we sampled from the set of number of isomers.
 
 \subsection{Model evaluation workflow}
 

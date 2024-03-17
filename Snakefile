@@ -120,7 +120,7 @@ rule analyze_model_reports:
     input: 
         ["src/data/model_score_dicts.pkl", "src/data/humans_as_models_scores.pkl"]
     output: 
-        ["src/tex/figures/all_questions_models_completely_correct_radar_overall.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar_overall.pdf", "src/tex/figures/all_questions_models_completely_correct_radar_human_aligned.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar_human_aligned.pdf"]
+        ["src/tex/figures/all_questions_models_completely_correct_radar_overall.pdf"] #, "src/tex/figures/all_questions_models_requires_calculation_radar_overall.pdf", "src/tex/figures/all_questions_models_completely_correct_radar_human_aligned.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar_human_aligned.pdf"]
     script:
         "src/scripts/analyze_model_reports.py"
 
@@ -172,3 +172,11 @@ rule plot_embeddings:
         "src/tex/figures/question_diversity.pdf"
     script: 
         "src/scripts/plot_question_diversity.py"
+
+
+# count the number of questions per directory 
+rule count_json_files: 
+    input: 
+        "src/scripts/count_json_files.py"
+    output: 
+        directory("src/tex/output/question_count_per_dir")
