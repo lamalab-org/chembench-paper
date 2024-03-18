@@ -238,15 +238,15 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 \paragraph{Manually curated questions}
 
 \subparagraph{Analytical chemistry}
-The \variable{output/question_count_per_dir/json_file_counts_analytical_chemistry.txt} questions are based on master student examination papers at the University of Jena (Germany). 
+\variable{output/question_count_per_dir/json_file_counts_analytical_chemistry.txt} questions are based on master student examination papers at the University of Jena (Germany). 
 These questions focus on the principles and techniques employed in analytical chemistry.
 
 \subparagraph{Combustion engineering}
-These \variable{output/question_count_per_dir/json_file_counts_combustion_engineering.txt} questions are based on master student examination papers at the University of Magdeburg (Germany). 
+\variable{output/question_count_per_dir/json_file_counts_combustion_engineering.txt} questions are based on master student examination papers at the University of Magdeburg (Germany). 
 They explore topics related to combustion processes and engineering principles.
 
 \subparagraph{Functional materials and nanomaterials}
-The \variable{output/question_count_per_dir/json_file_counts_func_mats_and_nanomats.txt}  questions are based on exercises in a seminar conducted at the University of Jena (Germany), delving into topics concerning functional materials and nanomaterials, exploring their properties and applications.
+\variable{output/question_count_per_dir/json_file_counts_func_mats_and_nanomats.txt}  questions are based on exercises in a seminar conducted at the University of Jena (Germany), delving into topics concerning functional materials and nanomaterials, exploring their properties and applications.
 
 \subparagraph{General chemistry}
 \variable{output/question_count_per_dir/json_file_counts_Gen_Chem_MCA.txt} questions originate from examinations for grade 10 at Marist Comprehensive Academy Uturu (Nigeria). 
@@ -270,6 +270,9 @@ In addition, we included questions based on the general chemistry courses of the
 
 \subparagraph{Chemical reactivity}
 \variable{output/question_count_per_dir/json_file_counts_reactive_groups.txt} questions are framed based on information from the Cameo Chemicals website (\url{https://cameochemicals.noaa.gov/reactivity}), exploring the reactivity of various chemicals and compounds.
+
+\subparagraph{Textbook questions}
+\variable{output/question_count_per_dir/json_file_counts_oup.txt} questions are based on questions from various textbooks covering biomolecular science, drug synthesis, molecular structure, organic chemistry, and X-ray crystallography.
 
 \subparagraph{Chemical safety} 
 This category comprises a total of \variable{output/question_count_per_dir/json_file_counts_safety.txt} questions, including semi-programmatically created questions covering areas such as GHS classification, hazard statements, \gls{dai}, and pictograms from the PubChem database \cite{pubchem} (see below for details). 
@@ -316,6 +319,7 @@ The former two have been mined via the PubChem \gls{api}, while the latter has b
 In total, we generated \variable{output/question_count_per_dir/json_file_counts_pictograms.txt} questions about the \gls{ghs} classification of chemicals, \variable{output/question_count_per_dir/json_file_counts_h_statements.txt} questions about definition of hazard statements, and \variable{output/question_count_per_dir/json_file_counts_dai.txt} questions about \glspl{dai}.
 The \glspl{dai} have been curated to contain only records approved by the \gls{who}.
 The chemicals in this class of questions belong to one of the three classes: pesticides (e.g., calcium arsenate), insecticides (e.g., cyfluthrin) or herbicides (e.g. 2,4-D).
+
 
 \subsection{Model evaluation workflow}
 
