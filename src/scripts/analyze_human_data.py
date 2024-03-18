@@ -69,7 +69,7 @@ def make_timing_plot(long_df):
         y="time_s",
         color="black",
         ax=ax,
-        alpha=0.3,
+        alpha=0.2,
         size=2,
     )
 
@@ -98,7 +98,7 @@ def make_human_time_score_plot(long_df):
     )
     ax.scatter(grouped_by_user["experience"], grouped_by_user["all_correct"])
     ax.set_xlabel("experience in chemistry / y")
-    ax.set_ylabel("fraction of correct answers")
+    ax.set_ylabel("fraction correct")
 
     range_frame(
         ax,

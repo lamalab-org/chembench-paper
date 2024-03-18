@@ -35,6 +35,27 @@ subsets = [
     "is_polymer_chemistry",
 ]
 
+subset_clean_names = [
+    "point group",
+    "number of isomers",
+    "number of NMR peaks",
+    "GFK (chemical safety)",
+    "DAI",
+    "GHS pictograms",
+    "name to SMILES",
+    "SMILES to name",
+    "organic reactivity",
+    "electron counts",
+    "chemical compatibility",
+    "materials compatibility",
+    "textbook",
+    "chemistry olympiad",
+    "toxicology",
+    "polymer chemistry",
+]
+
+rename_dict = dict(zip(subsets, subset_clean_names))
+
 
 def obtain_subset_scores(data_dict, outdir):
     all_scores = []
@@ -98,9 +119,11 @@ if __name__ == "__main__":
 
     all_scores = pd.DataFrame(model_scores + human_scores)
 
+    all_scores["subset"] = all_scores["subset"].map(rename_dict)
     score_heatmap = all_scores.pivot_table(
         index="model", columns="subset", values="score", aggfunc="mean"
     )
+    print(score_heatmap)
 
     fig, ax = plt.subplots(1, 1)
     sns.heatmap(score_heatmap, ax=ax)

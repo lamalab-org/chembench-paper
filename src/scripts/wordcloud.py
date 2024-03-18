@@ -1,7 +1,7 @@
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 from utils import ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH
-from paths import figures, output, data
+from paths import figures, output, data, scripts
 import textacy
 from textacy import text_stats as ts
 from chembench.utils import (
@@ -13,6 +13,8 @@ from chembench.utils import (
 )
 import numpy as np
 from plotutils import range_frame
+
+plt.style.use(scripts / "lamalab.mplstyle")
 
 
 def create_wordcloud(df):
