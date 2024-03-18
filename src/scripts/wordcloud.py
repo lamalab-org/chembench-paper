@@ -1,7 +1,7 @@
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 from utils import ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH
-from paths import figures, output
+from paths import figures, output, data
 import textacy
 from textacy import text_stats as ts
 from chembench.utils import (
@@ -79,6 +79,6 @@ def plot_reading_ease(df):
 if __name__ == "__main__":
     import pandas as pd
 
-    df = pd.read_pickle(output / "questions.pkl")
+    df = pd.read_pickle(data / "questions.pkl")
     create_wordcloud(df)
     plot_reading_ease(df)

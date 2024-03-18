@@ -2,6 +2,7 @@ from utils import (
     ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
     ONE_COL_WIDTH_INCH,
     TWO_COL_WIDTH_INCH,
+    TWO_COL_GOLDEN_RATIO_HEIGHT_INCH,
 )
 import matplotlib.pyplot as plt
 from paths import output, figures, scripts, data
@@ -39,7 +40,7 @@ def question_count_barplot(df):
     fig, ax = plt.subplots(
         2,
         1,
-        figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH),
+        figsize=(ONE_COL_WIDTH_INCH, TWO_COL_GOLDEN_RATIO_HEIGHT_INCH),
         sharex=True,
     )
 

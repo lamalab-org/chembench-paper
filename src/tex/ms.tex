@@ -334,8 +334,7 @@ In the case of completion models, this step is skipped. From there, we attempt t
 In the case of numbers, our regular expression was engineered to be able to deal with various forms of scientific notation.
 As initial tests indicated that models sometimes return integers in the form of words, e.g. \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion.
 In case these hard-coded parsing steps fail, we fall back to using a \gls{llm}, e.g. Claude-2, to parse the completion.
-The frequency of this fallback being triggered was very different for different models (see XX).
-Manual verification (see \Cref{sec:manually-verified-parsing}) indicates that this \gls{llm}-based parsing is not a relevant error source.
+Manual verification indicates that this \gls{llm}-based parsing is not a relevant error source and has been performed correctly in all cases we checked (randomly sampled 4 questions per topic).
 
 \paragraph{Models}
 \subparagraph{Completion models}
