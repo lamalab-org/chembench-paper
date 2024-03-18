@@ -180,3 +180,13 @@ rule count_json_files:
         "src/scripts/count_json_files.py"
     output: 
         directory("src/tex/output/question_count_per_dir")
+
+
+# joint analysis of the confidence scores of the models and the performance on different tasks 
+rule performance_confidence_correlation: 
+    input: 
+        ["src/data/model_score_dicts.pkl"]
+    output: 
+        ["src/tex/figures/confidence_vs_performance_overall.pdf", "src/tex/figures/confidence_vs_performance_human_aligned.pdf"]
+    script: 
+        "src/scripts/joint_analysis_confidence_performance.py"
