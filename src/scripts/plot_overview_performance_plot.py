@@ -69,14 +69,12 @@ def collect_model_scores(reportdir):
 
 
 def plot_performance(
-    model_scores,  # The `outname` parameter in the `plot_performance` function is
-    # used to specify the output file name for saving the generated
-    # plot. The plot will be saved as a PDF file with the name
-    # specified by `outname`.
+    model_scores,
     outname,
     human_scores=None,
 ):
     model_scores = sorted(model_scores, key=lambda x: x[1])
+    print(model_scores)
     fig, ax = plt.subplots()
     ax.hlines(
         np.arange(len(model_scores)),

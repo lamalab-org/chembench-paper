@@ -138,7 +138,7 @@ Many other models also outperform the average human performance. It is, however,
 
 \begin{figure}
     \centering
-    %\includegraphics{figures/human_vs_models_bar.pdf}
+    \includegraphics{figures/human_subset_performance.pdf}
     \caption{\textbf{Performance of models and humans on chembench.} The figure shows the percentage of questions that the models answered completely correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
     Since the humans did not answer all the questions, this plot is based on the subset of questions that most humans answered.
     The metric we use here is harsh as it only considers a question answered completely correctly or completely incorrectly, partially correct answers are also considered as incorrect.}
@@ -170,9 +170,11 @@ In this spider chart, the worst score for every dimension is zero (no question a
 Thus, a larger colored area indicates a better performance. 
 One can observe that this performance varies widely across models and topics. 
 While computational chemistry and biochemistry receive relatively high scores for many models, this is not the cases for topics such as chemical safety or analytical chemistry.
-% In the subfield of analytical chemistry the prediction of the number of peaks observable in a \gls{nmr} spectrum proved difficult for the models (e.g., \variable{outputs/subset_scores/is_number_nmr_peaks_gpt-4.txt}. 
-% While this question is relatively easy (\variable{outputs/human_subset_scores/is_number_nmr_peaks.txt}) for trained humans given a drawing of the compounds, models that are only shown the \gls{smiles} string of a compound have to use this to reason about the symmetry of the compound. 
-% This is mirrored in the questions about point groups of compounds, which is models struggle with more than humans ().
+In the subfield of analytical chemistry the prediction of the number of peaks observable in a \gls{nmr} spectrum proved difficult for the models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_gpt4.txt} percent correct answers for GPT-4) 
+While this question is relatively easy (\variable{output/human_subset_scores/is_number_nmr_peaks.txt}) for trained humans given a drawing of the compounds, models that are only shown the \gls{smiles} string of a compound have to use this to reason about the symmetry of the compound. 
+This is mirrored in the questions about the number of isomers, which is models struggle with more than humans (\variable{output/subset_scores/is_number_of_isomers_gpt4.txt} percent for GPT-4 vs. \variable{output/human_subset_scores/is_number_of_isomers.txt}).
+These findings also shin an interesting light on the value of textbook-inspired questions. A subset of the questions in the \chembench are based on textbooks targeted at undergraduate students. 
+On those questions the models tend to perform better than on some our semi-automatically constructed tasks.
 
 % GFK performance -> would the models obtain a chemical license 
 % Interesting twist perhaps: the performance on the university textbooks or exams is better than on the ones we automatically constructed

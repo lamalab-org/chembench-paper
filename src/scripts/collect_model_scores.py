@@ -4,13 +4,17 @@ from pathlib import Path
 import subprocess
 from utils import obtain_chembench_repo
 from paths import output
+from loguru import logger
 
 if __name__ == "__main__":
     chembench_repo = obtain_chembench_repo()
     reports = glob(
         os.path.join(chembench_repo, "reports", "**", "reports", "**", "*.json")
     )
+
     models = list(set([Path(p).parent for p in reports]))
+    logger.info(f"Found {len(models)} reports")
+    logger.debug(f"First 5 reports: {models[:5]}")
     outpath = os.path.join(output, "overall_model_scores")
     if not os.path.exists(outpath):
         os.mkdir(outpath)

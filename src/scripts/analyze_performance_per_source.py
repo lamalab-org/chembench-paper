@@ -115,7 +115,7 @@ if __name__ == "__main__":
     if not os.path.exists(outdir_humans):
         os.makedirs(outdir, exist_ok=True)
 
-    human_scores = obtain_subset_scores_humans(human_scores["raw_scores"], outdir)
+    human_scores = obtain_subset_scores_humans(human_scores["raw_scores"], outdir_humans)
 
     all_scores = pd.DataFrame(model_scores + human_scores)
 

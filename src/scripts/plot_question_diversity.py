@@ -6,7 +6,11 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 import seaborn as sns
 from paths import data, scripts, figures
-from utils import ONE_COL_GOLDEN_RATIO_HEIGHT_INCH, ONE_COL_WIDTH_INCH
+from utils import (
+    ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
+    ONE_COL_WIDTH_INCH,
+    TWO_COL_WIDTH_INCH,
+)
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
@@ -34,11 +38,14 @@ def plot_pca_map():
     pca_1 = pca_1[shuffled_indices]
     pca_2 = pca_2[shuffled_indices]
     labels = np.array(labels)[shuffled_indices]
-    f = plt.figure(figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH))
+    f, ax = plt.subplots(figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH))
     # place legend outside of the plot
+    # make legend in two columns
 
     plt.axis("off")
-    sns.scatterplot(x=pca_1, y=pca_2, hue=labels, s=10, alpha=0.7)
+    sns.scatterplot(x=pca_1, y=pca_2, hue=labels, s=10, alpha=0.7, ax=ax)
+    ax.legend(loc="center left", ncol=3, bbox_to_anchor=(0, 1.2))
+    f.tight_layout()
     f.savefig(figures / "question_diversity.pdf", bbox_inches="tight")
 
 

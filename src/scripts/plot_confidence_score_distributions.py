@@ -39,18 +39,20 @@ def plot():
 
     claude_2["model"] = "Claude 2"
 
-    claude_3 = pd.read_csv(
-        os.path.join(
-            chembench,
-            "reports",
-            "confidence_estimates",
-            "confidence_estimates",
-            "results_claude3.csv",
-        )
-    )
+    # claude_3 = pd.read_csv(
+    #     os.path.join(
+    #         chembench,
+    #         "reports",
+    #         "confidence_estimates",
+    #         "confidence_estimates",
+    #         "results_claude3.csv",
+    #     )
+    # )
 
-    claude_3["model"] = "Claude 3"
-    all_results = pd.concat([gpt, claude_2, claude_3]).reset_index(drop=True)
+    # claude_3["model"] = "Claude 3"
+    # all_results = pd.concat([gpt, claude_2, claude_3]).reset_index(drop=True)
+
+    all_results = pd.concat([gpt, claude_2]).reset_index(drop=True)
 
     fig, ax = plt.subplots(
         figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
@@ -73,7 +75,7 @@ def plot():
             xmax=counts,
             linewidth=5,
             alpha=0.5,
-            color=model_color_map[model],
+            # color=model_color_map[model],
         )
 
         ax.plot(
@@ -81,9 +83,11 @@ def plot():
             counts.index,
             "o",
             markersize=5,
-            alpha=0.5,
-            color=model_color_map[model],
+            alpha=1.0,
+            # color=model_color_map[model],
         )
+
+    range_frame(ax, np.array(counts), np.array([0.5, 5.5]))
 
     ax.set_xlabel("Number of Questions")
     ax.set_ylabel("confidence estimate")
@@ -140,7 +144,7 @@ def plot_violin():
     ax.set_xlabel("confidence estimate returned by the model")
     ax.set_ylabel("model")
 
-    range_frame(ax, np.array([1, 5]), np.array([0, 2]))
+    range_frame(ax, np.array([0.5, 5.5]), np.array([0, 2]))
 
     fig.savefig(
         figures / "confidence_score_distributions_violins.pdf", bbox_inches="tight"

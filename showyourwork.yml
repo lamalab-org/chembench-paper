@@ -38,6 +38,8 @@ dependencies:
   src/scripts/analyze_model_reports.py:
     - src/data/humans_as_models_scores.pkl
     - src/data/model_score_dicts.pkl
+  src/scripts/plot_overview_performance_plot.py:
+    - src/tex/output/overall_model_scores/*.json
 
 # Name of the `.tex` manuscript and corresponding `.pdf` article
 ms_name: ms

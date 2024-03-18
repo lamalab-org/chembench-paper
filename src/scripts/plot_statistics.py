@@ -65,17 +65,21 @@ def question_count_barplot(df):
 
     all_counts = np.concatenate([counts_mcq, counts_general])
 
-    ax[0].hlines(topics_mcq, xmin=0, xmax=topics_mcq, linewidth=5, alpha=0.2)
+    ax[0].hlines(topics_mcq, xmin=0, xmax=counts_mcq, linewidth=5, alpha=0.2)
     ax[0].plot(counts_mcq, topics_mcq, "o", markersize=5, alpha=0.6)
     ax[0].set_xscale("log")
     range_frame(ax[0], all_counts, np.arange(len(topics_general)))
 
-    ax[1].hlines(topics_general, xmin=0, xmax=topics_general, linewidth=5, alpha=0.2)
+    ax[1].hlines(topics_general, xmin=0, xmax=counts_general, linewidth=5, alpha=0.2)
     ax[1].plot(counts_general, topics_general, "o", markersize=5, alpha=0.6)
     ax[1].set_xscale("log")
     range_frame(ax[1], all_counts, np.arange(len(topics_general)))
 
-    ax[0].set_xlabel("Number of Questions")
+    ax[1].set_xlabel("Number of Questions")
+
+    # add "MCQ" and "General" labels
+    ax[0].text(0.5, 1.05, "MCQ", transform=ax[0].transAxes, ha="center")
+    ax[1].text(0.5, 1.05, "General", transform=ax[1].transAxes, ha="center")
 
     fig.savefig(
         figures / "question_count_barplot_mcq_vs_general.pdf", bbox_inches="tight"

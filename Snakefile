@@ -47,7 +47,7 @@ rule model_statistics:
         "src/scripts/collect_model_scores.py"
 
 # collect model scores on the questions that at least 4 humans answered 
-rule model_human_statistics: 
+rule model_human_statistics:      
     input: 
         "src/scripts/collect_model_scores_human_subset.py"
     cache: 
@@ -62,7 +62,7 @@ rule question_plots:
     input: 
         "src/data/questions.pkl"
     output: 
-        ["src/tex/figures/question_count_barplot.pdf", "src/text/output/num_topics.txt", "src/tex/figures/question_count_barplot_mcq_vs_general.pdf"]
+        ["src/tex/figures/question_count_barplot.pdf", "src/tex/output/num_topics.txt", "src/tex/figures/question_count_barplot_mcq_vs_general.pdf"]
     script: 
         "src/scripts/plot_statistics.py" 
 
@@ -127,7 +127,7 @@ rule analyze_model_reports:
 # plot the overall performance 
 rule plot_overview_performance: 
     input:
-        ["src/tex/output/human_subset_model_scores/*.json", "src/tex/output/human_scores/*.json", "src/tex/output/overall_model_scores/*.json"]
+        rules.model_statistics.output
     output: 
         ['src/tex/figures/overall_performance.pdf', 'src/tex/figures/human_subset_performance.pdf']
     script: 
@@ -140,7 +140,7 @@ rule analyze_performance_per_source:
     input: 
        "src/data/model_score_dicts.pkl" 
     output: 
-        [directory('src/tex/output/subset_scores'), 'src/tex/figures/performance_per_topic.pdf']
+        [directory('src/tex/output/subset_scores'), directory('src/tex/output/human_subset_scores'), 'src/tex/figures/performance_per_topic.pdf', "src/tex/output/human_subset_scores/is_number_nmr_peaks.txt", "src/tex/output/subset_scores/is_number_nmr_peaks_gpt4.txt"]
     script:
         "src/scripts/analyze_performance_per_source.py"
 
