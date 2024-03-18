@@ -4,7 +4,7 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 from plotutils import range_frame
-from paths import output, scripts
+from paths import output, scripts, figures
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
@@ -68,7 +68,14 @@ def collect_model_scores(reportdir):
     return model_scores
 
 
-def plot_performance(model_scores, outname, human_scores=None):
+def plot_performance(
+    model_scores,  # The `outname` parameter in the `plot_performance` function is
+    # used to specify the output file name for saving the generated
+    # plot. The plot will be saved as a PDF file with the name
+    # specified by `outname`.
+    outname,
+    human_scores=None,
+):
     model_scores = sorted(model_scores, key=lambda x: x[1])
     fig, ax = plt.subplots()
     ax.hlines(
@@ -148,3 +155,12 @@ def plot_performance(model_scores, outname, human_scores=None):
     ax.set_xlabel("fraction of completely correct answers")
     # fig.tight_layout()
     fig.savefig(outname, bbox_inches="tight")
+
+
+if __name__ == "__main__":
+    model_scores = collect_model_scores(model_dir)
+    human_scores = collect_human_scores()
+    plot_performance(model_scores, figures / "overall_performance.pdf")
+    plot_performance(
+        model_scores, figures / "human_subset_performance.pdf", human_scores
+    )

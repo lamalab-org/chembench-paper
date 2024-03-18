@@ -91,7 +91,7 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
     \centering
     \includegraphics{figures/question_count_barplot.pdf}
     \caption{\textbf{Number of questions for different topics.} The topics have been assigned using a combination of a rule-based system (mostly based on the source the question has been sampled from) as well as a classifier operating on a word-embedding of the question. 
-    The figure shows that not all aspects of chemistry are equally represented in our corpus. The corpus currently focuses on safety-related aspects.}
+    The figure shows that not all aspects of chemistry are equally represented in our corpus. The \chembench corpus, by design, currently focuses on safety-related aspects, which is also evident in \Cref{fig:question_diversity}. This figure represents the combined count of \glstext{mcq} and open-ended questions.}
     \label{fig:topic_barplot}
     \script{plot_statistics.py}
 \end{figure}
@@ -138,10 +138,12 @@ Many other models also outperform the average human performance. It is, however,
 
 \begin{figure}
     \centering
+    %\includegraphics{figures/human_vs_models_bar.pdf}
     \caption{\textbf{Performance of models and humans on chembench.} The figure shows the percentage of questions that the models answered completely correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
     Since the humans did not answer all the questions, this plot is based on the subset of questions that most humans answered.
     The metric we use here is harsh as it only considers a question answered completely correctly or completely incorrectly, partially correct answers are also considered as incorrect.}
     \label{fig:human_vs_models_bar}
+    \script{plot_overview_performance_plot.py}
 \end{figure}
 
 Given the large interest in tool-augmented systems, the bad performance of these systems in our benchmark is striking. 
