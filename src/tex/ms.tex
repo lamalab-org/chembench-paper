@@ -106,7 +106,7 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
 
 While many of the existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
 For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions vs. \variable{output/non_mcq_questions.txt} open-ended questions).
-As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\variable{output/flesch_kincaid_reading_ease.txt}).\cite{kincaid1975derivation}
+%As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\variable{output/flesch_kincaid_reading_ease.txt}).\cite{kincaid1975derivation}
 
 
 \paragraph{\enquote{Tiny} subset}
@@ -340,15 +340,13 @@ Manual verification indicates that this \gls{llm}-based parsing is not a relevan
 
 \paragraph{Models}
 \subparagraph{Completion models}
-We used \texttt{Galactica-120b}\cite{taylor2022galactica} with the default settings 
+We used \texttt{Galactica-120b}\cite{taylor2022galactica} with the default settings.
 
 
-\subparagraph{Instruction-tuned models} \texttt{Claude 2} \texttt{Claude3 (Opus)}\cite{anthropicClaudeModelFamily2024}
-\texttt{GPT-4}\cite{openai2024gpt4}
-\texttt{GPT-3.5-turbo}\cite{brown2020language}
-\texttt{Gemini Pro}\cite{gemini}
+\subparagraph{Instruction-tuned models} In addition, we used \texttt{Claude 2}, \texttt{Claude3 (Opus)},\cite{anthropicClaudeModelFamily2024} \texttt{GPT-4},\cite{openai2024gpt4} \texttt{GPT-3.5-turbo},\cite{brown2020language}
+\texttt{Gemini Pro},\cite{gemini}
 \texttt{Mixtral-8x7b}\cite{jiang2024mixtral}
-\texttt{Llama2-70b}\cite{touvron2023llama}
+\texttt{Llama2-70b},\cite{touvron2023llama}
 \texttt{pplx-7b-chat}
 
 \subparagraph{Tool augmented models}
@@ -421,6 +419,7 @@ We also want to acknowledge access to the HPC cluster of Stability.AI.
 M.A. expresses gratitude to the European Research Council (ERC) for evaluating the project with the reference number 101106377 titled ‘‘CLARIFIER’’ and accepting it for funding under the HORIZON TMA MSCA Postdoctoral Fellowships - European Fellowships. 
 Furthermore, M.A. acknowledges the funding provided by UK Research and Innovation (UKRI) under the UK government’s Horizon Europe funding guarantee (Grant Reference: EP/Y023447/1; Organization Reference: 101106377).
 
+The authors thank Julian Kimmig for feedback on the web app. 
 
 \section*{Conflicts of interest}
 K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A.M.\ and N.A.\ are paid contractors of Stability.AI.

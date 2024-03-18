@@ -4,7 +4,7 @@ from utils import (
     ONE_COL_WIDTH_INCH,
     TWO_COL_GOLDEN_RATIO_HEIGHT_INCH,
 )
-from paths import data, figures, output 
+from paths import data, figures, output
 import pickle
 import os
 import pandas as pd
@@ -16,6 +16,28 @@ import numpy as np
 # the confidence estimates are csv files with index, question name, score
 # the model performance is in a pickle with in which we have a dictionary with the model name as key
 # the value is a dataframe with the performance per question
+
+outpath = output / "model_confidence_performance"
+os.makedirs(outpath, exist_ok=True)
+
+subsets = [
+    "is_point_group",
+    "is_number_of_isomers",
+    "is_number_nmr_peaks",
+    "is_gfk",
+    "is_dai",
+    "is_pictograms",
+    "is_name",
+    "is_smiles_name",
+    "is_organic_reactivity",
+    "is_electron_counts",
+    "is_chemical_compatibility",
+    "is_materials_compatibility",
+    "is_oup",
+    "is_olympiad",
+    "is_toxicology",
+    "is_polymer_chemistry",
+]
 
 
 def join_confidence_and_performance(performance_dict):
@@ -95,6 +117,40 @@ def make_plot_of_confidence_vs_performance(merged_dicts, suffix: str = ""):
     )
 
 
+def make_subset_analysis(merged_dict, subset, suffix: str = ""):
+    for model, df in merged_dict.items():
+        relevant_model_performance = df[df[subset]]
+        correct = relevant_model_performance[
+            relevant_model_performance["all_correct"].astype(bool)
+        ]
+        incorrect = relevant_model_performance[
+            ~relevant_model_performance["all_correct"].astype(bool)
+        ]
+        num_correct = len(correct)
+        num_incorrect = len(incorrect)
+
+        average_confidence_correct = correct["estimate"].mean()
+        average_confidence_incorrect = incorrect["estimate"].mean()
+
+        with open(outpath / f"{model}_{subset}_num_correct_{suffix}.txt", "w") as f:
+            f.write(f"{num_correct}" + "\endinput")
+
+        with open(outpath / f"{model}_{subset}_num_incorrect_{suffix}.txt", "w") as f:
+            f.write(f"{num_incorrect}" + "\endinput")
+
+        with open(
+            outpath / f"{model}_{subset}_average_confidence_correct_{suffix}.txt", "w"
+        ) as f:
+            rounded = np.round(average_confidence_correct, 2)
+            f.write(f"{rounded}" + "\endinput")
+
+        with open(
+            outpath / f"{model}_{subset}_average_confidence_incorrect_{suffix}.txt", "w"
+        ) as f:
+            rounded = np.round(average_confidence_incorrect, 2)
+            f.write(f"{rounded}" + "\endinput")
+
+
 if __name__ == "__main__":
     with open(data / "model_score_dicts.pkl", "rb") as f:
         performance_dict = pickle.load(f)
@@ -102,7 +158,13 @@ if __name__ == "__main__":
     # overall
     merged_dicts = join_confidence_and_performance(performance_dict["overall"])
     make_plot_of_confidence_vs_performance(merged_dicts, suffix="overall")
+    # subset analysis
+    for subset in subsets:
+        make_subset_analysis(merged_dicts, subset, suffix="overall")
 
     # human aligned
     merged_dicts = join_confidence_and_performance(performance_dict["human_aligned"])
     make_plot_of_confidence_vs_performance(merged_dicts, suffix="human_aligned")
+    # subset analysis
+    for subset in subsets:
+        make_subset_analysis(merged_dicts, subset, suffix="human_aligned")
