@@ -426,7 +426,7 @@ if __name__ == "__main__":
         human_dicts = pickle.load(handle)
 
     make_overall_performance_radar_plot(df_dicts["overall"], "overall")
-    # radarplot_requires_calculation(df_dicts["overall"], "overall")
+    radarplot_requires_calculation(df_dicts["overall"], "overall")
 
     # make_overall_performance_radar_plot(
     #     df_dicts["human_aligned"], "human", human_dicts["topic_mean"]

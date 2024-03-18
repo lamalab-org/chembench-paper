@@ -39,18 +39,18 @@ def plot():
 
     claude_2["model"] = "Claude 2"
 
-    # claude_3 = pd.read_csv(
-    #     os.path.join(
-    #         chembench,
-    #         "reports",
-    #         "confidence_estimates",
-    #         "confidence_estimates",
-    #         "results_claude3.csv",
-    #     )
-    # )
+    claude_3 = pd.read_csv(
+        os.path.join(
+            chembench,
+            "reports",
+            "confidence_estimates",
+            "confidence_estimates",
+            "results_claude3.csv",
+        )
+    )
 
-    # claude_3["model"] = "Claude 3"
-    # all_results = pd.concat([gpt, claude_2, claude_3]).reset_index(drop=True)
+    claude_3["model"] = "Claude 3"
+    all_results = pd.concat([gpt, claude_2, claude_3]).reset_index(drop=True)
 
     all_results = pd.concat([gpt, claude_2]).reset_index(drop=True)
 
@@ -120,17 +120,17 @@ def plot_violin():
 
     claude_2["model"] = "Claude 2"
 
-    # claude_3 = pd.read_csv(
-    #     os.path.join(
-    #         chemnbench,
-    #         "reports",
-    #         "confidence_estimates",
-    #         "confidence_estimates",
-    #         "results_claude3.csv",
-    #     )
-    # )
+    claude_3 = pd.read_csv(
+        os.path.join(
+            chemnbench,
+            "reports",
+            "confidence_estimates",
+            "confidence_estimates",
+            "results_claude3.csv",
+        )
+    )
 
-    # claude_3["model"] = "Claude 3"
+    claude_3["model"] = "Claude 3"
 
     all_results = pd.concat([gpt, claude_2]).reset_index(drop=True)
 

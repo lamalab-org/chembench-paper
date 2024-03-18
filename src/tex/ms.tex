@@ -66,7 +66,7 @@ This is likely because they cannot automatically be used with black box (or tool
 On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights in how the models compare relative to experts.
 
 In this work, we report a novel benchmarking framework, which we call \chembench, and use it to reveal limitations of current frontier models for the use in the chemical sciences.
-Our benchmark consists of \variable{output/total_number_of_questions.txt} question answer pairs manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources.
+Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question answer pairs manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources.
 Our corpus large fraction of the topics taught in undergraduate and graduate chemistry curricula and can be used to evaluate any system that can return text (i.e., also tool-augmented systems).
 
 To contextualize the scores, we also surveyed more than \variable{output/number_experts.txt} experts in chemistry (for a total of number of more than \variable{output/total_hours.txt}\unskip) on a subset of the benchmark corpus to be able to compare the performance of current frontier models with the one of humans.
@@ -82,9 +82,9 @@ For quality assurance, all questions have been reviewed by at least one scientis
 
 Importantly, our large pool of questions encompasses a wide range of topics.
 This can be seen, for example, in \Cref{fig:topic_barplot} in which we compare the number of questions in different subfields of the chemical sciences (see \Cref{sec:meth-topic} for details on how we assigned topics).
-The distribution of topics is also evident from \Cref{fig:pca} in which we visualize the questions in a two-dimensional space using a \gls{pca} on the embeddings of the questions.
+The distribution of topics is also evident from \Cref{fig:question_diversity} in which we visualize the questions in a two-dimensional space using a \gls{pca} on the embeddings of the questions.
 In this representation, semantically similar questions are close to each other, and we color the points based on a classification into \variable{output/num_topics.txt} topics. 
-It is clear that a focus of \chembench (by design) lies on safety-related aspects which in \Cref{fig:pca} appear as large distinct clusters.
+It is clear that a focus of \chembench (by design) lies on safety-related aspects which in \Cref{fig:question_diversity} appear as large distinct clusters.
 
 
 \begin{figure}
@@ -167,8 +167,8 @@ Thus, a larger colored area indicates a better performance.
 One can observe that this performance varies widely across models and topics. 
 While computational chemistry and biochemistry receive relatively high scores for many models, this is not the cases for topics such as chemical safety or analytical chemistry.
 In the subfield of analytical chemistry the prediction of the number of peaks observable in a \gls{nmr} spectrum proved difficult for the models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_gpt4.txt} percent correct answers for GPT-4) 
-While this question is relatively easy (\variable{output/human_subset_scores/is_number_nmr_peaks.txt}) for trained humans given a drawing of the compounds, models that are only shown the \gls{smiles} string of a compound have to use this to reason about the symmetry of the compound. 
-This is mirrored in the questions about the number of isomers, which is models struggle with more than humans (\variable{output/subset_scores/is_number_of_isomers_gpt4.txt} percent for GPT-4 vs. \variable{output/human_subset_scores/is_number_of_isomers.txt}).
+While this question is relatively easy (\variable{output/human_subset_scores/is_number_nmr_peaks.txt} percent correct) for trained humans given a drawing of the compounds, models that are only shown the \gls{smiles} string of a compound have to use this to reason about the symmetry of the compound. 
+This is mirrored in the questions about the number of isomers, which is models struggle with more than humans (\variable{output/subset_scores/is_number_of_isomers_gpt4.txt} percent for GPT-4 vs. \variable{output/human_subset_scores/is_number_of_isomers.txt} percent for humans).
 These findings also shin an interesting light on the value of textbook-inspired questions. A subset of the questions in the \chembench are based on textbooks targeted at undergraduate students. 
 On those questions the models tend to perform better than on some our semi-automatically constructed tasks.
 
