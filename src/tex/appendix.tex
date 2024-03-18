@@ -43,7 +43,11 @@ We also evaluated the model performance on the entire \chembench corpus.
 \Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered completely correctly by the models. 
 
 \begin{figure}
+    \centering
+    \includegraphics{figures/overall_performance.pdf}
+    \caption{\textbf{Overall performance of the models on the \chembench corpus.} The bar plot shows the fraction of questions that were answered completely correctly by the models. Scores computed on the entire \chembench corpus.}
     \label{fig:barplot_all_correct_all_questions}
+    \script{plot_overview_performance_plot.py}
 \end{figure}
 
 \Cref{fig:all_questions_models_completely_correct_radar} shows the performance of the models on the different topics of the \chembench corpus.

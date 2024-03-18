@@ -127,7 +127,7 @@ rule analyze_model_reports:
 # plot the overall performance 
 rule plot_overview_performance: 
     input:
-        rules.model_statistics.output
+        rules.model_statistics.output + rules.collect_human_scores.output
     output: 
         ['src/tex/figures/overall_performance.pdf', 'src/tex/figures/human_subset_performance.pdf']
     script: 
@@ -140,7 +140,7 @@ rule analyze_performance_per_source:
     input: 
        "src/data/model_score_dicts.pkl" 
     output: 
-        [directory('src/tex/output/subset_scores'), directory('src/tex/output/human_subset_scores'), 'src/tex/figures/performance_per_topic.pdf', "src/tex/output/human_subset_scores/is_number_nmr_peaks.txt", "src/tex/output/subset_scores/is_number_nmr_peaks_gpt4.txt"]
+        [directory('src/tex/output/subset_scores'), directory('src/tex/output/human_subset_scores'), 'src/tex/figures/performance_per_topic.pdf', "src/tex/output/human_subset_scores/is_number_nmr_peaks.txt", "src/tex/output/subset_scores/is_number_nmr_peaks_gpt4.txt", "src/tex/output/subset_scores/is_number_of_isomers_gpt4.txt", "src/tex/output/human_subset_scores/is_number_of_isomers.txt"]
     script:
         "src/scripts/analyze_performance_per_source.py"
 

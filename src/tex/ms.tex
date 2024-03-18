@@ -66,7 +66,7 @@ This is likely because they cannot automatically be used with black box (or tool
 On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights in how the models compare relative to experts.
 
 In this work, we report a novel benchmarking framework, which we call \chembench, and use it to reveal limitations of current frontier models for the use in the chemical sciences.
-Our benchmark consists of \variable{output/total_number_of_questions.txt}\unskip question answer pairs manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources.
+Our benchmark consists of \variable{output/total_number_of_questions.txt} question answer pairs manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources.
 Our corpus large fraction of the topics taught in undergraduate and graduate chemistry curricula and can be used to evaluate any system that can return text (i.e., also tool-augmented systems).
 
 To contextualize the scores, we also surveyed more than \variable{output/number_experts.txt} experts in chemistry (for a total of number of more than \variable{output/total_hours.txt}\unskip) on a subset of the benchmark corpus to be able to compare the performance of current frontier models with the one of humans.
@@ -141,7 +141,9 @@ Many other models also outperform the average human performance. It is, however,
     \includegraphics{figures/human_subset_performance.pdf}
     \caption{\textbf{Performance of models and humans on chembench.} The figure shows the percentage of questions that the models answered completely correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
     Since the humans did not answer all the questions, this plot is based on the subset of questions that most humans answered.
-    The metric we use here is harsh as it only considers a question answered completely correctly or completely incorrectly, partially correct answers are also considered as incorrect.}
+    The metric we use here is harsh as it only considers a question answered completely correctly or completely incorrectly, partially correct answers are also considered as incorrect.
+    \Cref{fig:barplot_all_correct_all_questions} gives an overview of the performance of various models on the entire corpus.
+    }
     \label{fig:human_vs_models_bar}
     \script{plot_overview_performance_plot.py}
 \end{figure}
@@ -158,13 +160,7 @@ To obtain a more detailed understanding of the performance of the models, we als
 For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and classified the questions into these topics based and hand-crafted rules as well as classifier models.
 We then computed the percentage of questions that the models, or humans, answered completely correctly for each topic.
 
-% overall performance profile of various model is comparable
-\begin{figure}
-    \centering
-    \includegraphics{figures/chem-bench-completley-correct-calculation-vs-no-calculation.pdf}
-    \caption{Caption}
-    \label{fig:performance_by_topic}
-\end{figure}
+
 
 In this spider chart, the worst score for every dimension is zero (no question answered completely correctly) and the best score is one (all questions answered correctly). 
 Thus, a larger colored area indicates a better performance. 
@@ -193,7 +189,7 @@ For this, we manually annotated the questions that require calculations and perf
 % Estimate of difficulty
 One might wonder whether the models are capable of estimating if they will be able to answer a question correctly. 
 If they were able to do so, incorrect answers would be less problematic as one would be able to detect when an answer is incorrect.
-To investigate this, we prompted some of the top-performing models to estimate the on an ordinal scale their confidence in their ability to answer the question correctly.
+To investigate this, we prompted\cite{xiong2023llms} some of the top-performing models to estimate the on an ordinal scale their confidence in their ability to answer the question correctly.
 
 \begin{figure}
     \centering
@@ -222,6 +218,8 @@ Critical reasoning is increasingly important and rote solving of problems or mem
 % - More advanced systems with chemnistry specific tools
 
 % - More systematic human baseline: Ask people to come in, do not allow to skip questions
+
+% clearly defined metrics important for deep learning https://towardsdatascience.com/the-road-to-biology-2-0-will-pass-through-black-box-data-bbd00fabf959
 
 \section{Methods}
 

@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from plotutils import range_frame
 from paths import output, scripts, figures
+from loguru import logger
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
@@ -14,11 +15,11 @@ model_file_name_to_label = {
     "claude2-react": "Claude 2 + ReAct",
     "claude3": "Claude 3",
     "galatica_120b": "Galactica 120B",
-    "gemin-pro-zero-T": "Gemini Pro (T=0)",
-    "gemini-pro": "Gemini Pro",
+    "gemin-pro-zero-T": "Gemini Pro",
+    # "gemini-pro": "Gemini Pro",
     "gpt-3.5-turbo": "GPT-3.5 Turbo",
-    "gpt-4": "GPT-4",
-    "gpt-4-zero-T": "GPT-4 (T=0)",
+    # "gpt-4": "GPT-4",
+    "gpt-4-zero-T": "GPT-4",
     "gpt-35-turbo-react": "GPT-3.5 Turbo + ReAct",
     "llama-2-70b-chat": "Llama 70b",
     "mixtral-8x7b-instruct": "Mixtral 8x7b",
@@ -46,7 +47,10 @@ def collect_human_scores():
             d = json.load(handle)
 
         if len(d["model_scores"]) > 100:
-            scores.append(d["fraction_correct"])
+            if d["fraction_correct"] < 1:  # exclude this cheater
+                scores.append(d["fraction_correct"])
+
+    return scores
 
 
 def collect_model_scores(reportdir):
@@ -158,6 +162,7 @@ def plot_performance(
 if __name__ == "__main__":
     model_scores = collect_model_scores(model_dir)
     human_scores = collect_human_scores()
+    logger.info(f"Human scores: {human_scores}")
     plot_performance(model_scores, figures / "overall_performance.pdf")
     plot_performance(
         model_scores, figures / "human_subset_performance.pdf", human_scores
