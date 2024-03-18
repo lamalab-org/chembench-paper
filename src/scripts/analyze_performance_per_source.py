@@ -83,13 +83,12 @@ def obtain_subset_scores_humans(data_dict, outdir):
             for human, scores in data_dict.items():
                 score = obtain_score_for_subset(data_dict[human], subset)
                 subset_scores.append(score)
-            mean_subset_score = np.mean(subset_scores)
-            with open(os.path.join(outdir, f"{subset}.txt"), "w") as handle:
-                handle.write(
-                    str(int(np.round(mean_subset_score * 100, 0))) + "\endinput"
-                )
         except Exception as e:
             logger.warning(f"Failed for {subset} due to {e}")
+        mean_subset_score = np.nanmean(subset_scores)
+        with open(os.path.join(outdir, f"{subset}.txt"), "w") as handle:
+            handle.write(str(int(np.round(mean_subset_score * 100, 0))) + "\endinput")
+
     all_scores.append({"model": "human", "score": score, "subset": subset})
 
     return all_scores
@@ -115,7 +114,9 @@ if __name__ == "__main__":
     if not os.path.exists(outdir_humans):
         os.makedirs(outdir, exist_ok=True)
 
-    human_scores = obtain_subset_scores_humans(human_scores["raw_scores"], outdir_humans)
+    human_scores = obtain_subset_scores_humans(
+        human_scores["raw_scores"], outdir_humans
+    )
 
     all_scores = pd.DataFrame(model_scores + human_scores)
 
