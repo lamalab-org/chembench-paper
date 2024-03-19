@@ -196,7 +196,8 @@ To investigate this, we prompted\autocite{xiong2023llms} some of the top-perform
 
 In \Cref{fig:confidence_vs_performance} we show that for some models there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
 For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the models' outputs.\autocite{Li_2023}
-For example, for the questions about the safety profile of compounds, GPT-4 reported an average confidence of XX (on a scale of 1--5) for the XX (out of XX) questions it answered in correctly (XX for the XX questions it answered correctly).
+For example, for the questions about the safety profile of compounds, GPT-4 reported an average confidence of \variable{output/gpt4_is_pictograms_average_confidence_correct_overall.txt} (on a scale of 1--5) for the \variable{output/gpt4_is_pictograms_num_correct_overall.txt} questions it answered in correctly and \variable{output/gpt4_is_pictograms_average_confidence_incorrect_overall.txt} for the \variable{output/gpt4_is_pictograms_num_incorrect_overall.txt} questions it answered incorrectly.
+While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading for the questions about \gls{ghs} pictograms with an average score of \variable{output/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
 
 \section{Discussion and Conclusions}
 Our findings also lay the groundwork for discussions for the chemical education in the future. 
@@ -323,7 +324,7 @@ The chemicals in this class of questions belong to one of the three classes: pes
 \paragraph{Prompting}
 
 To maintain the consistency with the training, we employ distinct prompt templates in general tailored for completion models and instruction-tuned models. 
-We pose instruction or impose constraints on the models within these templates to receive response in a specific format so that a robust, fair and consistent parsing can be performed as explained in \Cref{sec:parsing}.
+We pose instruction or impose constraints on the models within these templates to receive response in a specific format so that a robust, fair and consistent parsing can be performed as explained below.
 Certain models are trained with special annotations and LaTeX syntax for scientific notations, chemical reactions, or symbols embedded within the text. 
 For example, all the SMILES representations are encapsulated within \texttt{[START\_SMILES][\text backslash END\_SMILES]} in Galactica\autocite{taylor2022galactica}.
 Our prompting strategy consistently adheres to  these details in a model-specific manner by post-processing \LaTeX syntax, chemical symbols, chemical equations and physical units (by either adding or removing wrappers).

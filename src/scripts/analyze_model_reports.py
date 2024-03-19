@@ -110,13 +110,13 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                         claude3_mean,
                         gemini_pro_mean,
                         gpt35turbo_mean,
-                        # gpt35turbo_react_mean,
-                        # llama70b_mean,
-                        # galactica_120b_mean,
-                        # mixtral_mean,
+                        #  gpt35turbo_react_mean,
+                        llama70b_mean,
+                        galactica_120b_mean,
+                        mixtral_mean,
                         pplx7b_chat_mean,
                         pplx7b_online_mean,
-                        random_baseline_mean,
+                        # random_baseline_mean,
                         # human_dicts,
                     ],
                     [
@@ -126,13 +126,13 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                         "Claude3",
                         "Gemini-Pro",
                         "GPT-3.5-Turbo",
-                        # "GPT-3.5-Turbo-ReAct",
-                        # "LLAMA-2-70B",
-                        # "Galactica-120B",
-                        # "MixTRAL-8x7B",
+                        #   "GPT-3.5-Turbo-ReAct",
+                        "LLAMA-2-70B",
+                        "Galactica-120B",
+                        "MixTRAL-8x7B",
                         "PPLX-7B-Chat",
                         "PPLX-7B-Online",
-                        "Random Baseline",
+                        #   "Random Baseline",
                         #  "Average Human",
                     ],
                     [
@@ -144,12 +144,12 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                         model_color_map["gpt35turbo"],
                         # model_color_map["gpt35turbo_react"],
                         model_color_map["llama70b"],
-                        # model_color_map["galactica_120b"],
-                        # model_color_map["mixtral"],
+                        model_color_map["galactica_120b"],
+                        model_color_map["mixtral"],
                         model_color_map["pplx7b_chat"],
                         model_color_map["pplx7b_online"],
-                        model_color_map["random_baseline"],
-                        model_color_map["human"],
+                        #        model_color_map["random_baseline"],
+                        #       model_color_map["human"],
                     ],
                 )
             ),
@@ -162,6 +162,7 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
     fig, ax = plt.subplots(1, 1, figsize=(6, 6), subplot_kw=dict(projection="radar"))
     for data_, label, color in sorted_data:
         # Plot the filled area
+        print(data_, label, color)
         ax.fill(theta, data_, alpha=0.2, label=label, color=color)
 
         # Plot the line
@@ -348,13 +349,13 @@ def radarplot_requires_calculation(df_dict, suffix):
                     claude3_mean,
                     gemini_pro_mean,
                     gpt35turbo_mean,
-                    # gpt35turbo_react_mean,
-                    # llama70b_mean,
+                    gpt35turbo_react_mean,
+                    llama70b_mean,
                     galactica_120b_mean,
                     mixtral_mean,
                     pplx7b_chat_mean,
                     pplx7b_online_mean,
-                    random_baseline_mean,
+                    # random_baseline_mean,
                 ],
                 [
                     "GPT-4",
@@ -363,13 +364,13 @@ def radarplot_requires_calculation(df_dict, suffix):
                     "Claude3",
                     "Gemini-Pro",
                     "GPT-3.5-Turbo",
-                    # "GPT-3.5-Turbo-ReAct",
-                    # "LLAMA-2-70B",
+                    "GPT-3.5-Turbo-ReAct",
+                    "LLAMA-2-70B",
                     "Galactica-120B",
-                    # "MixTRAL-8x7B",
+                    "MixTRAL-8x7B",
                     "PPLX-7B-Chat",
                     "PPLX-7B-Online",
-                    "Random Baseline",
+                    #   "Random Baseline",
                 ],
                 [
                     model_color_map["gpt4"],
@@ -390,6 +391,7 @@ def radarplot_requires_calculation(df_dict, suffix):
             key=lambda x: x[0].sum().item(),
             reverse=True,
         )
+        print(sorted_data)
     else:
         sorted_data = sorted(
             zip(
@@ -445,6 +447,7 @@ def radarplot_requires_calculation(df_dict, suffix):
             key=lambda x: x[0].sum().item(),
             reverse=True,
         )
+        print(sorted_data)
 
     theta = radar_factory(len(claude2_mean), frame="polygon")
 
@@ -453,6 +456,7 @@ def radarplot_requires_calculation(df_dict, suffix):
 
     for data, label, color in sorted_data:
         # Plot the filled area
+
         ax.fill(theta, data, alpha=0.2, label=label, color=color)
 
         # Plot the line
