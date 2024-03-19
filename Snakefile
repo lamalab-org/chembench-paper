@@ -273,3 +273,14 @@ rule performance_confidence_correlation:
         ],
     script:
         "src/scripts/joint_analysis_confidence_performance.py"
+
+
+
+# correlate reading ease with model performance 
+rule reading_ease_correlation:
+    input:
+        ["src/tex/data/model_score_dicts.pkl","src/tex/output/reading_ease.pkl"],
+    output:
+        "src/tex/figures/reading_ease_vs_model_performance.pdf",
+    script:
+        "src/scripts/reading_ease_vs_model_performance.py"
