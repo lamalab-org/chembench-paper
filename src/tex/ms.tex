@@ -28,40 +28,40 @@
 \end{abstract}
 
 \clearpage
-
+\begin{refsection}
 \section{Introduction}
 \Glspl{llm} are \gls{ml} models trained on massive amounts of text to complete sentences. 
-Aggressive scaling of the models has led to a rapid increase in their capabilities,\cite{brown2020language} with the leading models now being able to pass the BAR exam or identify and autonomously buy chemicals when augmented with external tools such as web search and synthesis planners.\cite{openai2024gpt4}
-While some see in them \enquote{sparks of \gls{agi}},\cite{bubeck2023sparks} others consider them as \enquote{stochasitc parrots}---i.e., systems that only regurgitate what they have been trained on.\cite{bender2021dangers}
-In any case, the promise of so-called foundation models (the leading ones being called frontier models) is that they show the ability solve a wide variety of tasks they have not been explicitly trained on.\cite{bommasani2021opportunities, anderljung2023frontier}
-This led to tremendous economic interest and investment in those generative models, with an expected market of more than \$1.3 trillion (almost \$30 billion for drug discovery applications) by 2032.\cite{bloomberg}
+Aggressive scaling of the models has led to a rapid increase in their capabilities,\autocite{brown2020language} with the leading models now being able to pass the BAR exam or identify and autonomously buy chemicals when augmented with external tools such as web search and synthesis planners.\autocite{openai2024gpt4}
+While some see in them \enquote{sparks of \gls{agi}},\autocite{bubeck2023sparks} others consider them as \enquote{stochasitc parrots}---i.e., systems that only regurgitate what they have been trained on.\autocite{bender2021dangers}
+In any case, the promise of so-called foundation models (the leading ones being called frontier models) is that they show the ability solve a wide variety of tasks they have not been explicitly trained on.\autocite{bommasani2021opportunities, anderljung2023frontier}
+This led to tremendous economic interest and investment in those generative models, with an expected market of more than \$1.3 trillion (almost \$30 billion for drug discovery applications) by 2032.\autocite{bloomberg}
 
-Chemists and materials scientists have quickly caught on the mounting attention given to \glspl{llm}, with some voices even suggesting that \enquote{the future of chemistry is language}.\cite{White_2023}
-This statement is motivated by a growing number of reports that use \glspl{llm} to properties of molecules or materials,\cite{jablonka202314, jablonka2024leveraging, xie2024fine, liao2024words, zhang2024chemllm, zhong2024benchmarking} to optimize reactions\cite{ramos2023bayesian, kristiadi2024sober} or generate materials,\cite{rubungo2023llm, flam2023language, gruver2024fine} extract information,\cite{Patiny_2023, Dagdelen_2024, Zheng_2024, lála2023paperqa, caufield2023structured} or to even build \enquote{autonomous} systems that can autonomously perform reactions in the physical world based on commands provided in natural language.\cite{bran2023chemcrow, Boiko_2023, darvish2024organa}
+Chemists and materials scientists have quickly caught on the mounting attention given to \glspl{llm}, with some voices even suggesting that \enquote{the future of chemistry is language}.\autocite{White_2023}
+This statement is motivated by a growing number of reports that use \glspl{llm} to properties of molecules or materials,\autocite{jablonka202314, jablonka2024leveraging, xie2024fine, liao2024words, zhang2024chemllm, zhong2024benchmarking} to optimize reactions\autocite{ramos2023bayesian, kristiadi2024sober} or generate materials,\autocite{rubungo2023llm, flam2023language, gruver2024fine} extract information,\autocite{Patiny_2023, Dagdelen_2024, Zheng_2024, lála2023paperqa, caufield2023structured} or to even build \enquote{autonomous} systems that can autonomously perform reactions in the physical world based on commands provided in natural language.\autocite{bran2023chemcrow, Boiko_2023, darvish2024organa}
 But even more than that, since a lot---if not most---of the information about chemistry is currently stored and communicated in text there is a strong reason to believe that there is a lot of untapped potential in \glspl{llm} for chemistry and materials science.
 For instance, most insights in chemical research does not directly originate from data stored in databases but rather from the scientists and their ability to interpret data. 
 Most of these insights are in form of text in scientific publications. 
 Thus, operating on such text might be our best way of unlocking and \emph{learning} from these insights.
 This might ultimately lead to copilot systems for chemists that can provide answers to questions or even suggest new experiments based on vastly more information than a human could ever read.
-Such a usage mode is especially interesting in the face of recent advanced in autonomous laboratories.\cite{Boiko_2023, bran2023chemcrow, darvish2024organa, granda2018controlling, Angello_2022, coley2019robotic, Burger_2020, seifrid2022autonomous}
-However, the rapid increase in capabilities of chemical \gls{ml} models led (even before the recent interest in \glspl{llm}) to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\cite{gopal2023releasing, ganguli2022red, Urbina_2022, campbell2023censoring, moulange2023towards, urbina2022teachable}
+Such a usage mode is especially interesting in the face of recent advanced in autonomous laboratories.\autocite{Boiko_2023, bran2023chemcrow, darvish2024organa, granda2018controlling, Angello_2022, coley2019robotic, Burger_2020, seifrid2022autonomous}
+However, the rapid increase in capabilities of chemical \gls{ml} models led (even before the recent interest in \glspl{llm}) to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\autocite{gopal2023releasing, ganguli2022red, Urbina_2022, campbell2023censoring, moulange2023towards, urbina2022teachable}
 To some extent, this is not surprising as any technology, that, for instance, can predict the toxicity of molecules (to be used in drug discovery) can also be used to predict the toxicity of molecules (to be used in chemical warfare).
 
 It is important to realize that the user base of such models is not only limited to experts in chemistry and materials science that reflect every output such models produce. 
-For example, many students frequently consolidate those tools---perhaps even to prepare chemical experiments.\cite{Intelligent.com_2023}
+For example, many students frequently consolidate those tools---perhaps even to prepare chemical experiments.\autocite{Intelligent.com_2023}
 This also implies to users from the general public, who might consider using \glspl{llm} to answer questions about the safety of chemicals.
 Thus, for some users, misleading information---especially about safety-related aspects---might lead to harmful outcomes. 
 However, even for experts the chemical understanding and reasoning capabilities are important as they will determine the capabilities and limitations of their models in their work, e.g., in copilot systems for chemists.
 Unfortunately, apart from anecdotal reports there is little evidence on how \glspl{llm} perform compared to experts.
 
 Thus, to better understand what \glspl{llm} can do for chemistry and materials science, and where they might be improved with further developments, evaluation frameworks are needed to allow us to systematically measure progress and mitigate potential harms.
-For the development of \glspl{llm}, evaluation is currently mostly performed via standardized benchmarks suites such as BigBench\cite{srivastava2022beyond} or the LM Eval Harness.\cite{eval-harness}
+For the development of \glspl{llm}, evaluation is currently mostly performed via standardized benchmarks suites such as BigBench\autocite{srivastava2022beyond} or the LM Eval Harness.\autocite{eval-harness}
 The former contains, among 204 tasks (such as linguistic puzzles), only two tasks classified as \enquote{chemistry related} whereas the latter contains no specific chemistry tasks.
-Due to the lack of widely excepted standard benchmarks, the developers of chemical language models\cite{jablonka2024leveraging, guo2023large, ahmad2022chemberta2, Cai_2024, frey2023neural} frequently utilize language-interfaced\cite{dinh2022lift} tabular datasets such as the ones reported in MoleculeNet,\cite{wu2018moleculenet} Therapeutic Data Commons\cite{huang2021therapeutics} or MatBench.\cite{dunn2020benchmarking}
+Due to the lack of widely excepted standard benchmarks, the developers of chemical language models\autocite{jablonka2024leveraging, guo2023large, ahmad2022chemberta2, Cai_2024, frey2023neural} frequently utilize language-interfaced\autocite{dinh2022lift} tabular datasets such as the ones reported in MoleculeNet,\autocite{wu2018moleculenet} Therapeutic Data Commons\autocite{huang2021therapeutics} or MatBench.\autocite{dunn2020benchmarking}
 In these cases, the models are  evaluated on predicting very specific properties of molecules (e.g., solubility, toxicity, or reactivity) or on predicting the outcome of specific chemical reactions.
 This, however, only gives a very limited view of the general chemical capabilities of the models.
 
-While some benchmark based on university entrance exams\cite{Zaki_2024, arora2023llms} or automatic text mining\cite{song2023honeybee, wei2021chemistryqa} have been proposed, none of them have been widely accepted.
+While some benchmark based on university entrance exams\autocite{Zaki_2024, arora2023llms} or automatic text mining\autocite{song2023honeybee, wei2021chemistryqa} have been proposed, none of them have been widely accepted.
 This is likely because they cannot automatically be used with black box (or tool-augmented) systems, do not cover a wide range of topics, or are not carefully validated by experts.
 On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights in how the models compare relative to experts.
 
@@ -106,11 +106,11 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
 
 While many of the existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
 For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions vs. \variable{output/non_mcq_questions.txt} open-ended questions).
-%As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\variable{output/flesch_kincaid_reading_ease.txt}).\cite{kincaid1975derivation}
+%As one might expect, most questions are difficult to read according to the Flesch–Kincaid readability test (\variable{output/flesch_kincaid_reading_ease.txt}).\autocite{kincaid1975derivation}
 
 
 \paragraph{\enquote{Tiny} subset}
-It is important to note that for routine evaluations, a smaller subset of the corpus might be more practical.\cite{polo2024tinybenchmarks}
+It is important to note that for routine evaluations, a smaller subset of the corpus might be more practical.\autocite{polo2024tinybenchmarks}
 For instance,~\textcite{liang2023holistic} report costs of more than 10,000 USD for \gls{api} calls for a single evaluation on the \gls{helm} benchmark on a model. 
 To address this, we also provide a subset (\variable{output/num_tiny_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus (see \Cref{sec:subset-selection} for details on the curation process).
 We also used this subset to seed the app we used for the human baseline study. 
@@ -119,16 +119,16 @@ We also used this subset to seed the app we used for the human baseline study.
 \subsection{Model evaluation}
 
 Because the text used in scientific settings is different from typical natural language, many models have been developed that deal with such text in a special way.
-For instance, Galactica\cite{taylor2022galactica} uses special tokenization or encoding procedures for molecules or equations.
+For instance, Galactica\autocite{taylor2022galactica} uses special tokenization or encoding procedures for molecules or equations.
 To support this, \chembench is designed to encode the semantic meaning of various parts of the question or answer.  
 For instance, molecules represented in \gls{smiles} are encapsulated in \texttt{[START\_SMILES][\textbackslash END\_SMILES]}.
 
 Since many widely utilized systems do only provide access to text completions (and not the raw model outputs), \chembench is designed to operate on text completions.
-This is also important with the growing number of tool-augmented systems that use external tools such as search \glspl{api} or code executors.\cite{schick2024toolformer, karpas2022mrkl, yao2022react}
-In those cases, the \gls{llm} that returns the probabilities for various tokens (that are often used for model evaluations\cite{Fourrier_Habib_Launay_Wolf}) is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
+This is also important with the growing number of tool-augmented systems that use external tools such as search \glspl{api} or code executors.\autocite{schick2024toolformer, karpas2022mrkl, yao2022react}
+In those cases, the \gls{llm} that returns the probabilities for various tokens (that are often used for model evaluations\autocite{Fourrier_Habib_Launay_Wolf}) is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
 The text completions, however, are the final outputs of the system that would also be used in a real-world application (e.g., in a copilot system for chemists).
 
-To understand the current capabilities of \glspl{llm} in the chemical sciences, we evaluated a wide range of leading models\cite{Huggingface} on the chembench corpus, including systems augmented with external tools.
+To understand the current capabilities of \glspl{llm} in the chemical sciences, we evaluated a wide range of leading models\autocite{Huggingface} on the chembench corpus, including systems augmented with external tools.
 An overview of the results of this evaluation is shown in \Cref{fig:human_vs_models_bar}. 
 In this figure, we show the percentage of questions that the models answered completely correctly.
 We use horizontal bars to indicate the performance of various models and highlight statistics (e.g., the average) of the human performance with vertical lines.
@@ -150,7 +150,7 @@ Many other models also outperform the average human performance. It is, however,
 
 Given the large interest in tool-augmented systems, the bad performance of these systems in our benchmark is striking. 
 Their lack of performance, however, is partially due to the fact that we limited the system to a maximum of ten \gls{llm} calls.
-With the default tool augmented setup (using the so-called ReAct method\cite{yao2023react}), however, this often did not allow the system to find the correct answer (e.g., because it repeatedly tried to search for the answer on the web).
+With the default tool augmented setup (using the so-called ReAct method\autocite{yao2023react}), however, this often did not allow the system to find the correct answer (e.g., because it repeatedly tried to search for the answer on the web).
 This observation highlights the importance of transparency not only in predictive performance but also computational cost (e.g., in terms of \gls{api} calls) for tool-augmented systems.
 
 %% Note also while the performance of the systems is better than what humans do, it is still far from perfect 
@@ -189,7 +189,7 @@ For this, we manually annotated the questions that require calculations and perf
 % Estimate of difficulty
 One might wonder whether the models are capable of estimating if they will be able to answer a question correctly. 
 If they were able to do so, incorrect answers would be less problematic as one would be able to detect when an answer is incorrect.
-To investigate this, we prompted\cite{xiong2023llms} some of the top-performing models to estimate the on an ordinal scale their confidence in their ability to answer the question correctly.
+To investigate this, we prompted\autocite{xiong2023llms} some of the top-performing models to estimate the on an ordinal scale their confidence in their ability to answer the question correctly.
 
 \begin{figure}
     \centering
@@ -201,7 +201,7 @@ To investigate this, we prompted\cite{xiong2023llms} some of the top-performing 
 \end{figure}
 
 In \Cref{fig:estimated_difficulty} we show that there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
-For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the models' outputs.\cite{Li_2023}
+For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the models' outputs.\autocite{Li_2023}
 For example, for the questions about the safety profile of compounds, GPT-4 reported an average confidence of XX (on a scale of 1--5) for the XX (out of XX) questions it answered in correctly (XX for the XX questions it answered correctly).
 
 \section{Discussion and Conclusions}
@@ -230,7 +230,7 @@ For our dataset we curated questions from existing exams, but also programmatica
 Questions were added via Pull Requests on our GitHub repository and only merged into the main collection after passing manual review.
 
 To ensure that the questions do not enter a training dataset we use the canary string of the Big Bench project.
-This requires that \Gls{llm} developers filter their training dataset for this canary string.\cite{openai2024gpt4, srivastava2022beyond}
+This requires that \Gls{llm} developers filter their training dataset for this canary string.\autocite{openai2024gpt4, srivastava2022beyond}
 
 \begin{figure}
     \includegraphics[width = \textwidth]{figures/chem-bench.pdf}
@@ -277,7 +277,7 @@ In addition, we included questions based on the general chemistry courses of the
 \variable{output/question_count_per_dir/json_file_counts_oup.txt} questions are based on questions from various textbooks covering biomolecular science, drug synthesis, molecular structure, organic chemistry, and X-ray crystallography.
 
 \subparagraph{Chemical safety} 
-This category comprises a total of \variable{output/question_count_per_dir/json_file_counts_safety.txt} questions, including semi-programmatically created questions covering areas such as GHS classification, hazard statements, \gls{dai}, and pictograms from the PubChem database \cite{pubchem} (see below for details). 
+This category comprises a total of \variable{output/question_count_per_dir/json_file_counts_safety.txt} questions, including semi-programmatically created questions covering areas such as GHS classification, hazard statements, \gls{dai}, and pictograms from the PubChem database \autocite{pubchem} (see below for details). 
 Additionally, it explores crucial topics like materials' compatibility (\variable{output/question_count_per_dir/json_file_counts_materials_compatibility.txt} questions) and chemical compatibility (\variable{output/question_count_per_dir/json_file_counts_chem_chem_comp.txt} questions), essential for understanding the hazardous impact of mixing certain materials and chemicals. 
 Furthermore, it includes inquiries about the Federal/State Working Group on Chemical Safety (BLAC), consisting of \variable{output/question_count_per_dir/json_file_counts_blac_gfk.txt} questions. 
 These questions are based on the question bank used for the expertise examination (\enquote{Sachkundeprüfung}) according to §11 of the Chemical Prohibition Ordinance (\enquote{Chemikalien-Verbotsverordnung}).
@@ -295,28 +295,28 @@ Questions are based on images shared via the Twitter account \url{https://twitte
 
 \subparagraph{Total electron count of molecules}
 \variable{output/question_count_per_dir/json_file_counts_electron_counts.txt} questions pertaining to the total electron count of molecules are based on data from the website \url{https://www.cheminfo.org/}. 
-These inquiries involve determining the electron count of atoms in various chemical contexts. The calculations for these tasks are facilitated using the RDKit package \cite{rdkit}.
+These inquiries involve determining the electron count of atoms in various chemical contexts. The calculations for these tasks are facilitated using the RDKit package \autocite{rdkit}.
 
 \subparagraph{Number of isomers}
-We used MAYGEN\cite{Yirik_2021} to compute the number of isomers for a set of randomly sampled \gls{smiles} from the ZINC dataset.\cite{Irwin_2012}
+We used MAYGEN\autocite{Yirik_2021} to compute the number of isomers for a set of randomly sampled \gls{smiles} from the ZINC dataset.\autocite{Irwin_2012}
 To obtain the answers for false options we sampled from the set of number of isomers. In total, we generated \variable{output/question_count_per_dir/json_file_counts_number_of_isomers.txt} questions.
 
 \subparagraph{Point group for molecules}
 \variable{output/question_count_per_dir/json_file_counts_point_group.txt} questions involve predicting the point group for molecules. Our ChemCaption tool (\url{https://github.com/lamalab-org/chem-caption}) is utilized for data generation. 
-Given a molecule, it uses spglib\cite{spglib} to identify the point group. 
+Given a molecule, it uses spglib\autocite{spglib} to identify the point group. 
 Assigned point groups were manually verified to only include well-defined cases.
 
 \subparagraph{SMILES-IUPAC}
-We scraped pairs of \gls{smiles} and \gls{iupac} names from the PubChem database \cite{pubchem} and then framed \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} questions involve converting \gls{smiles} notation to \gls{iupac} nomenclature.
+We scraped pairs of \gls{smiles} and \gls{iupac} names from the PubChem database \autocite{pubchem} and then framed \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} questions involve converting \gls{smiles} notation to \gls{iupac} nomenclature.
 \variable{output/question_count_per_dir/json_file_counts_name_to_smiles.txt} questions involve the reverse task, i.e., converting \gls{iupac} nomenclature to \gls{smiles} notation.
 
 
 \subparagraph{Number of NMR peaks} 
-To generate the \variable{output/question_count_per_dir/json_file_counts_name_to_smiles.txt}  tasks about the number of \gls{nmr} peaks, we randomly sampled \gls{smiles} from the ZINC database\cite{Irwin_2012} and then used OpenChemLib\cite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
+To generate the \variable{output/question_count_per_dir/json_file_counts_name_to_smiles.txt}  tasks about the number of \gls{nmr} peaks, we randomly sampled \gls{smiles} from the ZINC database\autocite{Irwin_2012} and then used OpenChemLib\autocite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
 We then sampled from the set of number of peaks (excluding the correct answer) to obtain the false answer options.
 
 \subparagraph{GHS, hazard statements and DAI}
-The \gls{ghs} classification, hazard statements and \gls{dai} data have been extracted from PubChem.\cite{pubchem}
+The \gls{ghs} classification, hazard statements and \gls{dai} data have been extracted from PubChem.\autocite{pubchem}
 The former two have been mined via the PubChem \gls{api}, while the latter has been manually compiled. 
 In total, we generated \variable{output/question_count_per_dir/json_file_counts_pictograms.txt} questions about the \gls{ghs} classification of chemicals, \variable{output/question_count_per_dir/json_file_counts_h_statements.txt} questions about definition of hazard statements, and \variable{output/question_count_per_dir/json_file_counts_dai.txt} questions about \glspl{dai}.
 The \glspl{dai} have been curated to contain only records approved by the \gls{who}.
@@ -330,7 +330,7 @@ The chemicals in this class of questions belong to one of the three classes: pes
 To maintain the consistency with the training, we employ distinct prompt templates in general tailored for completion models and instruction-tuned models. 
 We pose instruction or impose constraints on the models within these templates to receive response in a specific format so that a robust, fair and consistent parsing can be performed as explained in \Cref{sec:parsing}.
 Certain models are trained with special annotations and LaTeX syntax for scientific notations, chemical reactions, or symbols embedded within the text. 
-For example, all the SMILES representations are encapsulated within \texttt{[START\_SMILES][\text backslash END\_SMILES]} in Galactica\cite{taylor2022galactica}.
+For example, all the SMILES representations are encapsulated within \texttt{[START\_SMILES][\text backslash END\_SMILES]} in Galactica\autocite{taylor2022galactica}.
 Our prompting strategy consistently adheres to  these details in a model-specific manner by post-processing \LaTeX syntax, chemical symbols, chemical equations and physical units (by either adding or removing wrappers).
 
 
@@ -346,18 +346,18 @@ Manual verification indicates that this \gls{llm}-based parsing is not a relevan
 
 \paragraph{Models}
 \subparagraph{Completion models}
-We used \texttt{Galactica-120b}\cite{taylor2022galactica} with the default settings.
+We used \texttt{Galactica-120b}\autocite{taylor2022galactica} with the default settings.
 
 
-\subparagraph{Instruction-tuned models} In addition, we used \texttt{Claude 2}, \texttt{Claude3 (Opus)},\cite{anthropicClaudeModelFamily2024} \texttt{GPT-4},\cite{openai2024gpt4} \texttt{GPT-3.5-turbo},\cite{brown2020language}
-\texttt{Gemini Pro},\cite{gemini}
-\texttt{Mixtral-8x7b}\cite{jiang2024mixtral}
-\texttt{Llama2-70b},\cite{touvron2023llama}
+\subparagraph{Instruction-tuned models} In addition, we used \texttt{Claude 2}, \texttt{Claude3 (Opus)},\autocite{anthropicClaudeModelFamily2024} \texttt{GPT-4},\autocite{openai2024gpt4} \texttt{GPT-3.5-turbo},\autocite{brown2020language}
+\texttt{Gemini Pro},\autocite{gemini}
+\texttt{Mixtral-8x7b}\autocite{jiang2024mixtral}
+\texttt{Llama2-70b},\autocite{touvron2023llama}
 \texttt{pplx-7b-chat}
 
 \subparagraph{Tool augmented models}
 In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
-For this we, on the one hand, investigated the \texttt{online} model of Perplexity.AI and, on the other hand, \texttt{gpt-3.5-turbo} as well as \texttt{claude-2}, with ReAct-style tool augmentation.\cite{yao2023react}
+For this we, on the one hand, investigated the \texttt{online} model of Perplexity.AI and, on the other hand, \texttt{gpt-3.5-turbo} as well as \texttt{claude-2}, with ReAct-style tool augmentation.\autocite{yao2023react}
 The latter two models had access to WolframAlpha, the ArXiv \gls{api}, a Python interpreter, as well as web search (using DuckDuckGo).
 We implemented the system using Langchain with the default prompts and constrained the system to a maximum of ten \gls{llm} calls.
 
@@ -367,10 +367,10 @@ To estimate the models' confidence we prompted them with the question (and answe
 
 \subsection{Human baseline}
 
-\paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\cite{nextjs} app router framework.
+\paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\autocite{nextjs} app router framework.
 This application handles serving the user interface as well as exposes various \gls{rest} \glspl{api} for relevant operations.
-We utilize a MySQL\cite{mysql} database and Prisma \gls{orm}\cite{prisma} for efficient database management.
-The web application is styled with Tailwind CSS\cite{tailwindcss} using the shadcn/ui component library and uses NextAuth\cite{nextauth} for easy and secure user authentication and postMark for sending Emails.
+We utilize a MySQL\autocite{mysql} database and Prisma \gls{orm}\autocite{prisma} for efficient database management.
+The web application is styled with Tailwind CSS\autocite{tailwindcss} using the shadcn/ui component library and uses NextAuth\autocite{nextauth} for easy and secure user authentication and postMark for sending Emails.
 The application is hosted on the Vercel web hosting platform.
 
 \paragraph{Question selection} \label{sec:subset-selection}
@@ -409,13 +409,13 @@ This analysis might lead to potential biases, most likely in favor of humans as 
 \subsection{Classification of questions into topics}\label{sec:meth-topic} When curating our dataset we systematically recorded keywords and sources.
 To allow for analysis of the model performance as a function of the topic, we leverage this information together with sequence classification models.
 For questions which can easily be assigned to a topic based on the source (e.g., number of NMR peaks, chemical compatibility, toxicology exam questions) we use this information to make the assignment.
-For the remaining ones, e.g., from chemistry olympiad questions, we use zero-short sequence classification\cite{zeroshotsequence} using the BART model\cite{bart, FacebookBART}, which our preliminary analysis found to be more robust than topic modeling based on embeddings from OpenAI's \texttt{ada} model or Cohere's \texttt{Cohembed-english-v3.0} model.
+For the remaining ones, e.g., from chemistry olympiad questions, we use zero-short sequence classification\autocite{zeroshotsequence} using the BART model\autocite{bart, FacebookBART}, which our preliminary analysis found to be more robust than topic modeling based on embeddings from OpenAI's \texttt{ada} model or Cohere's \texttt{Cohembed-english-v3.0} model.
 
 
 \section*{Data and code availability}
 The code and data for \chembench is available at \url{https://github.com/lamalab-org/chem-bench} and archived at \url{XXX}.
 The code for the app for our human baseline study is available at \url{https://github.com/lamalab-org/chem-bench-app}. 
-To ensure reproducibility, this manuscript was generated using the \href{https://show-your.work/en/latest/}{\\showyourwork} framework.\cite{Luger2021}
+To ensure reproducibility, this manuscript was generated using the \href{https://show-your.work/en/latest/}{\\showyourwork} framework.\autocite{Luger2021}
 The code to rebuild the paper (including code for all figures and numbers next to which there is a GitHub icon) can be found at \url{\GitHubURL}. 
 To facilitate reproduction, some intermediate results of the analysis are cached at \url{http://dx.doi.org/10.5072/zenodo.34706}.
 
@@ -435,14 +435,16 @@ K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A
 \footnotesize
 \insertcredits
 \normalsize
-
-
 \printbibliography
+\end{refsection}
+
 
 \clearpage
+\begin{refsection}
 \appendix
 \section{Appendix}
 \input{appendix.tex}
 
-\printbibliography
+\printbibliography[heading=subbibintoc]
+\end{refsection}
 \end{document}
