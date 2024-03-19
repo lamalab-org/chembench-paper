@@ -54,6 +54,23 @@ subset_clean_names = [
     "polymer chemistry",
 ]
 
+relevant_models = [
+    "claude2",
+    "claude2_react",
+    "claude2_zero_t" "claude3",
+    "galactica_120b"
+    "gemini_pro"
+    "gemini_pro_zero_t"
+    "gpt35turbo"
+    "gpt35turbo_react"
+    "gpt4"
+    "lama70b"
+    "mixtral"
+    "pplx7b_chat"
+    "pplx7b_online"
+    "random_baseline",
+]
+
 rename_dict = dict(zip(subsets, subset_clean_names))
 
 
@@ -122,6 +139,7 @@ if __name__ == "__main__":
         human_scores["raw_scores"], outdir_humans
     )
 
+    model_scores = model_scores[model_scores["model"].isin(relevant_models)]
     all_scores = pd.DataFrame(model_scores + human_scores)
 
     all_scores["subset"] = all_scores["subset"].map(rename_dict)
