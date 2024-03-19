@@ -53,7 +53,7 @@ def join_confidence_and_performance(performance_dict):
     )
     gpt["model"] = "GPT-4"
 
-    gpt = pd.merge(gpt, performance_dict["GPT-4"], right_on="name", left_on="name")
+    gpt = pd.merge(gpt, performance_dict["gpt4"], right_on="name", left_on="name")
 
     claude_2 = pd.read_csv(
         os.path.join(
@@ -68,26 +68,26 @@ def join_confidence_and_performance(performance_dict):
     claude_2["model"] = "Claude 2"
 
     claude_2 = pd.merge(
-        claude_2, performance_dict["Claude 2"], right_on="name", left_on="name"
+        claude_2, performance_dict["claude2"], right_on="name", left_on="name"
     )
 
-    # claude_3 = pd.read_csv(
-    #     os.path.join(
-    #         chembench,
-    #         "reports",
-    #         "confidence_estimates",
-    #         "confidence_estimates",
-    #         "results_claude3.csv",
-    #     )
-    # )
+    claude_3 = pd.read_csv(
+        os.path.join(
+            chembench,
+            "reports",
+            "confidence_estimates",
+            "confidence_estimates",
+            "results_claude3.csv",
+        )
+    )
 
-    # claude_3["model"] = "Claude 3"
+    claude_3["model"] = "Claude 3"
 
-    # claude_3 = pd.merge(
-    #     claude_3, performance_dict["Claude 3"], right_on="name", left_on="name"
-    # )
+    claude_3 = pd.merge(
+        claude_3, performance_dict["claude3"], right_on="name", left_on="name"
+    )
 
-    return {"gpt4": gpt, "claude2": claude_2}  # "claude3": claude_3}
+    return {"gpt4": gpt, "claude2": claude_2, "claude3": claude_3}
 
 
 def make_plot_of_confidence_vs_performance(merged_dicts, suffix: str = ""):
@@ -96,10 +96,10 @@ def make_plot_of_confidence_vs_performance(merged_dicts, suffix: str = ""):
     )
 
     for i, (model, df) in enumerate(merged_dicts.items()):
-        sns.swarmplot(
+        sns.stripplot(
             data=df,
             x="estimate",
-            y="all_correct",
+            y="all_correct_",
             ax=ax[i],
             color=model_color_map[model],
         )
