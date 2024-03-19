@@ -17,3 +17,9 @@
 
 An open source scientific article created using the [showyourwork](https://github.com/showyourwork/showyourwork) workflow.
 # chembench-paper
+
+Build the article using the following command:
+
+```bash
+showyourwork build --conda-frontend=mamba --rerun-incomplete
+```

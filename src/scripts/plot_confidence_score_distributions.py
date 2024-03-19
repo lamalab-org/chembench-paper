@@ -69,14 +69,14 @@ def plot():
         # ensure that the counts are sorted by the index
         counts = counts.sort_index()
 
-        ax.hlines(
-            counts.index,
-            xmin=0,
-            xmax=counts,
-            linewidth=5,
-            alpha=0.5,
-            # color=model_color_map[model],
-        )
+        # ax.hlines(
+        #     counts.index,
+        #     xmin=0,
+        #     xmax=counts,
+        #     linewidth=5,
+        #     alpha=0.5,
+        #     # color=model_color_map[model],
+        # )
 
         ax.plot(
             counts,

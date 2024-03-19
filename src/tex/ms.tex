@@ -194,8 +194,8 @@ To investigate this, we prompted\cite{xiong2023llms} some of the top-performing 
 \begin{figure}
     \centering
     \includegraphics{figures/confidence_vs_performance_overall.pdf}
-    \caption{\textbf{Relationship between confidence of the model in the answer and correctness.} For this analysis, we used verbalized confidence estimates from the model. To obtain those estimates, we prompted the models to return a confidence score on an ordinal scale. We then plot the correctness of the answers (which can be either completely correct or completely incorrect) against the confidence score.
-        The stripplots show the individual data points, the lines show the mean.}
+    \caption{\textbf{Relationship between confidence of the model in the answer and correctness.} For this analysis, we used verbalized confidence estimates from the model. To obtain those estimates, we prompted the models to return a confidence score on an ordinal scale. We then plot the correctness of the answers [which can be either completely correct (1) or completely incorrect (0)] against the confidence score.
+        The stripplots show the individual data points, the lines show the mean and the errorbars show the standard error of the mean. The figure shows that the reliability of the confidence estimates varies widely across models. While the ones for GPT-4 and Claude-2 are not particularly reliable, the ones for Claude-3 follow the expected trend.}
     \label{fig:confidence_vs_performance}
     \script{joint_analysis_confidence_performance.py}
 \end{figure}

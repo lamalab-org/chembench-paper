@@ -5,6 +5,7 @@ from utils import (
     TWO_COL_GOLDEN_RATIO_HEIGHT_INCH,
 )
 from paths import data, figures, output, scripts
+from scipy.stats import sem
 import pickle
 import os
 import pandas as pd
@@ -112,19 +113,28 @@ def make_plot_of_confidence_vs_performance(merged_dicts, suffix: str = ""):
             y="all_correct_",
             ax=ax[i],
             color=model_color_map[model],
-            alpha=0.1,
+            alpha=0.2,
             jitter=0.3,
             s=0.5,
         )
         ax[i].set_title(rename_dict[model])
         ax[i].set_ylabel("")
+
         # also add the average performance for each estimate as a line plot
         average_performance = df.groupby("estimate")["all_correct_"].mean()
+        stdev = df.groupby("estimate")["all_correct_"].apply(sem)
         ax[i].plot(
             average_performance.index - 1,
             average_performance,
             color=model_color_map[model],
             marker="o",
+        )
+        ax[i].errorbar(
+            average_performance.index - 1,
+            average_performance,
+            yerr=stdev,
+            fmt="none",
+            color=model_color_map[model],
         )
 
         range_frame(ax[i], np.array([0, 4]), np.array([0, 1]))

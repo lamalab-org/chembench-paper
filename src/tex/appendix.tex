@@ -32,10 +32,14 @@ This also implies that future baselines can be built on top of our infrastructur
     \includegraphics{figures/flesch_kincaid_reading_ease.pdf}
     \caption{\textbf{Distribution of Flesch-Kincaid reading ease scores of the questions.} The Flesch-Kincaid reading ease score\cite{flesch1948new} is a measure of how easy a text is to read. It is calculated based on the average number of syllables per word and the average number of words per sentence. The higher the score, the easier the text is to read. The distribution of the scores of the questions is shown in the histogram. }
     \label{fig:flesch_kincaid_reading_ease}
+    \script{wordcloud.py}
 \end{figure}
 
 \begin{figure}
+    \centering
     \includegraphics{figures/question_count_barplot_mcq_vs_general.pdf}
+    \caption{\textbf{Number of multiple choice questions vs.\ open-ended questions per topic.} The bar plot shows the number of multiple choice questions and general questions per topic.}
+    \script{plot_statistics.py}
 \end{figure}
 
 % \subsection{Parsing verification}\label{sec:manually-verified-parsing}
@@ -109,4 +113,4 @@ Since it is important to understand if models can provide an indication of wheth
     \script{plot_confidence_score_distributions.py}
 \end{figure}
 
-\printglossary[type=\acronymtype]
+\printnoidxglossary[type=\acronymtype]  % https://github.com/tectonic-typesetting/tectonic/issues/704
