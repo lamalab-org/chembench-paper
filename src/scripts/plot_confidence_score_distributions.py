@@ -52,8 +52,6 @@ def plot():
     claude_3["model"] = "Claude 3"
     all_results = pd.concat([gpt, claude_2, claude_3]).reset_index(drop=True)
 
-    all_results = pd.concat([gpt, claude_2]).reset_index(drop=True)
-
     fig, ax = plt.subplots(
         figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )
@@ -70,19 +68,21 @@ def plot():
         counts.append(model_counts)
 
     # make the barplots
+    max_count = max([c.max() for c in counts])
     for i, model in enumerate(all_results["model"].unique()):
         model_results = all_results[all_results["model"] == model]
         model_counts = model_results["estimate"].value_counts()
         model_counts = model_counts.sort_index()
         ax.bar(
-            np.arange(1, 6) + 0.2 * (i - 1),
+            model_counts.index.values + i * 0.2,
             model_counts,
             width=0.2,
             label=model,
-            # color=model_color_map[
+            #   color=model_color_map[model],
         )
 
-    # range_frame(ax, np.array(counts), np.array([0.5, 5.5]))
+    ax.legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.2))
+    range_frame(ax, np.array([0, max(max_count)]), np.array([0, 5]))
 
     ax.set_xlabel("Number of Questions")
     ax.set_ylabel("confidence estimate")
