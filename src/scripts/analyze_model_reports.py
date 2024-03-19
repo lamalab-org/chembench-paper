@@ -142,10 +142,10 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                         llama70b_mean,
                         galactica_120b_mean,
                         mixtral_mean,
-                        pplx7b_chat_mean,
-                        pplx7b_online_mean,
+                        # pplx7b_chat_mean,
+                        # pplx7b_online_mean,
                         # random_baseline_mean,
-                        # human_dicts,
+                        human_dicts,
                     ],
                     [
                         "GPT-4",
@@ -158,10 +158,10 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                         "LLAMA-2-70B",
                         "Galactica-120B",
                         "MixTRAL-8x7B",
-                        "PPLX-7B-Chat",
-                        "PPLX-7B-Online",
+                        # "PPLX-7B-Chat",
+                        # "PPLX-7B-Online",
                         #   "Random Baseline",
-                        #  "Average Human",
+                        "Average Human",
                     ],
                     [
                         model_color_map["gpt4"],
@@ -174,10 +174,10 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                         model_color_map["llama70b"],
                         model_color_map["galactica_120b"],
                         model_color_map["mixtral"],
-                        model_color_map["pplx7b_chat"],
-                        model_color_map["pplx7b_online"],
+                        # model_color_map["pplx7b_chat"],
+                        # model_color_map["pplx7b_online"],
                         #        model_color_map["random_baseline"],
-                        #       model_color_map["human"],
+                        model_color_map["human"],
                     ],
                 )
             ),
@@ -208,7 +208,7 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
     ax.set_yticks([])
 
     # Improve legend placement
-    ax.legend(loc=(-0.1, 1.2), ncols=4)
+    ax.legend(loc=(-0.1, 1.2), ncols=3)
 
     fig.tight_layout()
 
