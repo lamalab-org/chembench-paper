@@ -117,6 +117,7 @@ rule wordcloud:
             "src/tex/figures/wordcloud.pdf",
             "src/tex/figures/flesch_kincaid_reading_ease.pdf",
             "src/tex/output/flesch_kincaid_reading_ease.txt",
+            "src/tex/output/reading_ease.pkl"
         ],
     script:
         "src/scripts/wordcloud.py"

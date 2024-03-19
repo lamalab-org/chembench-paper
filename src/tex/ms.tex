@@ -196,8 +196,8 @@ To investigate this, we prompted\autocite{xiong2023llms} some of the top-perform
 
 In \Cref{fig:confidence_vs_performance} we show that for some models there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
 For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the models' outputs.\autocite{Li_2023}
-For example, for the questions about the safety profile of compounds, GPT-4 reported an average confidence of \variable{output/gpt4_is_pictograms_average_confidence_correct_overall.txt} (on a scale of 1--5) for the \variable{output/gpt4_is_pictograms_num_correct_overall.txt} questions it answered in correctly and \variable{output/gpt4_is_pictograms_average_confidence_incorrect_overall.txt} for the \variable{output/gpt4_is_pictograms_num_incorrect_overall.txt} questions it answered incorrectly.
-While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading for the questions about \gls{ghs} pictograms with an average score of \variable{output/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
+For example, for the questions about the safety profile of compounds, GPT-4 reported an average confidence of \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_correct_overall.txt} (on a scale of 1--5) for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_correct_overall.txt} questions it answered in correctly and \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_incorrect_overall.txt} for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_incorrect_overall.txt} questions it answered incorrectly.
+While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading for the questions about \gls{ghs} pictograms with an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
 
 \section{Discussion and Conclusions}
 Our findings also lay the groundwork for discussions for the chemical education in the future. 
@@ -336,7 +336,7 @@ Our parsing workflow is, by default, multistep and primarily based on regular ex
 In the case of instruction-tuned models we first attempt to identify the \texttt{[ANSWER][\textbackslash ANSWER]} environment we prompt the model to report the answer in.
 In the case of completion models, this step is skipped. From there, we attempt to extract the relevant enumeration letters (for multiple-choice questions) or numbers.
 In the case of numbers, our regular expression was engineered to be able to deal with various forms of scientific notation.
-As initial tests indicated that models sometimes return integers in the form of words, e.g. \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion.
+As initial tests indicated that models sometimes return integers in the form of words, e.g. \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion using regular expressions.
 In case these hard-coded parsing steps fail, we fall back to using a \gls{llm}, e.g. Claude-2, to parse the completion.
 Manual verification indicates that this \gls{llm}-based parsing is not a relevant error source and has been performed correctly in all cases we checked (randomly sampled 4 questions per topic).
 

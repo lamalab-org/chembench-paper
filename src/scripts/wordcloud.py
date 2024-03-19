@@ -77,6 +77,12 @@ def plot_reading_ease(df):
             + "\endinput"
         )
 
+    reading_ease_frame = pd.DataFrame(
+        {"flesch_kincaid_reading_ease": flesch_kincaid_reading_ease, "name": df["name"]}
+    )
+
+    reading_ease_frame.to_pickle(output / "reading_ease.pkl")
+
 
 if __name__ == "__main__":
     import pandas as pd

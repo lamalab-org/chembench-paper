@@ -6,6 +6,7 @@ from utils import (
     obtain_chembench_repo,
     ONE_COL_WIDTH_INCH,
     ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
+    TWO_COL_WIDTH_INCH,
 )
 from plotutils import range_frame, model_color_map
 import os
@@ -53,7 +54,7 @@ def plot():
     all_results = pd.concat([gpt, claude_2, claude_3]).reset_index(drop=True)
 
     fig, ax = plt.subplots(
-        figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
+        figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )
 
     # make barplots, the color of the bars is determined by the model
@@ -81,7 +82,7 @@ def plot():
             #   color=model_color_map[model],
         )
 
-    ax.legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.2))
+    ax.legend(ncol=1, bbox_to_anchor=(1.1, 1.2))
     range_frame(ax, np.array([0, 5]), np.array([0, max_count]))
 
     ax.set_xlabel("Number of Questions")
