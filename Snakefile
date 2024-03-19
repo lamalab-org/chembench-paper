@@ -268,7 +268,7 @@ rule performance_confidence_correlation:
         [
             "src/tex/figures/confidence_vs_performance_overall.pdf",
             "src/tex/figures/confidence_vs_performance_human_aligned.pdf",
-            directory("src/text/output/model_confidence_performance"),
+            directory("src/tex/output/model_confidence_performance"),
         ],
     script:
         "src/scripts/joint_analysis_confidence_performance.py"

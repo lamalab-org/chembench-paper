@@ -98,7 +98,7 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
 
 \begin{figure}
     \centering
-    \includegraphics{figures/question_diversity.pdf}
+    \includegraphics[width=\textwidth]{figures/question_diversity.pdf}
     \caption{\textbf{Principal component projection of embeddings of questions in the \chembench corpus.} To obtain this figure, we embedded question and answers using the BART model (using other embeddings, such as of OpenAI's ada model leads to qualitatively similar results). We then project the embeddings into a two-dimensional space using \gls{pca}. We color the points based on a classification into topics.}
     \label{fig:question_diversity}
     \script{plot_question_diversity.py}
@@ -194,7 +194,8 @@ To investigate this, we prompted\cite{xiong2023llms} some of the top-performing 
 \begin{figure}
     \centering
     \includegraphics{figures/confidence_vs_performance_overall.pdf}
-    \caption{\textbf{Relationship between confidence of the model in the answer and correctness.}}
+    \caption{\textbf{Relationship between confidence of the model in the answer and correctness.} For this analysis, we used verbalized confidence estimates from the model. To obtain those estimates, we prompted the models to return a confidence score on an ordinal scale. We then plot the correctness of the answers (which can be either completely correct or completely incorrect) against the confidence score.
+        The stripplots show the individual data points, the lines show the mean.}
     \label{fig:confidence_vs_performance}
     \script{joint_analysis_confidence_performance.py}
 \end{figure}
@@ -414,8 +415,8 @@ For the remaining ones, e.g., from chemistry olympiad questions, we use zero-sho
 \section*{Data and code availability}
 The code and data for \chembench is available at \url{https://github.com/lamalab-org/chem-bench} and archived at \url{XXX}.
 The code for the app for our human baseline study is available at \url{https://github.com/lamalab-org/chem-bench-app}. 
-To ensure reproducibility, this manuscript was generated using the \href{https://show-your.work/en/latest/}{showyourwork!} framework.\cite{Luger2021}
-The code to rebuild the paper (including code for all figures and numbers next to which there is a GitHub icon) can be found at \url{https://github.com/lamalab-org/chembench-paper}. 
+To ensure reproducibility, this manuscript was generated using the \href{https://show-your.work/en/latest/}{\\showyourwork} framework.\cite{Luger2021}
+The code to rebuild the paper (including code for all figures and numbers next to which there is a GitHub icon) can be found at \url{\GitHubURL}. 
 To facilitate reproduction, some intermediate results of the analysis are cached at \url{http://dx.doi.org/10.5072/zenodo.34706}.
 
 \section*{Acknowledgements}

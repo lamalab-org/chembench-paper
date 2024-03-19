@@ -4,7 +4,7 @@ from utils import (
     ONE_COL_WIDTH_INCH,
     TWO_COL_GOLDEN_RATIO_HEIGHT_INCH,
 )
-from paths import data, figures, output
+from paths import data, figures, output, scripts
 import pickle
 import os
 import pandas as pd
@@ -21,6 +21,10 @@ from loguru import logger
 outpath = output / "model_confidence_performance"
 os.makedirs(outpath, exist_ok=True)
 
+plt.style.use(scripts / "lamalab.mplstyle")
+
+
+rename_dict = {"gpt4": "GPT-4", "claude2": "Claude 2", "claude3": "Claude 3"}
 subsets = [
     "is_point_group",
     "is_number_of_isomers",
@@ -93,19 +97,37 @@ def join_confidence_and_performance(performance_dict):
 
 def make_plot_of_confidence_vs_performance(merged_dicts, suffix: str = ""):
     fig, ax = plt.subplots(
-        3, 1, figsize=(ONE_COL_WIDTH_INCH, TWO_COL_GOLDEN_RATIO_HEIGHT_INCH)
+        3,
+        1,
+        figsize=(ONE_COL_WIDTH_INCH, TWO_COL_GOLDEN_RATIO_HEIGHT_INCH),
+        sharex=True,
     )
 
     for i, (model, df) in enumerate(merged_dicts.items()):
+        df = df[df["estimate"] != 1.5]  # one outlier in claude 2
+        df["all_correct_"] = df["all_correct_"].astype(bool)
         sns.stripplot(
             data=df,
             x="estimate",
             y="all_correct_",
             ax=ax[i],
             color=model_color_map[model],
+            alpha=0.1,
+            jitter=0.3,
+            s=0.5,
+        )
+        ax[i].set_title(rename_dict[model])
+        ax[i].set_ylabel("")
+        # also add the average performance for each estimate as a line plot
+        average_performance = df.groupby("estimate")["all_correct_"].mean()
+        ax[i].plot(
+            average_performance.index - 1,
+            average_performance,
+            color=model_color_map[model],
+            marker="o",
         )
 
-    range_frame(ax[0], np.array([0.5, 5.5]), np.array([0, 1]))
+        range_frame(ax[i], np.array([0, 4]), np.array([0, 1]))
 
     # set shared y axis label
     fig.text(0.01, 0.5, "completely correct", va="center", rotation="vertical")
