@@ -121,10 +121,10 @@ def make_subset_analysis(merged_dict, subset, suffix: str = ""):
     for model, df in merged_dict.items():
         relevant_model_performance = df[df[subset]]
         correct = relevant_model_performance[
-            relevant_model_performance["all_correct"].astype(bool)
+            relevant_model_performance["all_correct_"].astype(bool)
         ]
         incorrect = relevant_model_performance[
-            ~relevant_model_performance["all_correct"].astype(bool)
+            ~relevant_model_performance["all_correct_"].astype(bool)
         ]
         num_correct = len(correct)
         num_incorrect = len(incorrect)
