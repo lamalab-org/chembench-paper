@@ -160,7 +160,13 @@ To obtain a more detailed understanding of the performance of the models, we als
 For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and classified the questions into these topics based and hand-crafted rules as well as classifier models.
 We then computed the percentage of questions that the models, or humans, answered completely correctly for each topic.
 
-
+\begin{figure}
+    \centering
+    \includegraphics{figures/all_questions_models_completely_correct_radar_human.pdf}
+    \caption{\textbf{Performance of the models and humans on the different topics of the \chembench corpus.} The radar plot shows the performance of the models and humans on the different topics of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correctly by the models.}
+    \label{fig:all_questions_models_completely_correct_radar_human}
+    \script{analyze_model_reports.py}
+\end{figure}
 
 In this spider chart, the worst score for every dimension is zero (no question answered completely correctly) and the best score is one (all questions answered correctly). 
 Thus, a larger colored area indicates a better performance. 
@@ -174,6 +180,7 @@ On those questions the models tend to perform better than on some our semi-autom
 
 % GFK performance -> would the models obtain a chemical license 
 % Interesting twist perhaps: the performance on the university textbooks or exams is better than on the ones we automatically constructed
+% in contrast to LLM the human performance is also less spiky
 
 % Calculation vs. no calculation
 Given that some of the questions in \chembench require elaborate calculations, we also analyzed if the models perform differently on those questions.

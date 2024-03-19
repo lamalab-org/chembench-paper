@@ -8,6 +8,18 @@ import pickle
 plt.style.use(scripts / "lamalab.mplstyle")
 
 
+human_relevant_topics = [
+    "analytical chemistry",
+    "biochemistry",
+    "chemical safety",
+    "electrochemistry",
+    "general chemistry",
+    "macromolecular chemistry",
+    "organic chemistry",
+    "toxicology",
+]
+
+
 def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
 
     claude2_mean = df_dict["claude2"].groupby("topic")["all_correct_"].mean()
@@ -100,6 +112,22 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
             reverse=True,
         )
     else:
+        # filter out topics that are not relevant for humans
+        human_dicts = human_dicts.loc[human_relevant_topics]
+        gpt4_mean = gpt4_mean.loc[human_relevant_topics]
+        claude2_mean = claude2_mean.loc[human_relevant_topics]
+        # claude2_react_mean = claude2_react_mean.loc[human_relevant_topics]
+        claude3_mean = claude3_mean.loc[human_relevant_topics]
+        gemini_pro_mean = gemini_pro_mean.loc[human_relevant_topics]
+        gpt35turbo_mean = gpt35turbo_mean.loc[human_relevant_topics]
+        # gpt35turbo_react_mean = gpt35turbo_react_mean.loc[human_relevant_topics]
+        llama70b_mean = llama70b_mean.loc[human_relevant_topics]
+        galactica_120b_mean = galactica_120b_mean.loc[human_relevant_topics]
+        mixtral_mean = mixtral_mean.loc[human_relevant_topics]
+        pplx7b_chat_mean = pplx7b_chat_mean.loc[human_relevant_topics]
+        pplx7b_online_mean = pplx7b_online_mean.loc[human_relevant_topics]
+        random_baseline_mean = random_baseline_mean.loc[human_relevant_topics]
+
         sorted_data = sorted(
             list(
                 zip(
