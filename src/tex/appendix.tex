@@ -17,7 +17,7 @@
 \end{itemize}
 
 \subsection{Related work}
-Existing benchmarks such as those from \textcite{guo2023large}, \cite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above (see \Cref{tab:existing benchmarks}). 
+Existing benchmarks such as those from \textcite{guo2023large}, \cite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above. 
 While these benchmarks could provide useful insights in the short-term, they cannot follow the rapid additions to the \gls{llm} space. 
 \chembench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, special focus on chemical safety, employment of diverse prompting strategies and specialized notation for molecules and mathematical symbols. 
 Moreover, we believe that our robust framework, including the platform \url{chembench.org}, will engage the community in open-source contributions.
@@ -59,7 +59,7 @@ We also evaluated the model performance on the entire \chembench corpus.
     \script{plot_overview_performance_plot.py}
 \end{figure}
 
-\Cref{fig:all_questions_models_completely_correct_radar} shows the performance of the models on the different topics of the \chembench corpus.
+\Cref{fig:all_questions_models_completely_correct_radar_overall} shows the performance of the models on the different topics of the \chembench corpus.
 
 \begin{figure}[htb]
     \centering
@@ -75,7 +75,7 @@ We also evaluated the model performance on the entire \chembench corpus.
 \begin{figure}
     \centering
     \includegraphics{figures/performance_per_topic.pdf}
-    \caption{Caption}
+    \caption{\textbf{Fraction of completely correctly answered questions per data source.} The heatmap shows, in color, the fraction of questions that were answered completely correctly by the models for each data source. The performance is measured as the fraction of questions that were answered completely correctly by the models. A score of 1 indicates that all questions were answered completely correctly, while a score of 0 indicates that none of the questions were answered completely correctly.}
     \label{fig:performance_per_topic}
     \script{analyze_performance_per_source.py}
 \end{figure}
@@ -111,7 +111,7 @@ Since it is important to understand if models can provide an indication of wheth
 \begin{figure} 
     \centering
     \includegraphics{figures/confidence_score_distributions.pdf}
-    \caption{\textbf{Distribution of confidence scores reported by \glspl{llm}.}} 
+    \caption{\textbf{Distribution of confidence scores reported by \glspl{llm}.} \Glspl{llm} show different distributions of confidence scores. The confidence scores are reported on an ordinal scale from 1 to 5, with 1 indicating low confidence and 5 indicating high confidence. The barplots show how many questions were answered with each confidence score.}
     \label{fig:confidence_score_distributions}
     \script{plot_confidence_score_distributions.py}
 \end{figure}

@@ -110,14 +110,14 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                         claude3_mean,
                         gemini_pro_mean,
                         gpt35turbo_mean,
-                        gpt35turbo_react_mean,
+                        # gpt35turbo_react_mean,
                         # llama70b_mean,
                         # galactica_120b_mean,
                         # mixtral_mean,
                         pplx7b_chat_mean,
                         pplx7b_online_mean,
                         random_baseline_mean,
-                        human_dicts,
+                        # human_dicts,
                     ],
                     [
                         "GPT-4",
@@ -133,7 +133,7 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
                         "PPLX-7B-Chat",
                         "PPLX-7B-Online",
                         "Random Baseline",
-                        "Average Human",
+                        #  "Average Human",
                     ],
                     [
                         model_color_map["gpt4"],
@@ -158,7 +158,6 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
         )
     theta = radar_factory(len(claude2_mean), frame="polygon")
 
-    print(sorted_data)
     # Adjust the layout to leave space for labels
     fig, ax = plt.subplots(1, 1, figsize=(6, 6), subplot_kw=dict(projection="radar"))
     for data_, label, color in sorted_data:
@@ -490,9 +489,9 @@ if __name__ == "__main__":
     make_overall_performance_radar_plot(df_dicts["overall"], "overall")
     radarplot_requires_calculation(df_dicts["overall"], "overall")
 
-    # make_overall_performance_radar_plot(
-    #     df_dicts["human_aligned"], "human", human_dicts["topic_mean"]
-    # )
+    make_overall_performance_radar_plot(
+        df_dicts["human_aligned"], "human", human_dicts["topic_mean"]
+    )
     # radarplot_requires_calculation(
     #     df_dicts["human_aligned"], "human", human_dicts["topic_mean"]
     # )

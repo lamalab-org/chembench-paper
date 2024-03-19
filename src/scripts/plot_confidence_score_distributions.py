@@ -82,7 +82,7 @@ def plot():
         )
 
     ax.legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.2))
-    range_frame(ax, np.array([0, max(max_count)]), np.array([0, 5]))
+    range_frame(ax, np.array([0, 5]), np.array([0, max_count]))
 
     ax.set_xlabel("Number of Questions")
     ax.set_ylabel("confidence estimate")

@@ -179,12 +179,6 @@ On those questions the models tend to perform better than on some our semi-autom
 Given that some of the questions in \chembench require elaborate calculations, we also analyzed if the models perform differently on those questions.
 For this, we manually annotated the questions that require calculations and performed the analysis on only those questions. 
 
-\begin{figure}
-    \centering
-    %\includegraphics{figures/chem-bench-completley-correct-calculation-vs-no-calculation.pdf}
-    \caption{Caption}
-    \label{fig:calculation_performance}
-\end{figure}
 
 % Estimate of difficulty
 One might wonder whether the models are capable of estimating if they will be able to answer a question correctly. 
@@ -200,7 +194,7 @@ To investigate this, we prompted\autocite{xiong2023llms} some of the top-perform
     \script{joint_analysis_confidence_performance.py}
 \end{figure}
 
-In \Cref{fig:estimated_difficulty} we show that there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
+In \Cref{fig:confidence_vs_performance} we show that for some models there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
 For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the models' outputs.\autocite{Li_2023}
 For example, for the questions about the safety profile of compounds, GPT-4 reported an average confidence of XX (on a scale of 1--5) for the XX (out of XX) questions it answered in correctly (XX for the XX questions it answered correctly).
 
