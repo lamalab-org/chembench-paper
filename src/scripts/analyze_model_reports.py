@@ -198,12 +198,8 @@ def radarplot_requires_calculation(df_dict, suffix):
         "keywords"
     ].str.contains("requires-calculation")
 
-    claude2_mean = (
-        df_dict["claude2"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+    claude_with_calc = df_dict["claude2"][df_dict["claude2"]["requires_calculation"]]
+    claude2_mean = claude_with_calc.groupby("topic")["all_correct_"].mean()
 
     # claude2_react_mean = (
     #     df_dict["claude2_react"]
@@ -221,23 +217,19 @@ def radarplot_requires_calculation(df_dict, suffix):
         "keywords"
     ].str.contains("requires-calculation")
 
-    claude3_mean = (
-        df_dict["claude3"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+    claude3_with_calc = df_dict["claude3"][df_dict["claude3"]["requires_calculation"]]
+
+    claude3_mean = claude3_with_calc.groupby("topic")["all_correct_"].mean()
 
     df_dict["galactica_120b"]["requires_calculation"] = df_dict["galactica_120b"][
         "keywords"
     ].str.contains("requires-calculation")
 
-    galactica_120b_mean = (
-        df_dict["galactica_120b"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+    galactica_with_calc = df_dict["galactica_120b"][
+        df_dict["galactica_120b"]["requires_calculation"]
+    ]
+
+    galactica_120b_mean = galactica_with_calc.groupby("topic")["all_correct_"].mean()
 
     # gemini_pro_zero_t_mean = (
     #     df_dict["gemini_pro_zero_t"]
@@ -249,109 +241,101 @@ def radarplot_requires_calculation(df_dict, suffix):
         "keywords"
     ].str.contains("requires-calculation")
 
-    gemini_pro_mean = (
-        df_dict["gemini_pro"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+    gemini_with_calc = df_dict["gemini_pro"][
+        df_dict["gemini_pro"]["requires_calculation"]
+    ]
+
+    gemini_pro_mean = gemini_with_calc.groupby("topic")["all_correct_"].mean()
 
     df_dict["gpt35turbo"]["requires_calculation"] = df_dict["gpt35turbo"][
         "keywords"
     ].str.contains("requires-calculation")
 
-    gpt35turbo_mean = (
-        df_dict["gpt35turbo"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+    gpt3_with_calc = df_dict["gpt35turbo"][
+        df_dict["gpt35turbo"]["requires_calculation"]
+    ]
+
+    gpt35turbo_mean = gpt3_with_calc.groupby("topic")["all_correct_"].mean()
 
     df_dict["gpt35turbo_zero_t"]["requires_calculation"] = df_dict["gpt35turbo_zero_t"][
         "keywords"
     ].str.contains("requires-calculation")
 
-    gpt35turbo_zero_t_mean = (
-        df_dict["gpt35turbo_zero_t"]
-        .groupby("requires_calculation")["all_correct_"]
-        .mean()[1]
-    )
+    gpt35turbo_zero_t_with_calc = df_dict["gpt35turbo_zero_t"][
+        df_dict["gpt35turbo_zero_t"]["requires_calculation"]
+    ]
+
+    gpt35turbo_zero_t_mean = gpt35turbo_zero_t_with_calc.groupby("topic")[
+        "all_correct_"
+    ].mean()
 
     df_dict["gpt35turbo_react"]["requires_calculation"] = df_dict["gpt35turbo_react"][
         "keywords"
     ].str.contains("requires-calculation")
 
-    gpt35turbo_react_mean = (
-        df_dict["gpt35turbo_react"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+    gpt35turbo_react_with_calc = df_dict["gpt35turbo_react"][
+        df_dict["gpt35turbo_react"]["requires_calculation"]
+    ]
+
+    gpt35turbo_react_mean = gpt35turbo_react_with_calc.groupby("topic")[
+        "all_correct_"
+    ].mean()
 
     df_dict["gpt4"]["requires_calculation"] = df_dict["gpt4"]["keywords"].str.contains(
         "requires-calculation"
     )
-    gpt4_mean = (
-        df_dict["gpt4"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+
+    gpt4_with_calc = df_dict["gpt4"][df_dict["gpt4"]["requires_calculation"]]
+
+    gpt4_mean = gpt4_with_calc.groupby("topic")["all_correct_"].mean()
 
     df_dict["llama70b"]["requires_calculation"] = df_dict["llama70b"][
         "keywords"
     ].str.contains("requires-calculation")
 
-    llama70b_mean = (
-        df_dict["llama70b"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+    llama_with_calc = df_dict["llama70b"][df_dict["llama70b"]["requires_calculation"]]
+
+    llama70b_mean = llama_with_calc.groupby("topic")["all_correct_"].mean()
 
     df_dict["mixtral"]["requires_calculation"] = df_dict["mixtral"][
         "keywords"
     ].str.contains("requires-calculation")
 
-    mixtral_mean = (
-        df_dict["mixtral"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+    mixtral_with_calc = df_dict["mixtral"][df_dict["mixtral"]["requires_calculation"]]
+
+    mixtral_mean = mixtral_with_calc.groupby("topic")["all_correct_"].mean()
 
     df_dict["pplx7b_chat"]["requires_calculation"] = df_dict["pplx7b_chat"][
         "keywords"
     ].str.contains("requires-calculation")
 
-    pplx7b_chat_mean = (
-        df_dict["pplx7b_chat"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+    pplx7b_chat_with_calc = df_dict["pplx7b_chat"][
+        df_dict["pplx7b_chat"]["requires_calculation"]
+    ]
+
+    pplx7b_chat_mean = pplx7b_chat_with_calc.groupby("topic")["all_correct_"].mean()
 
     df_dict["pplx7b_online"]["requires_calculation"] = df_dict["pplx7b_online"][
         "keywords"
     ].str.contains("requires-calculation")
 
-    pplx7b_online_mean = (
-        df_dict["pplx7b_online"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+    pplx7b_online_with_calc = df_dict["pplx7b_online"][
+        df_dict["pplx7b_online"]["requires_calculation"]
+    ]
+
+    pplx7b_online_mean = pplx7b_online_with_calc.groupby("topic")["all_correct_"].mean()
 
     df_dict["random_baseline"]["requires_calculation"] = df_dict["random_baseline"][
         "keywords"
     ].str.contains("requires-calculation")
 
-    random_baseline_mean = (
-        df_dict["random_baseline"]
-        .groupby("requires_calculation")[1]
-        .groupby("topic")["all_correct_"]
-        .mean()
-    )
+    random_baseline_with_calc = df_dict["random_baseline"][
+        df_dict["random_baseline"]["requires_calculation"]
+    ]
+
+    random_baseline_mean = random_baseline_with_calc.groupby("topic")[
+        "all_correct_"
+    ].mean()
 
     # Sort the data based on the maximum value in each group
     if human_dicts is None:

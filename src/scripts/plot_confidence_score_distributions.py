@@ -79,7 +79,7 @@ def plot():
             model_counts,
             width=0.2,
             label=model,
-            color=model_color_map[model],
+            # color=model_color_map[
         )
 
     # range_frame(ax, np.array(counts), np.array([0.5, 5.5]))
