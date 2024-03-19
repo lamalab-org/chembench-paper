@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from plotutils import model_color_map, range_frame
 import numpy as np
+from loguru import logger
 
 # the confidence estimates are csv files with index, question name, score
 # the model performance is in a pickle with in which we have a dictionary with the model name as key
@@ -118,6 +119,7 @@ def make_plot_of_confidence_vs_performance(merged_dicts, suffix: str = ""):
 
 
 def make_subset_analysis(merged_dict, subset, suffix: str = ""):
+
     for model, df in merged_dict.items():
         relevant_model_performance = df[df[subset]]
         correct = relevant_model_performance[
@@ -160,11 +162,17 @@ if __name__ == "__main__":
     make_plot_of_confidence_vs_performance(merged_dicts, suffix="overall")
     # subset analysis
     for subset in subsets:
-        make_subset_analysis(merged_dicts, subset, suffix="overall")
+        try:
+            make_subset_analysis(merged_dicts, subset, suffix="overall")
+        except Exception as e:
+            logger.error(f"failed for {subset} with {e}")
 
     # human aligned
     merged_dicts = join_confidence_and_performance(performance_dict["human_aligned"])
     make_plot_of_confidence_vs_performance(merged_dicts, suffix="human_aligned")
     # subset analysis
     for subset in subsets:
-        make_subset_analysis(merged_dicts, subset, suffix="human_aligned")
+        try:
+            make_subset_analysis(merged_dicts, subset, suffix="human_aligned")
+        except Exception as e:
+            logger.error(f"failed for {subset} with {e}")
