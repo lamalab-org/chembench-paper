@@ -232,9 +232,10 @@ Questions were added via Pull Requests on our GitHub repository and only merged 
 To ensure that the questions do not enter a training dataset we use the canary string of the Big Bench project.
 This requires that \Gls{llm} developers filter their training dataset for this canary string.\autocite{openai2024gpt4, srivastava2022beyond}
 
-\begin{figure}
+\begin{figure}[htb]
     \includegraphics[width = \textwidth]{figures/chem-bench.pdf}
-    \caption{\textbf{Data curation workflow}.}
+    \caption{\textbf{Overview of the workflow for the assembly of the \chembench corpus}. To assemble the \chembench corpus, we first collected questions from various sources. Some tasks were manually curated, others semi-programmatically. For all questions we added semantic annotations to make them compatible with systems that use special processing for modalities that are not conventional natural text. Before adding the questions to the corpus, we reviewed with manual as well as automatic methods.}
+    \label{fig:curation_workflow}
 \end{figure}
 
 \paragraph{Manually curated questions}

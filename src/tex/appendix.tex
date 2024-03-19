@@ -27,7 +27,7 @@ Moreover, we believe that our robust framework, including the platform \url{chem
 To ensure maximal interoperability with existing benchmarks or tools, we curated the data in an extended form of the widely used BigBench format.\cite{srivastava2022beyond}
 This also implies that future baselines can be built on top of our infrastructure as long as they are saved in the same format.
 
-\begin{figure}
+\begin{figure}[htb]
     \centering
     \includegraphics{figures/flesch_kincaid_reading_ease.pdf}
     \caption{\textbf{Distribution of Flesch-Kincaid reading ease scores of the questions.} The Flesch-Kincaid reading ease score\cite{flesch1948new} is a measure of how easy a text is to read. It is calculated based on the average number of syllables per word and the average number of words per sentence. The higher the score, the easier the text is to read. The distribution of the scores of the questions is shown in the histogram. }
@@ -35,7 +35,7 @@ This also implies that future baselines can be built on top of our infrastructur
     \script{wordcloud.py}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[htb]
     \centering
     \includegraphics{figures/question_count_barplot_mcq_vs_general.pdf}
     \caption{\textbf{Number of multiple choice questions vs.\ open-ended questions per topic.} The bar plot shows the number of multiple choice questions and general questions per topic.}
@@ -51,7 +51,7 @@ This also implies that future baselines can be built on top of our infrastructur
 We also evaluated the model performance on the entire \chembench corpus. 
 \Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered completely correctly by the models. 
 
-\begin{figure}
+\begin{figure}[htb]
     \centering
     \includegraphics{figures/overall_performance.pdf}
     \caption{\textbf{Overall performance of the models on the \chembench corpus.} The bar plot shows the fraction of questions that were answered completely correctly by the models. Scores computed on the entire \chembench corpus.}
@@ -61,10 +61,12 @@ We also evaluated the model performance on the entire \chembench corpus.
 
 \Cref{fig:all_questions_models_completely_correct_radar} shows the performance of the models on the different topics of the \chembench corpus.
 
-\begin{figure}
+\begin{figure}[htb]
     \centering
     \includegraphics{figures/all_questions_models_completely_correct_radar_overall.pdf}
-    \caption{Caption}
+    \caption{\textbf{Performance of the models on the different topics of the \chembench corpus.} The radar plot shows the performance of the models on the different topics of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correctly by the models.
+    A score of 1 indicates that all questions were answered completely correctly, while a score of 0 indicates that none of the questions were answered completely correctly.
+    }
     \label{fig:all_questions_models_completely_correct_radar_overall}
     \script{analyze_model_reports.py}
 \end{figure}

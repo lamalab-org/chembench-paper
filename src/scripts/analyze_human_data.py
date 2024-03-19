@@ -93,6 +93,9 @@ def make_human_time_score_plot(long_df):
         .mean()
     )
     grouped_by_user.dropna(inplace=True)
+    grouped_by_user = grouped_by_user[
+        grouped_by_user["all_correct"] != 1
+    ]  # exclude cheater
     fig, ax = plt.subplots(
         1, 1, figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )
