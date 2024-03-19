@@ -62,32 +62,27 @@ def plot():
     # the y axis is the confidence estimate
     # the x axis is the count
 
+    # get the counts for each estimate for each model
+    counts = []
     for model in all_results["model"].unique():
         model_results = all_results[all_results["model"] == model]
+        model_counts = model_results["estimate"].value_counts()
+        counts.append(model_counts)
 
-        counts = model_results["estimate"].value_counts().sort_index()
-        # ensure that the counts are sorted by the index
-        counts = counts.sort_index()
-
-        # ax.hlines(
-        #     counts.index,
-        #     xmin=0,
-        #     xmax=counts,
-        #     linewidth=5,
-        #     alpha=0.5,
-        #     # color=model_color_map[model],
-        # )
-
-        ax.plot(
-            counts,
-            counts.index,
-            "o",
-            markersize=5,
-            alpha=1.0,
-            # color=model_color_map[model],
+    # make the barplots
+    for i, model in enumerate(all_results["model"].unique()):
+        model_results = all_results[all_results["model"] == model]
+        model_counts = model_results["estimate"].value_counts()
+        model_counts = model_counts.sort_index()
+        ax.bar(
+            np.arange(1, 6) + 0.2 * (i - 1),
+            model_counts,
+            width=0.2,
+            label=model,
+            color=model_color_map[model],
         )
 
-    range_frame(ax, np.array(counts), np.array([0.5, 5.5]))
+    # range_frame(ax, np.array(counts), np.array([0.5, 5.5]))
 
     ax.set_xlabel("Number of Questions")
     ax.set_ylabel("confidence estimate")
