@@ -111,7 +111,7 @@ For this reason, \chembench samples both \gls{mcq} and open-ended questions (\va
 
 \paragraph{\enquote{Tiny} subset}
 It is important to note that for routine evaluations, a smaller subset of the corpus might be more practical.\cite{polo2024tinybenchmarks}
-For instance,~\citet{liang2023holistic} report costs of more than 10,000 USD for \gls{api} calls for a single evaluation on the \gls{helm} benchmark on a model. 
+For instance,~\textcite{liang2023holistic} report costs of more than 10,000 USD for \gls{api} calls for a single evaluation on the \gls{helm} benchmark on a model. 
 To address this, we also provide a subset (\variable{output/num_tiny_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus (see \Cref{sec:subset-selection} for details on the curation process).
 We also used this subset to seed the app we used for the human baseline study. 
 
@@ -437,11 +437,12 @@ K.M.J.\ is a paid consultant for OpenAI. M.P.\ is employee of Stability.ai and A
 \normalsize
 
 
+\printbibliography
 
+\clearpage
 \appendix
 \section{Appendix}
 \input{appendix.tex}
 
-\bibliography{references}
-
+\printbibliography
 \end{document}

@@ -17,7 +17,7 @@
 \end{itemize}
 
 \subsection{Related work}
-Existing benchmarks such as those from \citet{guo2023large}, \cite{sun2023scieval}, \citet{Schulze_Balhorn_2024}, \citet{Cai_2024} fail to comply with most of the requirements stipulated above (see \Cref{tab:existing benchmarks}). 
+Existing benchmarks such as those from \textcite{guo2023large}, \cite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above (see \Cref{tab:existing benchmarks}). 
 While these benchmarks could provide useful insights in the short-term, they cannot follow the rapid additions to the \gls{llm} space. 
 \chembench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, special focus on chemical safety, employment of diverse prompting strategies and specialized notation for molecules and mathematical symbols. 
 Moreover, we believe that our robust framework, including the platform \url{chembench.org}, will engage the community in open-source contributions.
@@ -39,6 +39,7 @@ This also implies that future baselines can be built on top of our infrastructur
     \centering
     \includegraphics{figures/question_count_barplot_mcq_vs_general.pdf}
     \caption{\textbf{Number of multiple choice questions vs.\ open-ended questions per topic.} The bar plot shows the number of multiple choice questions and general questions per topic.}
+    \label{fig:question_count_barplot_mcq_vs_general}
     \script{plot_statistics.py}
 \end{figure}
 
