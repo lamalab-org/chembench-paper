@@ -106,6 +106,13 @@ We also evaluated the model performance on the entire \chembench corpus.
 \end{figure}
 
 \subsection{Human baseline}
+\paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\autocite{nextjs} app router framework.
+This application handles serving the user interface as well as exposes various \gls{rest} \glspl{api} for relevant operations.
+We utilize a MySQL\autocite{mysql} database and Prisma \gls{orm}\autocite{prisma} for efficient database management.
+The web application is styled with Tailwind CSS\autocite{tailwindcss} using the shadcn/ui component library and uses NextAuth\autocite{nextauth} for easy and secure user authentication and postMark for sending Emails.
+The application is hosted on the Vercel web hosting platform.
+
+
 
 \begin{figure}[htb]
     \centering

@@ -363,14 +363,10 @@ In case these hard-coded parsing steps fail, we fall back to using a \gls{llm}, 
 
 \paragraph{Models}
 \subparagraph{Completion models}
-We used \texttt{Galactica-120b}\autocite{taylor2022galactica} with the default settings.
+We used Galactica (120b)\autocite{taylor2022galactica} with the default settings.
 
 
-\subparagraph{Instruction-tuned models} In addition, we used \texttt{Claude 2}, \texttt{Claude3 (Opus)},\autocite{anthropicClaudeModelFamily2024} \texttt{GPT-4},\autocite{openai2024gpt4} \texttt{GPT-3.5-turbo},\autocite{brown2020language}
-\texttt{Gemini Pro},\autocite{gemini}
-\texttt{Mixtral-8x7b}\autocite{jiang2024mixtral}
-\texttt{Llama2-70b},\autocite{touvron2023llama}
-\texttt{pplx-7b-chat}
+\subparagraph{Instruction-tuned models} In addition, we used Claude 2, Claude3 (Opus),\autocite{anthropicClaudeModelFamily2024} GPT-4,\autocite{openai2024gpt4} GPT-3.5-turbo,\autocite{brown2020language} Gemini Pro,\autocite{gemini} Mixtral-8x7b\autocite{jiang2024mixtral} Llama2 (70b),\autocite{touvron2023llama} as well as the 7B chat model from Perplexity.AI.
 
 \subparagraph{Tool augmented models}
 In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
@@ -381,14 +377,10 @@ We implemented the system using Langchain with the default prompts and constrain
 
 \subsection{Confidence estimate}
 To estimate the models' confidence we prompted them with the question (and answer options for \gls{mcq}) and the task to rate their confidence to produce the right answer on a scale from 1 to 5. 
+We decided to use verbalized confidence estimates\autocite{xiong2023llms} since we found those closer to current practical use cases compared to other prompting strategies, which might be more suitable when implemented in systems.
 
 \subsection{Human baseline}
 
-\paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\autocite{nextjs} app router framework.
-This application handles serving the user interface as well as exposes various \gls{rest} \glspl{api} for relevant operations.
-We utilize a MySQL\autocite{mysql} database and Prisma \gls{orm}\autocite{prisma} for efficient database management.
-The web application is styled with Tailwind CSS\autocite{tailwindcss} using the shadcn/ui component library and uses NextAuth\autocite{nextauth} for easy and secure user authentication and postMark for sending Emails.
-The application is hosted on the Vercel web hosting platform.
 
 \paragraph{Question selection} \label{sec:subset-selection}
 Since we anticipated that we will not be able to collect enough responses for every question to allow for a meaningful statistical analysis, we decided on showing a relevant subset of all questions to the human scorers.
