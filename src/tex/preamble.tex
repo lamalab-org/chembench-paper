@@ -53,6 +53,12 @@
 \displaywidowpenalty = 10000
 
 
+% if the \fonts folder exists, use fontspec to change fonts
+\IfFileExists{fonts}{
+    \usepackage{fontspec}
+    \setmainfont{Heliotrope}[Extension = .otf, UprightFont = *-Regular, ItalicFont = *-Italic, BoldFont=*-Bold, Path = ./fonts/]
+}{}
+
 
 
 \usepackage{lipsum}
