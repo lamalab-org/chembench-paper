@@ -54,7 +54,7 @@ def plot():
     all_results = pd.concat([gpt, claude_2, claude_3]).reset_index(drop=True)
 
     fig, ax = plt.subplots(
-        figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
+        figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )
 
     # make barplots, the color of the bars is determined by the model
@@ -82,12 +82,12 @@ def plot():
             #   color=model_color_map[model],
         )
 
-    ax.legend(ncol=1, bbox_to_anchor=(1.1, 1.2))
-    range_frame(ax, np.array([0, 5]), np.array([0, max_count]))
+    ax.legend(ncol=3, bbox_to_anchor=(1.1, 1.2))
+    range_frame(ax, np.array([1, 5]), np.array([0, max_count]))
 
     ax.set_xlabel("Number of Questions")
     ax.set_ylabel("confidence estimate")
-    fig.tight_layout()
+    # fig.tight_layout()
     fig.savefig(figures / "confidence_score_distributions.pdf", bbox_inches="tight")
 
 
@@ -133,12 +133,11 @@ def plot_violin():
     fig, ax = plt.subplots(
         figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )
-    print(all_results)
     sns.violinplot(data=all_results, x="estimate", y="model", ax=ax)
     # sns.swarmplot(data=all_results, x="estimate", y="model", ax=ax)
 
     ax.set_xlabel("confidence estimate returned by the model")
-    ax.set_ylabel("model")
+    ax.set_ylabel("system")
 
     range_frame(ax, np.array([0.5, 5.5]), np.array([0, 2]))
 

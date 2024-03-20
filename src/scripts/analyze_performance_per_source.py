@@ -12,7 +12,6 @@ plt.style.use(scripts / "lamalab.mplstyle")
 
 
 def obtain_score_for_subset(df, subset):
-    print(df[df[subset]]["all_correct_"])
     return df[df[subset]]["all_correct_"].astype(int).mean()
 
 
@@ -57,19 +56,39 @@ subset_clean_names = [
 relevant_models = [
     "claude2",
     "claude2_react",
-    "claude2_zero_t" "claude3",
-    "galactica_120b"
-    "gemini_pro"
-    "gemini_pro_zero_t"
-    "gpt35turbo"
-    "gpt35turbo_react"
-    "gpt4"
-    "lama70b"
-    "mixtral"
-    "pplx7b_chat"
-    "pplx7b_online"
+    "claude2_zero_t",
+    "claude3",
+    "galactica_120b",
+    "gemini_pro",
+    "gemini_pro_zero_t",
+    "gpt35turbo",
+    "gpt35turbo_react",
+    "gpt4",
+    "lama70b",
+    "mixtral",
+    "pplx7b_chat",
+    "pplx7b_online",
     "random_baseline",
 ]
+
+model_rename_dict = {
+    "gpt4": "GPT-4",
+    "claude2": "Claude 2",
+    "claude3": "Claude 3",
+    "llama70b": "Llama 70B",
+    "gemini_pro": "Gemini Pro",
+    "galactica_120b": "Galactica 120B",
+    "mixtral": "Mixtral",
+    "pplx7b_chat": "PPLX7B Chat",
+    "pplx7b_online": "PPLX7B Online",
+    "random_baseline": "Random Baseline",
+    "claude2_react": "Claude 2 ReAct",
+    "claude2_zero_t": "Claude 2 Zero T",
+    "gemini_pro_zero_t": "Gemini Pro Zero T",
+    "gpt35turbo": "GPT-35 Turbo",
+    "gpt35turbo_react": "GPT-35 Turbo ReAct",
+}
+
 
 rename_dict = dict(zip(subsets, subset_clean_names))
 
@@ -103,15 +122,19 @@ def obtain_subset_scores_humans(data_dict, outdir):
         except Exception as e:
             logger.warning(f"Failed for {subset} due to {e}")
         try:
+            logger.info(f"Human subset scores: {subset_scores} for {subset}")
             mean_subset_score = np.nanmean(subset_scores)
             with open(os.path.join(outdir, f"{subset}.txt"), "w") as handle:
                 handle.write(
                     str(int(np.round(mean_subset_score * 100, 0))) + "\endinput"
                 )
+            all_scores.append(
+                {"model": "human", "score": mean_subset_score, "subset": subset}
+            )
         except Exception as e:
             logger.warning(f"Failed for {subset} due to {e}")
-    all_scores.append({"model": "human", "score": score, "subset": subset})
 
+    print(all_scores)
     return all_scores
 
 
@@ -139,16 +162,17 @@ if __name__ == "__main__":
         human_scores["raw_scores"], outdir_humans
     )
 
-    model_scores = model_scores[model_scores["model"].isin(relevant_models)]
     all_scores = pd.DataFrame(model_scores + human_scores)
+    all_scores = all_scores[all_scores["model"].isin(relevant_models + ["human"])]
 
     all_scores["subset"] = all_scores["subset"].map(rename_dict)
+    all_scores["model"] = all_scores["model"].map(model_rename_dict)
     score_heatmap = all_scores.pivot_table(
-        index="model", columns="subset", values="score", aggfunc="mean"
+        index="model", columns="subset", values="score", aggfunc="mean", fill_value=0
     )
     print(score_heatmap)
 
     fig, ax = plt.subplots(1, 1)
-    sns.heatmap(score_heatmap, ax=ax)
+    sns.heatmap(score_heatmap, ax=ax, xticklabels=True, yticklabels=True, cmap="RdBu_r")
     # fig.tight_layout()
     fig.savefig(figures / "performance_per_topic.pdf", bbox_inches="tight")

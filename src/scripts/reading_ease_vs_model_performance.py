@@ -60,6 +60,7 @@ if __name__ == "__main__":
         hue="model",
         ax=ax,
         palette=model_color_map,
+        cut=0,
     )
 
     # change labels for the colors
@@ -81,7 +82,7 @@ if __name__ == "__main__":
 
     range_frame(
         ax,
-        np.array([-0.5, 1.5]),
+        np.array([-0.4, 1.4]),
         np.array(
             [
                 all_aligned["flesch_kincaid_reading_ease"].min(),
