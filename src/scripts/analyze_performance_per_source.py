@@ -149,6 +149,7 @@ if __name__ == "__main__":
     if not os.path.exists(outdir):
         os.makedirs(outdir, exist_ok=True)
 
+    # human aligned
     model_scores = obtain_subset_scores(model_scores["human_aligned"], outdir)
 
     with open(os.path.join(data, "humans_as_models_scores.pkl"), "rb") as handle:
@@ -163,6 +164,25 @@ if __name__ == "__main__":
     )
 
     all_scores = pd.DataFrame(model_scores + human_scores)
+    all_scores = all_scores[all_scores["model"].isin(relevant_models + ["human"])]
+
+    all_scores["subset"] = all_scores["subset"].map(rename_dict)
+    all_scores["model"] = all_scores["model"].map(model_rename_dict)
+    score_heatmap = all_scores.pivot_table(
+        index="model", columns="subset", values="score", aggfunc="mean", fill_value=0
+    )
+    print(score_heatmap)
+
+    fig, ax = plt.subplots(1, 1)
+    sns.heatmap(score_heatmap, ax=ax, xticklabels=True, yticklabels=True, cmap="RdBu_r")
+    # fig.tight_layout()
+    fig.savefig(figures / "performance_per_topic_tiny.pdf", bbox_inches="tight")
+
+    # overall
+    with open(os.path.join(data, "model_score_dicts.pkl"), "rb") as handle:
+        model_scores = pickle.load(handle)
+    model_scores = obtain_subset_scores(model_scores["overall"], outdir)
+    all_scores = pd.DataFrame(model_scores)
     all_scores = all_scores[all_scores["model"].isin(relevant_models + ["human"])]
 
     all_scores["subset"] = all_scores["subset"].map(rename_dict)

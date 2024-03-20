@@ -25,6 +25,9 @@
 \usepackage{subcaption}
 \usepackage{authblk} 
 
+
+\usepackage{marvosym}
+
 \usepackage{sectsty} 
 \usepackage[acronym]{glossaries}
 %\usepackage[sort&compress,numbers,super]{natbib}
@@ -54,7 +57,7 @@
 
 
 % if the \fonts folder exists, use fontspec to change fonts
-\IfFileExists{fonts}{
+\IfFileExists{./fonts/Heliotrope-Bold.otf}{
     \usepackage{fontspec}
     \setmainfont{Heliotrope}[Extension = .otf, UprightFont = *-Regular, ItalicFont = *-Italic, BoldFont=*-Bold, Path = ./fonts/]
 }{}
@@ -65,3 +68,6 @@
 \usepackage[labelfont=bf]{caption}
 \makenoidxglossaries %https://github.com/tectonic-typesetting/tectonic/issues/704
 \input{acronymns}
+
+\renewcommand{\Affilfont}{\footnotesize}
+ \renewcommand{\Authfont}{\normalsize}
