@@ -3,34 +3,34 @@
 
 \begin{itemize}
     \item \emph{End-to-end automation}. For model development, the evaluations will need to be run many times (e.g., on regular intervals of a training run).
-    Approaches that rely on humans scoring the answers of a system\cite{Schulze_Balhorn_2024, ai4science2023impact, castro2023large} can thus not be used.
-    \item \emph{Careful validation by experts}. Manual curation is needed to minimize number of incorrect or unanswerable questions.\cite{northcutt2021pervasive}
-    This is motivated by the observation that many widely used benchmarks are plagued by noisiness.\cite{Frye_2023, Awg}
-    \item \emph{Usable with models that support special treatment of molecules}. Some models such as Galactica\cite{taylor2022galactica} use special tokenization or encoding procedures for molecules or equations.
+    Approaches that rely on humans scoring the answers of a system\autocite{Schulze_Balhorn_2024, ai4science2023impact, castro2023large} can thus not be used.
+    \item \emph{Careful validation by experts}. Manual curation is needed to minimize number of incorrect or unanswerable questions.\autocite{northcutt2021pervasive}
+    This is motivated by the observation that many widely used benchmarks are plagued by noisiness.\autocite{Frye_2023, Awg}
+    \item \emph{Usable with models that support special treatment of molecules}. Some models such as Galactica\autocite{taylor2022galactica} use special tokenization or encoding procedures for molecules or equations.
     To support this, the benchmark system must encode the semantic meaning of various parts of the question or answer.
     \item \emph{Usable with black box systems}. Many relevant systems do not provide access to model weights or even just the raw logits.
-    This might be the case because the systems are proprietary or because they involve not only \glspl{llm} but also external tools such as search \glspl{api} or code executors.\cite{schick2024toolformer, karpas2022mrkl, yao2022react}
+    This might be the case because the systems are proprietary or because they involve not only \glspl{llm} but also external tools such as search \glspl{api} or code executors.\autocite{schick2024toolformer, karpas2022mrkl, yao2022react}
     Thus, a benchmark should not assume access to the raw model outputs but be able to operate on text completions.
     \item \emph{Probing capabilities beyond answering of \glspl{mcq}}. In real world chemistry as well as higher-level university education multiple choice question are seldom utilized.
     Yet, most benchmarking frameworks focus on the \gls{mcq} setting because of the ease of evaluation. Realistic evaluations must measure capabilities beyond the answering of \gls{mcq}.
-    \item \emph{Cover a diverse set of topics}. Chemistry, as the \enquote{central science}, bridges multiple disciplines.\cite{Aspuru_Guzik_2018} To even just approximate \enquote{chemistry capabilities} the topics covered by a chemistry benchmark must be very diverse.
+    \item \emph{Cover a diverse set of topics}. Chemistry, as the \enquote{central science}, bridges multiple disciplines.\autocite{Aspuru_Guzik_2018} To even just approximate \enquote{chemistry capabilities} the topics covered by a chemistry benchmark must be very diverse.
 \end{itemize}
 
 \subsection{Related work}
-Existing benchmarks such as those from \textcite{guo2023large}, \cite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above. 
+Existing benchmarks such as those from \textcite{guo2023large}, \autocite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above. 
 While these benchmarks could provide useful insights in the short-term, they cannot follow the rapid additions to the \gls{llm} space. 
 \chembench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, special focus on chemical safety, employment of diverse prompting strategies and specialized notation for molecules and mathematical symbols. 
 Moreover, we believe that our robust framework, including the platform \url{chembench.org}, will engage the community in open-source contributions.
 
 
 \subsection{Benchmark corpus}
-To ensure maximal interoperability with existing benchmarks or tools, we curated the data in an extended form of the widely used BigBench format.\cite{srivastava2022beyond}
+To ensure maximal interoperability with existing benchmarks or tools, we curated the data in an extended form of the widely used BigBench format.\autocite{srivastava2022beyond}
 This also implies that future baselines can be built on top of our infrastructure as long as they are saved in the same format.
 
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/flesch_kincaid_reading_ease.pdf}
-    \caption{\textbf{Distribution of Flesch-Kincaid reading ease scores of the questions.} The Flesch-Kincaid reading ease score\cite{flesch1948new} is a measure of how easy a text is to read. It is calculated based on the average number of syllables per word and the average number of words per sentence. The higher the score, the easier the text is to read. The distribution of the scores of the questions is shown in the histogram. }
+    \caption{\textbf{Distribution of Flesch-Kincaid reading ease scores of the questions.} The Flesch-Kincaid reading ease score\autocite{flesch1948new} is a measure of how easy a text is to read. It is calculated based on the average number of syllables per word and the average number of words per sentence. The higher the score, the easier the text is to read. The distribution of the scores of the questions is shown in the histogram. }
     \label{fig:flesch_kincaid_reading_ease}
     \script{wordcloud.py}
 \end{figure}

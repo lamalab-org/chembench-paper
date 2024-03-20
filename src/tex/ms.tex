@@ -102,7 +102,7 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{figures/question_diversity.pdf}
-    \caption{\textbf{Principal component projection of embeddings of questions in the \chembench corpus.} To obtain this figure, we embedded question and answers using the BART model\cite{bart} (using other embeddings, such as of OpenAI's ada model leads to qualitatively similar results). We then project the embeddings into a two-dimensional space using \gls{pca}. We color the points based on a classification into topics. Safety related aspects cover a large part of the figure that is not covered by questions from other topics.}
+    \caption{\textbf{Principal component projection of embeddings of questions in the \chembench corpus.} To obtain this figure, we embedded question and answers using the BART model\autocite{bart} (using other embeddings, such as of OpenAI's ada model leads to qualitatively similar results). We then project the embeddings into a two-dimensional space using \gls{pca}. We color the points based on a classification into topics. Safety related aspects cover a large part of the figure that is not covered by questions from other topics.}
     \label{fig:question_diversity}
     \script{plot_question_diversity.py}
 \end{figure}
