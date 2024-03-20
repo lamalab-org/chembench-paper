@@ -370,7 +370,7 @@ We used Galactica (120b)\autocite{taylor2022galactica} with the default settings
 
 \subparagraph{Tool augmented models}
 In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
-For this we, on the one hand, investigated the \texttt{online} model of Perplexity.AI and, on the other hand, \texttt{gpt-3.5-turbo} as well as \texttt{claude-2}, with ReAct-style tool augmentation.\autocite{yao2023react}
+For this we, on the one hand, investigated the 7B parameter \enquote{online} model of Perplexity.AI and, on the other hand, gpt-3.5-turbo as well as Claude 2, with ReAct-style tool augmentation.\autocite{yao2023react}
 The latter two models had access to WolframAlpha, the ArXiv \gls{api}, a Python interpreter, as well as web search (using DuckDuckGo).
 We implemented the system using Langchain with the default prompts and constrained the system to a maximum of ten \gls{llm} calls.
 
@@ -430,14 +430,14 @@ To facilitate reproduction, some intermediate results of the analysis are cached
 
 \section*{Acknowledgements}
 This work was supported by the Carl Zeiss Foundation and a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena.
-We also want to acknowledge access to the HPC cluster of Stability.AI.
+We also want to acknowledge access to the HPC cluster of Stability AI.
 M.A. expresses gratitude to the European Research Council (ERC) for evaluating the project with the reference number 101106377 titled \enquote{CLARIFIER} and accepting it for funding under the HORIZON TMA MSCA Postdoctoral Fellowships - European Fellowships. 
 Furthermore, M.A. acknowledges the funding provided by UK Research and Innovation (UKRI) under the UK government’s Horizon Europe funding guarantee (Grant Reference: EP/Y023447/1; Organization Reference: 101106377).
 
 The authors thank Julian Kimmig for feedback on the web app. 
 
 \section*{Conflicts of interest}
-K.M.J.\ is a paid consultant for OpenAI (as part of the red teaming network). M.P.\ is employee of Stability.ai and A.M.\ and N.A.\ are paid contractors of Stability.AI.
+K.M.J.\ is a paid consultant for OpenAI (as part of the red teaming network). M.P.\ is employee of Stability AI and A.M.\ and N.A.\ are paid contractors of Stability AI.
 
 \section*{Author contributions}
 
