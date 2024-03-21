@@ -167,7 +167,7 @@ rule analyze_model_reports:
 # plot the overall performance
 rule plot_overview_performance:
     input:
-        rules.model_statistics.output + rules.collect_human_scores.output,
+        rules.model_statistics.output + rules.collect_human_scores.output + rules.model_human_statistics.output,
     output:
         [
             "src/tex/figures/overall_performance.pdf",
@@ -284,3 +284,13 @@ rule reading_ease_correlation:
         "src/tex/figures/reading_ease_vs_model_performance.pdf",
     script:
         "src/scripts/reading_ease_vs_model_performance.py"
+
+
+# parallel coordinates plot 
+rule parallel_coordinates:
+    input:
+        "src/data/model_score_dicts.pkl",
+    output:
+        "src/tex/figures/parallel_coordinates_overall.pdf",
+    script:
+        "src/scripts/make_parallel_coordinates_plot.py"
