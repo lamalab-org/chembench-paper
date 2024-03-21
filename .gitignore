@@ -14,5 +14,5 @@ src/tex/figures/*
 __pycache__
 *.synctex.gz
 
-**/*.DS_Store
 .env
+.DS_Store
