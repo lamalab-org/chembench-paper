@@ -8,7 +8,7 @@ import pandas as pd
 
 import numpy as np
 
-from plotutils import range_frame
+from plotutils import range_frame, parallel_coordinates_plot
 from utils import (
     ONE_COL_WIDTH_INCH,
     ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
@@ -44,18 +44,20 @@ def plot_parallel_coordinates(parallel_coordinates_data, suffix=""):
         1, 1, figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )
 
-    parallel_coordinates_data = parallel_coordinates_data.T
-
-    parallel_coordinates_data.plot(ax=ax, alpha=0.5)
-
-    ax.set_ylabel("Performance")
-
-    ax.set_xlabel("Topic")
-
-    range_frame(
-        ax,
-        np.arange(len(parallel_coordinates_data.columns)),
-        parallel_coordinates_data.columns,
+    print(parallel_coordinates_data)
+    parallel_coordinates_data_raw = [
+        parallel_coordinates_data[col].fillna(0).values
+        for col in parallel_coordinates_data.columns
+    ]
+    parallel_coordinates_plot(
+        None,
+        len(list(parallel_coordinates_data.index)),
+        parallel_coordinates_data_raw,
+        category=np.arange(
+            len(list(parallel_coordinates_data.index))
+        ),  # list(parallel_coordinates_data.index),
+        ynames=list(parallel_coordinates_data.columns),
+        ax=ax,
     )
 
     fig.savefig(figures / f"parallel_coordinates_{suffix}.pdf", bbox_inches="tight")
