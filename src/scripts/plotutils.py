@@ -308,7 +308,7 @@ def parallel_coordinates_plot(
     host.legend(
         legend_handles,
         category_names,
-        ncol=4,
+        ncol=3,
         bbox_to_anchor=(1.1, -0.1),
         # loc="upper right",
     )

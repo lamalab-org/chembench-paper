@@ -95,9 +95,9 @@ Hence, we believe that fine-grained analysis of model performance is crucial for
 
 \begin{figure}[htb]
     \centering
-    \includegraphics{figures/parallel_coordinates_human_aligned.pdf}
+    \includegraphics{figures/parallel_coordinates_tiny.pdf}
     \caption{\textbf{Performance of the models on the different topics of the \enquote{tiny} subset.} The parallel coordinates plot shows the performance of the models on the different topics of the \enquote{tiny} subset. The performance is measured as the fraction of questions that were answered completely correctly by the models. }
-    \label{fig:parallel_coordinates_human_aligned}
+    \label{fig:parallel_coordinates_tiny}
     \script{make_parallel_coordinates_plot.py}
 \end{figure}
 
@@ -163,7 +163,7 @@ The application is hosted on the Vercel web hosting platform.
 \end{figure}
 
 We also recorded the time humans took to answer the questions. This time is the time from the question being displayed to the human to the human submitting the answer.
-Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (\Cref{fig:human_timing}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
+Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (\Cref{fig:human_timing}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
 \begin{figure}[htb]
     \centering
@@ -175,7 +175,7 @@ Interestingly, we found no significant correlation between the experience of the
 
 Additionally, we prompted users to provide additional information about their experience in chemistry. 
 While we recorded very fine-grained information, e.g., including their specialization, we focussed our analysis on the number of years since the first university-level chemistry course.
-\Cref{fig:experience_vs_correctness} shows that the experience of the human scorers was not significantly correlated with the correctness of their answers (\Cref{fig:experience_vs_correctness}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
+\Cref{fig:experience_vs_correctness} shows that the experience of the human scorers was not significantly correlated with the correctness of their answers (\Cref{fig:experience_vs_correctness}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
 \begin{figure}[htb]
     \centering
@@ -189,8 +189,9 @@ While we recorded very fine-grained information, e.g., including their specializ
 \subsection{Confidence estimates} \label{sec:confidence_estimates}
 
 Since it is important to understand if models can provide an indication of whether their answer might likely be incorrect, we prompted some of our top performing \glspl{llm} to return the confidence in providing a correct answer on an ordinal scale. 
-
+This is similar to the verbalized confidence scores reported by \textcite{xiong2023llms}.
 \Cref{fig:confidence_score_distributions} plots the distribution of those scores.
+We find that the models show different distributions of confidence scores, which for some are skewed to the extremes.
 
 \begin{figure}[htb] 
     \centering

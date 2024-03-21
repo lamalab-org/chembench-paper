@@ -39,7 +39,7 @@ if __name__ == "__main__":
     all_aligned = pd.concat(all_aligned)
 
     fig, ax = plt.subplots(
-        1, 1, figsize=(TWO_COL_WIDTH_INCH, TWO_COL_GOLDEN_RATIO_HEIGHT_INCH)
+        1, 1, figsize=(TWO_COL_WIDTH_INCH * 0.8, TWO_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )
 
     relevant_models = [

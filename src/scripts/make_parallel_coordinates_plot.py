@@ -8,11 +8,9 @@ import pandas as pd
 
 import numpy as np
 
-from plotutils import range_frame, parallel_coordinates_plot, model_color_map
+from plotutils import parallel_coordinates_plot, model_color_map
 from utils import (
-    ONE_COL_WIDTH_INCH,
     ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
-    TWO_COL_GOLDEN_RATIO_HEIGHT_INCH,
     TWO_COL_WIDTH_INCH,
 )
 import pickle
@@ -90,7 +88,7 @@ def prepare_data_for_parallel_coordinates(model_score_dict, human_data=None):
 
 def plot_parallel_coordinates(parallel_coordinates_data, suffix=""):
     fig, ax = plt.subplots(
-        1, 1, figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
+        1, 1, figsize=(TWO_COL_WIDTH_INCH * 0.8, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )
 
     parallel_coordinates_data_raw = [
@@ -132,4 +130,4 @@ if __name__ == "__main__":
         model_scores["human_aligned"], human_data=human_scores
     )
 
-    plot_parallel_coordinates(parallel_coordinates_data, suffix="human_aligned")
+    plot_parallel_coordinates(parallel_coordinates_data, suffix="tiny")
