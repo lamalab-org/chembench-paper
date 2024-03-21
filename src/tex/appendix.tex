@@ -93,6 +93,14 @@ Hence, we believe that fine-grained analysis of model performance is crucial for
     \script{make_parallel_coordinates_plot.py}
 \end{figure}
 
+\begin{figure}[htb]
+    \centering
+    \includegraphics{figures/parallel_coordinates_human_aligned.pdf}
+    \caption{\textbf{Performance of the models on the different topics of the \enquote{tiny} subset.} The parallel coordinates plot shows the performance of the models on the different topics of the \enquote{tiny} subset. The performance is measured as the fraction of questions that were answered completely correctly by the models. }
+    \label{fig:parallel_coordinates_human_aligned}
+    \script{make_parallel_coordinates_plot.py}
+\end{figure}
+
 To further investigate the performance of the models, we also compared the performance on different data sources.
 Compared to topics, this is a more fine-grained analysis as topics can be composed of questions from different sources.
 In \cref{fig:performance_per_topic} we see that the performance of the models varies significantly between the different data sources.
@@ -109,7 +117,7 @@ Interestingly, the performance of the models on questions sourced based on textb
     \script{analyze_performance_per_source.py}
 \end{figure}
 
-
+\Cref{fig:performance_per_topic_tiny} shows the same analysis on the \enquote{tiny} subset. 
 
 
 \begin{figure}[htb]
@@ -122,7 +130,8 @@ Interestingly, the performance of the models on questions sourced based on textb
     \script{analyze_performance_per_source.py}
 \end{figure}
 
-
+One might wonder if questions that are more difficult to parse lead to worse performance of the models.
+\Cref{fig:reading_ease_vs_model_performance} shows that there is no clear correlation between the reading ease of the questions and the performance of the models.
 
 \begin{figure}
     \centering
@@ -141,14 +150,20 @@ The web application is styled with Tailwind CSS\autocite{tailwindcss} using the 
 The application is hosted on the Vercel web hosting platform.
 
 
+\paragraph{Statistics}
+\Cref{fig:human_score_distribution} shows the distribution of scores our human scorers achieved.
+
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/human_score_distribution.pdf}
     \script{plot_human_score_distribution.py}
     \label{fig:human_score_distribution}
-    \caption{\textbf{Distribution of human scores.} The histogram shows the fraction of questions that have been answered completely correctly.
+    \caption{\textbf{Distribution of human scores.} The histogram and kernel density estimates show the fraction of questions that have been answered completely correctly.
     Since the best possible score for each question is one and the worst possible score is zero, the values on this plot are between zero and one.}
 \end{figure}
+
+We also recorded the time humans took to answer the questions. This time is the time from the question being displayed to the human to the human submitting the answer.
+Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (\Cref{fig:human_timing}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
 \begin{figure}[htb]
     \centering
@@ -158,8 +173,9 @@ The application is hosted on the Vercel web hosting platform.
     \caption{\textbf{Time taken by human scorers to answer questions vs.\ correctness of their answers.} From the plot it is clear that there is no clear dependence of the correctness of the answers on the time taken by the human scorers to answer the questions.}
 \end{figure}
 
-
-Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
+Additionally, we prompted users to provide additional information about their experience in chemistry. 
+While we recorded very fine-grained information, e.g., including their specialization, we focussed our analysis on the number of years since the first university-level chemistry course.
+\Cref{fig:experience_vs_correctness} shows that the experience of the human scorers was not significantly correlated with the correctness of their answers (\Cref{fig:experience_vs_correctness}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
 \begin{figure}[htb]
     \centering

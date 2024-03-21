@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
-from paths import scripts, figures, data
+from paths import scripts, figures, data, output
 import pickle
 import seaborn as sns
+import numpy as np
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
@@ -14,7 +15,7 @@ import os
 import json
 
 
-human_dir = data / "human_scores"
+human_dir = output / "human_scores"
 
 
 def collect_human_scores():
@@ -40,9 +41,10 @@ def plot(human_scores):
     fig, ax = plt.subplots(
         figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )
-    sns.histplot(human_scores, kde=True, kde_kws={"cut": 0}, ax=ax)
+    sns.distplot(human_scores, kde=True, rug=True, kde_kws={"cut": 0}, ax=ax, bins=20)
     ax.set_xlabel("human score")
     ax.set_ylabel("count")
+    range_frame(ax, np.array(human_scores), np.array([0, 20]))
     plt.tight_layout()
     plt.savefig(figures / "human_score_distribution.pdf")
 

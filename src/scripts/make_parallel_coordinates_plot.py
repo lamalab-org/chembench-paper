@@ -39,6 +39,7 @@ clean_model_names = {
     "gpt35turbo_react": "GPT-3.5 Turbo + ReAct",
     "galactica_120b": "Galactica 120B",
     "gpt35turbo": "GPT-3.5 Turbo",
+    "human": "Human",
 }
 
 
@@ -55,7 +56,7 @@ human_relevant_topics = [
 ]
 
 
-def prepare_data_for_parallel_coordinates(model_score_dict):
+def prepare_data_for_parallel_coordinates(model_score_dict, human_data=None):
     # the input contains a dictionary with the model name as key
     # the value is a dataframe with the performance per question
     # we also have a column "topic" which is the topic of the question
@@ -70,6 +71,15 @@ def prepare_data_for_parallel_coordinates(model_score_dict):
         all_aligned.append(frame)
 
     all_aligned = pd.concat(all_aligned)
+
+    if human_data is not None:
+        # human data is series indexed by topic
+        human_data = human_data.loc[human_relevant_topics]
+
+        human_data = human_data.reset_index()
+        human_data["model"] = "human"
+        all_aligned = pd.concat([all_aligned, human_data])
+        all_aligned = all_aligned[all_aligned["topic"].isin(human_relevant_topics)]
 
     parallel_coordinates_data = all_aligned.pivot_table(
         index="model", columns="topic", values="all_correct_", aggfunc=np.mean
@@ -105,22 +115,6 @@ def plot_parallel_coordinates(parallel_coordinates_data, suffix=""):
     fig.savefig(figures / f"parallel_coordinates_{suffix}.pdf", bbox_inches="tight")
 
 
-def plot_parallel_coordinates_human_subset(
-    parallel_coordinates_data, human_data, suffix
-):
-    fig, ax = plt.subplots(
-        1, 1, figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
-    )
-
-    subset = parallel_coordinates_data[
-        parallel_coordinates_data["topic"].isin(human_relevant_topics)
-    ]
-
-    parallel_coordinates_data_raw = [
-        subset[col].fillna(0).values for col in subset.columns
-    ]
-
-
 if __name__ == "__main__":
     with open(data / "model_score_dicts.pkl", "rb") as handle:
         model_scores = pickle.load(handle)
@@ -131,16 +125,11 @@ if __name__ == "__main__":
 
     plot_parallel_coordinates(parallel_coordinates_data, suffix="overall")
 
-    # subset analysis
-    parallel_coordinates_data = prepare_data_for_parallel_coordinates(
-        model_scores["human_aligned"]
-    )
-
     with open(data / "humans_as_models_scores.pkl", "rb") as handle:
         human_scores = pickle.load(handle)["topic_mean"]
 
-    print(human_scores)
-
-    plot_parallel_coordinates_human_subset(
-        parallel_coordinates_data, human_scores, suffix="human_aligned"
+    parallel_coordinates_data = prepare_data_for_parallel_coordinates(
+        model_scores["human_aligned"], human_data=human_scores
     )
+
+    plot_parallel_coordinates(parallel_coordinates_data, suffix="human_aligned")

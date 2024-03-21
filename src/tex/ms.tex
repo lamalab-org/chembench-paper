@@ -117,7 +117,7 @@ For this reason, \chembench samples both \gls{mcq} and open-ended questions (\va
 \paragraph{\enquote{Tiny} subset}
 It is important to note that for routine evaluations, a smaller subset of the corpus might be more practical.\autocite{polo2024tinybenchmarks}
 For instance,~\textcite{liang2023holistic} report costs of more than 10,000 USD for \gls{api} calls for a single evaluation on the widely used \gls{helm} benchmark. 
-To address this, we also provide a subset (\variable{output/num_tiny_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus (see \Cref{sec:subset-selection} for details on the curation process).
+To address this, we also provide a subset (\variable{output/num_tiny_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus in which topics are balanced than in the complete corpus (see \Cref{sec:subset-selection} for details on the curation process).
 We also used this subset to seed the web application we used for the human baseline study. 
 
 % emphasize that the topics are more balanced in this subset 
@@ -140,7 +140,7 @@ The text completions, however, are the final outputs of the system that would al
 To understand the current capabilities of \glspl{llm} in the chemical sciences, we evaluated a wide range of leading models\autocite{Huggingface} on the \chembench corpus, including systems augmented with external tools.
 An overview of the results of this evaluation is shown in \Cref{fig:human_vs_models_bar}. 
 In this figure, we show the percentage of questions that the models answered completely correctly.
-We use horizontal bars to indicate the performance of various models and highlight statistics (e.g., the average) of the human performance with vertical lines.
+Moreover, we show the worst, best, and average performance of the human experts in our study which we obtained via a custom web application (\url{chembench.org}) that we used to survey the experts.
 Remarkably, the figure shows that the leading \gls{llm}, GPT-4, outperforms the best human in our study in this overall metric and vastly, by more than a factor of two, exceeds the average performance of the experts in our study.
 Many other models also outperform the average human performance. It is, however, interesting to note that the Galactica model that was trained specifically for scientific applications is outperformed by more general models.
 % Bar chart
