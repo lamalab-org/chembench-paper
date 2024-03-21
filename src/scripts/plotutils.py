@@ -302,15 +302,13 @@ def parallel_coordinates_plot(
     legend_handles = []
     for j in range(N):
         # to just draw straight lines between the axes:
-        lines = host.plot(
-            range(ys.shape[1]), zs[j, :], c=colors[(category[j] - 1) % len(colors)]
-        )
+        lines = host.plot(range(ys.shape[1]), zs[j, :], c=colors[j])
         legend_handles.append(lines[0])
 
     host.legend(
         legend_handles,
         category_names,
-        ncol=5,
-        bbox_to_anchor=(1, 2.2),
+        ncol=4,
+        bbox_to_anchor=(1.1, -0.1),
         # loc="upper right",
     )

@@ -24,6 +24,9 @@ relevant_models = [
     "claude3",
     "llama70b",
     "gemini_pro",
+    "galactica_120b",
+    "gpt35turbo_react",
+    "gpt35turbo",
 ]
 
 
@@ -33,7 +36,13 @@ clean_model_names = {
     "claude3": "Claude 3",
     "llama70b": "Llama 70B",
     "gemini_pro": "Gemini Pro",
+    "gpt35turbo_react": "GPT-3.5 Turbo + ReAct",
+    "galactica_120b": "Galactica 120B",
+    "gpt35turbo": "GPT-3.5 Turbo",
 }
+
+
+# excluding topics with just one question for the comparison with humans 
 
 
 def prepare_data_for_parallel_coordinates(model_score_dict):
@@ -87,10 +96,21 @@ def plot_parallel_coordinates(parallel_coordinates_data, suffix=""):
     fig.savefig(figures / f"parallel_coordinates_{suffix}.pdf", bbox_inches="tight")
 
 
+def plot_parallel_coordinates_human_subset(parallel_coordinates_data, suffix):
+    ...
+
 if __name__ == "__main__":
     with open(data / "model_score_dicts.pkl", "rb") as handle:
-        model_scores = pickle.load(handle)["overall"]
+        model_scores = pickle.load(handle)
 
-    parallel_coordinates_data = prepare_data_for_parallel_coordinates(model_scores)
+    parallel_coordinates_data = prepare_data_for_parallel_coordinates(
+        model_scores["overall"]
+    )
 
     plot_parallel_coordinates(parallel_coordinates_data, suffix="overall")
+
+    # subset analysis
+    parallel_coordinates_data = prepare_data_for_parallel_coordinates(
+        model_scores["human_aligned"]
+    )
+    plot_parallel_coordinates(parallel_coordinates_data, suffix="human_aligned")

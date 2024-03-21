@@ -291,6 +291,6 @@ rule parallel_coordinates:
     input:
         "src/data/model_score_dicts.pkl",
     output:
-        "src/tex/figures/parallel_coordinates_overall.pdf",
+        ["src/tex/figures/parallel_coordinates_overall.pdf","src/tex/figures/parallel_coordinates_human_aligned.pdf"]
     script:
         "src/scripts/make_parallel_coordinates_plot.py"

@@ -12,6 +12,8 @@
 \begin{document}
 \maketitle
 
+% make the app somewhat more prominent 
+
 \clearpage
 \begin{abstract}
     Large language models (LLMs) have found widespread interest as they can perform tasks they have not been explicitly been trained on. 
@@ -118,6 +120,8 @@ For instance,~\textcite{liang2023holistic} report costs of more than 10,000 USD 
 To address this, we also provide a subset (\variable{output/num_tiny_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus (see \Cref{sec:subset-selection} for details on the curation process).
 We also used this subset to seed the web application we used for the human baseline study. 
 
+% emphasize that the topics are more balanced in this subset 
+
 
 \subsection{Model evaluation}
 
@@ -144,7 +148,7 @@ Many other models also outperform the average human performance. It is, however,
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/human_subset_performance.pdf}
-    \caption{\textbf{Performance of models and humans on \chembench.} The figure shows the percentage of questions that the models answered completely correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
+    \caption{\textbf{Performance of models and humans on the \enquote{tiny} subset of the  \chembench corpus.} The figure shows the percentage of questions that the models answered completely correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
     Since the humans did not answer all the questions, this plot is based on the subset of questions that most humans answered.
     The metric we use here is harsh as it only considers a question answered completely correctly or completely incorrectly, partially correct answers are also considered as incorrect.
     \Cref{fig:barplot_all_correct_all_questions} gives an overview of the performance of various models on the entire corpus.
@@ -168,7 +172,7 @@ We then computed the percentage of questions that the models, or humans, answere
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/all_questions_models_completely_correct_radar_human.pdf}
-    \caption{\textbf{Performance of the models and humans on the different topics of the \chembench corpus.} The radar plot shows the performance of the models and humans on the different topics of \enquote{tiny} subset of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correctly by the models.
+    \caption{\textbf{Performance of the models and humans on the different topics of the \enquote{tiny} subset of the \chembench corpus.} The radar plot shows the performance of the models and humans on the different topics of \enquote{tiny} subset of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correctly by the models.
     The best score for every dimension is one (all questions answered correctly) and the worst score is zero (no question answered completely correctly). A larger colored area indicates a better performance.
     This figure shows the performance on the subset of questions that was answered by humans, too. The performance of models on the entire corpus is shown in \Cref{fig:performance_per_topic}.
     }
@@ -191,6 +195,7 @@ We suppose that this is due to the fact that some of the textbook questions requ
 % GFK performance -> would the models obtain a chemical license 
 % Interesting twist perhaps: the performance on the university textbooks or exams is better than on the ones we automatically constructed
 % in contrast to LLM the human performance is also less spiky
+% emphasise that the exact ranking depends on the subset of questions we look at 
 
 % Calculation vs. no calculation
 Given that some of the questions in \chembench require elaborate calculations, we also analyzed if the models perform differently on those questions.
@@ -390,8 +395,8 @@ For selecting the subset, we decided on addressing two questions:
     \item Are the questions for which the models scored poorly just too difficult or unanswerable?
     \item Are there areas in which the performance of humans is very different from the ones of the models?
 \end{itemize}
-To answer the first question we selected X questions that all \glspl{llm} (model names) from an initial scoring round did not answer correctly.
-From those we picked X diverse one using greedy MaxMin sampling on the embeddings on the questions computed using BART (see below).
+To answer the first question we selected up to 13 questions per source that all \glspl{llm} (model names) from an initial scoring round did not answer correctly.
+In addition, we picked 100 diverse one using greedy MaxMin sampling on the embeddings on the questions computed using BART and added five random questions about the number of \gls{nmr} peaks and the point group of molecules.
 
 
 \paragraph{Study design}
