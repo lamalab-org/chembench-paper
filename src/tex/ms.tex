@@ -161,7 +161,7 @@ This observation highlights the importance of communicating and measuring not on
 %% Note also while the performance of the systems is better than what humans do, it is still far from perfect 
 
 % Radar chart
-To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
+\paragraph{Performance per topic} To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
 For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and classified the questions into these topics based and hand-crafted rules as well as classifier models.
 We then computed the percentage of questions that the models, or humans, answered completely correctly for each topic.
 
@@ -194,11 +194,11 @@ We suppose that this is due to the fact that some of the textbook questions requ
 
 % Calculation vs. no calculation
 Given that some of the questions in \chembench require elaborate calculations, we also analyzed if the models perform differently on those questions.
-For this, we manually annotated the questions that require calculations and performed the analysis on only those questions. 
+For this, we manually annotated the questions that require calculations and performed the analysis on only those questions.  % TODO add some analysis here 
 
 
 % Estimate of difficulty
-One might wonder whether the models are capable of estimating if they will be able to answer a question correctly. 
+\paragraph{Confidence estimates} One might wonder whether the models are capable of estimating if they will be able to answer a question correctly. 
 If they were able to do so, incorrect answers would be less problematic as one would be able to detect when an answer is incorrect.
 To investigate this, we prompted\autocite{xiong2023llms} some of the top-performing models to estimate the on an ordinal scale their confidence in their ability to answer the question correctly.
 
@@ -226,6 +226,9 @@ Yet, given that the models outperform the average human in our study, it is clea
 Critical reasoning is increasingly important and rote solving of problems or memorization of facts is clearly a domain in which \glspl{llm} will continue to outperform humans.
 
 Our findings also highlight the nuanced tradeoff between breadth and depth of evaluation frameworks. % link to the missing correlation 
+% also need for better ways of how humans actually use LLMs. How do they get the confidence?  
+% an LLM is not a chemist and at least the current systems seem to be far from reasoning like a chemist 
+% for fact like questions, that requires knowledge they might have seen on the internet, they work well, but for reasoning they are not good yet. 
 
 The current evaluation frameworks for \glspl{llm} are mostly designed to measure the performance of the models on specific tasks. 
 They cannot easily be used to evaluate systems, or models built for scientific applications. Thus, we had on little understanding of the capabilities of \glspl{llm} in the chemical sciences.
@@ -281,7 +284,6 @@ In addition, we included questions based on the general chemistry courses of the
 
 \subparagraph{Polymer chemistry}
 \variable{output/question_count_per_dir/json_file_counts_polymer_chemistry.txt} questions are based on examinations held at the University of Hamburg (Germany), covering topics related to polymer chemistry and its applications.
-
 
 \subparagraph{Textbook questions}
 \variable{output/question_count_per_dir/json_file_counts_oup.txt} questions are based on questions from various textbooks covering biomolecular science, drug synthesis, molecular structure, organic chemistry, and X-ray crystallography.

@@ -164,6 +164,7 @@ if __name__ == "__main__":
     human_scores = collect_human_scores()
     logger.info(f"Human scores: {human_scores}")
     plot_performance(model_scores, figures / "overall_performance.pdf")
+    model_scores = collect_model_scores(model_subset_dir)
     plot_performance(
         model_scores, figures / "human_subset_performance.pdf", human_scores
     )
