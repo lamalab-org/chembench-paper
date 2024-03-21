@@ -49,4 +49,5 @@ def plot(human_scores):
 
 if __name__ == "__main__":
     human_scores = collect_human_scores()
+    print(human_scores)
     plot(human_scores)

@@ -42,7 +42,17 @@ clean_model_names = {
 }
 
 
-# excluding topics with just one question for the comparison with humans 
+# excluding topics with just one question for the comparison with humans
+human_relevant_topics = [
+    "analytical chemistry",
+    "biochemistry",
+    "chemical safety",
+    "electrochemistry",
+    "general chemistry",
+    "macromolecular chemistry",
+    "organic chemistry",
+    "toxicology",
+]
 
 
 def prepare_data_for_parallel_coordinates(model_score_dict):
@@ -73,7 +83,6 @@ def plot_parallel_coordinates(parallel_coordinates_data, suffix=""):
         1, 1, figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )
 
-    print(parallel_coordinates_data)
     parallel_coordinates_data_raw = [
         parallel_coordinates_data[col].fillna(0).values
         for col in parallel_coordinates_data.columns
@@ -96,8 +105,21 @@ def plot_parallel_coordinates(parallel_coordinates_data, suffix=""):
     fig.savefig(figures / f"parallel_coordinates_{suffix}.pdf", bbox_inches="tight")
 
 
-def plot_parallel_coordinates_human_subset(parallel_coordinates_data, suffix):
-    ...
+def plot_parallel_coordinates_human_subset(
+    parallel_coordinates_data, human_data, suffix
+):
+    fig, ax = plt.subplots(
+        1, 1, figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
+    )
+
+    subset = parallel_coordinates_data[
+        parallel_coordinates_data["topic"].isin(human_relevant_topics)
+    ]
+
+    parallel_coordinates_data_raw = [
+        subset[col].fillna(0).values for col in subset.columns
+    ]
+
 
 if __name__ == "__main__":
     with open(data / "model_score_dicts.pkl", "rb") as handle:
@@ -113,4 +135,12 @@ if __name__ == "__main__":
     parallel_coordinates_data = prepare_data_for_parallel_coordinates(
         model_scores["human_aligned"]
     )
-    plot_parallel_coordinates(parallel_coordinates_data, suffix="human_aligned")
+
+    with open(data / "humans_as_models_scores.pkl", "rb") as handle:
+        human_scores = pickle.load(handle)["topic_mean"]
+
+    print(human_scores)
+
+    plot_parallel_coordinates_human_subset(
+        parallel_coordinates_data, human_scores, suffix="human_aligned"
+    )

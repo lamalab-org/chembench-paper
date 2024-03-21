@@ -294,3 +294,12 @@ rule parallel_coordinates:
         ["src/tex/figures/parallel_coordinates_overall.pdf","src/tex/figures/parallel_coordinates_human_aligned.pdf"]
     script:
         "src/scripts/make_parallel_coordinates_plot.py"
+
+
+rule plot_human_score_distribution: 
+    input:
+        rules.collect_human_scores.output,
+    output:
+        "src/tex/figures/human_score_distribution.pdf",
+    script:
+        "src/scripts/plot_human_score_distribution.py"
