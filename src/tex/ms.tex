@@ -360,6 +360,8 @@ As initial tests indicated that models sometimes return integers in the form of 
 In case these hard-coded parsing steps fail, we fall back to using a \gls{llm}, e.g. Claude-2, to parse the completion.
 %Manual verification indicates that this \gls{llm}-based parsing is not a relevant error source and has been performed correctly in all cases we checked (randomly sampled 4 questions per topic).
 
+\input{sections/parse_check_desc.tex}
+
 \paragraph{Models}
 \subparagraph{Completion models}
 We used Galactica (120b)\autocite{taylor2022galactica} with the default settings.
