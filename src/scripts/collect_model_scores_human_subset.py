@@ -5,6 +5,8 @@ import subprocess
 from utils import obtain_chembench_repo
 from paths import output
 
+
+
 if __name__ == "__main__":
     chembench_repo = obtain_chembench_repo()
     reports = glob(
