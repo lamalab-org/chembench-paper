@@ -218,7 +218,7 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
     )
 
 
-def radarplot_requires_calculation(df_dict, suffix):
+def radarplot_requires_calculation(df_dict, human_dicts, suffix):
     # to get subset that requires calculation, we can filter
     # model_df.groupby('requires_calculation')['all_correct_'].mean()[1]
     # for each model
@@ -519,11 +519,13 @@ if __name__ == "__main__":
         human_dicts = pickle.load(handle)
 
     make_overall_performance_radar_plot(df_dicts["overall"], "overall")
-    radarplot_requires_calculation(df_dicts["overall"], "overall")
+    radarplot_requires_calculation(df_dicts["overall"], None, "overall")
 
     make_overall_performance_radar_plot(
         df_dicts["human_aligned"], "human", human_dicts["topic_mean"]
     )
-    # radarplot_requires_calculation(
-    #     df_dicts["human_aligned"], "human", human_dicts["topic_mean"]
-    # )
+    radarplot_requires_calculation(
+        df_dicts["human_aligned"],
+        human_dicts["topic_mean"],
+        "human",
+    )
