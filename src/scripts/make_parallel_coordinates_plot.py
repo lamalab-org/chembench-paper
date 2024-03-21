@@ -8,7 +8,7 @@ import pandas as pd
 
 import numpy as np
 
-from plotutils import range_frame, parallel_coordinates_plot
+from plotutils import range_frame, parallel_coordinates_plot, model_color_map
 from utils import (
     ONE_COL_WIDTH_INCH,
     ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
@@ -16,6 +16,24 @@ from utils import (
     TWO_COL_WIDTH_INCH,
 )
 import pickle
+
+
+relevant_models = [
+    "gpt4",
+    "claude2",
+    "claude3",
+    "llama70b",
+    "gemini_pro",
+]
+
+
+clean_model_names = {
+    "gpt4": "GPT-4",
+    "claude2": "Claude 2",
+    "claude3": "Claude 3",
+    "llama70b": "Llama 70B",
+    "gemini_pro": "Gemini Pro",
+}
 
 
 def prepare_data_for_parallel_coordinates(model_score_dict):
@@ -27,6 +45,8 @@ def prepare_data_for_parallel_coordinates(model_score_dict):
 
     all_aligned = []
     for model, frame in model_score_dict.items():
+        if model not in relevant_models:
+            continue
         frame["model"] = model
         all_aligned.append(frame)
 
@@ -56,8 +76,12 @@ def plot_parallel_coordinates(parallel_coordinates_data, suffix=""):
         category=np.arange(
             len(list(parallel_coordinates_data.index))
         ),  # list(parallel_coordinates_data.index),
+        colors=[model_color_map[model] for model in parallel_coordinates_data.index],
         ynames=list(parallel_coordinates_data.columns),
         ax=ax,
+        category_names=[
+            clean_model_names[model] for model in parallel_coordinates_data.index
+        ],
     )
 
     fig.savefig(figures / f"parallel_coordinates_{suffix}.pdf", bbox_inches="tight")

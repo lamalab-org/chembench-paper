@@ -259,28 +259,38 @@ def parallel_coordinates_plot(
     # transform all data to be compatible with the main axis
     zs = np.zeros_like(ys)
     zs[:, 0] = ys[:, 0]
-    zs[:, 1:] = (ys[:, 1:] - ymins[1:]) / dys[1:] * dys[0] + ymins[0]
+    zs[:, 1:] = ys[:, 1:]
 
     axes = [host] + [host.twinx() for i in range(ys.shape[1] - 1)]
     for i, ax in enumerate(axes):
-        ax.set_ylim(0, 0.5)
+        ax.set_ylim(0, 1)
         ax.spines["top"].set_visible(False)
         ax.spines["bottom"].set_visible(False)
+        ax.spines["left"].set_visible(False)
+        ax.spines["right"].set_visible(False)
         if ax != host:
-            ax.spines["left"].set_visible(False)
-            ax.yaxis.set_ticks_position("right")
-            ax.spines["right"].set_position(("axes", i / (ys.shape[1] - 1)))
+            # ax.spines["left"].set_visible(False)
+            # ax.yaxis.set_ticks_position("right")
+            # ax.spines["right"].set_visible(False)
 
             # turn off the ticks unless it is the first or last axis
             # just have a line without numbers, i.e. do not completely remove the axis, but only the labels
-            if i != 0 and i != ys.shape[1] - 1:
-                ax.set_yticklabels([])
+            if i > 0 and i < ys.shape[1] - 1:
+                ax.set_yticks([])
+                # but we want a line from y = 0 to y = 1, use the ytick color in the current style
+                ax.vlines(i, 0, 1, lw=0.5, colors="#758D99")
+            else:
+                ax.vlines(i, 0, 1, lw=0.8, colors="#758D99")
+        else:
+            ax.vlines(i, 0, 1, lw=0.8, colors="#758D99")
 
     host.set_xlim(0, ys.shape[1] - 1)
     host.set_xticks(range(ys.shape[1]))
+    # make no subticks for x axis
+    host.xaxis.set_tick_params(which="minor", size=0)
     host.set_xticklabels(ynames, rotation=45, ha="left")
     host.tick_params(axis="x", which="major")
-    host.spines["right"].set_visible(False)
+
     host.xaxis.tick_top()
     if title is not None:
         host.set_title(title, fontsize=18)
@@ -288,46 +298,19 @@ def parallel_coordinates_plot(
     if colors is None:
         # colors = plt.cm.tab10.colors
         colors = sum(tab20_colors, [])
-    if category_names is not None:
-        legend_handles = [None for _ in category_names]
-    else:
-        legend_handles = [None for _ in set(category)]
+
+    legend_handles = []
     for j in range(N):
         # to just draw straight lines between the axes:
-        host.plot(
+        lines = host.plot(
             range(ys.shape[1]), zs[j, :], c=colors[(category[j] - 1) % len(colors)]
         )
+        legend_handles.append(lines[0])
 
-        # create bezier curves
-        # for each axis, there will a control vertex at the point itself, one at 1/3rd towards the previous and one
-        #   at one third towards the next axis; the first and last axis have one less control vertex
-        # x-coordinate of the control vertices: at each integer (for the axes) and two inbetween
-        # y-coordinate: repeat every point three times, except the first and last only twice
-        # verts = list(
-        #     zip(
-        #         [
-        #             x
-        #             for x in np.linspace(0, len(ys) - 1, len(ys) * 3 - 2, endpoint=True)
-        #         ],
-        #         np.repeat(zs[j, :], 3)[1:-1],
-        #     )
-        # )
-        # # for x,y in verts: host.plot(x, y, 'go') # to show the control points of the beziers
-        # codes = [Path.MOVETO] + [Path.CURVE4 for _ in range(len(verts) - 1)]
-        # path = Path(verts, codes)
-        # patch = patches.PathPatch(
-        #     path, facecolor="none", lw=1, edgecolor=colors[category[j] - 1]
-        # )
-        # legend_handles[category[j] - 1] = patch
-        # host.add_patch(patch)
-
-        if category_names is not None:
-            host.legend(
-                legend_handles,
-                category_names,
-                loc="lower center",
-                bbox_to_anchor=(0.5, -0.18),
-                ncol=len(category_names),
-                fancybox=True,
-                shadow=True,
-            )
+    host.legend(
+        legend_handles,
+        category_names,
+        ncol=5,
+        bbox_to_anchor=(1, 2.2),
+        # loc="upper right",
+    )
