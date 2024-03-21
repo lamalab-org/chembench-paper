@@ -65,8 +65,8 @@ def plot_reading_ease(df):
     )
 
     counts, edges, _ = ax.hist(flesch_kincaid_reading_ease)
-    ax.set_xlabel("Flesch-Kincaid Reading Ease")
-    ax.set_ylabel("Number of Questions")
+    ax.set_xlabel("Flesch-Kincaid reading ease")
+    ax.set_ylabel("number of questions")
     range_frame(ax, edges, counts)
     fig.tight_layout()
     fig.savefig(figures / "flesch_kincaid_reading_ease.pdf", bbox_inches="tight")

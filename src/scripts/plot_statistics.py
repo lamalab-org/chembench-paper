@@ -26,7 +26,7 @@ def overall_question_count_barplot(df):
     ax.set_xscale("log")
     range_frame(ax, counts, np.arange(len(topics)))
 
-    ax.set_xlabel("Number of Questions")
+    ax.set_xlabel("number of questions")
 
     # fig.tight_layout()
 
@@ -75,7 +75,7 @@ def question_count_barplot(df):
     ax[1].set_xscale("log")
     range_frame(ax[1], all_counts, np.arange(len(topics_general)))
 
-    ax[1].set_xlabel("Question Count")
+    ax[1].set_xlabel("question count")
 
     # add "MCQ" and "General" labels
     ax[0].text(0.5, 1.05, "MCQ", transform=ax[0].transAxes, ha="center")

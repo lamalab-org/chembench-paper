@@ -85,7 +85,7 @@ def plot():
     ax.legend(ncol=3, bbox_to_anchor=(1.1, 1.2))
     range_frame(ax, np.array([1, 5]), np.array([0, max_count]))
 
-    ax.set_xlabel("Number of Questions")
+    ax.set_xlabel("number of questions")
     ax.set_ylabel("confidence estimate")
     # fig.tight_layout()
     fig.savefig(figures / "confidence_score_distributions.pdf", bbox_inches="tight")

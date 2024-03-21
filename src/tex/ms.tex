@@ -322,7 +322,8 @@ We used MAYGEN\autocite{Yirik_2021} to compute the number of isomers for a set o
 To obtain the answers for false options we sampled from the set of all observed isomer counts. In total, we generated \variable{output/question_count_per_dir/json_file_counts_number_of_isomers.txt} questions.
 
 \subparagraph{Point group for molecules}
-\variable{output/question_count_per_dir/json_file_counts_point_group.txt} questions involve predicting the point group for molecules. Our ChemCaption tool (\url{https://github.com/lamalab-org/chem-caption}) is utilized for data generation. 
+\variable{output/question_count_per_dir/json_file_counts_point_group.txt} questions involve predicting the point group for molecules. 
+Our ChemCaption tool (\url{https://github.com/lamalab-org/chem-caption}) is utilized for data generation. 
 Given a molecule, it uses spglib\autocite{spglib} to identify the point group. 
 Assigned point groups were manually verified to only include well-defined cases.
 
