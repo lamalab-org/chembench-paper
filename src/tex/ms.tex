@@ -369,6 +369,7 @@ In case these hard-coded parsing steps fail, we fall back to using a \gls{llm}, 
 \input{sections/parse_check_desc.tex}
 
 \paragraph{Models}
+We find that the performance of models depends on the sampling temperature. Typically we find the best temperature with greedy argmax decoding ($T=0$).
 \subparagraph{Completion models}
 We used Galactica (120b)\autocite{taylor2022galactica} with the default settings.
 
