@@ -133,7 +133,7 @@ def plot_performance(
         ax.text(
             np.mean(human_scores),
             len(model_scores) - 0.5,
-            "mean human",
+            "highest human score",
             rotation=45,
             c="#00B945",
         )
@@ -141,7 +141,7 @@ def plot_performance(
         ax.text(
             np.max(human_scores),
             len(model_scores) - 0.5,
-            "best human",
+            "average human score",
             rotation=45,
             c="#FF9500",
         )
@@ -149,7 +149,7 @@ def plot_performance(
         ax.text(
             np.min(human_scores),
             len(model_scores) - 0.5,
-            "worst human",
+            "lowest human score",
             rotation=45,
             c="#845B97",
         )
