@@ -16,14 +16,14 @@
 
 \clearpage
 \begin{abstract}
-    Large language models (LLMs) have found widespread interest as they can perform tasks they have not been explicitly been trained on. 
+    Large language models (LLMs) have drawn great interest as they can perform tasks they have not been explicitly been trained on. 
     This is relevant for the chemical sciences, which face the problem of learning from many small and diverse datasets that are frequently in the form of text.
     LLMs are increasingly being harnessed to predict chemical properties, optimize reactions, and even design and conduct experiments autonomously.
 
     However, we still have only very limited systematic understanding of the chemical reasoning capabilities of LLMs, which would be required to improve models and mitigate potential harms. 
     Here, we introduce \enquote{\chembench,} an automated framework designed to rigorously evaluate the chemical knowledge and reasoning abilities of state-of-the-art LLMs, including GPT-4, against the expertise of human chemists.
 
-    We curated more than 6000 question answer pairs about a wide array of subfields, evaluated leading models such as GPT-4 and Claude 3, and found that the best models, on average, outperform the best human chemists in our study. 
+    We curated more than 6000 question-answer pairs about a wide array of subfields, evaluated leading models such as GPT-4 and Claude 3, and found that the best models, on average, outperform the best human chemists in our study. 
     The models, however, struggle with some chemical reasoning tasks that are easy for human experts and give overconfident misleading predictions, e.g., about the safety profile of chemicals. 
 
     These findings underscore the dual reality that, although LLMs demonstrate remarkable proficiency in chemical tasks, there is a critical need for further research to enhance their safety and utility in chemical sciences.
@@ -42,7 +42,7 @@ This led to tremendous economic interest and investment in such generative model
 Chemists and materials scientists have quickly caught on the mounting attention given to \glspl{llm}, with some voices even suggesting that \enquote{the future of chemistry is language}.\autocite{White_2023}
 This statement is motivated by a growing number of reports that use \glspl{llm} to predict properties of molecules or materials,\autocite{jablonka202314, jablonka2024leveraging, xie2024fine, liao2024words, zhang2024chemllm, zhong2024benchmarking} to optimize reactions\autocite{ramos2023bayesian, kristiadi2024sober}  generate materials,\autocite{rubungo2023llm, flam2023language, gruver2024fine} extract information,\autocite{Patiny_2023, Dagdelen_2024, Zheng_2024, lála2023paperqa, caufield2023structured} or to even build first prototypes of autonomous systems that can autonomously perform reactions in the physical world based on commands provided in natural language.\autocite{bran2023chemcrow, Boiko_2023, darvish2024organa}
 
-In addition, since a lot---if not most---of the information about chemistry is currently stored and communicated in text there is a strong reason to believe that there is a lot of untapped potential in \glspl{llm} for chemistry and materials science.
+In addition, since a lot---if not most---of the information about chemistry is currently stored and communicated in text there is a strong reason to believe that there is a great untapped potential in \glspl{llm} for chemistry and materials science.
 For instance, most insights in chemical research does not directly originate from data stored in databases but rather from the scientists and their ability to interpret data. 
 Most of these insights are in form of text in scientific publications. 
 Thus, operating on such text might be our best way of unlocking these insights and to learn from them.
@@ -51,27 +51,27 @@ Such a usage mode is especially interesting in the face of recent advanced in au
 
 
 However, the rapid increase in capabilities of chemical \gls{ml} models led (even before the recent interest in \glspl{llm}) to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\autocite{gopal2023releasing, ganguli2022red, Urbina_2022, campbell2023censoring, moulange2023towards, urbina2022teachable}
-To some extent, this is not surprising as any technology that, for instance, can predict the toxicity of molecules (to be used in drug discovery) can also be used to predict the toxicity of molecules (to be used in chemical warfare).
+To some extent, this is not surprising as any technology that can be used to predict the toxicity of a compound for drug discovery, can be used in a contrastive way in chemical warfare.
 Moreover, it is important to realize that the user base of such models is not only limited to experts in chemistry and materials science who critically reflect every output such models produce. 
 For example, many students frequently consolidate those tools---perhaps even to prepare chemical experiments.\autocite{Intelligent.com_2023}
 This also implies to users from the general public, who might consider using \glspl{llm} to answer questions about the safety of chemicals.
 Thus, for some users, misleading information---especially about safety-related aspects---might lead to harmful outcomes. 
-However, even for experts the chemical understanding and reasoning capabilities are important as they will determine the capabilities and limitations of their models in their work, e.g., in copilot systems for chemists.
-Unfortunately, apart from anecdotal reports there is little evidence on how \glspl{llm} perform compared to experts.
+However, even for experts, the chemical understanding and reasoning capabilities are important as they will determine the capabilities and limitations of their models in their work, e.g., in copilot systems for chemists.
+Unfortunately, apart from anecdotal reports, there is little evidence on how \glspl{llm} perform compared to experts.
 
 Thus, to better understand what \glspl{llm} can do for chemistry and materials science, and where they might be improved with further developments, evaluation frameworks are needed to allow us to systematically measure progress and mitigate potential harms.
 For the development of \glspl{llm}, evaluation is currently mostly performed via standardized benchmarks suites such as BigBench\autocite{srivastava2022beyond} or the LM Eval Harness.\autocite{eval-harness}
 The former contains, among 204 tasks (such as linguistic puzzles), only two tasks classified as \enquote{chemistry related} whereas the latter contains no specific chemistry tasks.
 Due to the lack of widely accepted standard benchmarks, the developers of chemical language models\autocite{jablonka2024leveraging, guo2023large, ahmad2022chemberta2, Cai_2024, frey2023neural} frequently utilize language-interfaced\autocite{dinh2022lift} tabular datasets such as the ones reported in MoleculeNet,\autocite{wu2018moleculenet} Therapeutic Data Commons\autocite{huang2021therapeutics} or MatBench.\autocite{dunn2020benchmarking}
-In these cases, the models are  evaluated on predicting very specific properties of molecules (e.g., solubility, toxicity, or reactivity) or on predicting the outcome of specific chemical reactions.
+In these cases, the models are evaluated on predicting very specific properties of molecules (e.g., solubility, toxicity, or reactivity) or on predicting the outcome of specific chemical reactions.
 This, however, only gives a very limited view of the general chemical capabilities of the models.
 
 While some benchmark based on university entrance exams\autocite{Zaki_2024, arora2023llms} or automatic text mining\autocite{song2023honeybee, wei2021chemistryqa} have been proposed, none of them have been widely accepted.
-This is likely because they cannot automatically be used with black box (or tool-augmented) systems, do not cover a wide range of topics, or are not carefully validated by experts.
+Likely, this is because they cannot be used automatically with black box (or tool-augmented) systems, do not cover a wide range of topics, or are not carefully validated by experts.
 On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights in how the models compare relative to experts.
 
 In this work, we report a novel benchmarking framework, which we call \chembench, and use it to reveal limitations of current frontier models for the use in the chemical sciences.
-Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question answer pairs manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources.
+Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs: manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources.
 Our corpus covers a large fraction of the topics taught in undergraduate and graduate chemistry curricula and can be used to evaluate any system that can return text (i.e., also tool-augmented systems).
 
 To contextualize the scores, we also surveyed more than \variable{output/number_experts.txt} experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with the one of humans.
@@ -120,7 +120,6 @@ To address this, we also provide a subset (\variable{output/num_tiny_questions.t
 We also used this subset to seed the web application we used for the human baseline study. 
 
 
-
 \subsection{Model evaluation}
 
 \paragraph{Benchmark suite design} Because the text used in scientific settings is different from typical natural language, many models have been developed that deal with such text in a special way.
@@ -128,14 +127,14 @@ For instance, Galactica\autocite{taylor2022galactica} uses special tokenization 
 Current benchmarking suites, however, do not account for such special treatment of scientific information.
 To address this, \chembench is designed to encode the semantic meaning of various parts of the question or answer.  
 For instance, molecules represented in \gls{smiles} are encapsulated in \texttt{[START\_SMILES][\textbackslash END\_SMILES]} tags. 
-This allows the model to treat the \gls{smiles} string different from other text. 
+This allows the model to treat the \gls{smiles} strings different from other text. 
 \chembench can seamlessly handle such special treatment in an easily extensible way because the questions are stored in an annotated format.
 
 Since many widely utilized systems do only provide access to text completions (and not the raw model outputs), \chembench is designed to operate on text completions.
 This is also important with the growing number of tool-augmented systems that are deemed essential for building chemical copilot systems. 
 Such systems can augment the capabilities of \glspl{llm} through the use external tools such as search \glspl{api} or code executors.\autocite{schick2024toolformer, karpas2022mrkl, yao2022react}
 In those cases, the \gls{llm} that returns the probabilities for various tokens (that are often used for model evaluations\autocite{Fourrier_Habib_Launay_Wolf}) is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
-The text completions, however, are the final outputs of the system that would also be used in a real-world application. Hence, we use them for our evaluations.
+The text completions, however, are the final outputs of the system that would also be used in real-world applications.
 
 \begin{figure}[!h]
     \centering
@@ -156,16 +155,14 @@ The text completions, however, are the final outputs of the system that would al
 To understand the current capabilities of \glspl{llm} in the chemical sciences, we evaluated a wide range of leading models\autocite{Huggingface} on the \chembench corpus, including systems augmented with external tools.
 An overview of the results of this evaluation is shown in \Cref{fig:human_vs_models_bar}. 
 In this figure, we show the percentage of questions that the models answered completely correctly.
-Moreover, we show the worst, best, and average performance of the human experts in our study which we obtained via a custom web application (\url{chembench.org}) that we used to survey the experts.
+Moreover, we show the highest, average, and lowest performances of the human experts, which we obtained via a custom web application (\url{chembench.org}) that we used to survey the experts.
 Remarkably, the figure shows that the leading \gls{llm}, Claude 3, outperforms the best human in our study in this overall metric and vastly, by more than a factor of two, exceeds the average performance of the experts in our study.
-Many other models also outperform the average human performance. It is, however, interesting to note that the Galactica model that was trained specifically for scientific applications is outperformed by more general models.
+Many other models also outperform the average human performance. However, it is interesting to point out that the Galactica model that was trained specifically for scientific applications is outperformed by more general models.
 
 Given the large interest in tool-augmented systems, the bad performance of these systems (GPT-3.5 and Claude 2 augmented with tools) in our benchmark is striking. 
-Their lack of performance, however, is partially due to the fact that we limited the system to a maximum of ten \gls{llm} calls.
+Their lack of performance, however, is partially due to the fact that we limited the system to a maximum of 10 \gls{llm} calls.
 With the default tool augmented setup (using the so-called ReAct method\autocite{yao2023react}), however, this often did not allow the system to find the correct answer (e.g., because it repeatedly tried to search for the answer on the web and did not find a solution within ten calls to the \gls{llm}).
-This observation highlights the importance of communicating and measuring not only in predictive performance but also computational cost (e.g., in terms of \gls{api} calls) for tool-augmented systems.
-
-
+This observation highlights the importance of communicating and measuring not only the predictive performance but also the computational cost (e.g., in terms of \gls{api} calls) for tool-augmented systems.
 
 % Radar chart
 \paragraph{Performance per topic} To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
@@ -174,7 +171,7 @@ We then computed the percentage of questions that the models, or humans, answere
 \begin{figure}[!h]
     \centering
     \includegraphics{figures/all_questions_models_completely_correct_radar_human.pdf}
-    \caption{\textbf{Performance of the models and humans on the different topics of the \enquote{tiny} subset of the \chembench corpus.} The radar plot shows the performance of the models and humans on the different topics of \enquote{tiny} subset of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correct by the models.
+    \caption{\textbf{Performance of the models and humans on the different topics of the \enquote{tiny} subset of the \chembench corpus.} The radar plot shows the performance of the models and humans on the different topics of the \enquote{tiny} subset of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correct by the models.
     The best score for every dimension is one (all questions answered correctly) and the worst score is zero (no question answered completely correctly). A larger colored area indicates a better performance.
     This figure shows the performance on the subset of questions that was answered by humans. The performance of models on the entire corpus is shown in \Cref{fig:performance_per_topic}.
     }
@@ -185,13 +182,13 @@ In this spider chart, the worst score for every dimension is zero (no question a
 Thus, a larger colored area indicates a better performance. 
 One can observe that this performance varies widely across models and topics. 
 While macromolecular chemistry and biochemistry receive relatively high scores for many models, this is not the case for topics such as chemical safety or analytical chemistry.
-In the subfield of analytical chemistry the prediction of the number of peaks observable in a \gls{nmr} spectrum proved difficult for the models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_gpt4.txt} percent correct answers for GPT-4) while this question appeared easier (\variable{output/human_subset_scores/is_number_nmr_peaks.txt} percent correct) for trained humans.
+In the subfield of analytical chemistry the prediction of the number of peaks observable in a \gls{nmr} spectrum proved difficult for the models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_gpt4.txt} percent correct answers for GPT-4), while this question appeared easier (\variable{output/human_subset_scores/is_number_nmr_peaks.txt} percent correct) for trained humans.
 Importantly, the human experts are given a drawing of the compounds, whereas models are only shown the \gls{smiles} string of a compound and have to use this to reason about the symmetry of the compound (i.e., to identify the number of diasterotopically distinct protons, which requires \emph{reasoning} about the topology and structure of a molecule). 
 These findings also shine an interesting light on the value of textbook-inspired questions. 
-A subset of the questions in the \chembench are based on textbooks targeted at undergraduate students. 
+A subset of the questions in \chembench are based on textbooks targeted at undergraduate students. 
 On those questions the models tend to perform better than on some our semi-automatically constructed tasks (see \Cref{fig:performance_per_topic}).
 For instance, while the overall performance in the chemical safety topic is low, the models would pass the examination for a chemical license based on a subset of a questions we sampled from the corresponding question bank (e.g., \variable{output/subset_scores/is_gfk_gpt4.txt}\% correct answers for GPT-4, \variable{output/subset_scores/is_gfk_claude3.txt}\% for Claude 3, and \variable{output/human_subset_scores/is_gfk.txt}\% for the human experts).
-While those findings are impacted by the subset of questions we sampled, the results still highlight that good performance on such question bank or textbook questions does not necessarily translate to good performance on other questions that require more reasoning.
+While those findings are impacted by the subset of questions we sampled, the results still highlight that good performance on such a question set or textbook questions does not necessarily translate to good performance on other questions that require more reasoning.
 
 % Calculation vs. no calculation
 Given that some of the questions in \chembench require elaborate calculations, we also analyzed if the models perform differently on those questions.
@@ -200,9 +197,9 @@ For this, we manually annotated the questions that require calculations and perf
 \clearpage
 
 % Estimate of difficulty
-\paragraph{Confidence estimates} One might wonder whether the models are capable of estimating if they will be able to answer a question correctly. 
+\paragraph{Confidence estimates} One might wonder whether the models are capable of estimating if they could be able to answer a question correctly. 
 If they were able to do so, incorrect answers would be less problematic as one would be able to detect when an answer is incorrect.
-To investigate this, we prompted\autocite{xiong2023llms} some of the top-performing models to estimate the on an ordinal scale their confidence in their ability to answer the question correctly.
+To investigate this, we prompted\autocite{xiong2023llms} some of the top-performing models to estimate (on an ordinal scale) their confidence to answer the question correctly.
 
 \begin{figure}[!h]
     \centering
@@ -214,12 +211,12 @@ To investigate this, we prompted\autocite{xiong2023llms} some of the top-perform
 \end{figure}
 
 In \Cref{fig:confidence_vs_performance} we show that for some models there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
-For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the models' outputs.\autocite{Li_2023}
+For applications in which humans might rely on the models to provide answers, this is a concerning observation which highlights the need for critical reasoning in the interpretation of the models' outputs.\autocite{Li_2023}
 For example, for the questions about the safety profile of compounds, GPT-4 reported an average confidence of \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_correct_overall.txt} (on a scale of 1--5) for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_correct_overall.txt} questions it answered in correctly and \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_incorrect_overall.txt} for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_incorrect_overall.txt} questions it answered incorrectly.
 While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading for the questions about \gls{ghs} pictograms with an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
 
 \section{Discussion and Conclusions}
-One the one hand, our findings show that it is impressive how far we got. Leading models outperform domain experts in chemistry questions on many topics. 
+On one hand, our findings show why \glspl{llm} are impressive to the scietists, but also to the general public. Leading models outperform domain experts in chemistry questions on many topics. 
 On the other hand, there are still striking limitations. On very relevant topics the answers models provide are wrong. And models are not able to estimate their own limitations.
 However, the success in our benchmarks perhaps also reveals more about the limitations about the exams we use to evaluate models---and chemists---than the models themselves.
 For instance, while models perform well on many textbook questions, they struggle with questions that require some more reasoning.
