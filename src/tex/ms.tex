@@ -314,7 +314,7 @@ Questions are based on images shared via the Twitter account \url{https://twitte
 \variable{output/question_count_per_dir/json_file_counts_electron_counts.txt} questions pertaining to the total electron count of molecules are based on data from the website \url{https://www.cheminfo.org/}. 
 
 \subparagraph{Number of isomers}
-We used MAYGEN\autocite{Yirik_2021} to compute the number of isomers for a set of  \gls{smiles} randomly sampled from the ZINC dataset.\autocite{Irwin_2012}
+We used MAYGEN\autocite{Yirik_2021} to compute the number of isomers for a set of \gls{smiles} randomly sampled from the ZINC dataset.\autocite{Irwin_2012}
 To obtain the answers for false options we sampled from the set of all observed isomer counts. In total, we generated \variable{output/question_count_per_dir/json_file_counts_number_of_isomers.txt} questions.
 
 \subparagraph{Point group for molecules}
@@ -401,11 +401,10 @@ In addition, we picked 100 diverse one using greedy MaxMin sampling on the embed
 \paragraph{Study design}
 For our initial study we wanted to maximize the response rate given our available resources. 
 For this reason, we did not opt for a highly controlled study setting. 
-That is, while users were prompted to not use external tools other than a calculator and to not consult with other humans, we do not have any way to verify that the participants complied with those rules. 
+That is, while users were prompted to not use external tools other than a calculator and to not consult other humans, we do not have any way to verify that the participants complied with those rules. 
 Note that users were also allowed to skip questions.
 
-Another aspect of requiring unsupervised question answering is that in real life humans have tools and are able to use them for answering any question of interest. 
-In our current study, we prompted users to not use those tools.
+Another aspect of requiring unsupervised question answering is that in the real world humans also have tools and are able to use them for answering any question of interest. 
 
 \paragraph{Participants}
 Users were open to report about their experience in chemistry. 
