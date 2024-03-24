@@ -261,19 +261,19 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 These questions focus on the principles and techniques employed in analytical chemistry.
 
 \subparagraph{Combustion engineering}
-\variable{output/question_count_per_dir/json_file_counts_combustion_engineering.txt} questions are based on master student examination papers at the University of Magdeburg (Germany). 
+\variable{output/question_count_per_dir/json_file_counts_combustion_engineering.txt} question are based on master student examination papers at the University of Magdeburg (Germany). 
 They explore topics related to combustion processes and engineering principles.
 
 \subparagraph{Functional materials and nanomaterials}
-\variable{output/question_count_per_dir/json_file_counts_func_mats_and_nanomats.txt}  questions are based on exercises in a seminar conducted at the University of Jena (Germany), delving into topics concerning functional materials and nanomaterials, exploring their properties and applications.
+\variable{output/question_count_per_dir/json_file_counts_func_mats_and_nanomats.txt}  questions are based on exercises from a seminar conducted at the University of Jena (Germany), delving into topics concerning functional materials and nanomaterials, exploring their properties and applications.
 
 \subparagraph{General chemistry}
 \variable{output/question_count_per_dir/json_file_counts_Gen_Chem_MCA.txt} questions originate from examinations for grade 10 at Marist Comprehensive Academy Uturu (Nigeria). 
 They cover fundamental concepts in chemistry suitable for students at the secondary school level.
 In addition, we included questions based on the general chemistry courses of the Bachelor of Science in Chemistry at the Technical University of Munich (Germany), focusing on inorganic chemistry (\variable{output/question_count_per_dir/json_file_counts_ac_faessler_tum.txt}) and principles of chemistry (\variable{output/question_count_per_dir/json_file_counts_pum_tum.txt}).
 
-\subparagraph{International Chemical Olympiad}
-\variable{output/question_count_per_dir/json_file_counts_icho.txt} questions are based on various countries' Chemical Olympiads, including those held in the USA, UK, and Moldova.
+\subparagraph{Chemistry Olympiads}
+\variable{output/question_count_per_dir/json_file_counts_icho.txt} questions are based on various local and international chemistry competitions, including those held in the USA, UK, and Moldova.
 
 \subparagraph{Material synthesis}
 \variable{output/question_count_per_dir/json_file_counts_materials_synthesis.txt} questions are based on seminars on material synthesis at the University of Jena (Germany), focusing on the methods and techniques employed in the synthesis of various materials.
@@ -294,18 +294,17 @@ In addition, we included questions based on the general chemistry courses of the
 This category comprises a total of \variable{output/question_count_per_dir/json_file_counts_safety.txt} questions, including semi-programmatically created questions covering areas such as GHS classification, hazard statements, \gls{dai}, and pictograms from the PubChem database \autocite{pubchem} (see below for details). 
 Additionally, it explores crucial topics like materials' compatibility (\variable{output/question_count_per_dir/json_file_counts_materials_compatibility.txt} questions) and chemical compatibility (\variable{output/question_count_per_dir/json_file_counts_chem_chem_comp.txt} questions), essential for understanding the hazardous impact of mixing certain materials and chemicals. 
 Furthermore, it includes \variable{output/question_count_per_dir/json_file_counts_blac_gfk.txt} questions based on the question bank published by the Federal/State Working Group on Chemical Safety (BLAC), which is used for the expertise examination (\enquote{Sachkundeprüfung}) according to §11 of the Chemical Prohibition Ordinance (\enquote{Chemikalien-Verbotsverordnung}).
-Moreover, this category addresses questions about lab safety and topics such as pharmacology, toxicology, material safety data sheets, and chemical safety data sheets. 
+Moreover, this category includes questions about lab safety, pharmacology, toxicology, material safety data sheets, and chemical safety data sheets. 
 The chemical safety category stands out as one of the primary focus areas within the \chembench corpus.
 
 \subparagraph{NMR spectroscopy}
-Questions are based on images shared via the Twitter account \url{https://twitter.com/NMRspectroscopy}, focusing on the choice and design of  appropriate \gls{nmr} experiments.
+Questions are based on images shared via the Twitter account \url{https://twitter.com/NMRspectroscopy}, focusing on the choice and design of appropriate \gls{nmr} experiments.
 
 
 \paragraph{Semi-programatically generated questions}
 
 \subparagraph{Chemical reactivity}
 \variable{output/question_count_per_dir/json_file_counts_reactive_groups.txt} questions are framed based on information from the Cameo Chemicals website (\url{https://cameochemicals.noaa.gov/reactivity}), exploring the reactivity of various chemicals and compounds.
-
 
 
 \subparagraph{Oxidation states}
@@ -376,8 +375,8 @@ We used Galactica (120b)\autocite{taylor2022galactica} with the default settings
 \subparagraph{Tool augmented models}
 In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
 For this we investigated the 7B parameter \enquote{online} model of Perplexity.AI. 
-In addition, we utilized gpt-3.5-turbo as well as Claude 2, with ReAct-style tool augmentation.\autocite{yao2023react}
-The latter two models had access to WolframAlpha, the ArXiv \gls{api}, a Python interpreter, as well as web search (using DuckDuckGo).
+In addition, we used gpt-3.5-turbo and Claude 2 with ReAct-style tool augmentation.\autocite{yao2023react}
+The latter two models had access to WolframAlpha, the ArXiv \gls{api}, a Python interpreter, as well as web search (through DuckDuckGo).
 We implemented the system using Langchain with the default prompts and constrained the system to a maximum of ten \gls{llm} calls.
 
 
