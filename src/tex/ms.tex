@@ -386,7 +386,6 @@ We decided to use verbalized confidence estimates\autocite{xiong2023llms} since 
 
 \subsection{Human baseline}
 
-
 \paragraph{Question selection} \label{sec:subset-selection}
 Since we anticipated that we will not be able to collect enough responses for every question to allow for a meaningful statistical analysis, we decided on showing a relevant subset of all questions to the human scorers.
 For selecting the subset, we decided on addressing two questions:
@@ -395,7 +394,7 @@ For selecting the subset, we decided on addressing two questions:
     \item Are there areas in which the performance of humans is very different from the ones of the models?
 \end{itemize}
 To answer the first question we selected up to 13 questions per source that all \glspl{llm} (model names) from an initial scoring round did not answer correctly.
-In addition, we picked 100 diverse one using greedy MaxMin sampling on the embeddings on the questions computed using BART and added five random questions about the number of \gls{nmr} peaks and the point group of molecules.
+In addition, we picked 100 diverse ones using the greedy MaxMin sampling on the embeddings of the questions computed using BART and added five random questions about the number of \gls{nmr} peaks and the point group of molecules.
 % https://github.com/lamalab-org/chem-bench-app/issues/92 has the details 
 
 \paragraph{Study design}
