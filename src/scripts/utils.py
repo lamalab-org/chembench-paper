@@ -19,16 +19,16 @@ def obtain_chembench_repo():
     # if in ../data the repository chem-bench is not found, clone it
     # if it is found, pull the latest version
     cwd = os.getcwd()
-    if not os.path.exists(os.path.join(data, "chem-bench-humanbench")):
+    if not os.path.exists(os.path.join(data, "chem-bench-main")):
         os.chdir(data)
         # download zip from https://github.com/lamalab-org/chem-bench/archive/refs/heads/humanbench.zip
         # using wget and then unzip it
         os.system(
-            f"wget --header 'Authorization: token {GH_PAT}' https://github.com/lamalab-org/chem-bench/archive/refs/heads/humanbench.zip"
+            f"wget --header 'Authorization: token {GH_PAT}' https://github.com/lamalab-org/chem-bench/archive/refs/heads/main.zip"
         )
-        os.system("unzip humanbench.zip")
+        os.system("unzip chem-bench-main.zip")
 
     else:
-        os.chdir(os.path.join(data, "chem-bench-humanbench"))
+        os.chdir(os.path.join(data, "chem-bench-main"))
     os.chdir(cwd)
-    return os.path.join(data, "chem-bench-humanbench")
+    return os.path.join(data, "chem-bench-main")

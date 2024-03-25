@@ -303,3 +303,12 @@ rule plot_human_score_distribution:
         "src/tex/figures/human_score_distribution.pdf",
     script:
         "src/scripts/plot_human_score_distribution.py"
+
+
+rule molecule_score_correlation:
+    input:
+        "src/data/model_score_dicts.pkl",
+    output:
+        "src/tex/figures/correlation_is_number_nmr_peaks_num_atoms.pdf",
+    script:
+        "src/scripts/correlate_with_molecule_features.py"
