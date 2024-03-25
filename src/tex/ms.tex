@@ -216,10 +216,12 @@ For example, for the questions about the safety profile of compounds, GPT-4 repo
 While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading for the questions about \gls{ghs} pictograms with an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
 
 \section{Discussion and Conclusions}
-On one hand, our findings show why \glspl{llm} are impressive to the scietists, but also to the general public. Leading models outperform domain experts in chemistry questions on many topics. 
-On the other hand, there are still striking limitations. On very relevant topics the answers models provide are wrong. And models are not able to estimate their own limitations.
-However, the success in our benchmarks perhaps also reveals more about the limitations about the exams we use to evaluate models---and chemists---than the models themselves.
-For instance, while models perform well on many textbook questions, they struggle with questions that require some more reasoning.
+Our findings show why \glspl{llm} are catching the interest of scientists across domains, but also the attention of the general public.
+As observed, leading models outperform domain experts in chemistry questions on a majority of topics.
+Unsurprinsigly, there are still striking limitations. 
+First, it is important to note that the models are not able to estimate their own limitations.
+Moreover, on very relevant topics (such as GHS classification) the answers provided by the models are mostly inaccurate.
+Looking in more detail at the relationship between the model performance and the question type/source revealed that the studied models perform well on textbook questions, while underperforming on questions that require more reasoning (for example questions that require calculations).
 
 Yet, given that the models outperform the average human in our study, it is clear that we need to rethink the way we teach and examine chemistry.
 Critical reasoning is increasingly important and robotic solving of problems or memorization of facts is clearly a domain in which \glspl{llm} will continue to outperform humans.
