@@ -60,7 +60,7 @@ def compute_molecular_mass(molecular_formula):
         count = int(count) if count else 1
         molecular_mass += atomic_masses[element] * count
 
-    return len(elements)
+    return molecular_mass
 
 
 def composition_to_num_atoms(composition):
