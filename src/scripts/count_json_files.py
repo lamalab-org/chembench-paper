@@ -2,7 +2,6 @@ import os
 from utils import obtain_chembench_repo
 from paths import output as output
 from loguru import logger
-import os
 from glob import glob
 
 output_path = output / "question_count_per_dir"

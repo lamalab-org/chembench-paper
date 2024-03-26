@@ -327,7 +327,7 @@ We scraped pairs of \gls{smiles} and \gls{iupac} names from the PubChem database
 
 
 \subparagraph{Number of NMR peaks} 
-To generate the \variable{output/question_count_per_dir/json_file_counts_name_to_smiles.txt}  tasks about the number of \gls{nmr} peaks, we randomly sampled \gls{smiles} from the ZINC database\autocite{Irwin_2012} and then used OpenChemLib\autocite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
+To generate the \variable{output/question_count_per_dir/json_file_counts_number_of_nmr_peaks.txt}  tasks about the number of \gls{nmr} peaks, we randomly sampled \gls{smiles} from the ZINC database\autocite{Irwin_2012} and then used OpenChemLib\autocite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
 We then sampled from the set of number of peaks (excluding the correct answer) to obtain the false answer options.
 
 \subparagraph{GHS, hazard statements and DAI}

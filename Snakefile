@@ -183,7 +183,8 @@ rule plot_overview_performance:
 # answered questions per subset and model
 rule analyze_performance_per_source:
     input:
-        "src/data/model_score_dicts.pkl",
+        ["src/data/model_score_dicts.pkl",
+        "src/data/humans_as_models_scores.pkl"],
     output:
         [
             directory("src/tex/output/subset_scores"),
@@ -301,7 +302,7 @@ rule reading_ease_correlation:
 # parallel coordinates plot
 rule parallel_coordinates:
     input:
-        "src/data/model_score_dicts.pkl",
+        ["src/data/model_score_dicts.pkl", "src/data/humans_as_models_scores.pkl"]
     output:
         [
             "src/tex/figures/parallel_coordinates_overall.pdf",
