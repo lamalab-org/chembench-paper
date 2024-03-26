@@ -56,7 +56,7 @@ optimize_caching: false
 # Overleaf sync settings
 overleaf:
   # Overleaf project ID (blank = disabled)
-  id: #65e6d84a4d0ea1ab4b23def6
+  id: 65e6d84a4d0ea1ab4b23def6
   # Perform sync on GitHub Actions?
   gh_actions_sync: true
   # List of files to push to Overleaf
@@ -71,7 +71,7 @@ overleaf:
     - src/tex/references.bib
     - src/tex/authors.tex
     - src/tex/appendix.tex
-    - src/tex/acronyms.tex
+    - src/tex/acronymns.tex
     - src/tex/sections/parse_check_desc.tex
 
 # Always require all input files to be present on disk for workflow to pass?
