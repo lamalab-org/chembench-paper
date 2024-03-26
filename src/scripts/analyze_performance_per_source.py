@@ -37,7 +37,7 @@ subsets = [
 subset_clean_names = [
     "point group",
     "number of isomers",
-    "number of NMR peaks",
+    "number of NMR signals",
     "GFK (chemical safety)",
     "DAI",
     "GHS pictograms",

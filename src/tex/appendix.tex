@@ -17,7 +17,7 @@
 \end{itemize}
 
 \subsection{Related work}
-Existing benchmarks such as those from \textcite{guo2023large}, \autocite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above. 
+Existing benchmarks such as those from \textcite{guo2023large}, \textcite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above. 
 While these benchmarks could provide useful insights in the short-term, they cannot follow the rapid additions to the \gls{llm} space. 
 \chembench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, special focus on chemical safety, employment of diverse prompting strategies and specialized notation for molecules and mathematical symbols. 
 Moreover, we believe that our robust framework, including the platform \url{chembench.org}, will engage the community in open-source contributions.
@@ -103,15 +103,15 @@ Hence, we believe that fine-grained analysis of model performance is vital for t
 
 To further investigate the performance of the models, we also compared the performance on different data sources.
 Compared to topics, this is a more fine-grained analysis as topics can be composed of questions from different sources.
-In \cref{fig:performance_per_topic} we see that the performance of the models varies significantly between the different data sources.
-Interestingly, the performance of the models on questions sourced based on textbooks seems to better for our models than some of the semi-programmatically created tasks such as questions about the number of peaks in an \gls{nmr} spectrum.
+In \Cref{fig:performance_per_topic} we see that the performance of the models varies significantly between the different data sources.
+Interestingly, the performance of the models on questions sourced based on textbooks seems to better for our models than some of the semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
 
 
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/performance_per_topic.pdf}
     \caption{\textbf{Fraction of completely correctly answered questions per data source.} The heatmap shows, in color, the fraction of questions that were answered completely correctly by different systems for some of our data sources. The performance is measured as the fraction of questions that were answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none of the questions were answered completely correctly.
-        We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for our leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of peaks in an \gls{nmr} spectrum.
+        We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for our leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
     }
     \label{fig:performance_per_topic}
     \script{analyze_performance_per_source.py}
@@ -124,7 +124,7 @@ Interestingly, the performance of the models on questions sourced based on textb
     \centering
     \includegraphics{figures/performance_per_topic_tiny.pdf}
     \caption{\textbf{Fraction of completely correctly answered questions per data source on the \enquote{tiny} subset.} The heatmap shows, in color, the fraction of questions that were answered completely correctly by different systems for some of our data sources. The performance is measured as the fraction of questions that were answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none of the questions were answered completely correctly.
-        We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for the leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of peaks in an \gls{nmr} spectrum.
+        We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for the leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
     }
     \label{fig:performance_per_topic_tiny}
     \script{analyze_performance_per_source.py}
@@ -146,12 +146,32 @@ One might wonder if questions that are more difficult to parse lead to worse per
 \subsection{Performance as a function of molecular features}
 
 \begin{figure}
+    \centering 
+    \includegraphics{figures/correlation_plot_is_number_nmr_peaks_complexity.pdf}
+    \caption{\textbf{Dependence of the mean absolute error in the prediction of number of NMR signals on the Böttcher complexity of the molecules.} The complexity measure proposed by \textcite{B_ttcher_2016} is an information theoretic additive measure of compound complexity that follows chemical intuitions.
+    The plot shows that for the \glspl{llm} the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is not correlated with the complexity of the molecules. For inference based on reasoning, one would expect that the complexity of the molecule is a good predictor of the difficulty of the question.}
+    \script{correlate_with_molecule_features.py}
+    \label{fig:correlation_plot_is_number_nmr_peaks_complexity}
+\end{figure}
+
+\begin{figure}
     \centering
     \includegraphics{figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf}
-    \caption{\textbf{Impact of the mean absolute error in the prediction of number of NMR peaks on the number of atoms.}}
+    \caption{\textbf{Dependence of the mean absolute error in the prediction of number of NMR signals on the number of atoms.} The plot shows that for the \glspl{llm} the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is correlated with the number of atoms in the molecule. 
+    For reasoning-based inference, one would expect that the number of atoms in the molecules is not necessarily a good predictor, and certainly worse than complexity measures, of the difficulty of the question.}
     \script{correlate_with_molecule_features.py}
     \label{fig:correlation_plot_is_number_nmr_peaks_num_atoms}
 \end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/correlation_plot_is_electron_counts_num_atoms.pdf}
+    \caption{\textbf{Dependence of the mean absolute error in the prediction of total electron counts on the number of atoms.} The plot shows that for the \glspl{llm} the predictive performance (measured as the mean absolute error in the prediction of the total electron counts) is correlated with the number of atoms in the molecule.}
+    \script{correlate_with_molecule_features.py}
+    \label{fig:correlation_plot_is_electron_counts_num_atoms}
+\end{figure}
+
 
 
 \subsection{Human baseline}

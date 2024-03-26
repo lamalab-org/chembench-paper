@@ -21,9 +21,9 @@
     LLMs have shown promise to address these issues and are increasingly being harnessed to predict chemical properties, optimize reactions, and even design and conduct experiments autonomously.
 
     However, we still have only very limited systematic understanding of the chemical reasoning capabilities of LLMs, which would be required to improve models and mitigate potential harms. 
-    Here, we introduce \enquote{\chembench,} an automated framework designed to rigorously evaluate the chemical knowledge and reasoning abilities of state-of-the-art LLMs, including GPT-4, against the expertise of human chemists.
+    Here, we introduce \enquote{\chembench,} an automated framework designed to rigorously evaluate the chemical knowledge and reasoning abilities of state-of-the-art LLMs, against the expertise of human chemists.
 
-    We curated more than 7000 question answer pairs about a wide array of subfields, evaluated leading models and found that the best models, on average, outperform the best human chemists in our study. 
+    We curated more than 7000 question answer-pairs about a wide array of subfields, evaluated leading models and found that the best models, on average, outperform the best human chemists in our study. 
     The models, however, struggle with some chemical reasoning tasks that are easy for human experts and provide overconfident misleading predictions, e.g., about the safety profile of chemicals. 
 
     These findings underscore the dual reality that, although LLMs demonstrate remarkable proficiency in chemical tasks, there is a critical need for further research to enhance their safety and utility in chemical sciences.
@@ -185,7 +185,7 @@ In this spider chart, the worst score for every dimension is zero (no question a
 Thus, a larger colored area indicates a better performance. 
 One can observe that this performance varies widely across models and topics. 
 While macromolecular chemistry and biochemistry receive relatively high scores for many models, this is not the case for topics such as chemical safety or analytical chemistry.
-In the subfield of analytical chemistry the prediction of the number of peaks observable in a \gls{nmr} spectrum proved difficult for the models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_gpt4.txt} percent correct answers for GPT-4) while this question appeared easier (\variable{output/human_subset_scores/is_number_nmr_peaks.txt} percent correct) for trained humans.
+In the subfield of analytical chemistry the prediction of the number of signals observable in a \gls{nmr} spectrum proved difficult for the models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_gpt4.txt} percent correct answers for GPT-4) while this question appeared easier (\variable{output/human_subset_scores/is_number_nmr_peaks.txt} percent correct) for trained humans.
 Importantly, the human experts are given a drawing of the compounds, whereas models are only shown the \gls{smiles} string of a compound and have to use this to reason about the symmetry of the compound (i.e., to identify the number of diasterotopically distinct protons, which requires \emph{reasoning} about the topology and structure of a molecule). 
 These findings also shine an interesting light on the value of textbook-inspired questions. 
 A subset of the questions in the \chembench are based on textbooks targeted at undergraduate students. 
@@ -331,7 +331,7 @@ We scraped pairs of \gls{smiles} and \gls{iupac} names from the PubChem database
 \variable{output/question_count_per_dir/json_file_counts_name_to_smiles.txt} questions involve the reverse task, i.e., converting \gls{iupac} nomenclature to \gls{smiles} notation.
 
 
-\subparagraph{Number of NMR peaks} 
+\subparagraph{Number of NMR signals} 
 To generate the \variable{output/question_count_per_dir/json_file_counts_name_to_smiles.txt}  tasks about the number of \gls{nmr} peaks, we randomly sampled \gls{smiles} from the ZINC database\autocite{Irwin_2012} and then used OpenChemLib\autocite{openchemlib} to compute the number of diasterotopically distinct hydrogen atoms. 
 We then sampled from the set of all observed peak counts (excluding the correct answer) to obtain the false answer options.
 
@@ -397,7 +397,7 @@ For selecting the subset, we decided on addressing two questions:
     \item Are there areas in which the performance of humans is very different from the ones of the models?
 \end{itemize}
 To answer the first question we selected up to 13 questions per source that all \glspl{llm} (model names) from an initial scoring round did not answer correctly.
-In addition, we picked 100 diverse ones using greedy MaxMin sampling on the embeddings on the questions computed using BART and added five random questions about the number of \gls{nmr} peaks and the point group of molecules.
+In addition, we picked 100 diverse ones using greedy MaxMin sampling on the embeddings on the questions computed using BART and added five random questions about the number of \gls{nmr} signals and the point group of molecules.
 % https://github.com/lamalab-org/chem-bench-app/issues/92 has the details 
 
 \paragraph{Study design}
@@ -424,7 +424,7 @@ For the analysis, we treated each human as a model. For analyses grouped by topi
 
 \subsection{Classification of questions into topics}\label{sec:meth-topic} When curating our dataset we systematically recorded keywords and sources.
 To allow for analysis of the model performance as a function of the topic, we leverage this information together with the output of sequence classification models.
-For questions which can easily be assigned to a topic based on the source (e.g., number of \gls{nmr} peaks, chemical compatibility, toxicology exam questions) we use this information to make the assignment.
+For questions which can easily be assigned to a topic based on the source (e.g., number of \gls{nmr} signals, chemical compatibility, toxicology exam questions) we use this information to make the assignment.
 For the remaining ones, e.g., from chemistry olympiad questions, we use zero-short sequence classification\autocite{zeroshotsequence} using the BART model\autocite{bart, FacebookBART}, which our preliminary analysis found to be more robust than topic modeling based on embeddings from OpenAI's \texttt{ada} model or Cohere's \texttt{Cohembed-english-v3.0} model.
 
 
