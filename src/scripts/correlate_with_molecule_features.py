@@ -145,7 +145,7 @@ def plot_correlations_num_atoms(questions: dict):
 
         ax[0].set_ylabel("mean absolute error")
         # set xlabel in the middle
-        fig.text(0.5, -0.1, "number of atoms", ha="center")
+        fig.text(0.6, -0.1, "number of atoms", ha="center")
 
         fig.tight_layout()
 

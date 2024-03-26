@@ -117,7 +117,7 @@ rule wordcloud:
             "src/tex/figures/wordcloud.pdf",
             "src/tex/figures/flesch_kincaid_reading_ease.pdf",
             "src/tex/output/flesch_kincaid_reading_ease.txt",
-            "src/tex/output/reading_ease.pkl"
+            "src/tex/output/reading_ease.pkl",
         ],
     script:
         "src/scripts/wordcloud.py"
@@ -167,7 +167,9 @@ rule analyze_model_reports:
 # plot the overall performance
 rule plot_overview_performance:
     input:
-        rules.model_statistics.output + rules.collect_human_scores.output + rules.model_human_statistics.output,
+        rules.model_statistics.output
+        + rules.collect_human_scores.output
+        + rules.model_human_statistics.output,
     output:
         [
             "src/tex/figures/overall_performance.pdf",
@@ -275,28 +277,30 @@ rule performance_confidence_correlation:
         "src/scripts/joint_analysis_confidence_performance.py"
 
 
-
-# correlate reading ease with model performance 
+# correlate reading ease with model performance
 rule reading_ease_correlation:
     input:
-        ["src/tex/data/model_score_dicts.pkl","src/tex/output/reading_ease.pkl"],
+        ["src/tex/data/model_score_dicts.pkl", "src/tex/output/reading_ease.pkl"],
     output:
         "src/tex/figures/reading_ease_vs_model_performance.pdf",
     script:
         "src/scripts/reading_ease_vs_model_performance.py"
 
 
-# parallel coordinates plot 
+# parallel coordinates plot
 rule parallel_coordinates:
     input:
         "src/data/model_score_dicts.pkl",
     output:
-        ["src/tex/figures/parallel_coordinates_overall.pdf","src/tex/figures/parallel_coordinates_tiny.pdf"]
+        [
+            "src/tex/figures/parallel_coordinates_overall.pdf",
+            "src/tex/figures/parallel_coordinates_tiny.pdf",
+        ],
     script:
         "src/scripts/make_parallel_coordinates_plot.py"
 
 
-rule plot_human_score_distribution: 
+rule plot_human_score_distribution:
     input:
         rules.collect_human_scores.output,
     output:
