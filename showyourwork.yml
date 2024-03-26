@@ -4,7 +4,7 @@ cache_on_zenodo: true
 # Workflow graph (DAG) generation
 dag:
   # Generate `dag.pdf` on each build?
-  render: false
+  render: true
   # Graphviz layout engine
   engine: sfdp
   # Group files by type into plates?
@@ -63,10 +63,16 @@ overleaf:
   push:
     - src/tex/figures
     - src/tex/output
+    - src/tex/orcidlink.sty
+    - src/tex/praeambel.tex
   # List of files to pull from Overleaf
   pull:
     - src/tex/ms.tex
     - src/tex/references.bib
+    - src/tex/authors.tex
+    - src/tex/appendix.tex
+    - src/tex/acronyms.tex
+    - src/tex/sections/parse_check_desc.tex
 
 # Always require all input files to be present on disk for workflow to pass?
 require_inputs: true
