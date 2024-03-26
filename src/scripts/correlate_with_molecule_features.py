@@ -11,9 +11,11 @@ from utils import ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH
 plt.style.use(scripts / "lamalab.mplstyle")
 relevant_models = ["gpt4", "claude3", "llama70b"]
 
+model_rename_dict = {"gpt4": "GPT-4", "claude3": "Claude 3", "llama70b": "Llama (70b)"}
+
 relevant_topics = [
-    "is_number_nmr_peaks"
-]  # ["is_point_group", "is_number_of_isomers", "is_number_nmr_peaks"]
+    "is_number_nmr_peaks",
+]  # ["is_point_group",  "is_number_nmr_peaks"]
 
 
 def compute_molecular_mass(molecular_formula):
@@ -131,11 +133,11 @@ def plot_correlations_num_atoms(questions: dict):
             ax[i].scatter(
                 questions_["num_atoms"],
                 questions_["metrics_mae"],
-                label=model,
+                label=model_rename_dict[model],
                 color=model_color_map[model],
                 s=3,
             )
-            ax[i].title.set_text(model)
+            ax[i].title.set_text(model_rename_dict[model])
 
             range_frame(
                 ax[i],
@@ -145,7 +147,7 @@ def plot_correlations_num_atoms(questions: dict):
 
         ax[0].set_ylabel("mean absolute error")
         # set xlabel in the middle
-        fig.text(0.6, -0.1, "number of atoms", ha="center")
+        fig.text(0.6, -0.01, "number of atoms", ha="center")
 
         fig.tight_layout()
 

@@ -142,6 +142,18 @@ One might wonder if questions that are more difficult to parse lead to worse per
     \label{fig:reading_ease_vs_model_performance}
 \end{figure}
 
+
+\subsection{Performance as a function of molecular features}
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf}
+    \caption{\textbf{Impact of the mean absolute error in the prediction of number of NMR peaks on the number of atoms.}}
+    \script{correlate_with_molecule_features.py}
+    \label{fig:correlation_plot_is_number_nmr_peaks_num_atoms}
+\end{figure}
+
+
 \subsection{Human baseline}
 \paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\autocite{nextjs} app router framework.
 This application handles serving the user interface as well as exposes various \gls{rest} \glspl{api} for relevant operations.
