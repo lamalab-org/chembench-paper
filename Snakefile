@@ -223,7 +223,7 @@ rule obtain_embeddings:
 
 rule plot_embeddings:
     input:
-        "src/data/embeddings.npy",
+        ["src/data/embeddings.npy", "src/data/questions.pkl"]
     output:
         "src/tex/figures/question_diversity.pdf",
     script:

@@ -224,6 +224,20 @@ model_color_map = {
     "galactica_120b": tab20_colors[12][0],
 }
 
+# number of parameters
+model_size_map = {
+    "claude2": 130 * 10**9,
+    "claude3": 1.75
+    * 10
+    ** 12,  # https://manifold.markets/SaviorofPlant/how-many-parameters-does-the-new-po
+    "gpt4": 1.8 * 10**12,
+    "gpt35turbo": 175 * 10**9,
+    "llama70b": 70 * 10**9,
+    "pplx7b_chat": 7 * 10**9,
+    "galactica_120b": 120 * 10**9,
+    "mixtral": 56 * 10**9,
+}
+
 
 def parallel_coordinates_plot(
     title, N, data, category, ynames, colors=None, category_names=None, ax=None
