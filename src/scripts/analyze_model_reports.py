@@ -208,7 +208,10 @@ def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
     ax.set_yticks([])
 
     # Improve legend placement
-    ax.legend(loc=(-0.1, 1.2), ncols=3)
+    leg = ax.legend(loc=(-0.1, 1.2), ncols=3)
+
+    for lh in leg.legend_handles:
+        lh.set_alpha(1)
 
     fig.tight_layout()
 
@@ -501,7 +504,9 @@ def radarplot_requires_calculation(df_dict, human_dicts, suffix):
     ax.set_yticklabels([])
     ax.set_yticks([])
     # Improve legend placement
-    ax.legend(loc=(-0.1, 1.2), ncols=4)
+    leg = ax.legend(loc=(-0.1, 1.2), ncols=4)
+    for lh in leg.legend_handles:
+        lh.set_alpha(1)
 
     fig.tight_layout()
 
