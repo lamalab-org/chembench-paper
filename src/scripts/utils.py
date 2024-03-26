@@ -26,7 +26,7 @@ def obtain_chembench_repo():
         os.system(
             f"wget --header 'Authorization: token {GH_PAT}' https://github.com/lamalab-org/chem-bench/archive/refs/heads/main.zip"
         )
-        os.system("unzip chem-bench-main.zip")
+        os.system("unzip main.zip")
 
     else:
         os.chdir(os.path.join(data, "chem-bench-main"))

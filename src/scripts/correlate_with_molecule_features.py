@@ -149,7 +149,9 @@ def plot_correlations_num_atoms(questions: dict):
 
         fig.tight_layout()
 
-        fig.savefig(figures / f"correlation_{topic}_num_atoms.pdf", bbox_inches="tight")
+        fig.savefig(
+            figures / f"correlation_plot_{topic}_num_atoms.pdf", bbox_inches="tight"
+        )
 
 
 if __name__ == "__main__":

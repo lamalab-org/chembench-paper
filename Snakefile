@@ -309,6 +309,6 @@ rule molecule_score_correlation:
     input:
         "src/data/model_score_dicts.pkl",
     output:
-        "src/tex/figures/correlation_is_number_nmr_peaks_num_atoms.pdf",
+        "src/tex/figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf",
     script:
         "src/scripts/correlate_with_molecule_features.py"

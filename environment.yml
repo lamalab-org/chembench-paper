@@ -11,4 +11,4 @@ dependencies:
       - textacy==0.13.0
       - wordcloud
       - rdkit
-      - git+https://github.com/lamalab-org/chem-bench.git@humanbench
+      - git+https://github.com/lamalab-org/chem-bench.git
