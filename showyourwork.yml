@@ -42,7 +42,9 @@ dependencies:
     - src/tex/output/overall_model_scores/
   src/scripts/analyze_performance_per_source.py:
     - src/data/model_score_dicts.pkl
-
+  src/scripts/reading_ease_vs_model_performance.py:
+    - src/data/model_score_dicts.pkl
+    
 # Name of the `.tex` manuscript and corresponding `.pdf` article
 ms_name: ms
 
