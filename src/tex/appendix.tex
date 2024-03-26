@@ -82,8 +82,8 @@ However, since some subjects are composed of questions from different sources th
 
 \Cref{fig:parallel_coordinates_overall} shows this data in the form of a parallel coordinates plot. 
 This visualization highlights the important observation that the ranking of the models highly depends on the questions they are evaluated on.
-Only very broad benchmark have hence the potential to provide a comprehensive view of the capabilities of a model. However, even in those cases, the weighting of the different topics is crucial.
-Hence, we believe that fine-grained analysis of model performance is crucial for the development of future benchmarks.
+Only very broad benchmarks have hence the potential to provide a comprehensive view of the capabilities of a model. However, even in those cases, the weighting of the different topics is crucial.
+Hence, we believe that fine-grained analysis of model performance is vital for the development of future benchmarks.
 
 \begin{figure}[htb]
     \centering
@@ -124,7 +124,7 @@ Interestingly, the performance of the models on questions sourced based on textb
     \centering
     \includegraphics{figures/performance_per_topic_tiny.pdf}
     \caption{\textbf{Fraction of completely correctly answered questions per data source on the \enquote{tiny} subset.} The heatmap shows, in color, the fraction of questions that were answered completely correctly by different systems for some of our data sources. The performance is measured as the fraction of questions that were answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none of the questions were answered completely correctly.
-        We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for our leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of peaks in an \gls{nmr} spectrum.
+        We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for the leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of peaks in an \gls{nmr} spectrum.
     }
     \label{fig:performance_per_topic_tiny}
     \script{analyze_performance_per_source.py}
@@ -140,16 +140,6 @@ One might wonder if questions that are more difficult to parse lead to worse per
     \caption{\textbf{Model performance as a function of reading ease.} The violinplots show the distribution of reading ease scores for questions that were answered completely correctly and those that were not. We do not observe a clear correlation between the reading ease of the questions and the performance of the models. }
     \script{reading_ease_vs_model_performance.py}
     \label{fig:reading_ease_vs_model_performance}
-\end{figure}
-
-\subsubsection{Model performance as a function of molecular structure}
-
-\begin{figure}
-    \centering
-    \includegraphics{figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf}
-    \caption{\textbf{Model performance as a function of molecular structure.} The violinplots show the distribution of the number of atoms in the molecules for questions that were answered completely correctly and those that were not. We do not observe a clear correlation between the number of atoms in the molecules and the performance of the models. }
-    \script{correlate_with_molecule_features.py}
-    \label{fig:molecular_structure_vs_model_performance}
 \end{figure}
 
 \subsection{Human baseline}
