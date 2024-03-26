@@ -39,7 +39,7 @@ dependencies:
     - src/data/humans_as_models_scores.pkl
     - src/data/model_score_dicts.pkl
   src/scripts/plot_overview_performance_plot.py:
-    - src/tex/output/overall_model_scores/*.json
+    - src/tex/output/overall_model_scores/
 
 # Name of the `.tex` manuscript and corresponding `.pdf` article
 ms_name: ms
@@ -60,7 +60,7 @@ overleaf:
   # List of files to pull from Overleaf
   pull:
     - src/tex/ms.tex
-    - src/tex/bib.bib
+    - src/tex/references.bib
 
 # Always require all input files to be present on disk for workflow to pass?
 require_inputs: true
