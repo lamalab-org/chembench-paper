@@ -84,27 +84,34 @@ def compute_molecular_mass(molecular_formula):
         "Ni": 58.6934,
         "Pb": 207.2,
     }
+    try:
+        # Parse the molecular formula
+        elements = re.findall(r"([A-Z][a-z]*)(\d*)", molecular_formula)
 
-    # Parse the molecular formula
-    elements = re.findall(r"([A-Z][a-z]*)(\d*)", molecular_formula)
+        # Calculate the molecular mass
+        molecular_mass = 0.0
+        for element, count in elements:
+            count = int(count) if count else 1
+            molecular_mass += atomic_masses[element] * count
 
-    # Calculate the molecular mass
-    molecular_mass = 0.0
-    for element, count in elements:
-        count = int(count) if count else 1
-        molecular_mass += atomic_masses[element] * count
-
-    return molecular_mass
+        return molecular_mass
+    except Exception as e:
+        print(f"Error in computing molecular mass: {e}")
+        return None
 
 
 @lru_cache(maxsize=None)
 def composition_to_num_atoms(composition):
-    elements = re.findall(r"([A-Z][a-z]*)(\d*)", composition)
-    num_atoms = 0
-    for element, count in elements:
-        count = int(count) if count else 1
-        num_atoms += count
-    return num_atoms
+    try:
+        elements = re.findall(r"([A-Z][a-z]*)(\d*)", composition)
+        num_atoms = 0
+        for element, count in elements:
+            count = int(count) if count else 1
+            num_atoms += count
+        return num_atoms
+    except Exception as e:
+        print(f"Error in computing number of atoms: {e}")
+        return None
 
 
 @lru_cache(maxsize=None)
@@ -178,11 +185,15 @@ def plot_mcq_correlations(questions: dict):
         ]
 
         metric_without_outliers = pd.concat(metric_for_subset).dropna()
-        metric_without_outliers = metric_without_outliers[
-            metric_without_outliers < metric_without_outliers.quantile(0.95)
-        ]
 
         for covariate in covariates:
+            upperlim = (
+                metric_without_outliers.max() if covariate == "num_atoms" else 200
+            )
+            metric_without_outliers = metric_without_outliers[
+                metric_without_outliers < metric_without_outliers.quantile(0.95)
+            ]
+
             fig, ax = plt.subplots(
                 1,
                 len(relevant_models),
@@ -196,6 +207,7 @@ def plot_mcq_correlations(questions: dict):
                 for model in relevant_models
             ]
             covariate_range = pd.concat(covariate_range).dropna()
+            covariate_range_no_outliers = covariate_range[covariate_range <= upperlim]
             for i, model in enumerate(relevant_models):
 
                 questions_ = prepare_data(questions, model, topic, type_mol=type_mol)
@@ -213,7 +225,7 @@ def plot_mcq_correlations(questions: dict):
 
                 range_frame(
                     ax[i],
-                    covariate_range,
+                    covariate_range_no_outliers.values,
                     metric_without_outliers.values,
                 )
 
@@ -246,8 +258,19 @@ def plot_correlations_num_atoms(questions: dict):
 
         mae_without_outliers = pd.concat(mae_for_subset).dropna()
         mae_without_outliers = mae_without_outliers[
-            mae_without_outliers < mae_without_outliers.quantile(0.95)
+            mae_without_outliers < mae_without_outliers.quantile(0.9)
         ]
+
+        # or compute here and then reuse
+        print("computing additional data")
+
+        all_data = []
+
+        for model in tqdm(relevant_models):
+            questions_ = prepare_data(questions, model, topic, type_mol=type_mol)
+            questions_["model"] = model
+            all_data.append(questions_)
+        all_data = pd.concat(all_data).reset_index(drop=True)
 
         for covariate in covariates:
             fig, ax = plt.subplots(
@@ -258,15 +281,14 @@ def plot_correlations_num_atoms(questions: dict):
                 sharey="row",
             )
 
-            # or compute here and then reuse
-            print("computing additional data")
-            all_data = []
-            for model in tqdm(relevant_models):
-                questions_ = prepare_data(questions, model, topic, type_mol=type_mol)
-                questions_["model"] = model
-                all_data.append(questions_)
-            all_data = pd.concat(all_data).reset_index(drop=True)
             covariate_range = all_data[covariate]
+            upperlim = (
+                200 if covariate == "complexity" else covariate_range.quantile(0.95)
+            )
+            print(f"upper limit for {covariate}: {upperlim}")
+            covariate_range_without_outliers = covariate_range[
+                covariate_range <= upperlim
+            ]
 
             print("Plotting models")
             for i, model in enumerate(relevant_models):
@@ -286,7 +308,7 @@ def plot_correlations_num_atoms(questions: dict):
 
                 range_frame(
                     ax[i],
-                    covariate_range,
+                    covariate_range_without_outliers,
                     mae_without_outliers.values,
                 )
 

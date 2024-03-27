@@ -45,19 +45,7 @@ def plot_pca_map():
     plt.axis("off")
     plot = sns.scatterplot(x=pca_1, y=pca_2, hue=labels, s=10, alpha=0.7, ax=ax)
 
-    legend_handles_with_increased_size = plot.legend_.legendHandles
-    for handle in legend_handles_with_increased_size:
-        handle.set_sizes([10])
-
-    legend_labels = plot.legend_.texts
-
-    ax.legend(
-        legend_handles_with_increased_size,
-        legend_labels,
-        loc="center left",
-        ncol=3,
-        bbox_to_anchor=(0, 1.2),
-    )
+    ax.legend(loc="center left", ncol=3, bbox_to_anchor=(0, 1.2), prop={"size": 8})
 
     f.tight_layout()
     f.savefig(figures / "question_diversity.pdf", bbox_inches="tight")

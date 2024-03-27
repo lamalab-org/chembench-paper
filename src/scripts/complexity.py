@@ -8,6 +8,32 @@ from functools import lru_cache
 
 sys.path.append(os.path.join(RDConfig.RDContribDir, "ChiralPairs"))
 import ChiralDescriptors
+import signal
+import functools
+
+
+def timeout(seconds=30, default=None):
+
+    def decorator(func):
+
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+
+            def handle_timeout(signum, frame):
+                raise TimeoutError()
+
+            signal.signal(signal.SIGALRM, handle_timeout)
+            signal.alarm(seconds)
+
+            result = func(*args, **kwargs)
+
+            signal.alarm(0)
+
+            return result
+
+        return wrapper
+
+    return decorator
 
 
 # D
@@ -127,6 +153,7 @@ def GetBottcherBondIndex(atom):
     return b_sub_i_ranking
 
 
+@timeout(15)
 def GetBottcherComplexity(themol, debug=False):
     complexity = 0
     Chem.AssignStereochemistry(
