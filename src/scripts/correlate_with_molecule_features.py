@@ -142,20 +142,20 @@ def prepare_data(
         )
         questions_ = questions_.dropna(subset=["smiles"])
         questions_["molecular_weight"] = questions_["smiles"].map(smiles_to_mass)
-        questions_["num_atoms"] = questions_["smiles"].apply(
+        questions_["num_atoms"] = questions_["smiles"].map(
             lambda x: (Chem.MolFromSmiles(x).GetNumAtoms() if x is not None else None)
         )
-        questions_["complexity"] = questions_["smiles"].apply(
+        questions_["complexity"] = questions_["smiles"].map(
             lambda x: complexity_from_smiles(x) if x is not None else None
         )
     elif type_mol == "molecular_formula":
         questions_["molecular_formula"] = questions_["question"].str.extract(
             r"\\ce\{(.*)\}"
         )
-        questions_["molecular_formula_weight"] = questions_["molecular_formula"].apply(
+        questions_["molecular_formula_weight"] = questions_["molecular_formula"].map(
             lambda x: compute_molecular_mass(x) if x is not None else None
         )
-        questions_["num_atoms"] = questions_["molecular_formula"].apply(
+        questions_["num_atoms"] = questions_["molecular_formula"].map(
             lambda x: composition_to_num_atoms(x) if x is not None else None
         )
 
@@ -265,7 +265,7 @@ def plot_correlations_num_atoms(questions: dict):
                 questions_ = prepare_data(questions, model, topic, type_mol=type_mol)
                 questions_["model"] = model
                 all_data.append(questions_)
-            all_data = pd.concat(all_data).dropna().reset_index(drop=True)
+            all_data = pd.concat(all_data).reset_index(drop=True)
             covariate_range = all_data[covariate]
 
             print("Plotting models")
