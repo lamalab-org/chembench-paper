@@ -31,7 +31,7 @@ relevant_topics = [
     "is_number_of_isomers",
 ]  # ["is_point_group",  "is_number_nmr_peaks"]
 
-mcq_topics = ["is_organic_reactivity", "is_name"]  # , "is_smiles_name"]
+mcq_topics = ["is_name"]  # , "is_smiles_name"]
 
 topic_to_representation = {
     "is_number_nmr_peaks": "smiles",
@@ -48,7 +48,7 @@ covariate_caption = {
 }
 
 
-@lru_cache()
+@lru_cache(maxsize=1024)
 def compute_molecular_mass(molecular_formula):
     # Dictionary of atomic masses
     atomic_masses = {
@@ -96,7 +96,7 @@ def compute_molecular_mass(molecular_formula):
     return molecular_mass
 
 
-@lru_cache()
+@lru_cache(maxsize=1024)
 def composition_to_num_atoms(composition):
     elements = re.findall(r"([A-Z][a-z]*)(\d*)", composition)
     num_atoms = 0
@@ -106,16 +106,21 @@ def composition_to_num_atoms(composition):
     return num_atoms
 
 
-@lru_cache()
+@lru_cache(maxsize=1024)
 def smiles_to_mass(smiles):
     mol = Chem.MolFromSmiles(smiles)
     return Descriptors.MolWt(mol)
 
 
-@lru_cache()
+@lru_cache(maxsize=1024)
 def smiles_to_num_atoms(smiles):
     mol = Chem.MolFromSmiles(smiles)
     return mol.GetNumAtoms()
+
+
+def filter_data(questions, model, column, subset):
+    questions_ = questions[subset][model].copy()
+    return questions_
 
 
 def prepare_data(
@@ -125,9 +130,7 @@ def prepare_data(
     subset: str = "overall",
     type_mol: str = "smiles",
 ):
-    questions_ = questions[subset][model].copy()
-    # filter by column=True
-    questions_ = questions_[questions_[column]]
+    questions_ = filter_data(questions, model, column, subset)
     # extract type_mol
     if type_mol == "smiles":
         questions_["smiles"] = questions_["question"].str.extract(
@@ -185,7 +188,7 @@ def plot_mcq_correlations(questions: dict):
             )
 
             covariate_range = [
-                prepare_data(questions, model, topic, type_mol=type_mol)[covariate]
+                prepare_data(questions, model, topic)[covariate]
                 for model in relevant_models
             ]
             covariate_range = pd.concat(covariate_range).dropna()
@@ -251,14 +254,17 @@ def plot_correlations_num_atoms(questions: dict):
                 sharey="row",
             )
 
-            covariate_range = [
-                prepare_data(questions, model, topic, type_mol=type_mol)[covariate]
-                for model in relevant_models
-            ]
-            covariate_range = pd.concat(covariate_range).dropna()
+            # or compute here and then reuse
+            all_data = []
+            for model in relevant_models:
+                questions_ = prepare_data(questions, model, topic, type_mol=type_mol)
+                questions_["model"] = model
+                all_data.append(questions_)
+            all_data = pd.concat(all_data).dropna()
+            covariate_range = all_data[covariate]
             for i, model in enumerate(relevant_models):
 
-                questions_ = prepare_data(questions, model, topic, type_mol=type_mol)
+                questions_ = all_data[all_data["model"] == model]
 
                 print(f"Number of questions for {model}: {len(questions_)} in {topic}")
                 ax[i].scatter(

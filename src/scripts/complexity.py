@@ -165,7 +165,7 @@ def GetBottcherComplexity(themol, debug=False):
     return complexity
 
 
-@lru_cache()
+@lru_cache(maxsize=1024)
 def complexity_from_smiles(smiles):
     try:
         mol = Chem.MolFromSmiles(smiles)

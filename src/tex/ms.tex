@@ -80,6 +80,16 @@ We find that there are still plenty of limitations for current models to overcom
 
 \section{Results}
 
+\begin{figure}
+    \includegraphics{figures/overview_figure.pdf}
+    \caption{\textbf{Overview of the \chembench framework.} The figure shows the different components of the \chembench framework. 
+    The foundation of the framework is the benchmark corpus that consists of many questions and answers that we manually or semi-automatically compiled from various sources.
+    We then used this corpus to evaluate the performance of various models and tool-augmented systems using a custom framework. To provide a baseline, we built a web application that we used to survey experts in chemistry.
+    The results of the evaluations are then compiled in publicly accessible leaderboards which we propose as a foundation for the evaluation of future models.
+    }
+    \label{fig:overview_figure}
+\end{figure}
+
 \subsection{Benchmark corpus}
 
 To compile our benchmark corpus we utilized a broad list of sources (see \Cref{sec:curation}), ranging from university exams to semi-automatically generated questions based on curated subsets of data in chemical databases.
