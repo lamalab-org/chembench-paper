@@ -3,6 +3,7 @@ from rdkit import Chem
 from rdkit.Chem import Descriptors
 import matplotlib.pyplot as plt
 import re
+from tqdm import tqdm
 from functools import lru_cache
 from paths import scripts, data, figures
 from plotutils import model_color_map, range_frame
@@ -131,6 +132,9 @@ def prepare_data(
     type_mol: str = "smiles",
 ):
     questions_ = filter_data(questions, model, column, subset)
+    print(
+        f"Preparing data for {model} in {column}. Number of questions: {len(questions_)}"
+    )
     # extract type_mol
     if type_mol == "smiles":
         questions_["smiles"] = questions_["question"].str.extract(
@@ -255,13 +259,16 @@ def plot_correlations_num_atoms(questions: dict):
             )
 
             # or compute here and then reuse
+            print("computing additional data")
             all_data = []
-            for model in relevant_models:
+            for model in tqdm(relevant_models):
                 questions_ = prepare_data(questions, model, topic, type_mol=type_mol)
                 questions_["model"] = model
                 all_data.append(questions_)
             all_data = pd.concat(all_data).dropna().reset_index(drop=True)
             covariate_range = all_data[covariate]
+
+            print("Plotting models")
             for i, model in enumerate(relevant_models):
 
                 questions_ = all_data[all_data["model"] == model]
