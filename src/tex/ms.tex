@@ -70,7 +70,7 @@ While some benchmarks based on university entrance exams\autocite{Zaki_2024, aro
 This is likely because they cannot automatically be used with black box (or tool-augmented) systems, do not cover a wide range of topics, or are not carefully validated by experts.
 On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights on how the models compare relative to experts.
 
-In this work, we report a novel benchmarking framework, which we call \chembench, and use it to reveal limitations of current frontier models for use in the chemical sciences.
+In this work, we report a novel benchmarking framework  (\Cref{fig:overview_figure}), which we call \chembench, and use it to reveal limitations of current frontier models for use in the chemical sciences.
 Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question answer pairs manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources.
 Our corpus covers a large fraction of the topics taught in undergraduate and graduate chemistry curricula and can be used to evaluate any system that can return text (i.e., also tool-augmented systems).
 
@@ -200,12 +200,11 @@ Importantly, the human experts are given a drawing of the compounds, whereas mod
 These findings also shine an interesting light on the value of textbook-inspired questions. 
 A subset of the questions in the \chembench are based on textbooks targeted at undergraduate students. 
 On those questions the models tend to perform better than on some of our semi-automatically constructed tasks (see \Cref{fig:performance_per_topic}).
-For instance, while the overall performance in the chemical safety topic is low, the models would pass the examination for a chemical license based on a subset of a questions we sampled from the corresponding question bank (e.g., \variable{output/subset_scores/is_gfk_gpt4.txt}\% correct answers for GPT-4, \variable{output/subset_scores/is_gfk_claude3.txt}\% for Claude 3, and \variable{output/human_subset_scores/is_gfk.txt}\% for the human experts).
+For instance, while the overall performance in the chemical safety topic is low, the models would pass the certification exam according to the German Chemical Prohibition Ordinance based on a subset of a questions we sampled from the corresponding question bank (e.g., \variable{output/subset_scores/is_gfk_gpt4.txt}\% correct answers for GPT-4, \variable{output/subset_scores/is_gfk_claude3.txt}\% for Claude 3, and \variable{output/human_subset_scores/is_gfk.txt}\% for the human experts).
 While those findings are impacted by the subset of questions we sampled, the results still highlight that good performance on such question bank or textbook questions does not necessarily translate to good performance on other questions that require more reasoning.
 
-% Calculation vs. no calculation
-Given that some of the questions in \chembench require elaborate calculations, we also analyzed if the models perform differently on those questions.
-For this purpose, we manually annotated the questions that require calculations and performed the analysis on only those questions.  % TODO add some analysis here 
+It is important to note that the model performance for some topics, however, is underestimated in the current evaluation. This is because models that are provided via \glspl{api} typically have safety mechanisms that prevent them from providing answers that the provider deems unsafe.
+For instance, models might refuse to provide answers about cyanides. To overcome this, direct access to the model weights would be required, and we strive to collaborate with the developers of frontier models to overcome this limitation in the future.
 
 \clearpage
 

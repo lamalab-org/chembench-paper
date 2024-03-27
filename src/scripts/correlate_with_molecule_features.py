@@ -310,4 +310,4 @@ if __name__ == "__main__":
     questions["overall"]["human"] = all_human_scores
 
     plot_correlations_num_atoms(questions)
-    plot_mcq_correlations(questions)
+# plot_mcq_correlations(questions)
