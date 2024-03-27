@@ -205,6 +205,7 @@ While those findings are impacted by the subset of questions we sampled, the res
 
 It is important to note that the model performance for some topics, however, is underestimated in the current evaluation. This is because models that are provided via \glspl{api} typically have safety mechanisms that prevent them from providing answers that the provider deems unsafe.
 For instance, models might refuse to provide answers about cyanides. To overcome this, direct access to the model weights would be required, and we strive to collaborate with the developers of frontier models to overcome this limitation in the future.
+This is facilitated with the tooling \chembench provides, thanks to which new models can be automatically added by contributors in an open science fashion.
 
 \clearpage
 
@@ -241,7 +242,8 @@ The analysis of model performance on different topics shows that the performance
 But even within a topic, the performance of models can vary widely depending on the type of question and the reasoning required to answer it.
 
 The current evaluation frameworks for \glspl{llm} are mostly designed to measure the performance of the models on specific tasks. 
-They cannot easily be used to evaluate systems, or models built for scientific applications. Thus, we had only little understanding of the capabilities of \glspl{llm} in the chemical sciences.
+They cannot easily be used to evaluate systems, or models built for scientific applications. 
+Thus, we had only little understanding of the capabilities of \glspl{llm} in the chemical sciences.
 Our work, shows that carefully curated benchmarks can provide a more nuanced understanding of the capabilities of \glspl{llm} in the chemical sciences.
 It lays the groundwork for the development of more advanced systems that can be used in the chemical sciences and highlights the importance of continued development of evaluation frameworks for systematic improvement of safe and useful \glspl{llm}.
 Our findings also illustrate that more focus is required in the development of better human-model interaction frameworks given that models are not able to estimate their own limitations.

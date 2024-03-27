@@ -48,7 +48,7 @@ covariate_caption = {
 }
 
 
-@lru_cache(maxsize=1024)
+@lru_cache(maxsize=None)
 def compute_molecular_mass(molecular_formula):
     # Dictionary of atomic masses
     atomic_masses = {
@@ -96,7 +96,7 @@ def compute_molecular_mass(molecular_formula):
     return molecular_mass
 
 
-@lru_cache(maxsize=1024)
+@lru_cache(maxsize=None)
 def composition_to_num_atoms(composition):
     elements = re.findall(r"([A-Z][a-z]*)(\d*)", composition)
     num_atoms = 0
@@ -106,13 +106,13 @@ def composition_to_num_atoms(composition):
     return num_atoms
 
 
-@lru_cache(maxsize=1024)
+@lru_cache(maxsize=None)
 def smiles_to_mass(smiles):
     mol = Chem.MolFromSmiles(smiles)
     return Descriptors.MolWt(mol)
 
 
-@lru_cache(maxsize=1024)
+@lru_cache(maxsize=None)
 def smiles_to_num_atoms(smiles):
     mol = Chem.MolFromSmiles(smiles)
     return mol.GetNumAtoms()
@@ -260,7 +260,7 @@ def plot_correlations_num_atoms(questions: dict):
                 questions_ = prepare_data(questions, model, topic, type_mol=type_mol)
                 questions_["model"] = model
                 all_data.append(questions_)
-            all_data = pd.concat(all_data).dropna()
+            all_data = pd.concat(all_data).dropna().reset_index(drop=True)
             covariate_range = all_data[covariate]
             for i, model in enumerate(relevant_models):
 
@@ -304,7 +304,7 @@ if __name__ == "__main__":
 
     human_scores = human_scores["raw_scores"]
     all_human_score_dicts = [v for k, v in human_scores.items()]
-    all_human_scores = pd.concat(all_human_score_dicts)
+    all_human_scores = pd.concat(all_human_score_dicts).reset_index(drop=True)
     all_human_scores["model"] = "human"
 
     questions["overall"]["human"] = all_human_scores
