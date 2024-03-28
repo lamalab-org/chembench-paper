@@ -126,6 +126,14 @@ def load_human_aligned_reports(topic_frame):
         human_baseline_folder,
     )
 
+    gpt4_zero_t = combine_scores_for_model(
+        os.path.join(
+            chembench, "reports/gpt-4-zero-T/reports/44984586-c1f7-42d3-baf0-c9f581a7a134"
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
     llama70b = combine_scores_for_model(
         os.path.join(
             chembench,
@@ -200,6 +208,7 @@ def load_human_aligned_reports(topic_frame):
     gpt35turbo_zero_t = merge_with_topic_info(gpt35turbo_zero_t, topic_frame)
     gpt35turbo_react = merge_with_topic_info(gpt35turbo_react, topic_frame)
     gpt4 = merge_with_topic_info(gpt4, topic_frame)
+    gpt4_zero_t = merge_with_topic_info(gpt4_zero_t, topic_frame)
     llama70b = merge_with_topic_info(llama70b, topic_frame)
     llama7b = merge_with_topic_info(llama7b, topic_frame)
     llama13b = merge_with_topic_info(llama13b, topic_frame)
@@ -220,6 +229,7 @@ def load_human_aligned_reports(topic_frame):
         "gpt35turbo_zero_t": gpt35turbo_zero_t,
         "gpt35turbo_react": gpt35turbo_react,
         "gpt4": gpt4,
+        "gpt4_zero_t": gpt4_zero_t,
         "llama70b": llama70b,
         "llama7b": llama7b,
         "llama13b": llama13b,
@@ -316,6 +326,13 @@ def load_reports(topic_frame):
         os.path.join(chembench, "data"),
     )
 
+    gpt4_zero_t = load_all_reports(
+        os.path.join(
+            chembench, "reports/gpt-4-zero-T/reports/44984586-c1f7-42d3-baf0-c9f581a7a134"
+        ),
+        os.path.join(chembench, "data"),
+    )
+
     llama70b = load_all_reports(
         os.path.join(
             chembench,
@@ -389,6 +406,7 @@ def load_reports(topic_frame):
     gpt35turbo_zero_t_run_names = set(gpt35turbo_zero_t[("name", 0)])
     gpt35turbo_react_run_names = set(gpt35turbo_react[("name", 0)])
     gpt4_run_names = set(gpt4[("name", 0)])
+    gpt4_zero_t_run_names = set(gpt4_zero_t[("name", 0)])
     llama70b_run_names = set(llama70b[("name", 0)])
     llama7b_run_names = set(llama7b[("name", 0)])
     llama13b_run_names = set(llama13b[("name", 0)])
@@ -472,6 +490,7 @@ def load_reports(topic_frame):
     gpt35turbo_zero_t = merge_with_topic_info(gpt35turbo_zero_t, topic_frame)
     gpt35turbo_react = merge_with_topic_info(gpt35turbo_react, topic_frame)
     gpt4 = merge_with_topic_info(gpt4, topic_frame)
+    gpt4_zero_t = merge_with_topic_info(gpt4_zero_t, topic_frame)
     llama70b = merge_with_topic_info(llama70b, topic_frame)
     llama7b = merge_with_topic_info(llama7b, topic_frame)
     llama13b = merge_with_topic_info(llama13b, topic_frame)
@@ -493,6 +512,7 @@ def load_reports(topic_frame):
         "gpt35turbo_zero_t": gpt35turbo_zero_t,
         "gpt35turbo_react": gpt35turbo_react,
         "gpt4": gpt4,
+        "gpt4_zero_t": gpt4_zero_t,
         "llama70b": llama70b,
         "llama7b": llama7b,
         "llama13b": llama13b,
