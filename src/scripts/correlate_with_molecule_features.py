@@ -16,6 +16,7 @@ from utils import (
 from complexity import complexity_from_smiles
 import pandas as pd
 import os
+from pymatgen.core import Composition
 
 correlation_correlation_dir = output / "correlation_correlation"
 correlation_correlation_dir.mkdir(exist_ok=True)
@@ -56,50 +57,11 @@ covariate_caption = {
 
 @lru_cache(maxsize=None)
 def compute_molecular_mass(molecular_formula):
-    # Dictionary of atomic masses
-    atomic_masses = {
-        "H": 1.00784,
-        "C": 12.0107,
-        "N": 14.0067,
-        "O": 15.999,
-        "P": 30.973762,
-        "S": 32.065,
-        "Cl": 35.453,
-        "Mg": 24.305,
-        "Na": 22.98,
-        "B": 10.811,
-        "F": 18.998,
-        "Ta": 180.947,
-        "Zn": 65.38,
-        "Ag": 107.8682,
-        "Au": 196.966569,
-        "Al": 26.981538,
-        "As": 74.92160,
-        "Ba": 137.327,
-        "Fe": 55.845,
-        "I": 126.90447,
-        "K": 39.0983,
-        "Li": 6.94,
-        "Mn": 54.938044,
-        "Si": 28.0855,
-        "Br": 79.904,
-        "Ca": 40.078,
-        "Cu": 63.546,
-        "Hg": 200.592,
-        "Ni": 58.6934,
-        "Pb": 207.2,
-    }
+
     try:
         # Parse the molecular formula
-        elements = re.findall(r"([A-Z][a-z]*)(\d*)", molecular_formula)
-
-        # Calculate the molecular mass
-        molecular_mass = 0.0
-        for element, count in elements:
-            count = int(count) if count else 1
-            molecular_mass += atomic_masses[element] * count
-
-        return molecular_mass
+        composition = Composition(molecular_formula)
+        return composition.weight
     except Exception as e:
         print(f"Error in computing molecular mass: {e}")
         return None
@@ -153,9 +115,11 @@ def prepare_data(
             r"\[START_SMILES\](.*?)\[END_SMILES\]"
         )
         questions_ = questions_.dropna(subset=["smiles"])
-        questions_["molecular_weight"] = questions_["smiles"].map(smiles_to_mass)
+        questions_["molecular_weight"] = questions_[
+            "smiles"].map(smiles_to_mass)
         questions_["num_atoms"] = questions_["smiles"].map(
-            lambda x: (Chem.MolFromSmiles(x).GetNumAtoms() if x is not None else None)
+            lambda x: (Chem.MolFromSmiles(x).GetNumAtoms()
+                       if x is not None else None)
         )
         questions_["complexity"] = questions_["smiles"].map(
             lambda x: complexity_from_smiles(x) if x is not None else None
@@ -179,7 +143,8 @@ def plot_mcq_correlations(questions: dict):
     for topic in mcq_topics:
         type_mol = topic_to_representation[topic]
         covariates = (
-            ["num_atoms"] if type_mol != "smiles" else ["num_atoms", "complexity"]
+            ["num_atoms"] if type_mol != "smiles" else [
+                "num_atoms", "complexity"]
         )
 
         metric_for_subset = [
@@ -200,7 +165,8 @@ def plot_mcq_correlations(questions: dict):
             fig, ax = plt.subplots(
                 1,
                 len(relevant_models),
-                figsize=(0.7 * TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH),
+                figsize=(0.7 * TWO_COL_WIDTH_INCH,
+                         ONE_COL_GOLDEN_RATIO_HEIGHT_INCH),
                 sharex="row",
                 sharey="row",
             )
@@ -213,9 +179,11 @@ def plot_mcq_correlations(questions: dict):
             covariate_range_no_outliers = covariate_range[covariate_range <= upperlim]
             for i, model in enumerate(relevant_models):
 
-                questions_ = prepare_data(questions, model, topic, type_mol=type_mol)
+                questions_ = prepare_data(
+                    questions, model, topic, type_mol=type_mol)
 
-                print(f"Number of questions for {model}: {len(questions_)} in {topic}")
+                print(
+                    f"Number of questions for {model}: {len(questions_)} in {topic}")
                 ax[i].scatter(
                     questions_[covariate],
                     questions_[mcq_metric],
@@ -224,10 +192,20 @@ def plot_mcq_correlations(questions: dict):
                     s=3,
                     alpha=0.4,
                 )
-                spearman_corr = spearmanr(questions_[covariate], questions_[mcq_metric])
-                print(
-                    f"Spearman correlation for {model} in {topic} with {covariate}: {spearman_corr}"
+                questions_no_nan = questions_.dropna(
+                    subset=[mcq_metric, covariate])
+
+                spearman_corr = spearmanr(
+                    questions_no_nan[covariate].values, questions_no_nan[mcq_metric].values
                 )
+
+                with open(os.path.join(correlation_correlation_dir, f"spearman_{covariate}_{model}_{topic}.txt"), "w") as handle:
+                    handle.write(
+                        f"{spearman_corr.statistic:.2f}" + '\endinput')
+
+                with open(os.path.join(correlation_correlation_dir, f"spearman_p_{covariate}_{model}_{topic}.txt"), "w") as handle:
+                    handle.write(f"{spearman_corr.pvalue:.2f}" + '\endinput')
+
                 ax[i].title.set_text(model_rename_dict[model])
 
                 # range_frame(
@@ -253,7 +231,8 @@ def plot_correlations_num_atoms(questions: dict):
     for topic in relevant_topics:
         type_mol = topic_to_representation[topic]
         covariates = (
-            ["num_atoms"] if type_mol != "smiles" else ["num_atoms", "complexity"]
+            ["num_atoms"] if type_mol != "smiles" else [
+                "num_atoms", "complexity"]
         )
 
         mae_for_subset = [
@@ -274,7 +253,8 @@ def plot_correlations_num_atoms(questions: dict):
         all_data = []
 
         for model in tqdm(relevant_models):
-            questions_ = prepare_data(questions, model, topic, type_mol=type_mol)
+            questions_ = prepare_data(
+                questions, model, topic, type_mol=type_mol)
             questions_["model"] = model
             all_data.append(questions_)
         all_data = pd.concat(all_data).reset_index(drop=True)
@@ -283,14 +263,16 @@ def plot_correlations_num_atoms(questions: dict):
             fig, ax = plt.subplots(
                 1,
                 len(relevant_models),
-                figsize=(0.7 * TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH),
+                figsize=(0.7 * TWO_COL_WIDTH_INCH,
+                         ONE_COL_GOLDEN_RATIO_HEIGHT_INCH),
                 sharex="row",
                 sharey="row",
             )
 
             covariate_range = all_data[covariate]
             upperlim = (
-                200 if covariate == "complexity" else covariate_range.quantile(0.95)
+                200 if covariate == "complexity" else covariate_range.quantile(
+                    0.95)
             )
             print(f"upper limit for {covariate}: {upperlim}")
             covariate_range_without_outliers = covariate_range[
@@ -302,7 +284,8 @@ def plot_correlations_num_atoms(questions: dict):
 
                 questions_ = all_data[all_data["model"] == model]
 
-                print(f"Number of questions for {model}: {len(questions_)} in {topic}")
+                print(
+                    f"Number of questions for {model}: {len(questions_)} in {topic}")
                 ax[i].scatter(
                     questions_[covariate],
                     questions_["metrics_mae"],
@@ -310,19 +293,21 @@ def plot_correlations_num_atoms(questions: dict):
                     color=model_color_map[model],
                     s=3,
                     alpha=0.4,
-                )   
-                questions_no_nan = questions_.dropna(subset=['metrics_mae', covariate])
-           
+                )
+                questions_no_nan = questions_.dropna(
+                    subset=['metrics_mae', covariate])
+
                 spearman_corr = spearmanr(
                     questions_no_nan[covariate].values, questions_no_nan["metrics_mae"].values
                 )
 
-                with open(os.path.join(correlation_correlation_dir, f"spearman_{covariate}_{model}_topic.txt"), "w") as handle: 
-                    handle.write(f"{spearman_corr.statistic:.2f}" + '\endinput')
-                
-                with open(os.path.join(correlation_correlation_dir, f"spearman_p_{covariate}_{model}_topic.txt"), "w") as handle: 
+                with open(os.path.join(correlation_correlation_dir, f"spearman_{covariate}_{model}_{topic}.txt"), "w") as handle:
+                    handle.write(
+                        f"{spearman_corr.statistic:.2f}" + '\endinput')
+
+                with open(os.path.join(correlation_correlation_dir, f"spearman_p_{covariate}_{model}_{topic}.txt"), "w") as handle:
                     handle.write(f"{spearman_corr.pvalue:.2f}" + '\endinput')
-       
+
                 ax[i].title.set_text(model_rename_dict[model])
 
                 range_frame(
