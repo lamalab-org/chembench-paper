@@ -267,20 +267,21 @@ Although current systems are far from reasoning like a chemist, our \chembench f
 \section{Methods}
 
 \subsection{Curation workflow}\label{sec:curation}
-For our dataset, we curated questions from existing exams but also programmatically created new questions.
-Questions were added via Pull Requests on our GitHub repository and only merged into the corpus after passing manual review (\Cref{fig:curation_workflow}).
+For our dataset, we curated questions from existing exams or exercise sheets but also programmatically created new questions.
+Questions were added via Pull Requests on our GitHub repository and only merged into the corpus after passing manual review (\Cref{fig:curation_workflow}) as well as automated checks (e.g., for compliance with a standardized schema).
 
 To ensure that the questions do not enter a training dataset, we use the same canary string as the BigBench project.
 This requires that \Gls{llm} developers filter their training dataset for this canary string.\autocite{openai2024gpt4, srivastava2022beyond}
 
 \begin{figure}[!h]
     \includegraphics[width = \textwidth]{figures/chem-bench.pdf}
-    \caption{\textbf{Overview of the workflow for the assembly of the \chembench corpus}. To assemble the \chembench corpus, we first collected questions from various sources. Some tasks were manually curated, others semi-programmatically. We added semantic annotations for all questions to make them compatible with systems that use special processing for modalities that are not conventional natural text. We reviewed the questions using manual and automatic methods before adding them to the corpus.}
+    \caption{\textbf{Overview of the workflow for the assembly of the \chembench corpus}. 
+    To assemble the \chembench corpus, we first collected questions from various sources. Some tasks were manually curated, others semi-programmatically. We added semantic annotations for all questions to make them compatible with systems that use special processing for modalities that are not conventional natural text. We reviewed the questions using manual and automatic methods before adding them to the corpus.}
     \label{fig:curation_workflow}
 \end{figure}
 
 \paragraph{Manually curated questions}
-Manually curated questions were sourced from various sources, including university exams, textbooks, and question banks. \Cref{tab:manually_sources} provides an overview of the sources of the manually curated questions.
+Manually curated questions were sourced from various sources, including university exams, exercises, and question banks. \Cref{tab:manually_sources} provides an overview of the sources of the manually curated questions.
 
 \input{sections/manually_sources_table.tex}
 
