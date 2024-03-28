@@ -281,19 +281,22 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 
 \paragraph{Manually curated questions}
 Manually curated questions were sourced from various sources, including university exams, textbooks, and question banks. \Cref{tab:manually_sources} provides an overview of the sources of the manually curated questions.
-\begin{table}
+\begin{table}[h]
+\caption{\textbf{Sources of manually curated questions.} The table shows the sources and a brief description  as well as the number of the manually curated questions.}
 \input{sections/manually_sources_table.tex}
 \label{tab:manually_sources}
 \end{table}
 
 \paragraph{Semi-programatically generated questions}
+In addition to the manually curated questions, we also generated questions programmatically. An overview of the sources of the semi-programatically generated questions is provided in \Cref{tab:semi_programatically_sources}.
 
-\begin{table}
+\begin{table}[h]
+\caption{\textbf{Sources of semi-programatically generated questions.} The table shows the sources and a brief description as well as the number of the semi-programatically generated questions.}
 \input{sections/semi_programatically_sources_table.tex}
+\label{tab:semi_programatically_sources}
 \end{table}
 
-
-
+\clearpage
 
 \subsection{Model evaluation workflow}
 
