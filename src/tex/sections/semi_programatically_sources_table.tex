@@ -3,7 +3,7 @@
     \toprule
     source & description & question count \\
 \midrule
-Number of isomers & MAYGEN was used to compute the number of isomers for a set of \gls{smiles} extracted from the ZINC dataset & & \variable{output/question_count_per_dir/json_file_counts_number_of_isomers.txt} \\
+Number of isomers & MAYGEN\autocite{Yirik_2021} was used to compute the number of isomers for a set of \gls{smiles} extracted from the ZINC dataset\autocite{Irwin_2012} & & \variable{output/question_count_per_dir/json_file_counts_number_of_isomers.txt} \\
 \midrule
 Total electron count of molecules & Electron counts based on the data from  \url{https://www.cheminfo.org/} & &\variable{output/question_count_per_dir/json_file_counts_electron_counts.txt} \\
 \midrule
@@ -11,13 +11,13 @@ Oxidation states & Oxidation states questions based on the data from \url{https:
 \midrule
 Chemical reactivity & Questions are framed based on the information from the \href{https://cameochemicals.noaa.gov/reactivity}{Cameo Chemicals website} && \variable{output/question_count_per_dir/json_file_counts_reactive_groups.txt} \\
 \midrule
-Number of \gls{nmr} signals & Molecules are sampled from the ZINC database and the number of \gls{nmr} signals is computed with OpenChemLib && \variable{output/question_count_per_dir/json_file_counts_number_of_nmr_peaks.txt} \\
+Number of \gls{nmr} signals & Molecules are sampled from the ZINC database\autocite{Irwin_2012}, OpenChemLib\autocite{openchemlib} is used to compute the number of diasterotopically distinct hydrogen atoms && \variable{output/question_count_per_dir/json_file_counts_number_of_nmr_peaks.txt} \\
 \midrule
-Point group of molecules & Our ChemCaption tool is used to assign the point group, and then each case was manually checked to select well-defined cases && \variable{output/question_count_per_dir/json_file_counts_point_group.txt} \\
+Point group of molecules & Our \href{https://github.com/lamalab-org/chem-caption}{ChemCaption} tool is used to assign the point group using spglib,\autocite{spglib}  and then each case was manually checked to select well-defined cases && \variable{output/question_count_per_dir/json_file_counts_point_group.txt} \\
 \midrule
-IUPAC-SMILES pairs & Sampled from the PubChem database && \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} + \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} \\
+IUPAC-SMILES pairs & Sampled from the PubChem \autocite{pubchem}  database && \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} + \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} \\
 \midrule
-\multirow{3}{*}{PubChem safety data} & Daily allowable intakes according to the World Health Organization && \variable{output/question_count_per_dir/json_file_counts_dai.txt}  \\
+\multirow{3}{*}{PubChem \autocite{pubchem}  safety data} & Daily allowable intakes according to the World Health Organization && \variable{output/question_count_per_dir/json_file_counts_dai.txt}  \\
  & Definitions of hazard statements &&  \variable{output/question_count_per_dir/json_file_counts_h_statements.txt} \\
  & GHS classification of chemicals mined through the API& & \variable{output/question_count_per_dir/json_file_counts_pictograms.txt} \\
  \midrule
