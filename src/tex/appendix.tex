@@ -2,30 +2,30 @@
 \subsection{Desired properties of a chemistry benchmark} \label{sec:desired-properties}
 
 \begin{itemize}
-    \item \emph{End-to-end automation}. For model development, the evaluations will need to be run many times (e.g., on regular intervals of a training run).
+    \item \emph{End-to-end automation}. For model development, the evaluations must be run many times (e.g., on regular intervals of a training run).
     Approaches that rely on humans scoring the answers of a system\autocite{Schulze_Balhorn_2024, ai4science2023impact, castro2023large} can thus not be used.
-    \item \emph{Careful validation by experts}. Manual curation is needed to minimize number of incorrect or unanswerable questions.\autocite{northcutt2021pervasive}
+    \item \emph{Careful validation by experts}. Manual curation is needed to minimize the number of incorrect or unanswerable questions.\autocite{northcutt2021pervasive}
     This is motivated by the observation that many widely used benchmarks are plagued by noisiness.\autocite{Frye_2023, Awg}
-    \item \emph{Usable with models that support special treatment of molecules}. Some models such as Galactica\autocite{taylor2022galactica} use special tokenization or encoding procedures for molecules or equations.
-    To support this, the benchmark system must encode the semantic meaning of various parts of the question or answer.
-    \item \emph{Usable with black box systems}. Many relevant systems do not provide access to model weights or even just the raw logits.
+    \item \emph{Usable with models that support special treatment of molecules}. Some models, such as Galactica\autocite{taylor2022galactica}, use special tokenization or encoding procedures for molecules or equations.
+    The benchmark system must encode the semantic meaning of various parts of the question or answer to support this.
+    \item \emph{Usable with black box systems}. Many relevant systems do not provide access to model weights or raw logits.
     This might be the case because the systems are proprietary or because they involve not only \glspl{llm} but also external tools such as search \glspl{api} or code executors.\autocite{schick2024toolformer, karpas2022mrkl, yao2022react}
     Thus, a benchmark should not assume access to the raw model outputs but be able to operate on text completions.
-    \item \emph{Probing capabilities beyond answering of \glspl{mcq}}. In real world chemistry as well as higher-level university education multiple choice question are seldom utilized.
-    Yet, most benchmarking frameworks focus on the \gls{mcq} setting because of the ease of evaluation. Realistic evaluations must measure capabilities beyond the answering of \gls{mcq}.
+    \item \emph{Probing capabilities beyond answering of \glspl{mcq}}. In real-world chemistry, as well as higher-level university education, multiple-choice questions are seldom utilized.
+    Yet, most benchmarking frameworks focus on the \gls{mcq} setting because of the ease of evaluation. Realistic evaluations must measure capabilities beyond answering \gls{mcq}.
     \item \emph{Cover a diverse set of topics}. Chemistry, as the \enquote{central science}, bridges multiple disciplines.\autocite{Aspuru_Guzik_2018} To even just approximate \enquote{chemistry capabilities} the topics covered by a chemistry benchmark must be very diverse.
 \end{itemize}
 
 \subsection{Related work}
 Existing benchmarks such as those from \textcite{guo2023large}, \textcite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above. 
-While these benchmarks could provide useful insights in the short-term, they cannot follow the rapid additions to the \gls{llm} space. 
-\chembench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, special focus on chemical safety, employment of diverse prompting strategies and specialized notation for molecules and mathematical symbols. 
-Moreover, we believe that our robust framework, including the platform \url{chembench.org}, will engage the community in open-source contributions.
+While these benchmarks could provide valuable insights in the short term, they cannot follow the rapid additions to the \gls{llm} space. 
+\chembench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, a particular focus on chemical safety, employment of diverse prompting strategies, and specialized notation for molecules and mathematical symbols. 
+Moreover, our robust framework, including the platform \url{chembench.org}, will engage the community in open-source contributions.
 
 
 \subsection{Benchmark corpus}
 To ensure maximal interoperability with existing benchmarks or tools, we curated the data in an extended form of the widely used BigBench format.\autocite{srivastava2022beyond}
-This also implies that future baselines can be built on top of our infrastructure as long as they are saved in the same format.
+This also implies that future baselines can be built on top of our infrastructure if saved in the same format.
 
 
 \Cref{fig:flesch_kincaid_reading_ease} shows the distribution of the Flesch-Kincaid reading ease scores of the questions.  
@@ -34,7 +34,7 @@ We see that the questions are generally complex to read.
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/flesch_kincaid_reading_ease.pdf}
-    \caption{\textbf{Distribution of Flesch-Kincaid reading ease scores of the questions.} The Flesch-Kincaid reading ease score\autocite{flesch1948new} is a measure of how easy a text is to read. It is calculated based on the average number of syllables per word and the average number of words per sentence. The higher the score, the easier the text is to read. The distribution of the scores of the questions is shown in the histogram. }
+    \caption{\textbf{Distribution of Flesch-Kincaid reading ease scores of the questions.} The Flesch-Kincaid reading ease score\autocite{flesch1948new} measures how easy a text is to read. It is calculated based on the average number of syllables per word and words per sentence. The higher the score, the easier the text is to read. The distribution of the questions' scores is shown in the histogram. }
     \label{fig:flesch_kincaid_reading_ease}
     \script{wordcloud.py}
 \end{figure}
@@ -44,7 +44,7 @@ A substantial fraction, in contrast to other benchmarks, is open-ended.
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/question_count_barplot_mcq_vs_general.pdf}
-    \caption{\textbf{Number of multiple choice questions vs.\ open-ended questions per topic.} The bar plot shows the number of multiple choice questions and general questions per topic.}
+    \caption{\textbf{Number of multiple choice questions vs.\ open-ended questions per topic.} The bar plot shows the number of \gls{mcq} and general questions per topic.}
     \label{fig:question_count_barplot_mcq_vs_general}
     \script{plot_statistics.py}
 \end{figure}
@@ -56,7 +56,7 @@ A substantial fraction, in contrast to other benchmarks, is open-ended.
 \subsection{Model performance}
 We also evaluated the model performance on the entire \chembench corpus. 
 \Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered completely correctly by the models. 
-Note that this ranking is different from the one on the \enquote{tiny} subset.
+Note that this ranking differs from the one on the \enquote{tiny} subset.
 
 \begin{figure}[htb]
     \centering
@@ -67,28 +67,28 @@ Note that this ranking is different from the one on the \enquote{tiny} subset.
 \end{figure}
 
 \Cref{fig:all_questions_models_completely_correct_radar_overall} shows the performance of the models on the different topics of the \chembench corpus.
-The general pattern that the performance varies significantly between the different topics is also observed when the models are evaluated on the entire corpus. 
-However, since some subjects are composed of questions from different sources the ranking of the models is in some instances different from the one on the \enquote{tiny} subset.
+The general pattern of performance varies significantly between the different topics and is also observed when the models are evaluated on the entire corpus. 
+However, since some subjects are composed of questions from different sources, the ranking of the models is, in some instances, different from the one on the \enquote{tiny} subset.
 
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/all_questions_models_completely_correct_radar_overall.pdf}
-    \caption{\textbf{Performance of the models on the different topics of the \chembench corpus.} The radar plot shows the performance of the models on the different topics of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correctly by the models.
-    A score of 1 indicates that all questions were answered completely correctly, while a score of 0 indicates that none of the questions were answered completely correctly.
+    \caption{\textbf{Performance of the models on the different topics of the \chembench corpus.} The radar plot shows the performance of the models on the different topics of the \chembench corpus. The performance is measured as the fraction of questions answered completely correctly by the models.
+    A score of 1 indicates that all questions were answered completely correctly, while a score of 0 indicates that none were answered completely correctly.
     }
     \label{fig:all_questions_models_completely_correct_radar_overall}
     \script{analyze_model_reports.py}
 \end{figure}
 
-\Cref{fig:parallel_coordinates_overall} shows this data in the form of a parallel coordinates plot. 
-This visualization highlights the important observation that the ranking of the models highly depends on the questions they are evaluated on.
-Only very broad benchmarks have hence the potential to provide a comprehensive view of the capabilities of a model. However, even in those cases, the weighting of the different topics is crucial.
+\Cref{fig:parallel_coordinates_overall} shows this data as a parallel coordinates plot. 
+This visualization highlights the critical observation that the ranking of the models highly depends on the questions they are evaluated on.
+Only very broad benchmarks have the potential to provide a comprehensive view of a model's capabilities. However, even in those cases, the weighting of the different topics is crucial.
 Hence, we believe that fine-grained analysis of model performance is vital for the development of future benchmarks.
 
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/parallel_coordinates_overall.pdf}
-    \caption{\textbf{Performance of the models on the different topics of the \chembench corpus.} The parallel coordinates plot shows the performance of the models on the different topics of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correctly by the models. }
+    \caption{\textbf{Performance of the models on the different topics of the \chembench corpus.} The parallel coordinates plot shows the performance of the models on the different topics of the \chembench corpus. The performance is measured as the fraction of questions answered completely correctly by the models. }
     \label{fig:parallel_coordinates_overall}
     \script{make_parallel_coordinates_plot.py}
 \end{figure}
@@ -96,21 +96,21 @@ Hence, we believe that fine-grained analysis of model performance is vital for t
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/parallel_coordinates_tiny.pdf}
-    \caption{\textbf{Performance of the models on the different topics of the \enquote{tiny} subset.} The parallel coordinates plot shows the performance of the models on the different topics of the \enquote{tiny} subset. The performance is measured as the fraction of questions that were answered completely correctly by the models. }
+    \caption{\textbf{Performance of the models on the different topics of the \enquote{tiny} subset.} The parallel coordinates plot shows the performance of the models on the different topics of the \enquote{tiny} subset. The performance is measured as the fraction of questions answered completely correctly by the models. }
     \label{fig:parallel_coordinates_tiny}
     \script{make_parallel_coordinates_plot.py}
 \end{figure}
 
 To further investigate the performance of the models, we also compared the performance on different data sources.
-Compared to topics, this is a more fine-grained analysis as topics can be composed of questions from different sources.
-In \Cref{fig:performance_per_topic} we see that the performance of the models varies significantly between the different data sources.
-Interestingly, the performance of the models on questions sourced based on textbooks seems to better for our models than some of the semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
+Compared to topics, this is a more fine-grained analysis, as topics can be composed of questions from different sources.
+In \Cref{fig:performance_per_topic}, we see that the performance of the models varies significantly between the different data sources.
+Interestingly, the performance of the models on questions sourced based on textbooks seems to be better for our models than some of the semi-programmatically created tasks, such as questions about the number of signals in an \gls{nmr} spectrum.
 
 
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/performance_per_topic.pdf}
-    \caption{\textbf{Fraction of completely correctly answered questions per data source.} The heatmap shows, in color, the fraction of questions that were answered completely correctly by different systems for some of our data sources. The performance is measured as the fraction of questions that were answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none of the questions were answered completely correctly.
+    \caption{\textbf{Fraction of completely correctly answered questions per data source.} The heatmap shows, in color, the fraction of questions answered completely correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none of the questions were answered completely correctly.
         We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for our leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
     }
     \label{fig:performance_per_topic}
@@ -123,7 +123,7 @@ Interestingly, the performance of the models on questions sourced based on textb
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/performance_per_topic_tiny.pdf}
-    \caption{\textbf{Fraction of completely correctly answered questions per data source on the \enquote{tiny} subset.} The heatmap shows, in color, the fraction of questions that were answered completely correctly by different systems for some of our data sources. The performance is measured as the fraction of questions that were answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none of the questions were answered completely correctly.
+    \caption{\textbf{Fraction of completely correctly answered questions per data source on the \enquote{tiny} subset.} The heatmap shows, in color, the fraction of questions answered completely correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none were answered completely correctly.
         We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for the leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
     }
     \label{fig:performance_per_topic_tiny}
@@ -131,13 +131,13 @@ Interestingly, the performance of the models on questions sourced based on textb
 \end{figure}
 
 One might wonder if questions that are more difficult to parse lead to worse performance of the models.
-\Cref{fig:reading_ease_vs_model_performance} shows that there is no clear correlation between the reading ease of the questions and the performance of the models.
+\Cref{fig:reading_ease_vs_model_performance} shows no clear correlation between the reading ease of the questions and the performance of the models.
 
 \begin{figure}
     \centering
     \hspace*{-1cm}
     \includegraphics{figures/reading_ease_vs_model_performance.pdf}
-    \caption{\textbf{Model performance as a function of reading ease.} The violinplots show the distribution of reading ease scores for questions that were answered completely correctly and those that were not. We do not observe a clear correlation between the reading ease of the questions and the performance of the models. }
+    \caption{\textbf{Model performance as a function of reading ease.} The violin plots show the distribution of reading ease scores for questions answered completely correctly and those not. We do not observe a clear correlation between the reading ease of the questions and the performance of the models. }
     \script{reading_ease_vs_model_performance.py}
     \label{fig:reading_ease_vs_model_performance}
 \end{figure}
@@ -148,8 +148,8 @@ One might wonder if questions that are more difficult to parse lead to worse per
 \begin{figure}
     \centering 
     \includegraphics{figures/correlation_plot_is_number_nmr_peaks_complexity.pdf}
-    \caption{\textbf{Dependence of the mean absolute error in the prediction of number of NMR signals on the Böttcher complexity of the molecules.} The complexity measure proposed by \textcite{B_ttcher_2016} is an information theoretic additive measure of compound complexity that follows chemical intuitions.
-    The plot shows that for the \glspl{llm} the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is not correlated with the complexity of the molecules. For inference based on reasoning, one would expect that the complexity of the molecule is a good predictor of the difficulty of the question.}
+    \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the Böttcher complexity of the molecules.} The complexity measure proposed by \textcite{B_ttcher_2016} is an information-theoretic additive measure of compound complexity that follows chemical intuitions.
+    The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is not correlated with the complexity of the molecules. For inference based on reasoning, one would expect that the complexity of the molecule is a good predictor of the difficulty of the question.}
     \script{correlate_with_molecule_features.py}
     \label{fig:correlation_plot_is_number_nmr_peaks_complexity}
 \end{figure}
@@ -157,7 +157,7 @@ One might wonder if questions that are more difficult to parse lead to worse per
 \begin{figure}
     \centering
     \includegraphics{figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf}
-    \caption{\textbf{Dependence of the mean absolute error in the prediction of number of NMR signals on the number of atoms.} The plot shows that for the \glspl{llm} the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is correlated with the number of atoms in the molecule. 
+    \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the number of atoms.} The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is correlated with the number of atoms in the molecule. 
     For reasoning-based inference, one would expect that the number of atoms in the molecules is not necessarily a good predictor, and certainly worse than complexity measures, of the difficulty of the question.}
     \script{correlate_with_molecule_features.py}
     \label{fig:correlation_plot_is_number_nmr_peaks_num_atoms}
@@ -167,7 +167,7 @@ One might wonder if questions that are more difficult to parse lead to worse per
 \begin{figure}
     \centering
     \includegraphics{figures/correlation_plot_is_electron_counts_num_atoms.pdf}
-    \caption{\textbf{Dependence of the mean absolute error in the prediction of total electron counts on the number of atoms.} The plot shows that for the \glspl{llm} the predictive performance (measured as the mean absolute error in the prediction of the total electron counts) is correlated with the number of atoms in the molecule.}
+    \caption{\textbf{Dependence of the mean absolute error in predicting total electron counts on the number of atoms.} The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the total electron counts) is correlated with the number of atoms in the molecule.}
     \script{correlate_with_molecule_features.py}
     \label{fig:correlation_plot_is_electron_counts_num_atoms}
 \end{figure}
@@ -176,7 +176,7 @@ One might wonder if questions that are more difficult to parse lead to worse per
 
 \subsection{Human baseline}
 \paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\autocite{nextjs} app router framework.
-This application handles serving the user interface as well as exposes various \gls{rest} \glspl{api} for relevant operations.
+This application handles serving the user interface and exposes various \gls{rest} \glspl{api} for relevant operations.
 We utilize a MySQL\autocite{mysql} database and Prisma \gls{orm}\autocite{prisma} for efficient database management.
 The web application is styled with Tailwind CSS\autocite{tailwindcss} using the shadcn/ui component library and uses NextAuth\autocite{nextauth} for easy and secure user authentication and postMark for sending Emails.
 The application is hosted on the Vercel web hosting platform.
@@ -190,7 +190,7 @@ The application is hosted on the Vercel web hosting platform.
     \includegraphics{figures/human_score_distribution.pdf}
     \script{plot_human_score_distribution.py}
     \label{fig:human_score_distribution}
-    \caption{\textbf{Distribution of human scores.} The histogram and kernel density estimates show the fraction of questions that have been answered completely correctly.
+    \caption{\textbf{Distribution of human scores.} The histogram and kernel density estimates show the fraction of questions answered completely correctly.
     Since the best possible score for each question is one and the worst possible score is zero, the values on this plot are between zero and one.}
 \end{figure}
 
@@ -202,11 +202,11 @@ Interestingly, we found no significant correlation between the experience of the
     \includegraphics{figures/human_timing.pdf}
     \script{analyze_human_data.py}
     \label{fig:human_timing}
-    \caption{\textbf{Time taken by human scorers to answer questions vs.\ correctness of their answers.} From the plot it is clear that there is no clear dependence of the correctness of the answers on the time taken by the human scorers to answer the questions.}
+    \caption{\textbf{Time taken by human scorers to answer questions vs.\ correctness of their answers.} From the plot, it is clear that there is no clear dependence of the correctness of the answers on the time taken by the human scorers to answer the questions.}
 \end{figure}
 
 Additionally, we prompted users to provide additional information about their experience in chemistry. 
-While we recorded very fine-grained information, e.g., including their specialization, we focussed our analysis on the number of years since the first university-level chemistry course.
+While we recorded fine-grained information, e.g., their specialization, we focused on the number of years since the first university-level chemistry course.
 \Cref{fig:experience_vs_correctness} shows that the experience of the human scorers was not significantly correlated with the correctness of their answers (\Cref{fig:experience_vs_correctness}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
 \begin{figure}[htb]
@@ -214,7 +214,7 @@ While we recorded very fine-grained information, e.g., including their specializ
     \includegraphics{figures/experience_vs_correctness.pdf}
     \script{analyze_human_data.py}
     \label{fig:experience_vs_correctness}
-    \caption{\textbf{Experience of human  scorers vs.\ correctness of their answers.} The experience (in number of years since the first university-level chemistry course) of the human scorers was not significantly correlated with the correctness of their answers.}
+    \caption{\textbf{Experience of human  scorers vs.\ correctness of their answers.} The experience (in the number of years since the first university-level chemistry course) of the human scorers was not significantly correlated with the correctness of their answers.}
 \end{figure}
 
 
@@ -223,21 +223,21 @@ While we recorded very fine-grained information, e.g., including their specializ
 Since it is important to understand if models can provide an indication of whether their answer might likely be incorrect, we prompted some of our top performing \glspl{llm} to return the confidence in providing a correct answer on an ordinal scale. 
 This is similar to the verbalized confidence scores reported by \textcite{xiong2023llms}.
 \Cref{fig:confidence_score_distributions} plots the distribution of those scores.
-We find that the models show different distributions of confidence scores, which for some are skewed to the extremes.
+We find that the models show different distributions of confidence scores, which, for some, are skewed to the extremes.
 
 \begin{figure}[htb] 
     \centering
     \includegraphics{figures/confidence_score_distributions.pdf}
-    \caption{\textbf{Distribution of confidence scores reported by \glspl{llm}.} \Glspl{llm} show different distributions of confidence scores. The confidence scores are reported on an ordinal scale from 1 to 5, with 1 indicating low confidence and 5 indicating high confidence. The barplots show how many questions were answered with each confidence score.}
+    \caption{\textbf{Distribution of confidence scores reported by \glspl{llm}.} \Glspl{llm} show different distributions of confidence scores. The confidence scores are reported on an ordinal scale from 1 to 5, with 1 indicating low confidence and 5 indicating high confidence. The bar plots show how many questions were answered with each confidence score.}
     \label{fig:confidence_score_distributions}
     \script{plot_confidence_score_distributions.py}
 \end{figure}
 
 
 \subsection{Leaderboard}
-Our leaderboard is based on the tool chain developed for matbench.\autocite{dunn2020benchmarking} 
+Our leaderboard is based on the toolchain developed for Matbench.\autocite{dunn2020benchmarking} 
 Briefly, the \chembench pipeline produces standardized files in \texttt{json} format that contributors can add via pull requests to the \chembench repository.
-The Markdown tables and interactive plots are then automatically generated and updated on the \chembench website.
+The Markdown tables and interactive plots are automatically generated and updated on the \chembench website.
 
 \clearpage
 
