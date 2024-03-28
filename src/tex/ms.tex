@@ -208,7 +208,7 @@ While those findings are impacted by the subset of questions we sampled, the res
 
 We also gain insight in the struggles the models have with chemical reasoning tasks when we look at the performance as a function of molecular descriptors.
 If the model would answer questions based on reasoning about the structures, one would expect the performance to depend on the complexity of the molecules.
-We, however, find that the performance of the models does not correlate with complexity indicators but rather trivially with the size of the compounds (see \Cref{fig:performance_per_molecular_size}).
+We, however, find that the performance of the models does not correlate with complexity indicators but rather trivially with the size of the compounds (see XX).
 This indicates that the models might not (yet)  be able to reason about the structures of the molecules (in the way one might expect) but rather rely on retrieval of fragments of the training data.
 Those observations mirror recent findings that \glspl{llm} struggle to \enquote{reverse} facts they have seen in training (i.e., generalize from \enquote{A has feature B} to \enquote{B is a feature of A}).\autocite{berglund2023reversal, zhu2023physics, allen2023physics, golovneva2024reverse}
 
@@ -281,52 +281,11 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 
 \paragraph{Manually curated questions}
 
-\subparagraph{Analytical chemistry}
-\variable{output/question_count_per_dir/json_file_counts_analytical_chemistry.txt} questions are based on master student examination papers at the Friedrich Schiller University Jena (Germany). 
-These questions focus on the principles and techniques employed in analytical chemistry.
-
-\subparagraph{Combustion engineering}
-\variable{output/question_count_per_dir/json_file_counts_combustion_engineering.txt} question is based on a master student examination paper at the University of Magdeburg (Germany). 
-It explores topics related to combustion processes and engineering principles.
-
-\subparagraph{Functional materials and nanomaterials}
-\variable{output/question_count_per_dir/json_file_counts_func_mats_and_nanomats.txt}  questions are based on exercises in a seminar conducted at the Friedrich Schiller University Jena (Germany), delving into topics concerning functional materials and nanomaterials, exploring their properties and applications.
-
-\subparagraph{General chemistry}
-\variable{output/question_count_per_dir/json_file_counts_Gen_Chem_MCA.txt} questions originate from examinations for grade 10 at Marist Comprehensive Academy Uturu (Nigeria). 
-They cover fundamental concepts in chemistry suitable for students at the secondary school level.
-In addition, we included questions based on the general chemistry courses of the Bachelor of Science in Chemistry at the Technical University of Munich (Germany), focusing on inorganic chemistry (\variable{output/question_count_per_dir/json_file_counts_ac_faessler_tum.txt}) and principles of chemistry (\variable{output/question_count_per_dir/json_file_counts_pum_tum.txt}).
-
-\subparagraph{International Chemical Olympiad}
-\variable{output/question_count_per_dir/json_file_counts_icho.txt} questions are based on various countries' Chemical Olympiads, including those held in the USA, UK, and Moldova.
-
-\subparagraph{Material synthesis}
-\variable{output/question_count_per_dir/json_file_counts_materials_synthesis.txt} questions are based on seminars on material synthesis at the University of Jena (Germany), focusing on the methods and techniques employed in the synthesis of various materials.
-
-\subparagraph{Organic reactivity}
-\variable{output/question_count_per_dir/json_file_counts_organic_reactivity.txt}  questions are primarily sourced from tutorials and exam papers for the Bachelor of Science in Chemistry at the Technical University of Munich (Germany), exploring reactions and mechanisms in organic chemistry.
-
-\subparagraph{Periodic table}
-\variable{output/question_count_per_dir/json_file_counts_periodic_table_properties.txt} questions are manually created to cover various aspects and trends of the periodic table.
-
-\subparagraph{Polymer chemistry}
-\variable{output/question_count_per_dir/json_file_counts_polymer_chemistry.txt} questions are based on examinations held at the University of Hamburg (Germany), covering topics related to polymer chemistry and its applications.
-
-\subparagraph{Textbook questions}
-\variable{output/question_count_per_dir/json_file_counts_oup.txt} questions are based on questions from various textbooks covering biomolecular science, drug synthesis, molecular structure, organic chemistry, and X-ray crystallography.
-
-\subparagraph{Chemical safety} 
-This category comprises a total of \variable{output/question_count_per_dir/json_file_counts_safety.txt} questions, including semi-programmatically created questions covering areas such as GHS classification, hazard statements, \gls{dai}, and pictograms from the PubChem database \autocite{pubchem} (see below for details). 
-Additionally, it explores crucial topics like materials' compatibility (\variable{output/question_count_per_dir/json_file_counts_materials_compatibility.txt} questions) and chemical compatibility (\variable{output/question_count_per_dir/json_file_counts_chem_chem_comp.txt} questions), essential for understanding the hazardous impact of mixing certain materials and chemicals, via semi-programmatically created questions. 
-Furthermore, it includes \variable{output/question_count_per_dir/json_file_counts_blac_gfk.txt} questions based on the question bank published by the Federal/State Working Group on Chemical Safety (BLAC), which is used for the expertise examination (\enquote{Sachkundeprüfung}) according to §11 of the Chemical Prohibition Ordinance (\enquote{Chemikalien-Verbotsverordnung}).\autocite{blac}
-Moreover, this category addresses questions about lab safety and topics such as pharmacology, toxicology, material safety data sheets, and chemical safety data sheets. 
-The chemical safety category stands out as one of the primary focus areas within the \chembench corpus.
-
-\subparagraph{NMR spectroscopy}
-Questions are based on images shared via the Twitter account \url{https://twitter.com/NMRspectroscopy}, focusing on the choice and design of  appropriate \gls{nmr} experiments.
-
+\input{sections/manually_sources_table.tex}
 
 \paragraph{Semi-programatically generated questions}
+
+\input{sections/semi_programatically_sources_table.tex}
 
 \subparagraph{Chemical reactivity}
 \variable{output/question_count_per_dir/json_file_counts_reactive_groups.txt} questions are framed based on information from the Cameo Chemicals website (\url{https://cameochemicals.noaa.gov/reactivity}), exploring the reactivity of various chemicals and compounds.
@@ -451,17 +410,17 @@ For the remaining ones, e.g., from chemistry olympiad questions, we use zero-sho
 
 
 \section*{Data and code availability}
-The code and data for \chembench is available at \url{https://github.com/lamalab-org/chem-bench} and archived at \url{XXX}.
+The code and data for \chembench is available at \url{https://github.com/lamalab-org/chem-bench}.
 The code for the app for our human baseline study is available at \url{https://github.com/lamalab-org/chem-bench-app}. 
 To ensure reproducibility, this manuscript was generated using the \href{https://show-your.work/en/latest/}{\\showyourwork} framework.\autocite{Luger2021}
 The code to rebuild the paper (including code for all figures and numbers next to which there is a GitHub icon) can be found at \url{\GitHubURL}. 
-To facilitate reproduction, some intermediate results of the analysis are cached at \url{http://dx.doi.org/10.5072/zenodo.34706 }.
+To facilitate reproduction, some intermediate results of the analysis are cached at \url{http://dx.doi.org/10.5072/zenodo.34706}.
 
 \section*{Acknowledgements}
 This work was supported by the Carl Zeiss Foundation, a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena and the FAIRmat consortium.
 We also thank Stability.AI for the use of its HPC cluster and for its generous donations.
 In addition, we thank the OpenBioML.org community and their ChemNLP project team for useful discussions.
-Moreover, we thank Pepe Márquez, and Santiago Miret for discussion and support and Julian Kimmig for feedback on the web app. 
+Moreover, we thank Pepe Márquez for discussion and support and Julian Kimmig for feedback on the web app. 
 
 M.A.\ expresses gratitude to the European Research Council (ERC) for evaluating the project with the reference number 101106377 titled \enquote{CLARIFIER} and accepting it for funding under the HORIZON TMA MSCA Postdoctoral Fellowships - European Fellowships. 
 Furthermore, M.A.\ acknowledges the funding provided by UK Research and Innovation (UKRI) under the UK government’s Horizon Europe funding guarantee (Grant Reference: EP/Y023447/1; Organization Reference: 101106377).
