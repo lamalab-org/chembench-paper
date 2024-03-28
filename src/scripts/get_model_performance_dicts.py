@@ -77,7 +77,7 @@ def load_human_aligned_reports(topic_frame):
     gemini_pro_zero_t = combine_scores_for_model(
         os.path.join(
             chembench,
-            "reports/gemin-pro-zero-T/reports/1e5457ad-96b5-4bc8-bd6c-bad3eb6deb7a",
+            "reports/gemini-pro-zero-T/reports/1e5457ad-96b5-4bc8-bd6c-bad3eb6deb7a",
         ),
         datafolder,
         human_baseline_folder,
@@ -251,7 +251,7 @@ def load_reports(topic_frame):
     gemini_pro_zero_t = load_all_reports(
         os.path.join(
             chembench,
-            "reports/gemin-pro-zero-T/reports/1e5457ad-96b5-4bc8-bd6c-bad3eb6deb7a",
+            "reports/gemini-pro-zero-T/reports/1e5457ad-96b5-4bc8-bd6c-bad3eb6deb7a",
         ),
         os.path.join(chembench, "data"),
     )

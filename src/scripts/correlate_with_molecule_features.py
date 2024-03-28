@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 import re
 from tqdm import tqdm
 from functools import lru_cache
-from paths import scripts, data, figures
+from paths import scripts, data, figures, output
+from scipy.stats import spearmanr
 from plotutils import model_color_map, range_frame
 from utils import (
     ONE_COL_WIDTH_INCH,
@@ -190,9 +191,7 @@ def plot_mcq_correlations(questions: dict):
             upperlim = (
                 metric_without_outliers.max() if covariate == "num_atoms" else 200
             )
-            metric_without_outliers = metric_without_outliers[
-                metric_without_outliers < metric_without_outliers.quantile(0.95)
-            ]
+            metric_without_outliers = metric_without_outliers
 
             fig, ax = plt.subplots(
                 1,
@@ -221,13 +220,17 @@ def plot_mcq_correlations(questions: dict):
                     s=3,
                     alpha=0.4,
                 )
+                spearman_corr = spearmanr(questions_[covariate], questions_[mcq_metric])
+                print(
+                    f"Spearman correlation for {model} in {topic} with {covariate}: {spearman_corr}"
+                )
                 ax[i].title.set_text(model_rename_dict[model])
 
-                range_frame(
-                    ax[i],
-                    covariate_range_no_outliers.values,
-                    metric_without_outliers.values,
-                )
+                # range_frame(
+                #     ax[i],
+                #     covariate_range_no_outliers.values,
+                #     metric_without_outliers.values,
+                # )
 
             ax[0].set_ylabel(mcq_metric)
             # set xlabel in the middle
@@ -339,4 +342,4 @@ if __name__ == "__main__":
     questions["overall"]["human"] = all_human_scores
 
     plot_correlations_num_atoms(questions)
-# plot_mcq_correlations(questions)
+    plot_mcq_correlations(questions)
