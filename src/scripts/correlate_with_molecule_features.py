@@ -15,6 +15,10 @@ from utils import (
 )
 from complexity import complexity_from_smiles
 import pandas as pd
+import os
+
+correlation_correlation_dir = output / "correlation_correlation"
+correlation_correlation_dir.mkdir(exist_ok=True)
 
 plt.style.use(scripts / "lamalab.mplstyle")
 relevant_models = ["gpt4", "claude3", "galactica_120b", "human"]
@@ -306,7 +310,19 @@ def plot_correlations_num_atoms(questions: dict):
                     color=model_color_map[model],
                     s=3,
                     alpha=0.4,
+                )   
+                questions_no_nan = questions_.dropna(subset=['metrics_mae', covariate])
+           
+                spearman_corr = spearmanr(
+                    questions_no_nan[covariate].values, questions_no_nan["metrics_mae"].values
                 )
+
+                with open(os.path.join(correlation_correlation_dir, f"spearman_{covariate}_{model}_topic.txt"), "w") as handle: 
+                    handle.write(f"{spearman_corr.statistic:.2f}" + '\endinput')
+                
+                with open(os.path.join(correlation_correlation_dir, f"spearman_p_{covariate}_{model}_topic.txt"), "w") as handle: 
+                    handle.write(f"{spearman_corr.pvalue:.2f}" + '\endinput')
+       
                 ax[i].title.set_text(model_rename_dict[model])
 
                 range_frame(

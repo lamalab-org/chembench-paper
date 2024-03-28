@@ -172,7 +172,19 @@ One might wonder if questions that are more difficult to parse lead to worse per
     \label{fig:correlation_plot_is_electron_counts_num_atoms}
 \end{figure}
 
+\subsection{Influence of scale}
+To obtain first insights in how the performance \glspl{llm} depends on scale, we tested the \glspl{llm} of the LLaMA series. 
+Note that such analyses are difficult as models are typically not directly comparable in terms of dataset and training protocol.\autocite{biderman2023pythia}
 
+\Cref{fig:llama_performance} shows the performance of the LLaMA (chat) models with different parameter counts on the \chembench corpus. 
+
+\begin{figure}
+    \centering 
+    \includegraphics{figures/llama_performance.pdf}
+    \caption{\textbf{Performance of LLaMA models on the \chembench corpus.} The plot shows the fraction of correctly answered questions as a function of the model size.}
+    \label{fig:llama_performance}
+    \script{analyze_llama_performance.py}
+\end{figure}
 
 \subsection{Human baseline}
 \paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\autocite{nextjs} app router framework.
