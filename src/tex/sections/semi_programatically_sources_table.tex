@@ -1,21 +1,21 @@
 \begin{table}[h]
-\begin{tabularx}{\textwidth}{Xp{7 cm}X}
+\begin{tabularx}{\textwidth}{p{4 cm}p{6 cm}p{.5cm}X}
     \toprule
     source & description & question count \\
 \midrule
-Number of isomers & MAYGEN was used to compute the number of isomers for a set of SMILES extracted from the ZINC dataset. & \variable{output/question_count_per_dir/json_file_counts_number_of_isomers.txt} \\
-Total electron count of molecules & Electron counts based on the data from https://www.cheminfo.org/. & \variable{output/question_count_per_dir/json_file_counts_electron_counts.txt} \\
-Oxidation states & Oxidation states questions based on the data from https://www.cheminfo.org/. & \variable{output/question_count_per_dir/json_file_counts_oxidation_states.txt} \\
-Chemical reactivity & Questions are framed based on the information from Cameo Chemicals website (https://cameochemicals.noaa.gov/reactivity). & \variable{output/question_count_per_dir/json_file_counts_reactive_groups.txt} \\
-Number of NMR signals & Molecules are sampled from the ZINC database and the number of NMR signals is computed with OpenChemLib & \variable{output/question_count_per_dir/json_file_counts_number_of_nmr_peaks.txt} \\
-Point group of molecules & Our ChemCaption tool is used to assign the point group, and then each case was manually checked to select well defined cases. & \variable{output/question_count_per_dir/json_file_counts_point_group.txt} \\
-IUPAC-SMILES pairs & Sampled from the PubChem database & \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} + \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} \\
-\multirow{3}{*}{PubChem safety data} & Daily allowable intakes according to the World Health Organization & \variable{output/question_count_per_dir/json_file_counts_dai.txt}  \\
- & Definitions of hazard statements &  \variable{output/question_count_per_dir/json_file_counts_h_statements.txt} \\
- & GHS classification of chemicals mined through the API & \variable{output/question_count_per_dir/json_file_counts_pictograms.txt} \\
+Number of isomers & MAYGEN was used to compute the number of isomers for a set of SMILES extracted from the ZINC dataset. & & \variable{output/question_count_per_dir/json_file_counts_number_of_isomers.txt} \\
+Total electron count of molecules & Electron counts based on the data from https://www.cheminfo.org/. & &\variable{output/question_count_per_dir/json_file_counts_electron_counts.txt} \\
+Oxidation states & Oxidation states questions based on the data from https://www.cheminfo.org/. && \variable{output/question_count_per_dir/json_file_counts_oxidation_states.txt} \\
+Chemical reactivity & Questions are framed based on the information from Cameo Chemicals website (https://cameochemicals.noaa.gov/reactivity). && \variable{output/question_count_per_dir/json_file_counts_reactive_groups.txt} \\
+Number of NMR signals & Molecules are sampled from the ZINC database and the number of NMR signals is computed with OpenChemLib && \variable{output/question_count_per_dir/json_file_counts_number_of_nmr_peaks.txt} \\
+Point group of molecules & Our ChemCaption tool is used to assign the point group, and then each case was manually checked to select well-defined cases. && \variable{output/question_count_per_dir/json_file_counts_point_group.txt} \\
+IUPAC-SMILES pairs & Sampled from the PubChem database && \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} + \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} \\
+\multirow{3}{*}{PubChem safety data} & Daily allowable intakes according to the World Health Organization && \variable{output/question_count_per_dir/json_file_counts_dai.txt}  \\
+ & Definitions of hazard statements &&  \variable{output/question_count_per_dir/json_file_counts_h_statements.txt} \\
+ & GHS classification of chemicals mined through the API& & \variable{output/question_count_per_dir/json_file_counts_pictograms.txt} \\
 \multirow{2}{*}{Safety}
-& Materials' compatibility & \variable{output/question_count_per_dir/json_file_counts_materials_compatibility.txt} \\
- & Chemical compatibility & \variable{output/question_count_per_dir/json_file_counts_chem_chem_comp.txt} \\
+& Materials' compatibility && \variable{output/question_count_per_dir/json_file_counts_materials_compatibility.txt} \\
+ & Chemical compatibility && \variable{output/question_count_per_dir/json_file_counts_chem_chem_comp.txt} \\
 \bottomrule
 \end{tabularx}
 \end{table}
