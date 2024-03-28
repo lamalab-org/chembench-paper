@@ -27,7 +27,7 @@
     The models, however, struggle with some chemical reasoning tasks that are easy for human experts and provide overconfident, misleading predictions, such as about chemicals' safety profiles. 
 
     These findings underscore the dual reality that, although LLMs demonstrate remarkable proficiency in chemical tasks, further research is critical to enhancing their safety and utility in chemical sciences.
-    Our findings also indicate a need for adaptations to chemistry curricula and highlight the importance of continuing to develop evaluation frameworks to systematically improve safe and useful LLMs.
+    Our findings also indicate a need for adaptations to chemistry curricula and highlight the importance of continuing to develop evaluation frameworks to improve safe and useful LLMs systematically.
 \end{abstract}
 
 \clearpage
@@ -40,7 +40,7 @@ While some see \enquote{sparks of \gls{agi}} in them,\autocite{bubeck2023sparks}
 In any case, the promise of these models is that they show the ability to solve a wide variety of tasks they have not been explicitly trained on.\autocite{bommasani2021opportunities, anderljung2023frontier}
 This led to tremendous economic interest and investment in such generative models, with an expected market of more than \$1.3 trillion (almost \$30 billion for drug discovery applications) by 2032.\autocite{bloomberg}
 
-Chemists and materials scientists have quickly caught on the mounting attention given to \glspl{llm}, with some voices even suggesting that \enquote{the future of chemistry is language}.\autocite{White_2023}
+Chemists and materials scientists have quickly caught on to the mounting attention given to \glspl{llm}, with some voices even suggesting that \enquote{the future of chemistry is language}.\autocite{White_2023}
 This statement is motivated by a growing number of reports that use \glspl{llm} to predict properties of molecules or materials,\autocite{jablonka202314, jablonka2024leveraging, xie2024fine, liao2024words, zhang2024chemllm, zhong2024benchmarking}  optimize reactions\autocite{ramos2023bayesian, kristiadi2024sober}  generate materials,\autocite{rubungo2023llm, flam2023language, gruver2024fine} extract information,\autocite{Patiny_2023, Dagdelen_2024, Zheng_2024, lála2023paperqa, caufield2023structured} or to even prototype systems that can autonomously perform reactions in the physical world based on commands provided in natural language.\autocite{bran2023chemcrow, Boiko_2023, darvish2024organa}
 
 In addition, since a lot---if not most---of the information about chemistry is currently stored and communicated in text, there is a strong reason to believe that there is still a lot of untapped potential in \glspl{llm} for chemistry and materials science.
@@ -53,7 +53,7 @@ Such a usage mode is, in particular, interesting in the face of recent advances 
 
 However, the rapid increase in capabilities of chemical \gls{ml} models led (even before the recent interest in \glspl{llm}) to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\autocite{gopal2023releasing, ganguli2022red, Urbina_2022, campbell2023censoring, moulange2023towards, urbina2022teachable}
 To some extent, this is not surprising as any technology that, for instance, is used to design non-toxic molecules can also be used inversely to predict toxic ones. 
-Yet, it is important to realize that while \glspl{llm} can facilitate access to information and tools, this information about controlled chemicals and task-specific tools has been available for years and requires access to special facilities such as laboratories.
+Yet, it is important to realize that while \glspl{llm} can facilitate access to information and tools, this information about controlled chemicals and task-specific tools has been available for years and requires access to controlled facilities such as laboratories.
 Still, it is essential to realize that such models' user base is wider than that of chemistry and materials science experts who critically reflect on every output such models produce. 
 For example, many students frequently consult these tools---perhaps even to prepare chemical experiments.\autocite{Intelligent.com_2023}
 This also applies to users from the general public, who might consider using \glspl{llm} to answer questions about the safety of chemicals.
@@ -281,20 +281,17 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 
 \paragraph{Manually curated questions}
 Manually curated questions were sourced from various sources, including university exams, textbooks, and question banks. \Cref{tab:manually_sources} provides an overview of the sources of the manually curated questions.
-\begin{table}[h]
-\caption{\textbf{Sources of manually curated questions.} The table shows the sources and a brief description  as well as the number of the manually curated questions.}
+
 \input{sections/manually_sources_table.tex}
-\label{tab:manually_sources}
-\end{table}
+
+
 
 \paragraph{Semi-programatically generated questions}
 In addition to the manually curated questions, we also generated questions programmatically. An overview of the sources of the semi-programatically generated questions is provided in \Cref{tab:semi_programatically_sources}.
 
-\begin{table}[h]
-\caption{\textbf{Sources of semi-programatically generated questions.} The table shows the sources and a brief description as well as the number of the semi-programatically generated questions.}
+
 \input{sections/semi_programatically_sources_table.tex}
-\label{tab:semi_programatically_sources}
-\end{table}
+
 
 \clearpage
 
