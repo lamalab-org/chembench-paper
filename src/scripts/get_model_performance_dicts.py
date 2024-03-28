@@ -147,7 +147,7 @@ def load_human_aligned_reports(topic_frame):
     llama13b = combine_scores_for_model(
         os.path.join(
             chembench,
-            "reports/llama2-13b-chat/reports/adf4e6fa-0526-49c5-9b21-12c3cc0ad835",
+            "reports/llama2-13b-chat/reports/e37ff6c1-6917-409c-8216-2560574b910b",
         ),
         datafolder,
         human_baseline_folder,
@@ -335,7 +335,7 @@ def load_reports(topic_frame):
     llama13b = load_all_reports(
         os.path.join(
             chembench,
-            "reports/llama2-13b-chat/reports/adf4e6fa-0526-49c5-9b21-12c3cc0ad835",
+            "reports/llama2-13b-chat/reports/e37ff6c1-6917-409c-8216-2560574b910b",
         ),
         os.path.join(chembench, "data"),
     )
