@@ -77,7 +77,7 @@ def load_human_aligned_reports(topic_frame):
     gemini_pro_zero_t = combine_scores_for_model(
         os.path.join(
             chembench,
-            "reports/gemin-pro-zero-T/reports/1e5457ad-96b5-4bc8-bd6c-bad3eb6deb7a",
+            "reports/gemini-pro-zero-T/reports/1e5457ad-96b5-4bc8-bd6c-bad3eb6deb7a",
         ),
         datafolder,
         human_baseline_folder,
@@ -126,10 +126,36 @@ def load_human_aligned_reports(topic_frame):
         human_baseline_folder,
     )
 
+    gpt4_zero_t = combine_scores_for_model(
+        os.path.join(
+            chembench, "reports/gpt-4-zero-T/reports/44984586-c1f7-42d3-baf0-c9f581a7a134"
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
     llama70b = combine_scores_for_model(
         os.path.join(
             chembench,
-            "reports/llama-2-70b-chat/reports/a2d0b2d7-2381-4e75-8c8b-8baadf054073",
+            "reports/llama2-70b-chat/reports/adf4e6fa-0526-49c5-9b21-12c3cc0ad835",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    llama7b = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/llama2-7b-chat/reports/df8c05c1-918c-4fad-b692-e14663c2f1d6",
+        ),
+        datafolder,
+        human_baseline_folder,
+    )
+
+    llama13b = combine_scores_for_model(
+        os.path.join(
+            chembench,
+            "reports/llama2-13b-chat/reports/e37ff6c1-6917-409c-8216-2560574b910b",
         ),
         datafolder,
         human_baseline_folder,
@@ -182,7 +208,10 @@ def load_human_aligned_reports(topic_frame):
     gpt35turbo_zero_t = merge_with_topic_info(gpt35turbo_zero_t, topic_frame)
     gpt35turbo_react = merge_with_topic_info(gpt35turbo_react, topic_frame)
     gpt4 = merge_with_topic_info(gpt4, topic_frame)
+    gpt4_zero_t = merge_with_topic_info(gpt4_zero_t, topic_frame)
     llama70b = merge_with_topic_info(llama70b, topic_frame)
+    llama7b = merge_with_topic_info(llama7b, topic_frame)
+    llama13b = merge_with_topic_info(llama13b, topic_frame)
     mixtral = merge_with_topic_info(mixtral, topic_frame)
     pplx7b_chat = merge_with_topic_info(pplx7b_chat, topic_frame)
     pplx7b_online = merge_with_topic_info(pplx7b_online, topic_frame)
@@ -200,7 +229,10 @@ def load_human_aligned_reports(topic_frame):
         "gpt35turbo_zero_t": gpt35turbo_zero_t,
         "gpt35turbo_react": gpt35turbo_react,
         "gpt4": gpt4,
+        "gpt4_zero_t": gpt4_zero_t,
         "llama70b": llama70b,
+        "llama7b": llama7b,
+        "llama13b": llama13b,
         "mixtral": mixtral,
         "pplx7b_chat": pplx7b_chat,
         "pplx7b_online": pplx7b_online,
@@ -251,7 +283,7 @@ def load_reports(topic_frame):
     gemini_pro_zero_t = load_all_reports(
         os.path.join(
             chembench,
-            "reports/gemin-pro-zero-T/reports/1e5457ad-96b5-4bc8-bd6c-bad3eb6deb7a",
+            "reports/gemini-pro-zero-T/reports/1e5457ad-96b5-4bc8-bd6c-bad3eb6deb7a",
         ),
         os.path.join(chembench, "data"),
     )
@@ -294,10 +326,33 @@ def load_reports(topic_frame):
         os.path.join(chembench, "data"),
     )
 
+    gpt4_zero_t = load_all_reports(
+        os.path.join(
+            chembench, "reports/gpt-4-zero-T/reports/44984586-c1f7-42d3-baf0-c9f581a7a134"
+        ),
+        os.path.join(chembench, "data"),
+    )
+
     llama70b = load_all_reports(
         os.path.join(
             chembench,
-            "reports/llama-2-70b-chat/reports/a2d0b2d7-2381-4e75-8c8b-8baadf054073",
+            "reports/llama2-70b-chat/reports/adf4e6fa-0526-49c5-9b21-12c3cc0ad835",
+        ),
+        os.path.join(chembench, "data"),
+    )
+
+    llama7b = load_all_reports(
+        os.path.join(
+            chembench,
+            "reports/llama2-7b-chat/reports/df8c05c1-918c-4fad-b692-e14663c2f1d6",
+        ),
+        os.path.join(chembench, "data"),
+    )
+
+    llama13b = load_all_reports(
+        os.path.join(
+            chembench,
+            "reports/llama2-13b-chat/reports/e37ff6c1-6917-409c-8216-2560574b910b",
         ),
         os.path.join(chembench, "data"),
     )
@@ -351,7 +406,10 @@ def load_reports(topic_frame):
     gpt35turbo_zero_t_run_names = set(gpt35turbo_zero_t[("name", 0)])
     gpt35turbo_react_run_names = set(gpt35turbo_react[("name", 0)])
     gpt4_run_names = set(gpt4[("name", 0)])
+    gpt4_zero_t_run_names = set(gpt4_zero_t[("name", 0)])
     llama70b_run_names = set(llama70b[("name", 0)])
+    llama7b_run_names = set(llama7b[("name", 0)])
+    llama13b_run_names = set(llama13b[("name", 0)])
     mixtral_run_names = set(mixtral[("name", 0)])
     pplx7b_chat_run_names = set(pplx7b_chat[("name", 0)])
     pplx7b_online_run_names = set(pplx7b_online[("name", 0)])
@@ -432,7 +490,10 @@ def load_reports(topic_frame):
     gpt35turbo_zero_t = merge_with_topic_info(gpt35turbo_zero_t, topic_frame)
     gpt35turbo_react = merge_with_topic_info(gpt35turbo_react, topic_frame)
     gpt4 = merge_with_topic_info(gpt4, topic_frame)
+    gpt4_zero_t = merge_with_topic_info(gpt4_zero_t, topic_frame)
     llama70b = merge_with_topic_info(llama70b, topic_frame)
+    llama7b = merge_with_topic_info(llama7b, topic_frame)
+    llama13b = merge_with_topic_info(llama13b, topic_frame)
     mixtral = merge_with_topic_info(mixtral, topic_frame)
     pplx7b_chat = merge_with_topic_info(pplx7b_chat, topic_frame)
     pplx7b_online = merge_with_topic_info(pplx7b_online, topic_frame)
@@ -451,7 +512,10 @@ def load_reports(topic_frame):
         "gpt35turbo_zero_t": gpt35turbo_zero_t,
         "gpt35turbo_react": gpt35turbo_react,
         "gpt4": gpt4,
+        "gpt4_zero_t": gpt4_zero_t,
         "llama70b": llama70b,
+        "llama7b": llama7b,
+        "llama13b": llama13b,
         "mixtral": mixtral,
         "pplx7b_chat": pplx7b_chat,
         "pplx7b_online": pplx7b_online,

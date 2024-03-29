@@ -1,28 +1,38 @@
-\hline
-NMR spectroscopy & Questions are based on images shared via the Twitter account (https://twitter.com/NMRspectroscopy). & 5 \\
-\hline
-Analytical chemistry & Questions are based on exercises in master student examination at the Friedrich Schiller University, Jena, Germany. &  \variable{output/question_count_per_dir/json_file_counts_analytical_chemistry.txt} \\
-\hline
-\multirow{2}{*}{General chemistry} & Questions originate from examinations for grade 10 at the Marist Comprenhensive Academy Uturu, Nigeria. & \variable{output/question_count_per_dir/json_file_counts_Gen_Chem_MCA.txt} \\
- & Questions originate from the Bachelor of Science courses  at the Technical University of Munich, Germany. & 8 \\
- \hline
-\begin{tabular}[c]{@{}l@{}}Functional materials and \\ nanomaterials\end{tabular} & Questions are based on exercises in a seminar conducted at the Friedrich Schiller University, Jena, Germany. & \variable{output/question_count_per_dir/json_file_counts_func_mats_and_nanomats.txt} \\
-\hline
-Combustion engineering & Based on a Master of Science examination paper at the University of Magdeburg, Germany & \variable{output/question_count_per_dir/json_file_counts_combustion_engineering.txt} \\
-\hline
-Materials' synthesis & Questions are based on seminars on material synthesis from Friedrich Schiller University, Jena, Germany. & \variable{output/question_count_per_dir/json_file_counts_materials_synthesis.txt} \\
-\hline
-Chemistry olympiad & National and International Olympiads held in US, UK and Moldova & \variable{output/question_count_per_dir/json_file_counts_icho.txt} \\
-Organic reactivity & Based on Bachelor of Science in Chemistry at the Technical University of Munich, Germany & \variable{output/question_count_per_dir/json_file_counts_organic_reactivity.txt} \\
-\hline
-Periodic table & Manually created & \variable{output/question_count_per_dir/json_file_counts_periodic_table_properties.txt} \\
-\hline
-Polymer chemistry & Based on examinations at the University of Hamburg, Germany & \variable{output/question_count_per_dir/json_file_counts_polymer_chemistry.txt} \\
-\hline
-Textbook questions & Various textbooks covering biomolecular science, drug synthesis, molecular structure, organic chemistry, and X-ray crystallography. & \variable{output/question_count_per_dir/json_file_counts_oup.txt} \\
-\hline
-\multirow{1}{*}{Safety} &
- Based on the question bank published by the Federal/State Working Group  on Chemical Safety (BLAC), which is used for the expertise examination (“Sachkundeprufung”) & \variable{output/question_count_per_dir/json_file_counts_blac_gfk.txt} \\
-\hline
-\end{tabular}
-\end{table}
+    \begin{xltabular}{\textwidth}{p{3.5 cm}p{6.5 cm}p{.5cm}X}
+        \caption{\textbf{Sources of manually curated questions.} The table shows the sources and a brief description  as well as the number of the manually curated questions.} \label{tab:manually_sources} \\
+
+    \toprule
+    source & description & question count \\
+    \midrule
+NMR spectroscopy & Questions are based on images shared via the Twitter account \href{https://twitter.com/NMRspectroscopy}{NMRspectroscopy} && \variable{output/question_count_per_dir/json_file_counts_nmr.txt} \\
+\midrule
+Analytical chemistry & Questions are based on exercises in master student examination at the FSU Jena, Germany &&  \variable{output/question_count_per_dir/json_file_counts_analytical_chemistry.txt} \\
+\midrule
+\multirow{2}{*}{General chemistry} & Questions originate from examinations for grade 10 at the Marist Comprenhensive Academy Uturu, Nigeria && \variable{output/question_count_per_dir/json_file_counts_Gen_Chem_MCA.txt} \\
+ & Questions originate from the Bachelor of Science (for chemistry) courses at the TUM, Germany && \variable{output/question_count_per_dir/json_file_counts_ac_faessler_tum.txt} + \variable{output/question_count_per_dir/json_file_counts_pum_tum.txt} \\
+ \midrule
+Functional materials and  nanomaterials & Questions are based on exercises in a seminar conducted at the FSU Jena, Germany && \variable{output/question_count_per_dir/json_file_counts_func_mats_and_nanomats.txt} \\
+\midrule
+Combustion engineering & Based on a Master of Science examination paper at the University of Magdeburg, Germany && \variable{output/question_count_per_dir/json_file_counts_combustion_engineering.txt} \\
+\midrule
+Materials' synthesis & Questions are based on seminars on material synthesis from FSU Jena, Germany && \variable{output/question_count_per_dir/json_file_counts_materials_synthesis.txt} \\
+\midrule
+Chemistry olympiad & National and International Olympiads held in US, UK and Moldova && \variable{output/question_count_per_dir/json_file_counts_icho.txt} \\
+\midrule
+Organic reactivity & Based on exams in the Bachelor of Science in Chemistry at the TUM, Germany && \variable{output/question_count_per_dir/json_file_counts_organic_reactivity.txt} \\
+\midrule
+Periodic table & Manually created && \variable{output/question_count_per_dir/json_file_counts_periodic_table_properties.txt} \\
+\midrule
+Polymer chemistry & Based on examinations at the University of Hamburg, Germany && \variable{output/question_count_per_dir/json_file_counts_polymer_chemistry.txt} \\
+\midrule
+Textbook questions & Various textbooks covering biomolecular science, drug synthesis, molecular structure, organic chemistry, and X-ray crystallography && \variable{output/question_count_per_dir/json_file_counts_oup.txt} \\
+\midrule
+Safety & Based on the question bank published by the Federal/State Working Group  on Chemical Safety (BLAC), which is used for the expertise examination (“Sachkundepr\"ufung”) && \variable{output/question_count_per_dir/json_file_counts_blac_gfk.txt} \\
+       & Based on toxicology exams at the LMU Munich, Germany && \variable{output/question_count_per_dir/json_file_counts_LMU_tox.txt} \\
+       & Based on toxicology exams at the University of Vienna, Austria && \variable{output/question_count_per_dir/json_file_counts_tox_pharma_vienna.txt} \\
+       & Based on toxicology exams at WWU Munster, Germany && \variable{output/question_count_per_dir/json_file_counts_tox_wwu.txt} \\
+       & Based on exercises for lectures in high-energy density materials at LMU Munich, Germany && \variable{output/question_count_per_dir/json_file_counts_hedm_munich.txt} \\
+       & Based on pharmacology exams at the University of Vienna, Austria && \variable{output/question_count_per_dir/json_file_counts_pharmacology_vienna.txt} \\
+       & Lab safety quizzes based on various sources && \variable{output/question_count_per_dir/json_file_counts_sci_lab_safety_test.txt} + \variable{output/question_count_per_dir/json_file_counts_lab_safety.txt} + \variable{output/question_count_per_dir/json_file_counts_stolaf.txt} + \variable{output/question_count_per_dir/json_file_counts_chemical_safety_mcq_exam.txt} + \variable{output/question_count_per_dir/json_file_counts_anderson.txt}\\
+\bottomrule
+\end{xltabular}

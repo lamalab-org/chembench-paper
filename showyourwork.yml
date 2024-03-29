@@ -73,6 +73,8 @@ overleaf:
     - src/tex/appendix.tex
     - src/tex/acronymns.tex
     - src/tex/sections/parse_check_desc.tex
+    - src/tex/sections/manually_sources_table.tex
+    - src/tex/sections/semi_programatically_sources_table.tex
 
 # Always require all input files to be present on disk for workflow to pass?
 require_inputs: true

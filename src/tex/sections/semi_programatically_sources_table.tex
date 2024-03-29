@@ -1,28 +1,30 @@
-\begin{table}[h]
-\begin{tabular}{lp{7 cm}r}
-\toprule
-\textbf{Subset} & \textbf{Source description} & \textbf{\#} \\
-\hline
-Number of isomers & MAYGEN was used to compute the number of isomers for a set of SMILES extracted from the ZINC dataset. & \variable{output/question_count_per_dir/json_file_counts_number_of_isomers.txt} \\
-\hline
-\begin{tabular}[c]{@{}l@{}}Total electron count of \\ molecules\end{tabular} & Electron counts based on the data from https://www.cheminfo.org/. & \variable{output/question_count_per_dir/json_file_counts_electron_counts.txt} \\
-\hline
-Oxidation states & Oxidation states questions based on the data from https://www.cheminfo.org/. & \variable{output/question_count_per_dir/json_file_counts_oxidation_states.txt} \\
-\hline
-Chemical reactivity & Questions are framed based on the information from Cameo Chemicals website (https://cameochemicals.noaa.gov/reactivity). & \variable{output/question_count_per_dir/json_file_counts_reactive_groups.txt} \\
-\hline
-Number of NMR peaks & Molecules are sampled from the ZINC database and the number of NMR peaks is computed with OpenChemLib & \variable{output/question_count_per_dir/json_file_counts_number_of_nmr_peaks.txt} \\
-\hline
-Point group of molecules & Our ChemCaption tool is used to assign the point group, and then each case was manually checked to select well defined cases. & \variable{output/question_count_per_dir/json_file_counts_point_group.txt} \\
-IUPAC-SMILES pairs & Sampled from the PubChem database & \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} + \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} \\
-\hline
-\multirow{3}{*}{PubChem safety data} & Daily allowable intakes according to the World Health Organization & \variable{output/question_count_per_dir/json_file_counts_dai.txt}  \\
- & Definitions of hazard statements &  \variable{output/question_count_per_dir/json_file_counts_h_statements.txt} \\
- & GHS classification of chemicals mined through the API & \variable{output/question_count_per_dir/json_file_counts_pictograms.txt} \\
-\hline
+\begin{xltabular}{\textwidth}{p{3.5 cm}p{6.5 cm}p{.5cm}X}
+    \caption{\textbf{Sources of semi-programatically generated questions.} The table shows the sources and a brief description as well as the number of the semi-programatically generated questions.}\label{tab:semi_programatically_sources} \\
+
+    \toprule
+    source & description & question count \\
+\midrule
+Number of isomers & MAYGEN\autocite{Yirik_2021} was used to compute the number of isomers for a set of \gls{smiles} extracted from the ZINC dataset\autocite{Irwin_2012} & & \variable{output/question_count_per_dir/json_file_counts_number_of_isomers.txt} \\
+\midrule
+Total electron count of molecules & Electron counts based on the data from  \url{https://www.cheminfo.org/} & &\variable{output/question_count_per_dir/json_file_counts_electron_counts.txt} \\
+\midrule
+Oxidation states & Oxidation states questions based on the data from \url{https://www.cheminfo.org/} && \variable{output/question_count_per_dir/json_file_counts_oxidation_states.txt} \\
+\midrule
+Chemical reactivity & Questions are framed based on the information from the \href{https://cameochemicals.noaa.gov/reactivity}{Cameo Chemicals website} && \variable{output/question_count_per_dir/json_file_counts_reactive_groups.txt} \\
+\midrule
+Number of \gls{nmr} signals & Molecules are sampled from the ZINC database\autocite{Irwin_2012}, OpenChemLib\autocite{openchemlib} is used to compute the number of diasterotopically distinct hydrogen atoms && \variable{output/question_count_per_dir/json_file_counts_number_of_nmr_peaks.txt} \\
+\midrule
+Point group of molecules & Our \href{https://github.com/lamalab-org/chem-caption}{ChemCaption} tool is used to assign the point group using spglib,\autocite{spglib}  and then each case was manually checked to select well-defined cases && \variable{output/question_count_per_dir/json_file_counts_point_group.txt} \\
+\midrule
+IUPAC-SMILES pairs & Sampled from the PubChem \autocite{pubchem}  database && \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} + \variable{output/question_count_per_dir/json_file_counts_smiles_to_name.txt} \\
+\midrule
+\multirow{3}{*}{PubChem \autocite{pubchem}  safety data} & Daily allowable intakes according to the World Health Organization && \variable{output/question_count_per_dir/json_file_counts_dai.txt}  \\
+ & Definitions of hazard statements &&  \variable{output/question_count_per_dir/json_file_counts_h_statements.txt} \\
+ & GHS classification of chemicals mined through the API& & \variable{output/question_count_per_dir/json_file_counts_pictograms.txt} \\
+ \midrule
 \multirow{2}{*}{Safety}
-& Materials' compatibility & \variable{output/question_count_per_dir/json_file_counts_materials_compatibility.txt} \\
- & Chemical compatibility & \variable{output/question_count_per_dir/json_file_counts_chem_chem_comp.txt} \\
-\hline
-\end{tabular}
-\end{table}
+& Materials' compatibility && \variable{output/question_count_per_dir/json_file_counts_materials_compatibility.txt} \\
+ & Chemical compatibility && \variable{output/question_count_per_dir/json_file_counts_chem_chem_comp.txt} \\
+\bottomrule
+\end{xltabular}
+

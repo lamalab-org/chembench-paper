@@ -1,6 +1,7 @@
 dependencies:
   - conda-forge::pip=23.3.1
   - conda-forge::python=3.10
+  - pymatgen
   - pip:
       - torch==2.2.0
       - transformers==4.37.2
