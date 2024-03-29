@@ -330,3 +330,12 @@ rule molecule_score_correlation:
         "src/tex/figures/correlation_plot_is_number_nmr_peaks_complexity.pdf"],
     script:
         "src/scripts/correlate_with_molecule_features.py"
+
+
+rule llama_scale_plot:
+    input:
+        "src/data/model_score_dicts.pkl",
+    output:
+        "src/tex/figures/llama_performance.pdf",
+    script:
+        "src/scripts/analyze_llama_performance.py"

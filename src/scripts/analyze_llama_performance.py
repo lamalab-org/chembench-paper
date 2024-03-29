@@ -4,7 +4,7 @@ from utils import ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH
 import pickle
 
 
-plt.style.use(scripts / "lamalab.org")
+plt.style.use(scripts / "lamalab.mplstyle")
 
 
 def plot_performance(model_score_dict):
@@ -25,7 +25,7 @@ def plot_performance(model_score_dict):
     )
 
     ax.set_xlabel("number of parameters in billions")
-    ax.set_ylabel("fraction of correct predictions")
+    ax.set_ylabel("fraction ")
 
     fig.savefig(figures / "llama_performance.pdf", bbox_inches="tight")
 

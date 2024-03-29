@@ -62,7 +62,7 @@ Unfortunately, apart from anecdotal reports, there is little evidence on how \gl
 Thus, to better understand what \glspl{llm} can do for the chemical sciences and where they might be improved with further developments, evaluation frameworks are needed to allow us to measure progress and mitigate potential harms systematically.
 For the development of \glspl{llm}, evaluation is currently primarily performed via standardized benchmark suites such as BigBench\autocite{srivastava2022beyond} or the LM Eval Harness.\autocite{eval-harness}
 Among 204 tasks (such as linguistic puzzles), the former contains only two tasks classified as \enquote{chemistry related}, whereas the latter contains no specific chemistry tasks.
-Due to the lack of widely accepted standard benchmarks, the developers of chemical language models\autocite{jablonka2024leveraging, guo2023large, ahmad2022chemberta2, Cai_2024, frey2023neural} frequently utilize language-interfaced\autocite{dinh2022lift} tabular datasets such as the ones reported in MoleculeNet,\autocite{wu2018moleculenet} Therapeutic Data Commons\autocite{huang2021therapeutics} or MatBench.\autocite{dunn2020benchmarking}
+Due to the lack of widely accepted standard benchmarks, the developers of chemical language models\autocite{jablonka2024leveraging, guo2023large, ahmad2022chemberta2, Cai_2024, frey2023neural} frequently utilize language-interfaced\autocite{dinh2022lift} tabular datasets such as the ones reported in MoleculeNet,\autocite{wu2018moleculenet} Therapeutic Data Commons\autocite{huang2021therapeutics} or MatBench.\autocite{Dunn_2020}
 In these cases, the models are evaluated on predicting very specific properties of molecules (e.g., solubility, toxicity, melting temperature or reactivity) or on predicting the outcome of specific chemical reactions.
 This, however, only gives a very limited view of the general chemical capabilities of the models.
 
@@ -255,7 +255,7 @@ The current evaluation frameworks for chemical \glspl{llm} are primarily designe
 They cannot be used to evaluate reasoning or systems built for scientific applications. 
 Thus, we had little understanding of the capabilities of \glspl{llm} in the chemical sciences.
 Our work shows that carefully curated benchmarks can provide a more nuanced understanding of the capabilities of \glspl{llm} in the chemical sciences.
-Importantly, our findings also illustrate that more focus is required in the development of better human-model interaction frameworks, given that models are not able to estimate their limitations.
+Importantly, our findings also illustrate that more focus is required in developing better human-model interaction frameworks, given that models cannot estimate their limitations.
 
 While our findings indicate many areas for further improvement of \gls{llm}-based systems, it is also important to realize that clearly defined metrics have been the key to the progress of many fields of \gls{ml}, such as computer vision. 
 Although current systems are far from reasoning like a chemist, our \chembench framework will be a stepping stone for developing systems that might come closer to this goal.
@@ -314,7 +314,7 @@ In the case of completion models, this step is skipped. From there, we attempt t
 In the case of numbers, our regular expression was engineered to deal with various forms of scientific notation.
 As initial tests indicated that models sometimes return integers in the form of words, e.g., \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion using regular expressions.
 If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., Claude 2, to parse the completion.
-%Manual verification indicates that this \gls{llm}-based parsing represent not a relevant error source and has been performed correctly in all cases we checked (randomly sampled 4 questions per topic).
+
 
 \input{sections/parse_check_desc.tex}
 
