@@ -264,6 +264,18 @@ rule count_json_files:
             "src/tex/output/question_count_per_dir/json_file_counts_pictograms.txt",
             "src/tex/output/question_count_per_dir/json_file_counts_h_statements.txt",
             "src/tex/output/question_count_per_dir/json_file_counts_dai.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_pharmacology_vienna.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_chemical_safety_mcq_exam.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_stolaf.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_anderson.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_tox_pharma_vienna.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_sci_lab_safety_test.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_number_of_nmr_peaks.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_LMU_tox.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_lab_safety.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_nmr.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_tox_wwu.txt",
+            "src/tex/output/question_count_per_dir/json_file_counts_hedm_munich.txt"
         ],
     script: 
         "src/scripts/count_json_files.py"

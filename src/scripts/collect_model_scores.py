@@ -9,7 +9,8 @@ from loguru import logger
 if __name__ == "__main__":
     chembench_repo = obtain_chembench_repo()
     reports = glob(
-        os.path.join(chembench_repo, "reports", "**", "reports", "**", "*.json")
+        os.path.join(chembench_repo, "reports",
+                     "**", "reports", "**", "*.json")
     )
 
     models = list(set([Path(p).parent for p in reports]))
@@ -31,5 +32,6 @@ if __name__ == "__main__":
                 f"python {scriptpath} {file} {outfile} --datafolder={datafolder}",
                 shell=True,
             )
-        except Exception:
+        except Exception as e:
+            logger.error(f"Error processing {file}: {e}")
             pass
