@@ -104,7 +104,7 @@ Hence, we believe that fine-grained analysis of model performance is vital for t
 To further investigate the performance of the models, we also compared the performance on different data sources.
 Compared to topics, this is a more fine-grained analysis, as topics can be composed of questions from different sources.
 In \Cref{fig:performance_per_topic}, we see that the performance of the models varies significantly between the different data sources.
-Interestingly, the performance of the models on questions sourced based on textbooks seems to be better for our models than some of the semi-programmatically created tasks, such as questions about the number of signals in an \gls{nmr} spectrum.
+Interestingly, the performance of the models on questions sourced based on textbooks seems to be better for our models than some semi-programmatically created tasks, such as questions about the number of signals in an \gls{nmr} spectrum.
 
 
 \begin{figure}[htb]
@@ -145,7 +145,7 @@ One might wonder if questions that are more difficult to parse lead to worse per
 
 \subsection{Performance as a function of molecular features}
 To better understand if the performance of the models is correlated with specific features of the molecules, we analyzed the performance of the models as a function of the number of atoms and the complexity of the molecules.
-\Cref{fig:correlation_plot_is_number_nmr_peaks_complexity} shows that the performance of the models is not correlated with the complexity of the molecules but rather with the number of atoms (\Cref{fig:correlation_plot_is_number_nmr_peaks_num_atoms}). 
+\Cref{fig:correlation_plot_is_number_nmr_peaks_complexity} shows that the performance of the models is not correlated with the complexity of the molecules but rather with the number of atoms (\Cref{fig:correlation_plot_is_number_nmr_peaks_num_atoms}, similar trivial correlation for \Cref{fig:correlation_plot_is_electron_counts_num_atoms}). 
 The corresponding Spearman correlation coefficients are listed in \Cref{tab:correlation_coefficients}.
 
 \begin{figure}
@@ -194,19 +194,11 @@ The corresponding Spearman correlation coefficients are listed in \Cref{tab:corr
 \end{table}
 
 
-\subsection{Influence of scale}
+\subsection{Influence of model scale}
 To obtain first insights in how the performance \glspl{llm} depends on scale, we tested the \glspl{llm} of the LLaMA series. 
+Interestingly, we find that the 7B and 70B models perform comparably, with the 7B showing lower performance ().
+
 Note that such analyses are difficult as models are typically not directly comparable in terms of dataset and training protocol.\autocite{biderman2023pythia}
-
-\Cref{fig:llama_performance} shows the performance of the LLaMA (chat) models with different parameter counts on the \chembench corpus. 
-
-\begin{figure}[htb]
-    \centering 
-    \includegraphics{figures/llama_performance.pdf}
-    \caption{\textbf{Performance of LLaMA models on the \chembench corpus.} The plot shows the fraction of correctly answered questions as a function of the model size.}
-    \label{fig:llama_performance}
-    \script{analyze_llama_performance.py}
-\end{figure}
 
 \subsection{Human baseline}
 \paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\autocite{nextjs} app router framework.
@@ -269,7 +261,7 @@ We find that the models show different distributions of confidence scores, which
 
 
 \subsection{Leaderboard}
-Our leaderboard is based on the toolchain developed for Matbench.\autocite{Dunn_2020} 
+Our leaderboard is based on the tool chain developed for Matbench.\autocite{Dunn_2020} 
 Briefly, the \chembench pipeline produces standardized files in \texttt{json} format that contributors can add via pull requests to the \chembench repository.
 The Markdown tables and interactive plots are automatically generated and updated on the \chembench website.
 
