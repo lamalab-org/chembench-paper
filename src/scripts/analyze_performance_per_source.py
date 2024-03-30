@@ -75,9 +75,9 @@ model_rename_dict = {
     "gpt4": "GPT-4",
     "claude2": "Claude 2",
     "claude3": "Claude 3",
-    "llama70b": "Llama 70B",
+    "llama70b": "LLaMA (70B)",
     "gemini_pro": "Gemini Pro",
-    "galactica_120b": "Galactica 120B",
+    "galactica_120b": "Galactica (120B)",
     "mixtral": "Mixtral",
     "pplx7b_chat": "PPLX7B Chat",
     "pplx7b_online": "PPLX7B Online",
@@ -85,8 +85,8 @@ model_rename_dict = {
     "claude2_react": "Claude 2 ReAct",
     "claude2_zero_t": "Claude 2 Zero T",
     "gemini_pro_zero_t": "Gemini Pro Zero T",
-    "gpt35turbo": "GPT-35 Turbo",
-    "gpt35turbo_react": "GPT-35 Turbo ReAct",
+    "gpt35turbo": "GPT-3.5 Turbo",
+    "gpt35turbo_react": "GPT-3.5 Turbo ReAct",
 }
 
 

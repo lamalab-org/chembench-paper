@@ -348,6 +348,9 @@ rule llama_scale_plot:
     input:
         "src/data/model_score_dicts.pkl",
     output:
-        "src/tex/figures/llama_performance.pdf",
+        ["src/tex/figures/llama_performance.pdf",
+        "src/tex/output/llama/llama_7b.txt",
+        "src/tex/output/llama/llama_70b.txt",
+        "src/tex/output/llama/llama_13b.txt"]
     script:
         "src/scripts/analyze_llama_performance.py"

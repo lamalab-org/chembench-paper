@@ -21,7 +21,7 @@ model_file_name_to_label = {
     # "gpt-4": "GPT-4",
     "gpt-4-zero-T": "GPT-4",
     "gpt-35-turbo-react": "GPT-3.5 Turbo + ReAct",
-    "llama-2-70b-chat": "Llama 70b",
+    "llama-2-70b-chat": "LLaMA 70b",
     "mixtral-8x7b-instruct": "Mixtral 8x7b",
     "pplx-7b-chat": "Perplexity 7B chat",
     "pplx-7b-online": "Perplexity 7B online",

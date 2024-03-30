@@ -15,7 +15,6 @@ plt.style.use(scripts / "lamalab.mplstyle")
 
 
 def plot_performance(model_score_dict):
-    # make a dummy plots
     fig, ax = plt.subplots(
         figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )

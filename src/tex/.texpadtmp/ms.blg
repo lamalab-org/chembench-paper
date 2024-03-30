@@ -1,0 +1,5 @@
+[0] Config.pm:307> INFO - This is Biber 2.17
+[0] Config.pm:310> INFO - Logfile is '/Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/.texpadtmp/ms.blg'
+[56] biber-darwin:340> INFO - === Sat Mar 30, 2024, 16:37:18
+[69] Utils.pm:409> ERROR - /Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/.texpadtmp/ms.bcf is malformed, last biblatex run probably failed. Deleted /Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/.texpadtmp/ms.bbl
+[69] Biber.pm:135> INFO - ERRORS: 1

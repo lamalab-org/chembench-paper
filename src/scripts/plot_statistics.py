@@ -68,12 +68,12 @@ def question_count_barplot(df):
     ax[0].hlines(topics_mcq, xmin=0, xmax=counts_mcq, linewidth=5, alpha=0.2)
     ax[0].plot(counts_mcq, topics_mcq, "o", markersize=5, alpha=0.6)
     ax[0].set_xscale("log")
-    range_frame(ax[0], all_counts, np.arange(len(topics_general)))
+    range_frame(ax[0], all_counts, np.arange(len(topics_general)), pad=0.15)
 
     ax[1].hlines(topics_general, xmin=0, xmax=counts_general, linewidth=5, alpha=0.2)
     ax[1].plot(counts_general, topics_general, "o", markersize=5, alpha=0.6)
     ax[1].set_xscale("log")
-    range_frame(ax[1], all_counts, np.arange(len(topics_general)))
+    range_frame(ax[1], all_counts, np.arange(len(topics_general)), pad=0.15)
 
     ax[1].set_xlabel("question count")
 

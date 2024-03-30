@@ -70,7 +70,7 @@ if __name__ == "__main__":
         "gpt4": "GPT-4",
         "claude2": "Claude 2",
         "claude3": "Claude 3",
-        "llama70b": "Llama 70B",
+        "llama70b": "LLaMA 70B",
         "gemini_pro": "Gemini Pro",
         "galactica_120b": "Galactica 120B",
     }

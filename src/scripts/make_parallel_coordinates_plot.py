@@ -32,7 +32,7 @@ clean_model_names = {
     "gpt4": "GPT-4",
     "claude2": "Claude 2",
     "claude3": "Claude 3",
-    "llama70b": "Llama 70B",
+    "llama70b": "LLaMA 70B",
     "gemini_pro": "Gemini Pro",
     "gpt35turbo_react": "GPT-3.5 Turbo + ReAct",
     "galactica_120b": "Galactica 120B",

@@ -142,6 +142,7 @@ One might wonder if questions that are more difficult to parse lead to worse per
     \label{fig:reading_ease_vs_model_performance}
 \end{figure}
 
+\clearpage
 
 \subsection{Performance as a function of molecular features}
 To better understand if the performance of the models is correlated with specific features of the molecules, we analyzed the performance of the models as a function of the number of atoms and the complexity of the molecules.
@@ -196,7 +197,7 @@ The corresponding Spearman correlation coefficients are listed in \Cref{tab:corr
 
 \subsection{Influence of model scale}
 To obtain first insights in how the performance \glspl{llm} depends on scale, we tested the \glspl{llm} of the LLaMA series. 
-Interestingly, we find that the 7B and 70B models perform comparably, with the 7B showing lower performance ().
+Interestingly, we find that the 7B and 70B models perform comparably, with the 7B showing lower performance (fraction of correct answers for the 7B, 13B, and 70B models are \variable{output/llama/llama_7b.txt}, \variable{output/llama/llama_13b.txt}, \variable{output/llama/llama_70b.txt}).
 
 Note that such analyses are difficult as models are typically not directly comparable in terms of dataset and training protocol.\autocite{biderman2023pythia}
 
@@ -221,7 +222,7 @@ The application is hosted on the Vercel web hosting platform.
 \end{figure}
 
 We also recorded the time humans took to answer the questions. This time is the time from the question being displayed to the human to the human submitting the answer.
-Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (\Cref{fig:human_timing}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
+Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (\Cref{fig:human_timing}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\)$\quad$, and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
 \begin{figure}[htb]
     \centering
@@ -233,7 +234,7 @@ Interestingly, we found no significant correlation between the experience of the
 
 Additionally, we prompted users to provide additional information about their experience in chemistry. 
 While we recorded fine-grained information, e.g., their specialization, we focused on the number of years since the first university-level chemistry course.
-\Cref{fig:experience_vs_correctness} shows that the experience of the human scorers was not significantly correlated with the correctness of their answers (\Cref{fig:experience_vs_correctness}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
+\Cref{fig:experience_vs_correctness} shows that the experience of the human scorers was not significantly correlated with the correctness of their answers (\Cref{fig:experience_vs_correctness}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\)$\quad$, and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
 \begin{figure}[htb]
     \centering
