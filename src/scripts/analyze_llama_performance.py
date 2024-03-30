@@ -1,9 +1,15 @@
 import matplotlib.pyplot as plt
-from paths import scripts, figures, data
+from paths import scripts, figures, data, output
 from utils import ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH
 from plotutils import range_frame
 import pickle
 import numpy as np
+import os
+
+output_dir = output / "llama"
+
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
@@ -32,6 +38,10 @@ def plot_performance(model_score_dict):
     ax = range_frame(ax, np.array([7, 13, 70]), np.array([sevenb, thirteenb, seventyb]))
 
     fig.savefig(figures / "llama_performance.pdf", bbox_inches="tight")
+
+    for size, performance in zip([7, 13, 70], [sevenb, thirteenb, seventyb]):
+        with open(output_dir / f"llama_{size}b.txt", "w") as f:
+            f.write(f"{performance:.2f}" + "\endinput")
 
 
 if __name__ == "__main__":
