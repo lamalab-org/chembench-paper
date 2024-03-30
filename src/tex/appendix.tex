@@ -175,23 +175,23 @@ The corresponding Spearman correlation coefficients are listed in \Cref{tab:corr
     \label{fig:correlation_plot_is_electron_counts_num_atoms}
 \end{figure}
 
-% \begin{table}
-%     \caption{\textbf{Spearman correlation coefficients for the correlation of model performance with molecular features.} The table shows the Spearman correlation}
-%     \begin{tabularx}{\textwidth}{XXXX XXXX}
-%         \toprule
-%         topic & molecular descriptor & \(\rho\) GPT-4 & \(\rho \) Claude 3 & \( \rho \) Galactica &  \( \rho \) humans  \\ 
-%         \midrule
-%         number of \gls{nmr} signals & number of atoms &  \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_number_nmr_peaks.txt}  & \variable{output/correlation_correlation/spearman_num_atoms_human_is_number_nmr_peaks.txt} \\
-%                               & complexity & \variable{output/correlation_correlation/spearman_complexity_gpt4_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_claude3_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_galactica_120b_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_human_is_number_nmr_peaks.txt} \\
-%         \midrule 
-%         total electron counts & number of atoms & \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_human_is_electron_counts.txt} \\
-%         \midrule 
-%         \gls{smiles}/\gls{iupac} name matching & number of atoms & \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_human_is_name.txt} \\
-%                 & complexity & \variable{output/correlation_correlation/spearman_complexity_gpt4_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_claude3_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_galactica_120b_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_human_is_name.txt} \\
-%         \bottomrule
-%     \end{tabularx}
-%     \label{tab:correlation_coefficients}
-% \end{table}
+\begin{table}
+    \caption{\textbf{Spearman correlation coefficients for the correlation of model performance with molecular features.} The table shows the Spearman correlation}
+    \begin{tabularx}{\textwidth}{XXXX XXXX}
+        \toprule
+        topic & molecular descriptor & \(\rho\) GPT-4 & \(\rho \) Claude 3 & \( \rho \) Galactica &  \( \rho \) humans  \\ 
+        \midrule
+        number of \gls{nmr} signals & number of atoms &  \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_number_nmr_peaks.txt}  & \variable{output/correlation_correlation/spearman_num_atoms_human_is_number_nmr_peaks.txt} \\
+                              & complexity & \variable{output/correlation_correlation/spearman_complexity_gpt4_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_claude3_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_galactica_120b_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_human_is_number_nmr_peaks.txt} \\
+        \midrule 
+        total electron counts & number of atoms & \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_human_is_electron_counts.txt} \\
+        \midrule 
+        \gls{smiles} \gls{iupac} name matching & number of atoms & \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_human_is_name.txt} \\
+                & complexity & \variable{output/correlation_correlation/spearman_complexity_gpt4_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_claude3_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_galactica_120b_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_human_is_name.txt} \\
+        \bottomrule
+    \end{tabularx}
+    \label{tab:correlation_coefficients}
+\end{table}
 
 
 \subsection{Influence of scale}

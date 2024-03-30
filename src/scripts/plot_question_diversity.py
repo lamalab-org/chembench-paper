@@ -38,7 +38,9 @@ def plot_pca_map():
     pca_1 = pca_1[shuffled_indices]
     pca_2 = pca_2[shuffled_indices]
     labels = np.array(labels)[shuffled_indices]
-    f, ax = plt.subplots(figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH))
+    f, ax = plt.subplots(
+        figsize=(0.8 * TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
+    )
     # place legend outside of the plot
     # make legend in two columns
 

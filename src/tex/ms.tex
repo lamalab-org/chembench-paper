@@ -14,7 +14,7 @@
 
 \clearpage
 \begin{abstract}
-    Large language models (LLMs) have gained widespread interest due to their ability to process human language and perform tasks they have not been explicitly trained on. 
+    Large language models (LLMs) have gained widespread interest due to their ability to process human language and perform tasks on which they have not been explicitly trained. 
     This is relevant for the chemical sciences, which face the problem of small and diverse datasets that are frequently in the form of text.
     LLMs have shown promise in addressing these issues and are increasingly being harnessed to predict chemical properties, optimize reactions, and even design and conduct experiments autonomously.
 
@@ -35,11 +35,11 @@
 Aggressive scaling of these models has led to a rapid increase in their capabilities,\autocite{brown2020language,zhong2024benchmarking} with the leading models now being able to pass in some evaluations the United States Medical Licensing Examination.\autocite{kung2023performance} 
 They also have been shown to design and autonomously perform chemical reactions when augmented with external tools such as web search and synthesis planners.\autocite{openai2024gpt4, Boiko_2023, bran2023chemcrow}
 While some see \enquote{sparks of \gls{agi}} in them,\autocite{bubeck2023sparks} others consider them as \enquote{stochastic parrots}---i.e., systems that only regurgitate what they have been trained on.\autocite{bender2021dangers}
-Nevertheless, the promise of these models is that they have show the ability to solve a wide variety of tasks they have not been explicitly trained on.\autocite{bommasani2021opportunities, anderljung2023frontier}
+Nevertheless, the promise of these models is that they have shown the ability to solve a wide variety of tasks they have not been explicitly trained on.\autocite{bommasani2021opportunities, anderljung2023frontier}
 This has led to tremendous economic interest and investment in such generative models, with an expected market of more than \$1.3 trillion (almost \$30 billion for drug discovery applications) by 2032.\autocite{bloomberg}
 
 Chemists and materials scientists have quickly caught on to the mounting attention given to \glspl{llm}, with some voices even suggesting that \enquote{the future of chemistry is language}.\autocite{White_2023}
-This statement is motivated by a growing number of reports that use \glspl{llm} to predict properties of molecules or materials,\autocite{jablonka202314, jablonka2024leveraging, xie2024fine, liao2024words, zhang2024chemllm, zhong2024benchmarking}  optimize reactions\autocite{ramos2023bayesian, kristiadi2024sober}  generate materials,\autocite{rubungo2023llm, flam2023language, gruver2024fine} extract information,\autocite{Patiny_2023, Dagdelen_2024, Zheng_2024, lála2023paperqa, caufield2023structured, gupta2022discomat} or to even prototype systems that can autonomously perform reactions in the physical world based on commands provided in natural language.\autocite{bran2023chemcrow, Boiko_2023, darvish2024organa}
+This statement is motivated by a growing number of reports that use \glspl{llm} to predict properties of molecules or materials,\autocite{jablonka202314, jablonka2024leveraging, xie2024fine, liao2024words, zhang2024chemllm, zhong2024benchmarking}  optimize reactions\autocite{ramos2023bayesian, kristiadi2024sober}  generate materials,\autocite{rubungo2023llm, flam2023language, gruver2024fine} extract information,\autocite{Patiny_2023, Dagdelen_2024, Zheng_2024, lala2023paperqa, caufield2023structured, gupta2022discomat} or to even prototype systems that can autonomously perform reactions in the physical world based on commands provided in natural language.\autocite{bran2023chemcrow, Boiko_2023, darvish2024organa}
 
 In addition, since a lot---if not most---of the information about chemistry is currently stored and communicated in text, there is a strong reason to believe that there is still a lot of untapped potential in \glspl{llm} for chemistry and materials science.\autocite{miret2024llms}
 For instance, most insights in chemical research do not directly originate from data stored in databases but rather from the scientists and their ability to interpret data. 
@@ -175,7 +175,7 @@ Interestingly, the Galactica model, which was trained specifically for scientifi
 
 Given the considerable interest in tool-augmented systems, the mediocre performance of these systems (GPT-3.5 and Claude 2 augmented with tools) in our benchmark is striking. 
 Their lack of performance, however, is partially because we limited the system to a maximum of ten \gls{llm} calls.
-With the default tool augmented setup (using the so-called ReAct method\autocite{yao2023react}), however, this often did not allow the system to identify the correct answer (e.g., because it repeatedly tried to search for the answer on the web and did not find a solution within ten calls to the \gls{llm}).
+With the default tool augmented setup (using the so-called ReAct method\autocite{yao2022react}), however, this often did not allow the system to identify the correct answer (e.g., because it repeatedly tried to search for the answer on the web and did not find a solution within ten calls to the \gls{llm}).
 This observation highlights the importance of communicating and measuring not only predictive performance but also computational cost (e.g., in terms of \gls{api} calls) for tool-augmented systems.
 
 
@@ -285,8 +285,8 @@ Manually curated questions were sourced from various sources, including universi
 
 
 
-\paragraph{Semi-programatically generated questions}
-In addition to the manually curated questions, we also generated questions programmatically. An overview of the sources of the semi-programatically generated questions is provided in \Cref{tab:semi_programatically_sources}.
+\paragraph{Semi-programmatically generated questions}
+In addition to the manually curated questions, we also generated questions programmatically. An overview of the sources of the semi-programmatically generated questions is provided in \Cref{tab:semi_programatically_sources}.
 
 
 \input{sections/semi_programatically_sources_table.tex}
@@ -299,7 +299,7 @@ In addition to the manually curated questions, we also generated questions progr
 \paragraph{Prompting}
 
 We employ distinct prompt templates tailored for completion and instruction-tuned models to maintain consistency with the training. 
-We impose constraints on the models within these templates to receive responses in a specific format so that robust, fair, and consistent parsing can be performed, as explained below.
+As explained below, we impose constraints on the models within these templates to receive responses in a specific format so that robust, fair, and consistent parsing can be performed.
 Certain models are trained with special annotations and \LaTeX\xspace syntax for scientific notations, chemical reactions, or symbols embedded within the text. 
 For example, all the SMILES representations are encapsulated within \texttt{[START\_SMILES][\textbackslash END\_SMILES]} in Galactica\autocite{taylor2022galactica}.
 Our prompting strategy consistently adheres to these details in a model-specific manner by post-processing \LaTeX\xspace syntax, chemical symbols, chemical equations, and physical units (by either adding or removing wrappers).
@@ -328,7 +328,7 @@ We used Galactica (120b)\autocite{taylor2022galactica} with the default settings
 \subparagraph{Tool augmented models}
 In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
 For this, we investigated the 7B parameter \enquote{online} model of Perplexity.AI. 
-In addition, we utilized gpt-3.5-turbo as well as Claude 2, with ReAct-style tool augmentation.\autocite{yao2023react}
+In addition, we utilized gpt-3.5-turbo as well as Claude 2, with ReAct-style tool augmentation.\autocite{yao2022react}
 The latter two models had access to WolframAlpha, the ArXiv \gls{api}, a Python interpreter, and web search (using DuckDuckGo).
 We implemented the systems using Langchain with the default prompts and constrained the system to a maximum of ten \gls{llm} calls.
 
@@ -408,7 +408,7 @@ K.M.J.\ is a paid consultant for OpenAI (as part of the red teaming network). M.
 \scriptsize
 \insertcredits
 \normalsize
-%\printbibliography
+\printbibliography
 \end{refsection}
 
 
@@ -418,6 +418,6 @@ K.M.J.\ is a paid consultant for OpenAI (as part of the red teaming network). M.
 \section{Appendix}
 \input{appendix.tex}
 \clearpage
-%\printbibliography[heading=subbibintoc]
+\printbibliography[heading=subbibintoc]
 \end{refsection}
 \end{document}
