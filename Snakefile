@@ -354,3 +354,12 @@ rule llama_scale_plot:
         "src/tex/output/llama/llama_13b.txt"]
     script:
         "src/scripts/analyze_llama_performance.py"
+    
+
+rule cal_plot:
+    input: 
+        [ "src/data/questions.pkl", rules.model_statistics.output]
+    output:
+        "src/tex/figures/model_overall_cal.pdf"
+    script: 
+        "src/scripts/requires_calculation_plot.py"

@@ -142,6 +142,17 @@ One might wonder if questions that are more difficult to parse lead to worse per
     \label{fig:reading_ease_vs_model_performance}
 \end{figure}
 
+In addition, we analyzed the performance on questions which requires calculation. For this, we manually labeled questions that require multiple calculation steps. 
+We find that the ranking of models is different for questions with our without calculations (\Cref{fig:requires_cal}). 
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/model_overall_cal.pdf}
+    \caption{\textbf{Overall model performance for questions with and without calculation steps.} We find that the ranking of models changes if we evaluate them on questions that require and do not require calculations, respectively.}
+    \script{requires_calculation_plot.py}
+    \label{fig:requires_cal}
+\end{figure}
+
 \clearpage
 
 \subsection{Performance as a function of molecular features}
