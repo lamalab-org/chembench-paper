@@ -49,8 +49,8 @@
 \renewcommand\labelitemi{\color{halfgray}$\bullet$} 
 \newcommand{\chembench}{ChemBench\xspace}
 
-\usepackage{kpfonts}
-\usepackage{biolinum}
+%\usepackage{kpfonts}
+
 
 \clubpenalty = 10000 
 \widowpenalty = 10000 
@@ -61,7 +61,10 @@
 \IfFileExists{./fonts/Heliotrope-Bold.otf}{
     \usepackage{fontspec}
     \setmainfont{Heliotrope}[Extension = .otf, UprightFont = *-Regular, ItalicFont = *-Italic, BoldFont=*-Bold, Path = ./fonts/]
-}{}
+}{
+    \usepackage{biolinum}
+    \renewcommand{\familydefault}{\sfdefault}
+}
 
 
 
