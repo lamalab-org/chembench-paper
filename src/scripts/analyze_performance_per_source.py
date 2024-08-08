@@ -39,7 +39,7 @@ subset_clean_names = [
     "number of isomers",
     "number of NMR signals",
     "GFK (chemical safety)",
-    "DAI",
+    "DAI (daily allowed intake)",
     "GHS pictograms",
     "name to SMILES",
     "SMILES to name",

@@ -124,25 +124,26 @@ def make_plot_of_confidence_vs_performance(merged_dicts, suffix: str = ""):
         average_performance = df.groupby("estimate")["all_correct_"].mean()
         stdev = df.groupby("estimate")["all_correct_"].apply(sem)
         ax[i].plot(
-            average_performance.index - 1,
+            average_performance.index,
             average_performance,
             color=model_color_map[model],
             marker="o",
         )
         ax[i].errorbar(
-            average_performance.index - 1,
+            average_performance.index,
             average_performance,
             yerr=stdev,
             fmt="none",
             color=model_color_map[model],
         )
 
-        range_frame(ax[i], np.array([0, 4]), np.array([0, 1]))
+        range_frame(ax[i], np.array([1, 5]), np.array([0, 1]))  # Adjusted x-axis range
 
     # set shared y axis label
     fig.text(0.01, 0.5, "completely correct", va="center", rotation="vertical")
 
     ax[-1].set_xlabel("confidence estimate")
+    ax[-1].set_xticks([1, 2, 3, 4, 5])  # Set x-axis ticks to ordinal scale
 
     fig.tight_layout()
     fig.savefig(
