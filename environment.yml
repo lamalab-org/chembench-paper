@@ -3,7 +3,7 @@ dependencies:
   - conda-forge::python=3.10
   - pymatgen
   - pip:
-      - pulp<2.7.0
+      - pulp<2.8.0
       - torch==2.2.0
       - transformers==4.37.2
       - accelerate==0.26.1
