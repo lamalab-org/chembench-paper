@@ -7,6 +7,7 @@ dependencies:
       - transformers==4.37.2
       - accelerate==0.26.1
       - matplotlib
+      - pulp=2.7.0
       - numpy==1.26.3
       - seaborn
       - textacy==0.13.0
