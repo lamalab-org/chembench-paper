@@ -14,18 +14,15 @@
 
 \clearpage
 \begin{abstract}
-    Large language models (LLMs) have gained widespread interest due to their ability to process human language and perform tasks on which they have not been explicitly trained. 
-    This is relevant for the chemical sciences, which face the problem of small and diverse datasets that are frequently in the form of text.
-    LLMs have shown promise in addressing these issues and are increasingly being harnessed to predict chemical properties, optimize reactions, and even design and conduct experiments autonomously.
+    Large language models (LLMs) have gained widespread interest due to their ability to process human language. 
+    Also, LLMs have shown promise in addressing the limited data problem in chemistry and are increasingly being harnessed to improve and extend existing workflows.
 
-    However, we still have only a very limited systematic understanding of the chemical reasoning capabilities of LLMs, which would be required to improve models and mitigate potential harms. 
-    Here, we introduce \enquote{\chembench,} an automated framework designed to rigorously evaluate the chemical knowledge and reasoning abilities of state-of-the-art LLMs against the expertise of human chemists.
+    However, we possess only a limited systematic understanding of the reasoning capabilities of LLMs, which would be required to improve models and mitigate potential harms. 
+    Here, we introduce \enquote{\chembench,} an automated framework for evaluating the chemical knowledge and reasoning abilities of state-of-the-art LLMs against the expertise of chemists.
 
-    We curated more than 7,000 question-answer pairs for a wide array of subfields of the chemical sciences, evaluated leading open and closed-source LLMs, and found that the best models outperformed the best human chemists in our study on average. 
-    The models, however, struggle with some chemical reasoning tasks that are easy for human experts and provide overconfident, misleading predictions, such as about chemicals' safety profiles. 
-
-    These findings underscore the dual reality that, although LLMs demonstrate remarkable proficiency in chemical tasks, further research is critical to enhancing their safety and utility in chemical sciences.
-    Our findings also indicate a need for adaptations to chemistry curricula and highlight the importance of continuing to develop evaluation frameworks to improve safe and useful LLMs.
+    We curated more than 7,500 question-answer pairs, evaluated leading open and closed-source LLMs, and found that, on average, the best models outperformed the chemists. 
+    The models, however, struggle with some chemical reasoning tasks that are easy for the human experts and provide overconfident, misleading predictions, such as about chemicals' safety profiles. 
+    Although LLMs demonstrate remarkable proficiency in chemical tasks, further research is critical to enhancing their safety and utility in chemical sciences.
 \end{abstract}
 
 \clearpage
@@ -106,7 +103,7 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
     \centering
     \includegraphics{figures/question_count_barplot.pdf}
     \caption{\textbf{Number of questions for different topics.} The topics have been assigned using a combination of a rule-based system (mostly based on the source the question has been sampled from) and a classifier operating on word embeddings of the questions. 
-    The figure shows that not all aspects of chemistry are equally represented in our corpus. The \chembench corpus, by design, currently focuses on safety-related aspects, which is also evident in \Cref{fig:question_diversity}. This figure represents the combined count of multiple-choice questions (\gls{mcq}) and open-ended questions.}
+    The figure shows that not all aspects of chemistry are equally represented in our corpus. The \chembench corpus, by design, currently focuses on safety-related aspects, which is also evident in \Cref{fig:question_diversity}. This figure represents the combined count of \glstext{mcq} and open-ended questions.}
     \label{fig:topic_barplot}
     \script{plot_statistics.py}
 \end{figure}
@@ -323,7 +320,7 @@ If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., Claude 2, to p
 We used Galactica (120b)\autocite{taylor2022galactica} with the default settings.
 
 
-\subparagraph{Instruction-tuned models} In addition, we tested Claude 2, Claude3 (Opus),\autocite{anthropicClaudeModelFamily2024} GPT-4,\autocite{openai2024gpt4} GPT-3.5-turbo,\autocite{brown2020language} Gemini Pro,\autocite{gemini} Mixtral-8x7b,\autocite{jiang2024mixtral} LLaMA2 (7B, 13B, 70B),\autocite{touvron2023llama} and LLaMa3 (8B, 70B, 405B).
+\subparagraph{Instruction-tuned models} In addition, we used Claude 2, Claude3 (Opus),\autocite{anthropicClaudeModelFamily2024} GPT-4,\autocite{openai2024gpt4} GPT-3.5-turbo,\autocite{brown2020language} Gemini Pro,\autocite{gemini} Mixtral-8x7b\autocite{jiang2024mixtral} LLaMA2 (7B, 13B, 70B),\autocite{touvron2023llama} as well as the 7B chat model from Perplexity.AI.
 
 \subparagraph{Tool augmented models}
 In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
