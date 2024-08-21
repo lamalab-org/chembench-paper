@@ -91,13 +91,9 @@ Moreover, we conclude that carefully created broad benchmarks represent an impor
 
 To compile our benchmark corpus, we utilized a broad list of sources (see \Cref{sec:curation}), ranging from university exams to semi-automatically generated questions based on curated subsets of data in chemical databases.
 For quality assurance, all questions have been reviewed by at least one scientist in addition to the original curator and automated checks. 
-
-Importantly, our large pool of questions encompasses a wide range of topics.
-This can be seen, for example, in \Cref{fig:topic_barplot} in which we compare the number of questions in different subfields of the chemical sciences (see \Cref{sec:meth-topic} for details on how we assigned topics).
-The distribution of topics is also evident from \Cref{fig:question_diversity} in which we visualize the questions in a two-dimensional space using a \gls{pca} on the embeddings of the questions.
-In this representation, semantically similar questions are close to each other, and we color the points based on classification into \variable{output/num_topics.txt} topics. 
-It is clear that a focus of \chembench (by design) lies on safety-related aspects, which in \Cref{fig:question_diversity} appear as a large distinct clusters across the embedding space.
-
+Importantly, our large pool of questions encompasses a wide range of topics and question types. The topics range from general chemistry to more specialized fields such as inorganic, analytical or technical chemistry. 
+We also classify the questions based on what techniques are required to answer them. Here, we distinguish between questions that require knowledge, reasoning, calculation, intuition or a combination of these.
+Moreover, to allow for a more nuanced evaluation of the models capabilities, the questions are also classified by difficulty.
 
 \begin{figure}[!htb]
     \centering
@@ -108,13 +104,6 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
     \script{plot_statistics.py}
 \end{figure}
 
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=\textwidth]{figures/question_diversity.pdf}
-    \caption{\textbf{Principal component projection of embeddings of questions in the \chembench corpus.} To obtain this figure, we embedded questions and answers using the BART model\autocite{bart} (using other embeddings, such as of OpenAI's ada model, leads to qualitatively similar results). We then project the embeddings into a two-dimensional space using \gls{pca}. We color the points based on a classification into topics. Safety-related aspects cover a large part of the figure that is not covered by questions from other topics.}
-    \label{fig:question_diversity}
-    \script{plot_question_diversity.py}
-\end{figure}
 
 While many existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
 For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions).
@@ -413,7 +402,7 @@ K.M.J.\ is a paid consultant for OpenAI (as part of the red teaming network). M.
 \begin{refsection}
 \appendix
 \section{Appendix}
-\input{appendix.tex}
+% \input{appendix.tex}
 \clearpage
 \printbibliography[heading=subbibintoc]
 \end{refsection}
