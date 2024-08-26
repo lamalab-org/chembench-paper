@@ -35,7 +35,7 @@
 Aggressive scaling of these models has led to a rapid increase in their capabilities,\autocite{brown2020language,zhong2024benchmarking} with the leading models now being able to pass in some evaluations the United States Medical Licensing Examination.\autocite{kung2023performance} 
 They also have been shown to design and autonomously perform chemical reactions when augmented with external tools such as web search and synthesis planners.\autocite{openai2024gpt4, Boiko_2023, bran2023chemcrow}
 While some see \enquote{sparks of \gls{agi}} in them,\autocite{bubeck2023sparks} others consider them as \enquote{stochastic parrots}---i.e., systems that only regurgitate what they have been trained on.\autocite{bender2021dangers}
-Nevertheless, the promise of these models is that they have shown the ability to solve a wide variety of tasks they have not been explicitly trained on.\autocite{bommasani2021opportunities, anderljung2023frontier}
+Nevertheless, the promise of these models is that they have shown the ability to solve a wide variety of tasks they have not been explicitly trained on.\autocite{bommasani2021opportunities, anderljung2023frontier, ai4science2023impact}
 This has led to tremendous economic interest and investment in such generative models, with an expected market of more than \$1.3 trillion (almost \$30 billion for drug discovery applications) by 2032.\autocite{bloomberg}
 
 Chemists and materials scientists have quickly caught on to the mounting attention given to \glspl{llm}, with some voices even suggesting that \enquote{the future of chemistry is language}.\autocite{White_2023}
@@ -106,7 +106,7 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
     \centering
     \includegraphics{figures/question_count_barplot.pdf}
     \caption{\textbf{Number of questions for different topics.} The topics have been assigned using a combination of a rule-based system (mostly based on the source the question has been sampled from) and a classifier operating on word embeddings of the questions. 
-    The figure shows that not all aspects of chemistry are equally represented in our corpus. The \chembench corpus, by design, currently focuses on safety-related aspects, which is also evident in \Cref{fig:question_diversity}. This figure represents the combined count of multiple-choice questions (\gls{mcq}) and open-ended questions.}
+    The figure shows that not all aspects of chemistry are equally represented in our corpus. The \chembench corpus, by design, currently focuses on safety-related aspects, which is also evident in \Cref{fig:question_diversity}. This figure represents the combined count of \glstext{mcq} and open-ended questions.}
     \label{fig:topic_barplot}
     \script{plot_statistics.py}
 \end{figure}
@@ -323,7 +323,7 @@ If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., Claude 2, to p
 We used Galactica (120b)\autocite{taylor2022galactica} with the default settings.
 
 
-\subparagraph{Instruction-tuned models} In addition, we tested Claude 2, Claude3 (Opus),\autocite{anthropicClaudeModelFamily2024} GPT-4,\autocite{openai2024gpt4} GPT-3.5-turbo,\autocite{brown2020language} Gemini Pro,\autocite{gemini} Mixtral-8x7b,\autocite{jiang2024mixtral} LLaMA2 (7B, 13B, 70B),\autocite{touvron2023llama} and LLaMa3 (8B, 70B, 405B).
+\subparagraph{Instruction-tuned models} In addition, we used Claude 2, Claude3 (Opus),\autocite{anthropicClaudeModelFamily2024} GPT-4,\autocite{openai2024gpt4} GPT-3.5-turbo,\autocite{brown2020language} Gemini Pro,\autocite{gemini} Mixtral-8x7b\autocite{jiang2024mixtral} LLaMA2 (7B, 13B, 70B),\autocite{touvron2023llama} as well as the 7B chat model from Perplexity.AI.
 
 \subparagraph{Tool augmented models}
 In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
