@@ -14,18 +14,15 @@
 
 \clearpage
 \begin{abstract}
-    Large language models (LLMs) have gained widespread interest due to their ability to process human language and perform tasks on which they have not been explicitly trained. 
-    This is relevant for the chemical sciences, which face the problem of small and diverse datasets that are frequently in the form of text.
-    LLMs have shown promise in addressing these issues and are increasingly being harnessed to predict chemical properties, optimize reactions, and even design and conduct experiments autonomously.
+    Large language models (LLMs) have gained widespread interest due to their ability to process human language. 
+    Also, LLMs have shown promise in addressing the limited data problem in chemistry and are increasingly being harnessed to improve and extend existing workflows.
 
-    However, we still have only a very limited systematic understanding of the chemical reasoning capabilities of LLMs, which would be required to improve models and mitigate potential harms. 
-    Here, we introduce \enquote{\chembench,} an automated framework designed to rigorously evaluate the chemical knowledge and reasoning abilities of state-of-the-art LLMs against the expertise of human chemists.
+    However, we possess only a limited systematic understanding of the reasoning capabilities of LLMs, which would be required to improve models and mitigate potential harms. 
+    Here, we introduce \enquote{\chembench,} an automated framework for evaluating the chemical knowledge and reasoning abilities of state-of-the-art LLMs against the expertise of chemists.
 
-    We curated more than 7,000 question-answer pairs for a wide array of subfields of the chemical sciences, evaluated leading open and closed-source LLMs, and found that the best models outperformed the best human chemists in our study on average. 
-    The models, however, struggle with some chemical reasoning tasks that are easy for human experts and provide overconfident, misleading predictions, such as about chemicals' safety profiles. 
-
-    These findings underscore the dual reality that, although LLMs demonstrate remarkable proficiency in chemical tasks, further research is critical to enhancing their safety and utility in chemical sciences.
-    Our findings also indicate a need for adaptations to chemistry curricula and highlight the importance of continuing to develop evaluation frameworks to improve safe and useful LLMs.
+    We curated more than 2,800 question-answer pairs, evaluated leading open and closed-source LLMs, and found that, on average, the best models outperformed the chemists. 
+    The models, however, struggle with some chemical reasoning tasks that are easy for the human experts and provide overconfident, misleading predictions, such as about chemicals' safety profiles. 
+    Although LLMs demonstrate remarkable proficiency in chemical tasks, further research is critical to enhancing their safety and utility in chemical sciences.
 \end{abstract}
 
 \clearpage
@@ -94,13 +91,9 @@ Moreover, we conclude that carefully created broad benchmarks represent an impor
 
 To compile our benchmark corpus, we utilized a broad list of sources (see \Cref{sec:curation}), ranging from university exams to semi-automatically generated questions based on curated subsets of data in chemical databases.
 For quality assurance, all questions have been reviewed by at least one scientist in addition to the original curator and automated checks. 
-
-Importantly, our large pool of questions encompasses a wide range of topics.
-This can be seen, for example, in \Cref{fig:topic_barplot} in which we compare the number of questions in different subfields of the chemical sciences (see \Cref{sec:meth-topic} for details on how we assigned topics).
-The distribution of topics is also evident from \Cref{fig:question_diversity} in which we visualize the questions in a two-dimensional space using a \gls{pca} on the embeddings of the questions.
-In this representation, semantically similar questions are close to each other, and we color the points based on classification into \variable{output/num_topics.txt} topics. 
-It is clear that a focus of \chembench (by design) lies on safety-related aspects, which in \Cref{fig:question_diversity} appear as a large distinct clusters across the embedding space.
-
+Importantly, our large pool of questions encompasses a wide range of topics and question types. The topics range from general chemistry to more specialized fields such as inorganic, analytical or technical chemistry. 
+We also classify the questions based on what techniques are required to answer them. Here, we distinguish between questions that require knowledge, reasoning, calculation, intuition or a combination of these.
+Moreover, to allow for a more nuanced evaluation of the models capabilities, the questions are also classified by difficulty.
 
 \begin{figure}[!htb]
     \centering
@@ -111,13 +104,6 @@ It is clear that a focus of \chembench (by design) lies on safety-related aspect
     \script{plot_statistics.py}
 \end{figure}
 
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=\textwidth]{figures/question_diversity.pdf}
-    \caption{\textbf{Principal component projection of embeddings of questions in the \chembench corpus.} To obtain this figure, we embedded questions and answers using the BART model\autocite{bart} (using other embeddings, such as of OpenAI's ada model, leads to qualitatively similar results). We then project the embeddings into a two-dimensional space using \gls{pca}. We color the points based on a classification into topics. Safety-related aspects cover a large part of the figure that is not covered by questions from other topics.}
-    \label{fig:question_diversity}
-    \script{plot_question_diversity.py}
-\end{figure}
 
 While many existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
 For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions).
@@ -410,7 +396,6 @@ K.M.J.\ is a paid consultant for OpenAI (as part of the red teaming network). M.
 \normalsize
 \printbibliography
 \end{refsection}
-
 
 \clearpage
 \begin{refsection}
