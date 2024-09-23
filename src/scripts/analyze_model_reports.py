@@ -9,19 +9,17 @@ plt.style.use(scripts / "lamalab.mplstyle")
 
 
 human_relevant_topics = [
-    "analytical chemistry",
-    "biochemistry",
-    "chemical safety",
-    "electrochemistry",
-    "general chemistry",
-    "macromolecular chemistry",
-    "organic chemistry",
-    "toxicology",
+    "General Chemistry",
+    "Technical Chemistry",
+    "Organic Chemistry",
+    "Materials Science",
+    "Physical Chemistry",
+    "Analytical Chemistry",
+    "Inorganic Chemistry",
 ]
 
 
 def make_overall_performance_radar_plot(df_dict, suffix, human_dicts=None):
-
     claude2_mean = df_dict["claude2"].groupby("topic")["all_correct_"].mean()
     claude2_react_mean = (
         df_dict["claude2_react"].groupby("topic")["all_correct_"].mean()
