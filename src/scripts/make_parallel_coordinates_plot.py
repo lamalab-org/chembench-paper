@@ -43,14 +43,13 @@ clean_model_names = {
 
 # excluding topics with just one question for the comparison with humans
 human_relevant_topics = [
-    "analytical chemistry",
-    "biochemistry",
-    "chemical safety",
-    "electrochemistry",
-    "general chemistry",
-    "macromolecular chemistry",
-    "organic chemistry",
-    "toxicology",
+    "General Chemistry",
+    "Technical Chemistry",
+    "Organic Chemistry",
+    "Materials Science",
+    "Physical Chemistry",
+    "Analytical Chemistry",
+    "Inorganic Chemistry",
 ]
 
 
