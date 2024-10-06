@@ -24,4 +24,5 @@ Build the article using the following command:
 showyourwork build --conda-frontend=mamba --rerun-incomplete
 ```
 
-Note that you need to have your Zenodo tokens exported (`export ZENODO_TOKEN=<your token>` and `export SANDBOX_TOKEN=<your token>`)
+Note that you need to have your Zenodo tokens exported (`export ZENODO_TOKEN=<your token>` and `export SANDBOX_TOKEN=<your token>`).
+For the first rules, you also need to have a Github personal access token exported (`export GH_PAT=<your token>`).

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.15)  6 OCT 2024 14:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.15)  6 OCT 2024 15:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1058,8 +1058,7 @@ File: OT1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/Li
 )
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 10.95pt on input line 12.
-
-No file ms.aux.
+ (./ms.aux)
 \openout1 = `ms.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -1080,6 +1079,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1501,46 +1501,68 @@ LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
 
 LaTeX Warning: Reference `fig:overview_figure' on page 1 undefined on input line 69.
 
+/Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/ms.tex:70: Undefined control sequence.
+l.70 Our benchmark consists of \variable
+                                        {output/total_number_of_questions.tx...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/ms.tex:70: Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   _
+l.70 ...chmark consists of \variable{output/total_
+                                                  number_of_questions.txt}\x...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/ms.tex:70: Extra }, or forgotten $.
+l.70 ...able{output/total_number_of_questions.txt}
+                                                  \xspace question-answer pa...
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+/Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/ms.tex:72: Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \tex_par:D 
+l.72 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (664.18791pt too wide) in paragraph at lines 69--72
+\OML/cmm/m/it/10.95 answerpairscompiledfromdiversesources:Ourcorpuscoversalargefractionofthetopicstaughtinundergraduateandgraduatechemistrycurricula:Itcanbeusedtoevaluateanysystemthatcanreturntext\OT1/cmr/m/n/10.95 (-20) (\OML/cmm/m/it/10.95 i:e:; includingtool \OMS/cmsy/m/n/10.95 ^^@
+ []
+
 [4]
 
-LaTeX Warning: File `figures/overview_figure.pdf' not found on input line 81.
-
-
-/Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/ms.tex:81: Package pdftex.def Error: File `figures/overview_figure.pdf' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-\GenericError  ...                                
-                                                  \endgroup 
-<argument> ...ot found: using draft setting}\@ehc 
-                                                  \Gin@drafttrue \fi 
-\@secondoftwo #1#2->#2
-                      
-\ETE@OrgGin@setfile ...i \endcsname {\Gin@base #2}
-                                                  \else \Gin@nosize {#3}\fi ...
-\Gin@setfile ...y \ETE@OrgGin@setfile {#1}{#2}{#3}
-                                                  \else \begingroup \ETE@Ins...
-\Ginclude@graphics ...sname {\Gin@base \Gin@ext }}
-                                                  \fi \endgroup 
-\Gin@ii ...eys {Gin}{#1}\Gin@esetsize \the \toks@ 
-                                                  \endgroup \fi 
-l.81 ...h=\textwidth]{figures/overview_figure.pdf}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
+pdfTeX warning: pdflatex (file ./figures/overview_figure.pdf): PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
+<figures/overview_figure.pdf, id=81, 553.0472pt x 187.65007pt>
+File: figures/overview_figure.pdf Graphic file (type pdf)
+<use figures/overview_figure.pdf>
+Package pdftex.def Info: figures/overview_figure.pdf  used on input line 81.
+(pdftex.def)             Requested size: 375.29204pt x 127.33978pt.
 LaTeX Font Info:    Font shape `OT1/LinuxBiolinumT-TLF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 90.
 
 LaTeX Warning: Reference `sec:curation' on page 1 undefined on input line 92.
 
+[5 <./figures/overview_figure.pdf>]
 
-LaTeX Warning: Citation 'polo2024tinybenchmarks' on page 5 undefined on input line 113.
+LaTeX Warning: Citation 'polo2024tinybenchmarks' on page 6 undefined on input line 113.
 
 
-LaTeX Warning: Citation 'liang2023holistic' on page 5 undefined on input line 114.
+LaTeX Warning: Citation 'liang2023holistic' on page 6 undefined on input line 114.
 
 
 Overfull \hbox (25.87172pt too wide) in paragraph at lines 113--117
@@ -1548,7 +1570,7 @@ Overfull \hbox (25.87172pt too wide) in paragraph at lines 113--117
  []
 
 
-LaTeX Warning: Citation 'taylor2022galactica' on page 5 undefined on input line 123.
+LaTeX Warning: Citation 'taylor2022galactica' on page 6 undefined on input line 123.
 
 LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 126.
 LaTeX Font Info:    No file OMScmtt.fd. on input line 126.
@@ -1557,47 +1579,47 @@ LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbackslash' on input line 126.
 
-[5] [6]
 
-LaTeX Warning: Citation 'schick2024toolformer' on page 7 undefined on input line 132.
-
-
-LaTeX Warning: Citation 'karpas2022mrkl' on page 7 undefined on input line 132.
+LaTeX Warning: Citation 'schick2024toolformer' on page 6 undefined on input line 132.
 
 
-LaTeX Warning: Citation 'yao2022react' on page 7 undefined on input line 132.
+LaTeX Warning: Citation 'karpas2022mrkl' on page 6 undefined on input line 132.
 
 
-LaTeX Warning: Citation 'Fourrier_Habib_Launay_Wolf' on page 7 undefined on input line 133.
+LaTeX Warning: Citation 'yao2022react' on page 6 undefined on input line 132.
 
 
-LaTeX Warning: Citation 'Huggingface' on page 7 undefined on input line 153.
+LaTeX Warning: Citation 'Fourrier_Habib_Launay_Wolf' on page 6 undefined on input line 133.
+
+
+LaTeX Warning: Citation 'Huggingface' on page 6 undefined on input line 153.
 
 
 LaTeX Warning: Reference `fig:human_vs_models_bar' on page 1 undefined on input line 154.
 
+[6]
 
 LaTeX Warning: Citation 'yao2022react' on page 7 undefined on input line 163.
 
 
 LaTeX Warning: Reference `sec:meth-topic' on page 1 undefined on input line 168.
 
-[7] [8] [9
+[7] [8
 
 ]
 
 LaTeX Warning: Reference `fig:curation_workflow' on page 1 undefined on input line 260.
 
 
-LaTeX Warning: Citation 'openai2024gpt4' on page 10 undefined on input line 263.
+LaTeX Warning: Citation 'openai2024gpt4' on page 9 undefined on input line 263.
 
 
-LaTeX Warning: Citation 'srivastava2022beyond' on page 10 undefined on input line 263.
+LaTeX Warning: Citation 'srivastava2022beyond' on page 9 undefined on input line 263.
 
 
 
 pdfTeX warning: pdflatex (file ./figures/chem-bench.pdf): PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
-<figures/chem-bench.pdf, id=147, 790.55348pt x 375.12144pt>
+<figures/chem-bench.pdf, id=1185, 790.55348pt x 375.12144pt>
 File: figures/chem-bench.pdf Graphic file (type pdf)
 <use figures/chem-bench.pdf>
 Package pdftex.def Info: figures/chem-bench.pdf  used on input line 266.
@@ -1608,11 +1630,11 @@ LaTeX Warning: Reference `tab:manually_sources' on page 1 undefined on input lin
 
 LaTeX Warning: Reference `tab:semi_programatically_sources' on page 1 undefined on input line 280.
 
-[10
+[9
 
  <./figures/chem-bench.pdf>]
 
-LaTeX Warning: Citation 'taylor2022galactica' on page 11 undefined on input line 296.
+LaTeX Warning: Citation 'taylor2022galactica' on page 10 undefined on input line 296.
 
 
 Overfull \hbox (9.98244pt too wide) in paragraph at lines 303--309
@@ -1620,15 +1642,15 @@ Overfull \hbox (9.98244pt too wide) in paragraph at lines 303--309
  []
 
 
-LaTeX Warning: Citation 'xiong2023llms' on page 11 undefined on input line 316.
+LaTeX Warning: Citation 'xiong2023llms' on page 10 undefined on input line 316.
 
-[11
+[10
 
 ]
 
-LaTeX Warning: Citation 'Luger2021' on page 12 undefined on input line 351.
+LaTeX Warning: Citation 'Luger2021' on page 11 undefined on input line 351.
 
-[12]
+[11]
 \protect 
 /Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/ms.tex:376: Missing } inserted.
 <inserted text> 
@@ -3635,12 +3657,12 @@ l.376 \insertcredits
                     
 (That makes 100 errors; please try again.) 
 Here is how much of TeX's memory you used:
- 47666 strings out of 478268
- 966994 string characters out of 5846346
- 1781683 words of memory out of 5000000
- 64808 multiletter control sequences out of 15000+600000
+ 47629 strings out of 478268
+ 966031 string characters out of 5846346
+ 1781674 words of memory out of 5000000
+ 64784 multiletter control sequences out of 15000+600000
  519113 words of font info for 254 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 96i,6n,94p,1536b,1838s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 96i,6n,94p,1536b,1961s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 /Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/ms.tex:376:  ==> Fatal error occurred, no output PDF file produced!

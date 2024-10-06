@@ -1604,6 +1604,9 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-T
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.fd
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/libertine/OT1LinuxBiolinumT-TLF.fd
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT-tlf-ot1.tfm
+INPUT ./ms.aux
+INPUT ms.aux
+INPUT ms.aux
 OUTPUT ms.aux
 INPUT /usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -1770,10 +1773,15 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/libertine/LinBiolinumT
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTB-tlf-ot1.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/public/libertine/LinBiolinumTB-tlf-ot1.vf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTB-tlf-ot1--base.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT ./figures/overview_figure.pdf
+INPUT ./figures/overview_figure.pdf
+INPUT figures/overview_figure.pdf
+INPUT ./figures/overview_figure.pdf
+INPUT ./figures/overview_figure.pdf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTB-tlf-ot1.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/vf/public/libertine/LinBiolinumTB-tlf-ot1.vf
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/libertine/LinBiolinumTB-tlf-ot1--base.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT ./figures/chem-bench.pdf
 INPUT ./figures/chem-bench.pdf
 INPUT figures/chem-bench.pdf
