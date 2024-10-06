@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.15)  6 OCT 2024 15:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.15)  6 OCT 2024 16:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1529,6 +1529,24 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
+/Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/ms.tex:70: Undefined control sequence.
+l.70 ...s compiled from diverse sources (\variable
+                                                  {output/manually_generated...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/ms.tex:70: Undefined control sequence.
+l.70 ...}\xspace manually generated, and \variable
+                                                  {output/automatically_gene...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 /Users/kevinmaikjablonka/git/lamalab-org/chembench-paper/src/tex/ms.tex:72: Missing $ inserted.
 <inserted text> 
                 $
@@ -1540,8 +1558,8 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (664.18791pt too wide) in paragraph at lines 69--72
-\OML/cmm/m/it/10.95 answerpairscompiledfromdiversesources:Ourcorpuscoversalargefractionofthetopicstaughtinundergraduateandgraduatechemistrycurricula:Itcanbeusedtoevaluateanysystemthatcanreturntext\OT1/cmr/m/n/10.95 (-20) (\OML/cmm/m/it/10.95 i:e:; includingtool \OMS/cmsy/m/n/10.95 ^^@
+Overfull \hbox (1222.5965pt too wide) in paragraph at lines 69--72
+\OML/cmm/m/it/10.95 answerpairscompiledfromdiversesources\OT1/cmr/m/n/10.95 (-20) ([]\OML/cmm/m/it/10.95 manuallygenerated; and[]automaticallygenerated\OT1/cmr/m/n/10.95 (-20) )\OML/cmm/m/it/10.95 :Ourcorpuscoversalargefractionofthetopicstaughtinundergraduateandgraduatechemistrycurricula:Itcanbeusedtoevaluateanysystemthatcanreturntext\OT1/cmr/m/n/10.95 (-20) (\OML/cmm/m/it/10.95 i:e:; includingtool \OMS/cmsy/m/n/10.95 ^^@
  []
 
 [4]

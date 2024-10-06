@@ -20,6 +20,8 @@ rule question_statistics:
             "src/tex/output/num_pictograms.txt",
             "src/tex/output/non_mcq_questions.txt",
             "src/tex/output/mcq_questions.txt",
+            "src/tex/output/automatically_generated.txt", 
+            "src/tex/output/manually_generated.txt",
         ],
     script:
         "src/scripts/compute_basic_statistics.py"

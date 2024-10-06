@@ -4,7 +4,7 @@ import os
 import pandas as pd 
 import json
 from chembench.task import Task
-from chembench.analysis import add_group_info
+from chembench.analysis import add_group_info, is_semiautomatically_generated
 def classify():
     # Load the data
     chembench_repo = obtain_chembench_repo()
@@ -24,6 +24,7 @@ def classify():
     df_categories['name'] = df_categories['index']
     df_categories['path'] = df_categories['question'].apply(update_path)
     df_categories = df_categories[df_categories['path'].apply(lambda x: os.path.exists(x))].copy()
+    df_categories['is_semiautomatically_generated'] = df_categories.apply(is_semiautomatically_generated, axis=1)
 
     #import pdb; pdb.set_trace()
     is_mcq = []
