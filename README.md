@@ -23,3 +23,5 @@ Build the article using the following command:
 ```bash
 showyourwork build --conda-frontend=mamba --rerun-incomplete
 ```
+
+Note that you need to have your Zenodo tokens exported (`export ZENODO_TOKEN=<your token>` and `export SANDBOX_TOKEN=<your token>`)

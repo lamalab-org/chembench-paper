@@ -1,26 +1,26 @@
 # Enable rule caching on Zenodo?
 cache_on_zenodo: true
 
-# Workflow graph (DAG) generation
-dag:
-  # Generate `dag.pdf` on each build?
-  render: true
-  # Graphviz layout engine
-  engine: sfdp
-  # Group files by type into plates?
-  group_by_type: false
-  # Custom graph attributes
-  graph_attr:
-    ranksep: "1"
-    nodesep: "0.65"
-  # Custom node attributes
-  node_attr:
-    shape: "box"
-    penwidth: "2"
-    width: "1"
-  # Files and glob patterns to ignore
-  # ignore_files:
-  #  - src/tex/orcid-ID.png
+# # Workflow graph (DAG) generation
+# dag:
+#   # Generate `dag.pdf` on each build?
+#   render: true
+#   # Graphviz layout engine
+#   engine: sfdp
+#   # Group files by type into plates?
+#   group_by_type: false
+#   # Custom graph attributes
+#   graph_attr:
+#     ranksep: "1"
+#     nodesep: "0.65"
+#   # Custom node attributes
+#   node_attr:
+#     shape: "box"
+#     penwidth: "2"
+#     width: "1"
+#   # Files and glob patterns to ignore
+#   # ignore_files:
+#   #  - src/tex/orcid-ID.png
 
 
 # Externally-hosted datasets, e.g. on Zenodo
@@ -31,21 +31,21 @@ datasets:
 
 # Custom file dependencies
 dependencies:
-  src/scripts/compute_basic_statistics.py:
-    - src/tex/data/question.pkl
-  src/scripts/get_model_performance_dicts.py:
-    - src/tex/data/question.pkl
-  src/scripts/analyze_model_reports.py:
-    - src/data/humans_as_models_scores.pkl
-    - src/data/model_score_dicts.pkl
-  src/scripts/plot_overview_performance_plot.py:
-    - src/tex/output/overall_model_scores/
-  src/scripts/analyze_performance_per_source.py:
-    - src/data/model_score_dicts.pkl
-    - src/data/humans_as_models_scores.pkl
-  src/scripts/reading_ease_vs_model_performance.py:
-    - src/data/model_score_dicts.pkl
-    - src/tex/output/reading_ease.pkl
+  # src/scripts/compute_basic_statistics.py:
+  #   - src/tex/data/question.pkl
+  # src/scripts/get_model_performance_dicts.py:
+  #   - src/tex/data/question.pkl
+  # src/scripts/analyze_model_reports.py:
+  #   - src/data/humans_as_models_scores.pkl
+  #   - src/data/model_score_dicts.pkl
+  # src/scripts/plot_overview_performance_plot.py:
+  #   - src/tex/output/overall_model_scores/
+  # src/scripts/analyze_performance_per_source.py:
+  #   - src/data/model_score_dicts.pkl
+  #   - src/data/humans_as_models_scores.pkl
+  # src/scripts/reading_ease_vs_model_performance.py:
+  #   - src/data/model_score_dicts.pkl
+  #   - src/tex/output/reading_ease.pkl
 
 # Name of the `.tex` manuscript and corresponding `.pdf` article
 ms_name: ms
@@ -53,28 +53,28 @@ ms_name: ms
 # Optimize DAG by removing unnecessary jobs upstream of cache hits?
 optimize_caching: false
 
-# Overleaf sync settings
-overleaf:
-  # Overleaf project ID (blank = disabled)
-  id: 65e6d84a4d0ea1ab4b23def6
-  # Perform sync on GitHub Actions?
-  gh_actions_sync: true
-  # List of files to push to Overleaf
-  push:
-    - src/tex/figures
-    - src/tex/output
-    - src/tex/orcidlink.sty
-    - src/tex/praeambel.tex
-  # List of files to pull from Overleaf
-  pull:
-    - src/tex/ms.tex
-    - src/tex/references.bib
-    - src/tex/authors.tex
-    - src/tex/appendix.tex
-    - src/tex/acronymns.tex
-    - src/tex/sections/parse_check_desc.tex
-    - src/tex/sections/manually_sources_table.tex
-    - src/tex/sections/semi_programatically_sources_table.tex
+# # Overleaf sync settings
+# overleaf:
+#   # Overleaf project ID (blank = disabled)
+#   id: 65e6d84a4d0ea1ab4b23def6
+#   # Perform sync on GitHub Actions?
+#   gh_actions_sync: true
+#   # List of files to push to Overleaf
+#   push:
+#     - src/tex/figures
+#     - src/tex/output
+#     - src/tex/orcidlink.sty
+#     - src/tex/praeambel.tex
+#   # List of files to pull from Overleaf
+#   pull:
+#     - src/tex/ms.tex
+#     - src/tex/references.bib
+#     - src/tex/authors.tex
+#     - src/tex/appendix.tex
+#     - src/tex/acronymns.tex
+#     - src/tex/sections/parse_check_desc.tex
+#     - src/tex/sections/manually_sources_table.tex
+#     - src/tex/sections/semi_programatically_sources_table.tex
 
 # Always require all input files to be present on disk for workflow to pass?
 require_inputs: true
