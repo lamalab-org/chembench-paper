@@ -193,7 +193,7 @@ rule analyze_performance_per_source:
             "src/tex/output/human_subset_scores/is_number_nmr_peaks.txt",
             "src/tex/output/subset_scores/is_number_nmr_peaks_gpt4.txt",
             "src/tex/output/subset_scores/is_number_of_isomers_gpt4.txt",
-                        "src/tex/output/subset_scores/is_gfk_claude3.txt",
+            "src/tex/output/subset_scores/is_gfk_claude3.txt",
             "src/tex/output/subset_scores/is_gfk_gpt4.txt",
             "src/tex/output/human_subset_scores/is_number_of_isomers.txt",
             "src/tex/output/human_subset_scores/is_gfk.txt"

@@ -79,7 +79,7 @@ def question_count_barplot(df):
 
     # add "MCQ" and "General" labels
     ax[0].text(0.5, 1.05, "MCQ", transform=ax[0].transAxes, ha="center")
-    ax[1].text(0.5, 1.01, "General", transform=ax[1].transAxes, ha="center")
+    ax[1].text(0.5, 1.01, "Exact match", transform=ax[1].transAxes, ha="center")
 
     fig.tight_layout()
     fig.savefig(

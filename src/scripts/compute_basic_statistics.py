@@ -53,7 +53,7 @@ def load_data():
         f.write(str(len(pictograms)) + "\endinput")
 
     # read number of questions in "tiny" subset
-    df = pd.read_csv(os.path.join(chembench_repo, "reports", "humans", "questions.csv"))
+    df = pd.read_csv(os.path.join(chembench_repo, "reports", "humans", "questions_20240918_161121.csv"))
 
     with open(output / "num_tiny_questions.txt", "w") as f:
         f.write(str(len(df)) + "\endinput")

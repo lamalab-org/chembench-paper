@@ -32,18 +32,31 @@ def find_all_human_scores():
 
     chembench_repo = obtain_chembench_repo()
 
-    human_files = os.listdir(os.path.join(chembench_repo, "reports", "humans"))
-    human_files = [
-        os.path.join(chembench_repo, "reports", "humans", p) for p in human_files
+    human_files_tools = os.listdir(os.path.join(chembench_repo, "reports", "humans", "reports", "tool-allowed"))
+    human_files_tools = [
+        os.path.join(chembench_repo, "reports", "humans", "reports", "tool-allowed", p) for p in human_files_tools
     ]
-    human_files = [p for p in human_files if len(glob(os.path.join(p, "*.json"))) > 100]
-    print(f"Found {len(human_files)} files from human scorers")
-    return human_files
+    human_files_tools = [p for p in human_files_tools if len(glob(os.path.join(p, "*.json"))) > 100]
+    print(f"Found {len(human_files_tools)} files from tools human scorers")
+
+    human_files_notools = os.listdir(os.path.join(chembench_repo, "reports", "humans", "reports", "tool-disallowed"))
+    human_files_notools = [
+        os.path.join(chembench_repo, "reports", "humans", "reports", "tool-allowed", p) for p in human_files_notools
+    ]
+    human_files_notools = [p for p in human_files_notools if len(glob(os.path.join(p, "*.json"))) > 100]
+    print(f"Found {len(human_files_notools)} files from human scorers when no tools allowed")
+
+    return human_files_tools, human_files_notools
 
 
-def obtain_scores_for_folder(folder, topic_frame):
+def obtain_scores_for_folder(folder, topic_frame, tool=False):
     chembench = obtain_chembench_repo()
-    human_baseline_folder = os.path.join(chembench, "reports/humans")
+
+    if tool:
+        human_baseline_folder = os.path.join(chembench, "reports", "humans", "reports", "tool-allowed")
+    else:
+        human_baseline_folder = os.path.join(chembench, "reports", "humans", "reports", "tool-disallowed")
+
     datafolder = os.path.join(chembench, "data")
 
     scores = combine_scores_for_model(folder, datafolder, human_baseline_folder)
@@ -56,13 +69,21 @@ def obtain_scores_for_folder(folder, topic_frame):
 def score_all_humans():
     topic_frame = pd.read_pickle(data / "questions.pkl")
 
-    folders = find_all_human_scores()
+    tool_folders, folders = find_all_human_scores()
 
     all_scores = {}
     for folder in folders:
         try:
             score = obtain_scores_for_folder(folder, topic_frame)
             name = Path(folder).stem
+            all_scores[name] = score
+        except Exception:
+            pass
+
+    for folder in tool_folders:
+        try:
+            score = obtain_scores_for_folder(folder, topic_frame, tool=True)
+            name = "tool" + Path(folder).stem
             all_scores[name] = score
         except Exception:
             pass
