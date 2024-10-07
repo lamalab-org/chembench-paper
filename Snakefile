@@ -45,6 +45,10 @@ rule human_statistics:
             "src/tex/output/num_human_highschool.txt",
             "src/tex/output/num_human_postdoc.txt",
             "src/tex/output/num_users_with_education_info.txt",
+            "src/tex/output/spearman_experience_score_with_tool_p.txt",
+            "src/tex/output/spearman_experience_score_with_tool.txt",
+            "src/tex/output/spearman_experience_score_without_tool_p.txt",
+            "src/tex/output/spearman_experience_score_without_tool.txt",
         ],
     script:
         "src/scripts/analyze_human_data.py"
