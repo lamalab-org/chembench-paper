@@ -18,6 +18,7 @@ print(GH_PAT)
 def obtain_chembench_repo():
     # if in ../data the repository chem-bench is not found, clone it
     # if it is found, pull the latest version
+    print("Obtaining ChemBench repository")
     cwd = os.getcwd()
     if not os.path.exists(os.path.join(data, "chem-bench-main")):
         os.chdir(data)
