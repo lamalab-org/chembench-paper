@@ -236,25 +236,25 @@ The application is hosted on the Vercel web hosting platform.
 We also recorded the time humans took to answer the questions. This time is the time from the question being displayed to the human to the human submitting the answer.
 %Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (\Cref{fig:human_timing}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\)$\quad$, and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics{figures/human_timing.pdf}
-%     \script{analyze_human_data.py}
-%     \caption{\textbf{Time taken by human scorers to answer questions vs.\ correctness of their answers.} From the plot, it is clear that there is no clear dependence of the correctness of the answers on the time taken by the human scorers to answer the questions.}
-%     \label{fig:human_timing}
-% \end{figure}
+\begin{figure}[htb]
+    \centering
+    \includegraphics{figures/human_timing.pdf}
+    \script{analyze_human_data.py}
+    \caption{\textbf{Time taken by human scorers to answer questions vs.\ correctness of their answers.} From the plot, it is clear that there is no clear dependence of the correctness of the answers on the time taken by the human scorers to answer the questions. However, we see that human scorers typically took longer to correctly answer questions with tool use.}
+    \label{fig:human_timing}
+\end{figure}
 
 Additionally, we prompted users to provide additional information about their experience in chemistry. 
 While we recorded fine-grained information, e.g., their specialization, we focused on the number of years since the first university-level chemistry course.
-%\Cref{fig:experience_vs_correctness} shows that the experience of the human scorers was not significantly correlated with the correctness of their answers (\Cref{fig:experience_vs_correctness}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\)$\quad$, and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
+\Cref{fig:experience_vs_correctness} shows that the experience of the human scorers was correlated with the correctness of their answers (\Cref{fig:experience_vs_correctness}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics{figures/experience_vs_correctness.pdf}
-%     \script{analyze_human_data.py}
-%     \caption{\textbf{Experience of human  scorers vs.\ correctness of their answers.} The experience (in the number of years since the first university-level chemistry course) of the human scorers was not significantly correlated with the correctness of their answers.}
-%     \label{fig:experience_vs_correctness}
-% \end{figure}
+\begin{figure}[htb]
+    \centering
+    \includegraphics{figures/experience_vs_correctness.pdf}
+    \script{analyze_human_data.py}
+    \caption{\textbf{Experience of human  scorers vs.\ correctness of their answers.} The experience (in the number of years since the first university-level chemistry course) of the human scorers wasp correlated with the correctness of their answers.}
+    \label{fig:experience_vs_correctness}
+\end{figure}
 
 
 \subsection{Confidence estimates} \label{sec:confidence_estimates}

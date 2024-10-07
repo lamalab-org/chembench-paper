@@ -99,17 +99,21 @@ def make_timing_plot(long_df):
     )
     #sns.violinplot(data=long_df, x="all_correct", y="time_in_s", cut=0, ax=ax)
     ax.set_yscale("log")
-    sns.violinplot(data=long_df, x="all_correct", y="time_in_s", hue="tool_allowed", split=True, inner="quart", ax=ax)
-
+    ax = sns.violinplot(data=long_df, x="all_correct", y="time_in_s", hue="tool_allowed", split=True, inner="quart", ax=ax)
+  
     #ax.set_yscale("log")
     ax.set_ylabel("time / s")
     ax.set_xlabel("all correct")
 
     range_frame(
         ax,
-        np.array([-0.5, 1.5]),
+        np.array([-1.5, 1.5]),
         np.array([long_df["time_in_s"].min(), long_df["time_in_s"].max()]),
     )
+
+    sns.move_legend(ax, "upper left", title='tools allowed', bbox_to_anchor=(-0, 1.2))
+
+    fig.tight_layout()
 
     fig.savefig(figures / "human_timing.pdf", bbox_inches="tight")
 
@@ -147,7 +151,7 @@ def make_human_time_score_plot(long_df):
         ),
     )
     
-    ax.legend(loc="upper left", bbox_to_anchor=(0, 1.2))
+    ax.legend(loc="upper left", bbox_to_anchor=(-0.1, 1.2))
     
     fig.tight_layout()
     fig.savefig(figures / "experience_vs_correctness.pdf", bbox_inches="tight")
