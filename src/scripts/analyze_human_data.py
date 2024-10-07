@@ -1,8 +1,9 @@
-from chembench.analysis import load_all_reports
+from chembench.analysis import load_all_reports, all_correct
 import matplotlib.pyplot as plt
 from glob import glob
 import pandas as pd
 import numpy as np
+from typing import Union
 from pathlib import Path
 import seaborn as sns
 import os
@@ -15,8 +16,31 @@ from utils import (
     ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
 )
 
+# tool 127 
+# no tool 121
+
 plt.style.use(scripts / "lamalab.mplstyle")
 
+def get_joint_frame(response_file: Union[Path, str], questions_file: Union[Path, str]):
+    """From the database, we pull the two main tables: questions and responses and save them into csvs.
+
+    This function will return a pandas dataframe with the two tables merged.
+
+    Args:
+        response_file: path to responses.csv
+        questions_file: path to questions.csv
+
+    Returns:
+        merged: pandas dataframe with the two tables merged
+    """
+    questions_frame = pd.read_csv(questions_file)
+    response_frame = pd.read_csv(response_file)
+
+    merged = pd.merge(questions_frame, response_frame, left_on="id", right_on="questionId")
+
+    return merged
+
+# responses_20240918_161121.csv
 
 def make_human_performance_plots():
     chembench = obtain_chembench_repo()
@@ -58,9 +82,10 @@ def make_human_performance_plots():
         f.write(f"{str(int(number_humans))}" + "\endinput")
 
     long_df = pd.concat(all_results).reset_index(drop=True)
-    long_df["time_s"] = long_df[("time", 0)]
+    long_df['all_correct'] = long_df.apply(all_correct, axis=1)
+    long_df["time_in_s"] = long_df[("time_s", 0)]
 
-    total_hours = long_df["time_s"].sum() / 3600
+    total_hours = long_df["time_in_s"].sum() / 3600
     with open(output / "total_hours.txt", "w") as f:
         f.write(f"\SI{{{str(int(total_hours))}}}{{\hour}}" + "\endinput")
 
@@ -72,11 +97,12 @@ def make_timing_plot(long_df):
     fig, ax = plt.subplots(
         1, 1, figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH)
     )
-    sns.violinplot(data=long_df, x="all_correct", y="time_s", cut=0, ax=ax)
+    sns.violinplot(data=long_df, x="all_correct", y="time_in_s", cut=0, ax=ax)
+
     sns.stripplot(
         data=long_df,
         x="all_correct",
-        y="time_s",
+        y="time_in_s",
         color="black",
         ax=ax,
         alpha=0.2,
@@ -90,7 +116,7 @@ def make_timing_plot(long_df):
     range_frame(
         ax,
         np.array([-0.5, 1.5]),
-        np.array([long_df["time_s"].min(), long_df["time_s"].max()]),
+        np.array([long_df["time_in_s"].min(), long_df["time_in_s"].max()]),
     )
 
     fig.savefig(figures / "human_timing.pdf", bbox_inches="tight")
@@ -98,7 +124,7 @@ def make_timing_plot(long_df):
 
 def make_human_time_score_plot(long_df):
     grouped_by_user = (
-        long_df[["all_correct", "time_s", "experience", "userid"]]
+        long_df[["all_correct", "time_in_s", "experience", "userid"]]
         .groupby("userid")
         .mean()
     )
