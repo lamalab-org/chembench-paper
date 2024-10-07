@@ -20,29 +20,39 @@ plt.style.use(scripts / "lamalab.mplstyle")
 
 def make_human_performance_plots():
     chembench = obtain_chembench_repo()
-    paths = glob(os.path.join(chembench, "reports/humans/**/*.json"), recursive=True)
-    users = pd.read_csv(os.path.join(chembench, "reports/humans/users.csv"))
+    paths_tool = glob(os.path.join(chembench, "reports/humans/reports/tool-allowed/**/*.json"), recursive=True)
+    paths_no_tool = glob(os.path.join(chembench, "reports/humans/reports/tool-allowed/**/*.json"), recursive=True)
+    users = pd.read_csv(os.path.join(chembench, "reports/humans/users_20240918_161121.csv"))
 
-    dirs = list(set([os.path.dirname(p) for p in paths]))
+    dirs_tool = list(set([os.path.dirname(p) for p in paths_tool]))
+    dirs_no_tool = list(set([os.path.dirname(p) for p in paths_no_tool]))
     all_results = []
-    for d in dirs:
+    for d in dirs_tool + dirs_no_tool:
         try:
             results = load_all_reports(d, os.path.join(chembench, "data"))
-            userid = Path(d).stem
-            user_info = users[users["id"] == userid]
-            experience = user_info["experience"].values[0]
-            highest_education = user_info["highestEducation"].values[0]
-            if len(results) < 5:
-                continue
-            results["userid"] = userid
-            results["experience"] = experience
-            results["highest_education"] = highest_education
-            all_results.append(results)
+            if len(results) > 80: 
+                userid = Path(d).stem
+                user_info = users[users["id"] == userid]
+                experience = user_info["experience"].values[0]
+                highest_education = user_info["highestEducation"].values[0]
+                if len(results) < 5:
+                    continue
+                results["userid"] = userid
+                results['num_results'] = len(results)
+                results["experience"] = experience
+                results["highest_education"] = highest_education
+                if "tool_allowed" in d:
+                    results["tool_allowed"] = True
+                else:
+                    results["tool_allowed"] = False
+                all_results.append(results)
+            else: 
+                print(f'Skipping {d} due to too few results')
         except Exception as e:
             print(e)
             continue
 
-    number_humans = len(all_results)
+    number_humans = len(users)
 
     with open(output / "number_experts.txt", "w") as f:
         f.write(f"{str(int(number_humans))}" + "\endinput")
