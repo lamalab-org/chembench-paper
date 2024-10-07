@@ -12,17 +12,6 @@ if __name__ == "__main__":
         os.path.join(chembench_repo, "reports", "humans", p)
         for p in human_files
     ]
-    
-    # count how often we have 204 (all of the "tiny" benchmark)
-    has_204_scores = [
-        p for p in human_files if len(glob(os.path.join(p, "*.json"))) == 204
-    ]
-
-    with open(output / "num_humans_with_more_than_100_scores.txt", "w") as handle:
-        handle.write(f"{len(human_files)}" + "\endinput")
-
-    with open(output / "num_humans_with_204_scores.txt", "w") as handle:
-        handle.write(f"{len(has_204_scores)}" + "\endinput")
 
     outpath = os.path.join(output, "human_scores")
     if not os.path.exists(outpath):
