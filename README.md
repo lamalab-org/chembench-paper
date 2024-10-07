@@ -26,3 +26,15 @@ showyourwork build --conda-frontend=mamba --rerun-incomplete
 
 Note that you need to have your Zenodo tokens exported (`export ZENODO_TOKEN=<your token>` and `export SANDBOX_TOKEN=<your token>`).
 For the first rules, you also need to have a Github personal access token exported (`export GH_PAT=<your token>`).
+
+## Useful command 
+
+If stuff stops working, you can try to reset the cache 
+
+```bash 
+showyourwork clean --force --deep
+```
+
+(You might need to manually delete the downloaded `.git` folder).
+
+If you are confused on why stuff is not working, check the logs in `.showyourwork/logs`.

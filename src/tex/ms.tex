@@ -67,7 +67,7 @@ This is likely because they cannot automatically be used with black box (or tool
 On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights on how the models compare relative to experts.
 
 In this work, we report a novel benchmarking framework  (\Cref{fig:overview_figure}), which we call \chembench, and use it to reveal limitations of current frontier models for use in the chemical sciences.
-Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs compiled from diverse sources (\variable{output/manually_generated.txt}\xspace manually generated, and \variable{output/automatically_generated.txt}\xspace automatically generated).
+Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs compiled from diverse sources (\variable{output/manually_generated.txt}\xspace manually generated, and \variable{output/automatically_generated.txt}\xspace automatically generated).  
 Our corpus covers a large fraction of the topics taught in undergraduate and graduate chemistry curricula. It can be used to evaluate any system that can return text (i.e., including tool-augmented systems).
 
 %To contextualize the scores, we also surveyed \variable{output/number_experts.txt} experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with (human) chemists of different specializations.
@@ -203,7 +203,15 @@ We then computed the percentage of questions the models or humans answered corre
 % To overcome this, direct access to the model weights would be required, and we strive to collaborate with the developers of frontier models to overcome this limitation in the future.
 % This is facilitated with the tooling \chembench provides, thanks to which contributors can automatically add new models in an open science fashion.
 
-\clearpage
+\paragraph{Judging chemical preference}
+
+One interesting finding of recent research is that foundation models can judge interestingness.\autocite{zhang2024omniopenendednessmodelshuman}
+If models could do so for chemical compounds, this would open opportunities for novel optimization approaches. 
+Such open-ended tasks, however, depend on an external observer defining what interestingness is.\autocite{hughes2024openendednessessentialartificialsuperhuman}
+Here, we posed models the same question~\textcite{Choung_2023} asked chemists at a drug company: \enquote{Which of the two compounds do you prefer?} (in the context of an early virtual screening campaign setting).
+While chemists showed a fair degree of interrater agreement, most of our models do not correlate with the preferences of expert chemists---even if they perform well on many other tasks in \chembench.
+This indicates that using preference tuning for chemical settings is a promising approach to explore in future research.
+
 
 % Estimate of difficulty
 \paragraph{Confidence estimates} One might wonder whether the models can estimate if they can answer a question correctly. 
@@ -365,7 +373,7 @@ M.R.\ and U.S.S.\ thanks the \enquote{Deutsche Forschungsgemeinschaft} for fundi
 In addition, we thank the OpenBioML.org community and their ChemNLP project team for valuable discussions.
 Moreover, we thank Pepe Márquez for discussions and support and Julian Kimmig for feedback on the web app. 
 In addition, we acknowledge support from Sandeep Kumar with an initial prototype of the web app.
-We thank Bastian Rieck for developing the \LaTeX-credit package (\url{https://github.com/Pseudomanifold/latex-credits}) and thank Berend Smit and Pepe Márquez for feedback on an early version of the manuscript.
+We thank Bastian Rieck for developing the \LaTeX-credit package (\url{https://github.com/Pseudomanifold/latex-credits}) and thank Berend Smit for feedback on an early version of the manuscript.
 
 \section*{Conflicts of interest}
 K.M.J.\ was a paid consultant for OpenAI (as part of the red teaming network). M.P.\ is an employee of Stability.AI, and A.M.\ and N.A.\ were paid contractors of Stability.AI.

@@ -31,8 +31,8 @@ datasets:
 
 # Custom file dependencies
 dependencies:
-  # src/scripts/compute_basic_statistics.py:
-  #   - src/tex/data/question.pkl
+  src/scripts/compute_basic_statistics.py:
+    - src/tex/data/question.pkl
   # src/scripts/get_model_performance_dicts.py:
   #   - src/tex/data/question.pkl
   # src/scripts/analyze_model_reports.py:
