@@ -53,3 +53,23 @@ rule human_statistics:
         ],
     script:
         "src/scripts/analyze_human_data.py"
+
+# map the model names (based on the yaml file) to the report directory 
+rule map_model_name_to_report_dir:
+    input:
+        "src/scripts/make_name_dir_map.py"
+    output:
+        "src/tex/data/name_to_dir_map.pkl"
+    script:
+        "src/scripts/make_name_dir_map.py"
+
+
+# obtain one big dataframe with all model scores 
+rule model_score_dict: 
+    input:
+        "src/data/questions.pkl",
+        "src/tex/data/name_to_dir_map.pkl"
+    output:
+        "src/data/model_scores.pkl"
+    script:
+        "src/scripts/get_model_performance_dicts.py"

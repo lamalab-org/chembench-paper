@@ -4,9 +4,13 @@ from glob import glob
 import yaml
 import pickle 
 from pathlib import Path
+from utils import obtain_chembench_repo
+from paths import data
 
-
-def build_name_dir_map(report_base_dir):
+def build_name_dir_map(report_base_dir=None):
+    if report_base_dir is None:
+        report_base_dir = obtain_chembench_repo()
+        report_base_dir = os.path.join(report_base_dir, "reports")
     yaml_files = glob(f"{report_base_dir}/**/*.yaml")
 
     name_dir_map = {}
@@ -37,12 +41,11 @@ def build_name_dir_map(report_base_dir):
             model_name = yaml_data["model_name"]
 
         name_dir_map[model_name] = os.path.abspath(report_subdir)
-
-    print(name_dir_map)
-
-    with open("name_dir_map.pkl", "wb") as f:
+        
+    with open(data / "name_dir_map.pkl", "wb") as f:
         pickle.dump(name_dir_map, f)
 
+    return name_dir_map
 
 if __name__ == "__main__":
     fire.Fire(build_name_dir_map)
