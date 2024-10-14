@@ -49,7 +49,7 @@ def load_reports(topic_frame: pd.DataFrame, human_aligned: bool = False) -> Dict
     chembench = obtain_chembench_repo()
     datafolder = os.path.join(chembench, "data")
     
-    with open(data / "name_dir_map.pkl", "rb") as handle:
+    with open(data / "name_to_dir_map.pkl", "rb") as handle:
         name_dir_map = pickle.load(handle)
     
     human_baseline_folder = os.path.join(chembench, "reports/humans") if human_aligned else None

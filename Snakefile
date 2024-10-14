@@ -59,7 +59,7 @@ rule map_model_name_to_report_dir:
     input:
         "src/scripts/make_name_dir_map.py"
     output:
-        "src/tex/data/name_to_dir_map.pkl"
+        "src/data/name_to_dir_map.pkl"
     script:
         "src/scripts/make_name_dir_map.py"
 
@@ -67,9 +67,38 @@ rule map_model_name_to_report_dir:
 # obtain one big dataframe with all model scores 
 rule model_score_dict: 
     input:
-        "src/data/questions.pkl",
-        "src/tex/data/name_to_dir_map.pkl"
+        ["src/data/questions.pkl",
+        "src/data/name_to_dir_map.pkl"]
     output:
-        "src/data/model_scores.pkl"
+        "src/data/model_score_dicts.pkl"
     script:
         "src/scripts/get_model_performance_dicts.py"
+
+# obtain human scores summarized
+rule get_human_performance_dicts:
+    input:
+        "src/data/questions.pkl",
+    output:
+        ["src/data/humans_as_models_scores_tools.pkl",
+        "src/data/humans_as_models_scores_no_tools.pkl",
+        "src/data/humans_as_models_scores_combined.pkl",
+        ]
+    script:
+        "src/scripts/get_human_performance_dicts.py"
+
+# analyze the performance per source 
+rule performance_per_source:
+    input:
+        ["src/data/model_score_dicts.pkl",
+        "src/data/humans_as_models_scores_no_tools.pkl"]
+    output: 
+            [
+            directory("src/tex/output/subset_scores"),
+            directory("src/tex/output/human_subset_scores"),
+            "src/tex/figures/performance_per_topic.pdf",
+            "src/tex/output/human_subset_scores/is_number_nmr_peaks.txt",
+            "src/tex/output/human_subset_scores/is_number_of_isomers.txt",
+            "src/tex/output/human_subset_scores/is_gfk.txt"
+        ],
+    script: 
+        "src/scripts/analyze_performance_per_source.py"

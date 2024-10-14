@@ -23,7 +23,6 @@ subsets = [
     "is_dai",
     "is_pictograms",
     "is_name",
-    "is_smiles_name",
     "is_organic_reactivity",
     "is_electron_counts",
     "is_chemical_compatibility",
@@ -42,7 +41,6 @@ subset_clean_names = [
     "DAI (daily allowed intake)",
     "GHS pictograms",
     "name to SMILES",
-    "SMILES to name",
     "organic reactivity",
     "electron counts",
     "chemical compatibility",
@@ -53,41 +51,6 @@ subset_clean_names = [
     "polymer chemistry",
 ]
 
-relevant_models = [
-    "claude2",
-    "claude2_react",
-    "claude2_zero_t",
-    "claude3",
-    "galactica_120b",
-    "gemini_pro",
-    "gemini_pro_zero_t",
-    "gpt35turbo",
-    "gpt35turbo_react",
-    "gpt4",
-    "lama70b",
-    "mixtral",
-    "pplx7b_chat",
-    "pplx7b_online",
-    "random_baseline",
-]
-
-model_rename_dict = {
-    "gpt4": "GPT-4",
-    "claude2": "Claude 2",
-    "claude3": "Claude 3",
-    "llama70b": "LLaMA (70B)",
-    "gemini_pro": "Gemini Pro",
-    "galactica_120b": "Galactica (120B)",
-    "mixtral": "Mixtral",
-    "pplx7b_chat": "PPLX7B Chat",
-    "pplx7b_online": "PPLX7B Online",
-    "random_baseline": "Random Baseline",
-    "claude2_react": "Claude 2 ReAct",
-    "claude2_zero_t": "Claude 2 Zero T",
-    "gemini_pro_zero_t": "Gemini Pro Zero T",
-    "gpt35turbo": "GPT-3.5 Turbo",
-    "gpt35turbo_react": "GPT-3.5 Turbo ReAct",
-}
 
 
 rename_dict = dict(zip(subsets, subset_clean_names))
@@ -152,8 +115,10 @@ if __name__ == "__main__":
     # human aligned
     model_scores = obtain_subset_scores(model_scores["human_aligned"], outdir)
 
-    with open(os.path.join(data, "humans_as_models_scores.pkl"), "rb") as handle:
+    with open(os.path.join(data, "humans_as_models_scores_no_tools.pkl"), "rb") as handle:
         human_scores = pickle.load(handle)
+
+    
 
     outdir_humans = os.path.join(output, "human_subset_scores")
     if not os.path.exists(outdir_humans):
@@ -164,10 +129,8 @@ if __name__ == "__main__":
     )
 
     all_scores = pd.DataFrame(model_scores + human_scores)
-    all_scores = all_scores[all_scores["model"].isin(relevant_models + ["human"])]
 
     all_scores["subset"] = all_scores["subset"].map(rename_dict)
-    all_scores["model"] = all_scores["model"].map(model_rename_dict)
     score_heatmap = all_scores.pivot_table(
         index="model", columns="subset", values="score", aggfunc="mean", fill_value=0
     )
@@ -183,10 +146,8 @@ if __name__ == "__main__":
         model_scores = pickle.load(handle)
     model_scores = obtain_subset_scores(model_scores["overall"], outdir)
     all_scores = pd.DataFrame(model_scores)
-    all_scores = all_scores[all_scores["model"].isin(relevant_models + ["human"])]
 
     all_scores["subset"] = all_scores["subset"].map(rename_dict)
-    all_scores["model"] = all_scores["model"].map(model_rename_dict)
     score_heatmap = all_scores.pivot_table(
         index="model", columns="subset", values="score", aggfunc="mean", fill_value=0
     )

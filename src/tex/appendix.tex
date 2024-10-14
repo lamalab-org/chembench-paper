@@ -107,15 +107,15 @@ In \Cref{fig:performance_per_topic}, we see that the performance of the models v
 Interestingly, the performance of the models on questions sourced based on textbooks seems to be better for our models than some semi-programmatically created tasks, such as questions about the number of signals in an \gls{nmr} spectrum.
 
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics{figures/performance_per_topic.pdf}
-%     \caption{\textbf{Fraction of completely correctly answered questions per data source.} The heatmap shows, in color, the fraction of questions answered completely correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none of the questions were answered completely correctly.
-%         We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for our leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
-%     }
-%     \label{fig:performance_per_topic}
-%     \script{analyze_performance_per_source.py}
-% \end{figure}
+\begin{figure}[htb]
+    \centering
+    \includegraphics{figures/performance_per_topic.pdf}
+    \caption{\textbf{Fraction of completely correctly answered questions per data source.} The heatmap shows, in color, the fraction of questions answered completely correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none of the questions were answered completely correctly.
+        We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for our leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
+    }
+    \label{fig:performance_per_topic}
+    \script{analyze_performance_per_source.py}
+\end{figure}
 
 \Cref{fig:performance_per_topic_tiny} shows the same analysis on the \enquote{tiny} subset. 
 

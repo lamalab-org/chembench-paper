@@ -41,8 +41,8 @@ def build_name_dir_map(report_base_dir=None):
             model_name = yaml_data["model_name"]
 
         name_dir_map[model_name] = os.path.abspath(report_subdir)
-        
-    with open(data / "name_dir_map.pkl", "wb") as f:
+
+    with open(data / "name_to_dir_map.pkl", "wb") as f:
         pickle.dump(name_dir_map, f)
 
     return name_dir_map
