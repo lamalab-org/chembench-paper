@@ -21,7 +21,7 @@ plt.style.use(scripts / "lamalab.mplstyle")
 def make_human_performance_plots():
     chembench = obtain_chembench_repo()
     paths = glob(os.path.join(chembench, "reports/humans/**/*.json"), recursive=True)
-    users = pd.read_csv(os.path.join(chembench, "reports/humans/users_20240918_161121.csv"))
+    users = pd.read_csv(os.path.join(chembench, "reports/humans/users.csv"))
 
     dirs = list(set([os.path.dirname(p) for p in paths]))
     all_results = []
