@@ -26,218 +26,27 @@ def combine_scores_for_model(
     return df
 
 
+def combine_scores_for_all_models(
+    models, datafolder,topic_frame, human_baseline_folder=None, min_human_responses: int = 4): 
+
+    report_dicts = {}
+
+    for modelname, folder in models.items():
+        df = combine_scores_for_model(
+            folder, datafolder, human_baseline_folder, min_human_responses
+        )
+        report_dicts[modelname] = merge_with_topic_info(df, topic_frame)
+
+    return report_dicts
+
+
+
 def load_human_aligned_reports(topic_frame):
     chembench = obtain_chembench_repo()
     human_baseline_folder = os.path.join(chembench, "reports/humans")
     datafolder = os.path.join(chembench, "data")
 
-    claude2 = combine_scores_for_model(
-        os.path.join(
-            chembench, "reports/claude2/reports/7536581a-d92d-43d3-b946-39e4a7213b7f"
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    claude2_react = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/claude2-react/reports/700ed9b4-995c-4cfd-aa63-0a6e84b3a815",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    claude2_zero_t = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/claude2-zero-T/reports/412657cc-7a11-4d73-80e9-03d6f05cd63e",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    claude3 = combine_scores_for_model(
-        os.path.join(
-            chembench, "reports/claude3/reports/702e03be-5cd8-4451-b52c-8d7b9b694304"
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    galactica_120b = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/galatica_120b/reports/d7ce25da-bbce-4f06-8a5b-43e6cfb01c30",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    gemini_pro_zero_t = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/gemini-pro-zero-T/reports/1e5457ad-96b5-4bc8-bd6c-bad3eb6deb7a",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    gemini_pro = combine_scores_for_model(
-        os.path.join(
-            chembench, "reports/gemini-pro/reports/ebde051c-6d66-456a-a207-a1c65eceaf40"
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    gpt35turbo = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/gpt-3.5-turbo/reports/f76bf17d-3e12-47c5-b879-9cc0c78be989",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    gpt35turbo_zero_t = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/gpt-3.5-turbo-zero-T/reports/44cf2a6b-a7bc-43ee-8f16-9576d1547c76",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    gpt35turbo_react = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/gpt-35-turbo-react/reports/e4964803-79cb-44bc-b5b2-e22aa3f40607",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    gpt4 = combine_scores_for_model(
-        os.path.join(
-            chembench, "reports/gpt-4/reports/76c5bdd4-e893-43d4-b37d-2ade66c20308"
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    gpt4_zero_t = combine_scores_for_model(
-        os.path.join(
-            chembench, "reports/gpt-4-zero-T/reports/44984586-c1f7-42d3-baf0-c9f581a7a134"
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    llama70b = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/llama2-70b-chat/reports/adf4e6fa-0526-49c5-9b21-12c3cc0ad835",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    llama7b = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/llama2-7b-chat/reports/df8c05c1-918c-4fad-b692-e14663c2f1d6",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    llama13b = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/llama2-13b-chat/reports/e37ff6c1-6917-409c-8216-2560574b910b",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    mixtral = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/mixtral-8x7b-instruct/reports/8409294f-de26-4c05-bd50-2cfb2148ec65",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    pplx7b_chat = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/pplx-7b-chat/reports/d63fb4e2-3dd6-432e-bbe7-8bc1c23115d3",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    pplx7b_online = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/pplx-7b-online/reports/309c0ecb-bd79-406d-bd2d-b5d434053f2f",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    random_baseline = combine_scores_for_model(
-        os.path.join(
-            chembench,
-            "reports/random_baseline/reports/56255cd7-294b-4441-b389-e4a1eb044107_random",
-        ),
-        datafolder,
-        human_baseline_folder,
-    )
-
-    claude2 = merge_with_topic_info(claude2, topic_frame)
-    claude2_react = merge_with_topic_info(claude2_react, topic_frame)
-    claude2_zero_t = merge_with_topic_info(claude2_zero_t, topic_frame)
-    claude3 = merge_with_topic_info(claude3, topic_frame)
-    galactica_120b = merge_with_topic_info(galactica_120b, topic_frame)
-    gemini_pro_zero_t = merge_with_topic_info(gemini_pro_zero_t, topic_frame)
-    gemini_pro = merge_with_topic_info(gemini_pro, topic_frame)
-    gpt35turbo = merge_with_topic_info(gpt35turbo, topic_frame)
-    gpt35turbo_zero_t = merge_with_topic_info(gpt35turbo_zero_t, topic_frame)
-    gpt35turbo_react = merge_with_topic_info(gpt35turbo_react, topic_frame)
-    gpt4 = merge_with_topic_info(gpt4, topic_frame)
-    gpt4_zero_t = merge_with_topic_info(gpt4_zero_t, topic_frame)
-    llama70b = merge_with_topic_info(llama70b, topic_frame)
-    llama7b = merge_with_topic_info(llama7b, topic_frame)
-    llama13b = merge_with_topic_info(llama13b, topic_frame)
-    mixtral = merge_with_topic_info(mixtral, topic_frame)
-    pplx7b_chat = merge_with_topic_info(pplx7b_chat, topic_frame)
-    pplx7b_online = merge_with_topic_info(pplx7b_online, topic_frame)
-    random_baseline = merge_with_topic_info(random_baseline, topic_frame)
-
-    return {
-        "claude2": claude2,
-        "claude2_react": claude2_react,
-        "claude2_zero_t": claude2_zero_t,
-        "claude3": claude3,
-        "galactica_120b": galactica_120b,
-        "gemini_pro_zero_t": gemini_pro_zero_t,
-        "gemini_pro": gemini_pro,
-        "gpt35turbo": gpt35turbo,
-        "gpt35turbo_zero_t": gpt35turbo_zero_t,
-        "gpt35turbo_react": gpt35turbo_react,
-        "gpt4": gpt4,
-        "gpt4_zero_t": gpt4_zero_t,
-        "llama70b": llama70b,
-        "llama7b": llama7b,
-        "llama13b": llama13b,
-        "mixtral": mixtral,
-        "pplx7b_chat": pplx7b_chat,
-        "pplx7b_online": pplx7b_online,
-        "random_baseline": random_baseline,
-    }
+   
 
 
 def load_reports(topic_frame):
