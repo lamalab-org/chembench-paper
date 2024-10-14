@@ -59,7 +59,7 @@ def make_human_performance_plots():
                 user_info = users[users["id"] == userid]
                 experience = user_info["experience"].values[0]
                 highest_education = user_info["highestEducation"].values[0]
-                if len(results) < 5:
+                if len(results) < 80:
                     continue
                 results["userid"] = userid
                 results['num_results'] = len(results)
@@ -69,7 +69,8 @@ def make_human_performance_plots():
                     results["tool_allowed"] = True
                 else:
                     results["tool_allowed"] = False
-                all_results.append(results)
+                if experience >= 2:
+                    all_results.append(results)
             else: 
                 print(f'Skipping {d} due to too few results')
         except Exception as e:
@@ -78,12 +79,18 @@ def make_human_performance_plots():
 
     number_humans = len(users)
 
+
     with open(output / "number_experts.txt", "w") as f:
         f.write(f"{str(int(number_humans))}" + "\endinput")
 
     long_df = pd.concat(all_results).reset_index(drop=True)
     long_df['all_correct'] = long_df.apply(all_correct, axis=1)
     long_df["time_in_s"] = long_df[("time_s", 0)]
+
+
+    with open(output / "number_of_considered_humans.txt", "w") as f:
+        f.write(f"{str(len(long_df['userid'].unique()))}" + "\endinput")
+
 
     total_hours = long_df["time_in_s"].sum() / 3600
     with open(output / "total_hours.txt", "w") as f:

@@ -1,1 +1,1 @@
-\SI{134}{\hour}\endinput
+\SI{115}{\hour}\endinput

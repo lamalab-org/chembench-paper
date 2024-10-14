@@ -34,6 +34,7 @@ rule human_statistics:
     output:
         [
             "src/tex/output/number_experts.txt",
+            "src/tex/output/number_of_considered_humans.txt",
             "src/tex/output/total_hours.txt",
             "src/tex/figures/human_timing.pdf",
             "src/tex/figures/experience_vs_correctness.pdf",
