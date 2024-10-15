@@ -17,3 +17,5 @@ __pycache__
 .env
 .DS_Store
 .vscode/*
+src/tex/.DS_Store
+src/tex/.DS_Store

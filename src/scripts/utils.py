@@ -44,10 +44,10 @@ def obtain_human_relevant_questions(
     relevant_questions = []
     if human_subset != "none":
         if human_subset == "tool-allowed":
-            with open(data / "tool_answered_questions.txt", "r") as f:
+            with open(data / "human_tool_answered_questions.txt", "r") as f:
                 relevant_questions = f.read().splitlines()
         elif human_subset == "tool-disallowed":
-            with open(data / "no_tool_answered_questions.txt", "r") as f:
+            with open(data / "human_no_tool_answered_questions.txt", "r") as f:
                 relevant_questions = f.read().splitlines()
         elif human_subset == "combined":
             with open(data / "human_answered_questions.txt", "r") as f:
