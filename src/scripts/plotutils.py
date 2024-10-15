@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from typing import Optional
-import numpy as np
 
 from matplotlib.patches import Circle, RegularPolygon
 from matplotlib.path import Path
@@ -9,7 +8,7 @@ from matplotlib.projections import register_projection
 from matplotlib.projections.polar import PolarAxes
 from matplotlib.spines import Spine
 from matplotlib.transforms import Affine2D
-import matplotlib.patches as patches
+import json
 
 
 def range_frame(ax, x, y, pad=0.1):
@@ -187,42 +186,8 @@ def radar_factory(num_vars, frame="circle"):
     register_projection(RadarAxes)
     return theta
 
-
-tab20_colors = [
-    ["#1f77b4", "#aec7e8"],  # blue
-    ["#ff7f0e", "#ffbb78"],  # orange
-    ["#2ca02c", "#98df8a"],  # green
-    ["#d62728", "#ff9896"],  # red
-    ["#9467bd", "#c5b0d5"],  # purple
-    ["#8c564b", "#c49c94"],  # brown
-    ["#e377c2", "#f7b6d2"],  # pink
-    ["#7f7f7f", "#c7c7c7"],  # gray
-    ["#bcbd22", "#dbdb8d"],  # yellow
-    ["#17becf", "#9edae5"],  # teal
-    ["#ff6347", "#ffa07a"],  # tomato and light salmon
-    ["#4682b4", "#b0c4de"],  # steel blue and light steel blue
-    ["#556b2f", "#8fbc8f"],  # dark olive green and dark sea green
-    ["#6a5acd", "#b0e0e6"],  # slate blue and powder blue
-    ["#483d8b", "#8470ff"],  # dark slate blue and light slate blue
-]
-
-
-model_color_map = {
-    "human": tab20_colors[0][0],
-    "claude2": tab20_colors[1][0],
-    "claude2_react": tab20_colors[1][1],
-    "claude3": tab20_colors[2][0],
-    "gpt4": tab20_colors[3][0],
-    "gemini_pro": tab20_colors[4][0],
-    "gpt35turbo": tab20_colors[5][0],
-    "gpt35turbo_react": tab20_colors[5][1],
-    "llama70b": tab20_colors[6][0],
-    "pplx7b_chat": tab20_colors[7][0],
-    "pplx7b_online": tab20_colors[7][1],
-    "mixtral": tab20_colors[8][0],
-    "random_baseline": tab20_colors[9][0],
-    "galactica_120b": tab20_colors[12][0],
-}
+with open("color_palette.json", "r") as f:
+    model_color_map = json.load(f)
 
 # number of parameters
 model_size_map = {
@@ -308,10 +273,6 @@ def parallel_coordinates_plot(
     host.xaxis.tick_top()
     if title is not None:
         host.set_title(title, fontsize=18)
-
-    if colors is None:
-        # colors = plt.cm.tab10.colors
-        colors = sum(tab20_colors, [])
 
     legend_handles = []
     for j in range(N):
