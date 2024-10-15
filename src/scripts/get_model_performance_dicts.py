@@ -21,9 +21,9 @@ def combine_scores_for_model(
     ] = "none",
 ) -> pd.DataFrame:
     df = load_all_reports(folder, datafolder)
-
-    relevant_questions = obtain_human_relevant_questions(human_subset)
-    df = df[df[("name", 0)].isin(relevant_questions)]
+    if human_subset != "none":
+        relevant_questions = obtain_human_relevant_questions(human_subset)
+        df = df[df[("name", 0)].isin(relevant_questions)]
 
     df["all_correct"] = df.apply(all_correct, axis=1)
     return df
@@ -67,7 +67,7 @@ def main():
     topic_frame = pd.read_pickle(data / "questions.pkl")
 
     results = {
-        "overall": load_reports(topic_frame),
+        "overall": load_reports(topic_frame, human_subset="none"),
         "human_aligned_no_tool": load_reports(
             topic_frame, human_subset="tool-disallowed"
         ),
