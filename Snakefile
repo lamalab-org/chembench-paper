@@ -72,7 +72,9 @@ rule model_score_dict:
     input:
         ["src/data/questions.pkl",
         "src/data/name_to_dir_map.pkl",
-        "src/data/human_no_tool_answered_questions.txt"]
+        "src/data/human_no_tool_answered_questions.txt",
+        "src/data/human_tool_answered_questions.txt",
+        "src/data/human_answered_questions.txt",]
     output:
         "src/data/model_score_dicts.pkl"
     script:
@@ -81,7 +83,11 @@ rule model_score_dict:
 # obtain human scores summarized
 rule get_human_performance_dicts:
     input:
-        "src/data/questions.pkl",
+        ["src/data/questions.pkl",
+        "src/data/human_no_tool_answered_questions.txt",
+        "src/data/human_tool_answered_questions.txt",
+        "src/data/human_answered_questions.txt",
+        ]
     output:
         ["src/data/humans_as_models_scores_tools.pkl",
         "src/data/humans_as_models_scores_no_tools.pkl",
