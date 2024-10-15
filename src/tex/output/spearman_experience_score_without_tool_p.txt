@@ -1,1 +1,1 @@
-0.04\endinput
+0.01\endinput

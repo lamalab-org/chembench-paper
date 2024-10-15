@@ -104,20 +104,20 @@ def make_human_performance_plots():
     long_df["time_in_s"] = long_df[("time_s", 0)]
 
     with open(data / "human_answered_questions.txt", "w") as f:
-        human_answered_questions = long_df["name"].unique()
+        human_answered_questions = long_df[("name", 0)].unique()
         for q in human_answered_questions:
             f.write(f"{q}" + "\n")
 
     with open(data / "human_tool_answered_questions.txt", "w") as f:
         human_tool_answered_questions = long_df[long_df["tool_allowed"] == True][
-            "name"
+            ("name", 0)
         ].unique()
         for q in human_tool_answered_questions:
             f.write(f"{q}" + "\n")
 
     with open(data / "human_no_tool_answered_questions.txt", "w") as f:
         human_no_tool_answered_questions = long_df[long_df["tool_allowed"] == False][
-            "name"
+            ("name", 0)
         ].unique()
         for q in human_no_tool_answered_questions:
             f.write(f"{q}" + "\n")
