@@ -71,7 +71,8 @@ rule map_model_name_to_report_dir:
 rule model_score_dict: 
     input:
         ["src/data/questions.pkl",
-        "src/data/name_to_dir_map.pkl"]
+        "src/data/name_to_dir_map.pkl",
+        "src/data/human_no_tool_answered_questions.txt"]
     output:
         "src/data/model_score_dicts.pkl"
     script:
