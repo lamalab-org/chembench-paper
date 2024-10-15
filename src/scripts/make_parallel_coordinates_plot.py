@@ -50,6 +50,7 @@ human_relevant_topics = [
     "Physical Chemistry",
     "Analytical Chemistry",
     "Inorganic Chemistry",
+    "Toxicity/Safety",
 ]
 
 
