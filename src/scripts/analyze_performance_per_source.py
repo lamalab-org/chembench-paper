@@ -7,6 +7,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from paths import scripts, figures, data
 from loguru import logger
+from definitions import MODELS_TO_PLOT
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
@@ -31,6 +32,9 @@ subsets = [
     "is_olympiad",
     "is_toxicology",
     "is_polymer_chemistry",
+    "is_classification", 
+    "is_number", 
+    'is_preference'
 ]
 
 subset_clean_names = [
@@ -49,6 +53,9 @@ subset_clean_names = [
     "chemistry olympiad",
     "toxicology",
     "polymer chemistry",
+    "classification task", 
+    'numerical task', 
+    "chemical preference"
 ]
 
 
@@ -129,8 +136,8 @@ if __name__ == "__main__":
     )
 
     all_scores = pd.DataFrame(model_scores + human_scores)
-
     all_scores["subset"] = all_scores["subset"].map(rename_dict)
+    all_scores = all_scores[all_scores['model'].isin(MODELS_TO_PLOT + ['human'])]
     score_heatmap = all_scores.pivot_table(
         index="model", columns="subset", values="score", aggfunc="mean", fill_value=0
     )
@@ -146,7 +153,7 @@ if __name__ == "__main__":
         model_scores = pickle.load(handle)
     model_scores = obtain_subset_scores(model_scores["overall"], outdir)
     all_scores = pd.DataFrame(model_scores)
-
+    all_scores = all_scores[all_scores['model'].isin(MODELS_TO_PLOT + ['human'])]
     all_scores["subset"] = all_scores["subset"].map(rename_dict)
     score_heatmap = all_scores.pivot_table(
         index="model", columns="subset", values="score", aggfunc="mean", fill_value=0

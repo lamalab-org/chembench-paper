@@ -1,6 +1,5 @@
 from chembench.analysis import (
     load_all_reports,
-    get_human_scored_questions_with_at_least_n_scores,
     all_correct,
     merge_with_topic_info,
 )
@@ -124,7 +123,7 @@ def score_all_humans():
     for k, v in all_scores_w_tool.items():
         combined_df = pd.concat([v, all_scores_wo_tool[k]]).reset_index(drop=True)
         combined[k] = combined_df
-        
+
     combined = summarize_scores(combined)
 
     with open(data / "humans_as_models_scores_combined.pkl", "wb") as handle:
