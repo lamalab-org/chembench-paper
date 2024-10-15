@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from typing import Optional
-import numpy as np
 
 from matplotlib.patches import Circle, RegularPolygon
 from matplotlib.path import Path
@@ -9,7 +8,7 @@ from matplotlib.projections import register_projection
 from matplotlib.projections.polar import PolarAxes
 from matplotlib.spines import Spine
 from matplotlib.transforms import Affine2D
-import matplotlib.patches as patches
+import json
 
 
 def range_frame(ax, x, y, pad=0.1):
@@ -187,71 +186,9 @@ def radar_factory(num_vars, frame="circle"):
     register_projection(RadarAxes)
     return theta
 
+with open("color_palette.json", "r") as f:
+    model_color_map = json.load(f)
 
-tab20_colors = [
-    ["#1f77b4", "#aec7e8"],  # blue
-    ["#ff7f0e", "#ffbb78"],  # orange
-    ["#2ca02c", "#98df8a"],  # green
-    ["#d62728", "#ff9896"],  # red
-    ["#9467bd", "#c5b0d5"],  # purple
-    ["#8c564b", "#c49c94"],  # brown
-    ["#e377c2", "#f7b6d2"],  # pink
-    ["#7f7f7f", "#c7c7c7"],  # gray
-    ["#bcbd22", "#dbdb8d"],  # yellow
-    ["#17becf", "#9edae5"],  # teal
-    ["#ff6347", "#ffa07a"],  # tomato and light salmon
-    ["#4682b4", "#b0c4de"],  # steel blue and light steel blue
-    ["#556b2f", "#8fbc8f"],  # dark olive green and dark sea green
-    ["#6a5acd", "#b0e0e6"],  # slate blue and powder blue
-    ["#483d8b", "#8470ff"],  # dark slate blue and light slate blue
-    ["#ff1493", "#ff69b4"],  # deep pink and hot pink
-    ["#00ced1", "#afeeee"],  # dark turquoise and pale turquoise
-    ["#ff4500", "#ff8c00"],  # orange red and dark orange
-    ["#32cd32", "#98fb98"],  # lime green and pale green
-    ["#8b0000", "#fa8072"],  # dark red and salmon
-    ["#9400d3", "#dda0dd"],  # dark violet and plum
-    ["#ff00ff", "#dda0dd"],  # magenta and plum
-    ["#00ff00", "#7fff00"],  # lime and chartreuse
-    ["#0000ff", "#add8e6"],  # blue and light blue
-    ["#ff1493", "#ff69b4"],  # deep pink and hot pink
-    ["#00bfff", "#87cefa"],  # deep sky blue and light sky blue
-    ["#ff6347", "#ffdab9"],  # tomato and peach puff
-    ["#8a2be2", "#dda0dd"],  # blue violet and plum
-    ["#5f9ea0", "#b0e0e6"],  # cadet blue and powder blue
-]
-
-model_color_map = {
-    "human": tab20_colors[0][0],
-    "Claude2": tab20_colors[1][0],
-    "Claude3": tab20_colors[2][0],
-    "Claude35": tab20_colors[3][0],
-    "Command-R+": tab20_colors[4][0],
-    "Galactica-120B": tab20_colors[5][0],
-    "Gemini-Pro": tab20_colors[6][0],
-    "Gemma-7B": tab20_colors[7][0],
-    "Gemma-7B_Temp1": tab20_colors[7][1],
-    "Gemma2-9B": tab20_colors[8][0],
-    "Gemma2-9B_Temp1": tab20_colors[8][1],
-    "GPT-3.5-Turbo": tab20_colors[9][0],
-    "GPT-4": tab20_colors[10][0],
-    "GPT-4o": tab20_colors[11][0],
-    "Llama2-70B": tab20_colors[12][0],
-    "Llama3-8B": tab20_colors[13][0],
-    "Llama3-8B_Temp1": tab20_colors[13][1],
-    "Llama3-70B": tab20_colors[14][0],
-    "Llama3-70B_Temp1": tab20_colors[14][1],
-    "Llama3.1-8B": tab20_colors[15][0],
-    "Llama3.1-8B_Temp1": tab20_colors[15][1],
-    "Llama3.1-70B": tab20_colors[16][0],
-    "Llama3.1-70B_Temp1": tab20_colors[16][1],
-    "Llama3.1-405B": tab20_colors[17][0],
-    "Mistral-Large2-123B": tab20_colors[18][0],
-    "Mixtral-8x7B": tab20_colors[19][0],
-    "Mixtral-8x7B_Temp1": tab20_colors[19][1],
-    "PaperQA": tab20_colors[20][0],
-    "Phi3-Medium": tab20_colors[21][0],
-    "Random_Baseline": tab20_colors[22][0],
-}
 # number of parameters
 model_size_map = {
     "claude2": 130 * 10**9,
@@ -336,10 +273,6 @@ def parallel_coordinates_plot(
     host.xaxis.tick_top()
     if title is not None:
         host.set_title(title, fontsize=18)
-
-    if colors is None:
-        # colors = plt.cm.tab10.colors
-        colors = sum(tab20_colors, [])
 
     legend_handles = []
     for j in range(N):
