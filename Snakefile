@@ -75,6 +75,7 @@ rule model_score_dict:
         "src/data/human_no_tool_answered_questions.txt",
         "src/data/human_tool_answered_questions.txt",
         "src/data/human_answered_questions.txt",]
+    cache: True
     output:
         "src/data/model_score_dicts.pkl"
     script:
