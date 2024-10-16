@@ -127,26 +127,43 @@ rule performance_per_source:
     script: 
         "src/scripts/analyze_performance_per_source.py"
 
-rule reading_ease_vs_model_performance: 
-    input:
-        ["src/data/model_score_dicts.pkl",
-        "src/data/questions.pkl"]
-    output:
-        ["src/tex/figures/reading_ease_vs_model_performance.pdf",
-        "src/tex/output/reading_ease.pkl"]
-    script:
-        "src/scripts/reading_ease_vs_model_performance.py"
+# rule reading_ease_vs_model_performance: 
+#     input:
+#         ["src/data/model_score_dicts.pkl",
+#         "src/data/questions.pkl"]
+#     output:
+#         ["src/tex/figures/reading_ease_vs_model_performance.pdf",
+#         "src/tex/output/reading_ease.pkl"]
+#     script:
+#         "src/scripts/reading_ease_vs_model_performance.py"
 
 
 
 # plot the overall performance
 rule plot_overview_performance:
     input:
-        ["src/data/model_score_dicts.pkl",]
+        "src/data/model_score_dicts.pkl"
     output:
         [
             "src/tex/figures/overall_performance.pdf",
-            # "src/tex/figures/human_subset_performance.pdf",
         ],
     script:
         "src/scripts/plot_overview_performance_plot.py"
+
+
+# plots the performance in various ways
+rule analyze_model_reports:
+    input:
+        ["src/data/model_score_dicts.pkl", "src/data/humans_as_models_scores_combined.pkl"],
+    output:
+        ["src/tex/figures/all_questions_models_completely_correct_radar_overall.pdf"],  #, "src/tex/figures/all_questions_models_requires_calculation_radar_overall.pdf", "src/tex/figures/all_questions_models_completely_correct_radar_human_aligned.pdf", "src/tex/figures/all_questions_models_requires_calculation_radar_human_aligned.pdf"]
+    script:
+        "src/scripts/analyze_model_reports.py"
+
+rule plot_human_score_distribution:
+    input:
+        rules.human_statistics.output
+    output:
+        "src/tex/figures/human_score_distribution.pdf",
+    script:
+        "src/scripts/plot_human_score_distribution.py"

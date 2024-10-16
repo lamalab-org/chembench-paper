@@ -1,33 +1,42 @@
 from glob import glob
-import os
-from pathlib import Path
-import subprocess
-from utils import obtain_chembench_repo
 from paths import output, data
+from utils import obtain_chembench_repo
+import numpy as np
+import json
+import os
+import pickle
 
-if __name__ == "__main__":
+
+def obtain_human_scores():
     chembench_repo = obtain_chembench_repo()
-    human_files = os.listdir(os.path.join(chembench_repo, "reports", "humans"))
-    human_files = [
-        os.path.join(chembench_repo, "reports", "humans", p)
-        for p in human_files
-    ]
 
-    outpath = os.path.join(output, "human_scores")
-    if not os.path.exists(outpath):
-        os.mkdir(outpath)
+    human_reports_dir = os.path.join(chembench_repo, "reports", "humans")
 
-    datafolder = os.path.join(chembench_repo, "data")
-    human_baseline_folder = os.path.join(chembench_repo, "reports", "humans")
-    scriptpath = os.path.join(chembench_repo, "scripts", "collect_scores.py")
+    human_scores_with_tools_files = glob(
+        os.path.join(human_reports_dir, "*_h_tool*.json")
+    )
 
-    for file in human_files:
-        try:
-            p = Path(file).parts[-1]
-            outfile = os.path.join(outpath, p + ".json")
-            subprocess.run(
-                f"python {scriptpath} {file} {outfile} --datafolder={datafolder} --human_baseline_folder={human_baseline_folder}",
-                shell=True,
-            )
-        except Exception:
-            pass
+    human_scores_without_tools_files = glob(
+        os.path.join(human_reports_dir, "*_h_notool*.json")
+    )
+
+    human_scores_with_tools, human_scores_without_tools = [], []
+
+    for file in human_scores_with_tools_files:
+        with open(file, "r") as handle:
+            d = json.load(handle)
+            human_scores_with_tools.append(d["fraction_correct"])
+
+    for file in human_scores_without_tools_files:
+        with open(file, "r") as handle:
+            d = json.load(handle)
+            human_scores_without_tools.append(d["fraction_correct"])
+
+    human_scores_with_tools = np.array(human_scores_with_tools)
+    human_scores_without_tools = np.array(human_scores_without_tools)
+
+    all_human_scores = np.concatenate(
+        [human_scores_with_tools, human_scores_without_tools]
+    )
+
+    return human_scores_with_tools, human_scores_without_tools, all_human_scores

@@ -32,12 +32,13 @@ datasets:
 # Custom file dependencies
 dependencies:
   src/scripts/compute_basic_statistics.py:
-    - src/tex/data/question.pkl
+    - src/data/question.pkl
+  src/scripts/plot_overview_performance_plot.py:
+    - src/data/name_to_dir_map.pkl
   # src/scripts/get_model_performance_dicts.py:
   #   - src/tex/data/question.pkl
-  # src/scripts/analyze_model_reports.py:
-  #   - src/data/humans_as_models_scores.pkl
-  #   - src/data/model_score_dicts.pkl
+  src/scripts/analyze_model_reports.py:
+    - src/data/model_score_dicts.pkl
   src/scripts/analyze_performance_per_source.py:
     - src/data/model_score_dicts.pkl
   #   - src/data/humans_as_models_scores.pkl

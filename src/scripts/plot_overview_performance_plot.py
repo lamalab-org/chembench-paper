@@ -9,41 +9,17 @@ import pickle
 from paths import data
 from utils import obtain_chembench_repo
 from definitions import MODELS_TO_PLOT
+from collect_human_scores import obtain_human_scores
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
 
-human_dir = output / "human_scores"
-
-chembench_repo = obtain_chembench_repo()
-
 with open(data / "name_to_dir_map.pkl", "rb") as handle:
     model_file_name_to_label = pickle.load(handle)
 
-human_reports_dir = os.path.join(chembench_repo, "reports", "humans")
-
-human_scores_with_tools_files = glob(os.path.join(human_reports_dir, "*_h_tool*.json"))
-
-human_scores_without_tools_files = glob(
-    os.path.join(human_reports_dir, "*_h_notool*.json")
+human_scores_with_tools, human_scores_without_tools, all_human_scores = (
+    obtain_human_scores()
 )
-
-human_scores_with_tools, human_scores_without_tools = [], []
-
-for file in human_scores_with_tools_files:
-    with open(file, "r") as handle:
-        d = json.load(handle)
-        human_scores_with_tools.append(d["fraction_correct"])
-
-for file in human_scores_without_tools_files:
-    with open(file, "r") as handle:
-        d = json.load(handle)
-        human_scores_without_tools.append(d["fraction_correct"])
-
-human_scores_with_tools = np.array(human_scores_with_tools)
-human_scores_without_tools = np.array(human_scores_without_tools)
-
-all_human_scores = np.concatenate([human_scores_with_tools, human_scores_without_tools])
 
 
 def plot_performance(
