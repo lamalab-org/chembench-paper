@@ -1,5 +1,4 @@
 import json
-import os
 
 from loguru import logger
 
@@ -63,113 +62,6 @@ model_file_name_to_label = {
     # "random_baseline": "Random Baseline"
 }
 
-def make_table(results, output_tex_file) -> None:
-    models = []
-    overall_performance = []
-    calculation = []
-    knowledge = []
-    reasoning = []
-    intuition = []
-    easy = []
-    medium = []
-    advanced = []
-
-    for model, values in results.items():
-        if model not in model_file_name_to_label:
-            continue
-        models.append(value_) if (value_ := model_file_name_to_label.get(model)) is not None else print(f"Model {model} not in the dictionary")
-        overall_performance.append(values["fraction_correct"])
-        total_questions = len(values["model_scores"])
-        
-        total_calculation = 0
-        total_knowledge = 0
-        total_reasoning = 0
-        total_intuition = 0
-        total_easy = 0
-        total_medium = 0
-        total_advanced = 0
-
-        count_calculation = 0
-        count_knowledge = 0
-        count_reasoning = 0 
-        count_intuition = 0
-        count_easy = 0
-        count_medium = 0
-        count_advanced = 0
-        for value in values["model_scores"]:
-            print(value)
-            keywords = value["keywords"]
-            correct = value ["all_correct"]
-            if "requires-calculation" in keywords:
-                total_calculation += 1
-                if correct:
-                    count_calculation +=1
-            if "requires-knowledge" in keywords:
-                total_knowledge += 1
-                if correct:
-                    count_knowledge += 1
-            if "requires-reasoning" in keywords:
-                total_reasoning += 1
-                if correct:
-                    count_reasoning += 1
-            if "requires-intuition" in keywords:
-                total_intuition += 1
-                if correct:
-                    count_intuition += 1
-            if "difficulty-basic" in keywords:
-                total_easy += 1
-                if correct:
-                    count_easy += 1
-            elif "difficulty-advanced" in keywords:
-                total_advanced += 1
-                if correct:
-                    count_advanced += 1
-            else:
-                total_medium += 1
-                if correct:
-                    count_medium += 1
-        
-        calculation.append(count_calculation/total_calculation)
-        knowledge.append(count_knowledge/total_knowledge)
-        reasoning.append(count_reasoning/total_reasoning)
-        intuition.append(count_intuition/total_intuition)
-        easy.append(count_easy/total_easy)
-        medium.append(count_medium/total_medium)
-        advanced.append(count_advanced/total_advanced)
-
-
-    df = pd.DataFrame({
-        "Model": models,
-        "Calculation": calculation,
-        "Knowledge": knowledge,
-        "Reasoning": reasoning,
-        "Intuition": intuition,
-        "Basic": easy,
-        "Intermediate": medium,
-        "Advanced": advanced,
-        "Overall Accuracy": overall_performance,
-    })
-
-    df.columns = pd.MultiIndex.from_tuples([
-        ("Model", ""),
-        ("Requires", "Calculation"),
-        ("Requires", "Knowledge"),
-        ("Requires", "Reasoning"),
-        ("Requires", "Intuition"),
-        ("Difficulty", "Basic"),
-        ("Difficulty", "Intermediate"),
-        ("Difficulty", "Advanced"),
-        ("", "Overall Accuracy"),
-    ])
-    
-    latex_table = df.to_latex(index=False, multirow=True)
-    
-    with open(output_tex_file, 'w') as f:
-        f.write(latex_table)
-
-    return
-
-
 def combine_scores_for_model(folder, datafolder, human_baseline_folder=None, min_human_responses: int = 4):
     try:
         df = load_all_reports(folder, datafolder)
@@ -225,9 +117,10 @@ def collect_human_results(human_path, datafolder, min_reports=200) -> list:
         tools_df = load_all_reports(tools_paths, datafolder)
         notools_df = load_all_reports(notools_paths, datafolder)
 
-        df = pd.concat([tools_df, notools_df], ignore_index=True)
-        if len(df) < min_reports:
-            continue
+        df = notools_df
+        # df = pd.concat([tools_df, notools_df], ignore_index=True)
+        # if len(df) < min_reports:
+            # continue
 
         model_scores = []
         all_correct_count = 0
@@ -347,18 +240,6 @@ if __name__ == "__main__":
         os.path.join(chembench_repo, "reports", "**", "*.json")
     )
 
-    # model_overall_scores = {}
-    # overall_scores = {}
-    # for file in overall_files:
-    #     p = Path(file).parts[-2]
-    #     with open(file, "r") as f:
-    #         data = json.load(f)
-    #     model_overall_scores[p] = data["fraction_correct"]
-    #     overall_scores[p] = data
-
-    # model_overall_scores = [(model_file_name_to_label[k], v) for k, v in model_overall_scores.items() if k in model_file_name_to_label]
-
-
     models = list(set([Path(p).parent for p in reports]))
     logger.info(f"Found {len(models)} reports")
     logger.debug(f"First 5 reports: {models[:5]}")
@@ -371,6 +252,7 @@ if __name__ == "__main__":
 
     model_overall_scores = {}
     overall_scores = {}
+    overall_human_scores = {}
     model_scores_human_subset = {}
     for i, file in enumerate(models):
         try:
@@ -380,6 +262,7 @@ if __name__ == "__main__":
             model_results = combine_scores_for_model(file, datafolder)
             model_overall_scores[p] = model_results["fraction_correct"]
             overall_scores[p] = model_results
+            overall_human_scores[p] = human_results
         except Exception as e:
             logger.error(f"Error processing {file}: {e}")
             pass
@@ -388,6 +271,13 @@ if __name__ == "__main__":
     model_scores_human_subset = [
         (model_file_name_to_label[k], v) for k, v in model_scores_human_subset.items() if k in model_file_name_to_label
     ]
+
+    with open(os.path.join(output, "p_model_overall_scores.pkl"), 'wb') as f:
+        pickle.dump(model_overall_scores, f)
+
+    with open(os.path.join(output, "p_model_scores_human_subset.pkl"), 'wb') as f:
+        pickle.dump(model_scores_human_subset, f)
+
     human_path = os.path.join(chembench_repo, "reports", "humans", "reports")
 
     human_subset = collect_human_results(human_path, datafolder)
@@ -404,9 +294,3 @@ if __name__ == "__main__":
         figures / "human_subset_performance.pdf",
         human_scores
     )
-    
-    overall_scores["humans"] = human_subset
-    human_results["humans"] = human_subset
-
-    make_table(overall_scores, output / "performance_table.tex")
-    make_table(human_results, output / "performance_table_human_subset.tex")
