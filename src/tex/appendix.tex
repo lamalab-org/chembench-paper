@@ -14,6 +14,9 @@
     \item \emph{Probing capabilities beyond answering of \glspl{mcq}}. In real-world chemistry, as well as higher-level university education, multiple-choice questions are seldom utilized.
     Yet, most benchmarking frameworks focus on the \gls{mcq} setting because of the ease of evaluation. Realistic evaluations must measure capabilities beyond answering \gls{mcq}.
     \item \emph{Cover a diverse set of topics}. Chemistry, as the \enquote{central science}, bridges multiple disciplines.\autocite{Aspuru_Guzik_2018} To even just approximate \enquote{chemistry capabilities} the topics covered by a chemistry benchmark must be very diverse.
+    \item \emph{Cover diverse skills}. To holistically judge performance it is important to cover questions relying on reasoning, calculation, knowledge, intuition. 
+    \item \emph{Cover a range of difficulty levels}. To allow for a continuous measure of improvement for a range of different (evolving) systems, a benchmark should cover a wide range of difficulty levels.
+    \item \emph{Impossible to completely solve with current models}. A benchmark should contain questions that are impossible to solve with current models. If current models can solve all questions, the benchmark provides no useful signal.
 \end{itemize}
 
 \subsection{Related work}
@@ -55,8 +58,8 @@ A substantial fraction, in contrast to other benchmarks, is open-ended.
 
 \subsection{Model performance}
 We also evaluated the model performance on the entire \chembench corpus. 
-\Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered completely correctly by the models. 
-Note that this ranking differs from the one on the \enquote{tiny} subset.
+\Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered correctly by the models. 
+Note that this ranking differs from the one on the \enquote{tiny} subset
 
 % \begin{figure}[htb]
 %     \centering
@@ -110,7 +113,7 @@ Interestingly, the performance of the models on questions sourced based on textb
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/performance_per_topic.pdf}
-    \caption{\textbf{Fraction of completely correctly answered questions per data source.} The heatmap shows, in color, the fraction of questions answered completely correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none of the questions were answered completely correctly.
+    \caption{\textbf{Fraction of correctly answered questions per data source.} The heatmap shows, in color, the fraction of questions answered correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none of the questions were answered completely correctly.
         We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for our leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
     }
     \label{fig:performance_per_topic}
@@ -133,14 +136,14 @@ Interestingly, the performance of the models on questions sourced based on textb
 One might wonder if questions that are more difficult to parse lead to worse performance of the models.
 \Cref{fig:reading_ease_vs_model_performance} shows no clear correlation between the reading ease of the questions and the performance of the models.
 
-% \begin{figure}
-%     \centering
-%     \hspace*{-1cm}
-%     \includegraphics{figures/reading_ease_vs_model_performance.pdf}
-%     \caption{\textbf{Model performance as a function of reading ease.} The violin plots show the distribution of reading ease scores for questions answered completely correctly and those not. We do not observe a clear correlation between the reading ease of the questions and the performance of the models. }
-%     \script{reading_ease_vs_model_performance.py}
-%     \label{fig:reading_ease_vs_model_performance}
-% \end{figure}
+\begin{figure}
+    \centering
+    \hspace*{-1cm}
+    \includegraphics{figures/reading_ease_vs_model_performance.pdf}
+    \caption{\textbf{Model performance as a function of reading ease.} The violin plots show the distribution of reading ease scores for questions answered completely correctly and those not. We do not observe a clear correlation between the reading ease of the questions and the performance of the models. }
+    \script{reading_ease_vs_model_performance.py}
+    \label{fig:reading_ease_vs_model_performance}
+\end{figure}
 
 % In addition, we analyzed the performance on questions which requires calculation. For this, we manually labeled questions that require multiple calculation steps. 
 % We find that the ranking of models is different for questions with our without calculations (\Cref{fig:requires_cal}). 

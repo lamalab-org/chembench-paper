@@ -137,9 +137,9 @@ Hence, we use them for our evaluations.
 % \begin{figure}[!h]
 %     \centering
 %     \includegraphics{figures/human_subset_performance.pdf}
-%     \caption{\textbf{Performance of models and humans on the \enquote{tiny} subset of the  \chembench corpus.} The figure shows the percentage of questions that the models answered completely correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
+%     \caption{\textbf{Performance of models and humans on the \enquote{tiny} subset of the  \chembench corpus.} The figure shows the percentage of questions that the models answered correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
 %     Since the humans did not answer all the questions, this plot is based on the subset of questions that most humans answered.
-%     The evaluation we use here is very strict as it only considers a question answered completely correctly or completely incorrectly, partially correct answers are also considered incorrect.
+%     The evaluation we use here is very strict as it only considers a question answered correctly or incorrectly, partially correct answers are also considered incorrect.
 %     \Cref{fig:barplot_all_correct_all_questions} provides an overview of the performance of various models on the entire corpus.
 %     Systems with \enquote{ReAct} in the name are tool augmented, i.e., they can call external tools such as web search or Python code executors to better answer the questions.
 %     However, we limit those systems to a maximum of ten calls to the \gls{llm}. This constraint led the systems to often not find the correct answer within the specified number of calls.
@@ -171,7 +171,7 @@ We then computed the percentage of questions the models or humans answered corre
 %     \centering
 %     \includegraphics{figures/all_questions_models_completely_correct_radar_human.pdf}
 %     \caption{\textbf{Performance of the models and humans on the different topics of the \enquote{tiny} subset of the \chembench corpus.} The radar plot shows the performance of the models and humans on the different topics of \enquote{tiny} subset of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correctly by the models.
-%     The best score for every dimension is one (all questions answered correctly), and the worst is zero (no question answered completely correctly). A larger colored area indicates a better performance.
+%     The best score for every dimension is one (all questions answered correctly), and the worst is zero (no question answered correctly). A larger colored area indicates a better performance.
 %     This figure shows the performance on the subset of questions that were answered by humans. The performance of models on the entire corpus is shown in \Cref{fig:performance_per_topic}.
 %     }
 %     \label{fig:all_questions_models_completely_correct_radar_human}
@@ -224,7 +224,7 @@ REWRITE
 % \begin{figure}[!h]
 %     \centering
 %     \includegraphics{figures/confidence_vs_performance_overall.pdf}
-%     \caption{\textbf{Relationship between confidence of the model in the answer and correctness.} For this analysis, we used verbalized confidence estimates from the model. We prompted the models to return a confidence score on an ordinal scale to obtain those estimates. We then plot the correctness of the answers (which is calculated as the mean value of all answers being either completely correct (1) or completely incorrect (0)) against the confidence score.
+%     \caption{\textbf{Relationship between confidence of the model in the answer and correctness.} For this analysis, we used verbalized confidence estimates from the model. We prompted the models to return a confidence score on an ordinal scale to obtain those estimates. We then plot the correctness of the answers (which is calculated as the mean value of all answers being either correct (1) or incorrect (0)) against the confidence score.
 %         The stripplots show the individual data points, a strong density indicating a higher number of points. The lines show the mean, and the error bars show the standard error of the mean. The figure shows that the reliability of the confidence estimates varies widely across models. While the ones for GPT-4 and Claude 2 are not particularly reliable, the ones for Claude 3 follow the expected trend better.}
 %     \label{fig:confidence_vs_performance}
 %     \script{joint_analysis_confidence_performance.py}

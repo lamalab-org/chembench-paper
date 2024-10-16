@@ -113,3 +113,13 @@ rule performance_per_source:
         ],
     script: 
         "src/scripts/analyze_performance_per_source.py"
+
+rule reading_ease_vs_model_performance: 
+    input:
+        ["src/data/model_score_dicts.pkl",
+        "src/data/questions.pkl"]
+    output:
+        ["src/tex/figures/reading_ease_vs_model_performance.pdf",
+        "src/tex/output/reading_ease.pkl"]
+    script:
+        "src/scripts/reading_ease_vs_model_performance.py"
