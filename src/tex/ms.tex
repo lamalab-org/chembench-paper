@@ -67,7 +67,7 @@ This is likely because they cannot automatically be used with black box (or tool
 On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights on how the models compare relative to experts.
 
 In this work, we report a novel benchmarking framework  (\Cref{fig:overview_figure}), which we call \chembench, and use it to reveal limitations of current frontier models for use in the chemical sciences.
-Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs manually (\variable{output/manually_generated.txt}\unskip) or semi-automatically (\variable{output/automatically_generated.txt}\unskip) compiled from diverse sources.
+Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs compiled from diverse sources (\variable{output/manually_generated.txt}\xspace manually generated, and \variable{output/automatically_generated.txt}\xspace automatically generated).  
 Our corpus covers a large fraction of the topics taught in undergraduate and graduate chemistry curricula. It can be used to evaluate any system that can return text (i.e., including tool-augmented systems).
 
 To contextualize the scores, we also surveyed \variable{output/number_experts.txt} experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with (human) chemists of different specializations.
@@ -95,24 +95,24 @@ Importantly, our large pool of questions encompasses a wide range of topics and 
 We also classify the questions based on what techniques are required to answer them. Here, we distinguish between questions that require knowledge, reasoning, calculation, intuition or a combination of these.
 Moreover, to allow for a more nuanced evaluation of the models capabilities, the questions are also classified by difficulty.
 
-\begin{figure}[!htb]
-    \centering
-    \includegraphics{figures/question_count_barplot.pdf}
-    \caption{\textbf{Number of questions for different topics.} The topics have been assigned using a combination of a rule-based system (mostly based on the source the question has been sampled from) and a classifier operating on word embeddings of the questions. 
-    The figure shows that not all aspects of chemistry are equally represented in our corpus. The \chembench corpus, by design, currently focuses on safety-related aspects, which is also evident in \Cref{fig:question_diversity}. This figure represents the combined count of multiple-choice questions (\gls{mcq}) and open-ended questions.}
-    \label{fig:topic_barplot}
-    \script{plot_statistics.py}
-\end{figure}
+% \begin{figure}[!htb]
+%     \centering
+%     \includegraphics{figures/question_count_barplot.pdf}
+%     \caption{\textbf{Number of questions for different topics.} The topics have been assigned using a combination of a rule-based system (mostly based on the source the question has been sampled from) and a classifier operating on word embeddings of the questions. 
+%     The figure shows that not all aspects of chemistry are equally represented in our corpus. The \chembench corpus, by design, currently focuses on safety-related aspects, which is also evident in \Cref{fig:question_diversity}. This figure represents the combined count of multiple-choice questions (\gls{mcq}) and open-ended questions.}
+%     \label{fig:topic_barplot}
+%     \script{plot_statistics.py}
+% \end{figure}
 
 
 While many existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
-For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions).
+%For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions).
 
 
 \paragraph{\enquote{Tiny} subset}
 It is important to note that a smaller subset of the corpus might be more practical for routine evaluations.\autocite{polo2024tinybenchmarks}
 For instance,~\textcite{liang2023holistic} report costs of more than \$10,000 for \gls{api} calls for a single evaluation on the widely used \gls{helm} benchmark. 
-To address this, we also provide a subset (\variable{output/num_tiny_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus in which topics are more balanced than in the complete corpus (see \Cref{sec:subset-selection} for details on the curation process).
+%To address this, we also provide a subset (\variable{output/num_tiny_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus in which topics are more balanced than in the complete corpus (see \Cref{sec:subset-selection} for details on the curation process).
 We also used this subset to seed the web application for the human baseline study. 
 
 
@@ -137,9 +137,9 @@ Hence, we use them for our evaluations.
 \begin{figure}[!h]
     \centering
     \includegraphics{figures/human_subset_performance.pdf}
-    \caption{\textbf{Performance of models and humans on the \enquote{tiny} subset of the  \chembench corpus.} The figure shows the percentage of questions that the models answered completely correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
+    \caption{\textbf{Performance of models and humans on the \enquote{tiny} subset of the  \chembench corpus.} The figure shows the percentage of questions that the models answered correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
     Since the humans did not answer all the questions, this plot is based on the subset of questions that most humans answered.
-    The evaluation we use here is very strict as it only considers a question answered completely correctly or completely incorrectly, partially correct answers are also considered incorrect.
+    The evaluation we use here is very strict as it only considers a question answered correctly or incorrectly, partially correct answers are also considered incorrect.
     \Cref{fig:barplot_all_correct_all_questions} provides an overview of the performance of various models on the entire corpus.
     Systems with \enquote{ReAct} in the name are tool augmented, i.e., they can call external tools such as web search or Python code executors to better answer the questions.
     However, we limit those systems to a maximum of ten calls to the \gls{llm}. This constraint led the systems to often not find the correct answer within the specified number of calls.
@@ -167,61 +167,74 @@ This observation highlights the importance of communicating and measuring not on
 \paragraph{Performance per topic} To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
 For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}). We classified all questions in the \chembench corpus into these topics based on hand-crafted rules and classifier models operating on the question texts.
 We then computed the percentage of questions the models or humans answered correctly for each topic.
-\begin{figure}[!h]
-    \centering
-    \includegraphics{figures/all_questions_models_completely_correct_radar_human.pdf}
-    \caption{\textbf{Performance of the models and humans on the different topics of the \enquote{tiny} subset of the \chembench corpus.} The radar plot shows the performance of the models and humans on the different topics of \enquote{tiny} subset of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correctly by the models.
-    The best score for every dimension is one (all questions answered correctly), and the worst is zero (no question answered completely correctly). A larger colored area indicates a better performance.
-    This figure shows the performance on the subset of questions that were answered by humans. The performance of models on the entire corpus is shown in \Cref{fig:performance_per_topic}.
-    }
-    \label{fig:all_questions_models_completely_correct_radar_human}
-    \script{analyze_model_reports.py}
-\end{figure}
-In this spider chart, the worst score for every dimension is zero (no question answered correctly), and the best score is one (all questions answered correctly). 
-Thus, a larger colored area indicates a better performance. 
-One can observe that this performance varies widely across models and topics. 
-While macromolecular chemistry and biochemistry receive relatively high scores for many models, this is not the case for topics such as chemical safety or analytical chemistry.
-In the subfield of analytical chemistry the prediction of the number of signals observable in a \gls{nmr} spectrum proved difficult for the models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_gpt4.txt} percent correct answers for GPT-4) while this question appeared easier (\variable{output/human_subset_scores/is_number_nmr_peaks.txt} percent correct) for trained humans.
-Importantly, the human experts are given a drawing of the compounds, whereas models are only shown the \gls{smiles} string of a compound and have to use this to reason about the symmetry of the compound (i.e., to identify the number of diasterotopically distinct protons, which requires \emph{reasoning} about the topology and structure of a molecule). 
-These findings also shine an interesting light on the value of textbook-inspired questions. 
-A subset of the questions in the \chembench are based on textbooks targeted at undergraduate students. 
-On those questions, the models tend to perform better than on some of our semi-automatically constructed tasks (see \Cref{fig:performance_per_topic}).
-For instance, while the overall performance in the chemical safety topic is low, the models would pass the certification exam according to the German Chemical Prohibition Ordinance based on a subset of questions we sampled from the corresponding question bank (e.g., \variable{output/subset_scores/is_gfk_gpt4.txt}\% correct answers for GPT-4, \variable{output/subset_scores/is_gfk_claude3.txt}\% for Claude 3, and \variable{output/human_subset_scores/is_gfk.txt}\% for the human experts).
-While those findings are impacted by the subset of questions we sampled, the results still highlight that good performance on such question bank or textbook questions does not necessarily translate to good performance on other questions that require more reasoning.
+% \begin{figure}[!h]
+%     \centering
+%     \includegraphics{figures/all_questions_models_completely_correct_radar_human.pdf}
+%     \caption{\textbf{Performance of the models and humans on the different topics of the \enquote{tiny} subset of the \chembench corpus.} The radar plot shows the performance of the models and humans on the different topics of \enquote{tiny} subset of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correctly by the models.
+%     The best score for every dimension is one (all questions answered correctly), and the worst is zero (no question answered correctly). A larger colored area indicates a better performance.
+%     This figure shows the performance on the subset of questions that were answered by humans. The performance of models on the entire corpus is shown in \Cref{fig:performance_per_topic}.
+%     }
+%     \label{fig:all_questions_models_completely_correct_radar_human}
+%     \script{analyze_model_reports.py}
+% \end{figure}
 
-We also gain insight into the models' struggles with chemical reasoning tasks when we examine their performance as a function of molecular descriptors.
-If the model would answer questions after reasoning about the structures, one would expect the performance to depend on the complexity of the molecules.
-However, we find that the models' performance does not correlate with complexity indicators but rather trivially with the size of the compounds (see \Cref{tab:correlation_coefficients}).
-This indicates that the models may not be able to reason about the structures of the molecules (in the way one might expect) but instead rely on retrieval of fragments of the training data.
-Those observations mirror recent findings that \glspl{llm} struggle to \enquote{reverse} facts they have seen in training (i.e., generalize from \enquote{A has feature B} to \enquote{B is a feature of A}).\autocite{berglund2023reversal, zhu2023physics, allen2023physics, golovneva2024reverse}
 
-It is important to note that the model performance for some topics, however, is underestimated in the current evaluation. 
-This is because models provided via \glspl{api} typically have safety mechanisms that prevent them from providing answers that the provider deems unsafe.
-For instance, models might refuse to provide answers about cyanides. 
-To overcome this, direct access to the model weights would be required, and we strive to collaborate with the developers of frontier models to overcome this limitation in the future.
-This is facilitated with the tooling \chembench provides, thanks to which contributors can automatically add new models in an open science fashion.
+% In this spider chart, the worst score for every dimension is zero (no question answered correctly), and the best score is one (all questions answered correctly). 
+% Thus, a larger colored area indicates a better performance. 
+% One can observe that this performance varies widely across models and topics. 
+% While macromolecular chemistry and biochemistry receive relatively high scores for many models, this is not the case for topics such as chemical safety or analytical chemistry.
+% In the subfield of analytical chemistry the prediction of the number of signals observable in a \gls{nmr} spectrum proved difficult for the models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_gpt4.txt} percent correct answers for GPT-4) while this question appeared easier (\variable{output/human_subset_scores/is_number_nmr_peaks.txt} percent correct) for trained humans.
+% Importantly, the human experts are given a drawing of the compounds, whereas models are only shown the \gls{smiles} string of a compound and have to use this to reason about the symmetry of the compound (i.e., to identify the number of diasterotopically distinct protons, which requires \emph{reasoning} about the topology and structure of a molecule). 
+% These findings also shine an interesting light on the value of textbook-inspired questions. 
+% A subset of the questions in the \chembench are based on textbooks targeted at undergraduate students. 
+% On those questions, the models tend to perform better than on some of our semi-automatically constructed tasks (see \Cref{fig:performance_per_topic}).
+% For instance, while the overall performance in the chemical safety topic is low, the models would pass the certification exam according to the German Chemical Prohibition Ordinance based on a subset of questions we sampled from the corresponding question bank (e.g., \variable{output/subset_scores/is_gfk_gpt4.txt}\% correct answers for GPT-4, \variable{output/subset_scores/is_gfk_claude3.txt}\% for Claude 3, and \variable{output/human_subset_scores/is_gfk.txt}\% for the human experts).
+% While those findings are impacted by the subset of questions we sampled, the results still highlight that good performance on such question bank or textbook questions does not necessarily translate to good performance on other questions that require more reasoning.
 
-\clearpage
+% We also gain insight into the models' struggles with chemical reasoning tasks when we examine their performance as a function of molecular descriptors.
+% If the model would answer questions after reasoning about the structures, one would expect the performance to depend on the complexity of the molecules.
+% However, we find that the models' performance does not correlate with complexity indicators but rather trivially with the size of the compounds (see \Cref{tab:correlation_coefficients}).
+% This indicates that the models may not be able to reason about the structures of the molecules (in the way one might expect) but instead rely on retrieval of fragments of the training data.
+% Those observations mirror recent findings that \glspl{llm} struggle to \enquote{reverse} facts they have seen in training (i.e., generalize from \enquote{A has feature B} to \enquote{B is a feature of A}).\autocite{berglund2023reversal, zhu2023physics, allen2023physics, golovneva2024reverse}
+
+% It is important to note that the model performance for some topics, however, is underestimated in the current evaluation. 
+% This is because models provided via \glspl{api} typically have safety mechanisms that prevent them from providing answers that the provider deems unsafe.
+% For instance, models might refuse to provide answers about cyanides. 
+% To overcome this, direct access to the model weights would be required, and we strive to collaborate with the developers of frontier models to overcome this limitation in the future.
+% This is facilitated with the tooling \chembench provides, thanks to which contributors can automatically add new models in an open science fashion.
+
+\paragraph{Judging chemical preference}
+
+One interesting finding of recent research is that foundation models can judge interestingness.\autocite{zhang2024omniopenendednessmodelshuman}
+If models could do so for chemical compounds, this would open opportunities for novel optimization approaches. 
+Such open-ended tasks, however, depend on an external observer defining what interestingness is.\autocite{hughes2024openendednessessentialartificialsuperhuman}
+Here, we posed models the same question~\textcite{Choung_2023} asked chemists at a drug company: \enquote{Which of the two compounds do you prefer?} (in the context of an early virtual screening campaign setting).
+While chemists showed a fair degree of interrater agreement, most of our models do not correlate with the preferences of expert chemists---even if they perform well on many other tasks in \chembench.
+This indicates that using preference tuning for chemical settings is a promising approach to explore in future research.
+
 
 % Estimate of difficulty
 \paragraph{Confidence estimates} One might wonder whether the models can estimate if they can answer a question correctly. 
 If they could do so, incorrect answers would be less problematic as one could detect when an answer is incorrect.
-To investigate this, we prompted\autocite{xiong2023llms} some of the top-performing models to estimate, on an ordinal scale, their confidence in their ability to answer the question correctly.
 
-\begin{figure}[!h]
-    \centering
-    \includegraphics{figures/confidence_vs_performance_overall.pdf}
-    \caption{\textbf{Relationship between confidence of the model in the answer and correctness.} For this analysis, we used verbalized confidence estimates from the model. We prompted the models to return a confidence score on an ordinal scale to obtain those estimates. We then plot the correctness of the answers (which is calculated as the mean value of all answers being either completely correct (1) or completely incorrect (0)) against the confidence score.
-        The stripplots show the individual data points, a strong density indicating a higher number of points. The lines show the mean, and the error bars show the standard error of the mean. The figure shows that the reliability of the confidence estimates varies widely across models. While the ones for GPT-4 and Claude 2 are not particularly reliable, the ones for Claude 3 follow the expected trend better.}
-    \label{fig:confidence_vs_performance}
-    \script{joint_analysis_confidence_performance.py}
-\end{figure}
+REWRITE 
 
-In \Cref{fig:confidence_vs_performance}, we show that for some models, there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
-For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the model's outputs.\autocite{Li_2023, miret2024llms}
-For example, for the questions about the safety profile of compounds, GPT-4 reported an average confidence of \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_correct_overall.txt} (on a scale of 1--5) for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_correct_overall.txt} questions it answered correctly and \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_incorrect_overall.txt} for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_incorrect_overall.txt} questions it answered incorrectly.
-While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading in some cases. 
-For example, for the questions about \gls{ghs} pictograms Claude 3 returns an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
+%To investigate this, we prompted\autocite{xiong2023llms} some of the top-performing models to estimate, on an ordinal scale, their confidence in their ability to answer the question correctly.
+
+% \begin{figure}[!h]
+%     \centering
+%     \includegraphics{figures/confidence_vs_performance_overall.pdf}
+%     \caption{\textbf{Relationship between confidence of the model in the answer and correctness.} For this analysis, we used verbalized confidence estimates from the model. We prompted the models to return a confidence score on an ordinal scale to obtain those estimates. We then plot the correctness of the answers (which is calculated as the mean value of all answers being either correct (1) or incorrect (0)) against the confidence score.
+%         The stripplots show the individual data points, a strong density indicating a higher number of points. The lines show the mean, and the error bars show the standard error of the mean. The figure shows that the reliability of the confidence estimates varies widely across models. While the ones for GPT-4 and Claude 2 are not particularly reliable, the ones for Claude 3 follow the expected trend better.}
+%     \label{fig:confidence_vs_performance}
+%     \script{joint_analysis_confidence_performance.py}
+% \end{figure}
+
+% In \Cref{fig:confidence_vs_performance}, we show that for some models, there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
+% For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the model's outputs.\autocite{Li_2023, miret2024llms}
+% For example, for the questions about the safety profile of compounds, GPT-4 reported an average confidence of \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_correct_overall.txt} (on a scale of 1--5) for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_correct_overall.txt} questions it answered correctly and \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_incorrect_overall.txt} for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_incorrect_overall.txt} questions it answered incorrectly.
+% While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading in some cases. 
+% For example, for the questions about \gls{ghs} pictograms Claude 3 returns an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
 
 \section{Conclusions}
 On the one hand, our findings underline the impressive capabilities of \glspl{llm} in the chemical sciences: Leading models outperform domain experts in specific chemistry questions on many topics. 
@@ -267,7 +280,7 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 \paragraph{Manually curated questions}
 Manually curated questions were sourced from various sources, including university exams, exercises, and question banks. \Cref{tab:manually_sources} provides an overview of the sources of the manually curated questions.
 
-\input{sections/manually_sources_table.tex}
+%\input{sections/manually_sources_table.tex}
 
 
 
@@ -275,12 +288,13 @@ Manually curated questions were sourced from various sources, including universi
 In addition to the manually curated questions, we also generated questions programmatically. An overview of the sources of the semi-programmatically generated questions is provided in \Cref{tab:semi_programatically_sources}.
 
 
-\input{sections/semi_programatically_sources_table.tex}
+%\input{sections/semi_programatically_sources_table.tex}
 
 
 \clearpage
 
 \subsection{Model evaluation workflow}
+EXPAND THIS section. 
 
 \paragraph{Prompting}
 
@@ -302,22 +316,8 @@ As initial tests indicated that models sometimes return integers in the form of 
 If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., Claude 2, to parse the completion.
 
 
-\input{sections/parse_check_desc.tex}
-
 \paragraph{Models}
-\subparagraph{Completion models}
-We used Galactica (120b)\autocite{taylor2022galactica} with the default settings.
-
-
-\subparagraph{Instruction-tuned models} In addition, we tested Claude 2, Claude3 (Opus),\autocite{anthropicClaudeModelFamily2024} GPT-4,\autocite{openai2024gpt4} GPT-3.5-turbo,\autocite{brown2020language} Gemini Pro,\autocite{gemini} Mixtral-8x7b,\autocite{jiang2024mixtral} LLaMA2 (7B, 13B, 70B),\autocite{touvron2023llama} and LLaMa3 (8B, 70B, 405B).
-
-\subparagraph{Tool augmented models}
-In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
-For this, we investigated the 7B parameter \enquote{online} model of Perplexity.AI. 
-In addition, we utilized gpt-3.5-turbo as well as Claude 2, with ReAct-style tool augmentation.\autocite{yao2022react}
-The latter two models had access to WolframAlpha, the ArXiv \gls{api}, a Python interpreter, and web search (using DuckDuckGo).
-We implemented the systems using Langchain with the default prompts and constrained the system to a maximum of ten \gls{llm} calls.
-
+Rewrite - as table. The table can then also contain if it has been completion or instruction-prompted.
 
 \subsection{Confidence estimate}
 To estimate the models' confidence, we prompted them with the question (and answer options for \gls{mcq}) and the task to rate their confidence to produce the correct answer on a scale from 1 to 5. 
@@ -327,43 +327,31 @@ We decided to use verbalized confidence estimates\autocite{xiong2023llms} since 
 
 
 \paragraph{Question selection} \label{sec:subset-selection}
-Since we anticipated that we would not be able to collect enough responses for every question to allow for a meaningful statistical analysis, we decided to show a relevant subset of all questions to the human scorers.
-For selecting the subset, we decided to address two questions:
-\begin{itemize}
-    \item Are the questions for which the models scored poorly just too difficult or unanswerable?
-    \item Are there areas in which the performance of humans is very different from the ones of the models?
-\end{itemize}
-To answer the first question, we selected up to 13 questions per source that \glspl{llm}did not answer correctly in an initial scoring round.
-In addition, we picked 100 diverse ones using greedy MaxMin sampling on the embeddings on the questions computed using BART. We added five random questions about the number of \gls{nmr} signals and the point group of molecules.
-% https://github.com/lamalab-org/chem-bench-app/issues/92 has the details 
+Rewrite.
 
 \paragraph{Study design}
-For our initial study, we wanted to maximize the response rate given our available resources. 
-For this reason, we did not opt for a highly controlled study setting. 
-That is, while users were prompted not to use external tools other than a calculator and not consult with other humans, we do not have any way to verify that the participants complied with those rules. 
-Note that users were also allowed to skip questions.
-
-Another aspect of requiring unsupervised question answering is that in real life, humans have tools and can use them to answer any question of interest. 
-In our current study, we prompted users not to use those tools.
+Rewrite.
 
 \paragraph{Participants}
-Users were open to reporting about their experience in chemistry. 
-Overall, \variable{output/num_users_with_education_info.txt} did so. 
-Out of those, \variable{output/num_human_phd.txt} reported to have been awarded a Ph.D.
-\variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree, and \variable{output/num_human_bachelor.txt} have a bachelor's degree.
+% Users were open to reporting about their experience in chemistry. 
+% Overall, \variable{output/num_users_with_education_info.txt} did so. 
+% Out of those, \variable{output/num_human_phd.txt} reported to have been awarded a Ph.D.
+% \variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree, and \variable{output/num_human_bachelor.txt} have a bachelor's degree.
 
 
 \paragraph{Comparison with models}
-To compare the performance of humans (who might have answered only some questions) with the performance of models (which answered all questions), we focussed on questions that at least four humans answered and limited the pool of human scorers to those who answered at least 100 questions (i.e., \variable{output/num_humans_with_more_than_100_scores.txt} humans). 
-The latter threshold was chosen to limit it to humans who seriously attempted to answer a part of the questions systematically. 
-This analysis might lead to potential biases, most likely in favor of humans, as they were allowed to skip questions. \variable{output/num_humans_with_204_scores.txt} humans answered more than 200 questions.
+%To compare the performance of humans (who might have answered only some questions) with the performance of models (which answered all questions), we focussed on questions that at least four humans answered and limited the pool of human scorers to those who answered at least 100 questions (i.e., \variable{output/num_humans_with_more_than_100_scores.txt} humans). 
+%The latter threshold was chosen to limit it to humans who seriously attempted to answer a part of the questions systematically. 
+%This analysis might lead to potential biases, most likely in favor of humans, as they were allowed to skip questions. \variable{output/num_humans_with_204_scores.txt} humans answered more than 200 questions.
 For the analysis, we treated each human as a model. We computed the topic aggregated averages per human for analyses grouped by topic and then averaged over all humans.
 
-\subsection{Classification of questions into topics}\label{sec:meth-topic} When curating our dataset, we systematically recorded keywords and sources.
-To allow for analysis of the model performance as a function of the topic, we leverage this information together with the output of sequence classification models.
-We use this information to make the assignment for questions that can easily be assigned to a topic based on the source (e.g., number of \gls{nmr} signals, chemical compatibility, toxicology exam questions).
-For the remaining ones, e.g., from chemistry olympiad questions, we use zero-short sequence classification\autocite{zeroshotsequence} using the BART model\autocite{bart, FacebookBART}, which our preliminary analysis found to be more robust than topic modeling based on embeddings from OpenAI's \texttt{ada} model or Cohere's \texttt{Cohembed-english-v3.0} model.
+\subsection{Classification of questions into topics}\label{sec:meth-topic} 
+% When curating our dataset, we systematically recorded keywords and sources.
+% To allow for analysis of the model performance as a function of the topic, we leverage this information together with the output of sequence classification models.
+% We use this information to make the assignment for questions that can easily be assigned to a topic based on the source (e.g., number of \gls{nmr} signals, chemical compatibility, toxicology exam questions).
+% For the remaining ones, e.g., from chemistry olympiad questions, we use zero-short sequence classification\autocite{zeroshotsequence} using the BART model\autocite{bart, FacebookBART}, which our preliminary analysis found to be more robust than topic modeling based on embeddings from OpenAI's \texttt{ada} model or Cohere's \texttt{Cohembed-english-v3.0} model.
 
+REWRITE. 
 
 \section*{Data and code availability}
 The code and data for \chembench is available at \url{https://github.com/lamalab-org/chem-bench}.
@@ -373,8 +361,9 @@ The code to rebuild the paper (including code for all figures and numbers next t
 To facilitate reproduction, some intermediate analysis results are cached at \url{http://dx.doi.org/10.5072/zenodo.34706}.
 
 \section*{Acknowledgements}
-This work was supported by the Carl Zeiss Foundation, a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena and the FAIRmat consortium.
-We also thank Stability.AI for the access to its HPC cluster and donations.
+This work was supported by the Carl Zeiss Foundation, a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena.
+We also thank Stability.AI for the access to its HPC cluster and donations. In addition, M.S-W.'s work was supported by Intel and Merck via the AWASES programme. 
+K.M.J.\ is part of the NFDI consortium FAIRmat funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – project 460197019.
 
 M.A.\ expresses gratitude to the European Research Council (ERC) for evaluating the project with the reference number 101106377 titled \enquote{CLARIFIER} and accepting it for funding under the HORIZON TMA MSCA Postdoctoral Fellowships - European Fellowships. 
 Furthermore, M.A.\ acknowledges the funding provided by UK Research and Innovation (UKRI) under the UK government’s Horizon Europe funding guarantee (Grant Reference: EP/Y023447/1; Organization Reference: 101106377).
@@ -384,10 +373,10 @@ M.R.\ and U.S.S.\ thanks the \enquote{Deutsche Forschungsgemeinschaft} for fundi
 In addition, we thank the OpenBioML.org community and their ChemNLP project team for valuable discussions.
 Moreover, we thank Pepe Márquez for discussions and support and Julian Kimmig for feedback on the web app. 
 In addition, we acknowledge support from Sandeep Kumar with an initial prototype of the web app.
-We thank Bastian Rieck for developing the \LaTeX-credit package (\url{https://github.com/Pseudomanifold/latex-credits}).
+We thank Bastian Rieck for developing the \LaTeX-credit package (\url{https://github.com/Pseudomanifold/latex-credits}) and thank Berend Smit for feedback on an early version of the manuscript.
 
 \section*{Conflicts of interest}
-K.M.J.\ is a paid consultant for OpenAI (as part of the red teaming network). M.P.\ is an employee of Stability.AI, and A.M.\ and N.A.\ are paid contractors of Stability.AI.
+K.M.J.\ was a paid consultant for OpenAI (as part of the red teaming network). M.P.\ is an employee of Stability.AI, and A.M.\ and N.A.\ were paid contractors of Stability.AI.
 
 \section*{Author contributions}
 

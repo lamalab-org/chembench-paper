@@ -5,71 +5,45 @@ import numpy as np
 import matplotlib.pyplot as plt
 from plotutils import range_frame
 from paths import output, scripts, figures
-from loguru import logger
+import pickle
+from paths import data
+from utils import obtain_chembench_repo
+from definitions import MODELS_TO_PLOT
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
 
-model_file_name_to_label = {
-    "claude2": "Claude 2",
-    "claude2-react": "Claude 2 + ReAct",
-    "claude3": "Claude 3",
-    "galatica_120b": "Galactica 120B",
-    "gemini-pro-zero-T": "Gemini Pro",
-    # "gemini-pro": "Gemini Pro",
-    "gpt-3.5-turbo": "GPT-3.5 Turbo",
-    # "gpt-4": "GPT-4",
-    "gpt-4-zero-T": "GPT-4",
-    "gpt-35-turbo-react": "GPT-3.5 Turbo + ReAct",
-    "llama-2-70b-chat": "LLaMA 70b",
-    "mixtral-8x7b-instruct": "Mixtral 8x7b",
-    "pplx-7b-chat": "Perplexity 7B chat",
-    "pplx-7b-online": "Perplexity 7B online",
-    "random_baseline": "Random baseline",
-}
-
-
 human_dir = output / "human_scores"
-model_subset_dir = output / "human_subset_model_scores"
-model_dir = output / "overall_model_scores"
 
+chembench_repo = obtain_chembench_repo()
 
-def collect_human_scores():
-    human_jsons = [
-        c for c in glob(os.path.join(human_dir, "cl*.json")) if not "claude" in c
-    ]
+with open(data / "name_to_dir_map.pkl", "rb") as handle:
+    model_file_name_to_label = pickle.load(handle)
 
-    scores = []
+human_reports_dir = os.path.join(chembench_repo, "reports", "humans")
 
-    for json_file in human_jsons:
+human_scores_with_tools_files = glob(os.path.join(human_reports_dir, "*_h_tool*.json"))
 
-        with open(json_file, "r") as handle:
-            d = json.load(handle)
+human_scores_without_tools_files = glob(
+    os.path.join(human_reports_dir, "*_h_notool*.json")
+)
 
-        if len(d["model_scores"]) > 100:
-            if d["fraction_correct"] < 1:  # exclude this cheater
-                scores.append(d["fraction_correct"])
+human_scores_with_tools, human_scores_without_tools = [], []
 
-    return scores
+for file in human_scores_with_tools_files:
+    with open(file, "r") as handle:
+        d = json.load(handle)
+        human_scores_with_tools.append(d["fraction_correct"])
 
+for file in human_scores_without_tools_files:
+    with open(file, "r") as handle:
+        d = json.load(handle)
+        human_scores_without_tools.append(d["fraction_correct"])
 
-def collect_model_scores(reportdir):
-    model_reports = {}
+human_scores_with_tools = np.array(human_scores_with_tools)
+human_scores_without_tools = np.array(human_scores_without_tools)
 
-    for model in model_file_name_to_label.keys():
-        try:
-            file = os.path.join(reportdir, model + ".json")
-
-            with open(file, "r") as handle:
-                d = json.load(handle)
-
-                model_reports[model] = d["fraction_correct"]
-        except Exception:
-            pass
-
-    model_scores = [(model_file_name_to_label[k], v) for k, v in model_reports.items()]
-
-    return model_scores
+all_human_scores = np.concatenate([human_scores_with_tools, human_scores_without_tools])
 
 
 def plot_performance(
@@ -154,17 +128,33 @@ def plot_performance(
             c="#845B97",
         )
 
-    ax.set_xlabel("fraction of completely correct answers")
+    ax.set_xlabel("fraction of correct answers")
     # fig.tight_layout()
     fig.savefig(outname, bbox_inches="tight")
 
 
 if __name__ == "__main__":
-    model_scores = collect_model_scores(model_dir)
-    human_scores = collect_human_scores()
-    logger.info(f"Human scores: {human_scores}")
-    plot_performance(model_scores, figures / "overall_performance.pdf")
-    model_scores = collect_model_scores(model_subset_dir)
+    with open(data / "model_score_dicts.pkl", "rb") as handle:
+        model_scores = pickle.load(handle)
+
+    overall_model_scores_df = model_scores["overall"]
+    overall_model_scores = []
+    for model, df in overall_model_scores_df.items():
+        if model not in MODELS_TO_PLOT:
+            continue
+        overall_model_scores.append((model, df["all_correct_"].mean()))
+
+    combined_human_scores_model_scores_df = model_scores["human_aligned_combined"]
+    combined_human_scores_model_scores = []
+    for model, df in combined_human_scores_model_scores_df.items():
+        if model not in MODELS_TO_PLOT:
+            continue
+        combined_human_scores_model_scores.append((model, df["all_correct_"].mean()))
+
+    plot_performance(overall_model_scores, figures / "overall_performance.pdf")
+
     plot_performance(
-        model_scores, figures / "human_subset_performance.pdf", human_scores
+        combined_human_scores_model_scores,
+        figures / "human_subset_performance.pdf",
+        all_human_scores,
     )
