@@ -1,0 +1,102 @@
+{
+  "extractions_fraction": 0.009110021023125438,
+  "questions_extracted": 26,
+  "extracted": [
+    {
+      "question_name": "point_group-pointgroups_13-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "organic_reactivity-2-organic_reactivity_2",
+      "completion": "[ANSWER]S_N2[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_1-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "solid_state_chemistry-solid_state_18-solid_state_chemistry_18",
+      "completion": "[ANSWER]A-1, B-2, C-3, D-4[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_8-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_6-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "oup-molecular_structure_8-molecular_structure",
+      "completion": "[ANSWER]2H, 3C[/ANSWER] \n"
+    },
+    {
+      "question_name": "organic_reactivity-11-organic_reactivity_11",
+      "completion": "[ANSWER]C[CH+]CC, C[CH+]C=C, C=C[CH+]C=C[/ANSWER] \n"
+    },
+    {
+      "question_name": "ionenlotto-1-urotropin_group",
+      "completion": "[ANSWER]Co^{2+},Zn^{2+}[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_4-pointgroups",
+      "completion": "[ANSWER]C2[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_10-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "hybridization-hybridization_6-hybridization_6",
+      "completion": "[ANSWER]sp2[/ANSWER] \n"
+    },
+    {
+      "question_name": "hybridization-hybridization_5-hybridization_5",
+      "completion": "[ANSWER]sp2[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_5-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_7-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_12-pointgroups",
+      "completion": "[ANSWER]C1[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_11-pointgroups",
+      "completion": "[ANSWER]C2[/ANSWER] \n"
+    },
+    {
+      "question_name": "ionenlotto-2-dissolvable_ammonium_carbonate_group",
+      "completion": "[ANSWER]Ca^{2+}, Sr^{2+}[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_14-pointgroups",
+      "completion": "[ANSWER]C2h[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_15-pointgroups",
+      "completion": "[ANSWER]C3v[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_3-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "2020-4f-icho_uk_2020_4f",
+      "completion": "Here's how to solve this problem:\n\n**1. Determine the molar masses:**\n\n* Talc (H\u2082Mg\u2083Si\u2084O\u2081\u2080): (2 x 1.01) + (3 x 24.31) + (4 x 28.09) + (10 x 16.00) = 379.52 g/mol\n* Chrysotile (Mg\u2083Si\u2082H\u2084O\u2089): (3 x 24.31) + (2 x 28.09) + (4 x 1.01) + (9 x 16.00) = 378.32 g/mol\n\n**2. Calculate the mass percentages of Mg and Si in each mineral:**\n\n* Talc: (3 x 24.31) / 379.52 x 100% = 19.18% Mg\n* Chrysotile: (3 x 24.31) / 378.32 x 100% = 19.39% Mg\n* Talc: (4 x 28.09) / 379.52 x 100% = 29.87% Si\n* Chrysotile: (2 x 28.09) / 378.32 x 100% = 14.99% Si\n\n**3. Set up a system of equations:**\n\nLet:\n\n* x = mass fraction of talc\n* y = mass fraction of chrysotile\n\nWe know:\n\n* x + y = 1 (total mass fraction)\n* 0.1918x + 0.1939y = 0.2032 (mass fraction of Mg)\n* 0.2987x + 0.1499y = 0.2818 (mass fraction of Si)\n\n**4. Solve for x (mass fraction of talc):**\n\nYou can use substitution or elimination to solve this system of equations.  \n\n**5. Convert mass fraction to molar percentage:**\n\nMultiply the mass fraction of talc by 100% to get the molar percentage.\n\n\n\n[ANSWER] \n[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_9-pointgroups",
+      "completion": "[ANSWER]C3v[/ANSWER] \n"
+    },
+    {
+      "question_name": "oup-molecular_structure_17-molecular_structure",
+      "completion": "[ANSWER]1,0,0[/ANSWER] \n"
+    }
+  ]
+}

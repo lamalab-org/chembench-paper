@@ -3,3 +3,9 @@
 
 # Except the gitignore file itself!
 !.gitignore
+!count_extraction.txt
+!count_refusal.txt
+!extractions_files/
+!extractions_files/*
+!refusals_files/
+!refusals_files/*

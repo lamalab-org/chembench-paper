@@ -1,0 +1,122 @@
+{
+  "extractions_fraction": 0.01296426068675543,
+  "questions_extracted": 37,
+  "extracted": [
+    {
+      "question_name": "point_group-pointgroups_13-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_1-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "2019-1d_2-icho_uk_2019_1d",
+      "completion": "Here's how to solve this problem:\n\n**1. Set up the ICE Table**\n\nAn ICE (Initial, Change, Equilibrium) table helps to organize the information:\n\n| Species      | Initial (mol) | Change (mol) | Equilibrium (mol) |\n|--------------|-----------------|--------------|----------------------|\n| CO          | 40             | -x            | 40-x                 |\n| H\u2082O         | 40             | -x            | 40-x                 |\n| CO\u2082         | 20             | +x            | 20+x                 |\n| H\u2082          | 20             | +x            | 20+x                 |\n\n**2. Write the Kp Expression**\n\nThe Kp expression for this reaction is:\n\nKp = (P(CO\u2082) * P(H\u2082)) / (P(CO) * P(H\u2082O))\n\n**3. Convert Moles to Partial Pressures**\n\nWe can use the ideal gas law (PV = nRT) to convert moles to partial pressures, assuming constant temperature and volume (as implied by the problem).  \n\n* P(CO\u2082) = (20 + x) * (RT/V)\n* P(H\u2082) = (20 + x) * (RT/V)\n* P(CO) = (40 - x) * (RT/V)\n* P(H\u2082O) = (40 - x) * (RT/V)\n\n**4. Substitute into the Kp Expression**\n\nKp = [(20 + x) * (RT/V) * (20 + x) * (RT/V)] / [(40 - x) * (RT/V) * (40 - x) * (RT/V)]\n\n**5. Simplify and Solve for x**\n\nThe (RT/V) terms will cancel out, leaving a simpler expression. You can then solve for x using the given Kp value (0.64).\n\n**6. Determine Moles of CO\u2082 Leaving**\n\nThe change in moles of CO\u2082 is represented by x.  The number of moles of CO\u2082 leaving is simply the positive value of x.\n\n\n\nLet me know if you'd like me to work through the simplification and solution steps. \n\n"
+    },
+    {
+      "question_name": "solid_state_chemistry-solid_state_18-solid_state_chemistry_18",
+      "completion": "[ANSWER]A-1, B-2, C-3, D-4[/ANSWER]"
+    },
+    {
+      "question_name": "2019-1d_0-icho_uk_2019_1d",
+      "completion": "Here's how to solve this problem:\n\n**1. Set up the ICE Table**\n\nAn ICE (Initial, Change, Equilibrium) table helps organize the information:\n\n| Species     | Initial (mol) | Change (mol) | Equilibrium (mol) |\n|-------------|----------------|--------------|--------------------|\n| CO          | 40             | -x           | 40-x               |\n| H\u2082O        | 40             | -x           | 40-x               |\n| CO\u2082        | 20             | +x           | 20+x               |\n| H\u2082          | 20             | +x           | 20+x               |\n\n**2. Write the Kp Expression**\n\nThe equilibrium constant expression in terms of pressure (Kp) is:\n\nKp = (P<sub>CO\u2082</sub> * P<sub>H\u2082</sub>) / (P<sub>CO</sub> * P<sub>H\u2082O</sub>)\n\n**3. Convert to Moles Using Partial Pressures**\n\nWe can relate partial pressures to moles using the ideal gas law (PV = nRT) and assuming constant volume:\n\n* P<sub>i</sub> = (n<sub>i</sub>/n<sub>total</sub>) * P<sub>total</sub>  \n\nWhere:\n* P<sub>i</sub> is the partial pressure of species i\n* n<sub>i</sub> is the number of moles of species i\n* n<sub>total</sub> is the total number of moles \n* P<sub>total</sub> is the total pressure\n\n**4. Substitute and Solve for x**\n\n* Substitute the equilibrium expressions from the ICE table into the Kp expression.\n*  Since Kp = 0.64, solve the resulting equation for x.\n\n**5. Calculate Moles of CO Leaving**\n\n* The moles of CO leaving the reactor are given by (40 - x) from the ICE table.\n\n\n\nLet me know if you'd like me to work through the detailed calculations! \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_8-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_6-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "oup-molecular_structure_8-molecular_structure",
+      "completion": "[ANSWER]2H, 3C[/ANSWER] \n"
+    },
+    {
+      "question_name": "organic_reactivity-11-organic_reactivity_11",
+      "completion": "[ANSWER]C[CH+]CC, C[CH+]C=C, C=C[CH+]C=C[/ANSWER] \n\n\n"
+    },
+    {
+      "question_name": "ionenlotto-1-urotropin_group",
+      "completion": "[ANSWER]Co^{2+},Zn^{2+}[/ANSWER] \n"
+    },
+    {
+      "question_name": "solid_state_chemistry-solid_state_2-solid_state_chemistry_2",
+      "completion": "[ANSWER] [/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_4-pointgroups",
+      "completion": "[ANSWER]D3d[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_10-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "hybridization-hybridization_6-hybridization_6",
+      "completion": "[ANSWER]sp2[/ANSWER] \n"
+    },
+    {
+      "question_name": "hybridization-hybridization_5-hybridization_5",
+      "completion": "[ANSWER]sp2[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_5-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_7-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_12-pointgroups",
+      "completion": "[ANSWER]C1[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_11-pointgroups",
+      "completion": "[ANSWER]C2[/ANSWER]"
+    },
+    {
+      "question_name": "2010-6e-icho_uk_2010_6e",
+      "completion": "Here's how to solve this problem:\n\n**1. Understand the Unit Cell**\n\n* A cubic unit cell is the smallest repeating unit in a crystal lattice. \n*  It has 8 corners and 6 faces.\n\n**2. Contribution of Corner Atoms**\n\n* Each corner atom is shared by 8 adjacent unit cells.\n* Therefore, each unit cell gets 1/8th of each corner atom.\n* With 8 corners, the contribution of corner atoms is (1/8) * 8 = 1 atom.\n\n**3. Contribution of Face-Centered Atoms**\n\n* Each face-centered atom is shared by 2 adjacent unit cells.\n* Therefore, each unit cell gets 1/2 of each face-centered atom.\n* With 6 faces, the contribution of face-centered atoms is (1/2) * 6 = 3 atoms.\n\n**4. Total Atoms per Unit Cell**\n\n* The total number of gold atoms in the unit cell is 1 + 3 = 4 atoms.\n\n**5. Volume Occupied by Atoms**\n\n*  Assume the radius of a gold atom is 'r'. The volume of a sphere (representing an atom) is (4/3)\u03c0r\u00b3.\n* The volume of the unit cell is a\u00b3 (where 'a' is the edge length).\n\n**6. Packing Efficiency**\n\n* Packing efficiency is the fraction of the unit cell volume occupied by atoms.\n* Packing efficiency = (Volume of atoms) / (Volume of unit cell) \n* Packing efficiency = [4 * (4/3)\u03c0r\u00b3] / a\u00b3\n\n**7.  Calculating the Fraction**\n\nTo get the fraction of the volume occupied by gold atoms, we need to express the packing efficiency as a fraction.  This requires knowing the relationship between 'a' and 'r' in this specific cubic arrangement.  \n\n**Without that specific relationship, we cannot provide a numerical answer between the tags.** \n\n\nLet me know if you have the relationship between 'a' and 'r', and I can help you calculate the final fraction. \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_14-pointgroups",
+      "completion": "[ANSWER]C2h[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_15-pointgroups",
+      "completion": "[ANSWER]C3v[/ANSWER] \n"
+    },
+    {
+      "question_name": "periodic_table_properties-3-periodic_table_questions",
+      "completion": "[ANSWER]Np[/ANSWER] \n"
+    },
+    {
+      "question_name": "polymer_chemistry_fsu-16-polymer_chemistry_16",
+      "completion": "[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_3-pointgroups",
+      "completion": "[ANSWER]C2,C2h[/ANSWER] \n"
+    },
+    {
+      "question_name": "point_group-pointgroups_9-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n"
+    },
+    {
+      "question_name": "oup-molecular_structure_17-molecular_structure",
+      "completion": "[ANSWER]1,0,0 [/ANSWER] \n"
+    },
+    {
+      "question_name": "reactions-6-reaction_6",
+      "completion": "I need the appropriate equation and constants to solve this problem. \n\nThe question relates to the Arrhenius equation, which describes the temperature dependence of reaction rates:\n\n**k = Ae^(-Ea/RT)**\n\nWhere:\n\n* k is the rate constant\n* A is the pre-exponential factor\n* Ea is the activation energy\n* R is the gas constant (8.314 J/(mol\u00b7K))\n* T is the temperature in Kelvin\n\nTo solve for Ea, I need the rate constants at both temperatures.  \n\n\nLet me know if you can provide those values. \n"
+    },
+    {
+      "question_name": "2022-1g-icho_uk_2022_q1g",
+      "completion": "Here's how to solve this:\n\n**1. Understand the Problem:**\n\n* We need to find the percentage of CO2 produced from burning *only* the octane isomers in E10 fuel, compared to the CO2 from burning octane isomers in E5 fuel.\n*  The amount of ethanol doesn't matter for this calculation.\n\n**2.  Calculate the CO2 from Octane in E5:**\n\n*  We're given that burning 1 L of E5 fuel (950 mL octane) produces 100% CO2.  \n\n**3. Calculate the CO2 from Octane in E10:**\n\n* E10 fuel contains 900 mL of octane isomers.\n*  Since E5 produces 100% CO2 from its octane, E10 will produce a proportionally higher amount of CO2 from its octane.\n\n**4. Determine the Percentage:**\n\n*  (CO2 from E10 octane / CO2 from E5 octane) * 100%\n\nLet me know if you'd like me to work through the exact numerical calculation! \n\n\n"
+    }
+  ]
+}

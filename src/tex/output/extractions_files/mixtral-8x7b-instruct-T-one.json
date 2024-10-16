@@ -1,0 +1,258 @@
+{
+  "extractions_fraction": 0.02908199018920813,
+  "questions_extracted": 83,
+  "extracted": [
+    {
+      "question_name": "periodic_table_properties-1-periodic_table_questions",
+      "completion": "[ANSWER] Os, Re [/ANSWER] The elements Osmium (Os) and Rhenium (Re) have the highest densities among the d-block elements at room temperature. Osmium has a density of 22.59 g/cm^3, and Rhenium has a density of 21.02 g/cm^3. Tantalum (Ta) and Cadmium (Cd) have lower densities, at 16.65 g/cm^3 and 8.65 g/cm^3, respectively."
+    },
+    {
+      "question_name": "2022-1e_0-icho_uk_2022_q1e",
+      "completion": "First, we need to find the mass of ethanol and octane isomers in 1 L of E1"
+    },
+    {
+      "question_name": "point_group-pointgroups_2-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
+      "question_name": "reasoning-IX-reasoning_question_9",
+      "completion": "[ANSWER] D <- FeCl3 is an acidic salt, KOH is a strong base, Na2CO3 is a weak base and BaBr2 is a spectator ion.\n[/ANSWER]"
+    },
+    {
+      "question_name": "reactive_groups-65_5-reactive_groups_65",
+      "completion": "[ANSWER]C, D[/ANswer]. Heat buildup from polymerization can cause uncontrolled reactions and lead to the monomers catching fire, both of which are dangerous in storage tanks."
+    },
+    {
+      "question_name": "point_group-pointgroups_13-pointgroups",
+      "completion": "[ANSWER] C2, C2v [/ANSWER] The molecule with SMILES FSSF has a C2 point group, which is a subgroup of C2v point group. This is because C2v has a vertical mirror plane (\u03c3v) passing through the central atom and the midpoints of the S-F bonds, but the SMILES string does not specify any chirality, so the actual molecule could have a free rotation around the S-S bond, thus lacking the vertical mirror plane. Therefore, the point group of the molecule could be either C2 or C2v, depending on its actual 3D structure."
+    },
+    {
+      "question_name": "oup-xray_crystallography_7-xray_crystallography",
+      "completion": "[ANSWER] D /"
+    },
+    {
+      "question_name": "2010-1a-icho_uk_2010_1a",
+      "completion": "[ANSWER] To find the number of moles, we need to convert the mass of Ambrox to moles using its molar mass. The molar mass of Ambrox (C16H28O) is approximately 240.42 g/mol (16 carbon atoms * 12.01 g/mol/atom + 28 hydrogen atoms * 1.01 g/mol/atom + 1 oxygen atom * 16.00 g/mol/atom).\n\nFirst, let's convert the mass of Ambrox from tonnes to grams: 10 tonnes * 1000 kg/tonne * 1000 g/kg = 10,000,000 g.\n\nNow, we can calculate the number of moles:\n\nNumber of moles = mass / molar mass\n= 10,000,000 g / 240.42 g/mol\n\u2248 41,595 mol\n\nTherefore, approximately 41,595 moles of Ambrox are produced per year.\n[/ANSWER]"
+    },
+    {
+      "question_name": "oup-organic_chemistry_69-organic_chemistry_okuyama_maskill",
+      "completion": "[ANSWER]b, c[/ANSWER] In the 1H NMR spectrum of (CH3)3CCH2CHO, there are five proton environments: the three methyl groups on the tertiary carbon, the methylene group adjacent to the tertiary carbon, and the aldehyde proton. These five protons give rise to five distinct 1H signals.\n\nIn the 13C NMR spectrum, there are six carbon environments: the four methyl carbons, the methylene carbon, and the aldehyde carbon. These six carbons give rise to six distinct 13C signals.\n\nTherefore, the correct answer is (B) five 1H signals and four 13C signals, and (C) three 1H signals and six 13C signals."
+    },
+    {
+      "question_name": "oup-molecular_structure_6-molecular_structure",
+      "completion": "[ANSWER]1 < 2 < 3[/ANSWER] The correct sequence of chemical shifts (in ppm) for the protons in the OH (1), CH2 (2), and CH3 (3) groups in ethanol is 1 < 2 < 3. This means that the protons in the OH group have the lowest chemical shift, followed by the protons in the CH2 group, and finally the protons in the CH3 group have the highest chemical shift."
+    },
+    {
+      "question_name": "reactive_groups-50_7-reactive_groups_50",
+      "completion": "[ANSWER] None of the options are weak acids. Sulfuric acid (A), Phosphoric acid (B), Perchloric acid (C), and Hydrochloric acid (D) are all strong acids. [/ANSWER]"
+    },
+    {
+      "question_name": "2022-XII_2022_cal_0-XII_2022_MD",
+      "completion": "To solve this problem, we first need to determine the amount of HNO3 used in the reaction. Given that the solution is 63% HNO3 by mass, we can calculate the actual mass of HNO3 as follows:\n\nMass of HNO3 = Mass of HNO3 solution \u00d7 Mass percentage of HNO3\nMass of HNO3 = 300 g \u00d7 0.63 = 189 g\n\nThe chemical equation for the nitration of glycerin is:\n\nC3H5(OH)3 + 3HNO3 \u2192 C3H5(NO3)3 + 3H2O\n\nFrom this equation, we can see that 1 mole of HNO3 produces 3 moles of gaseous products (water vapor) upon explosion. Therefore, the volume of gas obtained from the explosion of half the quantity of trinitroglycerin produced can be calculated as follows:\n\nVolume of gas = (1/2 \u00d7 Mass of HNO3) / Molar mass of HNO3 \u00d7 3 \u00d7 Ideal gas constant \u00d7 Temperature\n\nAssuming a temperature of 25\u00b0C or 298 K, we can substitute the values into the equation:\n\nVolume of gas = (1/2 \u00d7 189 g) / 63 g/mol \u00d7 3 \u00d7 8.314 J/(mol\u00b7K) \u00d7 298 K\nVolume of gas \u2248 64.6 L\n\nTherefore, the correct answer is [ANSWER]B[/ANswer]."
+    },
+    {
+      "question_name": "2022-1e_1-icho_uk_2022_q1e",
+      "completion": "First, we need to find the mass of ethanol and octane isomers in 1 L of E5 fuel.\n\nThe density of ethanol is 0.789 g/cm^3, and there are 1000 mL in 1 L, so the volume of ethanol in 1 L of E5 fuel is 50 mL. Therefore, the mass of ethanol in 1 L of E5 fuel is:\n\n(50 mL) x (0.789 g/mL) = 39.45 g\n\nThe density of octane isomers is 0.703 g/cm^3, and there are 950 mL of octane isomers in 1 L of E5 fuel. Therefore, the mass of octane isomers in 1 L of E5 fuel is:\n\n(950 mL) x (0.703 g/mL) = 667.85 g\n\nNext, we need to find the energy released by the combustion of ethanol and octane isomers in 1 L of E5 fuel.\n\nThe enthalpy of combustion of ethanol is -1276 kJ/mol, and the molar mass of ethanol is 46.07 g/mol. Therefore, the energy released by the combustion of 39.45 g of ethanol is:\n\n(39.45 g) x (-1276 kJ/mol) / (46.07 g/mol) = -1105.5 kJ\n\nThe enthalpy of combustion of octane isomers is -5144 kJ/mol, and the molar mass of octane isomers is approximately 114.23 g/mol. Therefore, the energy released by the combustion of 667.85 g of octane isomers is:\n\n(667.85 g) x (-5144 kJ/mol) / (114.23 g/mol) = -30,552.5 kJ\n\nFinally, we add the energy released by the combustion of ethanol and octane isomers to find the total energy released by the combustion of 1 L of E5 fuel:\n\n-1105.5 kJ + (-30,552.5 kJ) = -31,658 kJ\n\n[ANSWER]-31,658[/ANswer] kJ of energy is released when 1 L of the E5 fuel is burnt."
+    },
+    {
+      "question_name": "smiles_to_name-iupac_smiles_11-iupac_smiles_11",
+      "completion": "[ANSWER] A, /ANSWER] The SMILES string represents the structure of a complex organic molecule, and option A provides the corresponding IUPAC name for this molecule. The other options do not match the SMILES string."
+    },
+    {
+      "question_name": "solid_state_chemistry-solid_state_18-solid_state_chemistry_18",
+      "completion": "[ANSWER] A-4, B-2, C-3, D-1 [/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_8-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER] \n\nThe molecule with SMILES C1=CC(=CC(=C1)Br)Br has point group C2v. The molecule is not tetrahedral (Td), it does not have a three-fold rotation axis (D3d), and it does not have a center of symmetry (Cs)."
+    },
+    {
+      "question_name": "solid_state_chemistry-solid_state_1-solid_state_chemistry_1",
+      "completion": "[ANSWER] (110), (200), (211), (310) [/ANSWER] The correct order for the planes in decreasing order of interplanar distance (d-spacing) for a body-centered cubic (BCC) crystal is (110), (200), (211), (310). This is because the distance between planes increases as the Miller indices increase, and in this case, the (110) plane has the smallest indices, and thus the shortest d-spacing, while the (310) plane has the largest indices and therefore the largest d-spacing. The options that do not have these planes in the correct order are therefore incorrect."
+    },
+    {
+      "question_name": "polymer_chemistry-7-polymer_chemistry_7",
+      "completion": "[ANSWER]a[/ANSWER] The molecular structure of elastomers is typically characterized as \"closely cross-linked\" (option A). This means that the polymer chains in the elastomer are connected by a large number of cross-links, which gives the material its elastic properties. The cross-links prevent the polymer chains from slipping past each other and allow the material to stretch and then return to its original shape when the stress is removed."
+    },
+    {
+      "question_name": "polymer_chemistry-6-polymer_chemistry_6",
+      "completion": "[ANSWER]a[/ANSWER] The molecular structure of elastomers is typically characterized as closely cross-linked (Option A). This cross-linking provides elastomers with their elastic properties, allowing them to stretch and return to their original shape when the stress is removed."
+    },
+    {
+      "question_name": "point_group-pointgroups_6-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
+      "question_name": "oup-molecular_structure_8-molecular_structure",
+      "completion": "[ANSWER]3H,3C[/ANSWER] In the proton NMR spectrum of p-xylene, there will be three resonances due to the three distinct types of protons: two methyl protons and three aromatic protons. Similarly, in the carbon (decoupled) NMR spectrum, there will also be three resonances due to the three distinct types of carbons: two methyl carbons and three aromatic carbons. Therefore, the correct answer is (C) 3H,3C."
+    },
+    {
+      "question_name": "toxicology_lmu-19-tox_lmu_19",
+      "completion": "[ANSWER] A, C\n[/ANswer]: Heroin is more acidic than the nasal mucosa, so its absorption can be increased by making it more acidic (option A). This is because ionized drugs are less able to cross membranes, so making heroin more acidic will increase the proportion of unionized heroin, which can cross membranes more easily. Additionally, absorption of heroin can be increased by encapsulating it in liposomes (option C). Liposomes are small vesicles made of lipids that can fuse with cell membranes and deliver their contents into the cell. This can help to protect heroin from degradation and increase its absorption. Cocaine, on the other hand, is a base and is less likely to be affected by changes in acidity. Therefore, option B is not correct. Option D is also not correct because absorption of heroin can be increased by making it more acidic or by encapsulating it in liposomes."
+    },
+    {
+      "question_name": "reactions-20-reaction_20",
+      "completion": "[ANSWER] D / Increase in CO2 [/ANSWER]\n\nExplanation:\nWhen you add more CaCO3(s) to the system, it will shift the equilibrium to the right side of the reaction:\n\nCaCO3 (s) <=> CaO (s) + CO2 (g)\n\nThis is in accordance with Le Chatelier's principle, which states that when a system at equilibrium is disturbed, the equilibrium will shift in the direction that counteracts the disturbance. In this case, adding more CaCO3(s) shifts the equilibrium toward the formation of CaO (s) and CO2 (g).\nThus, option D is the correct answer, where CO2 increases. Since more CO2 is produced, the reaction rate will also increase."
+    },
+    {
+      "question_name": "2010-5a_2-icho_uk_2010_5a",
+      "completion": "[ANSWER] +6\n\nTo find the oxidation state of osmium in OsO4^(2-), you can use the fact that the sum of the oxidation states of all atoms in a compound is equal to the charge of the compound. In this case, the charge is -2.\n\nThe oxidation state of oxygen is usually -2. Therefore, if we assume that the osmium atom has an oxidation state of X, then we have:\n\nX + 4(-2) = -2\n\nSolving for X, we get:\n\nX = -2 + 8 = 6\n\nTherefore, the oxidation state of osmium in OsO4^(2-) is +6.\n[/ANSWER]"
+    },
+    {
+      "question_name": "solid_state_chemistry-solid_state_0-solid_state_chemistry_0",
+      "completion": "[ANSWER] (111), (200), (220), (311) [/ANSWER] The interplanar distance (d-spacing) in a face-centered cubic (FCC) crystal is given by the formula:\n\nd = a / sqrt(h^2 + k^2 + l^2)\n\nwhere a is the lattice parameter (the length of an edge of the unit cell).\n\nFor a given hkl, the d-spacing is inversely proportional to the square root of the sum of h^2, k^2, and l^2. Therefore, the planes with smaller hkl values will have larger d-spacings, and those with larger hkl values will have smaller d-spacings.\n\nThe options given in the question are (111), (200), (220), (311), (321), and (222). We can rank these planes in decreasing order of d-spacing by computing the value of sqrt(h^2 + k^2 + l^2) for each of them.\n\n(111) : sqrt(1^2 + 1^2 + 1^2) = sqrt(3)\n(200) : sqrt(2^2 + 0^2 + 0^2) = 2\n(220) : sqrt(2^2 + 2^2 + 0^2) = sqrt(8) = 2*sqrt(2)\n(311) : sqrt(3^2 + 1^2 + 1^2) = sqrt(11)\n(321) : sqrt(3^2 + 2^2 + 1^2) = sqrt(14)\n(222) : sqrt(2^2 + 2^2 + 2^2) = sqrt(12) = 2*sqrt(3)\n\nTherefore, the correct order in decreasing order of d-spacing is:\n\n(111), (200), (220), (311)\n\nSo, the answer is [ANSWER](111), (200), (220), (311)[/ANSWER]."
+    },
+    {
+      "question_name": "preference-preferences_choung_1034-preference_choung_1034",
+      "completion": "Based on the information provided, we are looking for a molecule that is orally available and has a small molecular profile.\n\nOption A: CN1CCC(N2CCCc3cc(NC(=N)c4cccs4)ccc32)CC1\nThis molecule contains a nitrile group (-CN), which can be toxic and may not be suitable for oral availability.\n\nOption B: Cc1ccc(C(SCCCN2CCC[C@@H](C(=O)O)C2)c2ccc(C)cc2)cc1\nThis molecule contains a sulfur atom and an ester group (-COO-), but no potentially toxic groups like the nitrile in option A.\n\nTherefore, based on the given criteria, [ANSWER]B[/ANswer] would be the preferred option for further development. However, it is important to note that additional considerations such as covalency, bifunctionality, and other safety and efficacy factors need to be evaluated during the drug discovery process."
+    },
+    {
+      "question_name": "hybridization-hybridization_4-hybridization_4",
+      "completion": "[ANSWER] sp2, sp3 [/ANSWER] The carbon atoms in the 1,4-cyclohexadiene molecule can have two different hybridizations: four carbon atoms are sp2 hybridized (forming double bonds), and two carbon atoms are sp3 hybridized (forming single bonds). Therefore, the correct answer is sp2, sp3."
+    },
+    {
+      "question_name": "point_group-pointgroups_10-pointgroups",
+      "completion": "[ANSWER]Cs[/ANSWER]"
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_118-name_to_smiles_118",
+      "completion": "[ANSWER] A / C / [/ANSWER] The SMILES notation A: Cc1cc2c(-c3ccccc3F)nc(N3CCNCC3)nc2s1.Cl.O and C: CC(C)(C)c1cc(C(=O)NCCCn2ccnc2)cc(C(C)(C)C)c1 both represent the molecule 4-(2-fluorophenyl)-6-methyl-2-piperazin-1-yl-thieno[2,3-d]pyrimidine. Option A adds a hydrate and hydrochloride counterion to the molecule, which is also consistent with the name given in the question. Therefore, both A and C are valid SMILES notations for this molecule. Options B and D do not match the structure of the molecule described in the question."
+    },
+    {
+      "question_name": "reasoning-I-reasoning_question_1",
+      "completion": "[ANSWER] Zn, Fe [/ANSWER] The moles of H2SO4 can be calculated using its mass and mass fraction. \n\nMoles of H2SO4 = mass of H2SO4 / molar mass of H2SO4\n= 8.91 g / 98.08 g/mol\n= 0.0907 mol\n\nFrom the balanced chemical equation, 1 mol of metal X reacts with 1 mol of H2SO4. Therefore, the moles of metal X are also 0.0907 mol.\n\nThe molar mass of metal X can be determined using its moles and mass.\n\nMolar mass of X = mass of X / moles of X\n\nThe molar mass of X must be a whole number since it is a metal. The options that have a molar mass closest to 0.0907 g/mol are Zn (0.0911 g/mol) and Fe (0.0907 g/mol).\n\nFor Zn, the mass of X would be:\nmass of Zn = molar mass of Zn x moles of Zn\n= 0.0911 g/mol x 0.0907 mol\n= 0.00823 g\n\nFor Fe, the mass of X would be:\nmass of Fe = molar mass of Fe x moles of Fe\n= 0.0907 g/mol x 0.0907 mol\n= 0.00820 g\n\nThe mass of X is closer to 0.0082 g for both metals, so the answer is Zn and Fe.\n\nTo confirm, we can calculate the moles of A and B.\n\nMoles of A = moles of H2SO4 x (mass fraction of H2SO4 x 32 g/mol) / 80 g/mol\n= 0.0907 mol x (0.66 x 32 g/mol) / 80 g/mol\n= 0.0231 mol\n\nMoles of B = moles of H2SO4 x (mass fraction of H2SO4 x 2 x 16 g/mol) / (2 x 16 g/mol + 1 x 16 g/mol)\n= 0.0907 mol x (0.66 x 2 x 16 g/mol) / (2 x 16 g/mol + 1 x 16 g/mol)\n= 0.0188 mol\n\nThe mass of A and B can be calculated using their moles and molar masses.\n\nMass of A = moles of A x molar mass of A\n= 0.0231 mol x (50% x 32 g/mol + 16 g/mol)\n= 1.45 g\n\nMass of B = moles of B x molar mass of B\n= 0.0188 mol x (2 x 2 g/mol + 1 x 16 g/mol)\n= 0.756 g\n\nThe sum of the masses of A and B is close to the original mass of H2SO4 (8.91 g).\n\nFor Zn, the molar mass of ZnSO4 is 161.42 g/mol, and the mass of ZnSO4 would be:\nmass of ZnSO4 = moles of ZnSO4 x molar mass of ZnSO4\n= 0.0907 mol x 161.42 g/mol\n= 14.65 g\n\nThe mass of H2O produced would be:\nmass of H2O = mass of H2SO4 - mass of ZnSO4 - mass of A - mass of B\n= 8.91 g - 14.65 g - 1.45 g - 0.756 g\n= -5.54 g\n\nThis is not possible, so Zn cannot be the answer.\n\nFor Fe, the molar mass of FeSO4 is 151.9 g/mol, and the mass of FeSO4 would be:\nmass of FeSO4 = moles of FeSO4 x molar mass of FeSO4\n= 0.0907 mol x 151.9 g/mol\n= 13.76 g\n\nThe mass of H2O produced would be:\nmass of H2O = mass of H2SO4 - mass of FeSO4 - mass of A - mass of B\n= 8.91 g - 13.76 g - 1.45 g - 0.756 g\n= -5.05 g\n\nThis is also not possible, so Fe cannot be the answer.\n\nTherefore, the answer is both Zn and Fe."
+    },
+    {
+      "question_name": "2010-4d1-icho_uk_2010_4d1",
+      "completion": "To calculate the freezing point depression of the NaCl solution, we first need to find the number of moles of ions (n) in the solution. The concentration of the solution is given as 3 mol dm-3, and since 1 dm3 = 1 L, this means there are 3 mol of NaCl in 1 L of solution.\n\nSince NaCl dissociates completely into Na+ and Cl- ions in water, the number of moles of ions (n) is twice the number of moles of NaCl, i.e., n = 2 x 3 mol = 6 mol.\n\nNow, we can use the formula for freezing point depression:\n\n\u0394Tf = n * R * (Tmelt)^2 / \u0394Hmelt\n\nwhere:\nTmelt = melting point of pure water = 273 K\n\u0394Hmelt = standard enthalpy change of melting for pure water = 6.01 kJ mol-1 = 6010 J mol-1\nR = gas constant = 8.314 J mol-1 K-1\n\nPlugging in the values, we get:\n\n\u0394Tf = 6 mol * 8.314 J mol-1 K-1 * (273 K)^2 / 6010 J mol-1\n\u0394Tf = 0.48 K\n\nThe freezing point of the NaCl solution is therefore:\n\nTf = Tmelt - \u0394Tf = 273 K - 0.48 K = 272.52 K\n\n[ANSWER]272.52[/ANswer]"
+    },
+    {
+      "question_name": "blac_gfk-ii_4_67-blac_gfk_ii_4_67",
+      "completion": "[ANSWER]b, c, d[/ANSWER] Prolonged or acute exposure to benzene can lead to several health issues. The three options you provided, anemia (option b), disturbance of blood formation in the bone marrow (option c), and a narcosis or its preliminary stages (option d), can indeed be consequences of benzene poisoning.\n\nAnemia is a condition characterized by a decrease in the total amount of red blood cells or a lower than normal level of hemoglobin in the blood. Since benzene is known to damage the bone marrow, where blood cells are produced, this can lead to a decrease in red blood cell production, causing anemia.\n\nBone marrow damage from benzene exposure can also result in a disturbance of blood formation (option c). This can lead to a decrease in the production of all types of blood cells, including white blood cells and platelets, in addition to red blood cells.\n\nNarcosis (option d) refers to a state of stupor, unconsciousness, or severe mental impairment caused by the influence of a drug or other chemical substance. Benzene can act as a central nervous system depressant, and prolonged exposure can lead to narcosis or its preliminary stages.\n\nHowever, venous dilatation, especially in the lower legs (option a), is not typically associated with benzene poisoning."
+    },
+    {
+      "question_name": "hybridization-hybridization_5-hybridization_5",
+      "completion": "[ANSWER] sp2[/ANSWER]\n\nThe carbon atoms in naphthalene are sp2 hybridized. Naphthalene has a planar structure, and each carbon atom is bonded to three other carbon atoms and one hydrogen atom. This geometry is consistent with sp2 hybridization, which involves mixing one s orbital and two p orbitals to form three hybrid orbitals, leaving one p orbital unused."
+    },
+    {
+      "question_name": "oup-drug_synthesis_44-drug_synthesis",
+      "completion": "[ANSWER] D / [ANSWER] Using a reactant in excess will not enhance the yield of a reaction at equilibrium. This is because Le Chatelier's principle states that if a system at equilibrium is disturbed, the system will shift to counteract the disturbance and reestablish equilibrium. Adding more reactant would shift the equilibrium to favor the reaction that consumes the reactant, but it does not necessarily increase the overall yield of the desired product. In fact, it could lead to more of the reactants being converted to unwanted side products."
+    },
+    {
+      "question_name": "preference-preferences_choung_701-preference_choung_701",
+      "completion": "Based on the information provided, candidate B would be preferred for further development. The molecule has a simpler structure and a better oral availability profile, as it does not have any ester bonds like candidate A. The chlorine atom in candidate B can be easily metabolized and excreted from the body, while the fluorine atom in candidate A may accumulate in the body and cause toxicity. Additionally, candidate B has a more favorable molecular weight and lipophilicity profile.\n\nTherefore, the answer is:\n\n[ANSWER] B [/ANswer]"
+    },
+    {
+      "question_name": "func_mats_and_nanomats-3-quantum_dots_3",
+      "completion": "[ANSWER]a, c[/ANSWER] The correct answer is A and C. Quantum confinement effects are observed when the movement of charge carriers is limited in all spatial dimensions (option C), which is the case when at least one dimension of the quantum dot is smaller than the exciton Bohr radius (option A). When all dimensions of the material are smaller than the exciton Bohr radius (option B), the system is in the strong quantum confinement regime, but it is not necessary for the observation of quantum confinement effects."
+    },
+    {
+      "question_name": "2019-1b1-icho_uk_2019_1b1",
+      "completion": "To find the concentration of CO2 in the fizzy drink, we can use Henry's law, which states that the concentration of a gas in a solution is directly proportional to the partial pressure of that gas above the solution. The formula for Henry's law is:\n\nc = k \u00d7 P\n\nwhere c is the concentration of the gas in the solution, k is the Henry's law constant, and P is the partial pressure of the gas above the solution.\n\nIn this case, we are given the Henry's law constant for CO2 (k = 0.033 mol dm^-3 atm^-1) and the partial pressure of CO2 gas in the can of fizzy drink (P = 3 atm). However, the volume of the can is given in cubic centimeters (250 cm^3), so we need to convert this to cubic decimeters (dm^3) to use the given Henry's law constant. We know that 1 dm^3 = 1000 cm^3, so:\n\n250 cm^3 = 0.25 dm^3\n\nNow we can use Henry's law to find the concentration of CO2 in the fizzy drink:\n\nc = k \u00d7 P\nc = 0.033 mol dm^-3 atm^-1 \u00d7 3 atm\nc = 0.099 mol dm^-3\n\nTherefore, the concentration of CO2 in the fizzy drink is [ANSWER]0.099 mol dm^{-3}[/ANswer]."
+    },
+    {
+      "question_name": "point_group-pointgroups_5-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
+      "question_name": "oup-molecular_structure_16-molecular_structure",
+      "completion": "[ANSWER]87, 45[/ANSWER] The McLafferty rearrangement in the mass spectrum of ethyl propanoate can lead to two major fragment ions. The first one is formed by the rearrangement of a hydrogen atom from the ethyl group to the carbonyl group, followed by cleavage of the bond between the carbonyl carbon and the adjacent carbon atom. This results in a C2H3O2+ ion with an m/z value of 45. The second fragment ion is formed due to the \u03b1-cleavage, where a bond between the carbonyl carbon and the \u03b1-carbon atom breaks, resulting in a C3H5O+ ion with an m/z value of 57. However, the question asks for the m/z value due to McLafferty rearrangement/fragmentation, which is 45. Additionally, there is a possibility of losing a water molecule from the C3H5O+ ion, resulting in a C3H3O+ ion with an m/z value of 45. Therefore, the correct answer is:\n\n[ANSWER]87, 45[/ANSWER]\n\nExplanation:\n\n1. McLafferty rearrangement in ethyl propanoate forms a C2H3O2+ ion with an m/z value of 45.\n2. \u03b1-cleavage forms a C3H5O+ ion with an m/z value of 57, which can further lose a water molecule to form a C3H3O+ ion with an m/z value of 45.\n3. Therefore, the m/z values due to McLafferty rearrangement/fragmentation are 45 and 87 (from the molecular ion peak)."
+    },
+    {
+      "question_name": "point_group-pointgroups_7-pointgroups",
+      "completion": "[ANSWER]Cs[/ANSWER] The molecule with SMILES C1=CC(=CC=C1Br)Br has point group Cs. This molecule has a vertical plane of symmetry (\u03c3v) and a center of inversion (i), but it does not have any rotational axes (Cn) or horizontal planes of symmetry (\u03c3h). Therefore, the point group of this molecule is Cs."
+    },
+    {
+      "question_name": "mof_questions-0-mof_isoreticular_expansion_pore_size",
+      "completion": "[ANSWER] A <B. The linkers in option A are: benzene-1,4-dicarboxylate, terephthalate, and isophthalate. The pore size increases as the number of carboxylate groups on the aromatic ring increases, which is the order presented in option A.[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_12-pointgroups",
+      "completion": "[ANSWER]C1[/ANSWER]"
+    },
+    {
+      "question_name": "2010-6e-icho_uk_2010_6e",
+      "completion": "[ANSWER] Here's how to approach this problem:\n\n1. A gold atom at a corner is shared among 8 adjacent unit cells, so each unit cell contains 1/8 of a gold atom at each corner.\n2. A gold atom at the center of a face is shared among 2 adjacent unit cells, so each unit cell contains 1/2 of a gold atom at each face center.\n3. A cubic unit cell has 8 corners and 6 face centers.\n\nSo, the total contribution of gold atoms to the unit cell is:\n(8 corners * 1/8 gold atom per corner) + (6 face centers * 1/2 gold atom per face center) = 1 gold atom\n\nThe volume occupied by a gold atom is equal to the volume of the unit cell divided by the number of gold atoms in the unit cell. Therefore, the fraction of the volume of the unit cell occupied by gold atoms is:\n\nGold atom volume / Unit cell volume = 1 (gold atom) / 1 (unit cell) = 1\n\n[/ANswer]"
+    },
+    {
+      "question_name": "periodic_table_properties-5-periodic_table_questions",
+      "completion": "[ANSWER] B <,> D [/ANSWER] The correct options are B and D. The density of group 13 elements increases from B to Al, then decreases from Ga to Tl. Therefore, the correct order is B<Al<Ga>In>Tl or B<Al<Ga<In<Tl>. Options B and D both represent these orders."
+    },
+    {
+      "question_name": "preference-preferences_choung_133-preference_choung_133",
+      "completion": "The two options given are chemical structure representations using the Simplified Molecular Input Line Entry System (SMILES). It is difficult to evaluate these options without additional information such as their specific targets, biological activity, and toxicity. However, based on the simple aspects mentioned in the question (oral availability and small molecular profile), we can make some general observations.\n\nOption A: CCCC(Nc1cncc(-c2ccc(NC(=O)NCC)c(C)c2)n1)c1ccccn1\nThis structure appears to be a small, cyclic molecule with a possible amide bond (-N-C(=O)). The presence of an amide bond might indicate oral availability, as it is a common feature in many oral drugs. However, the cyclic structure might lead to issues with oral absorption, as it can be difficult for the body to break down and absorb large rings.\n\nOption B: C[C@@H](NC(=O)[C@@H]1CCCO1)C(=O)N1CCN(CCCOc2ccc(-c3noc(-c4ccccc4)n3)c(F)c2)CC1\nThis structure is larger and more complex than option A, containing multiple rings, a fluorine atom, and a possible amide bond. The presence of multiple rings and a fluorine atom might make it more difficult for the body to absorb and metabolize. However, the presence of an amide bond and a smaller number of rotatable bonds could potentially make it more orally available.\n\nConsidering these simple aspects, neither option appears to be a clear favorite. Further information, such as biological activity and toxicity, would be needed to make a more informed decision.\n\n[ANSWER] Neither A nor B [/ANSWER]"
+    },
+    {
+      "question_name": "analytical_chemistry-24_3-analytical_chemistry_22",
+      "completion": "[ANSWER] D / Aromatic hydrocarbons [/ANSWER]"
+    },
+    {
+      "question_name": "2023-2h5_0-icho_uk_2023_q2h5",
+      "completion": "To find the number of B atoms in the unit cell of w-BN, we first need to determine the type of lattice it has. The description of the unit cell as a \"right rhombic prism, with cell parameters of d = 2.54 \u00c5 and e = 3.63 \u00c5 and interior angles of 60 deg and 1"
+    },
+    {
+      "question_name": "ionenlotto-2-dissolvable_ammonium_carbonate_group",
+      "completion": "[ANSWER] Mg^{2+}, Sr^{2+} [/ANSWER]"
+    },
+    {
+      "question_name": "Organic_chemistry-OC_2_18-OC_1",
+      "completion": "[ANSWER] D / Tertiary alcohol [/ANSWER]"
+    },
+    {
+      "question_name": "2021-36-US_national_olympiad_2021_i_36",
+      "completion": "I have calculated the amount of silver nitrate (AgNO3) in moles present in the solution to be:\n\n[ANSWER] b, c [/ANSWER] The reason for this is that the reaction between silver nitrate (AgNO3) and sodium chloride (NaCl) will produce silver chloride (AgCl), which is insoluble in water. However, some of the silver ions (Ag+) will form a complex with ammonia (NH3) and become soluble. The solubility of silver chloride is given by the solubility product constant (Ksp), and the formation of the silver amine complex is given by the formation constant (Kf). By using these constants and the given concentrations, we can calculate the amount of silver nitrate that reacts with sodium chloride and forms the silver amine complex. The answer is between options b and c, but the exact value depends on the specific calculations and assumptions made."
+    },
+    {
+      "question_name": "blac_gfk-ii_4_4-blac_gfk_ii_4_4",
+      "completion": "[ANSWER] Zinc chromate[/ANSWER]\n\nZinc chromate is primarily a health hazard, while the other substances listed are physical hazards (asbestos and ammonium nitrate) or carcinogens (benzene). Zinc chromate can cause skin and eye irritation, and prolonged exposure may lead to more serious health issues such as damage to the liver and kidneys. The other substances present more immediate hazards, such as inhalation risks or explosive properties."
+    },
+    {
+      "question_name": "preference-preferences_choung_921-preference_choung_921",
+      "completion": "The chemical structures given are in the SMILES format. It is not possible to accurately evaluate the candidates without more information such as their biological activity, toxicity, and other ADME (absorption, distribution, metabolism, and excretion) properties. However, based on the simple aspects mentioned in the question (oral availability and small molecular profile), we can make some preliminary considerations.\nOption A has a molecular weight of 489.55 g/mol, and option B has a molecular weight of 340.38 g/mol. Therefore, option B has a smaller molecular profile, which could be an advantage for drug-like properties.\nAdditionally, option B contains a more simple structure without any branched chains, which could be beneficial for oral availability and synthetic accessibility.\nTherefore, based on the limited information provided, option B might be a better candidate for further development.\n[ANSWER] B [/ANswer]"
+    },
+    {
+      "question_name": "point_group-pointgroups_14-pointgroups",
+      "completion": "[ANSWER]C3v[/ANSWER] \n\nThe molecule with SMILES \"C1=CC=C(C=C1)CCC2=CC=CC=C2\" is hexaphenylbenzene. Its point group is D3d if we consider the whole molecule as a rigid body. However, if we consider the molecule as flexible and allow the phenyl groups to rotate, then the point group is C3v. This is because the molecule now has three mutually perpendicular mirror planes passing through the central carbon atom and the three-fold rotation axis."
+    },
+    {
+      "question_name": "point_group-pointgroups_15-pointgroups",
+      "completion": "[ANSWER] D2d[/ANSWER]"
+    },
+    {
+      "question_name": "combustion_engineering-1-OVGU-CE-march-2021-1",
+      "completion": "To calculate the air flow rate, we first need to find the volumetric flow rate of air. We can use the formula:\n\nVolumetric flow rate = Area \u00d7 Laminar flame speed \u00d7 Equivalence ratio\n\nFirst, let's calculate the area of the burner tube:\nArea = \u03c0 \u00d7 (Diameter / 2)^2\nArea = \u03c0 \u00d7 (8 mm / 2)^2 = 50.27 mm^2\n\nNow, we can calculate the volumetric flow rate:\nVolumetric flow rate = 50.27 mm^2 \u00d7 0.38 m/s \u00d7 1.2\nVolumetric flow rate = 0.0231 m^3/s\n\nFinally, we can convert the volumetric flow rate to L/min:\nAir flow rate = Volumetric flow rate \u00d7 (60 s/min) \u00d7 (1000 L/m^3)\nAir flow rate = 0.0231 m^3/s \u00d7 60 s/min \u00d7 1000 L/m^3\nAir flow rate = 1386 L/min\n\n[ANSWER]1386[/ANswer] L/min"
+    },
+    {
+      "question_name": "polymer_chemistry_fsu-16-polymer_chemistry_16",
+      "completion": "To solve this problem, we first need to determine the amount of lactic acid in the sample by calculating the amount of NaOH it neutralized. Given that 18.50 cm^3 of 0.100 mol dm^(-3) HCl was required to neutralize the remaining NaOH, the amount of NaOH consumed can be calculated as follows:\n\n18.50 cm^3 \\* 0.100 mol dm^(-3) = 1.85 x 10^(-3) mol\n\nThe stoichiometric relationship between lactic acid and NaOH is 1:1, so the amount of lactic acid in the sample can be calculated as follows:\n\n1.85 x 10^(-3) mol = 2 x amount of lactic acid\n\nTherefore, the amount of lactic acid in the sample is 0.925 x 10^(-3) mol.\n\nThe molar mass of lactic acid (C3H6O3) is 90.08 g/mol, so the mass of lactic acid in the sample can be calculated as follows:\n\n0.925 x 10^(-3) mol \\* 90.08 g/mol = 0.0833 g\n\nHowever, the question asks for the mass of compound B, which is a dimer of lactic acid. Therefore, the final answer is:\n\n[ANSWER] 0.1666 [/ANSWER]\n\nwhich corresponds to option A (0.1701) as the closest answer."
+    },
+    {
+      "question_name": "point_group-pointgroups_3-pointgroups",
+      "completion": "[ANSWER]Cs[/ANSWER]"
+    },
+    {
+      "question_name": "organic_reactivity-3_0-organic_reactivity_3",
+      "completion": "[ANSWER] SC1=CC=C([N+]([O-])=O)C=C1, CC(N)=O, CC[N-]CC.[Li+] [/ANSWER] The correct ordering of compounds from most acidic to least acidic is:\n\n1. SC1=CC=C([N+]([O-])=O)C=C1: This compound is a derivative of sulfonimidic acid and has a positive charge on the nitrogen atom and a negative charge on the oxygen atom, making it the most acidic.\n2. CC(N)=O: This compound is an isocyanate, which is more acidic than the next compound due to the presence of the triple bond between carbon and nitrogen.\n3. CC[N-]CC.[Li+]: This compound is a lithium salt of an amide, which is less acidic than the previous two compounds due to the presence of the negative charge on the nitrogen atom.\n\nTherefore, the correct answer is option B."
+    },
+    {
+      "question_name": "point_group-pointgroups_9-pointgroups",
+      "completion": "[ANSWER]C3v[/ANSWER]"
+    },
+    {
+      "question_name": "2010-6f-icho_uk_2010_6f",
+      "completion": "To find the radius of the gold atom, we first need to determine the volume of the unit cell using the molar volume and the packing efficiency of the gold atoms. The packing efficiency is given as 74%, so the volume of the gold atoms in the unit cell is:\n\nVolume of gold atoms = Molar volume * Packing efficiency\nVolume of gold atoms = 10.2 cm^3/mol * 0.74\nVolume of gold atoms = 7.548 cm^3/mol\n\nSince gold has a face-centered cubic (fcc) structure, the atoms occupy 74% of the volume, and the remaining 26% is empty space. Therefore, the volume of the unit cell is:\n\nUnit cell volume = Volume of gold atoms / 0.74\nUnit cell volume = 7.548 cm^3/mol / 0.74\nUnit cell volume = 10.21 cm^3/mol\n\nNow, we can find the edge length of the unit cell using the volume:\n\nEdge length = cube root of Unit cell volume\nEdge length = cube root of (10.21 cm^3/mol)\nEdge length = 2.147 cm\n\nIn an fcc structure, the relationship between the edge length and the atomic radius (r) is given by:\n\nEdge length = 4r\n\nNow, we can find the radius of the gold atom:\n\nr = Edge length / 4\nr = 2.147 cm / 4\nr = 0.53675 cm\n\nFinally, convert the radius from cm to \u00c5ngstroms (1 \u00c5 = 0.01 cm):\n\nRadius = 0.53675 cm * 0.01 m/cm * 100 \u00c5/m\nRadius \u2248 5.37 \u00c5\n\n[ANSWER]5.37[/ANswer]"
+    },
+    {
+      "question_name": "point_group-pointgroups_0-pointgroups",
+      "completion": "[ANSWER] D2h [/ANSWER] The molecule with SMILES \"C\" is linear, with a single C atom. Its point group is therefore D2h, which has a vertical mirror plane, a horizontal mirror plane, and a 180-degree rotational symmetry axis."
+    },
+    {
+      "question_name": "oup-molecular_structure_17-molecular_structure",
+      "completion": "[ANSWER]1,0,0[/ANSWER]"
+    },
+    {
+      "question_name": "materials_compatibility-materials_compatibility_3602-materials_compatibility",
+      "completion": "[ANSWER] Fair, B[/ANSWER] Ammonium phosphate, monobasic is generally considered to have a fair compatibility with stainless steel 316, meaning that it can be used in certain conditions but may have some effects on the material's properties. Specifically, prolonged exposure (48 hours) to this chemical can result in moderate corrosion or discoloration, which is classified as a minor effect (option B). However, softening or loss of strength, and swelling may also occur, which is why it is also classified as fair (option A). It is not recommended for continuous use, but it is not expected to have a severe effect on the material (option C). Therefore, the correct answer is Fair, B."
+    }
+  ]
+}
