@@ -19,3 +19,6 @@ __pycache__
 .vscode/*
 src/tex/.DS_Store
 src/tex/.DS_Store
+
+scratch/
+src/tex/.DS_Store

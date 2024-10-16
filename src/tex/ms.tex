@@ -134,20 +134,20 @@ In those cases, the \gls{llm} that returns the probabilities for various tokens 
 The text completions, however, are the system's final outputs, which would also be used in a real-world application. 
 Hence, we use them for our evaluations.
 
-% \begin{figure}[!h]
-%     \centering
-%     \includegraphics{figures/human_subset_performance.pdf}
-%     \caption{\textbf{Performance of models and humans on the \enquote{tiny} subset of the  \chembench corpus.} The figure shows the percentage of questions that the models answered correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
-%     Since the humans did not answer all the questions, this plot is based on the subset of questions that most humans answered.
-%     The evaluation we use here is very strict as it only considers a question answered correctly or incorrectly, partially correct answers are also considered incorrect.
-%     \Cref{fig:barplot_all_correct_all_questions} provides an overview of the performance of various models on the entire corpus.
-%     Systems with \enquote{ReAct} in the name are tool augmented, i.e., they can call external tools such as web search or Python code executors to better answer the questions.
-%     However, we limit those systems to a maximum of ten calls to the \gls{llm}. This constraint led the systems to often not find the correct answer within the specified number of calls.
-%     In this case, we consider the answer as incorrect. 
-%     }
-%     \label{fig:human_vs_models_bar}
-%     \script{plot_overview_performance_plot.py}
-% \end{figure}
+\begin{figure}[!h]
+    \centering
+    \includegraphics{figures/human_subset_performance.pdf}
+    \caption{\textbf{Performance of models and humans on the \enquote{tiny} subset of the  \chembench corpus.} The figure shows the percentage of questions that the models answered correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
+    Since the humans did not answer all the questions, this plot is based on the subset of questions that most humans answered.
+    The evaluation we use here is very strict as it only considers a question answered correctly or incorrectly, partially correct answers are also considered incorrect.
+    \Cref{fig:barplot_all_correct_all_questions} provides an overview of the performance of various models on the entire corpus.
+    Systems with \enquote{ReAct} in the name are tool augmented, i.e., they can call external tools such as web search or Python code executors to better answer the questions.
+    However, we limit those systems to a maximum of ten calls to the \gls{llm}. This constraint led the systems to often not find the correct answer within the specified number of calls.
+    In this case, we consider the answer as incorrect. 
+    }
+    \label{fig:human_vs_models_bar}
+    \script{plot_overview_performance_plot.py}
+\end{figure}
 
 \paragraph{System performance} 
 To understand the current capabilities of \glspl{llm} in the chemical sciences, we evaluated a wide range of leading models\autocite{Huggingface} on the \chembench corpus, including systems augmented with external tools.

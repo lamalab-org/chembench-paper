@@ -27,6 +27,19 @@ rule question_statistics:
         "src/scripts/compute_basic_statistics.py"
 
 
+# plot the  number of questions in different topics
+rule question_plots:
+    input:
+        "src/data/questions.pkl",
+    output:
+        [
+            "src/tex/figures/question_count_barplot.pdf",
+            "src/tex/output/num_topics.txt",
+            "src/tex/figures/question_count_barplot_mcq_vs_general.pdf",
+        ],
+    script:
+        "src/scripts/plot_statistics.py"
+
 # output basic statistics about the human baseline
 rule human_statistics:
     input:
@@ -123,3 +136,17 @@ rule reading_ease_vs_model_performance:
         "src/tex/output/reading_ease.pkl"]
     script:
         "src/scripts/reading_ease_vs_model_performance.py"
+
+
+
+# plot the overall performance
+rule plot_overview_performance:
+    input:
+        ["src/data/model_score_dicts.pkl",]
+    output:
+        [
+            "src/tex/figures/overall_performance.pdf",
+            # "src/tex/figures/human_subset_performance.pdf",
+        ],
+    script:
+        "src/scripts/plot_overview_performance_plot.py"

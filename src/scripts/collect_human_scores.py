@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 import subprocess
 from utils import obtain_chembench_repo
-from paths import output
+from paths import output, data
 
 if __name__ == "__main__":
     chembench_repo = obtain_chembench_repo()

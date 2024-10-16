@@ -1,7 +1,6 @@
 from utils import (
     ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
     ONE_COL_WIDTH_INCH,
-    TWO_COL_WIDTH_INCH,
     TWO_COL_GOLDEN_RATIO_HEIGHT_INCH,
 )
 import matplotlib.pyplot as plt
