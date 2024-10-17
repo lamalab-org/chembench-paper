@@ -135,7 +135,7 @@ The corresponding Spearman correlation coefficients are listed in \Cref{tab:corr
 
 \begin{figure}
     \centering 
-    \includegraphics{figures/correlation_plot_is_number_nmr_peaks_complexity.pdf}
+    \includegraphics[width=\textwidth]{figures/correlation_plot_is_number_nmr_peaks_complexity.pdf}
     \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the Böttcher complexity of the molecules.} The complexity measure proposed by \textcite{B_ttcher_2016} is an information-theoretic additive measure of compound complexity that follows chemical intuitions.
     The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is not correlated with the complexity of the molecules. For inference based on reasoning, one would expect that the complexity of the molecule is a good predictor of the difficulty of the question.}
     \script{correlate_with_molecule_features.py}
@@ -144,7 +144,7 @@ The corresponding Spearman correlation coefficients are listed in \Cref{tab:corr
 
 \begin{figure}
     \centering
-    \includegraphics{figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf}
+    \includegraphics[width=\textwidth]{figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf}
     \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the number of atoms.} The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is correlated with the number of atoms in the molecule. 
     For reasoning-based inference, one would expect that the number of atoms in the molecules is not necessarily a good predictor, and certainly worse than complexity measures, of the difficulty of the question.}
     \script{correlate_with_molecule_features.py}
@@ -180,11 +180,16 @@ The corresponding Spearman correlation coefficients are listed in \Cref{tab:corr
 
 
 \subsection{Influence of model scale}
-% To obtain first insights in how the performance \glspl{llm} depends on scale, we tested the \glspl{llm} of the LLaMA series. 
-% Interestingly, we find that the 7B and 70B models perform comparably, with the 13B showing lower performance (fraction of correct answers for the 7B, 13B, and 70B models are \variable{output/llama/llama_7b.txt}, \variable{output/llama/llama_13b.txt}, \variable{output/llama/llama_70b.txt}).
+\Cref{fig:model_size_plot} shows the performance of the models as a function of the number of parameters in the model.
+We see that the performance of the models correlates with scale for the models of the LLama3 and Llama3.1 herd of models.
 
-% Note that such analyses are difficult as models are typically not directly comparable in terms of dataset and training protocol.\autocite{biderman2023pythia}
-REWRITE.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/model_size_plot.pdf}
+    \caption{\textbf{Performance of models as a function of model size.} The plot shows the performance of the models as a function of the parameter count. The performance is measured as the fraction of questions answered correctly by the models. We see that the performance of the models correlates with scale for the models of the LLama3 and Llama3.1 herd of models.}
+    \script{performance_vs_model_size.py}
+    \label{fig:model_size_plot}
+\end{figure}
 
 \subsection{Human baseline}
 \paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\autocite{nextjs} app router framework.
@@ -192,6 +197,8 @@ This application handles serving the user interface and exposes various \gls{res
 We utilize a Postgresql.
 The web application is styled with Tailwind CSS\autocite{tailwindcss} using the shadcn/ui component library and uses NextAuth\autocite{nextauth} for easy and secure user authentication.
 The application is hosted on the Vercel web hosting platform.
+
+In the applications, human participants were presented with molecules as rendered drawings and SMILES strings. \LaTeX\xspace equations and chemical equations were rendered using MathJax\autocite{mathjax}.
 
 
 \paragraph{Statistics}
