@@ -287,9 +287,15 @@ Manually curated questions were sourced from various sources, including universi
 \paragraph{Semi-programmatically generated questions}
 In addition to the manually curated questions, we also generated questions programmatically. An overview of the sources of the semi-programmatically generated questions is provided in \Cref{tab:semi_programatically_sources}.
 
-
 %\input{sections/semi_programatically_sources_table.tex}
 
+\subparagraph{Chemical Preference data}
+
+These questions assess the ability to establish a \enquote{preference}, such as favoring a specific molecule. Chemical preference is of major importance in drug discovery projects, where the optimization process to reach the desired molecular properties is a process that lasts several years within a chemist's career.
+Our data corpus is adapted from the published dataset by \textcite{Choung2023}, which consists of more than 5000 question-answer pairs about chemical intuition. To build the dataset, they presented 35 medicinal chemists with two different molecules, asking them what molecule they would like to continue with when imaging an early virtual screening campaign setting. The question was designed so the scientists do not spend much time answering it, relying only on their feelings or \enquote{chemical preference}.
+
+To understand whether the capabilities of the leading models align with the preferences of professional chemists, we randomly selected 1000 data points from the original dataset to create a meaningful evaluation set, where molecules are represented as SMILES.
+To ablate the effect of different molecular representations, we only considered questions for which we could obtain IUPAC names for both molecules present.
 
 \clearpage
 
