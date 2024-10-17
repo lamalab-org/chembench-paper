@@ -1,13 +1,9 @@
-from glob import glob
-import os
-import json
 import numpy as np
 import matplotlib.pyplot as plt
 from plotutils import range_frame
-from paths import output, scripts, figures
+from paths import scripts, figures
 import pickle
 from paths import data
-from utils import obtain_chembench_repo
 from definitions import MODELS_TO_PLOT
 from collect_human_scores import obtain_human_scores
 
