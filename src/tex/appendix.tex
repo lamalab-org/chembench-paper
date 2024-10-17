@@ -133,32 +133,32 @@ To better understand if the performance of the models is correlated with specifi
 \Cref{fig:correlation_plot_is_number_nmr_peaks_complexity} shows that the performance of the models is not correlated with the complexity of the molecules but rather with the number of atoms (\Cref{fig:correlation_plot_is_number_nmr_peaks_num_atoms}, similar trivial correlation for \Cref{fig:correlation_plot_is_electron_counts_num_atoms}). 
 The corresponding Spearman correlation coefficients are listed in \Cref{tab:correlation_coefficients}.
 
-% \begin{figure}
-%     \centering 
-%     \includegraphics{figures/correlation_plot_is_number_nmr_peaks_complexity.pdf}
-%     \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the Böttcher complexity of the molecules.} The complexity measure proposed by \textcite{B_ttcher_2016} is an information-theoretic additive measure of compound complexity that follows chemical intuitions.
-%     The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is not correlated with the complexity of the molecules. For inference based on reasoning, one would expect that the complexity of the molecule is a good predictor of the difficulty of the question.}
-%     \script{correlate_with_molecule_features.py}
-%     \label{fig:correlation_plot_is_number_nmr_peaks_complexity}
-% \end{figure}
+\begin{figure}
+    \centering 
+    \includegraphics{figures/correlation_plot_is_number_nmr_peaks_complexity.pdf}
+    \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the Böttcher complexity of the molecules.} The complexity measure proposed by \textcite{B_ttcher_2016} is an information-theoretic additive measure of compound complexity that follows chemical intuitions.
+    The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is not correlated with the complexity of the molecules. For inference based on reasoning, one would expect that the complexity of the molecule is a good predictor of the difficulty of the question.}
+    \script{correlate_with_molecule_features.py}
+    \label{fig:correlation_plot_is_number_nmr_peaks_complexity}
+\end{figure}
 
-% \begin{figure}
-%     \centering
-%     \includegraphics{figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf}
-%     \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the number of atoms.} The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is correlated with the number of atoms in the molecule. 
-%     For reasoning-based inference, one would expect that the number of atoms in the molecules is not necessarily a good predictor, and certainly worse than complexity measures, of the difficulty of the question.}
-%     \script{correlate_with_molecule_features.py}
-%     \label{fig:correlation_plot_is_number_nmr_peaks_num_atoms}
-% \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf}
+    \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the number of atoms.} The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is correlated with the number of atoms in the molecule. 
+    For reasoning-based inference, one would expect that the number of atoms in the molecules is not necessarily a good predictor, and certainly worse than complexity measures, of the difficulty of the question.}
+    \script{correlate_with_molecule_features.py}
+    \label{fig:correlation_plot_is_number_nmr_peaks_num_atoms}
+\end{figure}
 
 
-% \begin{figure}
-%     \centering
-%     \includegraphics{figures/correlation_plot_is_electron_counts_num_atoms.pdf}
-%     \caption{\textbf{Dependence of the mean absolute error in predicting total electron counts on the number of atoms.} The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the total electron counts) is correlated with the number of atoms in the molecule.}
-%     \script{correlate_with_molecule_features.py}
-%     \label{fig:correlation_plot_is_electron_counts_num_atoms}
-% \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{figures/correlation_plot_is_electron_counts_num_atoms.pdf}
+    \caption{\textbf{Dependence of the mean absolute error in predicting total electron counts on the number of atoms.} The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the total electron counts) is correlated with the number of atoms in the molecule.}
+    \script{correlate_with_molecule_features.py}
+    \label{fig:correlation_plot_is_electron_counts_num_atoms}
+\end{figure}
 
 % \begin{table}
 %     \caption{\textbf{Spearman correlation coefficients for the correlation of model performance with molecular features.} The table shows the Spearman correlation coefficient $\rho$ for the correlation of the performance of the models with the number of atoms and the complexity of the molecules. }
