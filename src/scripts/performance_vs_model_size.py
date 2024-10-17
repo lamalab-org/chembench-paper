@@ -85,7 +85,7 @@ def plot_size_vs_performance(model_scores_dict):
     fig.tight_layout()
 
     ax.legend()
-    fig.savefig(figures / "size_vs_performance.pdf", bbox_inches="tight")
+    fig.savefig(figures / "model_size_plot.pdf", bbox_inches="tight")
 
 
 if __name__ == "__main__":
