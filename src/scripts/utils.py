@@ -151,6 +151,4 @@ def keyword_filter(keyword_list: list[str]):
 
 def filter_keywords(keywords):
     filtered_keywords = keyword_filter(keywords)
-    q_keywords = "+".join(sorted(filtered_keywords)).split()[0]
-
-    return q_keywords
+    return "+".join(sorted(filtered_keywords)).split()[0]
