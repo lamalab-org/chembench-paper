@@ -49,12 +49,11 @@ A substantial fraction, in contrast to other benchmarks, is open-ended.
     \script{plot_statistics.py}
 \end{figure}
 
-The corpus of the questions in  \chembench, as shown in \Cref{tab:chembench_corpus}, can be divided according to which topic they belong to or which type of knowledge is required to solve them correctly.
+The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpus_topic}, can be divided according to which chemical topic they belong to.
 
 \begin{table*}[!t]
     \centering
-        \caption{Summary of \chembench question types.}
-    }
+        \caption{Examples for each of the topics considered in the evaluation of the \chembench corpus.}
     \begin{tabular}{p{2.7cm}cp{10cm}}
         \toprule
         \textbf{Question Type} & \textbf{\%} & \textbf{Example Questions}  \\ 
@@ -75,10 +74,12 @@ The corpus of the questions in  \chembench, as shown in \Cref{tab:chembench_corp
         & & C. $S_N1$ \\
         & & D. $S_N2$ \\
         \midrule
-        Toxicity/Safety & 24.2 & What details pertaining to a hazardous substance can be located on a Material Safety Data Sheet (MSDS)? \\
-        & & A. All hazards regarding the material \\
-        & & B. Physical and chemical properties \\
-        & & C. Precautions for safe handling and storage \\
+        Toxicity/Safety & 24.2 & Pindolol and propranolol are (relatively nonselective) antagonists at $\beta_1$- and $\beta_2$-adrenoceptors. However, pindolol is a partial agonist, whereas propranolol is a pure antagonist. What follows from this? \\
+        & & A. Pindolol has a greater therapeutic range than propranolol \\
+        & & B. Pindolol has a longer half-life than propranolol \\
+        & & C. Pindolol has intrinsic activity \\
+        & & D. Pindolol is more lipophilic than propranolol \\
+        & & E. Pindolol is more potent than propranolol \\
         \midrule
         Analytical Chemistry & 5.8 & Which of the following analytical methods is most appropriate for performing a survey analysis of a solid sample containing various metals? \\
         & & A. X-ray fluorescence analysis \\
@@ -107,11 +108,24 @@ The corpus of the questions in  \chembench, as shown in \Cref{tab:chembench_corp
         & & E. \\ce{NaCl} \\
         \midrule
         Inorganic Chemistry & 3.3 & What is the oxidation number of the metal in the compound \\ce{[ZrF7]^{3-}}\\
+    \end{tabular}
+    \label{tab:chembench_corpus_topic}
+\end{table*}
+
+In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench corpus can be divided considering the different mental approaches needed to solve the questions.
+
+\begin{table*}[!t]
+    \centering
+        \caption{Examples for each of the mental approaches considered in the \chembench corpus.}
+    \begin{tabular}{p{2.7cm}cp{10cm}}
         \toprule
-        \textbf{Reasoning Type} & \textbf{Number of Questions} & \textbf{Example Question} \\
+        \textbf{Cognitive Type} & \textbf{Number of Questions} & \textbf{Example Question} \\
         \midrule
         Knowledge & 770 & Which of the following salts is an acidic salt? \\
-        & & A. \\
+        & & A. \\ce{NH4Cl} \\
+        & & B. \\ce{Na2CO3} \\
+        & & C. \\ce{NaH2PO4} \\
+        & & D. \\ce{Zn(OH)Cl} \\
         \midrule
         Reasoning & 825 & How can the optical impact of quantum confinement on the electronic structure of a quantum dot be observed experimentally? \\
         & & A. By measuring atomic force microscopy \\
@@ -126,7 +140,7 @@ The corpus of the questions in  \chembench, as shown in \Cref{tab:chembench_corp
         Calculation & 91 & Given that the average molar mass of the polymer chains in this sample of poly(lactic acid) (PLA) is \\pu{595 g mol^{-1}} using end-group analysis, where \\pu{0.1619 g} of PLA was dissolved in \\pu{25 cm^3} of benzyl alcohol and titrated with \\pu{0.0400 mol dm^{-3}} \\ce{KOH} solution. The volume of \\ce{KOH} solution required to reach the endpoint was \\pu{6.81 cm^3}. What is the average number of monomer units in each polymer chain of this sample? \\
         \bottomrule
     \end{tabular}
-    \label{tab:chembench_corpus}
+    \label{tab:chembench_corpus_cognitive}
 \end{table*}
 
 % \subsection{Parsing verification}\label{sec:manually-verified-parsing}
