@@ -212,6 +212,8 @@ def make_table(results, output_tex_file, human_subset = False) -> None:
     # Round all numeric columns to 2 decimal places (excluding non-numeric columns like "Model")
     numeric_columns = df.select_dtypes(include='number').columns
     df[numeric_columns] = df[numeric_columns].applymap(lambda x: f"{x:.2f}".rstrip('0').rstrip('.'))
+    # Sort the DataFrame alphabetically by the column "Models"
+    df = df.sort_values(by='Models')
 
 
    # Function to bold the best value (assuming higher is better)
@@ -270,15 +272,6 @@ def make_table(results, output_tex_file, human_subset = False) -> None:
             r"\begin{tabular}{cccccccc}"
         )
 
-    # Wrap the table with \resizebox
-    latex_table = (
-        r"\begin{table}[htbp]\centering" + "\n" +
-        r"\resizebox{\textwidth}{!}{" + "\n" +
-        latex_table + "\n" +
-        r"}" + "\n" +
-        r"\end{table}"
-    )
-    
     with open(output_tex_file, 'w') as f:
         f.write(latex_table)
 
