@@ -146,11 +146,14 @@ def combine_scores_for_model(folder, datafolder, human_baseline_folder=None, min
             relevant_questions = get_human_scored_questions_with_at_least_n_scores(human_baseline_folder, min_human_responses)
             df = df[df[("name", 0)].isin(relevant_questions)]
 
-        if human_baseline_folder:
-            if len(df) != 248:
-                logger.error(f"ERROR: some reports are missing with human baseline")
-        elif len(df) != 2854:
-            logger.error(f"ERROR: some general reports are missing")
+EXPECTED_HUMAN_BASELINE_REPORTS = 248
+EXPECTED_GENERAL_REPORTS = 2854
+
+if human_baseline_folder:
+    if len(df) != EXPECTED_HUMAN_BASELINE_REPORTS:
+        logger.error(f"ERROR: some reports are missing with human baseline")
+elif len(df) != EXPECTED_GENERAL_REPORTS:
+    logger.error(f"ERROR: some general reports are missing")
 
         logger.info(f"Loaded {len(df)} rows of data")
         model_scores = []
