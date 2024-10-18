@@ -62,8 +62,6 @@ A substantial fraction, in contrast to other benchmarks, is open-ended.
 %     \caption{\textbf{Composition of the human subset.} The circular plot shows the distribution of topics and required skills in the human subset of the \chembench corpus. The human subset is a representative subset of the full corpus, with a balanced distribution of topics and skills.}
 % \end{figure}
 
-\paragraph{Annotation} In the curation process, we 
-
 \subsection{Model performance}
 We also evaluated the model performance on the entire \chembench corpus. 
 \Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered correctly by the models. 
@@ -140,7 +138,7 @@ Interestingly, the performance of the models on questions sourced based on textb
 
 \begin{figure}
     \centering 
-    \includegraphics{figures/process.pdf}
+    \includegraphics[height=\textheight]{figures/process.pdf}
     \caption{\textbf{Overview of the benchmarking pipeline implemented in \chembench.} The process begins with JSON files containing task data, which are used to create \texttt{Task} objects and initialize the \texttt{ChemBenchmark}. \texttt{Prompter} objects are then created to handle different types of prompts for instruction-tuned and completion models.
     The \texttt{Task} Iterator differentiates between \gls{mcq} and other question types. For each task type, appropriate prompts are generated and passed to the \gls{llm}. The responses are then processed using regex-based parsing methods specific to \gls{mcq} or numeric answers (after obtaining the relevant part of the response from the instruction-tuned models). 
     The regex-based parsing is elaborate and also able to handle special cases such as scientific notation, or roman numerals.

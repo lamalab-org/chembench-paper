@@ -157,6 +157,9 @@ Their lack of performance, however, is partially because we limited the system t
 With the default tool augmented setup (using the so-called ReAct method\autocite{yao2022react}), however, this often did not allow the system to identify the correct answer (e.g., because it repeatedly tried to search for the answer on the web and did not find a solution within ten calls to the \gls{llm}).
 This observation highlights the importance of communicating and measuring not only predictive performance but also computational cost (e.g., in terms of \gls{api} calls) for tool-augmented systems.
 
+% Importance of scale 
+% Still lacks in knowledge-intensive questions 
+
 
 \paragraph{Performance per topic} To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
 For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}). We classified all questions in the \chembench corpus into these topics based on hand-crafted rules and classifier models operating on the question texts.
@@ -294,7 +297,7 @@ To ablate the effect of different molecular representations, we only considered 
 \clearpage
 
 \subsection{Model evaluation workflow}
-EXPAND THIS section. 
+An overview of the pipeline is shown in \Cref{fig:evaluation_workflow}.
 
 \paragraph{Prompting}
 
@@ -313,11 +316,11 @@ In the case of instruction-tuned models, we first identify the \texttt{[ANSWER]}
 In the case of completion models, this step is skipped. From there, we attempt to extract the relevant enumeration letters (for multiple-choice questions) or numbers.
 In the case of numbers, our regular expression was engineered to deal with various forms of scientific notation.
 As initial tests indicated that models sometimes return integers in the form of words, e.g., \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion using regular expressions.
-If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., Claude 2, to parse the completion.
+If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., \ClaudeThreeFiveSonnet, to parse the completion.
 
 
 \paragraph{Models}
-Rewrite - as table. The table can then also contain if it has been completion or instruction-prompted.
+For all models we performed inference using greedy decoding (i.e., temperature 0). We used the \gls{api} endpoints provided by the model developers and the ones provided by Groq.
 
 \subsection{Confidence estimate}
 To estimate the models' confidence, we prompted them with the question (and answer options for \gls{mcq}) and the task to rate their confidence to produce the correct answer on a scale from 1 to 5. 
@@ -340,12 +343,9 @@ Out of those, \variable{output/num_human_phd.txt} reported to have been awarded 
 
 
 \paragraph{Comparison with models}
-%To compare the performance of humans (who might have answered only some questions) with the performance of models (which answered all questions), we focussed on questions that at least four humans answered and limited the pool of human scorers to those who answered at least 100 questions (i.e., \variable{output/num_humans_with_more_than_100_scores.txt} humans). 
-%The latter threshold was chosen to limit it to humans who seriously attempted to answer a part of the questions systematically. 
-%This analysis might lead to potential biases, most likely in favor of humans, as they were allowed to skip questions. \variable{output/num_humans_with_204_scores.txt} humans answered more than 200 questions.
 For the analysis, we treated each human as a model. We computed the topic aggregated averages per human for analyses grouped by topic and then averaged over all humans.
 
-\subsection{Classification of questions into topics}\label{sec:meth-topic} 
+\subsection{Data annotation}\label{sec:meth-topic} 
 % When curating our dataset, we systematically recorded keywords and sources.
 % To allow for analysis of the model performance as a function of the topic, we leverage this information together with the output of sequence classification models.
 % We use this information to make the assignment for questions that can easily be assigned to a topic based on the source (e.g., number of \gls{nmr} signals, chemical compatibility, toxicology exam questions).

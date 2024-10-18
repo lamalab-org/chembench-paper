@@ -66,7 +66,7 @@ rule human_statistics:
             "src/data/human_no_tool_answered_questions.txt",
             "src/data/human_tool_answered_questions.txt",
             "src/data/human_answered_questions.txt",
-            "src/data/num_human_answered_questions.txt",
+            "src/tex/output/num_human_answered_questions.txt"
         ],
     script:
         "src/scripts/analyze_human_data.py"
