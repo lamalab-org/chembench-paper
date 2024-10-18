@@ -14,25 +14,25 @@
     \item \emph{Probing capabilities beyond answering of \glspl{mcq}}. In real-world chemistry, as well as higher-level university education, multiple-choice questions are seldom utilized.
     Yet, most benchmarking frameworks focus on the \gls{mcq} setting because of the ease of evaluation. Realistic evaluations must measure capabilities beyond answering \gls{mcq}.
     \item \emph{Cover a diverse set of topics}. Chemistry, as the \enquote{central science}, bridges multiple disciplines.\autocite{Aspuru_Guzik_2018} To even just approximate \enquote{chemistry capabilities} the topics covered by a chemistry benchmark must be very diverse.
-    \item \emph{Cover diverse skills}. To holistically judge performance it is important to cover questions relying on reasoning, calculation, knowledge, intuition. 
+    \item \emph{Cover diverse skills}. To holistically judge performance it is important to cover questions relying on reasoning, calculation, knowledge, intuition.
     \item \emph{Cover a range of difficulty levels}. To allow for a continuous measure of improvement for a range of different (evolving) systems, a benchmark should cover a wide range of difficulty levels.
     \item \emph{Impossible to completely solve with current models}. A benchmark should contain questions that are impossible to solve with current models. If current models can solve all questions, the benchmark provides no useful signal.
 \end{itemize}
 
 \subsection{Related work}
-Existing benchmarks such as those from \textcite{guo2023large}, \textcite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above. 
-While these benchmarks could provide valuable insights in the short term, they cannot follow the rapid additions to the \gls{llm} space. 
-\chembench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, a particular focus on chemical safety, employment of diverse prompting strategies, and specialized notation for molecules and mathematical symbols. 
+Existing benchmarks such as those from \textcite{guo2023large}, \textcite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above.
+While these benchmarks could provide valuable insights in the short term, they cannot follow the rapid additions to the \gls{llm} space.
+\chembench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, a particular focus on chemical safety, employment of diverse prompting strategies, and specialized notation for molecules and mathematical symbols.
 Moreover, our robust framework, including the platform \url{chembench.org}, will engage the community in open-source contributions.
 
-
+\clearpage
 \subsection{Benchmark corpus}
 To ensure maximal interoperability with existing benchmarks or tools, we curated the data in an extended form of the widely used BigBench format.\autocite{srivastava2022beyond}
 This also implies that future baselines can be built on top of our infrastructure if saved in the same format.
 
 
-\Cref{fig:flesch_kincaid_reading_ease} shows the distribution of the Flesch-Kincaid reading ease scores of the questions.  
-We see that the questions are generally complex to read. 
+%\Cref{fig:flesch_kincaid_reading_ease} shows the distribution of the Flesch-Kincaid reading ease scores of the questions.
+%We see that the questions are generally complex to read.
 
 % \begin{figure}[htb]
 %     \centering
@@ -43,7 +43,7 @@ We see that the questions are generally complex to read.
 % \end{figure}
 
 \Cref{fig:question_count_barplot_mcq_vs_general} shows that most questions in our corpus are \gls{mcq}.
-A substantial fraction, in contrast to other benchmarks, is open-ended. 
+A substantial fraction, in contrast to other benchmarks, is open-ended.
 % \begin{figure}[htb]
 %     \centering
 %     \includegraphics{figures/question_count_barplot_mcq_vs_general.pdf}
@@ -56,14 +56,15 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
 
 \begin{table*}[!t]
     \centering
-        \caption{Examples for each of the topics considered in the evaluation of the \chembench corpus.}
-    \begin{tabular}{p{2.7cm}cp{10cm}}
+        \caption{\textbf{Examples for each of the topics considered in the evaluation of the \chembench corpus.} The table shows the percentage of questions in the corpus that belong to each topic, as well as example questions.}
+    \scriptsize
+    \begin{tabularx}{\textwidth}{p{2.7cm}p{4em}X}
         \toprule
-        \textbf{Question Type} & \textbf{\%} & \textbf{Example Questions}  \\ 
+        Question Type & \% & Example Questions  \\
         \midrule
         Chemical Preference & 35.0 & Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
-        & & A. [START_SMILES]N#Cc1ccc(OCCCN2CC3CN(CCNS(=O)(=O)c4ccc(F)cc4)CC(C2)O3)cc1[END_SMILES] \\
-        & & B. [START_SMILES]O=C1CC(c2ccc(CC(NS(=O)(=O)c3cc(Cl)cc(Cl)c3)c3nc4ccccc4[nH]3)cc2)S(=O)(=O)N1[END_SMILES] \\
+        & & A. [START\_SMILES]N\#Cc1ccc(OCCCN2CC3CN(CCNS(=O)(=O)c4ccc(F)cc4)CC(C2)O3)cc1[END\_SMILES] \\
+        & & B. [START\_SMILES]O=C1CC(c2ccc(CC(NS(=O)(=O)c3cc(Cl)cc(Cl)c3)c3nc4ccccc4[nH]3)cc2)S(=O)(=O)N1[END\_SMILES] \\
         \midrule
         Technical Chemistry & 1.5 & Which of the following statements is true about the different types of ideal reactors? \\
         & & A. In a batch reactor, the composition is uniformly mixed and remains the same throughout the reactor and at the exit \\
@@ -71,7 +72,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
         & & C. In a mixed flow reactor, the composition changes with time but is uniform everywhere within the reactor \\
         & & D. In a plug flow reactor, the fluid moves in single flow through the reactor with no mixing and no overtaking \\
         \midrule
-        Organic Chemistry & 15.5 & What is the reaction mechanism that describes the following reaction (represented using reaction SMILES) [START_RXNSMILES]CCCl.CO[Na]>>[Na]Cl.CCOC[END_RXNSMILES]? \\
+        Organic Chemistry & 15.5 & What is the reaction mechanism that describes the following reaction (represented using reaction SMILES) [START\_RXNSMILES]CCCl.CO[Na]>>[Na]Cl.CCOC[END\_RXNSMILES]? \\
         & & A. $E_1$ \\
         & & B. $E_{cb}$ \\
         & & C. $S_N1$ \\
@@ -91,44 +92,47 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
         & & D. Gas chromatography with flame ionization detector \\
         & & E. Hydride generation atomic absorption spectroscopy \\
         \midrule
-        Materials Science & 3.1 & For NMR analysis, you need to digest the MOF in a strong acid to remove the linker and leave the metal clusters intact. Why would one choose \\ce{HF} over \\ce{HCl} for this purpose? \\
-        & & A. \\ce{F-} forms a stable bonds to the metal ions \\
-        & & B. \\ce{HF} has a better water solubility than \\ce{HCl} \\
-        & & C. \\ce{HF} has a higher boiling point than \\ce{HCl} \\
-        & & D. \\ce{HF} is a weaker acid than \\ce{HCl} \\
+        Materials Science & 3.1 & For NMR analysis, you need to digest the MOF in a strong acid to remove the linker and leave the metal clusters intact. Why would one choose \ce{HF} over \ce{HCl} for this purpose? \\
+        & & A. \ce{F-} forms a stable bonds to the metal ions \\
+        & & B. \ce{HF} has a better water solubility than \ce{HCl} \\
+        & & C. \ce{HF} has a higher boiling point than \ce{HCl} \\
+        & & D. \ce{HF} is a weaker acid than \ce{HCl} \\
         \midrule
         General Chemistry & 5.3 & Which of the following salts is an acidic salt? \\
-        & & A. \\ce{NH4Cl} \\
-        & & B. \\ce{Na2CO3} \\
-        & & C. \\ce{NaH2PO4} \\
-        & & D. \\ce{Zn(OH)Cl} \\
+        & & A. \ce{NH4Cl} \\
+        & & B. \ce{Na2CO3} \\
+        & & C. \ce{NaH2PO4} \\
+        & & D. \ce{Zn(OH)Cl} \\
         \midrule
         Physical Chemistry & 6.3 & The Born-Oppenheimer (BO) approximation is widely used in computational chemistry, but its accuracy can vary depending on the system. Among the following options, for which system is the Born-Oppenheimer approximation likely to be least applicable? \\
-        & & A. \\ce{C60} \\
-        & & B. \\ce{CH4} \\
-        & & C. \\ce{Fe(CO)5} \\
-        & & D. \\ce{H2+} \\
-        & & E. \\ce{NaCl} \\
+        & & A. \ce{C60} \\
+        & & B. \ce{CH4} \\
+        & & C. \ce{Fe(CO)5} \\
+        & & D. \ce{H2+} \\
+        & & E. \ce{NaCl} \\
         \midrule
-        Inorganic Chemistry & 3.3 & What is the oxidation number of the metal in the compound \\ce{[ZrF7]^{3-}}\\
-    \end{tabular}
+        Inorganic Chemistry & 3.3 & What is the oxidation number of the metal in the compound \ce{[ZrF7]^{3-}}\\
+    \end{tabularx}
     \label{tab:chembench_corpus_topic}
 \end{table*}
+
+\normalsize
 
 In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench corpus can be divided considering the different skills needed to solve the questions.
 
 \begin{table*}[!t]
     \centering
-        \caption{Examples for each of the required skills considered in the \chembench corpus.}
-    \begin{tabular}{p{2.7cm}cp{10cm}}
+        \caption{\textbf{Examples for each of the required skills considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question.}
+    \scriptsize
+    \begin{tabularx}{\textwidth}{p{2.7cm}p{4em}X}
         \toprule
-        \textbf{Required skills} & \textbf{Number of Questions} & \textbf{Example Question} \\
+        Required Skills & Number of Questions & Example Question \\
         \midrule
         Knowledge & 770 & Which of the following salts is an acidic salt? \\
-        & & A. \\ce{NH4Cl} \\
-        & & B. \\ce{Na2CO3} \\
-        & & C. \\ce{NaH2PO4} \\
-        & & D. \\ce{Zn(OH)Cl} \\
+        & & A. \ce{NH4Cl} \\
+        & & B. \ce{Na2CO3} \\
+        & & C. \ce{NaH2PO4} \\
+        & & D. \ce{Zn(OH)Cl} \\
         \midrule
         Reasoning & 825 & How can the optical impact of quantum confinement on the electronic structure of a quantum dot be observed experimentally? \\
         & & A. By measuring atomic force microscopy \\
@@ -137,28 +141,26 @@ In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench co
         & & D. By measuring the absorption spectroscopy \\
         \midrule
         Intuition & 1001 & Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
-        & & A. [START_SMILES]CC1(C)Oc2ccc([N+](=O)[O-])cc2[C@@H](N2CCOCC2)[C@@H]1O[END_SMILES] \\
-        & & B. [START_SMILES]Cc1ccccc1N=C(S)N1CCC(NC(=O)c2ccco2)CC1[END_SMILES] \\
+        & & A. [START\_SMILES]CC1(C)Oc2ccc([N+](=O)[O-])cc2[C@@H](N2CCOCC2)[C\@\@H]1O[END\_SMILES] \\
+        & & B. [START\_SMILES]Cc1ccccc1N=C(S)N1CCC(NC(=O)c2ccco2)CC1[END\_SMILES] \\
         \midrule
-        Calculation & 91 & Given that the average molar mass of the polymer chains in this sample of poly(lactic acid) (PLA) is \\pu{595 g mol^{-1}} using end-group analysis, where \\pu{0.1619 g} of PLA was dissolved in \\pu{25 cm^3} of benzyl alcohol and titrated with \\pu{0.0400 mol dm^{-3}} \\ce{KOH} solution. The volume of \\ce{KOH} solution required to reach the endpoint was \\pu{6.81 cm^3}. What is the average number of monomer units in each polymer chain of this sample? \\
+        Calculation & 91 & Given that the average molar mass of the polymer chains in this sample of poly(lactic acid) (PLA) is \SI{595}{g mol^{-1}} using end-group analysis, where \SI{0.1619}{g} of PLA was dissolved in \SI{25}{cm^3} of benzyl alcohol and titrated with \SI{0.0400}{mol dm^{-3}} \ce{KOH} solution. The volume of \ce{KOH} solution required to reach the endpoint was \SI{6.81}{cm^3}. What is the average number of monomer units in each polymer chain of this sample? \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \label{tab:chembench_corpus_cognitive}
 \end{table*}
 
-% \subsection{Parsing verification}\label{sec:manually-verified-parsing}
-% For validating the parsing workflow, we randomly sampled four questions per topic and manually verified that the completions of the model were parsed correctly.
-
+\normalsize
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{figures/cb_humanset_v2.pdf}
+    \includegraphics[width=\textwidth]{figures/cb_humanset_v3.pdf}
     \caption{\textbf{Composition of the human subset.} The circular plot shows the distribution of topics and required skills in the human subset of the \chembench corpus. The human subset is a representative subset of the full corpus, with a balanced distribution of topics and skills.}
 \end{figure}
 
 \subsection{Model performance}
-We also evaluated the model performance on the entire \chembench corpus. 
-\Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered correctly by the models. 
+We also evaluated the model performance on the entire \chembench corpus.
+\Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered correctly by the models.
 Note that this ranking differs from the one on the \enquote{tiny} subset
 
 \begin{figure}[htb]
@@ -170,7 +172,7 @@ Note that this ranking differs from the one on the \enquote{tiny} subset
 \end{figure}
 
 \Cref{fig:all_questions_models_completely_correct_radar_overall} shows the performance of the models on the different topics of the \chembench corpus.
-The general pattern of performance varies significantly between the different topics and is also observed when the models are evaluated on the entire corpus. 
+The general pattern of performance varies significantly between the different topics and is also observed when the models are evaluated on the entire corpus.
 However, since some subjects are composed of questions from different sources, the ranking of the models is, in some instances, different from the one on the \enquote{tiny} subset.
 
 \begin{table}
@@ -178,6 +180,7 @@ However, since some subjects are composed of questions from different sources, t
     \resizebox{\textwidth}{!}{
     \variable{output/performance_table.tex}
     }
+    \label{tab:performance_table}
 \end{table}
 
 \begin{table}
@@ -185,6 +188,7 @@ However, since some subjects are composed of questions from different sources, t
     \resizebox{\textwidth}{!}{
     \variable{output/performance_table_human_subset.tex}
     }
+    \label{tab:performance_table_human_subset}
 \end{table}
 
 \begin{figure}[htb]
@@ -214,7 +218,7 @@ Interestingly, the performance of the models on questions sourced based on textb
     \script{analyze_performance_per_source.py}
 \end{figure}
 
-\Cref{fig:performance_per_topic_tiny} shows the same analysis on the \enquote{tiny} subset. 
+\Cref{fig:performance_per_topic_tiny} shows the same analysis on the \enquote{tiny} subset.
 
 
 \begin{figure}[htb]
@@ -229,8 +233,8 @@ Interestingly, the performance of the models on questions sourced based on textb
 
 
 
-% In addition, we analyzed the performance on questions which requires calculation. For this, we manually labeled questions that require multiple calculation steps. 
-% We find that the ranking of models is different for questions with our without calculations (\Cref{fig:requires_cal}). 
+% In addition, we analyzed the performance on questions which requires calculation. For this, we manually labeled questions that require multiple calculation steps.
+% We find that the ranking of models is different for questions with our without calculations (\Cref{fig:requires_cal}).
 
 % \begin{figure}
 %     \centering
@@ -242,25 +246,13 @@ Interestingly, the performance of the models on questions sourced based on textb
 
 \clearpage
 
-\subsection{Implementation}
-
-\begin{figure}
-    \centering 
-    \includegraphics[height=\textheight]{figures/process.pdf}
-    \caption{\textbf{Overview of the benchmarking pipeline implemented in \chembench.} The process begins with JSON files containing task data, which are used to create \texttt{Task} objects and initialize the \texttt{ChemBenchmark}. \texttt{Prompter} objects are then created to handle different types of prompts for instruction-tuned and completion models.
-    The \texttt{Task} Iterator differentiates between \gls{mcq} and other question types. For each task type, appropriate prompts are generated and passed to the \gls{llm}. The responses are then processed using regex-based parsing methods specific to \gls{mcq} or numeric answers (after obtaining the relevant part of the response from the instruction-tuned models). 
-    The regex-based parsing is elaborate and also able to handle special cases such as scientific notation, or roman numerals.
-    If the initial parsing is unsuccessful, the system employs an \gls{llm}-based extraction method as a fallback. The parsed or extracted answers then undergo metric computation and refusal detection.}
-    \label{fig:process}
-\end{figure}
-
 \subsection{Performance as a function of molecular features}
 To better understand if the performance of the models is correlated with specific features of the molecules, we analyzed the performance of the models as a function of the number of atoms and the complexity of the molecules.
-\Cref{fig:correlation_plot_is_number_nmr_peaks_complexity} shows that the performance of the models is not correlated with the complexity of the molecules but rather with the number of atoms (\Cref{fig:correlation_plot_is_number_nmr_peaks_num_atoms}, similar trivial correlation for \Cref{fig:correlation_plot_is_electron_counts_num_atoms}). 
-The corresponding Spearman correlation coefficients are listed in \Cref{tab:correlation_coefficients}.
+\Cref{fig:correlation_plot_is_number_nmr_peaks_complexity} shows that the performance of the models is not correlated with the complexity of the molecules but rather with the number of atoms (\Cref{fig:correlation_plot_is_number_nmr_peaks_num_atoms}, similar trivial correlation for \Cref{fig:correlation_plot_is_electron_counts_num_atoms}).
+%The corresponding Spearman correlation coefficients are listed in \Cref{tab:correlation_coefficients}.
 
 \begin{figure}
-    \centering 
+    \centering
     \includegraphics[width=\textwidth]{figures/correlation_plot_is_number_nmr_peaks_complexity.pdf}
     \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the Böttcher complexity of the molecules.} The complexity measure proposed by \textcite{B_ttcher_2016} is an information-theoretic additive measure of compound complexity that follows chemical intuitions.
     The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is not correlated with the complexity of the molecules. For inference based on reasoning, one would expect that the complexity of the molecule is a good predictor of the difficulty of the question.}
@@ -271,7 +263,7 @@ The corresponding Spearman correlation coefficients are listed in \Cref{tab:corr
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf}
-    \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the number of atoms.} The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is correlated with the number of atoms in the molecule. 
+    \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the number of atoms.} The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of NMR signals) is correlated with the number of atoms in the molecule.
     For reasoning-based inference, one would expect that the number of atoms in the molecules is not necessarily a good predictor, and certainly worse than complexity measures, of the difficulty of the question.}
     \script{correlate_with_molecule_features.py}
     \label{fig:correlation_plot_is_number_nmr_peaks_num_atoms}
@@ -290,13 +282,13 @@ The corresponding Spearman correlation coefficients are listed in \Cref{tab:corr
 %     \caption{\textbf{Spearman correlation coefficients for the correlation of model performance with molecular features.} The table shows the Spearman correlation coefficient $\rho$ for the correlation of the performance of the models with the number of atoms and the complexity of the molecules. }
 %     \begin{tabularx}{\textwidth}{XXXX XXXX}
 %         \toprule
-%         topic & molecular descriptor & \(\rho\) GPT-4 & \(\rho \) Claude 3 & \( \rho \) Galactica &  \( \rho \) humans  \\ 
+%         topic & molecular descriptor & \(\rho\) GPT-4 & \(\rho \) Claude 3 & \( \rho \) Galactica &  \( \rho \) humans  \\
 %         \midrule
 %         number of \gls{nmr} signals & number of atoms &  \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_number_nmr_peaks.txt}  & \variable{output/correlation_correlation/spearman_num_atoms_human_is_number_nmr_peaks.txt} \\
 %                               & complexity & \variable{output/correlation_correlation/spearman_complexity_gpt4_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_claude3_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_galactica_120b_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_human_is_number_nmr_peaks.txt} \\
-%         \midrule 
+%         \midrule
 %         total electron counts & number of atoms & \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_human_is_electron_counts.txt} \\
-%         \midrule 
+%         \midrule
 %         \gls{smiles} \gls{iupac} name matching & number of atoms & \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_human_is_name.txt} \\
 %                 & complexity & \variable{output/correlation_correlation/spearman_complexity_gpt4_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_claude3_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_galactica_120b_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_human_is_name.txt} \\
 %         \bottomrule
@@ -305,9 +297,10 @@ The corresponding Spearman correlation coefficients are listed in \Cref{tab:corr
 % \end{table}
 
 
+\clearpage
 \subsection{Influence of model scale}
 \Cref{fig:model_size_plot} shows the performance of the models as a function of the number of parameters in the model.
-We see that the performance of the models correlates with scale for the models of the LLama3 and Llama3.1 herd of models.
+We see that the performance of the models correlates with scale for the models of the LLama-3 and Llama-3.1 herd of models.
 
 \begin{figure}
     \centering
@@ -317,7 +310,37 @@ We see that the performance of the models correlates with scale for the models o
     \label{fig:model_size_plot}
 \end{figure}
 
-\subsection{Human baseline}
+
+\clearpage
+\subsection{Refusal detection}
+
+To automatically detect refusals, we use a modified regular expression reported by LLM Guard\autocite{llmguard} to detect commonly used refusal phrases.
+
+\Cref{tab:refusal_counts} lists how many refusals were detected for the reponses of different models on \chembench. Overall, we find that refusals do not majorly affect the performance measured by \chembench.
+
+\clearpage
+\subsection{LLM Parsing}
+
+In our parsing workflow, we use pipelines based on regular expressions to extract the answers. In some cases, however, the answers are not directly extractable from the responses, for instance, when the model does not follow the formatting instructions. In these cases, we use a fallback mechanism to extract the answers. The fallback mechanism uses an \gls{llm} to extract the answers from the responses. The \gls{llm} is provided with the response and the question and is prompted to only extract but not generate the answer.
+\Cref{tab:llm_parsing_count} tabulates the number of times the fallback mechanism was used for each model.
+
+\clearpage
+\subsection{Implementation}
+An overview of the benchmarking pipeline implemented in \chembench is shown in \cref{fig:process}. More detailed information can be found in the online documentation of the \chembench package at \url{https://lamalab-org.github.io/chem-bench/}.
+\begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{figures/process.pdf}
+    \caption{\textbf{Overview of the benchmarking pipeline implemented in \chembench.} The process begins with JSON files containing task data, which are used to create \texttt{Task} objects and initialize the \texttt{ChemBenchmark}. \texttt{Prompter} objects are then created to handle different types of prompts for instruction-tuned and completion models.
+    The \texttt{Task} Iterator differentiates between \gls{mcq} and other question types. For each task type, appropriate prompts are generated and passed to the \gls{llm}. The responses are then processed using regex-based parsing methods specific to \gls{mcq} or numeric answers (after obtaining the relevant part of the response from the instruction-tuned models).
+    The regex-based parsing is elaborate and also able to handle special cases such as scientific notation, or roman numerals.
+    If the initial parsing is unsuccessful, the system employs an \gls{llm}-based extraction method as a fallback. The parsed or extracted answers then undergo metric computation and refusal detection.}
+    \label{fig:process}
+\end{figure}
+
+
+
+\clearpage
+\subsection{Human baseline} \label{sec:human_baseline}
 \paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\autocite{nextjs} app router framework.
 This application handles serving the user interface and exposes various \gls{rest} \glspl{api} for relevant operations.
 We utilize a Postgresql.
@@ -340,7 +363,6 @@ In the applications, human participants were presented with molecules as rendere
 \end{figure}
 
 We also recorded the time humans took to answer the questions. This time is the time from the question being displayed to the human to the human submitting the answer.
-%Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (\Cref{fig:human_timing}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\)$\quad$, and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
 \begin{figure}[htb]
     \centering
@@ -350,7 +372,7 @@ We also recorded the time humans took to answer the questions. This time is the 
     \label{fig:human_timing}
 \end{figure}
 
-Additionally, we prompted users to provide additional information about their experience in chemistry. 
+Additionally, we prompted users to provide additional information about their experience in chemistry.
 While we recorded fine-grained information, e.g., their specialization, we focused on the number of years since the first university-level chemistry course.
 \Cref{fig:experience_vs_correctness} shows that the experience of the human scorers was correlated with the correctness of their answers (\Cref{fig:experience_vs_correctness}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\), and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
@@ -362,15 +384,15 @@ While we recorded fine-grained information, e.g., their specialization, we focus
     \label{fig:experience_vs_correctness}
 \end{figure}
 
-
+\clearpage
 \subsection{Confidence estimates} \label{sec:confidence_estimates}
 
-Since it is important to understand if models can provide an indication of whether their answer might likely be incorrect, we prompted some of our top performing \glspl{llm} to return the confidence in providing a correct answer on an ordinal scale. 
+Since it is important to understand if models can provide an indication of whether their answer might likely be incorrect, we prompted some of our top performing \glspl{llm} to return the confidence in providing a correct answer on an ordinal scale.
 This is similar to the verbalized confidence scores reported by \textcite{xiong2023llms}.
 \Cref{fig:confidence_score_distributions} plots the distribution of those scores.
 We find that the models show different distributions of confidence scores, which, for some, are skewed to the extremes.
 
-% \begin{figure}[htb] 
+% \begin{figure}[htb]
 %     \centering
 %     \includegraphics{figures/confidence_score_distributions.pdf}
 %     \caption{\textbf{Distribution of confidence scores reported by \glspl{llm}.} \Glspl{llm} show different distributions of confidence scores. The confidence scores are reported on an ordinal scale from 1 to 5, with 1 indicating low confidence and 5 indicating high confidence. The bar plots show how many questions were answered with each confidence score.}
@@ -379,8 +401,9 @@ We find that the models show different distributions of confidence scores, which
 % \end{figure}
 
 
+\clearpage
 \subsection{Leaderboard}
-Our leaderboard is based on the tool chain developed for Matbench.\autocite{Dunn_2020} 
+Our leaderboard is based on the tool chain developed for Matbench.\autocite{Dunn_2020}
 Briefly, the \chembench pipeline produces standardized files in \texttt{json} format that contributors can add via pull requests to the \chembench repository.
 The Markdown tables and interactive plots are automatically generated and updated on the \chembench website.
 
