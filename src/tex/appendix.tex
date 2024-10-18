@@ -59,7 +59,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
         \caption{Examples for each of the topics considered in the evaluation of the \chembench corpus.}
     \begin{tabular}{p{2.7cm}cp{10cm}}
         \toprule
-        \textbf{Question Type} & \textbf{\%} & \textbf{Example Questions}  \\ 
+        Question Type & \% & Example Questions  \\ 
         \midrule
         Chemical Preference & 35.0 & Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
         & & A. [START\_SMILES]N\#Cc1ccc(OCCCN2CC3CN(CCNS(=O)(=O)c4ccc(F)cc4)CC(C2)O3)cc1[END\_SMILES] \\
@@ -71,7 +71,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
         & & C. In a mixed flow reactor, the composition changes with time but is uniform everywhere within the reactor \\
         & & D. In a plug flow reactor, the fluid moves in single flow through the reactor with no mixing and no overtaking \\
         \midrule
-        Organic Chemistry & 15.5 & What is the reaction mechanism that describes the following reaction (represented using reaction SMILES) [START_RXNSMILES]CCCl.CO[Na]>>[Na]Cl.CCOC[END_RXNSMILES]? \\
+        Organic Chemistry & 15.5 & What is the reaction mechanism that describes the following reaction (represented using reaction SMILES) [START\_RXNSMILES]CCCl.CO[Na]>>[Na]Cl.CCOC[END\_RXNSMILES]? \\
         & & A. $E_1$ \\
         & & B. $E_{cb}$ \\
         & & C. $S_N1$ \\
@@ -91,26 +91,26 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
         & & D. Gas chromatography with flame ionization detector \\
         & & E. Hydride generation atomic absorption spectroscopy \\
         \midrule
-        Materials Science & 3.1 & For NMR analysis, you need to digest the MOF in a strong acid to remove the linker and leave the metal clusters intact. Why would one choose \\ce{HF} over \\ce{HCl} for this purpose? \\
-        & & A. \\ce{F-} forms a stable bonds to the metal ions \\
-        & & B. \\ce{HF} has a better water solubility than \\ce{HCl} \\
-        & & C. \\ce{HF} has a higher boiling point than \\ce{HCl} \\
-        & & D. \\ce{HF} is a weaker acid than \\ce{HCl} \\
+        Materials Science & 3.1 & For NMR analysis, you need to digest the MOF in a strong acid to remove the linker and leave the metal clusters intact. Why would one choose \ce{HF} over \ce{HCl} for this purpose? \\
+        & & A. \ce{F-} forms a stable bonds to the metal ions \\
+        & & B. \ce{HF} has a better water solubility than \ce{HCl} \\
+        & & C. \ce{HF} has a higher boiling point than \ce{HCl} \\
+        & & D. \ce{HF} is a weaker acid than \ce{HCl} \\
         \midrule
         General Chemistry & 5.3 & Which of the following salts is an acidic salt? \\
-        & & A. \\ce{NH4Cl} \\
-        & & B. \\ce{Na2CO3} \\
-        & & C. \\ce{NaH2PO4} \\
-        & & D. \\ce{Zn(OH)Cl} \\
+        & & A. \ce{NH4Cl} \\
+        & & B. \ce{Na2CO3} \\
+        & & C. \ce{NaH2PO4} \\
+        & & D. \ce{Zn(OH)Cl} \\
         \midrule
         Physical Chemistry & 6.3 & The Born-Oppenheimer (BO) approximation is widely used in computational chemistry, but its accuracy can vary depending on the system. Among the following options, for which system is the Born-Oppenheimer approximation likely to be least applicable? \\
-        & & A. \\ce{C60} \\
-        & & B. \\ce{CH4} \\
-        & & C. \\ce{Fe(CO)5} \\
-        & & D. \\ce{H2+} \\
-        & & E. \\ce{NaCl} \\
+        & & A. \ce{C60} \\
+        & & B. \ce{CH4} \\
+        & & C. \ce{Fe(CO)5} \\
+        & & D. \ce{H2+} \\
+        & & E. \ce{NaCl} \\
         \midrule
-        Inorganic Chemistry & 3.3 & What is the oxidation number of the metal in the compound \\ce{[ZrF7]^{3-}}\\
+        Inorganic Chemistry & 3.3 & What is the oxidation number of the metal in the compound \ce{[ZrF7]^{3-}}\\
     \end{tabular}
     \label{tab:chembench_corpus_topic}
 \end{table*}
@@ -122,13 +122,13 @@ In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench co
         \caption{Examples for each of the required skills considered in the \chembench corpus.}
     \begin{tabular}{p{2.7cm}cp{10cm}}
         \toprule
-        \textbf{Required skills} & \textbf{Number of Questions} & \textbf{Example Question} \\
+        Required Skills & Number of Questions & Example Question \\
         \midrule
         Knowledge & 770 & Which of the following salts is an acidic salt? \\
-        & & A. \\ce{NH4Cl} \\
-        & & B. \\ce{Na2CO3} \\
-        & & C. \\ce{NaH2PO4} \\
-        & & D. \\ce{Zn(OH)Cl} \\
+        & & A. \ce{NH4Cl} \\
+        & & B. \ce{Na2CO3} \\
+        & & C. \ce{NaH2PO4} \\
+        & & D. \ce{Zn(OH)Cl} \\
         \midrule
         Reasoning & 825 & How can the optical impact of quantum confinement on the electronic structure of a quantum dot be observed experimentally? \\
         & & A. By measuring atomic force microscopy \\
@@ -137,10 +137,10 @@ In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench co
         & & D. By measuring the absorption spectroscopy \\
         \midrule
         Intuition & 1001 & Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
-        & & A. [START_SMILES]CC1(C)Oc2ccc([N+](=O)[O-])cc2[C@@H](N2CCOCC2)[C@@H]1O[END_SMILES] \\
-        & & B. [START_SMILES]Cc1ccccc1N=C(S)N1CCC(NC(=O)c2ccco2)CC1[END_SMILES] \\
+        & & A. [START\_SMILES]CC1(C)Oc2ccc([N+](=O)[O-])cc2[C@@H](N2CCOCC2)[C\@\@H]1O[END\_SMILES] \\
+        & & B. [START\_SMILES]Cc1ccccc1N=C(S)N1CCC(NC(=O)c2ccco2)CC1[END\_SMILES] \\
         \midrule
-        Calculation & 91 & Given that the average molar mass of the polymer chains in this sample of poly(lactic acid) (PLA) is \\pu{595 g mol^{-1}} using end-group analysis, where \\pu{0.1619 g} of PLA was dissolved in \\pu{25 cm^3} of benzyl alcohol and titrated with \\pu{0.0400 mol dm^{-3}} \\ce{KOH} solution. The volume of \\ce{KOH} solution required to reach the endpoint was \\pu{6.81 cm^3}. What is the average number of monomer units in each polymer chain of this sample? \\
+        Calculation & 91 & Given that the average molar mass of the polymer chains in this sample of poly(lactic acid) (PLA) is \pu{595 g mol^{-1}} using end-group analysis, where \pu{0.1619 g} of PLA was dissolved in \pu{25 cm^3} of benzyl alcohol and titrated with \pu{0.0400 mol dm^{-3}} \ce{KOH} solution. The volume of \ce{KOH} solution required to reach the endpoint was \pu{6.81 cm^3}. What is the average number of monomer units in each polymer chain of this sample? \\
         \bottomrule
     \end{tabular}
     \label{tab:chembench_corpus_cognitive}
