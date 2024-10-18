@@ -178,3 +178,12 @@ rule molecule_score_correlation:
         "src/tex/figures/correlation_plot_is_number_nmr_peaks_complexity.pdf"],
     script:
         "src/scripts/correlate_with_molecule_features.py"
+
+    
+rule model_size_plot: 
+    input: 
+        "src/data/model_score_dicts.pkl"
+    output: 
+        "src/tex/figures/model_size_plot.pdf"
+    script: 
+        "src/scripts/performance_vs_model_size.py"

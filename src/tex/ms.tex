@@ -95,14 +95,12 @@ Importantly, our large pool of questions encompasses a wide range of topics and 
 We also classify the questions based on what techniques are required to answer them. Here, we distinguish between questions that require knowledge, reasoning, calculation, intuition or a combination of these.
 Moreover, to allow for a more nuanced evaluation of the models capabilities, the questions are also classified by difficulty.
 
-% \begin{figure}[!htb]
-%     \centering
-%     \includegraphics{figures/question_count_barplot.pdf}
-%     \caption{\textbf{Number of questions for different topics.} The topics have been assigned using a combination of a rule-based system (mostly based on the source the question has been sampled from) and a classifier operating on word embeddings of the questions. 
-%     The figure shows that not all aspects of chemistry are equally represented in our corpus. The \chembench corpus, by design, currently focuses on safety-related aspects, which is also evident in \Cref{fig:question_diversity}. This figure represents the combined count of multiple-choice questions (\gls{mcq}) and open-ended questions.}
-%     \label{fig:topic_barplot}
-%     \script{plot_statistics.py}
-% \end{figure}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics{figures/cb_corpus_v1.pdf}
+    \caption{\textbf{Distribution of topics and required skills.} TThis circular plot illustrates the distribution of questions across various chemistry topics, along with the primary skills required to address them. The topics were manually classified, showing a varied representation across different aspects of chemistry. Each topic is associated with a combination of three key skills: Calculation, Reasoning, and Knowledge, as indicated by the colored bars. \chembench samples diverse topics and diverse skills, setting a high bar for \glspl{llm} to demonstrate human-competitive performance across a wide range of chemistry tasks.}
+    \label{fig:corpus}
+\end{figure}
 
 
 While many existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
