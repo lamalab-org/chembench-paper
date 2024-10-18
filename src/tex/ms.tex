@@ -94,7 +94,7 @@ Moreover, to allow for a more nuanced evaluation of the models capabilities, the
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{figures/cb_corpus_v2.pdf}
+    \includegraphics[width=\textwidth]{figures/cb_corpus_v3.pdf}
     \caption{\textbf{Distribution of topics and required skills.} This circular plot illustrates the distribution of questions across various chemistry topics, along with the primary skills required to address them. The topics were manually classified, showing a varied representation across different aspects of chemistry. Each topic is associated with a combination of three key skills: Calculation, Reasoning, and Knowledge, as indicated by the colored bars. \chembench samples diverse topics and diverse skills, setting a high bar for \glspl{llm} to demonstrate human-competitive performance across a wide range of chemistry tasks.}
     \label{fig:corpus}
 \end{figure}
@@ -183,17 +183,16 @@ In the subfield of analytical chemistry the prediction of the number of signals 
 % For instance, while the overall performance in the chemical safety topic is low, the models would pass the certification exam according to the German Chemical Prohibition Ordinance based on a subset of questions we sampled from the corresponding question bank (e.g., \variable{output/subset_scores/is_gfk_gpt4.txt}\% correct answers for GPT-4, \variable{output/subset_scores/is_gfk_claude3.txt}\% for Claude 3, and \variable{output/human_subset_scores/is_gfk.txt}\% for the human experts).
 % While those findings are impacted by the subset of questions we sampled, the results still highlight that good performance on such question bank or textbook questions does not necessarily translate to good performance on other questions that require more reasoning.
 
-% We also gain insight into the models' struggles with chemical reasoning tasks when we examine their performance as a function of molecular descriptors.
-% If the model would answer questions after reasoning about the structures, one would expect the performance to depend on the complexity of the molecules.
-% However, we find that the models' performance does not correlate with complexity indicators but rather trivially with the size of the compounds (see \Cref{tab:correlation_coefficients}).
-% This indicates that the models may not be able to reason about the structures of the molecules (in the way one might expect) but instead rely on retrieval of fragments of the training data.
-% Those observations mirror recent findings that \glspl{llm} struggle to \enquote{reverse} facts they have seen in training (i.e., generalize from \enquote{A has feature B} to \enquote{B is a feature of A}).\autocite{berglund2023reversal, zhu2023physics, allen2023physics, golovneva2024reverse}
+ We also gain insight into the models' struggles with chemical reasoning tasks when we examine their performance as a function of molecular descriptors.
+ If the model would answer questions after reasoning about the structures, one would expect the performance to depend on the complexity of the molecules.
+ However, we find that the models' performance does not correlate with complexity indicators but rather trivially with the size of the compounds (see \Cref{tab:correlation_coefficients}).
+ This indicates that the models may not be able to reason about the structures of the molecules (in the way one might expect) but instead rely on proximity of the molecules to the training data.\autocite{mccoy2023embersautoregressionunderstandinglarge}
 
-% It is important to note that the model performance for some topics, however, is underestimated in the current evaluation.
-% This is because models provided via \glspl{api} typically have safety mechanisms that prevent them from providing answers that the provider deems unsafe.
-% For instance, models might refuse to provide answers about cyanides.
-% To overcome this, direct access to the model weights would be required, and we strive to collaborate with the developers of frontier models to overcome this limitation in the future.
-% This is facilitated with the tooling \chembench provides, thanks to which contributors can automatically add new models in an open science fashion.
+It is important to note that the model performance for some topics, however, is slightly underestimated in the current evaluation.
+ This is because models provided via \glspl{api} typically have safety mechanisms that prevent them from providing answers that the provider deems unsafe.
+ For instance, models might refuse to provide answers about cyanides. Statistics of the frequency of such refusals are shown in \Cref{tab:refusals}.
+ To overcome this, direct access to the model weights would be required, and we strive to collaborate with the developers of frontier models to overcome this limitation in the future.
+ This is facilitated with the tooling \chembench provides, thanks to which contributors can automatically add new models in an open science fashion.
 
 \paragraph{Judging chemical preference}
 

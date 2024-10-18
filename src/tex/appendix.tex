@@ -152,11 +152,11 @@ In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench co
 
 \normalsize
 
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=\textwidth]{figures/cb_humanset_v2.pdf}
-%     \caption{\textbf{Composition of the human subset.} The circular plot shows the distribution of topics and required skills in the human subset of the \chembench corpus. The human subset is a representative subset of the full corpus, with a balanced distribution of topics and skills.}
-% \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/cb_humanset_v3.pdf}
+    \caption{\textbf{Composition of the human subset.} The circular plot shows the distribution of topics and required skills in the human subset of the \chembench corpus. The human subset is a representative subset of the full corpus, with a balanced distribution of topics and skills.}
+\end{figure}
 
 \subsection{Model performance}
 We also evaluated the model performance on the entire \chembench corpus.
@@ -312,6 +312,19 @@ We see that the performance of the models correlates with scale for the models o
 
 
 \clearpage
+\subsection{Refusal detection}
+
+To automatically detect refusals, we use a modified regular expression reported by LLM Guard\autocite{llmguard} to detect commonly used refusal phrases.
+
+\Cref{tab:refusal_counts} lists how many refusals were detected for the reponses of different models on \chembench. Overall, we find that refusals do not majorly affect the performance measured by \chembench.
+
+\clearpage
+\subsection{LLM Parsing}
+
+In our parsing workflow, we use pipelines based on regular expressions to extract the answers. In some cases, however, the answers are not directly extractable from the responses, for instance, when the model does not follow the formatting instructions. In these cases, we use a fallback mechanism to extract the answers. The fallback mechanism uses an \gls{llm} to extract the answers from the responses. The \gls{llm} is provided with the response and the question and is prompted to only extract but not generate the answer.
+\Cref{tab:llm_parsing_count} tabulates the number of times the fallback mechanism was used for each model.
+
+\clearpage
 \subsection{Implementation}
 An overview of the benchmarking pipeline implemented in \chembench is shown in \cref{fig:process}. More detailed information can be found in the online documentation of the \chembench package at \url{https://lamalab-org.github.io/chem-bench/}.
 \begin{figure}
@@ -323,6 +336,7 @@ An overview of the benchmarking pipeline implemented in \chembench is shown in \
     If the initial parsing is unsuccessful, the system employs an \gls{llm}-based extraction method as a fallback. The parsed or extracted answers then undergo metric computation and refusal detection.}
     \label{fig:process}
 \end{figure}
+
 
 
 \clearpage
