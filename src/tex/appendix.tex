@@ -25,14 +25,14 @@ While these benchmarks could provide valuable insights in the short term, they c
 \chembench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, a particular focus on chemical safety, employment of diverse prompting strategies, and specialized notation for molecules and mathematical symbols.
 Moreover, our robust framework, including the platform \url{chembench.org}, will engage the community in open-source contributions.
 
-
+\clearpage
 \subsection{Benchmark corpus}
 To ensure maximal interoperability with existing benchmarks or tools, we curated the data in an extended form of the widely used BigBench format.\autocite{srivastava2022beyond}
 This also implies that future baselines can be built on top of our infrastructure if saved in the same format.
 
 
-\Cref{fig:flesch_kincaid_reading_ease} shows the distribution of the Flesch-Kincaid reading ease scores of the questions.
-We see that the questions are generally complex to read.
+%\Cref{fig:flesch_kincaid_reading_ease} shows the distribution of the Flesch-Kincaid reading ease scores of the questions.
+%We see that the questions are generally complex to read.
 
 % \begin{figure}[htb]
 %     \centering
@@ -56,8 +56,9 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
 
 \begin{table*}[!t]
     \centering
-        \caption{Examples for each of the topics considered in the evaluation of the \chembench corpus.}
-    \begin{tabularx}{\textwidth}{p{2.7cm}p{2cm}X}
+        \caption{\textbf{Examples for each of the topics considered in the evaluation of the \chembench corpus.} The table shows the percentage of questions in the corpus that belong to each topic, as well as example questions.}
+    \scriptsize
+    \begin{tabularx}{\textwidth}{p{2.7cm}p{4em}X}
         \toprule
         Question Type & \% & Example Questions  \\
         \midrule
@@ -115,12 +116,15 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
     \label{tab:chembench_corpus_topic}
 \end{table*}
 
+\normalsize
+
 In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench corpus can be divided considering the different skills needed to solve the questions.
 
 \begin{table*}[!t]
     \centering
-        \caption{\textbf{Examples for each of the required skills considered in the \chembench corpus.}}
-    \begin{tabularx}{\textwidth}{p{2.7cm}p{2cm}X}
+        \caption{\textbf{Examples for each of the required skills considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question.}
+    \scriptsize
+    \begin{tabularx}{\textwidth}{p{2.7cm}p{4em}X}
         \toprule
         Required Skills & Number of Questions & Example Question \\
         \midrule
@@ -146,9 +150,7 @@ In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench co
     \label{tab:chembench_corpus_cognitive}
 \end{table*}
 
-% \subsection{Parsing verification}\label{sec:manually-verified-parsing}
-% For validating the parsing workflow, we randomly sampled four questions per topic and manually verified that the completions of the model were parsed correctly.
-
+\normalsize
 
 % \begin{figure}
 %     \centering
@@ -178,6 +180,7 @@ However, since some subjects are composed of questions from different sources, t
     \resizebox{\textwidth}{!}{
     \variable{output/performance_table.tex}
     }
+    \label{tab:performance_table}
 \end{table}
 
 \begin{table}
@@ -185,6 +188,7 @@ However, since some subjects are composed of questions from different sources, t
     \resizebox{\textwidth}{!}{
     \variable{output/performance_table_human_subset.tex}
     }
+    \label{tab:performance_table_human_subset}
 \end{table}
 
 \begin{figure}[htb]
@@ -242,22 +246,10 @@ Interestingly, the performance of the models on questions sourced based on textb
 
 \clearpage
 
-\subsection{Implementation}
-
-\begin{figure}
-    \centering
-    \includegraphics[height=\textheight]{figures/process.pdf}
-    \caption{\textbf{Overview of the benchmarking pipeline implemented in \chembench.} The process begins with JSON files containing task data, which are used to create \texttt{Task} objects and initialize the \texttt{ChemBenchmark}. \texttt{Prompter} objects are then created to handle different types of prompts for instruction-tuned and completion models.
-    The \texttt{Task} Iterator differentiates between \gls{mcq} and other question types. For each task type, appropriate prompts are generated and passed to the \gls{llm}. The responses are then processed using regex-based parsing methods specific to \gls{mcq} or numeric answers (after obtaining the relevant part of the response from the instruction-tuned models).
-    The regex-based parsing is elaborate and also able to handle special cases such as scientific notation, or roman numerals.
-    If the initial parsing is unsuccessful, the system employs an \gls{llm}-based extraction method as a fallback. The parsed or extracted answers then undergo metric computation and refusal detection.}
-    \label{fig:process}
-\end{figure}
-
 \subsection{Performance as a function of molecular features}
 To better understand if the performance of the models is correlated with specific features of the molecules, we analyzed the performance of the models as a function of the number of atoms and the complexity of the molecules.
 \Cref{fig:correlation_plot_is_number_nmr_peaks_complexity} shows that the performance of the models is not correlated with the complexity of the molecules but rather with the number of atoms (\Cref{fig:correlation_plot_is_number_nmr_peaks_num_atoms}, similar trivial correlation for \Cref{fig:correlation_plot_is_electron_counts_num_atoms}).
-The corresponding Spearman correlation coefficients are listed in \Cref{tab:correlation_coefficients}.
+%The corresponding Spearman correlation coefficients are listed in \Cref{tab:correlation_coefficients}.
 
 \begin{figure}
     \centering
@@ -305,9 +297,10 @@ The corresponding Spearman correlation coefficients are listed in \Cref{tab:corr
 % \end{table}
 
 
+\clearpage
 \subsection{Influence of model scale}
 \Cref{fig:model_size_plot} shows the performance of the models as a function of the number of parameters in the model.
-We see that the performance of the models correlates with scale for the models of the LLama3 and Llama3.1 herd of models.
+We see that the performance of the models correlates with scale for the models of the LLama-3 and Llama-3.1 herd of models.
 
 \begin{figure}
     \centering
@@ -317,7 +310,23 @@ We see that the performance of the models correlates with scale for the models o
     \label{fig:model_size_plot}
 \end{figure}
 
-\subsection{Human baseline}
+
+\clearpage
+\subsection{Implementation}
+An overview of the benchmarking pipeline implemented in \chembench is shown in \cref{fig:process}. More detailed information can be found in the online documentation of the \chembench package at \url{https://lamalab-org.github.io/chem-bench/}.
+\begin{figure}
+    \centering
+    \includegraphics[height=.8\textheight]{figures/process.pdf}
+    \caption{\textbf{Overview of the benchmarking pipeline implemented in \chembench.} The process begins with JSON files containing task data, which are used to create \texttt{Task} objects and initialize the \texttt{ChemBenchmark}. \texttt{Prompter} objects are then created to handle different types of prompts for instruction-tuned and completion models.
+    The \texttt{Task} Iterator differentiates between \gls{mcq} and other question types. For each task type, appropriate prompts are generated and passed to the \gls{llm}. The responses are then processed using regex-based parsing methods specific to \gls{mcq} or numeric answers (after obtaining the relevant part of the response from the instruction-tuned models).
+    The regex-based parsing is elaborate and also able to handle special cases such as scientific notation, or roman numerals.
+    If the initial parsing is unsuccessful, the system employs an \gls{llm}-based extraction method as a fallback. The parsed or extracted answers then undergo metric computation and refusal detection.}
+    \label{fig:process}
+\end{figure}
+
+
+\clearpage
+\subsection{Human baseline} \label{sec:human_baseline}
 \paragraph{App} To facilitate the collection of responses, we developed a responsive web application in Typescript using the Next.js\autocite{nextjs} app router framework.
 This application handles serving the user interface and exposes various \gls{rest} \glspl{api} for relevant operations.
 We utilize a Postgresql.
@@ -340,7 +349,6 @@ In the applications, human participants were presented with molecules as rendere
 \end{figure}
 
 We also recorded the time humans took to answer the questions. This time is the time from the question being displayed to the human to the human submitting the answer.
-%Interestingly, we found no significant correlation between the experience of the human scorers and the performance on the questions (\Cref{fig:human_timing}, Spearman's \(\rho \approx \variable{output/spearman_experience_score.txt}\)$\quad$, and \(p \approx \variable{output/spearman_experience_score_p.txt}\)).
 
 \begin{figure}[htb]
     \centering
@@ -362,7 +370,7 @@ While we recorded fine-grained information, e.g., their specialization, we focus
     \label{fig:experience_vs_correctness}
 \end{figure}
 
-
+\clearpage
 \subsection{Confidence estimates} \label{sec:confidence_estimates}
 
 Since it is important to understand if models can provide an indication of whether their answer might likely be incorrect, we prompted some of our top performing \glspl{llm} to return the confidence in providing a correct answer on an ordinal scale.
@@ -379,6 +387,7 @@ We find that the models show different distributions of confidence scores, which
 % \end{figure}
 
 
+\clearpage
 \subsection{Leaderboard}
 Our leaderboard is based on the tool chain developed for Matbench.\autocite{Dunn_2020}
 Briefly, the \chembench pipeline produces standardized files in \texttt{json} format that contributors can add via pull requests to the \chembench repository.

@@ -119,10 +119,10 @@ if __name__ == "__main__":
         os.makedirs(outdir, exist_ok=True)
 
     # human aligned
-    model_scores = obtain_subset_scores(model_scores["human_aligned_no_tool"], outdir)
+    model_scores = obtain_subset_scores(model_scores["human_aligned_combined"], outdir)
 
     with open(
-        os.path.join(data, "humans_as_models_scores_no_tools.pkl"), "rb"
+        os.path.join(data, "humans_as_models_scores_combined.pkl"), "rb"
     ) as handle:
         human_scores = pickle.load(handle)
 
