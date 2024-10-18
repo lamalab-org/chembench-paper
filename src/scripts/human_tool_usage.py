@@ -32,7 +32,7 @@ def categorize_tool(tool):
         return "ChemDraw"
     elif any(term in str(tool).lower() for term in ["book", "textbook"]):
         return "Textbook"
-    elif str(tool).lower() in ["pse", "periodic table"]:
+    elif str(tool).lower() in {"pse", "periodic table"}:
         return "PSE"
     else:
         return tool
