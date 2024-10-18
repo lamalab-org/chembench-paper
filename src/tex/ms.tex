@@ -117,7 +117,7 @@ We also used this subset for the human baseline study.
 \paragraph{Benchmark suite design} Because the text used in scientific settings differs from typical natural language, many models have been developed that deal with such text in a particular way.
 For instance, the Galactica model\autocite{taylor2022galactica} uses special tokenization or encoding procedures for molecules and equations. 
 Current benchmarking suites, however, do not account for such special treatment of scientific information.
-To address this, \chembench encodes the semantic meaning of various parts of the question or answer.  
+To address this, \chembench encodes the semantic meaning of various parts (e.g., chemicals, units, equations) of the question or answer.  
 For instance, molecules represented in \gls{smiles} are enclosed in \texttt{[START\_SMILES][\textbackslash END\_SMILES]} tags. 
 This allows the model to treat the \gls{smiles} string differently from other text. 
 \chembench can seamlessly handle such special treatment in an easily extensible way because the questions are stored in an annotated format.
@@ -127,18 +127,16 @@ This is also important given the growing number of tool-augmented systems that a
 Such systems can augment the capabilities of \glspl{llm} through the use of external tools such as search \glspl{api} or code executors.\autocite{schick2024toolformer, karpas2022mrkl, yao2022react}
 In those cases, the \gls{llm} that returns the probabilities for various tokens (that are often used for model evaluations\autocite{Fourrier_Habib_Launay_Wolf}) is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
 The text completions, however, are the system's final outputs, which would also be used in a real-world application. 
-Hence, we use them for our evaluations.
+Hence, we use them for our evaluations.\autocite{xiong2023llms}
 
 \begin{figure}[!h]
     \centering
     \includegraphics{figures/human_subset_performance.pdf}
     \caption{\textbf{Performance of models and humans on the \enquote{tiny} subset of the  \chembench corpus.} The figure shows the percentage of questions that the models answered correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
-    Since the humans did not answer all the questions, this plot is based on the subset of questions that most humans answered.
+    Since the humans did not answer all the questions, this plot is based on the subset of questions that all humans answered.
     The evaluation we use here is very strict as it only considers a question answered correctly or incorrectly, partially correct answers are also considered incorrect.
     \Cref{fig:barplot_all_correct_all_questions} provides an overview of the performance of various models on the entire corpus.
-    Systems with \enquote{ReAct} in the name are tool augmented, i.e., they can call external tools such as web search or Python code executors to better answer the questions.
-    However, we limit those systems to a maximum of ten calls to the \gls{llm}. This constraint led the systems to often not find the correct answer within the specified number of calls.
-    In this case, we consider the answer as incorrect. 
+    PaperQA2\autocite{skarlinski2024language} is an agentic system that can also search the literature to obtain an answer. We find that the best models outperform all humans in our study when averaged over all questions (even though humans had access to tools such as web search and ChemDraw for a subset of the questions). 
     }
     \label{fig:human_vs_models_bar}
     \script{plot_overview_performance_plot.py}
