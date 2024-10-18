@@ -20,7 +20,7 @@ rule question_statistics:
             "src/tex/output/num_pictograms.txt",
             "src/tex/output/non_mcq_questions.txt",
             "src/tex/output/mcq_questions.txt",
-            "src/tex/output/automatically_generated.txt", 
+            "src/tex/output/automatically_generated.txt",
             "src/tex/output/manually_generated.txt",
         ],
     script:
@@ -71,7 +71,7 @@ rule human_statistics:
     script:
         "src/scripts/analyze_human_data.py"
 
-# map the model names (based on the yaml file) to the report directory 
+# map the model names (based on the yaml file) to the report directory
 rule map_model_name_to_report_dir:
     input:
         "src/scripts/make_name_dir_map.py"
@@ -81,8 +81,8 @@ rule map_model_name_to_report_dir:
         "src/scripts/make_name_dir_map.py"
 
 
-# obtain one big dataframe with all model scores 
-rule model_score_dict: 
+# obtain one big dataframe with all model scores
+rule model_score_dict:
     input:
         ["src/data/questions.pkl",
         "src/data/name_to_dir_map.pkl",
@@ -111,12 +111,12 @@ rule get_human_performance_dicts:
     script:
         "src/scripts/get_human_performance_dicts.py"
 
-# analyze the performance per source 
+# analyze the performance per source
 rule performance_per_source:
     input:
         ["src/data/model_score_dicts.pkl",
-        "src/data/humans_as_models_scores_no_tools.pkl"]
-    output: 
+        "src/data/humans_as_models_scores_combined.pkl"]
+    output:
             [
             directory("src/tex/output/subset_scores"),
             directory("src/tex/output/human_subset_scores"),
@@ -125,10 +125,10 @@ rule performance_per_source:
             "src/tex/output/human_subset_scores/is_number_of_isomers.txt",
             "src/tex/output/human_subset_scores/is_gfk.txt"
         ],
-    script: 
+    script:
         "src/scripts/analyze_performance_per_source.py"
 
-# rule reading_ease_vs_model_performance: 
+# rule reading_ease_vs_model_performance:
 #     input:
 #         ["src/data/model_score_dicts.pkl",
 #         "src/data/questions.pkl"]
@@ -180,21 +180,42 @@ rule molecule_score_correlation:
     script:
         "src/scripts/correlate_with_molecule_features.py"
 
-    
-rule model_size_plot: 
-    input: 
+
+rule model_size_plot:
+    input:
         "src/data/model_score_dicts.pkl"
-    output: 
+    output:
         "src/tex/figures/model_size_plot.pdf"
-    script: 
+    script:
         "src/scripts/performance_vs_model_size.py"
 
 
-rule performance_tables: 
-    input: 
+rule performance_tables:
+    input:
         "src/data/model_score_dicts.pkl"
-    output: 
-        ["src/tex/output/performance_table_human_subset.tex", 
+    output:
+        ["src/tex/output/performance_table_human_subset.tex",
         "src/tex/output/performance_table.tex"]
     script:
         "src/scripts/make_performance_tables.py"
+
+rule question_counts:
+    input:
+        "src/scripts/count_json_files.py"
+    output:
+        [directory("src/tex/output/question_count_per_dir"),
+        "src/tex/output/question_count_per_dir/json_file_counts_reactive_groups.txt",
+        "src/tex/output/question_count_per_dir/json_file_counts_dai.txt",
+        "src/tex/output/question_count_per_dir/json_file_counts_h_statements.txt",
+        "src/tex/output/question_count_per_dir/json_file_counts_oxidation_states.txt",
+        "src/tex/output/question_count_per_dir/json_file_counts_point_group.txt",
+        "src/tex/output/question_count_per_dir/json_file_counts_pictograms.txt",
+        "src/tex/output/question_count_per_dir/json_file_counts_smiles_to_name.txt",
+        "src/tex/output/question_count_per_dir/json_file_counts_number_of_isomers.txt",
+        "src/tex/output/question_count_per_dir/json_file_counts_number_of_nmr_peaks.txt",
+        "src/tex/output/question_count_per_dir/json_file_counts_electron_counts.txt",
+        "src/tex/output/question_count_per_dir/json_file_counts_chem_chem_comp.txt",
+        "src/tex/output/question_count_per_dir/json_file_counts_materials_compatibility.txt"
+        ]
+    script:
+        "src/scripts/count_json_files.py"
