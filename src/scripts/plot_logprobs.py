@@ -11,12 +11,11 @@ from utils import (
     TWO_COL_GOLDEN_RATIO_HEIGHT_INCH,
     obtain_chembench_repo,
 )
-
+from plotutils import model_color_map
 plt.style.use(scripts / "lamalab.mplstyle")
 
 
 rename_dict = {"gpt": "GPT-4o", "llama3": "Llama-3.1-8B-Instruct"}
-model_color_map = {"GPT-4o": "red", "Llama-3.1-8B-Instruct": "blue"}
 
 
 def process_json_data(json_data):
@@ -101,7 +100,7 @@ def make_plot_of_calibration(merged_dicts, num_bins, suffix: str = ""):
         ax[i].plot([0, 1], [0, 1], linestyle="--", color="gray")
 
         ax[i].set_title(rename_dict[model])
-        ax[i].set_ylabel("Fraction of Positives")
+        ax[i].set_ylabel("fraction of positives")
         ax[i].set_ylim(0, 1)
         ax[i].set_xlim(0, 1)
 
@@ -130,7 +129,7 @@ def make_plot_of_calibration(merged_dicts, num_bins, suffix: str = ""):
             verticalalignment="top",
         )
 
-    ax[-1].set_xlabel("Predicted Probability")
+    ax[-1].set_xlabel("predicted probability")
 
     fig.tight_layout()
     fig.set_facecolor("w")

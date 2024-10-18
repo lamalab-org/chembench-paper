@@ -62,11 +62,9 @@ A substantial fraction, in contrast to other benchmarks, is open-ended.
 
 The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpus_topic}, can be divided according to which chemical topic they belong to.
 
-\begin{table*}[!t]
-    \centering
+\begin{xltabular}{\textwidth}{p{2.7cm}p{4em}X}
         \caption{\textbf{Examples for each of the topics considered in the evaluation of the \chembench corpus.} The table shows the percentage of questions in the corpus that belong to each topic, as well as example questions.}
-    \scriptsize
-    \begin{tabularx}{\textwidth}{p{2.7cm}p{4em}X}
+
         \toprule
         Question Type & \% & Example Questions  \\
         \midrule
@@ -120,19 +118,16 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
         & & E. \ce{NaCl} \\
         \midrule
         Inorganic Chemistry & 3.3 & What is the oxidation number of the metal in the compound \ce{[ZrF7]^{3-}}\\
-    \end{tabularx}
     \label{tab:chembench_corpus_topic}
-\end{table*}
+\end{xltabular}
 
 \normalsize
 
 In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench corpus can be divided considering the different skills needed to solve the questions.
 
-\begin{table*}[!t]
-    \centering
+\begin{xltabular}{\textwidth}{p{2.7cm}p{4em}X}
         \caption{\textbf{Examples for each of the required skills considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question.}
-    \scriptsize
-    \begin{tabularx}{\textwidth}{p{2.7cm}p{4em}X}
+
         \toprule
         Required Skills & Number of Questions & Example Question \\
         \midrule
@@ -154,9 +149,9 @@ In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench co
         \midrule
         Calculation & 91 & Given that the average molar mass of the polymer chains in this sample of poly(lactic acid) (PLA) is \SI{595}{g mol^{-1}} using end-group analysis, where \SI{0.1619}{g} of PLA was dissolved in \SI{25}{cm^3} of benzyl alcohol and titrated with \SI{0.0400}{mol dm^{-3}} \ce{KOH} solution. The volume of \ce{KOH} solution required to reach the endpoint was \SI{6.81}{cm^3}. What is the average number of monomer units in each polymer chain of this sample? \\
         \bottomrule
-    \end{tabularx}
+
     \label{tab:chembench_corpus_cognitive}
-\end{table*}
+\end{xltabular}
 
 \normalsize
 
@@ -330,7 +325,7 @@ In our parsing workflow, we use pipelines based on regular expressions to extrac
 
 \clearpage
 \subsection{Implementation}
-An overview of the benchmarking pipeline implemented in \chembench is shown in \cref{fig:process}. More detailed information can be found in the online documentation of the \chembench package at \url{https://lamalab-org.github.io/chem-bench/}.
+An overview of the benchmarking pipeline implemented in \chembench is shown in \Cref{fig:process}. More detailed information can be found in the online documentation of the \chembench package at \url{https://lamalab-org.github.io/chem-bench/}.
 \begin{figure}
     \centering
     \includegraphics[height=.8\textheight]{figures/process.pdf}
@@ -388,25 +383,29 @@ While we recorded fine-grained information, e.g., their specialization, we focus
     \label{fig:experience_vs_correctness}
 \end{figure}
 
+\paragraph{Tool use}
+In our study, humans were allowed to use tools for answering some questions.
+They could also report what tools they used for answering questions. As \Cref{fig:tool_use} shows, the most commonly tool was some form of web search (which, according to the freetext responses, often was a multi-step process).
+
 \clearpage
 \subsection{Confidence estimates} \label{sec:confidence_estimates}
 
 Since it is important to understand if models can provide an indication of whether their answer might likely be incorrect, we prompted some of our top performing \glspl{llm} to return the confidence in providing a correct answer on an ordinal scale.
 This is similar to the verbalized confidence scores reported by \textcite{xiong2023llms}.
-\Cref{fig:confidence_score_distributions} plots the distribution of those scores.
 We find that the models show different distributions of confidence scores, which, for some, are skewed to the extremes.
 
+In addition, we also analyzed the confidence estimated via the log probabilities of the answer tokens. This probability of a token given the context is not necessarily the same as the confidence in the correctness of the answer. However, it is still often used as a proxy.
 
-Our analysis of both log probabilities and prompting confidence reveals distinct calibration behaviors across different language models. 
-GPT-4o demonstrates an overconfident tendency, often assigning high probabilities even to incorrect answers. 
-However, when GPT-4o displays high confidence, it accurately predicts correct answers approximately 80\% of the time. In contrast, Llama-3.1-Instruct confidence distribution is more evenly spread, with a majority of predictions centered around 0.5 probability. High-confidence predictions from Llama are less frequent compared to GPT-4o, and unlike GPT-4o, high confidence does not necessarily correlate with a higher chance of correct answers.
-\begin{figure}[htb] 
-    \centering
-    \includegraphics{figures/calibration_plot_overall_filtered.pdf}
-    \caption{\textbf{Calibration between linear probability of \glspl{llm} and correctness.} For this analysis we obtained the linear probability from the logprobs of the models. Only logprobs of the tokens corresponding to the answers were considered. Linear proabability was computed by taking exponential of logprobs (for sequences with multiple tokens, values were multiplied).  The plot shows the average predicted probability and the fraction of correct answers for each bin of linear probabilities. The ideal scenario is a diagonal line, indicating perfect calibration where the model's confidence aligns perfectly with the actual correctness. The ECE (Expected Calibration Error) value quantifies the overall calibration performance, with a lower ECE indicating better calibration.}
-    \label{fig:confidence_score_distributions}
-    \script{plot_logprobs.py}
-\end{figure}
+Our analysis of both log probabilities and prompting confidence reveals distinct calibration behaviors across different language models.
+\GPTFourO demonstrates an overconfident tendency, often assigning high probabilities even to incorrect answers.
+However, when \GPTFourO displays high confidence, it accurately predicts correct answers approximately 80\% of the time. In contrast, \LlamaThreeOneEightBInstruct confidence distribution is more evenly spread, with a majority of predictions centered around 0.5. High-confidence predictions from \LlamaThreeOneEightBInstruct are less frequent compared to \GPTFourO, and unlike \GPTFourO, high confidence does not necessarily correlate with a higher chance of correct answers.
+%\begin{figure}[htb]
+%    \centering
+%    \includegraphics{figures/calibration_plot_overall_filtered.pdf}
+%    \caption{\textbf{Calibration between linear probability of \glspl{llm} and correctness.} For this analysis we obtained the linear probability from the logprobs of the models. Only logprobs of the tokens corresponding to the answers were considered. Linear proabability was computed by taking exponential of logprobs (for sequences with multiple tokens, values were multiplied).  The plot shows the average predicted probability and the fraction of correct answers for each bin of linear probabilities. The ideal scenario is a diagonal line, indicating perfect calibration where the model's confidence aligns perfectly with the actual correctness. The ECE (Expected Calibration Error) value quantifies the overall calibration performance, with a lower ECE indicating better calibration.}
+%    \label{fig:confidence_score_distributions}
+%    \script{plot_logprobs.py}
+%\end{figure}
 
 
 
