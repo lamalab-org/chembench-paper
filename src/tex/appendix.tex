@@ -30,6 +30,14 @@ Moreover, our robust framework, including the platform \url{chembench.org}, will
 To ensure maximal interoperability with existing benchmarks or tools, we curated the data in an extended form of the widely used BigBench format.\autocite{srivastava2022beyond}
 This also implies that future baselines can be built on top of our infrastructure if saved in the same format.
 
+\Cref{fig:cb_humanset} shows the distribution of topics and required skills in the human subset of the \chembench corpus.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/cb_humanset_v3.pdf}
+    \caption{\textbf{Composition of the human subset.} The circular plot shows the distribution of topics and required skills in the human subset of the \chembench corpus. The human subset is a representative subset of the full corpus, with a balanced distribution of topics and skills.}
+    \label{fig:cb_humanset}
+\end{figure}
 
 %\Cref{fig:flesch_kincaid_reading_ease} shows the distribution of the Flesch-Kincaid reading ease scores of the questions.
 %We see that the questions are generally complex to read.
@@ -152,12 +160,8 @@ In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench co
 
 \normalsize
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{figures/cb_humanset_v3.pdf}
-    \caption{\textbf{Composition of the human subset.} The circular plot shows the distribution of topics and required skills in the human subset of the \chembench corpus. The human subset is a representative subset of the full corpus, with a balanced distribution of topics and skills.}
-\end{figure}
 
+\clearpage
 \subsection{Model performance}
 We also evaluated the model performance on the entire \chembench corpus.
 \Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered correctly by the models.
