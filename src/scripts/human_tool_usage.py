@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -5,6 +6,7 @@ import numpy as np
 from utils import (
     ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
     ONE_COL_WIDTH_INCH,
+    obtain_chembench_repo,
     TWO_COL_WIDTH_INCH,
     TWO_COL_GOLDEN_RATIO_HEIGHT_INCH,
 )
@@ -36,7 +38,12 @@ def categorize_tool(tool):
         return tool
 
 
-df = pd.read_csv(data / "responses_updated_cleaned_toolUseAllowed.csv")
+chembench = obtain_chembench_repo()
+df = pd.read_csv(
+    os.path.join(
+        chembench, "reports/humans/responses_updated_cleaned_toolUseAllowed.csv"
+    )
+)
 df["toolCategory"] = df["toolsUsed"].apply(categorize_tool)
 
 print("Unique tool categories after categorization:")
@@ -90,9 +97,7 @@ topic_tool_percentage[top_tools].plot(
 )
 plt.xlabel("")
 plt.ylabel("Percentage of Tool Usage", fontsize=12)
-plt.legend(
-    title="", bbox_to_anchor=(1.05, 1), loc="upper left", fontsize="small"
-)
+plt.legend(title="", bbox_to_anchor=(1.05, 1), loc="upper left", fontsize="small")
 plt.xticks(rotation=45, ha="right")
 ax.set_xticklabels(
     [label.get_text().replace("Topics", "").strip() for label in ax.get_xticklabels()]
