@@ -188,3 +188,13 @@ rule model_size_plot:
         "src/tex/figures/model_size_plot.pdf"
     script: 
         "src/scripts/performance_vs_model_size.py"
+
+
+rule performance_tables: 
+    input: 
+        "src/data/model_score_dicts.pkl"
+    output: 
+        ["src/tex/output/performance_table_human_subset.tex", 
+        "src/tex/output/performance_table.tex"]
+    script:
+        "src/scripts/make_performance_tables.py"

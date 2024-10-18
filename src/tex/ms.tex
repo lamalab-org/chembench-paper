@@ -94,7 +94,7 @@ Moreover, to allow for a more nuanced evaluation of the models capabilities, the
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{figures/cb_corpus_v1.pdf}
+    \includegraphics[width=\textwidth]{figures/cb_corpus_v2.pdf}
     \caption{\textbf{Distribution of topics and required skills.} This circular plot illustrates the distribution of questions across various chemistry topics, along with the primary skills required to address them. The topics were manually classified, showing a varied representation across different aspects of chemistry. Each topic is associated with a combination of three key skills: Calculation, Reasoning, and Knowledge, as indicated by the colored bars. \chembench samples diverse topics and diverse skills, setting a high bar for \glspl{llm} to demonstrate human-competitive performance across a wide range of chemistry tasks.}
     \label{fig:corpus}
 \end{figure}
@@ -131,7 +131,7 @@ Hence, we use them for our evaluations.\autocite{xiong2023llms}
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=\textwidth]{figures/human_subset_performance.pdf}
+    \includegraphics{figures/human_subset_performance.pdf}
     \caption{\textbf{Performance of models and humans on the \enquote{tiny} subset of the  \chembench corpus.} The figure shows the percentage of questions that the models answered correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance. 
     Since the humans did not answer all the questions, this plot is based on the subset of questions that all humans answered.
     The evaluation we use here is very strict as it only considers a question answered correctly or incorrectly, partially correct answers are also considered incorrect.
@@ -380,8 +380,10 @@ K.M.J.\ was a paid consultant for OpenAI (as part of the red teaming network). M
 
 \section*{Author contributions}
 
+\resizebox{\textwidth}{!}{%
 \scriptsize
 \insertcredits
+}
 \normalsize
 \printbibliography
 \end{refsection}

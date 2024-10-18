@@ -56,11 +56,11 @@ A substantial fraction, in contrast to other benchmarks, is open-ended.
 % For validating the parsing workflow, we randomly sampled four questions per topic and manually verified that the completions of the model were parsed correctly.
 
 
-% \begin{figure}
-%     \centering
-%     \includegraphics[]{figures/cb_humanset_v1.pdf}
-%     \caption{\textbf{Composition of the human subset.} The circular plot shows the distribution of topics and required skills in the human subset of the \chembench corpus. The human subset is a representative subset of the full corpus, with a balanced distribution of topics and skills.}
-% \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/cb_humanset_v2.pdf}
+    \caption{\textbf{Composition of the human subset.} The circular plot shows the distribution of topics and required skills in the human subset of the \chembench corpus. The human subset is a representative subset of the full corpus, with a balanced distribution of topics and skills.}
+\end{figure}
 
 \subsection{Model performance}
 We also evaluated the model performance on the entire \chembench corpus. 
@@ -79,9 +79,23 @@ Note that this ranking differs from the one on the \enquote{tiny} subset
 The general pattern of performance varies significantly between the different topics and is also observed when the models are evaluated on the entire corpus. 
 However, since some subjects are composed of questions from different sources, the ranking of the models is, in some instances, different from the one on the \enquote{tiny} subset.
 
+\begin{table}
+    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered completely correctly by the models for different skills and difficulty levels.}
+    \resizebox{\textwidth}{!}{
+    \variable{output/performance_table.tex}
+    }
+\end{table}
+
+\begin{table}
+    \caption{\textbf{Performance of the models on the \enquote{tiny} subset of the \chembench corpus.} The table shows the fraction of questions answered completely correctly by the models for different skills and difficulty levels.}
+    \resizebox{\textwidth}{!}{
+    \variable{output/performance_table_human_subset.tex}
+    }
+\end{table}
+
 \begin{figure}[htb]
     \centering
-    \includegraphics{figures/all_questions_models_completely_correct_radar_overall.pdf}
+    \includegraphics[width=\textwidth]{figures/all_questions_models_completely_correct_radar_overall.pdf}
     \caption{\textbf{Performance of the models on the different topics of the \chembench corpus.} The radar plot shows the performance of the models on the different topics of the \chembench corpus. The performance is measured as the fraction of questions answered completely correctly by the models.
     A score of 1 indicates that all questions were answered completely correctly, while a score of 0 indicates that none were answered completely correctly.
     }
