@@ -63,7 +63,7 @@ print("\nTop tools:")
 print(top_tools)
 
 plt.rcParams["figure.facecolor"] = "white"
-fig, ax = plt.subplots(figsize=(20, 12))
+fig, ax = plt.subplots(figsize=(TWO_COL_WIDTH_INCH, TWO_COL_GOLDEN_RATIO_HEIGHT_INCH))
 ax.set_facecolor("white")
 
 colors = [
@@ -89,9 +89,9 @@ topic_tool_percentage[top_tools].plot(
     kind="bar", stacked=True, ax=ax, color=colors[: len(top_tools)]
 )
 plt.xlabel("")
-plt.ylabel("Percentage of Tool Usage", fontsize=14)
+plt.ylabel("Percentage of Tool Usage", fontsize=12)
 plt.legend(
-    title="Tools used", bbox_to_anchor=(1.05, 1), loc="upper left", fontsize="small"
+    title="", bbox_to_anchor=(1.05, 1), loc="upper left", fontsize="small"
 )
 plt.xticks(rotation=45, ha="right")
 ax.set_xticklabels(
@@ -103,7 +103,7 @@ plt.tight_layout()
 
 # Save as PDF
 plt.savefig(
-    static / "tool_usage_by_topic.pdf", format="pdf", dpi=300, bbox_inches="tight"
+    static / "human_tool_usage_by_topic.pdf", format="pdf", dpi=300, bbox_inches="tight"
 )
 plt.show()
 
