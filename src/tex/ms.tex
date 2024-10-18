@@ -29,11 +29,10 @@
 \begin{refsection}
 \section{Introduction}
 \Glspl{llm} are \gls{ml} models trained on massive amounts of text to complete sentences. 
-Aggressive scaling of these models has led to a rapid increase in their capabilities,\autocite{brown2020language,zhong2024benchmarking} with the leading models now being able to pass in some evaluations the United States Medical Licensing Examination.\autocite{kung2023performance} 
+Aggressive scaling of these models has led to a rapid increase in their capabilities,\autocite{brown2020language,zhong2024benchmarking} with the leading models now being able to pass the United States Medical Licensing Examination\autocite{kung2023performance} or other professional licensing exams.
 They also have been shown to design and autonomously perform chemical reactions when augmented with external tools such as web search and synthesis planners.\autocite{openai2024gpt4, Boiko_2023, bran2023chemcrow, darvish2024organa}
-While some see \enquote{sparks of \gls{agi}} in them,\autocite{bubeck2023sparks} others consider them as \enquote{stochastic parrots}---i.e., systems that only regurgitate what they have been trained on.\autocite{bender2021dangers}
+While some see \enquote{sparks of \gls{agi}} in them,\autocite{bubeck2023sparks} others consider them as \enquote{stochastic parrots}---i.e., systems that only regurgitate what they have been trained on\autocite{bender2021dangers} and that show inherent limitations due to the way they are trained.\autocite{mccoy2023embersautoregressionunderstandinglarge}
 Nevertheless, the promise of these models is that they have shown the ability to solve a wide variety of tasks they have not been explicitly trained on.\autocite{bommasani2021opportunities, anderljung2023frontier, ai4science2023impact}
-This has led to tremendous economic interest and investment in such generative models, with an expected market of more than \$1.3 trillion (almost \$30 billion for drug discovery applications) by 2032.\autocite{bloomberg}
 
 Chemists and materials scientists have quickly caught on to the mounting attention given to \glspl{llm}, with some voices even suggesting that \enquote{the future of chemistry is language}.\autocite{White_2023}
 This statement is motivated by a growing number of reports that use \glspl{llm} to predict properties of molecules or materials,\autocite{jablonka202314, jablonka2024leveraging, xie2024fine, liao2024words, zhang2024chemllm, zhong2024benchmarking}  optimize reactions\autocite{ramos2023bayesian, kristiadi2024sober}  generate materials,\autocite{rubungo2023llm, flam2023language, gruver2024fine, alampara2024mattextlanguagemodelsneed} extract information,\autocite{Patiny_2023, Dagdelen_2024, Zheng_2024, lala2023paperqa, caufield2023structured, gupta2022discomat, schillingwilhelmi2024textinsightlargelanguage, skarlinski2024language} or to even prototype systems that can autonomously perform reactions in the physical world based on commands provided in natural language.\autocite{bran2023chemcrow, Boiko_2023, darvish2024organa}
@@ -43,8 +42,6 @@ For instance, most insights in chemical research do not directly originate from 
 Many of these insights are in the form of text in scientific publications. 
 Thus, operating on such texts might be our best way of unlocking these insights and learning from them.
 This might ultimately lead to general copilot systems for chemists that can provide answers to questions or even suggest new experiments based on vastly more information than a human could ever read.
-Such a usage mode is, in particular, interesting in the face of recent advances in autonomous laboratories.\autocite{Boiko_2023, bran2023chemcrow, darvish2024organa, granda2018controlling, Angello_2022, coley2019robotic, Burger_2020, seifrid2022autonomous}
-
 
 However, the rapid increase in capabilities of chemical \gls{ml} models led (even before the recent interest in \glspl{llm}) to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\autocite{gopal2023releasing, ganguli2022red, Urbina_2022, campbell2023censoring, moulange2023towards, urbina2022teachable}
 To some extent, this is not surprising as any technology that, for instance, is used to design non-toxic molecules can also be used inversely to predict toxic ones (even though the synthesis would still require access to controlled physical resources and facilities).
@@ -53,7 +50,7 @@ For example, many students frequently consult these tools---perhaps even to prep
 This also applies to users from the general public, who might consider using \glspl{llm} to answer questions about the safety of chemicals.
 Thus, for some users, misleading information---especially about safety-related aspects---might lead to harmful outcomes. 
 However, even for experts, chemical understanding and reasoning capabilities are essential as they will determine the capabilities and limitations of their models in their work, e.g., in copilot systems for chemists.
-Unfortunately, apart from anecdotal reports, there is little evidence on how \glspl{llm} perform compared to expert (human) chemists.
+Unfortunately, apart from anecdotal reports such as by prompting leading models with various scientific questions,\autocite{ai4science2023impact} there is little systematic evidence on how \glspl{llm} perform compared to expert (human) chemists.
 
 Thus, to better understand what \glspl{llm} can do for the chemical sciences and where they might be improved with further developments, evaluation frameworks are needed to allow us to measure progress and mitigate potential harms systematically.
 For the development of \glspl{llm}, evaluation is currently primarily performed via standardized benchmark suites such as BigBench\autocite{srivastava2022beyond} or the LM Eval Harness.\autocite{eval-harness}
@@ -63,17 +60,16 @@ In these cases, the models are evaluated on predicting very specific properties 
 This, however, only gives a very limited view of the general chemical capabilities of the models.
 
 While some benchmarks based on university entrance exams\autocite{Zaki_2024, arora2023llms} or automatic text mining\autocite{song2023honeybee, wei2021chemistryqa, song-etal-2023-matsci} have been proposed, none of them have been widely accepted.
-This is likely because they cannot automatically be used with black box (or tool-augmented) systems, do not cover a wide range of topics, or are not carefully validated by experts.
+This is likely because they cannot automatically be used with black box (or tool-augmented) systems, do not cover a wide range of topics and skills, or are not carefully validated by experts.
 On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights on how the models compare relative to experts.
 
 In this work, we report a novel benchmarking framework  (\Cref{fig:overview_figure}), which we call \chembench, and use it to reveal limitations of current frontier models for use in the chemical sciences.
 Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs compiled from diverse sources (\variable{output/manually_generated.txt}\xspace manually generated, and \variable{output/automatically_generated.txt}\xspace automatically generated).  
-Our corpus covers a large fraction of the topics taught in undergraduate and graduate chemistry curricula. It can be used to evaluate any system that can return text (i.e., including tool-augmented systems).
+Our corpus measures reasoning, knowledge and intuition across a large fraction of the topics taught in undergraduate and graduate chemistry curricula. It can be used to evaluate any system that can return text (i.e., including tool-augmented systems).
 
-To contextualize the scores, we also surveyed \variable{output/number_experts.txt} experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with (human) chemists of different specializations.
+To contextualize the scores, we also surveyed \variable{output/number_experts.txt} experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with (human) chemists of different specializations. In parts of the survey, the participants were also allowed to use tools such as web search to create a realistic setting.
 Our results indicate that current frontier models perform \enquote{superhuman} on some aspects of chemistry but, in many cases, including safety-related ones, might be very misleading.
 We find that there are still numerous limitations for current models to overcome, such that they can be directly applied in autonomous systems for chemists.
-Moreover, we conclude that carefully created broad benchmarks represent an important stepping stone for progress in this field.  %and underline the importance of careful evaluation of the capabilities of \glspl{llm} in the chemical sciences.
 
 \section{Results and Discussion}
 
@@ -81,6 +77,7 @@ Moreover, we conclude that carefully created broad benchmarks represent an impor
     \includegraphics[width=\textwidth]{figures/overview_figure.pdf}
     \caption{\textbf{Overview of the \chembench framework.} The figure shows the different components of the \chembench framework. 
     The framework's foundation is the benchmark corpus that consists of many questions and answers that we manually or semi-automatically compiled from various sources.
+    Questions are classified based on topics, required skills (reasoning, calculation, knowledge, intuition), and difficulty levels.
     We then used this corpus to evaluate the performance of various models and tool-augmented systems using a custom framework. To provide a baseline, we built a web application that we used to survey experts in chemistry.
     The results of the evaluations are then compiled in publicly accessible leaderboards, which we propose as a foundation for evaluating future models.
     }
@@ -89,29 +86,29 @@ Moreover, we conclude that carefully created broad benchmarks represent an impor
 
 \subsection{Benchmark corpus}
 
-To compile our benchmark corpus, we utilized a broad list of sources (see \Cref{sec:curation}), ranging from university exams to semi-automatically generated questions based on curated subsets of data in chemical databases.
+To compile our benchmark corpus, we utilized a broad list of sources (see \Cref{sec:curation}), ranging from completely novel manually crafted questions, over university exams to semi-automatically generated questions based on curated subsets of data in chemical databases.
 For quality assurance, all questions have been reviewed by at least one scientist in addition to the original curator and automated checks. 
 Importantly, our large pool of questions encompasses a wide range of topics and question types. The topics range from general chemistry to more specialized fields such as inorganic, analytical or technical chemistry. 
 We also classify the questions based on what techniques are required to answer them. Here, we distinguish between questions that require knowledge, reasoning, calculation, intuition or a combination of these.
-Moreover, to allow for a more nuanced evaluation of the models capabilities, the questions are also classified by difficulty.
+Moreover, to allow for a more nuanced evaluation of the models capabilities, the questions are also classified by difficulty by the annotator.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics{figures/cb_corpus_v1.pdf}
-    \caption{\textbf{Distribution of topics and required skills.} TThis circular plot illustrates the distribution of questions across various chemistry topics, along with the primary skills required to address them. The topics were manually classified, showing a varied representation across different aspects of chemistry. Each topic is associated with a combination of three key skills: Calculation, Reasoning, and Knowledge, as indicated by the colored bars. \chembench samples diverse topics and diverse skills, setting a high bar for \glspl{llm} to demonstrate human-competitive performance across a wide range of chemistry tasks.}
+    \includegraphics[width=\textwidth]{figures/cb_corpus_v1.pdf}
+    \caption{\textbf{Distribution of topics and required skills.} This circular plot illustrates the distribution of questions across various chemistry topics, along with the primary skills required to address them. The topics were manually classified, showing a varied representation across different aspects of chemistry. Each topic is associated with a combination of three key skills: Calculation, Reasoning, and Knowledge, as indicated by the colored bars. \chembench samples diverse topics and diverse skills, setting a high bar for \glspl{llm} to demonstrate human-competitive performance across a wide range of chemistry tasks.}
     \label{fig:corpus}
 \end{figure}
 
 
 While many existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
-%For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions).
+For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions). In addition, \chembench samples skills on various difficulty level: From basic knowledge questions (as knowledge underpins reasoning processes\autocite{hu2024towards}) to complex reasoning tasks (such as finding out which ions are in a sample given a description of observations). We also include questions about chemical intuition, as showing human-aligned preferences is relevant for applications such as hypothesis generation or optimization tasks.\autocite{zhang2024omniopenendednessmodelshuman}
 
 
 \paragraph{\enquote{Tiny} subset}
 It is important to note that a smaller subset of the corpus might be more practical for routine evaluations.\autocite{polo2024tinybenchmarks}
 For instance,~\textcite{liang2023holistic} report costs of more than \$10,000 for \gls{api} calls for a single evaluation on the widely used \gls{helm} benchmark. 
-%To address this, we also provide a subset (\variable{output/num_tiny_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus in which topics are more balanced than in the complete corpus (see \Cref{sec:subset-selection} for details on the curation process).
-We also used this subset to seed the web application for the human baseline study. 
+To address this, we also provide a subset (\variable{output/num_human_answered_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus. While it is impossible to fully represent the full corpus in a subset, we aimed to include a maximally diverse set of questions and a more balanced distribution of topics and skills (see \Cref{sec:subset-selection} for details on the curation process).
+We also used this subset for the human baseline study. 
 
 
 

@@ -62,6 +62,8 @@ A substantial fraction, in contrast to other benchmarks, is open-ended.
 %     \caption{\textbf{Composition of the human subset.} The circular plot shows the distribution of topics and required skills in the human subset of the \chembench corpus. The human subset is a representative subset of the full corpus, with a balanced distribution of topics and skills.}
 % \end{figure}
 
+\paragraph{Annotation} In the curation process, we 
+
 \subsection{Model performance}
 We also evaluated the model performance on the entire \chembench corpus. 
 \Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered correctly by the models. 
@@ -172,7 +174,7 @@ The corresponding Spearman correlation coefficients are listed in \Cref{tab:corr
 
 \begin{figure}
     \centering
-    \includegraphics{figures/correlation_plot_is_electron_counts_num_atoms.pdf}
+    \includegraphics[width=\textwidth]{figures/correlation_plot_is_electron_counts_num_atoms.pdf}
     \caption{\textbf{Dependence of the mean absolute error in predicting total electron counts on the number of atoms.} The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the total electron counts) is correlated with the number of atoms in the molecule.}
     \script{correlate_with_molecule_features.py}
     \label{fig:correlation_plot_is_electron_counts_num_atoms}
