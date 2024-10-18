@@ -108,7 +108,7 @@ def make_human_performance_plots():
         for q in human_answered_questions:
             f.write(f"{q}" + "\n")
 
-    with open(data / "num_human_answered_questions.txt", "w") as f:
+    with open(output / "num_human_answered_questions.txt", "w") as f:
         f.write(f"{str(len(human_answered_questions))}" + "\endinput")
 
     with open(data / "human_tool_answered_questions.txt", "w") as f:
