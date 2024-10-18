@@ -142,14 +142,15 @@ Hence, we use them for our evaluations.\autocite{xiong2023llms}
     \script{plot_overview_performance_plot.py}
 \end{figure}
 
+% ToDO: Link to full table of results in the SI
 \paragraph{System performance} 
 To understand the current capabilities of \glspl{llm} in the chemical sciences, we evaluated a wide range of leading models\autocite{Huggingface} on the \chembench corpus, including systems augmented with external tools.
 An overview of the results of this evaluation is shown in \Cref{fig:human_vs_models_bar}. 
 In this figure, we show the percentage of questions that the models answered correctly.
 Moreover, we show the worst, best, and average performance of the human experts in our study, which we obtained via a custom web application (\url{chembench.org}) that we used to survey the experts.
-Remarkably, the figure shows that the leading \gls{llm}, Claude 3, outperforms the best human in our study in this overall metric and vastly, by more than a factor of two, exceeds the average performance of the experts in our study.
+Remarkably, the figure shows that the leading \gls{llm}, \oone, outperforms the best human in our study in this overall metric by almost a factor of two.
 Many other models also outperform the average human performance. 
-Interestingly, the Galactica model, which was trained specifically for scientific applications, underperformed compared to many advanced commercial and some open-source models and barely exceeds the random baseline.
+Interestingly, \LlamaThreeOneFourZeroFiveBInstruct shows performance that is close the leading proprietary models, indicating that new open source models can be competitive with the best proprietary models also in chemical settings.
 
 Given the considerable interest in tool-augmented systems, the mediocre performance of these systems (GPT-3.5 and Claude 2 augmented with tools) in our benchmark is striking. 
 Their lack of performance, however, is partially because we limited the system to a maximum of ten \gls{llm} calls.
