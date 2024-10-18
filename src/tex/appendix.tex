@@ -392,13 +392,20 @@ This is similar to the verbalized confidence scores reported by \textcite{xiong2
 \Cref{fig:confidence_score_distributions} plots the distribution of those scores.
 We find that the models show different distributions of confidence scores, which, for some, are skewed to the extremes.
 
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics{figures/confidence_score_distributions.pdf}
-%     \caption{\textbf{Distribution of confidence scores reported by \glspl{llm}.} \Glspl{llm} show different distributions of confidence scores. The confidence scores are reported on an ordinal scale from 1 to 5, with 1 indicating low confidence and 5 indicating high confidence. The bar plots show how many questions were answered with each confidence score.}
-%     \label{fig:confidence_score_distributions}
-%     \script{plot_confidence_score_distributions.py}
-% \end{figure}
+
+Our analysis of both log probabilities and prompting confidence reveals distinct calibration behaviors across different language models. 
+GPT-4o demonstrates an overconfident tendency, often assigning high probabilities even to incorrect answers. 
+However, when GPT-4o displays high confidence, it accurately predicts correct answers approximately 80\% of the time. In contrast, Llama-3.1-Instruct confidence distribution is more evenly spread, with a majority of predictions centered around 0.5 probability. High-confidence predictions from Llama are less frequent compared to GPT-4o, and unlike GPT-4o, high confidence does not necessarily correlate with a higher chance of correct answers.
+\begin{figure}[htb] 
+    \centering
+    \includegraphics{figures/calibration_plot_overall_filtered.pdf}
+    \caption{\textbf{Calibration between linear probability of \glspl{llm} and correctness.} For this analysis we obtained the linear probability from the logprobs of the models. Only logprobs of the tokens corresponding to the answers were considered. Linear proabability was computed by taking exponential of logprobs (for sequences with multiple tokens, values were multiplied).  The plot shows the average predicted probability and the fraction of correct answers for each bin of linear probabilities. The ideal scenario is a diagonal line, indicating perfect calibration where the model's confidence aligns perfectly with the actual correctness. The ECE (Expected Calibration Error) value quantifies the overall calibration performance, with a lower ECE indicating better calibration.}
+    \label{fig:confidence_score_distributions}
+    \script{plot_logprobs.py}
+\end{figure}
+
+
+
 
 
 \clearpage
