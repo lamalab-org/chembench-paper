@@ -2,4 +2,4 @@
 
 Several design choices were made when selecting a human subset. Firstly, from the full dataset, we keep all the questions that are labeled as advanced. In this way, we can obtain a deeper insight about the capabilities of \glspl{llm} on advanced tasks
 when compared to actual chemists. Secondly, we sample a maximum of three questions across all possible combinations of categories (i.e., knowledge or reasoning) and topics (e.g., organic chemistry, physical chemistry). Thirdly, we do not include any intuition questions
-in this subset. In total, \variable{output/num_human_answered_questions.txt} questions have been sampled for the human study. Then, this subset is divided into two subsets based on the aforementioned combinations. One of the question subsets allows tool use, and the other does not.
+in this subset. In total, \variable{output/num_human_answered_questions.txt} questions have been sampled for the human study. Then, this set is divided into two subsets based on the aforementioned combinations. One of the question subsets allows tool use, and the other does not.
