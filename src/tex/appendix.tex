@@ -128,6 +128,18 @@ Interestingly, the performance of the models on questions sourced based on textb
 
 \clearpage
 
+\subsection{Implementation}
+
+\begin{figure}
+    \centering 
+    \includegraphics{figures/process.pdf}
+    \caption{\textbf{Overview of the benchmarking pipeline implemented in \chembench.} The process begins with JSON files containing task data, which are used to create \texttt{Task} objects and initialize the \texttt{ChemBenchmark}. \texttt{Prompter} objects are then created to handle different types of prompts for instruction-tuned and completion models.
+    The \texttt{Task} Iterator differentiates between \gls{mcq} and other question types. For each task type, appropriate prompts are generated and passed to the \gls{llm}. The responses are then processed using regex-based parsing methods specific to \gls{mcq} or numeric answers (after obtaining the relevant part of the response from the instruction-tuned models). 
+    The regex-based parsing is elaborate and also able to handle special cases such as scientific notation, or roman numerals.
+    If the initial parsing is unsuccessful, the system employs an \gls{llm}-based extraction method as a fallback. The parsed or extracted answers then undergo metric computation and refusal detection.}
+    \label{fig:process}
+\end{figure}
+
 \subsection{Performance as a function of molecular features}
 To better understand if the performance of the models is correlated with specific features of the molecules, we analyzed the performance of the models as a function of the number of atoms and the complexity of the molecules.
 \Cref{fig:correlation_plot_is_number_nmr_peaks_complexity} shows that the performance of the models is not correlated with the complexity of the molecules but rather with the number of atoms (\Cref{fig:correlation_plot_is_number_nmr_peaks_num_atoms}, similar trivial correlation for \Cref{fig:correlation_plot_is_electron_counts_num_atoms}). 
