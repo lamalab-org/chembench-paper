@@ -229,3 +229,11 @@ rule logit_calibration:
         "src/tex/figures/log_probs_calibration_plot_overall_filtered.pdf"
     script:
         "src/scripts/plot_logprobs.py"
+        
+rule plot_temperature_impact:
+    input:
+        "src/data/model_score_dicts.pkl"
+    output:
+        "src/tex/figures/swarm_plot_combined.pdf"
+    script:
+        "src/scripts/plot_temperature_diffs.py"
