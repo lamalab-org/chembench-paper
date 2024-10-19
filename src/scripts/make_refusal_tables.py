@@ -18,9 +18,20 @@ def list_of_dicts_to_latex_table(data, output_file):
         f.write(latex_table)
 
 if __name__ == "__main__":
-    model_refusal = load_model_refusal(os.path.join(data, 'model_refusal.pkl'))
-    dict_to_latex_table(model_refusal, os.path.join(output, 'model_refusal_table.tex'))
-    
+    refusal_results = load_model_refusal(
+        os.path.join(
+            data, 
+            'model_refusal_and_extraction_count.pkl'
+        )
+    )
 
-    model_llm_extraction = load_model_refusal(os.path.join(data, 'model_llm_extraction.pkl'))
-    dict_to_latex_table(model_refusal, os.path.join(output, 'model_extraction_table.tex'))
+    refusal_results = sorted(refusal_results, key=lambda x: x["model"])
+
+    list_of_dicts_to_latex_table(
+        model_refusal, 
+        os.path.join(
+            output, 
+            'model_refusal_table.tex'
+        )
+    )
+    
