@@ -271,6 +271,23 @@ We find that the models show different distributions of confidence scores, which
     \script{plot_confidence_score_distributions.py}
 \end{figure}
 
+\subsection{Question refusal and LLM fallback} \label{sec:refusal}
+
+\paragraph{Refusal}
+
+During the training of the \glspl{llm}, generally one of the steps is refusal training. 
+Thus, in this stage of the training, the models are trained to prevent them of generating harmful, undesirable or violent outputs.
+As a consequence, it can happen that the model refuses to answer some questions that they identify as potential adversarially crafted prompts.
+
+To have a measure of how much refusal happens in \chembench, we count the number of refused questions by each model with a rule-based approach. 
+This rule-based approach searches for the most common structures of the refusal completions made by \glspl{llm}.
+
+\paragraph{LLM-Fallback}
+
+As explained above, the parsing of the answers from the completions of the models are made by parsing an answer pattern imposed within the prompt.
+For the questions in which \glspl{llm} do not follow this pattern to answer, we implement the so-called \gls{llm}-fallback which consists in passing the question and the completion to another model asking to extract the question or return "None" otherwise.
+For the count, the model chosen for do this auxiliary extraction was Llama 3 70B accessed via the Groq API.
+
 
 \subsection{Leaderboard}
 Our leaderboard is based on the tool chain developed for Matbench.\autocite{Dunn_2020} 
