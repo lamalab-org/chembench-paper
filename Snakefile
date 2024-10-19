@@ -203,3 +203,8 @@ rule plot_temperature_impact:
   input: "src/data/model_score_dicts.pkl"
   output: "src/tex/figures/swarm_plot_combined.pdf"
   script: "src/scripts/plot_temperature_diffs.py"
+
+rule tool_usage:
+  input: "src/data/model_score_dicts.pkl"
+  output: ["src/tex/figures/human_tool_usage_by_topic.pdf"]
+  script: "src/scripts/human_tool_usage.py"
