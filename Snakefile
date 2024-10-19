@@ -124,7 +124,8 @@ rule performance_per_source:
             "src/tex/output/human_subset_scores/is_number_nmr_peaks.txt",
             "src/tex/output/human_subset_scores/is_number_of_isomers.txt",
             "src/tex/output/human_subset_scores/is_gfk.txt",
-            "src/tex/output/subset_scores/is_number_nmr_peaks_o1.txt"
+            "src/tex/output/subset_scores/is_number_nmr_peaks_o1.txt",
+            "src/tex/figures/performance_per_topic_tiny.pdf"
         ],
     script:
         "src/scripts/analyze_performance_per_source.py"
