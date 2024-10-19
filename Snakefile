@@ -133,9 +133,6 @@ rule analyze_model_reports:
   output:
     [
       "src/tex/figures/all_questions_models_completely_correct_radar_overall.pdf",
-      "src/tex/figures/all_questions_models_requires_calculation_radar_overall.pdf",
-      "src/tex/figures/all_questions_models_completely_correct_radar_human_aligned.pdf",
-      "src/tex/figures/all_questions_models_requires_calculation_radar_human_aligned.pdf",
       "src/tex/figures/all_questions_models_completely_correct_radar_human.pdf",
     ]
   script: "src/scripts/analyze_model_reports.py"
@@ -146,7 +143,11 @@ rule plot_human_score_distribution:
   script: "src/scripts/plot_human_score_distribution.py"
 
 rule molecule_score_correlation:
-  input: "src/data/model_score_dicts.pkl"
+  input:
+    [
+      "src/data/model_score_dicts.pkl",
+      "src/data/humans_as_models_scores_combined.pkl",
+    ]
   output:
     [
       "src/tex/figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf",
@@ -161,7 +162,11 @@ rule model_size_plot:
   script: "src/scripts/performance_vs_model_size.py"
 
 rule performance_tables:
-  input: "src/data/model_score_dicts.pkl"
+  input:
+    [
+      "src/data/model_score_dicts.pkl",
+      "src/data/humans_as_models_scores_combined.pkl",
+    ]
   output:
     [
       "src/tex/output/performance_table_human_subset.tex",

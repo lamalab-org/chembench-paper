@@ -8,7 +8,7 @@ import pandas as pd
 import seaborn as sns
 import numpy as np
 from itertools import cycle
-from plotutils import range_frame
+from plotutils import range_frame, model_color_map
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
@@ -52,8 +52,7 @@ def compute_scores_subset(data, title):
     df_melted = df.melt(id_vars=["Model"], value_vars=["T=0", "T=1"],
                         var_name="Temperature", value_name="Score")
 
-    with open("color_palette.json", "r") as f:
-        model_color_map = json.load(f)
+
 
     unique_models = df_melted["Model"].unique()
     color_palette = {model: color for model, color in model_color_map.items() if model in unique_models}

@@ -20,8 +20,8 @@
   "GPT-4": "#1ABC9C",
   "Phi-3-Medium-4k-Instruct": "#bad8ba",
   "Claude-3 (Opus)": "#FF6B6B",
-  "GPT-3.5 Turbo Zero-T": "#4ECDC4",
-  "Claude-2-Zero-T": "#45B7D1",
+  "GPT-3.5 Turbo": "#4ECDC4",
+  "Claude-2": "#45B7D1",
   "Llama-3.1-405B-Instruct": "#FDA07A",
   "Random Baseline": "#98D8C8"
 }
