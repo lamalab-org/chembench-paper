@@ -1,5 +1,6 @@
 import os
 import json
+import pickle
 
 from loguru import logger
 
@@ -64,7 +65,7 @@ from paths import output
 from loguru import logger
 
 import matplotlib.pyplot as plt
-from paths import output, scripts
+from paths import output, scripts, data
 import math
 from loguru import logger
 from dotenv import load_dotenv
@@ -251,6 +252,8 @@ def count_refusal_error(folder, datafolder, model):
 
     for i, row in df.iterrows():
         completion_text = row["output"]["text"]
+        question_name = row[("name", 0)]
+
         refusal = detect_refusal(
                 completion_text,
                 model_based_refusal_detection=False,
@@ -261,8 +264,8 @@ def count_refusal_error(folder, datafolder, model):
             refusal_count += 1
             refusals.append(
                 {
-                    "question_name": row[("name", 0)],
-                    "completion": row["output"]["text"]
+                    "question_name": question_name,
+                    "completion": completion_text
                 }
             )
             continue
@@ -273,8 +276,8 @@ def count_refusal_error(folder, datafolder, model):
 
                 extractions.append(
                     {
-                        "question_name": row[("name", 0)],
-                        "completion": row["output"]["text"]
+                        "question_name": question_name,
+                        "completion": completion_text
                     }
                 )
 
@@ -379,8 +382,8 @@ if __name__ == "__main__":
     if not os.path.exists(json_dir_extractions):
         os.mkdir(json_dir_extractions)
 
-    model_refusal = []
-    model_llm_extraction = []
+
+    results = []
 
     for file in models:
         try:
@@ -388,17 +391,14 @@ if __name__ == "__main__":
             logger.info(f"Running for model {p}")
             # refusal, extraction = count_refusal_model(file, datafolder)
             refusal, extraction = count_refusal_error(file, datafolder, p)
-            model_refusal.append({
+            results.append({
                 "model": p,
                 "questions_refused": refusal["questions_refused"],
-                "refusal_fraction": refusal["refusal_fraction"]
-            })
-            model_llm_extraction.append({
-                "model": p,
+                "refusal_fraction": refusal["refusal_fraction"],
                 "questions_extracted": extraction["questions_extracted"],
                 "extractions_fraction": extraction["extractions_fraction"]
+
             })
-            model_llm_extraction[p] = extraction["questions_extracted"]
             outfile_refusal = os.path.join(json_dir_refusals, p + ".json")
             with open(outfile_refusal, "w") as f:
                 json.dump(refusal, f, indent=2)
@@ -410,8 +410,5 @@ if __name__ == "__main__":
             pass
 
     
-    with open(os.path.join(data, 'model_refusal.pkl'), 'wb') as f:
-        pickle.dump(model_refusal, f)
-
-    with open(os.path.join(data, 'model_llm_extraction.pkl'), 'wb') as f:
-        pickle.dump(model_llm_extraction, f)
+    with open(os.path.join(data, 'model_refusal_and_extraction_count.pkl'), 'wb') as f:
+        pickle.dump(results, f)
