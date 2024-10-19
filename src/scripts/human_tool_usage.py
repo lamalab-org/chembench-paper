@@ -141,21 +141,26 @@ if __name__ == "__main__":
         kind="bar", stacked=True, ax=ax, color=colors[: len(top_tools)]
     )
     plt.xlabel("")
-    plt.ylabel("Percentage of Tool Usage", fontsize=12)
-    plt.legend(title="", bbox_to_anchor=(1.05, 1), loc="upper left", fontsize="small")
-    plt.xticks(rotation=45, ha="right")
+    plt.ylabel("Percentage of Tool Usage")
+    plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
+
     ax.set_xticklabels(
         [
             label.get_text().replace("Topics", "").strip()
             for label in ax.get_xticklabels()
-        ]
+        ],
     )
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    plt.tight_layout()
+
+    range_frame(
+        ax,
+        np.arange(len(df_tool_allowed["toolCategory"].unique())),
+        topic_tool_percentage.values,
+    )
+    plt.xticks(rotation=45, ha="right")
+    fig.tight_layout()
 
     # Save as PDF
-    plt.savefig(
+    fig.savefig(
         figures / "human_tool_usage_by_topic.pdf", format="pdf", bbox_inches="tight"
     )
 
