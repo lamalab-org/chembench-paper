@@ -13,10 +13,12 @@ from fastcore.basics import basic_repr
 from loguru import logger
 
 from chembench.analysis import (
-    get_human_scored_questions_with_at_least_n_scores,
     load_all_reports,
     construct_name_to_path_dict,
 )
+from chembench.types import PathType
+
+from collections import defaultdict
 
 from chembench.constant import (
     FLOATQ_REGEX_TEMPLATE_1,
@@ -107,6 +109,31 @@ model_file_name_to_label = {
     "paper-qa": "Paper QA",
     "phi-3-medium-4k-instruct": "Phi 3 Medium 4K Instruct",
 }
+
+def get_human_scored_questions(human_reports_dir: PathType):
+    """
+    This function retrieves all human scored questions from a given directory.
+    Args:
+        human_reports_dir (Path, str): The directory where the human scored questions are stored.
+    Returns:
+        questions (dict): A dictionary where the keys are the names of the questions and the values are lists of directories where the questions are found.
+    """
+    questions = defaultdict(list)
+    for file in Path(human_reports_dir).rglob("*.json"):
+        questions[file.stem].append(file.parent)
+    return dict(questions)
+
+def get_human_scored_questions_with_at_least_n_scores(human_reports_dir: PathType, n: int):
+    """
+    Retrieve human scored questions with at least a specified number of scores.
+    Args:
+        human_reports_dir (PathType): The directory where the human scored questions are stored.
+        n (int): The minimum number of scores required.
+    Returns:
+        List: A list of questions with at least n scores.
+    """
+    questions = get_human_scored_questions(human_reports_dir)
+    return [k for k, v in questions.items() if len(v) >= n]
 
 def _prompts_with_choices_it(examples: List[dict]):
     prompts = []
@@ -352,15 +379,25 @@ if __name__ == "__main__":
     if not os.path.exists(json_dir_extractions):
         os.mkdir(json_dir_extractions)
 
-    model_refusal = {}
-    model_llm_extraction = {}
+    model_refusal = []
+    model_llm_extraction = []
+
     for file in models:
         try:
             p = Path(file).parts[-3]
             logger.info(f"Running for model {p}")
             # refusal, extraction = count_refusal_model(file, datafolder)
             refusal, extraction = count_refusal_error(file, datafolder, p)
-            model_refusal[p] = refusal["questions_refused"]
+            model_refusal.append({
+                "model": p,
+                "questions_refused": refusal["questions_refused"],
+                "refusal_fraction": refusal["refusal_fraction"]
+            })
+            model_llm_extraction.append({
+                "model": p,
+                "questions_extracted": extraction["questions_extracted"],
+                "extractions_fraction": extraction["extractions_fraction"]
+            })
             model_llm_extraction[p] = extraction["questions_extracted"]
             outfile_refusal = os.path.join(json_dir_refusals, p + ".json")
             with open(outfile_refusal, "w") as f:
@@ -372,18 +409,9 @@ if __name__ == "__main__":
             logger.error(f"Error processing {file}: {e}")
             pass
 
-    model_refusal = [
-        (model_file_name_to_label[k], v) for k, v in model_refusal.items() if k in model_file_name_to_label
-    ]
+    
+    with open(os.path.join(data, 'model_refusal.pkl'), 'wb') as f:
+        pickle.dump(model_refusal, f)
 
-    with open(output_file_refusal, "w") as file:
-        for item in model_refusal:
-            file.write(f"{item}\n")
-
-    model_llm_extraction = [
-        (model_file_name_to_label[k], v) for k, v in model_llm_extraction.items() if k in model_file_name_to_label
-    ]
-
-    with open(output_file_extraction, "w") as file:
-        for item in model_llm_extraction:
-            file.write(f"{item}\n")
+    with open(os.path.join(data, 'model_llm_extraction.pkl'), 'wb') as f:
+        pickle.dump(model_llm_extraction, f)
