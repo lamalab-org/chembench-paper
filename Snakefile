@@ -123,7 +123,8 @@ rule performance_per_source:
             "src/tex/figures/performance_per_topic.pdf",
             "src/tex/output/human_subset_scores/is_number_nmr_peaks.txt",
             "src/tex/output/human_subset_scores/is_number_of_isomers.txt",
-            "src/tex/output/human_subset_scores/is_gfk.txt"
+            "src/tex/output/human_subset_scores/is_gfk.txt",
+            "src/tex/output/subset_scores/is_number_nmr_peaks_o1.txt"
         ],
     script:
         "src/scripts/analyze_performance_per_source.py"
@@ -219,3 +220,12 @@ rule question_counts:
         ]
     script:
         "src/scripts/count_json_files.py"
+
+
+rule logit_calibration:
+    input:
+        rules.model_score_dict.output
+    output:
+        "src/tex/figures/log_probs_calibration_plot_overall_filtered.pdf"
+    script:
+        "src/scripts/plot_logprobs.py"

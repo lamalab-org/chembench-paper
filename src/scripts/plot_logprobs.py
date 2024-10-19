@@ -7,16 +7,16 @@ import pandas as pd
 from loguru import logger
 from paths import figures, scripts
 from utils import (
-    ONE_COL_WIDTH_INCH,
+    TWO_COL_WIDTH_INCH,
     TWO_COL_GOLDEN_RATIO_HEIGHT_INCH,
+    ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
     obtain_chembench_repo,
 )
-
+from plotutils import model_color_map
 plt.style.use(scripts / "lamalab.mplstyle")
 
 
 rename_dict = {"gpt": "GPT-4o", "llama3": "Llama-3.1-8B-Instruct"}
-model_color_map = {"GPT-4o": "red", "Llama-3.1-8B-Instruct": "blue"}
 
 
 def process_json_data(json_data):
@@ -66,11 +66,12 @@ def create_calibration_plot(df, num_bins):
 
 def make_plot_of_calibration(merged_dicts, num_bins, suffix: str = ""):
     fig, ax = plt.subplots(
-        2,
-        1,  # Two subplots for two models
-        figsize=(ONE_COL_WIDTH_INCH, TWO_COL_GOLDEN_RATIO_HEIGHT_INCH),
+        1,
+        2,  # Two subplots for two models
+        figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH),
         sharex=True,
     )
+    plt.subplots_adjust(wspace=0.5)
 
     for i, (model, df) in enumerate(merged_dicts.items()):
         mean_predicted_probs, std_dev_probs, fraction_positives, bin_counts = (
@@ -101,7 +102,8 @@ def make_plot_of_calibration(merged_dicts, num_bins, suffix: str = ""):
         ax[i].plot([0, 1], [0, 1], linestyle="--", color="gray")
 
         ax[i].set_title(rename_dict[model])
-        ax[i].set_ylabel("Fraction of Positives")
+        if i == 0:
+            ax[i].set_ylabel("fraction of positives")
         ax[i].set_ylim(0, 1)
         ax[i].set_xlim(0, 1)
 
@@ -116,7 +118,8 @@ def make_plot_of_calibration(merged_dicts, num_bins, suffix: str = ""):
             color=model_color_map[rename_dict[model]],
             align="edge",
         )
-        ax_twin.set_ylabel("Count")
+        if i == 1:
+            ax_twin.set_ylabel("Count")
 
         # Calculate and display ECE
         ece = np.mean(
@@ -130,7 +133,8 @@ def make_plot_of_calibration(merged_dicts, num_bins, suffix: str = ""):
             verticalalignment="top",
         )
 
-    ax[-1].set_xlabel("Predicted Probability")
+    # add xlabel
+    fig.text(0.5, 0.01, "predicted probability", ha="center")
 
     fig.tight_layout()
     fig.set_facecolor("w")
