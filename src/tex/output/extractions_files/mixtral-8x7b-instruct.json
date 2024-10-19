@@ -67,50 +67,6 @@
       "completion": "[ANSWER]The correct answer is: (110), (200), (211), (310).[/ANSWER]"
     },
     {
-      "question_name": "nmr-2-nmr_2",
-      "completion": "[ANSWER] 1H, NOESY [/ANSWER] The most appropriate NMR experiments to distinguish the molecule with SMILES FC1(F)[C@H](O)CC[C@H]1O from the molecule with SMILES FC1(F)[C@@H](O)CC[C@H]1O are 1H and NOESY.\n\nThe 1H NMR experiment can distinguish the two molecules because the stereochemistry at the carbon atom shared by the two double-bonded oxygen and carbon atoms is different (denoted by @ vs @@ in the SMILES strings). This stereochemical difference will result in different chemical environments for nearby protons, leading to different 1H NMR spectra.\n\nThe NOESY (Nuclear Overhauser Enhancement SpectroscopY) experiment can also be used to distinguish the two molecules. This experiment can provide information about the spatial proximity of nuclei, which can be used to infer stereochemistry. In this case, the NOESY experiment can potentially detect correlations between protons that are in close proximity due to the different stereochemistry at the carbon atom shared by the two double-bonded oxygen and carbon atoms."
-    },
-    {
-      "question_name": "solid_state_chemistry-solid_state_0-solid_state_chemistry_0",
-      "completion": "[ANSWER]The correct answer is: (111), (200), (220), (311).[/ANSWER]"
-    },
-    {
-      "question_name": "hybridization-hybridization_4-hybridization_4",
-      "completion": "[ANSWER]sp2[/ANSWER]"
-    },
-    {
-      "question_name": "2020-2g-icho_uk_2020_2g",
-      "completion": "To find the standard enthalpy change of combustion of H2, we first need to write the balanced chemical equation for the combustion of hydrogen gas (H2) to form liquid water (H2O) and gaseous carbon dioxide (CO2). The unbalanced equation is:\n\nH2(g) + O2(g) -> H2O(l) + CO2(g)\n\nHowever, since this question does not involve CO2, we can remove it from the equation and balance it:\n"
-    },
-    {
-      "question_name": "point_group-pointgroups_4-pointgroups",
-      "completion": "[ANSWER] C2[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_10-pointgroups",
-      "completion": "[ANSWER] Cs [/ANSWER]"
-    },
-    {
-      "question_name": "2020-2b-icho_uk_2020_2b",
-      "completion": "[ANSWER]H2[/ANSWER]"
-    },
-    {
-      "question_name": "reasoning-I-reasoning_question_1",
-      "completion": "[ANSWER]Zn[/ANSWER] To solve this problem, we first need to determine the mass of the actual H2SO4 in the solution, which is 8.91g * 66% = 5.91g. From the balanced chemical equation, we can see that the molar ratio of H2SO4 to X is 1:1. Therefore, the mass of X that reacts with 5.91g of H2SO4 is also 5.91g.\n\nThe molar mass of Zn is 65.38g/mol, so the moles of Zn are 5.91g / 65.38g/mol = 0.0903 mol. The molar mass of XSO4 is (1*x + 32.07 + 4*16) g/mol, where x is the atomic mass of X. Since the molar mass of XSO4 is twice the molar mass of X, the molar mass of X is half of the molar mass of XSO4, or (molar mass of XSO4) / 2.\n\nThe molar mass of A is (x + 2*16) g/mol, where x is the atomic mass of X. Since the molar mass of A is 50% sulfur, the molar mass of A is (2*x + 32) g/mol / 2 = x + 16 g/mol.\n\nThe molar mass of B is (2*1 + 16) g/mol = 18 g/mol.\n\nFrom the balanced chemical equation, we can see that the molar mass of XSO4 + A + B is equal to the molar mass of H2SO4 + X + A + B. Therefore, we can set up the following equation:\n\n(molar mass of XSO4) / 2 + x + 16 = molar mass of H2SO4 + x + (molar mass of B)\n\nSubstituting the molar masses we calculated above, we get:\n\n(molar mass of XSO4) / 2 + x + 16 = 98 + x + 18\n\nSimplifying, we get:\n\n(molar mass of XSO4) / 2 = 80\n\nTherefore, the molar mass of XSO4 is 160 g/mol. Since the molar mass of XSO4 is twice the molar mass of X, the molar mass of X is 80 g/mol.\n\nThe only metal with a molar mass of 80 g/mol is Zn, so the symbol of metal X is Zn."
-    },
-    {
-      "question_name": "hybridization-hybridization_5-hybridization_5",
-      "completion": "[ANSWER]sp2[/ANSWER] The carbon atoms in naphthalene are sp2 hybridized. Naphthalene is an aromatic hydrocarbon with a structure resembling two benzene rings fused together, and the carbon atoms in naphthalene are bonded to three other carbon atoms in a planar, trigonal configuration. This geometry is consistent with sp2 hybridization, which involves the mixing of one s orbital and two p orbitals to form three hybrid orbitals."
-    },
-    {
-      "question_name": "point_group-pointgroups_5-pointgroups",
-      "completion": "[ANSWER] C2v [/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_7-pointgroups",
-      "completion": "[ANSWER] C2v [/ANSWER]"
-    },
-    {
       "question_name": "point_group-pointgroups_12-pointgroups",
       "completion": "[ANSWER]Cs[/ANSWER] The molecule with SMILES C(C#N)O has point group Cs. The molecule has a central atom of carbon with a double bond to nitrogen, a single bond to oxygen, and two single bonds to carbons. The molecule has a vertical plane of symmetry passing through the C-N bond and the center of the molecule, making it Cs point group."
     },
@@ -181,6 +137,50 @@
     {
       "question_name": "oup-molecular_structure_17-molecular_structure",
       "completion": "[ANSWER]1,0,0[/ANSWER]"
+    },
+    {
+      "question_name": "nmr-2-nmr_2",
+      "completion": "[ANSWER] 1H, NOESY [/ANSWER] The most appropriate NMR experiments to distinguish the molecule with SMILES FC1(F)[C@H](O)CC[C@H]1O from the molecule with SMILES FC1(F)[C@@H](O)CC[C@H]1O are 1H and NOESY.\n\nThe 1H NMR experiment can distinguish the two molecules because the stereochemistry at the carbon atom shared by the two double-bonded oxygen and carbon atoms is different (denoted by @ vs @@ in the SMILES strings). This stereochemical difference will result in different chemical environments for nearby protons, leading to different 1H NMR spectra.\n\nThe NOESY (Nuclear Overhauser Enhancement SpectroscopY) experiment can also be used to distinguish the two molecules. This experiment can provide information about the spatial proximity of nuclei, which can be used to infer stereochemistry. In this case, the NOESY experiment can potentially detect correlations between protons that are in close proximity due to the different stereochemistry at the carbon atom shared by the two double-bonded oxygen and carbon atoms."
+    },
+    {
+      "question_name": "solid_state_chemistry-solid_state_0-solid_state_chemistry_0",
+      "completion": "[ANSWER]The correct answer is: (111), (200), (220), (311).[/ANSWER]"
+    },
+    {
+      "question_name": "hybridization-hybridization_4-hybridization_4",
+      "completion": "[ANSWER]sp2[/ANSWER]"
+    },
+    {
+      "question_name": "2020-2g-icho_uk_2020_2g",
+      "completion": "To find the standard enthalpy change of combustion of H2, we first need to write the balanced chemical equation for the combustion of hydrogen gas (H2) to form liquid water (H2O) and gaseous carbon dioxide (CO2). The unbalanced equation is:\n\nH2(g) + O2(g) -> H2O(l) + CO2(g)\n\nHowever, since this question does not involve CO2, we can remove it from the equation and balance it:\n"
+    },
+    {
+      "question_name": "point_group-pointgroups_4-pointgroups",
+      "completion": "[ANSWER] C2[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_10-pointgroups",
+      "completion": "[ANSWER] Cs [/ANSWER]"
+    },
+    {
+      "question_name": "2020-2b-icho_uk_2020_2b",
+      "completion": "[ANSWER]H2[/ANSWER]"
+    },
+    {
+      "question_name": "reasoning-I-reasoning_question_1",
+      "completion": "[ANSWER]Zn[/ANSWER] To solve this problem, we first need to determine the mass of the actual H2SO4 in the solution, which is 8.91g * 66% = 5.91g. From the balanced chemical equation, we can see that the molar ratio of H2SO4 to X is 1:1. Therefore, the mass of X that reacts with 5.91g of H2SO4 is also 5.91g.\n\nThe molar mass of Zn is 65.38g/mol, so the moles of Zn are 5.91g / 65.38g/mol = 0.0903 mol. The molar mass of XSO4 is (1*x + 32.07 + 4*16) g/mol, where x is the atomic mass of X. Since the molar mass of XSO4 is twice the molar mass of X, the molar mass of X is half of the molar mass of XSO4, or (molar mass of XSO4) / 2.\n\nThe molar mass of A is (x + 2*16) g/mol, where x is the atomic mass of X. Since the molar mass of A is 50% sulfur, the molar mass of A is (2*x + 32) g/mol / 2 = x + 16 g/mol.\n\nThe molar mass of B is (2*1 + 16) g/mol = 18 g/mol.\n\nFrom the balanced chemical equation, we can see that the molar mass of XSO4 + A + B is equal to the molar mass of H2SO4 + X + A + B. Therefore, we can set up the following equation:\n\n(molar mass of XSO4) / 2 + x + 16 = molar mass of H2SO4 + x + (molar mass of B)\n\nSubstituting the molar masses we calculated above, we get:\n\n(molar mass of XSO4) / 2 + x + 16 = 98 + x + 18\n\nSimplifying, we get:\n\n(molar mass of XSO4) / 2 = 80\n\nTherefore, the molar mass of XSO4 is 160 g/mol. Since the molar mass of XSO4 is twice the molar mass of X, the molar mass of X is 80 g/mol.\n\nThe only metal with a molar mass of 80 g/mol is Zn, so the symbol of metal X is Zn."
+    },
+    {
+      "question_name": "hybridization-hybridization_5-hybridization_5",
+      "completion": "[ANSWER]sp2[/ANSWER] The carbon atoms in naphthalene are sp2 hybridized. Naphthalene is an aromatic hydrocarbon with a structure resembling two benzene rings fused together, and the carbon atoms in naphthalene are bonded to three other carbon atoms in a planar, trigonal configuration. This geometry is consistent with sp2 hybridization, which involves the mixing of one s orbital and two p orbitals to form three hybrid orbitals."
+    },
+    {
+      "question_name": "point_group-pointgroups_5-pointgroups",
+      "completion": "[ANSWER] C2v [/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_7-pointgroups",
+      "completion": "[ANSWER] C2v [/ANSWER]"
     }
   ]
 }

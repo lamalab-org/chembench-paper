@@ -15,26 +15,6 @@
       "completion": "[ANSWER]C2v[/ANSWER]"
     },
     {
-      "question_name": "point_group-pointgroups_6-pointgroups",
-      "completion": "[ANSWER]D2h[/ANSWER]"
-    },
-    {
-      "question_name": "reactions-24-reaction_24",
-      "completion": "[ANSWER]ABD[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_4-pointgroups",
-      "completion": "[ANSWER]D2d[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_10-pointgroups",
-      "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
-      "question_name": "reasoning-I-reasoning_question_1",
-      "completion": "[ANSWER]Zn[/ANSWER]"
-    },
-    {
       "question_name": "point_group-pointgroups_11-pointgroups",
       "completion": "[ANSWER]C3[/ANSWER]"
     },
@@ -65,6 +45,26 @@
     {
       "question_name": "point_group-pointgroups_0-pointgroups",
       "completion": "[ANSWER]Td[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_6-pointgroups",
+      "completion": "[ANSWER]D2h[/ANSWER]"
+    },
+    {
+      "question_name": "reactions-24-reaction_24",
+      "completion": "[ANSWER]ABD[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_4-pointgroups",
+      "completion": "[ANSWER]D2d[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_10-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
+      "question_name": "reasoning-I-reasoning_question_1",
+      "completion": "[ANSWER]Zn[/ANSWER]"
     }
   ]
 }
