@@ -38,7 +38,13 @@ def build_name_dir_map(report_base_dir=None):
             yaml_data = yaml.load(f, Loader=yaml.FullLoader)
 
         if "model_name" in yaml_data:
-            model_name = yaml_data["model_name"]
+            if "temperature" in yaml_data and yaml_data["temperature"] == 0:
+                model_name = yaml_data["model_name"]
+            elif "temperature" in yaml_data and yaml_data["temperature"] == 1:
+                if yaml_data["model_name"] == "o1":
+                    model_name = yaml_data["model_name"]
+                else:
+                    model_name = yaml_data["model_name"] + "-T-one"
 
         name_dir_map[model_name] = os.path.abspath(report_subdir)
 
