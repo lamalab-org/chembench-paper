@@ -63,7 +63,7 @@ A substantial fraction, in contrast to other benchmarks, is open-ended.
 The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpus_topic}, can be divided according to which chemical topic they belong to.
 
 \begin{xltabular}{\textwidth}{p{2.7cm}p{4em}X}
-        \caption{\textbf{Examples for each of the topics considered in the evaluation of the \chembench corpus.} The table shows the percentage of questions in the corpus that belong to each topic, as well as example questions.}
+        \caption{\textbf{Examples for each of the topics considered in the evaluation of the \chembench corpus.} The table shows the percentage of questions in the corpus that belong to each topic, as well as example questions.} \\
 
         \toprule
         Question Type & \% & Example Questions  \\
@@ -126,7 +126,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
 In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench corpus can be divided considering the different skills needed to solve the questions.
 
 \begin{xltabular}{\textwidth}{p{2.7cm}p{4em}X}
-        \caption{\textbf{Examples for each of the required skills considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question.}
+        \caption{\textbf{Examples for each of the required skills considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question.} \\
 
         \toprule
         Required Skills & Number of Questions & Example Question \\
@@ -399,13 +399,13 @@ In addition, we also analyzed the confidence estimated via the log probabilities
 Our analysis of both log probabilities and prompting confidence reveals distinct calibration behaviors across different language models.
 \GPTFourO demonstrates an overconfident tendency, often assigning high probabilities even to incorrect answers.
 However, when \GPTFourO displays high confidence, it accurately predicts correct answers approximately 80\% of the time. In contrast, \LlamaThreeOneEightBInstruct confidence distribution is more evenly spread, with a majority of predictions centered around 0.5. High-confidence predictions from \LlamaThreeOneEightBInstruct are less frequent compared to \GPTFourO, and unlike \GPTFourO, high confidence does not necessarily correlate with a higher chance of correct answers.
-%\begin{figure}[htb]
-%    \centering
-%    \includegraphics{figures/calibration_plot_overall_filtered.pdf}
-%    \caption{\textbf{Calibration between linear probability of \glspl{llm} and correctness.} For this analysis we obtained the linear probability from the logprobs of the models. Only logprobs of the tokens corresponding to the answers were considered. Linear proabability was computed by taking exponential of logprobs (for sequences with multiple tokens, values were multiplied).  The plot shows the average predicted probability and the fraction of correct answers for each bin of linear probabilities. The ideal scenario is a diagonal line, indicating perfect calibration where the model's confidence aligns perfectly with the actual correctness. The ECE (Expected Calibration Error) value quantifies the overall calibration performance, with a lower ECE indicating better calibration.}
-%    \label{fig:confidence_score_distributions}
-%    \script{plot_logprobs.py}
-%\end{figure}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{figures/log_probs_calibration_plot_overall_filtered.pdf}
+    \caption{\textbf{Reliability diagram of histogram of logit-based confidence estimates.} For this analysis we obtained the linear probability from the logprobs of the models. Only logprobs of the tokens corresponding to the answers were considered. Linear proabability was computed by taking exponential of logprobs (for sequences with multiple tokens, values were multiplied).  The plot shows the average predicted probability and the fraction of correct answers for each bin of linear probabilities. The ideal scenario is a diagonal line, indicating perfect calibration where the model's confidence aligns perfectly with the actual correctness. The \gls{ece} value quantifies the overall calibration performance, with a lower \gls{ece} indicating better calibration.}
+    \label{fig:confidence_score_distributions}
+    \script{plot_logprobs.py}
+\end{figure}
 
 
 

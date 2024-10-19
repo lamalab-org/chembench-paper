@@ -220,3 +220,12 @@ rule question_counts:
         ]
     script:
         "src/scripts/count_json_files.py"
+
+
+rule logit_calibration:
+    input:
+        rules.model_score_dict.output
+    output:
+        "src/tex/figures/log_probs_calibration_plot_overall_filtered.pdf"
+    script:
+        "src/scripts/plot_logprobs.py"
