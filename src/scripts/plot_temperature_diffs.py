@@ -1,52 +1,91 @@
 
 import os
+import json
 import pickle
-from paths import figures, data
+from paths import figures, data, scripts
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import numpy as np
+from itertools import cycle
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
-model_file_name_to_label = {
-    "gemma-1-1-7b-it": "Gemma 1.1 7B",
-    "gemma-2-9b-it": "Gemma 2 9B",
-    "llama3-70b-instruct": "Llama 3 70B",
-    "llama3-8b-instruct": "Llama 3 8B",
-    "llama3.1-405b-instruct": "Llama 3.1 405B",
-    "llama3.1-70b-instruct": "Llama 3.1 70B",
-    "llama3.1-8b-instruct": "Llama 3.1 8B",
-    "mixtral-8x7b-instruct": "Mixtral 8x7B",
-}
+model_file_name_to_label = [
+    # "Gemma-1.1-7B-it",
+    "Gemma-2-9B-it",
+    "Llama-3-8B-Instruct",
+    "Llama-3-70B-Instruct",
+    "Llama-3.1-8B-Instruct",
+    "Llama-3.1-70B-Instruct",
+    "Mistral-8x7b-Instruct",
+] 
 
-def collect_temperature_results(overall_scores):
-    data = []
-    for model in models:
-        t1_model = model + "T-one"
-        t0_accuracy = overall_scores["human_aligned_tool"][model]["overall_scores"]
-        t1_accuracy = overall_scores["human_aligned_tool"][t1_model]["overall_scores"]
-        data.append([model, 'T=0', t0_accuracy])
-        data.append([model, 'T=1', t1_accuracy])
-    
-    return pd.DataFrame(data, columns=['Model', 'Temperature', 'Accuracy'])
+def compute_scores_subset(data, title):
+    results = []
+    for model, scores in data.items():
+        if model in model_file_name_to_label:
+            all_correct_count = 0
+            for row in scores["all_correct_"]:
+                all_correct_count += int(row)
 
-def plot_temperature(data):
-    plt.figure(figsize=(10, 6))
-    sns.swarmplot(x='Temperature', y='Accuracy', hue='Model', data=df, palette='Set2', dodge=True)
+            t_zero = all_correct_count / len(scores["all_correct_"])
+            all_correct_count = 0
+            t1_model = model + "-T-one"
+            
+            if t1_model in data.keys():
+                t1_scores = data[t1_model]
+                # print(t1_scores)
+                all_correct_count_t1 = 0
+                for row_t1 in t1_scores["all_correct_"]:
+                    all_correct_count_t1 += int(row_t1)
+            
+                t_one = all_correct_count_t1 / len(t1_scores["all_correct_"])
+        
+            results.append({
+                "Model": model,
+                "T=0": t_zero,
+                "T=1": t_one
+            })
     
-    # Connect points for each model
-    for model in df['Model'].unique():
-        model_data = df[df['Model'] == model]
-        plt.plot(model_data['Temperature'], model_data['Accuracy'], marker='o', linestyle='-', label=model)
-    
-    plt.legend(title='Model')
-    plt.title('Swarm Plot of Model Accuracies at Different Temperatures')
-    plt.show()
-    return
+    df = pd.DataFrame(results)
+    df_melted = df.melt(id_vars=["Model"], value_vars=["T=0", "T=1"], 
+                        var_name="Temperature", value_name="Score")
 
+    with open("color_palette.json", "r") as f:
+        model_color_map = json.load(f)
+
+    unique_models = df_melted["Model"].unique()
+    color_palette = {model: color for model, color in model_color_map.items() if model in unique_models}
+    
+    fig, ax = plt.subplots()
+    sns.swarmplot(x="Temperature", y="Score", hue="Model", data=df_melted, dodge=False, palette=color_palette)
+
+    sns.lineplot(x="Temperature", y="Score", hue="Model", data=df_melted, 
+        palette=color_palette, markers="", ci=None, legend=False)
+    
+    plt.xlabel("Temperature")
+    plt.ylabel("Score")
+    # Place the legend outside the plot to the right
+    plt.legend(loc="center left", bbox_to_anchor=(1, 0.5), fontsize="small")
+
+    # Adjust axis limits to ensure all data points are fully visible
+    ax.set_xlim(-0.05, len(df_melted["Temperature"].unique()) - 0.0001)
+    ax.set_ylim(df_melted["Score"].min() - 0.01, df_melted["Score"].max() + 0.01)
+    # Adjust the x-axis line to go only until the last label
+# Adjust the x-axis line to go only until the last label
+    ax.spines['bottom'].set_position(('outward', 0.01))
+
+    plt.savefig(os.path.join(figures, title), bbox_inches="tight")
+        
 if __name__ ==  "__main__":
 
     with open(os.path.join(data, "model_score_dicts.pkl"), 'rb') as f:
-        overall_scores = pickle.load(f)
+        scores = pickle.load(f)
 
-    for model in overall_scores["human_aligned_tool"]:
-        print(model)
-
+    compute_scores_subset(scores["overall"], "swarm_plot_overall.pdf")
+    compute_scores_subset(scores["human_aligned_no_tool"], "swarm_plot_no_tools.pdf")
+    compute_scores_subset(scores["human_aligned_tool"], "swarm_plot_tools.pdf")
+    compute_scores_subset(scores["human_aligned_combined"], "swarm_plot_combined.pdf")
+    
 
