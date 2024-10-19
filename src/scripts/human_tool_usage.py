@@ -21,7 +21,15 @@ def categorize_tool(tool):
         return "No tools"
     elif any(
         term in str(tool).lower()
-        for term in ["google", "websearch", "web search", "googeln", "web"]
+        for term in [
+            "google",
+            "websearch",
+            "web search",
+            "googeln",
+            "web",
+            "docflex.com",
+            "sciencedirect.com",
+        ]
     ):
         return "Web search"
     elif "calculator" in str(tool).lower():
@@ -34,25 +42,50 @@ def categorize_tool(tool):
         return "Textbook"
     elif str(tool).lower() in {"pse", "periodic table"}:
         return "PTE"
+    elif any(
+        term in str(tool).lower()
+        for term in [
+            "scifinder",
+            "scifinder-n",
+            "scifinder n",
+            "Reaxys",
+            "GESTIS-Stoffdatenbank",
+            "https://www.nmrdb.org/",
+            "PubChem",
+        ]
+    ):
+        return "Database"
     else:
-        return tool
+        return "Other"
 
 
 if __name__ == "__main__":
     chembench = obtain_chembench_repo()
     df = pd.read_csv(
-        os.path.join(
-            chembench, "reports/humans/responses_updated_cleaned_toolUseAllowed.csv"
-        )
+        os.path.join(chembench, "reports/humans/responses_20240918_161121.csv")
     )
     df["toolCategory"] = df["toolsUsed"].apply(categorize_tool)
 
     print("Unique tool categories after categorization:")
     print(df["toolCategory"].unique())
 
-    df_tool_allowed = df[
-        (df["toolUseAllowed"] == True) & (df["toolCategory"] != "No tools")
-    ]
+    with open(data / "human_tool_answered_questions.txt", "r") as f:
+        answered_questions = f.read().splitlines()
+
+    df_questions = pd.read_csv(
+        os.path.join(chembench, "reports", "humans", "questions_20240918_161121.csv")
+    )
+    df = df.merge(df_questions, left_on="questionId", right_on="id")
+    df_topic = pd.read_csv(
+        os.path.join(chembench, "scripts", "classified_questions.csv")
+    )
+    df_topic["name"] = df_topic["index"].apply(lambda x: x.split("-")[-1])
+
+    df = df.merge(df_topic, left_on="name", right_on="name")
+    print()
+
+    df_tool_allowed = df[(df["toolCategory"] != "No tools")]
+
     topic_tool_usage = (
         df_tool_allowed.groupby(["topic", "toolCategory"]).size().unstack(fill_value=0)
     )
@@ -71,7 +104,7 @@ if __name__ == "__main__":
         "Calculator",
         "ChemDraw",
         "Textbook",
-        "PSE",
+        "PTE",
     ]:
         if tool not in top_tools:
             top_tools.append(tool)
@@ -125,6 +158,5 @@ if __name__ == "__main__":
     plt.savefig(
         figures / "human_tool_usage_by_topic.pdf", format="pdf", bbox_inches="tight"
     )
-    plt.show()
 
     print("\nTools included in the plot:", top_tools)
