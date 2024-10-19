@@ -1,5 +1,5 @@
 MODELS_TO_PLOT = [
-    "GPT-3.5 Turbo Zero-T",
+    "GPT-3.5 Turbo",
     "GPT-4o",
     "o1",
     "Claude-3.5 (Sonnet)",

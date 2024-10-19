@@ -21,10 +21,11 @@ if __name__ == "__main__":
     scriptpath = os.path.join(chembench_repo, "scripts", "collect_scores.py")
 
     for model, directory in name_dir_map.items():
+        print(f"Processing {directory}")
         try:
             outfile = os.path.join(outpath, model + ".json")
             subprocess.run(
-                f"python {scriptpath} {directory} {outfile} --datafolder={datafolder}",
+                f'python {scriptpath} "{directory}" {outfile} --datafolder={datafolder}',
                 shell=True,
             )
         except Exception as e:

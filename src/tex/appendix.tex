@@ -399,6 +399,7 @@ In addition, we also analyzed the confidence estimated via the log probabilities
 Our analysis of both log probabilities and prompting confidence reveals distinct calibration behaviors across different language models.
 \GPTFourO demonstrates an overconfident tendency, often assigning high probabilities even to incorrect answers.
 However, when \GPTFourO displays high confidence, it accurately predicts correct answers approximately 80\% of the time. In contrast, \LlamaThreeOneEightBInstruct confidence distribution is more evenly spread, with a majority of predictions centered around 0.5. High-confidence predictions from \LlamaThreeOneEightBInstruct are less frequent compared to \GPTFourO, and unlike \GPTFourO, high confidence does not necessarily correlate with a higher chance of correct answers.
+
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{figures/log_probs_calibration_plot_overall_filtered.pdf}
@@ -407,7 +408,17 @@ However, when \GPTFourO displays high confidence, it accurately predicts correct
     \script{plot_logprobs.py}
 \end{figure}
 
+\clearpage
+\subsection{Impact of sampling temperature}
+We also investigated the impact of sampling temperature on the performance of the models. \Cref{fig:temperature_impact} shows that, generally, the performance of models tends to degrease with increasing temperature.
 
+\begin{figure}
+    \centering
+    \includegraphics{figures/swarm_plot_combined.pdf}
+    \caption{\textbf{Impact of sampling temperature on the performance of the models.} The plot shows the performance of the models at zero temperature (i.e., greedy decoding) and temperature of one. The performance is measured in terms of the fraction of questions answered correctly.}
+    \label{fig:temperature_impact}
+    \script{plot_temperature_diffs.py}
+\end{figure}
 
 
 

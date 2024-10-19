@@ -132,7 +132,7 @@ def plot_correlation(ax, x, y, model, color, covariate, metric):
 def plot_correlations(questions, topics, metric, plot_function):
     # Create a dictionary for shorter model names
     short_names = {
-        "GPT-3.5 Turbo Zero-T": "GPT-3.5",
+        "GPT-3.5 Turbo": "GPT-3.5",
         "GPT-4o": "GPT-4o",
         "o1": "o1",
         "Claude-3.5 (Sonnet)": "Claude-3.5",
