@@ -39,10 +39,8 @@ def load_data(data_paths):
     for path in data_paths:
         data = load_single_json(path)
         results.append(load_single_json(path))
-    
-    combined_df = pd.concat(results, ignore_index=True, sort=False)
-    
-    return combined_df
+
+    return pd.concat(results, ignore_index=True, sort=False)
 
 def collect_data(datafolder):
     names = construct_name_to_path_dict(datafolder)
@@ -86,9 +84,9 @@ def collect_data(datafolder):
                     sources["Lectures"] = 0 
             elif not pd.isna(row["icho.country"]):
                 if "ICHO" in sources:
-                    sources["ICHO"] += 1
+                    sources["IChO"] += 1
                 else:
-                    sources["ICHO"] = 0
+                    sources["IChO"] = 0
             else:
                 if "No source" in sources:
                     sources["No source"] += 1
