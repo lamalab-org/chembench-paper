@@ -1,0 +1,10 @@
+{
+  "extractions_fraction": 0.001051156271899089,
+  "questions_extracted": 3,
+  "extracted": [
+    {
+      "question_name": "2022-1d-icho_uk_2022_q1d",
+      "completion": "This question cannot be answered without additional information. The enthalpy of combustion of an isomer of octane would depend on the specific structure of the isomer, as different structures can have different numbers and types of bonds. Therefore, without knowing the specific isomer of octane in question, it is impossible to calculate the enthalpy of combustion."
+    }
+  ]
+}

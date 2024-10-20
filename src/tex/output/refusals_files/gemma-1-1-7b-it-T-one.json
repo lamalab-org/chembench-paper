@@ -1,0 +1,10 @@
+{
+  "refusal_fraction": 0.000350385423966363,
+  "questions_refused": 1,
+  "refused": [
+    {
+      "question_name": "2023-5f2-icho_uk_2023_q5f2",
+      "completion": "The volume of the bubble can be calculated using the formula for the volume of a sphere:\n\n$$V = \\frac{4}{3}\\pi r^3$$\n\n$$V = \\frac{4}{3}\\pi\\left(\\frac{1.5\\times10^{-2}\\text{ m}}{2}\\right)^3 = 1.4\\times10^{-5}\\text{ m}^3$$\n\nThe number of moles of CO2 in the bubble can be calculated using the ideal gas law:\n\n$$PV = nRT$$\n\n$$n = \\frac{PV}{RT} = \\frac{(101325\\text{ Pa})(1.4\\times10^{-5}\\text{ m}^3)}{(8.314\\text{ J/mol K})(294\\text{ K})} = 5.8\\times10^{-4}\\text{ mol}$$\n\nThe mass of lactic acid which was fermented by the bacteria to produce this bubble can be calculated using the stoichiometry of the fermentation reaction. This information is not provided in the given problem, so I cannot provide a numerical answer."
+    }
+  ]
+}

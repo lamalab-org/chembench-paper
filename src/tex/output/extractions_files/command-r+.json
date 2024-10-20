@@ -1,0 +1,18 @@
+{
+  "extractions_fraction": 0.001751927119831815,
+  "questions_extracted": 5,
+  "extracted": [
+    {
+      "question_name": "basic_physical_chemistry-1-thermodynamics_vs_kinetics",
+      "completion": "[ANSWER] < > [/ANSWER]"
+    },
+    {
+      "question_name": "2019-4a-icho_uk_2019_4a",
+      "completion": "[ANWER]12[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_15-pointgroups",
+      "completion": "[ANSWER]D2h[/ANSWER]"
+    }
+  ]
+}

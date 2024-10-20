@@ -25,6 +25,10 @@ def obtain_chembench_repo():
         os.chdir(data)
         # download zip from https://github.com/lamalab-org/chem-bench/archive/refs/heads/humanbench.zip
         # using wget and then unzip it
+        zip_path = os.path.join(data, "main.zip")
+        # Check if main.zip exists and remove it if it does
+        if os.path.exists(zip_path):
+            os.remove(zip_path)
         os.system(
             f"wget --header 'Authorization: token {GH_PAT}' https://github.com/lamalab-org/chem-bench/archive/refs/heads/main.zip"
         )
