@@ -310,7 +310,7 @@ In the case of instruction-tuned models, we first identify the \texttt{[ANSWER]}
 In the case of completion models, this step is skipped. From there, we attempt to extract the relevant enumeration letters (for multiple-choice questions) or numbers.
 In the case of numbers, our regular expression was engineered to deal with various forms of scientific notation.
 As initial tests indicated that models sometimes return integers in the form of words, e.g., \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion using regular expressions.
-If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., \ClaudeThreeFiveSonnet, to parse the completion.
+If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., \ClaudeThreeFiveSonnet, to parse the completion (\Cref{sec:llm-parsing} provides more details on this step).
 
 
 \paragraph{Models}
@@ -318,7 +318,7 @@ For all models we performed inference using greedy decoding (i.e., temperature 0
 
 \subsection{Confidence estimate}
 To estimate the models' confidence, we prompted them with the question (and answer options for \gls{mcq}) and the task to rate their confidence to produce the correct answer on a scale from 1 to 5.
-We decided to use verbalized confidence estimates\autocite{xiong2023llms} since we found those closer to current practical use cases than other prompting strategies, which might be more suitable when implemented in systems. In addition, this approach captures semantic uncertainty which is not the same as the probability of a token given a sequence of tokens (i.e., the uncertainty one obtains from logit-based approaches).
+We decided to use verbalized confidence estimates\autocite{xiong2023llms} since we found those closer to current practical use cases than other prompting strategies, which might be more suitable when implemented in systems. In addition, this approach captures semantic uncertainty which is not the same as the probability of a token given a sequence of tokens (i.e., the uncertainty one obtains from logit-based approaches). In \Cref{sec:confidence_estimates} we provide more details and comparisons with a logit-based approach.
 
 \subsection{Human baseline}
 
@@ -350,7 +350,7 @@ To facilitate reproduction, some intermediate analysis results are cached at \ur
 
 \section*{Acknowledgements}
 This work was supported by the Carl Zeiss Foundation, a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena.
-We also thank Stability.AI for the access to its HPC cluster and donations. In addition, M.S-W.'s work was supported by Intel and Merck via the AWASES programme.
+We also thank Stability.AI for the access to its HPC cluster. In addition, M.S-W.'s work was supported by Intel and Merck via the AWASES programme.
 K.M.J.\ is part of the NFDI consortium FAIRmat funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – project 460197019.
 
 M.A.\ expresses gratitude to the European Research Council (ERC) for evaluating the project with the reference number 101106377 titled \enquote{CLARIFIER} and accepting it for funding under the HORIZON TMA MSCA Postdoctoral Fellowships - European Fellowships.
@@ -364,7 +364,7 @@ In addition, we acknowledge support from Sandeep Kumar with an initial prototype
 We thank Bastian Rieck for developing the \LaTeX-credit package (\url{https://github.com/Pseudomanifold/latex-credits}) and thank Berend Smit for feedback on an early version of the manuscript.
 
 
-\section{Statement of ethical compliance}
+\section*{Statement of ethical compliance}
 The authors confirm to have complied with all relevant ethical regulations, according to the Ethics Commission of the Friedrich Schiller University Jena (which decided that study is ethically safe). Informed consent was obtained from all participants.
 
 
