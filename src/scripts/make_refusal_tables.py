@@ -11,7 +11,7 @@ model_file_name_to_label = {
     "claude3": "Claude 3",
     "claude3.5": "Claude 3.5 Sonnet",
     "command-r+": "Command R+",
-    "galatica_120b": "Galactica 120B",
+    "galactica_120b": "Galactica 120B",
     "gemini-pro": "Gemini Pro",
     "gemma-1-1-7b-it": "Gemma 1.1 7B",
     "gemma-1-1-7b-it-T-one": "Gemma 1.1 7B Temp=1",

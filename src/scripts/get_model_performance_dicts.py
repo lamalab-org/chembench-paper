@@ -68,7 +68,7 @@ def load_human_aligned_reports(topic_frame):
     galactica_120b = combine_scores_for_model(
         os.path.join(
             chembench,
-            "reports/galatica_120b/reports/d7ce25da-bbce-4f06-8a5b-43e6cfb01c30",
+            "reports/galactica_120b/reports/d7ce25da-bbce-4f06-8a5b-43e6cfb01c30",
         ),
         datafolder,
         human_baseline_folder,
@@ -275,7 +275,7 @@ def load_reports(topic_frame):
     galactica_120b = load_all_reports(
         os.path.join(
             chembench,
-            "reports/galatica_120b/reports/d7ce25da-bbce-4f06-8a5b-43e6cfb01c30",
+            "reports/galactica_120b/reports/d7ce25da-bbce-4f06-8a5b-43e6cfb01c30",
         ),
         os.path.join(chembench, "data"),
     )

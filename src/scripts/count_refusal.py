@@ -84,7 +84,7 @@ model_file_name_to_label = {
     "claude3": "Claude 3",
     "claude3.5": "Claude 3.5 Sonnet",
     "command-r+": "Command R+",
-    "galatica_120b": "Galactica 120B",
+    "galactica_120b": "Galactica 120B",
     "gemini-pro": "Gemini Pro",
     "gemma-1-1-7b-it": "Gemma 1.1 7B Instruct",
     "gemma-1-1-7b-it-T-one": "Gemma 1.1 7B Instruct T-One",
@@ -178,7 +178,7 @@ def extract_examples(name, datafolder):
 def check_llm_fallback(data, datafolder, model):
     name = data[("name", 0)]
     _examples = extract_examples(data[("name", 0)], datafolder)
-    if model == "galatica_120b":
+    if model == "galactica_120b":
         _mcq_regex_template = MCQ_REGEX_TEMPLATE_2
         _floatq_regex_template = NUM_REGEX
     else:
@@ -191,7 +191,7 @@ def check_llm_fallback(data, datafolder, model):
     if not np.isnan(data["metrics"]["hamming"]):
         _metrics = ['multiple_choice_grade']
         preferred_score = "multiple_choice_grade"
-        if model == "galatica_120b":
+        if model == "galactica_120b":
             prompts, score_maps = _prompts_with_choices(_examples)
         else:
             prompts, score_maps = _prompts_with_choices_it(_examples)

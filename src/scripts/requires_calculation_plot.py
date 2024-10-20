@@ -21,7 +21,7 @@ model_file_name_to_label = {
     "claude2": "Claude 2",
     "claude2-react": "Claude 2 + ReAct",
     "claude3": "Claude 3",
-    "galatica_120b": "Galactica 120B",
+    "galactica_120b": "Galactica 120B",
     "gemini-pro-zero-T": "Gemini Pro",
     # "gemini-pro": "Gemini Pro",
     "gpt-3.5-turbo": "GPT-3.5 Turbo",
