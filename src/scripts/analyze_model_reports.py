@@ -4,6 +4,7 @@ import pickle
 import pandas as pd
 from paths import figures, data, scripts
 from definitions import MODELS_TO_PLOT
+from utils import TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
@@ -41,7 +42,7 @@ def prepare_data(model_scores, score_type, human_scores=None):
 
 def create_radar_plot(sorted_data, suffix):
     theta = radar_factory(len(sorted_data[0][0]), frame="polygon")
-    fig, ax = plt.subplots(1, 1, figsize=(6, 6), subplot_kw=dict(projection="radar"))
+    fig, ax = plt.subplots(1, 1, figsize=(TWO_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH), subplot_kw=dict(projection="radar"))
 
     for data, label, color in sorted_data:
         ax.fill(theta, data, alpha=0.2, label=label, color=color)
@@ -54,11 +55,11 @@ def create_radar_plot(sorted_data, suffix):
     ax.set_yticklabels([])
     ax.set_yticks([])
 
-    leg = ax.legend(loc=(-0.1, 1.2), ncols=3)
+    leg = ax.legend(loc=(1.6, 0.0), ncols=1)
     for lh in leg.legend_handles:
         lh.set_alpha(1)
 
-    fig.tight_layout()
+    #fig.tight_layout()
     fig.savefig(
         figures / f"all_questions_models_completely_correct_radar_{suffix}.pdf",
         bbox_inches="tight",

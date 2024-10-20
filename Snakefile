@@ -208,3 +208,9 @@ rule tool_usage:
   input: "src/data/model_score_dicts.pkl"
   output: ["src/tex/figures/human_tool_usage_by_topic.pdf"]
   script: "src/scripts/human_tool_usage.py"
+
+
+rule confidence_main_text:
+    input: "src/data/model_score_dicts.pkl"
+    output: "src/tex/figures/model_confidence_performance.pdf"
+    script: "src/scripts/confidence_estimate.py"

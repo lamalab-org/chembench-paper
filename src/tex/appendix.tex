@@ -328,7 +328,7 @@ In our parsing workflow, we use pipelines based on regular expressions to extrac
 An overview of the benchmarking pipeline implemented in \chembench is shown in \Cref{fig:process}. More detailed information can be found in the online documentation of the \chembench package at \url{https://lamalab-org.github.io/chem-bench/}.
 \begin{figure}
     \centering
-    \includegraphics[height=.8\textheight]{figures/process.pdf}
+    \includegraphics[height=.7\textheight]{figures/process.pdf}
     \caption{\textbf{Overview of the benchmarking pipeline implemented in \chembench.} The process begins with JSON files containing task data, which are used to create \texttt{Task} objects and initialize the \texttt{ChemBenchmark}. \texttt{Prompter} objects are then created to handle different types of prompts for instruction-tuned and completion models.
     The \texttt{Task} Iterator differentiates between \gls{mcq} and other question types. For each task type, appropriate prompts are generated and passed to the \gls{llm}. The responses are then processed using regex-based parsing methods specific to \gls{mcq} or numeric answers (after obtaining the relevant part of the response from the instruction-tuned models).
     The regex-based parsing is elaborate and also able to handle special cases such as scientific notation, or roman numerals.
@@ -389,7 +389,7 @@ They could also report what tools they used for answering questions. As \Cref{fi
 
 \begin{figure}
     \centering
-    \includegraphics{figures/human_tool_usage_by_topic.pdf}
+    \includegraphics[width=\textwidth]{figures/human_tool_usage_by_topic.pdf}
     \script{human_tool_usage.py}
     \caption{\textbf{Tool usage by human scorers.} The plot shows the most commonly used tools by human participants.}
     \label{fig:tool_use}

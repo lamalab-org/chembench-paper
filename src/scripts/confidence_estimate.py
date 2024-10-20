@@ -10,35 +10,36 @@ from typing import Union
 from pathlib import Path
 import seaborn as sns
 from paths import scripts, output, figures, data, static
-from plotutils import range_frame
+from plotutils import range_frame, model_color_map
 from utils import (
     obtain_chembench_repo,
     ONE_COL_WIDTH_INCH,
     ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
+    TWO_COL_WIDTH_INCH,
+    TWO_COL_GOLDEN_RATIO_HEIGHT_INCH
 )
 
 chembench_repo = obtain_chembench_repo()
 
-TWO_COL_WIDTH_INCH = 7.0
-TWO_COL_GOLDEN_RATIO_HEIGHT_INCH = 5.5  
 
 BASE_PATH = chembench_repo
-DATA_PATH = os.path.join(BASE_PATH, "reports", "confidence_estimates", "confidence_estimates")
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
 rename_dict = {
     "gpt-4": "GPT-4",
     "gpt-4o": "GPT-4o",
-    "claude3.5": "Claude 3.5",
-    "llama3.1-8b-instruct": "llama3-8b-8192"
+    "claude3": "Claude-3.5 (Sonnet)",
+    "llama3.1-8b-instruct": "Llama-3.1-8B-Instruct"
 }
 
-model_color_map = {
-    "GPT-4": '#FCCD2A',
-    "GPT-4o": '#A04747',
-    "Claude 3.5": '#347928',
-    "llama3-8b-8192": '#F39C12'
+reports_dir = os.path.join(BASE_PATH, "reports")
+
+confidence_files ={
+    "gpt-4": os.path.join(reports_dir, "confidence_estimates", "confidence_estimates", "results_gpt-4.csv"),
+    "gpt-4o": os.path.join(reports_dir, "confidence_estimates", "confidence_estimates", "results_gpt-4o.csv"),
+    "claude3": os.path.join(reports_dir, "confidence_estimates", "confidence_estimates", "results_claude3.5.csv"),
+    "llama3.1-8b-instruct": os.path.join(reports_dir, "confidence_estimat_local", "confidence_estimates", "results_llama3.1-8b-instruct.csv"),
 }
 
 def process_json_data(json_data):
@@ -52,8 +53,8 @@ def process_json_data(json_data):
 def join_confidence_and_performance(json_file_paths):
     merged_dicts = {}
     for model, json_path in json_file_paths.items():
-        confidence_file = os.path.join(DATA_PATH, f"results_{model}.csv")
-        if not os.path.exists(confidence_file):
+        confidence_file = confidence_files.get(model)
+        if confidence_file is None:
             logger.warning(f"Confidence file not found for {model}: {confidence_file}")
             continue
 
@@ -61,9 +62,9 @@ def join_confidence_and_performance(json_file_paths):
             json_data = json.load(f)
         performance_df = process_json_data(json_data)
         confidence_df = pd.read_csv(confidence_file)
-        
+
         confidence_df = confidence_df[~confidence_df['name'].str.startswith('preference-preferences_')]
-        
+
         confidence_df['model'] = rename_dict[model]
 
         df = pd.merge(confidence_df, performance_df, left_on='name', right_on='question_name')
@@ -80,9 +81,9 @@ def make_plot_of_confidence_vs_performance(merged_dicts):
     for i, (model, df) in enumerate(merged_dicts.items()):
         ax = axs[i]
         ax.set_facecolor('white')
-        
+
         df["all_correct_"] = df["all_correct_"].astype(float)
-        
+
         average_performance = df.groupby("estimate")["all_correct_"].mean()
         stdev = df.groupby("estimate")["all_correct_"].apply(sem)
 
@@ -93,7 +94,7 @@ def make_plot_of_confidence_vs_performance(merged_dicts):
             marker="o",
             label="Average Performance"
         )
-        
+
         ax.errorbar(
             average_performance.index,
             average_performance,
@@ -111,32 +112,29 @@ def make_plot_of_confidence_vs_performance(merged_dicts):
             alpha=0.3,
             color=model_color_map[rename_dict[model]],
             width=0.8,
-            label="Estimate Distribution"
+           # label="Distribution"
         )
 
-        ax.set_ylim(0, 1)
-        ax.set_xlim(1, 6)
-        ax.set_title(rename_dict[model], fontsize=12)
+        # add diagonal line
+        ax.plot([1, 5], [0, 1], color="black", linestyle="--", alpha=0.5)
+        range_frame(ax, np.array([1,5]), np.array([0,1]))
 
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
-
-        ax.plot([1, 6], [0, 1], color='gray', linestyle='--', alpha=0.5, label="Ideal Correlation")
+        ax.set_title(rename_dict[model])
 
         ax.set_xlabel('')
         ax.set_ylabel('')
 
-        ax.legend(fontsize=8, loc='upper left')
+        ax.legend(loc='upper left')
 
-    fig.text(0.5, 0.02, 'Estimate', ha='center', fontsize=14)
-    fig.text(0.02, 0.5, 'Fraction Correct', va='center', rotation='vertical', fontsize=14)
+    fig.text(0.5, 0.00, 'Estimate', ha='center')
+    fig.text(-0.01, 0.5, 'Fraction Correct', va='center', rotation='vertical')
 
-    fig.tight_layout(rect=[0.03, 0.03, 1, 0.95])
-    
+    fig.tight_layout()
+
     plt.savefig(
-        static / "model_confidence_performance.pdf", format="pdf", dpi=300, bbox_inches="tight"
+        figures / "model_confidence_performance.pdf", format="pdf", bbox_inches="tight"
     )
-    
+
     plt.close(fig)
     logger.info(f"Saved confidence vs performance plot as PDF in {static}")
 
@@ -144,12 +142,13 @@ if __name__ == "__main__":
     json_file_paths = {
         "gpt-4": os.path.join(chembench_repo, "reports", "gpt-4", "gpt-4.json"),
         "gpt-4o": os.path.join(chembench_repo, "reports", "gpt-4o", "gpt-4o.json"),
-        "claude3.5": os.path.join(chembench_repo, "reports", "claude3.5", "claude3.5.json"),
-        "llama3.1-8b-instruct": os.path.join(chembench_repo, "reports", "llama3-8b-instruct", "llama3-8b-instruct.json")
+        "claude3": os.path.join(chembench_repo, "reports", "claude3.5", "claude3.5.json"),
+        "llama3.1-8b-instruct": os.path.join(chembench_repo, "reports", "llama3.1-8b-instruct", "llama3.1-8b-instruct.json")
     }
 
     try:
         merged_dicts = join_confidence_and_performance(json_file_paths)
+        print(merged_dicts)
         make_plot_of_confidence_vs_performance(merged_dicts)
         logger.info("Successfully completed analysis and saved plot as PDF")
     except Exception as e:
