@@ -149,8 +149,45 @@ if __name__ == "__main__":
     try:
         merged_dicts = join_confidence_and_performance(json_file_paths)
         print(merged_dicts)
+        import pdb; pdb.set_trace()
         make_plot_of_confidence_vs_performance(merged_dicts)
         logger.info("Successfully completed analysis and saved plot as PDF")
     except Exception as e:
         logger.error(f"An error occurred during analysis: {e}")
         logger.exception("Error details:")
+
+
+
+
+
+    # for model, df in merged_dict.items():
+    #     relevant_model_performance = df[df[subset]]
+    #     correct = relevant_model_performance[
+    #         relevant_model_performance["all_correct_"].astype(bool)
+    #     ]
+    #     incorrect = relevant_model_performance[
+    #         ~relevant_model_performance["all_correct_"].astype(bool)
+    #     ]
+    #     num_correct = len(correct)
+    #     num_incorrect = len(incorrect)
+
+    #     average_confidence_correct = correct["estimate"].mean()
+    #     average_confidence_incorrect = incorrect["estimate"].mean()
+
+    #     with open(outpath / f"{model}_{subset}_num_correct_{suffix}.txt", "w") as f:
+    #         f.write(f"{num_correct}" + "\endinput")
+
+    #     with open(outpath / f"{model}_{subset}_num_incorrect_{suffix}.txt", "w") as f:
+    #         f.write(f"{num_incorrect}" + "\endinput")
+
+    #     with open(
+    #         outpath / f"{model}_{subset}_average_confidence_correct_{suffix}.txt", "w"
+    #     ) as f:
+    #         rounded = np.round(average_confidence_correct, 2)
+    #         f.write(f"{rounded}" + "\endinput")
+
+    #     with open(
+    #         outpath / f"{model}_{subset}_average_confidence_incorrect_{suffix}.txt", "w"
+    #     ) as f:
+    #         rounded = np.round(average_confidence_incorrect, 2)
+    #         f.write(f"{rounded}" + "\endinput")

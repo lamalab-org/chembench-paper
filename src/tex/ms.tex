@@ -196,11 +196,11 @@ It is important to note that the model performance for some topics, however, is 
 
 \paragraph{Judging chemical preference}
 
-One interesting finding of recent research is that foundation models can judge interestingness.\autocite{zhang2024omniopenendednessmodelshuman}
+One interesting finding of recent research is that foundation models can judge interestingness.\autocite{zhang2024omniopenendednessmodelshuman, Argyle_2023}
 If models could do so for chemical compounds, this would open opportunities for novel optimization approaches.
 Such open-ended tasks, however, depend on an external observer defining what interestingness is.\autocite{hughes2024openendednessessentialartificialsuperhuman}
 Here, we posed models the same question~\textcite{Choung_2023} asked chemists at a drug company: \enquote{Which of the two compounds do you prefer?} (in the context of an early virtual screening campaign setting).
-While chemists showed a fair degree of interrater agreement, most of our models do not correlate with the preferences of expert chemists---even if they perform well on many other tasks in \chembench.
+While chemists showed a fair degree of interrater agreement, most of our models do not correlate with the preferences of expert chemists---even if they perform well on many other tasks in \chembench (\Cref{tab:performance_table_human_subset})
 This indicates that using preference tuning for chemical settings is a promising approach to explore in future research.
 
 
@@ -213,16 +213,19 @@ To investigate this, we prompted\autocite{xiong2023llms} some of the top-perform
  \begin{figure}[!h]
      \centering
      \includegraphics[width=\textwidth]{figures/model_confidence_performance.pdf}
-     \caption{\textbf{Calibration and distribution of confidence estimates.} For this analysis, we used verbalized confidence estimates from the model. We prompted the models to return a confidence score on an ordinal scale to obtain those estimates. }
+     \caption{\textbf{Calibration and distribution of confidence estimates.} For this analysis, we used verbalized confidence estimates from the model. We prompted the models to return a confidence score on an ordinal scale to obtain those estimates.
+     The line plot shows the average fraction of correctly answered questions for each confidence level. The bar plot shows the distribution of confidence estimates. A confidence estimate would be well-calibrated if the average fraction of correctly answered questions increases with the confidence level.
+     We find that the models are not well-calibrated and some provide misleading confidence estimates.
+     }
      \label{fig:confidence_vs_performance}
      \script{confidence_estimate.py}
  \end{figure}
 
-% In \Cref{fig:confidence_vs_performance}, we show that for some models, there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
-% For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the model's outputs.\autocite{Li_2023, miret2024llms}
-% For example, for the questions about the safety profile of compounds, GPT-4 reported an average confidence of \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_correct_overall.txt} (on a scale of 1--5) for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_correct_overall.txt} questions it answered correctly and \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_incorrect_overall.txt} for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_incorrect_overall.txt} questions it answered incorrectly.
-% While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading in some cases.
-% For example, for the questions about \gls{ghs} pictograms Claude 3 returns an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
+ In \Cref{fig:confidence_vs_performance}, we show that for some models, there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
+ For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the model's outputs.\autocite{Li_2023, miret2024llms}
+ For example, for the questions about the safety profile of compounds, GPT-4 reported an average confidence of \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_correct_overall.txt} (on a scale of 1--5) for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_correct_overall.txt} questions it answered correctly and \variable{output/model_confidence_performance/gpt4_is_pictograms_average_confidence_incorrect_overall.txt} for the \variable{output/model_confidence_performance/gpt4_is_pictograms_num_incorrect_overall.txt} questions it answered incorrectly.
+ While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading in some cases.
+ For example, for the questions about \gls{ghs} pictograms Claude 3 returns an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
 
 \section{Conclusions}
 On the one hand, our findings underline the impressive capabilities of \glspl{llm} in the chemical sciences: Leading models outperform domain experts in specific chemistry questions on many topics.
@@ -230,7 +233,7 @@ On the other hand, there are still striking limitations.
 For very relevant topics the answers models provide are wrong.
 On top of that, many models are not able to reliably estimate their own limitations.
 Yet, the success of the models in our evaluations perhaps also reveals more about the limitations of the exams we use to evaluate models---and chemists---than about the models themselves.
-For instance, while models perform well on many textbook questions, they struggle with questions that require some more reasoning.
+For instance, while models perform well on many textbook questions, they struggle with questions that require some more reasoning about chemical structures (e.g., number of isomers or \gls{nmr} peaks).
 Given that the models outperformed the average human in our study, we need to rethink how we teach and examine chemistry.
 Critical reasoning is increasingly essential, and rote solving of problems or memorization of facts is a domain in which \glspl{llm} will continue to outperform humans.
 
@@ -245,7 +248,7 @@ Our work shows that carefully curated benchmarks can provide a more nuanced unde
 Importantly, our findings also illustrate that more focus is required in developing better human-model interaction frameworks, given that models cannot estimate their limitations.
 
 While our findings indicate many areas for further improvement of \gls{llm}-based systems, it is also important to realize that clearly defined metrics have been the key to the progress of many fields of \gls{ml}, such as computer vision.
-Although current systems are far from reasoning like a chemist, our \chembench framework will be a stepping stone for developing systems that might come closer to this goal.
+Although current systems might be far from reasoning like a chemist, our \chembench framework will be a stepping stone for developing systems that might come closer to this goal.
 
 \clearpage
 
@@ -266,7 +269,8 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 \end{figure}
 
 \paragraph{Manually curated questions}
-Manually curated questions were sourced from various sources, including university exams, exercises, and question banks. \Cref{tab:manually_sources} provides an overview of the sources of the manually curated questions.
+Manually curated questions were sourced from various sources, including university exams, exercises, and question banks.
+%\Cref{tab:manually_sources} provides an overview of the sources of the manually curated questions.
 
 %\input{sections/manually_sources_table.tex}
 
@@ -280,15 +284,14 @@ In addition to the manually curated questions, we also generated questions progr
 \subparagraph{Chemical preference data}
 
 These questions assess the ability to establish a \enquote{preference}, such as favoring a specific molecule. Chemical preference is of major importance in drug discovery projects, where the optimization process to reach the desired molecular properties is a process that lasts several years within a chemist's career.
-Our data corpus is adapted from the published dataset by \textcite{Choung2023}, which consists of more than 5000 question-answer pairs about chemical intuition. To build the dataset, they presented 35 medicinal chemists with two different molecules, asking them what molecule they would like to continue with when imaging an early virtual screening campaign setting. The question was designed so the scientists do not spend much time answering it, relying only on their feelings or \enquote{chemical preference}.
+Our data corpus is adapted from the published dataset by \textcite{Choung_2023}, which consists of more than 5000 question-answer pairs about chemical intuition. To build the dataset, they presented 35 medicinal chemists with two different molecules, asking them what molecule they would like to continue with when imaging an early virtual screening campaign setting. The question was designed so the scientists do not spend much time answering it, relying only on their feelings or \enquote{chemical preference}.
 
 To understand whether the capabilities of the leading models align with the preferences of professional chemists, we randomly selected 1000 data points from the original dataset to create a meaningful evaluation set, where molecules are represented as SMILES.
 To ablate the effect of different molecular representations, we only considered questions for which we could obtain IUPAC names for both molecules present.
 
-\clearpage
 
 \subsection{Model evaluation workflow}
-An overview of the pipeline is shown in \Cref{fig:evaluation_workflow}.
+An overview of the pipeline is shown in \Cref{fig:process}.
 
 \paragraph{Prompting}
 
