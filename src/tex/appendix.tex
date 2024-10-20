@@ -50,8 +50,7 @@ This also implies that future baselines can be built on top of our infrastructur
 %     \script{wordcloud.py}
 % \end{figure}
 
-\Cref{fig:question_count_barplot_mcq_vs_general} shows that most questions in our corpus are \gls{mcq}.
-A substantial fraction, in contrast to other benchmarks, is open-ended.
+
 % \begin{figure}[htb]
 %     \centering
 %     \includegraphics{figures/question_count_barplot_mcq_vs_general.pdf}
@@ -69,8 +68,8 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
         Question Type & \% & Example Questions  \\
         \midrule
         Chemical Preference & 35.0 & Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
-        & & A. [START\_SMILES]N\#Cc1ccc(OCCCN2CC3CN(CCNS(=O)(=O)c4ccc(F)cc4)CC(C2)O3)cc1[END\_SMILES] \\
-        & & B. [START\_SMILES]O=C1CC(c2ccc(CC(NS(=O)(=O)c3cc(Cl)cc(Cl)c3)c3nc4ccccc4[nH]3)cc2)S(=O)(=O)N1[END\_SMILES] \\
+        & & A. [START\_SMILES]N\#Cc1ccc(OCCCN2CC3CN\-(CCNS(=O)(=O)c4ccc(F)cc4)CC(C2)O3)cc1[END\_SMILES] \\
+        & & B. [START\_SMILES]O=C1CC(c2ccc(CC(NS(=O)\-(=O)\-c3cc(Cl)cc(Cl)c3)c3nc4ccccc4[nH]3)cc2)S(=O)(=O)N1[END\_SMILES] \\
         \midrule
         Technical Chemistry & 1.5 & Which of the following statements is true about the different types of ideal reactors? \\
         & & A. In a batch reactor, the composition is uniformly mixed and remains the same throughout the reactor and at the exit \\
@@ -78,7 +77,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
         & & C. In a mixed flow reactor, the composition changes with time but is uniform everywhere within the reactor \\
         & & D. In a plug flow reactor, the fluid moves in single flow through the reactor with no mixing and no overtaking \\
         \midrule
-        Organic Chemistry & 15.5 & What is the reaction mechanism that describes the following reaction (represented using reaction SMILES) [START\_RXNSMILES]CCCl.CO[Na]>>[Na]Cl.CCOC[END\_RXNSMILES]? \\
+        Organic Chemistry & 15.5 & What is the reaction mechanism that describes the following reaction (represented using reaction SMILES) [START\_RXNSMILES]CCCl.CO[Na]>>[Na]Cl.CCOC\-[END\_RXNSMILES]? \\
         & & A. $E_1$ \\
         & & B. $E_{cb}$ \\
         & & C. $S_N1$ \\
@@ -145,7 +144,7 @@ In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench co
         \midrule
         Intuition & 1001 & Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
         & & A. [START\_SMILES]CC1(C)Oc2ccc([N+](=O)[O-])cc2[C@@H](N2CCOCC2)[C\@\@H]1O[END\_SMILES] \\
-        & & B. [START\_SMILES]Cc1ccccc1N=C(S)N1CCC(NC(=O)c2ccco2)CC1[END\_SMILES] \\
+        & & B. [START\_SMILES]Cc1ccccc1N=C(S)N1CCC(NC\-(=O)c2ccco2)CC1[END\_SMILES] \\
         \midrule
         Calculation & 91 & Given that the average molar mass of the polymer chains in this sample of poly(lactic acid) (PLA) is \SI{595}{g mol^{-1}} using end-group analysis, where \SI{0.1619}{g} of PLA was dissolved in \SI{25}{cm^3} of benzyl alcohol and titrated with \SI{0.0400}{mol dm^{-3}} \ce{KOH} solution. The volume of \ce{KOH} solution required to reach the endpoint was \SI{6.81}{cm^3}. What is the average number of monomer units in each polymer chain of this sample? \\
         \bottomrule
@@ -245,7 +244,7 @@ Interestingly, the performance of the models on questions sourced based on textb
 
 \clearpage
 
-\subsection{Performance as a function of molecular features}
+\subsection{Performance as a function of molecular features} \label{sec:molecular_features}
 To better understand if the performance of the models is correlated with specific features of the molecules, we analyzed the performance of the models as a function of the number of atoms and the complexity of the molecules.
 \Cref{fig:correlation_plot_is_number_nmr_peaks_complexity} shows that the performance of the models is not correlated with the complexity of the molecules but rather with the number of atoms (\Cref{fig:correlation_plot_is_number_nmr_peaks_num_atoms}, similar trivial correlation for \Cref{fig:correlation_plot_is_electron_counts_num_atoms}).
 %The corresponding Spearman correlation coefficients are listed in \Cref{tab:correlation_coefficients}.
@@ -301,7 +300,7 @@ To better understand if the performance of the models is correlated with specifi
 \Cref{fig:model_size_plot} shows the performance of the models as a function of the number of parameters in the model.
 We see that the performance of the models correlates with scale for the models of the LLama-3 and Llama-3.1 herd of models.
 
-\begin{figure}
+\begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{figures/model_size_plot.pdf}
     \caption{\textbf{Performance of models as a function of model size.} The plot shows the performance of the models as a function of the parameter count. The performance is measured as the fraction of questions answered correctly by the models. We see that the performance of the models correlates with scale for the models of the LLama3 and Llama3.1 herd of models.}
@@ -318,7 +317,7 @@ To automatically detect refusals, we use a modified regular expression reported 
 \Cref{tab:refusal_counts} lists how many refusals were detected for the reponses of different models on \chembench. Overall, we find that refusals do not majorly affect the performance measured by \chembench.
 
 \clearpage
-\subsection{LLM Parsing}
+\subsection{LLM Parsing} \label{sec:llm-parsing}
 
 In our parsing workflow, we use pipelines based on regular expressions to extract the answers. In some cases, however, the answers are not directly extractable from the responses, for instance, when the model does not follow the formatting instructions. In these cases, we use a fallback mechanism to extract the answers. The fallback mechanism uses an \gls{llm} to extract the answers from the responses. The \gls{llm} is provided with the response and the question and is prompted to only extract but not generate the answer. We used \LlamaThreeSeventyBInstruct accessed via the Groq API.
 \Cref{tab:llm_parsing_count} tabulates the number of times the fallback mechanism was used for each model.
@@ -346,7 +345,7 @@ We utilize a Postgresql.
 The web application is styled with Tailwind CSS\autocite{tailwindcss} using the shadcn/ui component library and uses NextAuth\autocite{nextauth} for easy and secure user authentication.
 The application is hosted on the Vercel web hosting platform.
 
-In the applications, human participants were presented with molecules as rendered drawings and SMILES strings. \LaTeX\xspace equations and chemical equations were rendered using MathJax\autocite{mathjax}.
+In the applications, human participants were presented with molecules as rendered drawings and SMILES strings. \LaTeX\xspace equations and chemical equations were rendered using MathJax.
 
 
 \paragraph{Statistics}
@@ -420,7 +419,7 @@ However, when \GPTFourO displays high confidence, it accurately predicts correct
 \subsection{Impact of sampling temperature}
 We also investigated the impact of sampling temperature on the performance of the models. \Cref{fig:temperature_impact} shows that, generally, the performance of models tends to degrease with increasing temperature.
 
-\begin{figure}
+\begin{figure}[!h]
     \centering
     \includegraphics{figures/swarm_plot_combined.pdf}
     \caption{\textbf{Impact of sampling temperature on the performance of the models.} The plot shows the performance of the models at zero temperature (i.e., greedy decoding) and temperature of one. The performance is measured in terms of the fraction of questions answered correctly.}

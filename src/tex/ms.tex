@@ -185,7 +185,7 @@ Importantly, while the human experts are given a drawing of the compounds, the m
 
  We also gain insight into the models' struggles with chemical reasoning tasks when we examine their performance as a function of molecular descriptors.
  If the model would answer questions after reasoning about the structures, one would expect the performance to depend on the complexity of the molecules.
- However, we find that the models' performance does not correlate with complexity indicators but rather trivially with the size of the compounds (see \Cref{tab:correlation_coefficients}).
+ However, we find that the models' performance does not correlate with complexity indicators (see \Cref{sec:molecular_features}).
  This indicates that the models may not be able to reason about the structures of the molecules (in the way one might expect) but instead rely on proximity of the molecules to the training data.\autocite{mccoy2023embersautoregressionunderstandinglarge}
 
 It is important to note that the model performance for some topics, however, is slightly underestimated in the current evaluation.
@@ -352,6 +352,7 @@ To facilitate reproduction, some intermediate analysis results are cached at \ur
 This work was supported by the Carl Zeiss Foundation, a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena.
 We also thank Stability.AI for the access to its HPC cluster. In addition, M.S-W.'s work was supported by Intel and Merck via the AWASES programme.
 K.M.J.\ is part of the NFDI consortium FAIRmat funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – project 460197019.
+Parts of A.M.'s work was supported as part of the \enquote{SOL-AI} project funded by the Helmholtz Foundation model initative.
 
 M.A.\ expresses gratitude to the European Research Council (ERC) for evaluating the project with the reference number 101106377 titled \enquote{CLARIFIER} and accepting it for funding under the HORIZON TMA MSCA Postdoctoral Fellowships - European Fellowships.
 Furthermore, M.A.\ acknowledges the funding provided by UK Research and Innovation (UKRI) under the UK government’s Horizon Europe funding guarantee (Grant Reference: EP/Y023447/1; Organization Reference: 101106377).
