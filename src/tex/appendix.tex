@@ -312,7 +312,7 @@ We see that the performance of the models correlates with scale for the models o
 
 \clearpage
 \subsection{Refusal detection}
-
+\Glspl{llm} typically undergo refusal training to prevent harmful or undesirable outputs. As a result, models may decline to answer questions they perceive as potentially adversarial prompts.
 To automatically detect refusals, we use a modified regular expression reported by LLM Guard\autocite{llmguard} to detect commonly used refusal phrases.
 
 \Cref{tab:refusal_counts} lists how many refusals were detected for the reponses of different models on \chembench. Overall, we find that refusals do not majorly affect the performance measured by \chembench.
@@ -320,7 +320,7 @@ To automatically detect refusals, we use a modified regular expression reported 
 \clearpage
 \subsection{LLM Parsing}
 
-In our parsing workflow, we use pipelines based on regular expressions to extract the answers. In some cases, however, the answers are not directly extractable from the responses, for instance, when the model does not follow the formatting instructions. In these cases, we use a fallback mechanism to extract the answers. The fallback mechanism uses an \gls{llm} to extract the answers from the responses. The \gls{llm} is provided with the response and the question and is prompted to only extract but not generate the answer.
+In our parsing workflow, we use pipelines based on regular expressions to extract the answers. In some cases, however, the answers are not directly extractable from the responses, for instance, when the model does not follow the formatting instructions. In these cases, we use a fallback mechanism to extract the answers. The fallback mechanism uses an \gls{llm} to extract the answers from the responses. The \gls{llm} is provided with the response and the question and is prompted to only extract but not generate the answer. We used \LlamaThreeSeventyBInstruct accessed via the Groq API.
 \Cref{tab:llm_parsing_count} tabulates the number of times the fallback mechanism was used for each model.
 
 \clearpage
@@ -428,22 +428,7 @@ We also investigated the impact of sampling temperature on the performance of th
     \script{plot_temperature_diffs.py}
 \end{figure}
 
-\subsection{Question refusal and LLM fallback} \label{sec:refusal}
 
-\paragraph{Refusal}
-
-During the training of the \glspl{llm}, generally one of the steps is refusal training. 
-Thus, in this stage of the training, the models are trained to prevent them of generating harmful, undesirable or violent outputs.
-As a consequence, it can happen that the model refuses to answer some questions that they identify as potential adversarially crafted prompts.
-
-To have a measure of how much refusal happens in \chembench, we count the number of refused questions by each model with a rule-based approach. 
-This rule-based approach searches for the most common structures of the refusal completions made by \glspl{llm}.
-
-\paragraph{LLM-Fallback}
-
-As explained above, the parsing of the answers from the completions of the models are made by parsing an answer pattern imposed within the prompt.
-For the questions in which \glspl{llm} do not follow this pattern to answer, we implement the so-called \gls{llm}-fallback which consists in passing the question and the completion to another model asking to extract the question or return "None" otherwise.
-For the count, the model chosen for do this auxiliary extraction was Llama 3 70B accessed via the Groq API.
 
 
 
