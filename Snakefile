@@ -212,5 +212,13 @@ rule tool_usage:
 
 rule confidence_main_text:
     input: "src/data/model_score_dicts.pkl"
-    output: "src/tex/figures/model_confidence_performance.pdf"
+    output:
+        [
+            "src/tex/figures/model_confidence_performance.pdf",
+            "src/output/model_confidence_performance/gpt4_is_pictograms_average_confidence_correct_overall.txt",
+            "src/output/model_confidence_performance/gpt4_is_pictograms_num_correct_overall.txt",
+            "output/model_confidence_performance/gpt4_is_pictograms_average_confidence_incorrect_overall.txt",
+            "output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt",
+            "output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt"
+        ]
     script: "src/scripts/confidence_estimate.py"
