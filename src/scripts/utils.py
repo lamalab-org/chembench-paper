@@ -1,6 +1,7 @@
 import os
 from paths import data, scripts
 from dotenv import load_dotenv
+from typing import Literal
 
 from scipy.constants import golden
 
@@ -18,6 +19,7 @@ print(GH_PAT)
 def obtain_chembench_repo():
     # if in ../data the repository chem-bench is not found, clone it
     # if it is found, pull the latest version
+    print("Obtaining ChemBench repository")
     cwd = os.getcwd()
     if not os.path.exists(os.path.join(data, "chem-bench-main")):
         os.chdir(data)
@@ -36,3 +38,22 @@ def obtain_chembench_repo():
         os.chdir(os.path.join(data, "chem-bench-main"))
     os.chdir(cwd)
     return os.path.join(data, "chem-bench-main")
+
+
+def obtain_human_relevant_questions(
+    human_subset: Literal[
+        "tool-allowed", "tool-disallowed", "none", "combined"
+    ] = "none",
+):
+    relevant_questions = []
+    if human_subset != "none":
+        if human_subset == "tool-allowed":
+            with open(data / "human_tool_answered_questions.txt", "r") as f:
+                relevant_questions = f.read().splitlines()
+        elif human_subset == "tool-disallowed":
+            with open(data / "human_no_tool_answered_questions.txt", "r") as f:
+                relevant_questions = f.read().splitlines()
+        elif human_subset == "combined":
+            with open(data / "human_answered_questions.txt", "r") as f:
+                relevant_questions = f.read().splitlines()
+    return relevant_questions

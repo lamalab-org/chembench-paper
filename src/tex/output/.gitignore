@@ -1,5 +1,3 @@
-# Nothing should be tracked in this folder...
+# Nothing in this folder should be tracked by git
 *
-
-# Except the gitignore file itself!
 !.gitignore

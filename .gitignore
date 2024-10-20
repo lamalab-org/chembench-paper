@@ -17,3 +17,6 @@ __pycache__
 .env
 .DS_Store
 .vscode/*
+
+scratch/
+fonts/

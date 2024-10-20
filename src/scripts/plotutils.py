@@ -10,6 +10,8 @@ from matplotlib.projections.polar import PolarAxes
 from matplotlib.spines import Spine
 from matplotlib.transforms import Affine2D
 import matplotlib.patches as patches
+import json
+from paths import scripts
 
 
 def range_frame(ax, x, y, pad=0.1):
@@ -108,7 +110,6 @@ def radar_factory(num_vars, frame="circle"):
     theta = np.linspace(0, 2 * np.pi, num_vars, endpoint=False)
 
     class RadarTransform(PolarAxes.PolarTransform):
-
         def transform_path_non_affine(self, path):
             # Paths with non-unit interpolation steps correspond to gridlines,
             # in which case we force interpolation (to defeat PolarTransform's
@@ -118,7 +119,6 @@ def radar_factory(num_vars, frame="circle"):
             return Path(self.transform(path.vertices), path.codes)
 
     class RadarAxes(PolarAxes):
-
         name = "radar"
         PolarTransform = RadarTransform
 
@@ -188,55 +188,8 @@ def radar_factory(num_vars, frame="circle"):
     return theta
 
 
-tab20_colors = [
-    ["#1f77b4", "#aec7e8"],  # blue
-    ["#ff7f0e", "#ffbb78"],  # orange
-    ["#2ca02c", "#98df8a"],  # green
-    ["#d62728", "#ff9896"],  # red
-    ["#9467bd", "#c5b0d5"],  # purple
-    ["#8c564b", "#c49c94"],  # brown
-    ["#e377c2", "#f7b6d2"],  # pink
-    ["#7f7f7f", "#c7c7c7"],  # gray
-    ["#bcbd22", "#dbdb8d"],  # yellow
-    ["#17becf", "#9edae5"],  # teal
-    ["#ff6347", "#ffa07a"],  # tomato and light salmon
-    ["#4682b4", "#b0c4de"],  # steel blue and light steel blue
-    ["#556b2f", "#8fbc8f"],  # dark olive green and dark sea green
-    ["#6a5acd", "#b0e0e6"],  # slate blue and powder blue
-    ["#483d8b", "#8470ff"],  # dark slate blue and light slate blue
-]
-
-
-model_color_map = {
-    "human": tab20_colors[0][0],
-    "claude2": tab20_colors[1][0],
-    "claude2_react": tab20_colors[1][1],
-    "claude3": tab20_colors[2][0],
-    "gpt4": tab20_colors[3][0],
-    "gemini_pro": tab20_colors[4][0],
-    "gpt35turbo": tab20_colors[5][0],
-    "gpt35turbo_react": tab20_colors[5][1],
-    "llama70b": tab20_colors[6][0],
-    "pplx7b_chat": tab20_colors[7][0],
-    "pplx7b_online": tab20_colors[7][1],
-    "mixtral": tab20_colors[8][0],
-    "random_baseline": tab20_colors[9][0],
-    "galactica_120b": tab20_colors[12][0],
-}
-
-# number of parameters
-model_size_map = {
-    "claude2": 130 * 10**9,
-    "claude3": 1.75
-    * 10
-    ** 12,  # https://manifold.markets/SaviorofPlant/how-many-parameters-does-the-new-po
-    "gpt4": 1.8 * 10**12,
-    "gpt35turbo": 175 * 10**9,
-    "llama70b": 70 * 10**9,
-    "pplx7b_chat": 7 * 10**9,
-    "galactica_120b": 120 * 10**9,
-    "mixtral": 56 * 10**9,
-}
+with open(scripts / "color_palette.json", "r") as f:
+    model_color_map = json.load(f)
 
 
 def parallel_coordinates_plot(
