@@ -38,10 +38,8 @@ def load_data(data_paths):
     for path in data_paths:
         data = load_single_json(path)
         results.append(load_single_json(path))
-    
-    combined_df = pd.concat(results, ignore_index=True, sort=False)
-    
-    return combined_df
+
+    return pd.concat(results, ignore_index=True, sort=False)
 
 def collect_data(datafolder):
     names = construct_name_to_path_dict(datafolder)
