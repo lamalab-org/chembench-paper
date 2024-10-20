@@ -10,6 +10,7 @@ from pandas import json_normalize
 
 from chembench.analysis import (
     construct_name_to_path_dict,
+    is_semiautomatically_generated,
 )
 from utils import obtain_chembench_repo
 
@@ -53,9 +54,16 @@ def collect_data(datafolder):
         raise ValueError("No data loaded from reports")
     logger.info(f"Loaded {len(df)} rows of data")
     
+    df["semiautomatically"] = df.apply(is_semiautomatically_generated, axis=1)
     sources = {}
     for i, row in df.iterrows():
         try:
+            if row["semiautomatically"]:
+                if "Semiautomatically Generated" in sources:
+                    sources["Semiautomatically Generated"] += 1
+                else:
+                    sources["Semiautomatically Generated"] = 0
+                continue
             if not pd.isna(row["meta.exam.country"]):
                 if "Exam" in sources:
                     sources["Exam"] += 1
