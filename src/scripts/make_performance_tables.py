@@ -155,6 +155,8 @@ def make_table(
     df[numeric_columns] = df[numeric_columns].applymap(
         lambda x: f"{x:.2f}".rstrip("0").rstrip(".")
     )
+    # filter out rows where ("Model", "") starts with a number
+    df = df[~df[("Model", "")].str.match(r"^\d")]
     # Sort the DataFrame alphabetically by the column "Models"
     df = df.sort_values(by=("Model", ""))
 

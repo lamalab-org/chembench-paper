@@ -2,7 +2,7 @@
 import os
 import json
 
-from paths import tex, data
+from paths import  data, output
 import pandas as pd
 import pickle
 
@@ -20,7 +20,7 @@ model_file_name_to_label = {
     "gpt-3.5-turbo": "GPT-3.5 Turbo",
     "gpt-4": "GPT-4",
     "gpt-4o": "GPT-4o",
-    "o1": "OpenAI o1",
+    "o1": "o1",
     "llama2-70b-chat": "Llama 2 70B Chat",
     "llama3-70b-instruct": "Llama 3 70B",
     "llama3-70b-instruct-T-one": "Llama 3 70B Temp=1",
@@ -44,6 +44,7 @@ def load_model_refusal(file_path):
 
 def list_of_dicts_to_latex_table(data, output_file):
     data = [item for item in data if item['model'] != 'random_baseline']
+    data = [item for item in data if not '_' in item['model'] and not '=' in item['model']]
     for item in data:
         item['model'] = model_file_name_to_label.get(item['model'], item['model'])
 
@@ -52,7 +53,7 @@ def list_of_dicts_to_latex_table(data, output_file):
 
     latex_table = latex_table.replace(
         r"\begin{tabular}{lrrrr}",
-        r"\begin{tabular}{ccccc}"
+        r"\begin{tabular}{lcccc}"
     )
     # Manually modify the LaTeX code for centering multi-level headers
     latex_table = latex_table.replace(
@@ -68,7 +69,7 @@ def list_of_dicts_to_latex_table(data, output_file):
 if __name__ == "__main__":
     refusal_results = load_model_refusal(
         os.path.join(
-            data, 
+            output,
             'model_refusal_and_extraction_count.pkl'
         )
     )
@@ -76,10 +77,9 @@ if __name__ == "__main__":
     refusal_results = sorted(refusal_results, key=lambda x: x["model"])
 
     list_of_dicts_to_latex_table(
-        refusal_results, 
+        refusal_results,
         os.path.join(
-            tex, 
+            output,
             'model_refusal_table.tex'
         )
     )
-    

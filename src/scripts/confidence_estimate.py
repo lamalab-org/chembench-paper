@@ -20,7 +20,8 @@ from utils import (
 )
 
 chembench_repo = obtain_chembench_repo()
-
+outpath = output / "model_confidence_performance"
+os.makedirs(outpath, exist_ok=True)
 
 BASE_PATH = chembench_repo
 
@@ -154,3 +155,59 @@ if __name__ == "__main__":
     except Exception as e:
         logger.error(f"An error occurred during analysis: {e}")
         logger.exception("Error details:")
+
+
+    df_questions = pd.read_pickle(data / "questions.pkl")
+
+
+    subsets = [
+        "is_point_group",
+        "is_number_of_isomers",
+        "is_number_nmr_peaks",
+        "is_gfk",
+        "is_dai",
+        "is_pictograms",
+        "is_name",
+        "is_organic_reactivity",
+        "is_electron_counts",
+        "is_chemical_compatibility",
+        "is_materials_compatibility",
+        "is_oup",
+        "is_olympiad",
+        "is_toxicology",
+        "is_polymer_chemistry",
+    ]
+    suffix = 'overall'
+    for subset in subsets:
+        for model, df in merged_dicts.items():
+            df = pd.merge(df, df_questions, left_on='question_name', right_on='name')
+            relevant_model_performance = df[df[subset]]
+            correct = relevant_model_performance[
+                relevant_model_performance["all_correct_"].astype(bool)
+            ]
+            incorrect = relevant_model_performance[
+                ~relevant_model_performance["all_correct_"].astype(bool)
+            ]
+            num_correct = len(correct)
+            num_incorrect = len(incorrect)
+
+            average_confidence_correct = correct["estimate"].mean()
+            average_confidence_incorrect = incorrect["estimate"].mean()
+
+            with open(outpath / f"{model}_{subset}_num_correct_{suffix}.txt", "w") as f:
+                f.write(f"{num_correct}" + "\endinput")
+
+            with open(outpath / f"{model}_{subset}_num_incorrect_{suffix}.txt", "w") as f:
+                f.write(f"{num_incorrect}" + "\endinput")
+
+            with open(
+                outpath / f"{model}_{subset}_average_confidence_correct_{suffix}.txt", "w"
+            ) as f:
+                rounded = np.round(average_confidence_correct, 2)
+                f.write(f"{rounded}" + "\endinput")
+
+            with open(
+                outpath / f"{model}_{subset}_average_confidence_incorrect_{suffix}.txt", "w"
+            ) as f:
+                rounded = np.round(average_confidence_incorrect, 2)
+                f.write(f"{rounded}" + "\endinput")

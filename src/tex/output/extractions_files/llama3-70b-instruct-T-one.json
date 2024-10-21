@@ -3,48 +3,48 @@
   "questions_extracted": 17,
   "extracted": [
     {
-      "question_name": "point_group-pointgroups_13-pointgroups",
+      "question_name": "point_group-pointgroups_9-pointgroups",
       "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_1-pointgroups",
-      "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_8-pointgroups",
-      "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_6-pointgroups",
-      "completion": "[ANSWER]D2h[/ANSWER]"
-    },
-    {
-      "question_name": "reactions-24-reaction_24",
-      "completion": "[ANSWER]ABD[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_4-pointgroups",
-      "completion": "[ANSWER]D2d[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_10-pointgroups",
-      "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
-      "question_name": "reasoning-I-reasoning_question_1",
-      "completion": "[ANSWER]Zn[/ANSWER]"
-    },
-    {
-      "question_name": "analytical_techniques-analytical_techniques_4-analytical_techniques_4",
-      "completion": "[ANSWER]BD[/ANSWER]"
     },
     {
       "question_name": "point_group-pointgroups_12-pointgroups",
       "completion": "[ANSWER]C1[/ANSWER]"
     },
     {
+      "question_name": "reasoning-I-reasoning_question_1",
+      "completion": "[ANSWER]Zn[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_6-pointgroups",
+      "completion": "[ANSWER]D2h[/ANSWER]"
+    },
+    {
+      "question_name": "analytical_techniques-analytical_techniques_4-analytical_techniques_4",
+      "completion": "[ANSWER]BD[/ANSWER]"
+    },
+    {
+      "question_name": "reactive_groups-33_3-reactive_groups_33",
+      "completion": "[ANSWER]BD[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_1-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
       "question_name": "point_group-pointgroups_11-pointgroups",
       "completion": "[ANSWER]C3[/ANSWER]"
+    },
+    {
+      "question_name": "reactions-24-reaction_24",
+      "completion": "[ANSWER]ABD[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_0-pointgroups",
+      "completion": "[ANSWER]Td[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_10-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
     },
     {
       "question_name": "oup-drug_synthesis_25-drug_synthesis",
@@ -55,20 +55,20 @@
       "completion": "[ANSWER]D2h[/ANSWER]"
     },
     {
-      "question_name": "reactive_groups-33_3-reactive_groups_33",
-      "completion": "[ANSWER]BD[/ANSWER]"
+      "question_name": "point_group-pointgroups_4-pointgroups",
+      "completion": "[ANSWER]D2d[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_13-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_8-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
     },
     {
       "question_name": "point_group-pointgroups_3-pointgroups",
       "completion": "[ANSWER]C2[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_9-pointgroups",
-      "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_0-pointgroups",
-      "completion": "[ANSWER]Td[/ANSWER]"
     }
   ]
 }
