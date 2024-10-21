@@ -26,12 +26,13 @@ showyourwork build --conda-frontend=mamba --rerun-incomplete
 
 Note that you need to have your Zenodo tokens exported (`export ZENODO_TOKEN=<your token>` and `export SANDBOX_TOKEN=<your token>`).
 For the first rules, you also need to have a Github personal access token exported (`export GH_PAT=<your token>`).
+For the LLM-parsing rule, you need your Anthropic API key exported (`export ANTHROPIC_API_KEY=<your key>`).
 
-## Useful command 
+## Useful command
 
-If stuff stops working, you can try to reset the cache 
+If stuff stops working, you can try to reset the cache
 
-```bash 
+```bash
 showyourwork clean --force --deep
 ```
 

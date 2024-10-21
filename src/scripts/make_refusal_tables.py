@@ -44,6 +44,7 @@ def load_model_refusal(file_path):
 
 def list_of_dicts_to_latex_table(data, output_file):
     data = [item for item in data if item['model'] != 'random_baseline']
+    data = [item for item in data if not '_' in item['model'] and not '=' in item['model']]
     for item in data:
         item['model'] = model_file_name_to_label.get(item['model'], item['model'])
 
@@ -68,7 +69,7 @@ def list_of_dicts_to_latex_table(data, output_file):
 if __name__ == "__main__":
     refusal_results = load_model_refusal(
         os.path.join(
-            data,
+            output,
             'model_refusal_and_extraction_count.pkl'
         )
     )
