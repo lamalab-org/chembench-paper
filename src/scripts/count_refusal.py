@@ -28,7 +28,7 @@ from chembench.constant import (
     NUM_REGEX,
 )
 from utils import obtain_chembench_repo
-
+from paths import output
 load_dotenv("/.env", override=True)
 
 def extract_examples(name, datafolder):
@@ -221,12 +221,10 @@ if __name__ == "__main__":
     logger.info(f"Found {len(models)} reports")
     logger.debug(f"First 5 reports: {models[:5]}")
 
-    outpath = os.path.join(chembench_repo, "output")
-    os.makedirs(outpath, exist_ok=True)
 
     datafolder = os.path.join(chembench_repo, "data")
-    json_dir_refusals = os.path.join(outpath, "refusals_files")
-    json_dir_extractions = os.path.join(outpath, "extractions_files")
+    json_dir_refusals = os.path.join(output, "refusals_files")
+    json_dir_extractions = os.path.join(output, "extractions_files")
     os.makedirs(json_dir_refusals, exist_ok=True)
     os.makedirs(json_dir_extractions, exist_ok=True)
 
@@ -242,7 +240,7 @@ if __name__ == "__main__":
             except Exception as exc:
                 logger.error(f'{model} generated an exception: {exc}')
 
-    with open(os.path.join(outpath, 'model_refusal_and_extraction_count.pkl'), 'wb') as f:
+    with open(os.path.join(output, 'model_refusal_and_extraction_count.pkl'), 'wb') as f:
         pickle.dump(results, f)
 
     logger.info("Processing completed successfully.")

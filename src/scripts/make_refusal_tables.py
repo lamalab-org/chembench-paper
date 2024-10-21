@@ -2,7 +2,7 @@
 import os
 import json
 
-from paths import tex, data
+from paths import  data, output
 import pandas as pd
 import pickle
 
@@ -68,7 +68,7 @@ def list_of_dicts_to_latex_table(data, output_file):
 if __name__ == "__main__":
     refusal_results = load_model_refusal(
         os.path.join(
-            data, 
+            data,
             'model_refusal_and_extraction_count.pkl'
         )
     )
@@ -76,10 +76,9 @@ if __name__ == "__main__":
     refusal_results = sorted(refusal_results, key=lambda x: x["model"])
 
     list_of_dicts_to_latex_table(
-        refusal_results, 
+        refusal_results,
         os.path.join(
-            tex, 
+            output,
             'model_refusal_table.tex'
         )
     )
-    

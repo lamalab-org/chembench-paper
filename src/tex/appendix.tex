@@ -311,16 +311,24 @@ We see that the performance of the models correlates with scale for the models o
 
 \clearpage
 \subsection{Refusal detection}
-\Glspl{llm} typically undergo refusal training to prevent harmful or undesirable outputs. As a result, models may decline to answer questions they perceive as potentially adversarial prompts.
+\Glspl{llm} typically undergo refusal training to prevent harmful or undesirable outputs. As a result, models may decline to answer questions perceived as potentially adversarial prompts.
 To automatically detect refusals, we use a modified regular expression reported by LLM Guard\autocite{llmguard} to detect commonly used refusal phrases.
 
-\Cref{tab:refusal_counts} lists how many refusals were detected for the reponses of different models on \chembench. Overall, we find that refusals do not majorly affect the performance measured by \chembench.
+\Cref{tab:refusal_counts_and_parsing} lists how many refusals were detected for the reponses of different models on \chembench. Overall, we find that refusals do not majorly affect the performance measured by \chembench.
 
 \clearpage
 \subsection{LLM Parsing} \label{sec:llm-parsing}
 
 In our parsing workflow, we use pipelines based on regular expressions to extract the answers. In some cases, however, the answers are not directly extractable from the responses, for instance, when the model does not follow the formatting instructions. In these cases, we use a fallback mechanism to extract the answers. The fallback mechanism uses an \gls{llm} to extract the answers from the responses. The \gls{llm} is provided with the response and the question and is prompted to only extract but not generate the answer. We used \LlamaThreeSeventyBInstruct accessed via the Groq API.
-\Cref{tab:llm_parsing_count} tabulates the number of times the fallback mechanism was used for each model.
+\Cref{tab:refusal_counts_and_parsing} tabulates the number of times the fallback mechanism was used for each model.
+
+
+\begin{table}
+    \centering
+    \caption{\textbf{Refusal counts and parsing.} The table shows the number of refusals detected and the number of times the fallback mechanism was used for each model.}
+    \variable{output/model_refusal_table.tex}
+    \label{tab:refusal_counts_and_parsing}
+\end{table}
 
 \clearpage
 \subsection{Implementation}
