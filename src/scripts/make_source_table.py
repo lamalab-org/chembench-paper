@@ -83,7 +83,7 @@ def collect_data(datafolder):
                 else:
                     sources["Lectures"] = 0 
             elif not pd.isna(row["icho.country"]):
-                if "ICHO" in sources:
+                if "IChO" in sources:
                     sources["IChO"] += 1
                 else:
                     sources["IChO"] = 0
