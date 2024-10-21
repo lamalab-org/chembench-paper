@@ -183,7 +183,7 @@ Importantly, while the human experts are given a drawing of the compounds, the m
  A subset of the questions in the \chembench are based on textbooks targeted at undergraduate students.
  On those questions, the models tend to perform better than on some of our semi-automatically constructed tasks (see \Cref{fig:performance_per_topic}).
  For instance, while the overall performance in the chemical safety topic is low, the models would pass the certification exam according to the German Chemical Prohibition Ordinance based on a subset of questions we sampled from the corresponding question bank (e.g., \variable{output/subset_scores/is_gfk_gpt-4.txt}\% correct answers for \GPTFour, \variable{output/subset_scores/is_gfk_Claude-3.5_(Sonnet).txt}\% for \ClaudeThreeFiveSonnet, and \variable{output/human_subset_scores/is_gfk.txt}\% for the human experts).
- While those findings are impacted by the subset of questions we sampled, the results still highlight that good performance on such question bank or textbook questions does not necessarily translate to good performance on other questions that require more reasoning. The findings also underline that such exams might have been a good surrogate for general performance of skills for humans, but their applicability in the face of systems that can consume vast amounts of data is up for debate.
+ While those findings are impacted by the subset of questions we sampled, the results still highlight that good performance on such question bank or textbook questions does not necessarily translate to good performance on other questions that require more reasoning or are further away from the training corpus.\autocite{mccoy2023embersautoregressionunderstandinglarge} The findings also underline that such exams might have been a good surrogate for general performance of skills for humans, but their applicability in the face of systems that can consume vast amounts of data is up for debate.
 
  We also gain insight into the models' struggles with chemical reasoning tasks when we examine their performance as a function of molecular descriptors.
  If the model would answer questions after reasoning about the structures, one would expect the performance to depend on the complexity of the molecules.
@@ -192,17 +192,17 @@ Importantly, while the human experts are given a drawing of the compounds, the m
 
 It is important to note that the model performance for some topics, however, is slightly underestimated in the current evaluation.
  This is because models provided via \glspl{api} typically have safety mechanisms that prevent them from providing answers that the provider deems unsafe.
- For instance, models might refuse to provide answers about cyanides. Statistics of the frequency of such refusals are shown in \Cref{tab:refusals}.
+ For instance, models might refuse to provide answers about cyanides. Statistics of the frequency of such refusals are shown in \Cref{tab:refusal_counts_and_parsing}.
  To overcome this, direct access to the model weights would be required, and we strive to collaborate with the developers of frontier models to overcome this limitation in the future.
  This is facilitated with the tooling \chembench provides, thanks to which contributors can automatically add new models in an open science fashion.
 
 \paragraph{Judging chemical preference}
 
-One interesting finding of recent research is that foundation models can judge interestingness.\autocite{zhang2024omniopenendednessmodelshuman, Argyle_2023}
+One interesting finding of recent research is that foundation models can judge interestingness or human preferences in some domains.\autocite{zhang2024omniopenendednessmodelshuman, Argyle_2023}
 If models could do so for chemical compounds, this would open opportunities for novel optimization approaches.
 Such open-ended tasks, however, depend on an external observer defining what interestingness is.\autocite{hughes2024openendednessessentialartificialsuperhuman}
-Here, we posed models the same question~\textcite{Choung_2023} asked chemists at a drug company: \enquote{Which of the two compounds do you prefer?} (in the context of an early virtual screening campaign setting) (see \Cref{tab:chembench_corpus_cognitive}).
-While chemists showed a fair degree of interrater agreement, most of our models do not correlate with the preferences of expert chemists---even if they perform well on many other tasks in \chembench (\Cref{tab:performance_table_human_subset})
+Here, we posed models the same question~\textcite{Choung_2023} asked chemists at a drug company: \enquote{Which of the two compounds do you prefer?} (in the context of an early virtual screening campaign setting, see \Cref{tab:chembench_corpus_cognitive} for an example).
+Despite chemists demonstrating a reasonable level of interrater agreement, our models largely fail to align with expert chemists' preferences. Their performance is often indistinguishable from random guessing, even though these same models excel in various other tasks in \chembench (\Cref{tab:performance_table_human_subset}).
 This indicates that using preference tuning for chemical settings is a promising approach to explore in future research.
 
 
@@ -217,14 +217,14 @@ To investigate this, we prompted\autocite{xiong2023llms} some of the top-perform
      \includegraphics[width=\textwidth]{figures/model_confidence_performance.pdf}
      \caption{\textbf{Calibration and distribution of confidence estimates.} For this analysis, we used verbalized confidence estimates from the model. We prompted the models to return a confidence score on an ordinal scale to obtain those estimates.
      The line plot shows the average fraction of correctly answered questions for each confidence level. The bar plot shows the distribution of confidence estimates. A confidence estimate would be well-calibrated if the average fraction of correctly answered questions increases with the confidence level.
-     We find that the models are not well-calibrated and some provide misleading confidence estimates.
+     We find that most models are not well-calibrated and provide misleading confidence estimates.
      }
      \label{fig:confidence_vs_performance}
      \script{confidence_estimate.py}
  \end{figure}
 
  In \Cref{fig:confidence_vs_performance}, we show that for some models, there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
- For applications in which humans might rely on the models to provide answers, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the model's outputs.\autocite{Li_2023, miret2024llms}
+ For applications in which humans might rely on the models to provide answers with trustworthy uncertainty estimates, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the model's outputs.\autocite{Li_2023, miret2024llms}
  For example, for the questions about the safety profile of compounds, \GPTFour reported an average confidence of \variable{output/model_confidence_performance/gpt-4_is_pictograms_average_confidence_correct_overall.txt} (on a scale of 1--5) for the \variable{output/model_confidence_performance/gpt-4_is_pictograms_num_correct_overall.txt} questions it answered correctly and \variable{output/model_confidence_performance/gpt-4_is_pictograms_average_confidence_incorrect_overall.txt} for the \variable{output/model_confidence_performance/gpt-4_is_pictograms_num_incorrect_overall.txt} questions it answered incorrectly.
  While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading in some cases.
  For example, for the questions about \gls{ghs} pictograms Claude 3 returns an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
@@ -234,10 +234,10 @@ On the one hand, our findings underline the impressive capabilities of \glspl{ll
 On the other hand, there are still striking limitations.
 For very relevant topics the answers models provide are wrong.
 On top of that, many models are not able to reliably estimate their own limitations.
-Yet, the success of the models in our evaluations perhaps also reveals more about the limitations of the exams we use to evaluate models---and chemists---than about the models themselves.
+Yet, the success of the models in our evaluations perhaps also reveals more about the limitations of the questions we use to evaluate models---and chemists---than about the models themselves.
 For instance, while models perform well on many textbook questions, they struggle with questions that require some more reasoning about chemical structures (e.g., number of isomers or \gls{nmr} peaks).
 Given that the models outperformed the average human in our study, we need to rethink how we teach and examine chemistry.
-Critical reasoning is increasingly essential, and rote solving of problems or memorization of facts is a domain in which \glspl{llm} will continue to outperform humans.
+Critical reasoning is increasingly essential, and rote solving of problems or memorization of facts is a domain in which \glspl{llm} will continue to outperform humans (when trained on the right training corpus).
 
 Our findings also highlight the nuanced trade-off between breadth and depth of evaluation frameworks.
 The analysis of model performance on different topics shows that models' performance varies widely across the subfields they are tested on.
@@ -257,11 +257,20 @@ Although current systems might be far from reasoning like a chemist, our \chembe
 \section{Methods}
 
 \subsection{Curation workflow}\label{sec:curation}
-For our dataset, we curated questions from existing exams or exercise sheets but also programmatically created new questions.
+For our dataset, we curated questions from existing exams or exercise sheets but also programmatically created new questions (\Cref{tab:sources}).
 Questions were added via Pull Requests on our GitHub repository and only merged into the corpus after passing manual review (\Cref{fig:curation_workflow}) as well as automated checks (e.g., for compliance with a standardized schema).
 
 To ensure that the questions do not enter a training dataset, we use the same canary string as the BigBench project.
 This requires that \Gls{llm} developers filter their training dataset for this canary string.\autocite{openai2024gpt4, srivastava2022beyond}
+
+
+
+\begin{table}
+    \centering
+    \caption{\textbf{Overview of sources of the curated questions}. The table provides an overview of the types of sources the questions have been curated from. Detailed sources are available in the source data on GitHub. Questions without source have been curated completely from scratch. Questions based on lecture notes or URL have been curated based on content presented in those resources. All questions have been rephrased, annotated, and reviewed before being added to the corpus.}
+    \variable{output/sources_table.tex}
+    \label{tab:sources}
+\end{table}
 
 \begin{figure}[!h]
     \includegraphics[width = \textwidth]{figures/chem-bench.pdf}
@@ -274,13 +283,6 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 Manually curated questions were sourced from various sources, including university exams, exercises, and question banks.
 %\Cref{tab:manually_sources} provides an overview of the sources of the manually curated questions.
 
-\begin{table}
-    \centering
-    \caption{\textbf{Overview of sources of the curated questions}. The table provides an overview of the types of sources the questions have been curated from. Detailed sources are available in the source data. Questions without source have been curated completely from scratch. Questions based on lecture notes or URL have been curated based on content presented in those resources. All questions have been rephrased, annotated, and reviewed before being added to the corpus.}
-    \variable{output/sources_table.tex}
-    \label{tab:sources}
-\end{table}
-
 
 
 \paragraph{Semi-programmatically generated questions}
@@ -288,17 +290,17 @@ In addition to the manually curated questions, we also generated questions progr
 
 \input{sections/semi_programatically_sources_table.tex}
 
-\subparagraph{Chemical preference data}
+\paragraph{Chemical preference data}
 
 These questions assess the ability to establish a \enquote{preference}, such as favoring a specific molecule. Chemical preference is of major importance in drug discovery projects, where the optimization process to reach the desired molecular properties is a process that lasts several years within a chemist's career.
 Our data corpus is adapted from the published dataset by \textcite{Choung_2023}, which consists of more than 5000 question-answer pairs about chemical intuition. To build the dataset, they presented 35 medicinal chemists with two different molecules, asking them what molecule they would like to continue with when imaging an early virtual screening campaign setting. The question was designed so the scientists do not spend much time answering it, relying only on their feelings or \enquote{chemical preference}.
 
-To understand whether the capabilities of the leading models align with the preferences of professional chemists, we randomly selected 1000 data points from the original dataset to create a meaningful evaluation set, where molecules are represented as SMILES.
-To ablate the effect of different molecular representations, we only considered questions for which we could obtain IUPAC names for both molecules present.
+To understand whether the capabilities of the leading models align with the preferences of professional chemists, we randomly selected 1000 data points from the original dataset to create a meaningful evaluation set, where molecules are represented as \gls{smiles}.
+To ablate the effect of different molecular representations, we only considered questions for which we could obtain \gls{iupac} names for both molecules present.
 
 
 \subsection{Model evaluation workflow}
-An overview of the pipeline is shown in \Cref{fig:process}.
+A graphical overview of the pipeline is shown in \Cref{fig:process}.
 
 \paragraph{Prompting}
 
@@ -325,24 +327,25 @@ For all models we performed inference using greedy decoding (i.e., temperature 0
 
 \subsection{Confidence estimate}
 To estimate the models' confidence, we prompted them with the question (and answer options for \gls{mcq}) and the task to rate their confidence to produce the correct answer on a scale from 1 to 5.
-We decided to use verbalized confidence estimates\autocite{xiong2023llms} since we found those closer to current practical use cases than other prompting strategies, which might be more suitable when implemented in systems. In addition, this approach captures semantic uncertainty which is not the same as the probability of a token given a sequence of tokens (i.e., the uncertainty one obtains from logit-based approaches). In \Cref{sec:confidence_estimates} we provide more details and comparisons with a logit-based approach.
+We decided to use verbalized confidence estimates\autocite{xiong2023llms} since we found those closer to current practical use cases than other prompting strategies, which might be more suitable when implemented in systems. In addition, this approach captures semantic uncertainty which is not the same as the probability of a token given a sequence of tokens (i.e., the uncertainty one obtains from logit-based approaches). On top of that, many propietary models do not provide access to the logits, making this approach more general.
+In \Cref{sec:confidence_estimates} we provide more details and comparisons with a logit-based approach.
 
 \subsection{Human baseline}
 
 \input{sections/human_subset_selection.tex}
 
 \paragraph{Study design}
-Human participants were asked the questions in a custom-built web interface (\Cref{sec:human_baseline}) which rendered chemicals and equations. Questions were shown in random order and participants were not allowed to skip questions. For a subset of the questions, the participants were allowed to use external tools (excluding other \gls{llm} or asking other people) to answer the questions. Prior to answering questions, participants were asked to provide information about their education and experience in chemistry. The study was conducted in English.
+Human participants were asked the questions in a custom-built web interface (see \Cref{sec:human_baseline}) which rendered chemicals and equations. Questions were shown in random order and participants were not allowed to skip questions. For a subset of the questions, the participants were allowed to use external tools (excluding other \gls{llm} or asking other people) to answer the questions. Prior to answering questions, participants were asked to provide information about their education and experience in chemistry. The study was conducted in English.
 
 \paragraph{Participants}
 Users were open to reporting about their experience in chemistry.
 Overall, \variable{output/num_users_with_education_info.txt} did so.
 Out of those,
-\variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree (and are currently enrolled in Ph.D.\ studies), and \variable{output/num_human_bachelor.txt} have a bachelor's degree.
+\variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree (and are currently enrolled in Ph.D.\ studies), and \variable{output/num_human_bachelor.txt} have a bachelor's degree. For the analysis, we excluded participants with less than two years of experience in chemistry after their first university-level course in chemistry.
 
 
 \paragraph{Comparison with models}
-For the analysis, we treated each human as a model. We computed the topic aggregated averages per human for analyses grouped by topic and then averaged over all humans.
+For the analysis, we treated each human as a model. We computed the topic aggregated averages per human for analyses grouped by topic and then averaged over all humans. The performance metrics reported for models in the main text are computed on the same questions the humans answered. Metrics for the entire corpus are reported in the appendix.
 
 \subsection{Data annotation}\label{sec:meth-topic}
 In the curation of our dataset we manually assigned difficulty levels as well as required skills to each question. We used following guidelines for these annotations: calculation is required if answering a question would require the use of a calculator, knowledge is required if answering a question requires non-trivial knowledge of facts (e.g. the H/P statements of chemicals). Reasoning is required if answering a question requires multiple reasoning steps.
@@ -359,6 +362,7 @@ To facilitate reproduction, some intermediate analysis results are cached at \ur
 This work was supported by the Carl Zeiss Foundation, a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena.
 We also thank Stability.AI for the access to its HPC cluster. In addition, M.S-W.'s work was supported by Intel and Merck via the AWASES programme.
 K.M.J.\ is part of the NFDI consortium FAIRmat funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – project 460197019.
+K.M.J.\ thanks FutureHouse (a non-profit research organization supported by the generosity of Eric and Wendy Schmidt) for supporting \PaperQATwo run by access to the \gls{api}.
 Parts of A.M.'s work was supported as part of the \enquote{SOL-AI} project funded by the Helmholtz Foundation model initative.
 
 M.A.\ expresses gratitude to the European Research Council (ERC) for evaluating the project with the reference number 101106377 titled \enquote{CLARIFIER} and accepting it for funding under the HORIZON TMA MSCA Postdoctoral Fellowships - European Fellowships.
@@ -370,7 +374,6 @@ In addition, we thank the OpenBioML.org community and their ChemNLP project team
 Moreover, we thank Pepe Márquez for discussions and support and Julian Kimmig for feedback on the web app.
 In addition, we acknowledge support from Sandeep Kumar with an initial prototype of the web app.
 We thank Bastian Rieck for developing the \LaTeX-credit package (\url{https://github.com/Pseudomanifold/latex-credits}) and thank Berend Smit for feedback on an early version of the manuscript.
-
 
 \section*{Statement of ethical compliance}
 The authors confirm to have complied with all relevant ethical regulations, according to the Ethics Commission of the Friedrich Schiller University Jena (which decided that study is ethically safe). Informed consent was obtained from all participants.
