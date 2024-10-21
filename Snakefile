@@ -239,3 +239,8 @@ rule refusal_table:
     output: "src/tex/output/model_refusal_table.tex"
     cache: True
     script: "src/scripts/make_refusal_tables.py"
+
+rule sources_table:
+    input: "src/data/model_score_dicts.pkl"
+    output: "src/tex/output/sources_table.tex"
+    script: "src/scripts/make_source_table.py"

@@ -20,7 +20,7 @@ model_file_name_to_label = {
     "gpt-3.5-turbo": "GPT-3.5 Turbo",
     "gpt-4": "GPT-4",
     "gpt-4o": "GPT-4o",
-    "o1": "OpenAI o1",
+    "o1": "o1",
     "llama2-70b-chat": "Llama 2 70B Chat",
     "llama3-70b-instruct": "Llama 3 70B",
     "llama3-70b-instruct-T-one": "Llama 3 70B Temp=1",
@@ -53,7 +53,7 @@ def list_of_dicts_to_latex_table(data, output_file):
 
     latex_table = latex_table.replace(
         r"\begin{tabular}{lrrrr}",
-        r"\begin{tabular}{ccccc}"
+        r"\begin{tabular}{lcccc}"
     )
     # Manually modify the LaTeX code for centering multi-level headers
     latex_table = latex_table.replace(
