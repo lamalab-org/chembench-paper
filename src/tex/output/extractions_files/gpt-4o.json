@@ -3,6 +3,10 @@
   "questions_extracted": 7,
   "extracted": [
     {
+      "question_name": "reasoning-XI-reasoning_question_11",
+      "completion": "[ANSWER]3[/ANSWER]"
+    },
+    {
       "question_name": "pharmacology_vienna-26-pharmacology_vienna_26",
       "completion": "[ANSWER]3[/ANSWER]"
     },
@@ -17,10 +21,6 @@
     {
       "question_name": "point_group-pointgroups_15-pointgroups",
       "completion": "The SMILES string C(C(F)(F)F)(F)(F)F represents a molecule with a central carbon atom bonded to six fluorine atoms, which is a structure of hexafluoroethane (C2F6). This molecule has a point group that includes a center of inversion, multiple C2 axes, and perpendicular mirror planes.\n\nThe correct point group for this molecule is D3d.\n\n[ANSWER]D3d[/ANSWER]"
-    },
-    {
-      "question_name": "reasoning-XI-reasoning_question_11",
-      "completion": "[ANSWER]3[/ANSWER]"
     }
   ]
 }

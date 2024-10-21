@@ -14,14 +14,14 @@ from chembench.analysis import (
 )
 from utils import obtain_chembench_repo
 
-from paths import tex, data
+from paths import tex, data, output
 
 def craft_table(df):
     latex_table = df.to_latex(index=False)
 
     latex_table = latex_table.replace(
         r"\begin{tabular}{lr}",
-        r"\begin{tabular}{cc}"
+        r"\begin{tabular}{lc}"
     )
 
     with open(output_file, 'w') as f:
@@ -52,7 +52,7 @@ def collect_data(datafolder):
     if df.empty:
         raise ValueError("No data loaded from reports")
     logger.info(f"Loaded {len(df)} rows of data")
-    
+
     df["semiautomatically"] = df.apply(is_semiautomatically_generated, axis=1)
 
     sources = {}
@@ -120,7 +120,7 @@ if __name__ == "__main__":
     )
     output_file = (
         os.path.join(
-            tex,
+            output,
             "sources_table.tex"
         )
     )

@@ -112,8 +112,10 @@ rule performance_per_source:
       "src/tex/output/human_subset_scores/is_number_nmr_peaks.txt",
       "src/tex/output/human_subset_scores/is_number_of_isomers.txt",
       "src/tex/output/human_subset_scores/is_gfk.txt",
+      "src/tex/output/subset_scores/is_gfk_gpt-4.txt",
       "src/tex/output/subset_scores/is_number_nmr_peaks_o1.txt",
       "src/tex/figures/performance_per_topic_tiny.pdf",
+   "src/tex/output/subset_scores/is_gfk_Claude-3.5_(Sonnet).txt"
     ]
   script: "src/scripts/analyze_performance_per_source.py"
 
@@ -212,5 +214,33 @@ rule tool_usage:
 
 rule confidence_main_text:
     input: "src/data/model_score_dicts.pkl"
-    output: "src/tex/figures/model_confidence_performance.pdf"
+    output:
+        [
+            "src/tex/figures/model_confidence_performance.pdf",
+            "src/tex/output/model_confidence_performance/gpt-4_is_pictograms_average_confidence_correct_overall.txt",
+            "src/tex/output/model_confidence_performance/gpt-4_is_pictograms_num_correct_overall.txt",
+            "src/tex/output/model_confidence_performance/gpt-4_is_pictograms_average_confidence_incorrect_overall.txt",
+            "src/tex/output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt",
+            "src/tex/output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt",
+            "src/tex/output/model_confidence_performance/gpt-4_is_pictograms_num_incorrect_overall.txt"
+        ]
     script: "src/scripts/confidence_estimate.py"
+
+
+rule refusal_counts:
+    input: "src/data/model_score_dicts.pkl"
+    output:"src/tex/output/model_refusal_and_extraction_count.pkl"
+    cache: True
+    script: "src/scripts/count_refusal.py"
+
+
+rule refusal_table:
+    input: rules.refusal_counts.output
+    output: "src/tex/output/model_refusal_table.tex"
+    cache: True
+    script: "src/scripts/make_refusal_tables.py"
+
+rule sources_table:
+    input: "src/data/model_score_dicts.pkl"
+    output: "src/tex/output/sources_table.tex"
+    script: "src/scripts/make_source_table.py"

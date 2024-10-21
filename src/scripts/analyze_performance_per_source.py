@@ -68,8 +68,9 @@ def obtain_subset_scores(data_dict, outdir):
         for model, scores in data_dict.items():
             try:
                 score = obtain_score_for_subset(data_dict[model], subset)
-
-                with open(os.path.join(outdir, f"{subset}_{model}.txt"), "w") as handle:
+                name = f"{subset}_{model}.txt"
+                name = name.replace(" ", "_")
+                with open(os.path.join(outdir, name), "w") as handle:
                     handle.write(str(int(np.round(score * 100, 0))) + "\endinput")
 
                 all_scores.append({"model": model, "score": score, "subset": subset})
@@ -93,7 +94,7 @@ def obtain_subset_scores_humans(data_dict, outdir):
         try:
             logger.info(f"Human subset scores: {subset_scores} for {subset}")
             mean_subset_score = np.nanmean(subset_scores)
-            with open(os.path.join(outdir, f"{subset}.txt"), "w") as handle:
+            with open(os.path.join(outdir, f"{subset.replace(' ', '_')}.txt"), "w") as handle:
                 handle.write(
                     str(int(np.round(mean_subset_score * 100, 0))) + "\endinput"
                 )
