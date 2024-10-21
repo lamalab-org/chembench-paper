@@ -21,6 +21,7 @@ Here, we introduce \enquote{\chembench,} an automated framework for evaluating t
 
 We curated more than 2,800 question-answer pairs, evaluated leading open- and closed-source LLMs, and found that the best models outperformed the best human chemists in our study on average.
 However, the models struggle with some tasks that are easy for human experts and provide overconfident predictions.
+
 These findings reveal LLMs' impressive chemical capabilities while emphasizing the need for further research to improve their safety and usefulness. They also suggest adapting chemistry education and developing better evaluation methods for LLMs in chemistry.
 \end{abstract}
 
@@ -35,18 +36,18 @@ They also have been shown to design and autonomously perform chemical reactions 
 While some see \enquote{sparks of \gls{agi}} in them,\autocite{bubeck2023sparks} others consider them as \enquote{stochastic parrots}---i.e., systems that only regurgitate what they have been trained on\autocite{bender2021dangers} and that show inherent limitations due to the way they are trained.\autocite{mccoy2023embersautoregressionunderstandinglarge}
 Nevertheless, the promise of these models is that they have shown the ability to solve a wide variety of tasks they have not been explicitly trained on.\autocite{bommasani2021opportunities, anderljung2023frontier, ai4science2023impact}
 
-Chemists and materials scientists have quickly caught on to the mounting attention given to \glspl{llm}, with some voices even suggesting that \enquote{the future of chemistry is language}.\autocite{White_2023}
-This statement is motivated by a growing number of reports that use \glspl{llm} to predict properties of molecules or materials,\autocite{jablonka202314, jablonka2024leveraging, xie2024fine, liao2024words, zhang2024chemllm, zhong2024benchmarking}  optimize reactions\autocite{ramos2023bayesian, kristiadi2024sober}  generate materials,\autocite{rubungo2023llm, flam2023language, gruver2024fine, alampara2024mattextlanguagemodelsneed} extract information,\autocite{Patiny_2023, Dagdelen_2024, Zheng_2024, lala2023paperqa, caufield2023structured, gupta2022discomat, schillingwilhelmi2024textinsightlargelanguage, skarlinski2024language} or to even prototype systems that can autonomously perform reactions in the physical world based on commands provided in natural language.\autocite{bran2023chemcrow, Boiko_2023, darvish2024organa}
+Chemists and materials scientists have quickly caught on to the mounting attention given to \glspl{llm}, with some voices even suggesting that \enquote{the future of chemistry is language.}\autocite{White_2023}
+This statement is motivated by a growing number of reports that use \glspl{llm} to predict properties of molecules or materials,\autocite{jablonka202314, jablonka2024leveraging, xie2024fine, liao2024words, zhang2024chemllm, zhong2024benchmarking}  optimize reactions,\autocite{ramos2023bayesian, kristiadi2024sober}  generate materials,\autocite{rubungo2023llm, flam2023language, gruver2024fine, alampara2024mattextlanguagemodelsneed} extract information,\autocite{Patiny_2023, Dagdelen_2024, Zheng_2024, lala2023paperqa, caufield2023structured, gupta2022discomat, schillingwilhelmi2024textinsightlargelanguage, skarlinski2024language} or to even prototype systems that can autonomously perform reactions in the physical world based on commands provided in natural language.\autocite{bran2023chemcrow, Boiko_2023, darvish2024organa}
 
 In addition, since a lot---if not most---of the information about chemistry is currently stored and communicated in text, there is a strong reason to believe that there is still a lot of untapped potential in \glspl{llm} for chemistry and materials science.\autocite{miret2024llms}
-For instance, most insights in chemical research do not directly originate from data stored in databases but rather from the scientists and their ability to interpret data.
+For instance, most insights in chemical research do not directly originate from data stored in databases but rather from the scientists interpreting the data.
 Many of these insights are in the form of text in scientific publications.
 Thus, operating on such texts might be our best way of unlocking these insights and learning from them.
 This might ultimately lead to general copilot systems for chemists that can provide answers to questions or even suggest new experiments based on vastly more information than a human could ever read.
 
 However, the rapid increase in capabilities of chemical \gls{ml} models led (even before the recent interest in \glspl{llm}) to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\autocite{gopal2023releasing, ganguli2022red, Urbina_2022, campbell2023censoring, moulange2023towards, urbina2022teachable}
 To some extent, this is not surprising as any technology that, for instance, is used to design non-toxic molecules can also be used inversely to predict toxic ones (even though the synthesis would still require access to controlled physical resources and facilities).
-Still, it is essential to realize that such models' user base is wider than that of chemistry and materials science experts who critically reflect on every output such models produce.
+Still, it is essential to realize that such models' user base is wider than that of chemistry and materials science experts who can critically reflect on every output such models produce.
 For example, many students frequently consult these tools---perhaps even to prepare chemical experiments.\autocite{Intelligent.com_2023}
 This also applies to users from the general public, who might consider using \glspl{llm} to answer questions about the safety of chemicals.
 Thus, for some users, misleading information---especially about safety-related aspects---might lead to harmful outcomes.
@@ -65,7 +66,7 @@ This is likely because they cannot automatically be used with black box (or tool
 On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights on how the models compare relative to experts.
 
 In this work, we report a novel benchmarking framework  (\Cref{fig:overview_figure}), which we call \chembench, and use it to reveal limitations of current frontier models for use in the chemical sciences.
-Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs compiled from diverse sources (\variable{output/manually_generated.txt}\xspace manually generated, and \variable{output/automatically_generated.txt}\xspace automatically generated).
+Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs compiled from diverse sources (\variable{output/manually_generated.txt}\xspace manually generated, and \variable{output/automatically_generated.txt}\xspace semi-automatically generated).
 Our corpus measures reasoning, knowledge and intuition across a large fraction of the topics taught in undergraduate and graduate chemistry curricula. It can be used to evaluate any system that can return text (i.e., including tool-augmented systems).
 
 To contextualize the scores, we also surveyed \variable{output/number_experts.txt} experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with (human) chemists of different specializations. In parts of the survey, the participants were also allowed to use tools such as web search to create a realistic setting.
@@ -102,7 +103,7 @@ Moreover, to allow for a more nuanced evaluation of the models capabilities, the
 
 
 While many existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
-For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions). In addition, \chembench samples skills on various difficulty level: From basic knowledge questions (as knowledge underpins reasoning processes\autocite{hu2024towards}) to complex reasoning tasks (such as finding out which ions are in a sample given a description of observations). We also include questions about chemical intuition, as showing human-aligned preferences is relevant for applications such as hypothesis generation or optimization tasks.\autocite{zhang2024omniopenendednessmodelshuman}
+For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions). In addition, \chembench samples skills on various difficulty level: From basic knowledge questions (as knowledge underpins reasoning processes\autocite{hu2024towards,bloom1956taxonomy}) to complex reasoning tasks (such as finding out which ions are in a sample given a description of observations). We also include questions about chemical intuition, as showing human-aligned preferences is relevant for applications such as hypothesis generation or optimization tasks.\autocite{zhang2024omniopenendednessmodelshuman}
 
 
 \paragraph{\enquote{Tiny} subset}
