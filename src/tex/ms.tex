@@ -103,14 +103,14 @@ Moreover, to allow for a more nuanced evaluation of the models capabilities, the
 
 
 While many existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
-For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions). In addition, \chembench samples skills on various difficulty level: From basic knowledge questions (as knowledge underpins reasoning processes\autocite{hu2024towards,bloom1956taxonomy}) to complex reasoning tasks (such as finding out which ions are in a sample given a description of observations). We also include questions about chemical intuition, as showing human-aligned preferences is relevant for applications such as hypothesis generation or optimization tasks.\autocite{zhang2024omniopenendednessmodelshuman}
+For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions). In addition, \chembench samples different skills on various difficulty level: From basic knowledge questions (as knowledge underpins reasoning processes\autocite{hu2024towards,bloom1956taxonomy}) to complex reasoning tasks (such as finding out which ions are in a sample given a description of observations). We also include questions about chemical intuition, as showing human-aligned preferences is relevant for applications such as hypothesis generation or optimization tasks.\autocite{zhang2024omniopenendednessmodelshuman}
 
 
 \paragraph{\enquote{Tiny} subset}
 It is important to note that a smaller subset of the corpus might be more practical for routine evaluations.\autocite{polo2024tinybenchmarks}
 For instance,~\textcite{liang2023holistic} report costs of more than \$10,000 for \gls{api} calls for a single evaluation on the widely used \gls{helm} benchmark.
-To address this, we also provide a subset (\variable{output/num_human_answered_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus. While it is impossible to fully represent the full corpus in a subset, we aimed to include a maximally diverse set of questions and a more balanced distribution of topics and skills (see \Cref{sec:subset-selection} for details on the curation process).
-We also used this subset for the human baseline study.
+To address this, we also provide a subset (\variable{output/num_human_answered_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus. While it is impossible to comprehensively represent the full corpus in a subset, we aimed to include a maximally diverse set of questions and a more balanced distribution of topics and skills (see \Cref{sec:subset-selection} for details on the curation process).
+Our human participants answered all the questions in this subset.
 
 
 
@@ -127,7 +127,7 @@ This allows the model to treat the \gls{smiles} string differently from other te
 Since many widely utilized systems only provide access to text completions (and not the raw model outputs), \chembench is designed to operate on text completions.
 This is also important given the growing number of tool-augmented systems that are deemed essential for building chemical copilot systems.
 Such systems can augment the capabilities of \glspl{llm} through the use of external tools such as search \glspl{api} or code executors.\autocite{schick2024toolformer, karpas2022mrkl, yao2022react}
-In those cases, the \gls{llm} that returns the probabilities for various tokens (that are often used for model evaluations\autocite{Fourrier_Habib_Launay_Wolf}) is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
+In those cases, the \gls{llm} that returns the probabilities for various tokens, i.e., text fragments, is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
 The text completions, however, are the system's final outputs, which would also be used in a real-world application.
 Hence, we use them for our evaluations.\autocite{xiong2023llms}
 
@@ -152,10 +152,10 @@ Remarkably, the figure shows that the leading \gls{llm}, \oone, outperforms the 
 Many other models also outperform the average human performance.
 Interestingly, \LlamaThreeOneFourZeroFiveBInstruct shows performance that is close the leading proprietary models, indicating that new open source models can be competitive with the best proprietary models also in chemical settings.
 
-Notably, we find that models are still limited in their ability to answer knowledge-intensive questions (\Cref{tab:performance_table_human_subset}). Our results indicate that this is not a limitation that could be overcome by simple application of \gls{rag} systems such as \PaperQATwo. This is likely because the required knowledge cannot easily be accessed via papers but rather by lookup in specialized databases (e.g., PubChem, Gestis), which also the humans in our study used to answer such questions (\Cref{fig:tool_use}).
+Notably, we find that models are still limited in their ability to answer knowledge-intensive questions (\Cref{tab:performance_table_human_subset}), that is they did not memorize the relevant facts. Our results indicate that this is not a limitation that could be overcome by simple application of \gls{rag} systems such as \PaperQATwo. This is likely because the required knowledge cannot easily be accessed via papers (which is the only external knowledge \PaperQATwo has access to) but rather by lookup in specialized databases (e.g., PubChem, Gestis), which also the humans in our study used to answer such questions (\Cref{fig:tool_use}).
 This indicates that there is still room for improvement of chemical \gls{llm} by training them on more specialized data sources or by integrating them with specialized databases.
 
-In addition, our analysis shows that the performance of models is correlated with their size (see \Cref{fig:model_size_plot}). This is in line with observations in other domains but also indicates that chemical \gls{llm} could be further improved by scaling them up.
+In addition, our analysis shows that the performance of models is correlated with their size (see \Cref{fig:model_size_plot}). This is in line with observations in other domains but also indicates that chemical \gls{llm} could, to some extent, be further improved by scaling them up.
 
 \paragraph{Performance per topic} To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
 For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and  classified all questions in the \chembench corpus into these topics.
@@ -178,6 +178,7 @@ While general and technical receive relatively high scores for many models, this
 
 In the subfield of analytical chemistry the prediction of the number of signals observable in a \gls{nmr} spectrum proved difficult for even for the best models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_o1.txt} percent correct answers for \oone).
 Importantly, while the human experts are given a drawing of the compounds, the models are only shown the \gls{smiles} string of a compound and have to use this to reason about the symmetry of the compound (i.e., to identify the number of diasterotopically distinct protons, which requires \emph{reasoning} about the topology and structure of a molecule).
+
  These findings also shine an interesting light on the value of textbook-inspired questions.
  A subset of the questions in the \chembench are based on textbooks targeted at undergraduate students.
  On those questions, the models tend to perform better than on some of our semi-automatically constructed tasks (see \Cref{fig:performance_per_topic}).
@@ -320,7 +321,7 @@ If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., \ClaudeThreeFi
 
 
 \paragraph{Models}
-For all models we performed inference using greedy decoding (i.e., temperature 0). We used the \gls{api} endpoints provided by the model developers and the ones provided by Groq.
+For all models we performed inference using greedy decoding (i.e., temperature 0). We used the \gls{api} endpoints provided by the model developers and the ones provided by Groq. \PaperQATwo was used (in August 2024) via an \gls{api} provided by FutureHouse.
 
 \subsection{Confidence estimate}
 To estimate the models' confidence, we prompted them with the question (and answer options for \gls{mcq}) and the task to rate their confidence to produce the correct answer on a scale from 1 to 5.
