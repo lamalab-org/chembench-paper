@@ -38,7 +38,8 @@ def load_data(data_paths):
     results = []
     for path in data_paths:
         data = load_single_json(path)
-        results.append(load_single_json(path))
+        data["path"] = path
+        results.append(data)
 
     return pd.concat(results, ignore_index=True, sort=False)
 
@@ -57,12 +58,21 @@ def collect_data(datafolder):
     sources = {}
     for i, row in df.iterrows():
         try:
+            if "/oup/" in row["path"]:
+                if "Textbook" in sources:
+                    sources["Textbook"] += 1
+                else:
+                    sources["Textbook"] = 1
+                continue
+
             if row["semiautomatically"]:
                 if "Semiautomatically Generated" in sources:
                     sources["Semiautomatically Generated"] += 1
                 else:
                     sources["Semiautomatically Generated"] = 1
-            elif not pd.isna(row["meta.exam.country"]):
+                continue
+
+            if not pd.isna(row["meta.exam.country"]):
                 if "Exam" in sources:
                     sources["Exam"] += 1
                 else:
