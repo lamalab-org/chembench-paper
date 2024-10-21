@@ -53,6 +53,7 @@ def collect_data(datafolder):
     logger.info(f"Loaded {len(df)} rows of data")
     
     df["semiautomatically"] = df.apply(is_semiautomatically_generated, axis=1)
+
     sources = {}
     for i, row in df.iterrows():
         try:
@@ -60,43 +61,42 @@ def collect_data(datafolder):
                 if "Semiautomatically Generated" in sources:
                     sources["Semiautomatically Generated"] += 1
                 else:
-                    sources["Semiautomatically Generated"] = 0
-                continue
-            if not pd.isna(row["meta.exam.country"]):
+                    sources["Semiautomatically Generated"] = 1
+            elif not pd.isna(row["meta.exam.country"]):
                 if "Exam" in sources:
                     sources["Exam"] += 1
                 else:
-                    sources["Exam"] = 0
+                    sources["Exam"] = 1
             elif not pd.isna(row["meta.urls"]):
                 if "URL" in sources:
                     sources["URL"] += 1
                 else:
-                    sources["URL"] = 0
+                    sources["URL"] = 1
             elif not pd.isna(row["meta.textbook.title"]):
                 if "Textbook" in sources:
                     sources["Textbook"] += 1
                 else:
-                    sources["Textbook"] = 0
+                    sources["Textbook"] = 1
             elif not pd.isna(row["meta.lecture.country"]):
                 if "Lectures" in sources:
                     sources["Lectures"] += 1
                 else:
-                    sources["Lectures"] = 0 
+                    sources["Lectures"] = 1
             elif not pd.isna(row["icho.country"]):
-                if "ICHO" in sources:
+                if "IChO" in sources:
                     sources["IChO"] += 1
                 else:
-                    sources["IChO"] = 0
+                    sources["IChO"] = 1
             else:
                 if "No source" in sources:
                     sources["No source"] += 1
                 else:
-                    sources["No source"] = 0
+                    sources["No source"] = 1
         except Exception as e:
             if "URL" in sources:
                 sources["URL"] += 1
             else:
-                sources["URL"] = 0
+                sources["URL"] = 1
 
     sources_df = pd.DataFrame(list(sources.items()), columns=['Source', 'Count'])
     sources_df = sources_df.sort_values(by='Count', ascending=False)
