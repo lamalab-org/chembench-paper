@@ -112,8 +112,10 @@ rule performance_per_source:
       "src/tex/output/human_subset_scores/is_number_nmr_peaks.txt",
       "src/tex/output/human_subset_scores/is_number_of_isomers.txt",
       "src/tex/output/human_subset_scores/is_gfk.txt",
+      "src/tex/output/subset_scores/is_gfk_gpt-4.txt",
       "src/tex/output/subset_scores/is_number_nmr_peaks_o1.txt",
       "src/tex/figures/performance_per_topic_tiny.pdf",
+   "src/tex/output/subset_scores/is_gfk_Claude-3.5_(Sonnet).txt"
     ]
   script: "src/scripts/analyze_performance_per_source.py"
 
@@ -215,10 +217,11 @@ rule confidence_main_text:
     output:
         [
             "src/tex/figures/model_confidence_performance.pdf",
-            "src/output/model_confidence_performance/gpt4_is_pictograms_average_confidence_correct_overall.txt",
-            "src/output/model_confidence_performance/gpt4_is_pictograms_num_correct_overall.txt",
-            "output/model_confidence_performance/gpt4_is_pictograms_average_confidence_incorrect_overall.txt",
-            "output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt",
-            "output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt"
+            "src/tex/output/model_confidence_performance/gpt-4_is_pictograms_average_confidence_correct_overall.txt",
+            "src/tex/output/model_confidence_performance/gpt-4_is_pictograms_num_correct_overall.txt",
+            "src/tex/output/model_confidence_performance/gpt-4_is_pictograms_average_confidence_incorrect_overall.txt",
+            "src/tex/output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt",
+            "src/tex/output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt",
+            "src/tex/output/model_confidence_performance/gpt-4_is_pictograms_num_incorrect_overall.txt"
         ]
     script: "src/scripts/confidence_estimate.py"

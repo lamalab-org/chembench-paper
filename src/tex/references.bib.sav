@@ -52,26 +52,27 @@
     journaltitle = {Science},
 }
 
-@Misc{anthropicClaudeModelFamily2024,
-  author = {Anthropic},
-  date   = {2024},
-  title  = {The Claude 3 Model Family: Opus, Sonnet, Haiku},
-  url    = {https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model
+@misc{anthropicClaudeModelFamily2024,
+    title = {The Claude 3 Model Family: Opus, Sonnet, Haiku},
+    author = {Anthropic},
+    url = {
+           https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model
            \_Card\_Claude\_3.pdf},
+    date = 2024,
 }
 
-@Article{Argyle_2023,
-  author    = {Argyle, Lisa P. and Busby, Ethan C. and Fulda, Nancy and Gubler, Joshua R. and Rytting, Christopher and Wingate, David},
-  title     = {Out of One, Many: Using Language Models to Simulate Human Samples},
-  doi       = {10.1017/pan.2023.2},
-  number    = {3},
-  pages     = {337–351},
-  url       = {http://dx.doi.org/10.1017/pan.2023.2},
-  volume    = {31},
-  fjournal  = {Political Analysis},
-  journal   = {Polit. Anal.},
-  publisher = {Cambridge University Press (CUP)},
-  year      = {2023},
+@article{Argyle_2023,
+    title = {Out of One, Many: Using Language Models to Simulate Human Samples},
+    author = {Argyle, Lisa P. and Busby, Ethan C. and Fulda, Nancy and Gubler,
+              Joshua R. and Rytting, Christopher and Wingate, David},
+    year = 2023,
+    journal = {Political Analysis},
+    publisher = {Cambridge University Press (CUP)},
+    volume = 31,
+    number = 3,
+    pages = {337–351},
+    doi = {10.1017/pan.2023.2},
+    url = {http://dx.doi.org/10.1017/pan.2023.2},
 }
 
 @article{arora2023llms,
@@ -94,11 +95,13 @@
     journaltitle = {ACS Cent. Sci.},
 }
 
-@Misc{Awg,
-  author       = {Awg},
-  title        = {Broken benchmark: MMLU},
-  url          = {https://www.lesswrong.com/posts/rQBaftqKMfG2uMiWb/broken-benchmark-mmlu},
-  journaltitle = {LessWrong},
+@misc{Awg,
+    title = {Broken benchmark: MMLU},
+    author = {Awg},
+    url = {
+           https://www.lesswrong.com/posts/rQBaftqKMfG2uMiWb/broken-benchmark-mmlu
+           },
+    journaltitle = {LessWrong},
 }
 
 @article{B_ttcher_2016,
@@ -133,11 +136,13 @@
     date = 2021,
 }
 
-@Article{berglund2023reversal,
-  author  = {Berglund, L. and Tong, M. and Kaufmann, M. and Balesni, M. and Stickland, A. C. and Korbak, T. and Evans, O.},
-  date    = {2023},
-  title   = {The Reversal Curse: LLMs trained on" A is B" fail to learn" B is A"},
-  journal = {arXiv preprint arXiv:2309.12288},
+@article{berglund2023reversal,
+    title = {The Reversal Curse: LLMs trained on" A is B" fail to learn" B is A"
+             },
+    author = {Berglund, L. and Tong, M. and Kaufmann, M. and Balesni, M. and
+              Stickland, A. C. and Korbak, T. and Evans, O.},
+    journal = {arXiv preprint arXiv:2309.12288},
+    date = 2023,
 }
 
 @inproceedings{biderman2023pythia,
@@ -152,12 +157,14 @@
     date = 2023,
 }
 
-@TechReport{blac,
-  author = {Bund/Länder-Arbeitsgemeinschaft Chemikaliensicherheit (BLAC)Bund/Länder-Arbeitsgemeinschaft Chemikaliensicherheit (BLAC)},
-  date   = {2024},
-  title  = {Gemeinsamer Fragenkatalog der Länder (GFK)},
-  url    = {https://www.blac.de/documents/gfk-rechtsstand-31102023-version-31012024-aktive-hyperlinks
+@techreport{blac,
+    title = {Gemeinsamer Fragenkatalog der Länder (GFK)},
+    author = {Bund/Länder-Arbeitsgemeinschaft Chemikaliensicherheit
+              (BLAC)Bund/Länder-Arbeitsgemeinschaft Chemikaliensicherheit (BLAC)},
+    url = {
+           https://www.blac.de/documents/gfk-rechtsstand-31102023-version-31012024-aktive-hyperlinks
            \_1710165329.pdf},
+    date = 2024,
 }
 
 @article{bloomberg,
@@ -257,13 +264,14 @@
     journaltitle = {Methods},
 }
 
-@Article{campbell2023censoring,
-  author    = {Campbell, Quintina L. and Herington, Jonathan and White, Andrew D.},
-  title     = {Censoring chemical data to mitigate dual use risk},
-  doi       = {10.48550/ARXIV.2304.10510},
-  journal   = {arXiv preprint arXiv:2304.10510},
-  publisher = {arXiv},
-  year      = {2023},
+@article{campbell2023censoring,
+    title = {Censoring chemical data to mitigate dual use risk},
+    author = {Campbell, Quintina L. and Herington, Jonathan and White, Andrew D.
+              },
+    year = 2023,
+    journal = {arXiv preprint arXiv:2304.10510},
+    publisher = {arXiv},
+    doi = {10.48550/ARXIV.2304.10510},
 }
 
 @article{castro2023large,
@@ -278,30 +286,37 @@
     journaltitle = {J. Chem. Inf. Model.},
 }
 
-@Article{caufield2023structured,
-  author    = {Caufield, J Harry and Hegde, Harshad and Emonet, Vincent and Harris, Nomi L and Joachimiak, Marcin P and Matentzoglu, Nicolas and Kim, HyeongSik and Moxon, Sierra and Reese, Justin T and Haendel, Melissa A and Robinson, Peter N and Mungall, Christopher J},
-  title     = {Structured Prompt Interrogation and Recursive Extraction of Semantics (SPIRES): a method for populating knowledge bases using zero-shot learning},
-  doi       = {10.1093/bioinformatics/btae104},
-  editor    = {Wren, Jonathan},
-  number    = {3},
-  url       = {http://dx.doi.org/10.1093/bioinformatics/btae104},
-  volume    = {40},
-  journal   = {Bioinformatics},
-  publisher = {Oxford University Press (OUP)},
-  year      = {2024},
+@article{caufield2023structured,
+    title = {Structured Prompt Interrogation and Recursive Extraction of
+             Semantics (SPIRES): a method for populating knowledge bases using
+             zero-shot learning},
+    author = {Caufield, J Harry and Hegde, Harshad and Emonet, Vincent and
+              Harris, Nomi L and Joachimiak, Marcin P and Matentzoglu, Nicolas
+              and Kim, HyeongSik and Moxon, Sierra and Reese, Justin T and
+              Haendel, Melissa A and Robinson, Peter N and Mungall, Christopher J
+              },
+    year = 2024,
+    journal = {Bioinformatics},
+    publisher = {Oxford University Press (OUP)},
+    volume = 40,
+    number = 3,
+    doi = {10.1093/bioinformatics/btae104},
+    url = {http://dx.doi.org/10.1093/bioinformatics/btae104},
+    editor = {Wren, Jonathan},
 }
 
-@Article{Choung_2023,
-  author    = {Choung, Oh-Hyeon and Vianello, Riccardo and Segler, Marwin and Stiefl, Nikolaus and Jiménez-Luna, José},
-  title     = {Extracting medicinal chemistry intuition via preference machine learning},
-  doi       = {10.1038/s41467-023-42242-1},
-  number    = {1},
-  url       = {http://dx.doi.org/10.1038/s41467-023-42242-1},
-  volume    = {14},
-  fjournal  = {Nature Communications},
-  journal   = {Nat. Commun.},
-  publisher = {Springer Science and Business Media LLC},
-  year      = {2023},
+@article{Choung_2023,
+    title = {Extracting medicinal chemistry intuition via preference machine
+             learning},
+    author = {Choung, Oh-Hyeon and Vianello, Riccardo and Segler, Marwin and
+              Stiefl, Nikolaus and Jiménez-Luna, José},
+    year = 2023,
+    journal = {Nature Communications},
+    publisher = {Springer Science and Business Media LLC},
+    volume = 14,
+    number = 1,
+    doi = {10.1038/s41467-023-42242-1},
+    url = {http://dx.doi.org/10.1038/s41467-023-42242-1},
 }
 
 @article{coley2019robotic,
@@ -320,17 +335,19 @@
     journaltitle = {Science},
 }
 
-@Article{Dagdelen_2024,
-  author    = {Dagdelen, John and Dunn, Alexander and Lee, Sanghoon and Walker, Nicholas and Rosen, Andrew S. and Ceder, Gerbrand and Persson, Kristin A. and Jain, Anubhav},
-  title     = {Structured information extraction from scientific text with large language models},
-  doi       = {10.1038/s41467-024-45563-x},
-  number    = {1},
-  url       = {http://dx.doi.org/10.1038/s41467-024-45563-x},
-  volume    = {15},
-  fjournal  = {Nature Communications},
-  journal   = {Nat. Commun.},
-  publisher = {Springer Science and Business Media LLC},
-  year      = {2024},
+@article{Dagdelen_2024,
+    title = {Structured information extraction from scientific text with large
+             language models},
+    author = {Dagdelen, John and Dunn, Alexander and Lee, Sanghoon and Walker,
+              Nicholas and Rosen, Andrew S. and Ceder, Gerbrand and Persson,
+              Kristin A. and Jain, Anubhav},
+    year = 2024,
+    journal = {Nature Communications},
+    publisher = {Springer Science and Business Media LLC},
+    volume = 15,
+    number = 1,
+    doi = {10.1038/s41467-024-45563-x},
+    url = {http://dx.doi.org/10.1038/s41467-024-45563-x},
 }
 
 @article{darvish2024organa,
@@ -582,12 +599,15 @@ s
     url = {https://arxiv.org/abs/2406.04268},
 }
 
-@Misc{Intelligent.com_2023,
-  author       = {Intelligent.com},
-  date         = {2023-10},
-  title        = {One-third of college students used CHATGPT for schoolwork during the 2022-23 academic date},
-  howpublished = {https://www.intelligent.com/one-third-of-college-students-used-chatgpt-for-schoolwork-during-the-2022-23-academic-date/},
-  journaltitle = {Intelligent},
+@misc{Intelligent.com_2023,
+    title = {One-third of college students used CHATGPT for schoolwork during
+             the 2022-23 academic date},
+    author = {Intelligent.com},
+    date = {2023-10},
+    howpublished = {
+                    https://www.intelligent.com/one-third-of-college-students-used-chatgpt-for-schoolwork-during-the-2022-23-academic-date/
+                    },
+    journaltitle = {Intelligent},
 }
 
 @article{Irwin_2012,
@@ -1359,11 +1379,12 @@ s
     date = 2024,
 }
 
-@Article{zhang2024omniopenendednessmodelshuman,
-  author  = {Jenny Zhang and Joel Lehman and Kenneth Stanley and Jeff Clune},
-  title   = {OMNI: Open-endedness via Models of human Notions of Interestingness},
-  journal = {arXiv preprint arXiv:2306.01711},
-  year    = {2024},
+@article{zhang2024omniopenendednessmodelshuman,
+    title = {OMNI: Open-endedness via Models of human Notions of Interestingness
+             },
+    author = {Jenny Zhang and Joel Lehman and Kenneth Stanley and Jeff Clune},
+    year = 2024,
+    journal = {arXiv preprint arXiv:2306.01711},
 }
 
 @article{Zheng_2024,
@@ -1393,5 +1414,3 @@ s
     journal = {arXiv preprint arXiv:2309.14316},
     date = 2023,
 }
-
-@Comment{jabref-meta: databaseType:biblatex;}
