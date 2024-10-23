@@ -158,7 +158,7 @@ def make_table(
     # Round all numeric columns to 2 decimal places (excluding non-numeric columns like "Model")
     numeric_columns = df.select_dtypes(include="number").columns
     df[numeric_columns] = df[numeric_columns].applymap(
-        lambda x: f"{x:.2f}".rstrip("0").rstrip(".")
+        lambda x: f"{x:.2f}"
     )
     # filter out rows where ("Model", "") starts with a number
     df = df[~df[("Model", "")].str.match(r"^\d")]
