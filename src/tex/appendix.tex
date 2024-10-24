@@ -164,7 +164,7 @@ We also evaluated the model performance on the entire \chembench corpus.
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/overall_performance.pdf}
-    \caption{\textbf{Overall performance of the models on the \chembench corpus.} The bar plot shows the fraction of questions that were answered completely correctly by the models. Scores computed on the entire \chembench corpus.}
+    \caption{\textbf{Overall performance of the models on the \chembench corpus.} The bar plot shows the fraction of questions that were answered correctly by the models. Scores computed on the entire \chembench corpus.}
     \label{fig:barplot_all_correct_all_questions}
     \script{plot_overview_performance_plot.py}
 \end{figure}
@@ -174,7 +174,7 @@ The general pattern of performance varies significantly between the different to
 However, since some subjects are composed of questions from different sources, the ranking of the models is, in some instances, different from the one on the \enquote{tiny} subset.
 
 \begin{table}
-    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered completely correctly by the models for different skills and difficulty levels.}
+    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels.}
     \resizebox{\textwidth}{!}{
     \variable{output/performance_table.tex}
     }
@@ -182,7 +182,7 @@ However, since some subjects are composed of questions from different sources, t
 \end{table}
 
 \begin{table}
-    \caption{\textbf{Performance of the models on the \enquote{tiny} subset of the \chembench corpus.} The table shows the fraction of questions answered completely correctly by the models for different skills and difficulty levels.}
+    \caption{\textbf{Performance of the models on the \enquote{tiny} subset of the \chembench corpus.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels.}
     \resizebox{\textwidth}{!}{
     \variable{output/performance_table_human_subset.tex}
     }
@@ -192,8 +192,8 @@ However, since some subjects are composed of questions from different sources, t
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{figures/all_questions_models_completely_correct_radar_overall.pdf}
-    \caption{\textbf{Performance of the models on the different topics of the \chembench corpus.} The radar plot shows the performance of the models on the different topics of the \chembench corpus. The performance is measured as the fraction of questions answered completely correctly by the models.
-    A score of 1 indicates that all questions were answered completely correctly, while a score of 0 indicates that none were answered completely correctly.
+    \caption{\textbf{Performance of the models on the different topics of the \chembench corpus.} The radar plot shows the performance of the models on the different topics of the \chembench corpus. The performance is measured as the fraction of questions answered correctly by the models.
+    A score of 1 indicates that all questions were answered correctly, while a score of 0 indicates that none were answered correctly.
     }
     \label{fig:all_questions_models_completely_correct_radar_overall}
     \script{analyze_model_reports.py}
@@ -209,7 +209,7 @@ Interestingly, the performance of the models on questions sourced based on textb
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/performance_per_topic.pdf}
-    \caption{\textbf{Fraction of correctly answered questions per data source.} The heatmap shows, in color, the fraction of questions answered correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none of the questions were answered completely correctly.
+    \caption{\textbf{Fraction of correctly answered questions per data source.} The heatmap shows, in color, the fraction of questions answered correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered correctly by the models. A score of one (red) indicates that all questions were answered correctly, while a score of zero (blue) indicates that none of the questions were answered correctly.
         We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for our leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
     }
     \label{fig:performance_per_topic}
@@ -222,7 +222,7 @@ Interestingly, the performance of the models on questions sourced based on textb
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/performance_per_topic_tiny.pdf}
-    \caption{\textbf{Fraction of completely correctly answered questions per data source on the \enquote{tiny} subset.} The heatmap shows, in color, the fraction of questions answered completely correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered completely correctly by the models. A score of one (red) indicates that all questions were answered completely correctly, while a score of zero (blue) indicates that none were answered completely correctly.
+    \caption{\textbf{Fraction of completely correctly answered questions per data source on the \enquote{tiny} subset.} The heatmap shows, in color, the fraction of questions answered correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered correctly by the models. A score of one (red) indicates that all questions were answered correctly, while a score of zero (blue) indicates that none were answered correctly.
         We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for the leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
     }
     \label{fig:performance_per_topic_tiny}
@@ -352,7 +352,7 @@ We utilize a Postgresql.
 The web application is styled with Tailwind CSS\autocite{tailwindcss} using the shadcn/ui component library and uses NextAuth\autocite{nextauth} for easy and secure user authentication.
 The application is hosted on the Vercel web hosting platform.
 
-In the applications, human participants were presented with molecules as rendered drawings and SMILES strings. \LaTeX\xspace equations and chemical equations were rendered using MathJax (\Cref{fig:screenshots}.
+In the applications, human participants were presented with molecules as rendered drawings and SMILES strings. \LaTeX\xspace equations and chemical equations were rendered using MathJax \Cref{fig:screenshots}.
 
 
 \begin{figure}
@@ -374,12 +374,12 @@ In the applications, human participants were presented with molecules as rendere
     \centering
     \includegraphics{figures/human_score_distribution.pdf}
     \script{plot_human_score_distribution.py}
-    \caption{\textbf{Distribution of human scores.} The histogram and kernel density estimates show the fraction of questions answered completely correctly.
+    \caption{\textbf{Distribution of human scores.} The histogram and kernel density estimates show the fraction of questions answered correctly.
     Since the best possible score for each question is one and the worst possible score is zero, the values on this plot are between zero and one.}
     \label{fig:human_score_distribution}
 \end{figure}
 
-We also recorded the time humans took to answer the questions. This time is the time from the question being displayed to the human to the human submitting the answer.
+We also recorded the time humans took to answer the questions \cref{fig:human_timing}. This time is the time from the question being displayed to the human to the human submitting the answer.
 
 \begin{figure}[htb]
     \centering
@@ -452,6 +452,7 @@ We also investigated the impact of sampling temperature on the performance of th
 
 \clearpage
 \subsection{Leaderboard}
+\label{sec:leaderboard}
 Our leaderboard is based on the tool chain developed for Matbench.\autocite{Dunn_2020}
 Briefly, the \chembench pipeline produces standardized files in \texttt{json} format that contributors can add via pull requests to the \chembench repository.
 The Markdown tables and interactive plots are automatically generated and updated on the \chembench website. The leaderboard is available at \url{https://lamalab-org.github.io/chem-bench/leaderboard/}.
