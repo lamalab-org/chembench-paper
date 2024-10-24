@@ -103,7 +103,7 @@ Moreover, to allow for a more nuanced evaluation of the models capabilities, the
 
 
 While many existing benchmarks are designed around \gls{mcq}, this does not reflect the reality of chemistry education and research.
-For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions). In addition, \chembench samples different skills on various difficulty level: From basic knowledge questions (as knowledge underpins reasoning processes\autocite{hu2024towards,bloom1956taxonomy}) to complex reasoning tasks (such as finding out which ions are in a sample given a description of observations). We also include questions about chemical intuition, as showing human-aligned preferences is relevant for applications such as hypothesis generation or optimization tasks.\autocite{zhang2024omniopenendednessmodelshuman}
+For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions). In addition, \chembench samples different skills on various difficulty levels: From basic knowledge questions (as knowledge underpins reasoning processes\autocite{hu2024towards,bloom1956taxonomy}) to complex reasoning tasks (such as finding out which ions are in a sample given a description of observations). We also include questions about chemical intuition, as showing human-aligned preferences is relevant for applications such as hypothesis generation or optimization tasks.\autocite{zhang2024omniopenendednessmodelshuman}
 
 
 \paragraph{\enquote{Tiny} subset}
@@ -150,7 +150,7 @@ In this figure, we show the percentage of questions that the models answered cor
 Moreover, we show the worst, best, and average performance of the human experts in our study, which we obtained via a custom web application (\url{chembench.org}) that we used to survey the experts.
 Remarkably, the figure shows that the leading \gls{llm}, \oone, outperforms the best human in our study in this overall metric by almost a factor of two.
 Many other models also outperform the average human performance.
-Interestingly, \LlamaThreeOneFourZeroFiveBInstruct shows performance that is close the leading proprietary models, indicating that new open source models can be competitive with the best proprietary models also in chemical settings.
+Interestingly, \LlamaThreeOneFourZeroFiveBInstruct shows performance that is close to the leading proprietary models, indicating that new open source models can be competitive with the best proprietary models also in chemical settings.
 
 Notably, we find that models are still limited in their ability to answer knowledge-intensive questions (\Cref{tab:performance_table_human_subset}), that is they did not memorize the relevant facts. Our results indicate that this is not a limitation that could be overcome by simple application of \gls{rag} systems such as \PaperQATwo. This is likely because the required knowledge cannot easily be accessed via papers (which is the only external knowledge \PaperQATwo has access to) but rather by lookup in specialized databases (e.g., PubChem, Gestis), which also the humans in our study used to answer such questions (\Cref{fig:tool_use}).
 This indicates that there is still room for improvement of chemical \gls{llm} by training them on more specialized data sources or by integrating them with specialized databases.
@@ -177,7 +177,7 @@ One can observe that this performance varies across models and topics.
 While general and technical receive relatively high scores for many models, this is not the case for topics such as toxicity and safety or analytical chemistry.
 
 In the subfield of analytical chemistry the prediction of the number of signals observable in a \gls{nmr} spectrum proved difficult for even for the best models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_o1.txt} percent correct answers for \oone).
-Importantly, while the human experts are given a drawing of the compounds, the models are only shown the \gls{smiles} string of a compound and have to use this to reason about the symmetry of the compound (i.e., to identify the number of diasterotopically distinct protons, which requires \emph{reasoning} about the topology and structure of a molecule).
+Importantly, while the human experts are given a drawing of the compounds, the models are only shown the \gls{smiles} string ofa a compound and have to use this to reason about the symmetry of the compound (i.e., to identify the number of diasterotopically distinct protons, which requires \emph{reasoning} about the topology and structure of a molecule).
 
  These findings also shine an interesting light on the value of textbook-inspired questions.
  A subset of the questions in the \chembench are based on textbooks targeted at undergraduate students.
@@ -352,7 +352,7 @@ In the curation of our dataset we manually assigned difficulty levels as well as
 Basic questions are those that only requires those skills up to high-school level. Advanced questions would require an expert multiple minutes up to hours to answer.
 
 \section*{Data and code availability}
-The code and data for \chembench is available at \url{https://github.com/lamalab-org/chem-bench}.
+The code and data for \chembench are available at \url{https://github.com/lamalab-org/chem-bench}.
 The code for the app for our human baseline study is available at \url{https://github.com/lamalab-org/chem-bench-app}.
 To ensure reproducibility, this manuscript was generated using the \href{https://show-your.work/en/latest/}{\showyourwork} framework.\autocite{Luger2021}
 The code to rebuild the paper (including code for all figures and numbers next to which there is a GitHub icon) can be found at \url{\GitHubURL}.
@@ -364,12 +364,12 @@ We also thank Stability.AI for the access to its HPC cluster. In addition, M.S-W
 K.M.J.\ is part of the NFDI consortium FAIRmat funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – project 460197019.
 K.M.J.\ thanks FutureHouse (a non-profit research organization supported by the generosity of Eric and Wendy Schmidt) for supporting \PaperQATwo run by access to the \gls{api}.
 Parts of A.M.'s work was supported as part of the \enquote{SOL-AI} project funded by the Helmholtz Foundation model initative.
-A.A.\ gratefully acknowledges financial support for this (publication/project/research) by the Fulbright U.S. Student Program, which is sponsored by the U.S. Department of State and German-American Fulbright Commission. Its contents are solely the responsibility of the author and do not necessarily represent the official views of the Fulbright Program, the Government of the United States, or the German-American Fulbright Commission.
+A.A.\ gratefully acknowledges financial support for this research by the Fulbright U.S. Student Program, which is sponsored by the U.S.\ Department of State and German-American Fulbright Commission. Its contents are solely the responsibility of the author and do not necessarily represent the official views of the Fulbright Program, the Government of the United States, or the German-American Fulbright Commission.
 
 M.A.\ expresses gratitude to the European Research Council (ERC) for evaluating the project with the reference number 101106377 titled \enquote{CLARIFIER} and accepting it for funding under the HORIZON TMA MSCA Postdoctoral Fellowships - European Fellowships.
 Furthermore, M.A.\ acknowledges the funding provided by UK Research and Innovation (UKRI) under the UK government’s Horizon Europe funding guarantee (Grant Reference: EP/Y023447/1; Organization Reference: 101106377).
 
-M.R.\ and U.S.S.\ thanks the \enquote{Deutsche Forschungsgemeinschaft} for funding under the regime of the priority programme SPP 2363 \enquote{Utilization and Development of Machine Learning for Molecular Applications – Molecular Machine Learning} (SCHU 1229/63-1; project number 497115849).
+M.R.\ and U.S.S.\ thank the \enquote{Deutsche Forschungsgemeinschaft} for funding under the regime of the priority programme SPP 2363 \enquote{Utilization and Development of Machine Learning for Molecular Applications – Molecular Machine Learning} (SCHU 1229/63-1; project number 497115849).
 
 In addition, we thank the OpenBioML.org community and their ChemNLP project team for valuable discussions.
 Moreover, we thank Pepe Márquez for discussions and support and Julian Kimmig for feedback on the web app.
