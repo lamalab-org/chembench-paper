@@ -63,8 +63,8 @@ def compute_scores_subset(data, title):
     sns.lineplot(x="Temperature", y="Score", hue="Model", data=df_melted,
         palette=color_palette, markers="", ci=None, legend=False)
 
-    plt.xlabel("Temperature")
-    plt.ylabel("Score")
+    plt.xlabel("temperature")
+    plt.ylabel("score")
     # Place the legend outside the plot to the right
     plt.legend(loc="center left", bbox_to_anchor=(1, 0.5), fontsize="small")
 

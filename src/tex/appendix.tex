@@ -14,7 +14,7 @@
     \item \emph{Probing capabilities beyond answering of \glspl{mcq}}. In real-world chemistry, as well as higher-level university education, multiple-choice questions are seldom utilized.
     Yet, most benchmarking frameworks focus on the \gls{mcq} setting because of the ease of evaluation. Realistic evaluations must measure capabilities beyond answering \gls{mcq}.
     \item \emph{Cover a diverse set of topics}. Chemistry, as the \enquote{central science}, bridges multiple disciplines.\autocite{Aspuru_Guzik_2018} To even just approximate \enquote{chemistry capabilities} the topics covered by a chemistry benchmark must be very diverse.
-    \item \emph{Cover diverse skills}. To holistically judge performance it is important to cover questions relying on reasoning, calculation, knowledge, intuition.
+    \item \emph{Cover diverse skills}. To holistically judge performance it is important to cover questions relying on reasoning, calculation, knowledge, and intuition.
     \item \emph{Cover a range of difficulty levels}. To allow for a continuous measure of improvement for a range of different (evolving) systems, a benchmark should cover a wide range of difficulty levels.
     \item \emph{Impossible to completely solve with current models}. A benchmark should contain questions that are impossible to solve with current models. If current models can solve all questions, the benchmark provides no useful signal.
 \end{itemize}
@@ -157,7 +157,7 @@ In addition, as shown in \Cref{tab:chembench_corpus_cognitive} the \chembench co
 
 
 \clearpage
-\subsection{Model performance}
+\subsection{Model performance} \label{sec:model_performance_app}
 We also evaluated the model performance on the entire \chembench corpus.
 \Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered correctly by the models.
 
@@ -193,7 +193,7 @@ However, since some subjects are composed of questions from different sources, t
     \centering
     \includegraphics[width=\textwidth]{figures/all_questions_models_completely_correct_radar_overall.pdf}
     \caption{\textbf{Performance of the models on the different topics of the \chembench corpus.} The radar plot shows the performance of the models on the different topics of the \chembench corpus. The performance is measured as the fraction of questions answered completely correctly by the models.
-    A score of 1 indicates that all questions were answered completely correctly, while a score of 0 indicates that none were answered completely correctly.
+    A score of 1 (full coverage until the outer line of this plot) indicates that all questions were answered completely correctly, while a score of 0 indicates that none were answered completely correctly.
     }
     \label{fig:all_questions_models_completely_correct_radar_overall}
     \script{analyze_model_reports.py}
@@ -261,7 +261,7 @@ To better understand if the performance of the models is correlated with specifi
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{figures/correlation_plot_is_number_nmr_peaks_num_atoms.pdf}
-    \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the number of atoms.} The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of \gls{nmr} signals).}
+    \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the number of atoms.} }
     \script{correlate_with_molecule_features.py}
     \label{fig:correlation_plot_is_number_nmr_peaks_num_atoms}
 \end{figure}
@@ -374,8 +374,8 @@ In the applications, human participants were presented with molecules as rendere
     \centering
     \includegraphics{figures/human_score_distribution.pdf}
     \script{plot_human_score_distribution.py}
-    \caption{\textbf{Distribution of human scores.} The histogram and kernel density estimates show the fraction of questions answered completely correctly.
-    Since the best possible score for each question is one and the worst possible score is zero, the values on this plot are between zero and one.}
+    \caption{\textbf{Distribution of human scores.} The histogram and kernel density estimates show the fraction of questions answered correctly by the human volunteers.
+    Since the best possible score for each question is one and the worst possible score is zero, the values on this plot are between zero and one. A score of one would mean that a volunteer answered all questions correctly. A score of zero would mean that no question was answered correctly.}
     \label{fig:human_score_distribution}
 \end{figure}
 
@@ -436,7 +436,7 @@ However, when \GPTFourO displays high confidence, it accurately predicts correct
 
 \clearpage
 \subsection{Impact of sampling temperature}
-We also investigated the impact of sampling temperature on the performance of the models. \Cref{fig:temperature_impact} shows that, generally, the performance of models tends to degrease with increasing temperature.
+We also investigated the impact of sampling temperature (i.e. temperature 0 means always sampling the most likely token, higher temperatures introduce some randomness in the generation process) on the performance of the models. \Cref{fig:temperature_impact} shows that, generally, the performance of models tends to decrease with increasing temperature.
 
 \begin{figure}[!h]
     \centering

@@ -176,11 +176,11 @@ In this spider chart, the worst score for every dimension is zero (no question a
 One can observe that this performance varies across models and topics.
 While general and technical receive relatively high scores for many models, this is not the case for topics such as toxicity and safety or analytical chemistry.
 
-In the subfield of analytical chemistry the prediction of the number of signals observable in a \gls{nmr} spectrum proved difficult for even for the best models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_o1.txt} percent correct answers for \oone).
+In the subfield of analytical chemistry the prediction of the number of signals observable in a \gls{nmr} spectrum proved difficult even for the best models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_o1.txt} percent correct answers for \oone).
 Importantly, while the human experts are given a drawing of the compounds, the models are only shown the \gls{smiles} string of a a compound and have to use this to reason about the symmetry of the compound (i.e., to identify the number of diasterotopically distinct protons, which requires \emph{reasoning} about the topology and structure of a molecule).
 
  These findings also shine an interesting light on the value of textbook-inspired questions.
- A subset of the questions in the \chembench are based on textbooks targeted at undergraduate students.
+ A subset of the questions in \chembench are based on textbooks targeted at undergraduate students.
  On those questions, the models tend to perform better than on some of our semi-automatically constructed tasks (see \Cref{fig:performance_per_topic}).
  For instance, while the overall performance in the chemical safety topic is low, the models would pass the certification exam according to the German Chemical Prohibition Ordinance based on a subset of questions we sampled from the corresponding question bank (e.g., \variable{output/subset_scores/is_gfk_gpt-4.txt}\% correct answers for \GPTFour, \variable{output/subset_scores/is_gfk_Claude-3.5_(Sonnet).txt}\% for \ClaudeThreeFiveSonnet, and \variable{output/human_subset_scores/is_gfk.txt}\% for the human experts).
  While those findings are impacted by the subset of questions we sampled, the results still highlight that good performance on such question bank or textbook questions does not necessarily translate to good performance on other questions that require more reasoning or are further away from the training corpus.\autocite{mccoy2023embersautoregressionunderstandinglarge} The findings also underline that such exams might have been a good surrogate for general performance of skills for humans, but their applicability in the face of systems that can consume vast amounts of data is up for debate.
@@ -208,7 +208,7 @@ This indicates that using preference tuning for chemical settings is a promising
 
 % Estimate of difficulty
 \paragraph{Confidence estimates} One might wonder whether the models can estimate if they can answer a question correctly.
-If they could do so, incorrect answers would be less problematic as one could detect when an answer is incorrect.
+If they could do so, incorrect answers would be less problematic.
 
 To investigate this, we prompted\autocite{xiong2023llms} some of the top-performing models to estimate, on an ordinal scale, their confidence in their ability to answer the question correctly (see \Cref{sec:confidence_estimates} for details on methodology and comparison to logit-based approaches).
 
@@ -227,7 +227,7 @@ To investigate this, we prompted\autocite{xiong2023llms} some of the top-perform
  For applications in which humans might rely on the models to provide answers with trustworthy uncertainty estimates, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the model's outputs.\autocite{Li_2023, miret2024llms}
  For example, for the questions about the safety profile of compounds, \GPTFour reported an average confidence of \variable{output/model_confidence_performance/gpt-4_is_pictograms_average_confidence_correct_overall.txt} (on a scale of 1--5) for the \variable{output/model_confidence_performance/gpt-4_is_pictograms_num_correct_overall.txt} questions it answered correctly and \variable{output/model_confidence_performance/gpt-4_is_pictograms_average_confidence_incorrect_overall.txt} for the \variable{output/model_confidence_performance/gpt-4_is_pictograms_num_incorrect_overall.txt} questions it answered incorrectly.
  While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading in some cases.
- For example, for the questions about \gls{ghs} pictograms Claude 3 returns an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
+ For example, for the questions about the \gls{ghs} pictograms Claude 3 returns an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
 
 \section{Conclusions}
 On the one hand, our findings underline the impressive capabilities of \glspl{llm} in the chemical sciences: Leading models outperform domain experts in specific chemistry questions on many topics.
@@ -292,7 +292,7 @@ In addition to the manually curated questions, we also generated questions progr
 
 \paragraph{Chemical preference data}
 
-These questions assess the ability to establish a \enquote{preference}, such as favoring a specific molecule. Chemical preference is of major importance in drug discovery projects, where the optimization process to reach the desired molecular properties is a process that lasts several years within a chemist's career.
+These questions assess the ability to establish a \enquote{preference}, such as favoring a specific molecule. Chemical preference is of major importance in drug discovery projects, where the optimization process to reach the desired molecular properties is a process that takes several years within a chemist's career.
 Our data corpus is adapted from the published dataset by \textcite{Choung_2023}, which consists of more than 5000 question-answer pairs about chemical intuition. To build the dataset, they presented 35 medicinal chemists with two different molecules, asking them what molecule they would like to continue with when imaging an early virtual screening campaign setting. The question was designed so the scientists do not spend much time answering it, relying only on their feelings or \enquote{chemical preference}.
 
 To understand whether the capabilities of the leading models align with the preferences of professional chemists, we randomly selected 1000 data points from the original dataset to create a meaningful evaluation set, where molecules are represented as \gls{smiles}.
@@ -341,14 +341,14 @@ Human participants were asked the questions in a custom-built web interface (see
 Users were open to reporting about their experience in chemistry.
 Overall, \variable{output/num_users_with_education_info.txt} did so.
 Out of those,
-\variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree (and are currently enrolled in Ph.D.\ studies), and \variable{output/num_human_bachelor.txt} have a bachelor's degree. For the analysis, we excluded participants with less than two years of experience in chemistry after their first university-level course in chemistry.
+\variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree (and are currently enrolled in Ph.D.\ studies), and \variable{output/num_human_bachelor.txt} has a bachelor's degree. For the analysis, we excluded participants with less than two years of experience in chemistry after their first university-level course in chemistry.
 
 
 \paragraph{Comparison with models}
-For the analysis, we treated each human as a model. We computed the topic aggregated averages per human for analyses grouped by topic and then averaged over all humans. The performance metrics reported for models in the main text are computed on the same questions the humans answered. Metrics for the entire corpus are reported in the appendix.
+For the analysis, we treated each human as a model. We computed the topic aggregated averages per human for analyses grouped by topic and then averaged over all humans. The performance metrics reported for models in the main text are computed on the same questions the humans answered. Metrics for the entire corpus are reported in the appendix (\Cref{sec:model_performance_app}).
 
 \subsection{Data annotation}\label{sec:meth-topic}
-In the curation of our dataset we manually assigned difficulty levels as well as required skills to each question. We used following guidelines for these annotations: calculation is required if answering a question would require the use of a calculator, knowledge is required if answering a question requires non-trivial knowledge of facts (e.g. the H/P statements of chemicals). Reasoning is required if answering a question requires multiple reasoning steps.
+In the curation of our dataset we manually assigned difficulty levels as well as required skills to each question. We used the following guidelines for these annotations: calculation is required if answering a question would require the use of a calculator, knowledge is required if answering a question requires non-trivial knowledge of facts (e.g. the H/P statements of chemicals). Reasoning is required if answering a question requires multiple reasoning steps.
 Basic questions are those that only requires those skills up to high-school level. Advanced questions would require an expert multiple minutes up to hours to answer.
 
 \section*{Data and code availability}

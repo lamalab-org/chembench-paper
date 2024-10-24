@@ -60,8 +60,8 @@ def plot_size_vs_performance(model_scores_dict):
     # for i, m in enumerate(llama_models_3):
     #     ax.annotate(m, (model_size_dict[m], llama3_scores[i]))
 
-    ax.set_xlabel("Number of parameters")
-    ax.set_ylabel("Performance")
+    ax.set_xlabel("number of parameters")
+    ax.set_ylabel("performance")
 
     # llama31 models
     llama31_scores = [overall_scores[m]["all_correct_"].mean() for m in llama_models_31]
