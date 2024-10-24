@@ -2,6 +2,11 @@ import pickle
 from typing import Optional
 from loguru import logger
 
+import natsort
+from natsort import (
+    natsort_key,
+    natsorted
+)
 
 from paths import output
 
@@ -153,12 +158,12 @@ def make_table(
     # Round all numeric columns to 2 decimal places (excluding non-numeric columns like "Model")
     numeric_columns = df.select_dtypes(include="number").columns
     df[numeric_columns] = df[numeric_columns].applymap(
-        lambda x: f"{x:.2f}".rstrip("0").rstrip(".")
+        lambda x: f"{x:.2f}"
     )
     # filter out rows where ("Model", "") starts with a number
     df = df[~df[("Model", "")].str.match(r"^\d")]
     # Sort the DataFrame alphabetically by the column "Models"
-    df = df.sort_values(by=("Model", ""))
+    df = df.reindex(natsort.natsorted(df.index, key=lambda x: df.loc[x, 'Model'], alg=natsort.IC))
 
     # Function to bold the best value (assuming higher is better)
     def bold_best(series):
