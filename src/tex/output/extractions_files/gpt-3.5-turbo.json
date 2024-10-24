@@ -15,14 +15,6 @@
       "completion": "[ANSWER]C2[/ANSWER]"
     },
     {
-      "question_name": "point_group-pointgroups_5-pointgroups",
-      "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_0-pointgroups",
-      "completion": "[ANSWER]Td[/ANSWER]"
-    },
-    {
       "question_name": "point_group-pointgroups_4-pointgroups",
       "completion": "[ANSWER]D3d[/ANSWER]"
     },
@@ -33,6 +25,14 @@
     {
       "question_name": "point_group-pointgroups_3-pointgroups",
       "completion": "[ANSWER]C3v[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_5-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_0-pointgroups",
+      "completion": "[ANSWER]Td[/ANSWER]"
     }
   ]
 }

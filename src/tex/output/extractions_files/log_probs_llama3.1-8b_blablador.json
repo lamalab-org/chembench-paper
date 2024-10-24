@@ -7,16 +7,16 @@
       "completion": "[ANSWER]I am unsure[/ANSWER]"
     },
     {
+      "question_name": "point_group-pointgroups_11-pointgroups",
+      "completion": "[ANSWER]C1[/ANSWER]"
+    },
+    {
       "question_name": "point_group-pointgroups_4-pointgroups",
       "completion": "[ANSWER]C2[/ANSWER]"
     },
     {
       "question_name": "point_group-pointgroups_13-pointgroups",
       "completion": "[ANSWER]C2[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_11-pointgroups",
-      "completion": "[ANSWER]C1[/ANSWER]"
     }
   ]
 }
