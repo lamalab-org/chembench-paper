@@ -69,7 +69,7 @@ In this work, we report a novel benchmarking framework  (\Cref{fig:overview_figu
 Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs compiled from diverse sources (\variable{output/manually_generated.txt}\xspace manually generated, and \variable{output/automatically_generated.txt}\xspace semi-automatically generated).
 Our corpus measures reasoning, knowledge and intuition across a large fraction of the topics taught in undergraduate and graduate chemistry curricula. It can be used to evaluate any system that can return text (i.e., including tool-augmented systems).
 
-To contextualize the scores, we also surveyed \variable{output/number_experts.txt} experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with (human volunteers) chemists of different specializations. In parts of the survey, the participants were also allowed to use tools such as web search to create a realistic setting.
+To contextualize the scores, we also surveyed \variable{output/number_experts.txt} experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with (human volunteers) chemists of different specializations. In parts of the survey, the volunteers were also allowed to use tools such as web search to create a realistic setting.
 Our results indicate that current frontier models perform \enquote{superhuman} on some aspects of chemistry but, in many cases, including safety-related ones, might be very misleading.
 We find that there are still limitations for current models to overcome, such that they can be directly applied in autonomous systems for chemists.
 
@@ -110,7 +110,7 @@ For this reason, \chembench samples both \gls{mcq} and open-ended questions (\va
 It is important to note that a smaller subset of the corpus might be more practical for routine evaluations.\autocite{polo2024tinybenchmarks}
 For instance,~\textcite{liang2023holistic} report costs of more than \$10,000 for \gls{api} calls for a single evaluation on the widely used \gls{helm} benchmark.
 To address this, we also provide a subset (\variable{output/num_human_answered_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus. While it is impossible to comprehensively represent the full corpus in a subset, we aimed to include a maximally diverse set of questions and a more balanced distribution of topics and skills (see \Cref{sec:subset-selection} for details on the curation process).
-Our human participants answered all the questions in this subset.
+Our human volunteers answered all the questions in this subset.
 
 
 
@@ -335,13 +335,13 @@ In \Cref{sec:confidence_estimates} we provide more details and comparisons with 
 \input{sections/human_subset_selection.tex}
 
 \paragraph{Study design}
-Human participants were asked the questions in a custom-built web interface (see \Cref{sec:human_baseline}) which rendered chemicals and equations. Questions were shown in random order and participants were not allowed to skip questions. For a subset of the questions, the participants were allowed to use external tools (excluding other \gls{llm} or asking other people) to answer the questions. Prior to answering questions, participants were asked to provide information about their education and experience in chemistry. The study was conducted in English.
+Human volunteers were asked the questions in a custom-built web interface (see \Cref{sec:human_baseline}) which rendered chemicals and equations. Questions were shown in random order and volunteers were not allowed to skip questions. For a subset of the questions, the volunteers were allowed to use external tools (excluding other \gls{llm} or asking other people) to answer the questions. Prior to answering questions, volunteers were asked to provide information about their education and experience in chemistry. The study was conducted in English.
 
-\paragraph{Participants}
+\paragraph{Volunteers}
 Users were open to reporting about their experience in chemistry.
 Overall, \variable{output/num_users_with_education_info.txt} did so.
 Out of those,
-\variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree (and are currently enrolled in Ph.D.\ studies), and \variable{output/num_human_bachelor.txt} have a bachelor's degree. For the analysis, we excluded participants with less than two years of experience in chemistry after their first university-level course in chemistry.
+\variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree (and are currently enrolled in Ph.D.\ studies), and \variable{output/num_human_bachelor.txt} have a bachelor's degree. For the analysis, we excluded volunteers with less than two years of experience in chemistry after their first university-level course in chemistry.
 
 
 \paragraph{Comparison with models}
@@ -377,7 +377,7 @@ In addition, we acknowledge support from Sandeep Kumar with an initial prototype
 We thank Bastian Rieck for developing the \LaTeX-credit package (\url{https://github.com/Pseudomanifold/latex-credits}) and thank Berend Smit for feedback on an early version of the manuscript.
 
 \section*{Statement of ethical compliance}
-The authors confirm to have complied with all relevant ethical regulations, according to the Ethics Commission of the Friedrich Schiller University Jena (which decided that study is ethically safe). Informed consent was obtained from all participants.
+The authors confirm to have complied with all relevant ethical regulations, according to the Ethics Commission of the Friedrich Schiller University Jena (which decided that study is ethically safe). Informed consent was obtained from all volunteers.
 
 
 \section*{Conflicts of interest}
