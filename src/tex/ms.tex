@@ -78,7 +78,7 @@ We find that there are still limitations for current models to overcome, such th
 \begin{figure}
     \includegraphics[width=\textwidth]{figures/overview_figure.pdf}
     \caption{\textbf{Overview of the \chembench framework.} The figure shows the different components of the \chembench framework.
-    The framework's foundation is the benchmark corpus that consists of many questions and answers that we manually or semi-automatically compiled from various sources.
+    The framework's foundation is the benchmark corpus that consists of thousands of questions and answers that we manually or semi-automatically compiled from various sources (see \Cref{sec:curation}).
     Questions are classified based on topics, required skills (reasoning, calculation, knowledge, intuition), and difficulty levels.
     We then used this corpus to evaluate the performance of various models and tool-augmented systems using a custom framework. To provide a baseline, we built a web application that we used to survey experts in chemistry.
     The results of the evaluations are then compiled in publicly accessible leaderboards, which we propose as a foundation for evaluating future models.
@@ -106,10 +106,10 @@ While many existing benchmarks are designed around \gls{mcq}, this does not refl
 For this reason, \chembench samples both \gls{mcq} and open-ended questions (\variable{output/mcq_questions.txt} \gls{mcq} questions and \variable{output/non_mcq_questions.txt} open-ended questions). In addition, \chembench samples different skills on various difficulty levels: From basic knowledge questions (as knowledge underpins reasoning processes\autocite{hu2024towards,bloom1956taxonomy}) to complex reasoning tasks (such as finding out which ions are in a sample given a description of observations). We also include questions about chemical intuition, as showing human-aligned preferences is relevant for applications such as hypothesis generation or optimization tasks.\autocite{zhang2024omniopenendednessmodelshuman}
 
 
-\paragraph{\enquote{Tiny} subset}
+\paragraph{\chembenchmini}
 It is important to note that a smaller subset of the corpus might be more practical for routine evaluations.\autocite{polo2024tinybenchmarks}
 For instance,~\textcite{liang2023holistic} report costs of more than \$10,000 for \gls{api} calls for a single evaluation on the widely used \gls{helm} benchmark.
-To address this, we also provide a subset (\variable{output/num_human_answered_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus. While it is impossible to comprehensively represent the full corpus in a subset, we aimed to include a maximally diverse set of questions and a more balanced distribution of topics and skills (see \Cref{sec:subset-selection} for details on the curation process).
+To address this, we also provide a subset (\chembenchmini, encompassing \variable{output/num_human_answered_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus. While it is impossible to comprehensively represent the full corpus in a subset, we aimed to include a maximally diverse set of questions and a more balanced distribution of topics and skills (see \Cref{sec:subset-selection} for details on the curation process).
 Our human participants answered all the questions in this subset.
 
 
@@ -134,7 +134,7 @@ Hence, we use them for our evaluations.\autocite{xiong2023llms}
 \begin{figure}[!h]
     \centering
     \includegraphics{figures/human_subset_performance.pdf}
-    \caption{\textbf{Performance of models and humans on the \enquote{tiny} subset of the  \chembench corpus.} The figure shows the percentage of questions that the models answered correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance.
+    \caption{\textbf{Performance of models and humans on \chembenchmini.} The figure shows the percentage of questions that the models answered correctly. We use horizontal bars to indicate the performance of various models and highlight statistics of the human performance.
     The evaluation we use here is very strict as it only considers a question answered correctly or incorrectly, partially correct answers are also considered incorrect.
     \Cref{fig:barplot_all_correct_all_questions} provides an overview of the performance of various models on the entire corpus.
     PaperQA2\autocite{skarlinski2024language} is an agentic system that can also search the literature to obtain an answer. We find that the best models outperform all humans in our study when averaged over all questions (even though humans had access to tools such as web search and ChemDraw for a subset of the questions).
@@ -165,9 +165,9 @@ In this spider chart, the worst score for every dimension is zero (no question a
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{figures/all_questions_models_completely_correct_radar_human.pdf}
-    \caption{\textbf{Performance of the models and humans on the different topics of the \enquote{tiny} subset of the \chembench corpus.} The radar plot shows the performance of the models and humans on the different topics of \enquote{tiny} subset of the \chembench corpus. The performance is measured as the fraction of questions that were answered completely correctly by the models.
+    \caption{\textbf{Performance of the models and humans on the different topics on \chembenchmini.} The radar plot shows the performance of the models and humans on the different topics of \chembenchmini. The performance is measured as the fraction of questions that were answered completely correctly by the models.
     The best score for every dimension is one (all questions answered correctly), and the worst is zero (no question answered correctly). A larger colored area indicates a better performance.
-    This figure shows the performance on the subset of questions that were answered by humans. The performance of models on the entire corpus is shown in \Cref{fig:performance_per_topic}.
+    This figure shows the performance on \chembenchmini. The performance of models on the entire corpus is shown in \Cref{fig:performance_per_topic}.
     }
     \label{fig:all_questions_models_completely_correct_radar_human}
     \script{analyze_model_reports.py}
