@@ -69,9 +69,7 @@ In this work, we report a novel benchmarking framework  (\Cref{fig:overview_figu
 Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs compiled from diverse sources (\variable{output/manually_generated.txt}\xspace manually generated, and \variable{output/automatically_generated.txt}\xspace semi-automatically generated).
 Our corpus measures reasoning, knowledge and intuition across a large fraction of the topics taught in undergraduate and graduate chemistry curricula. It can be used to evaluate any system that can return text (i.e., including tool-augmented systems).
 
-To contextualize the scores, we also surveyed \variable{output/number_experts.txt} experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with (human) chemists of different specializations. In parts of the survey, the participants were also allowed to use tools such as web search to create a realistic setting.
-Our results indicate that current frontier models perform \enquote{superhuman} on some aspects of chemistry but, in many cases, including safety-related ones, might be very misleading.
-We find that there are still limitations for current models to overcome, such that they can be directly applied in autonomous systems for chemists.
+To contextualize the scores, we also surveyed \variable{output/number_experts.txt} experts in chemistry on a subset of the benchmark corpus to be able to compare the performance of current frontier models with (human) chemists of different specializations. In parts of the survey, the volunteers were also allowed to use tools such as web search to create a realistic setting.
 
 \section{Results and Discussion}
 
@@ -109,8 +107,8 @@ For this reason, \chembench samples both \gls{mcq} and open-ended questions (\va
 \paragraph{\chembenchmini}
 It is important to note that a smaller subset of the corpus might be more practical for routine evaluations.\autocite{polo2024tinybenchmarks}
 For instance,~\textcite{liang2023holistic} report costs of more than \$10,000 for \gls{api} calls for a single evaluation on the widely used \gls{helm} benchmark.
-To address this, we also provide a subset (\chembenchmini, encompassing \variable{output/num_human_answered_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus. While it is impossible to comprehensively represent the full corpus in a subset, we aimed to include a maximally diverse set of questions and a more balanced distribution of topics and skills (see \Cref{sec:subset-selection} for details on the curation process).
-Our human participants answered all the questions in this subset.
+To address this, we also provide a subset (\chembenchmini, \variable{output/num_human_answered_questions.txt} questions) of the corpus that was curated to be a diverse and representative subset of the full corpus. While it is impossible to comprehensively represent the full corpus in a subset, we aimed to include a maximally diverse set of questions and a more balanced distribution of topics and skills (see \Cref{sec:subset-selection} for details on the curation process).
+Our human volunteers answered all the questions in this subset.
 
 
 
@@ -147,7 +145,7 @@ Hence, we use them for our evaluations.\autocite{xiong2023llms}
 To understand the current capabilities of \glspl{llm} in the chemical sciences, we evaluated a wide range of leading models\autocite{Huggingface} on the \chembench corpus, including systems augmented with external tools.
 An overview of the results of this evaluation is shown in \Cref{fig:human_vs_models_bar} (all results can be found in \Cref{tab:performance_table} and \Cref{tab:performance_table_human_subset}).
 In this figure, we show the percentage of questions that the models answered correctly.
-Moreover, we show the worst, best, and average performance of the human experts in our study, which we obtained via a custom web application (\url{chembench.org}) that we used to survey the experts.
+Moreover, we show the worst, best, and average performance of the experts in our study, which we obtained via a custom web application (\url{chembench.org}) that we used to survey the experts.
 Remarkably, the figure shows that the leading \gls{llm}, \oone, outperforms the best human in our study in this overall metric by almost a factor of two.
 Many other models also outperform the average human performance.
 Interestingly, \LlamaThreeOneFourZeroFiveBInstruct shows performance that is close to the leading proprietary models, indicating that new open source models can be competitive with the best proprietary models also in chemical settings.
@@ -159,7 +157,7 @@ In addition, our analysis shows that the performance of models is correlated wit
 
 \paragraph{Performance per topic} To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
 For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and  classified all questions in the \chembench corpus into these topics.
-We then computed the percentage of questions the models or humans answered correctly for each topic and show them in \Cref{fig:all_questions_models_completely_correct_radar_human}.
+We then computed the percentage of questions the models or experts answered correctly for each topic and show them in \Cref{fig:all_questions_models_completely_correct_radar_human}.
 In this spider chart, the worst score for every dimension is zero (no question answered correctly), and the best score is one (all questions answered correctly). Thus, a larger colored area indicates a better performance.
 
 \begin{figure}[!h]
@@ -226,13 +224,13 @@ To investigate this, we prompted\autocite{xiong2023llms} some of the top-perform
  In \Cref{fig:confidence_vs_performance}, we show that for some models, there is no significant correlation between the estimated difficulty and whether the models answered the question correctly or not.
  For applications in which humans might rely on the models to provide answers with trustworthy uncertainty estimates, this is a concerning observation highlighting the need for critical reasoning in the interpretation of the model's outputs.\autocite{Li_2023, miret2024llms}
  For example, for the questions about the safety profile of compounds, \GPTFour reported an average confidence of \variable{output/model_confidence_performance/gpt-4_is_pictograms_average_confidence_correct_overall.txt} (on a scale of 1--5) for the \variable{output/model_confidence_performance/gpt-4_is_pictograms_num_correct_overall.txt} questions it answered correctly and \variable{output/model_confidence_performance/gpt-4_is_pictograms_average_confidence_incorrect_overall.txt} for the \variable{output/model_confidence_performance/gpt-4_is_pictograms_num_incorrect_overall.txt} questions it answered incorrectly.
- While, on average, the verbalized confidence estimates from Claude 3 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading in some cases.
- For example, for the questions about the \gls{ghs} pictograms Claude 3 returns an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
+ While, on average, the verbalized confidence estimates from Claude 3.5 seem better calibrated (\Cref{fig:confidence_vs_performance}), they are still misleading in some cases.
+ For example, for the questions about the \gls{ghs} pictograms Claude 3.5 returns an average score of \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_correct_overall.txt} for correct answers and \variable{output/model_confidence_performance/claude3_is_pictograms_average_confidence_incorrect_overall.txt} for incorrect answers.
 
 \section{Conclusions}
 On the one hand, our findings underline the impressive capabilities of \glspl{llm} in the chemical sciences: Leading models outperform domain experts in specific chemistry questions on many topics.
 On the other hand, there are still striking limitations.
-For very relevant topics the answers models provide are wrong.
+For very relevant topics, the answers that models provide are wrong.
 On top of that, many models are not able to reliably estimate their own limitations.
 Yet, the success of the models in our evaluations perhaps also reveals more about the limitations of the questions we use to evaluate models---and chemists---than about the models themselves.
 For instance, while models perform well on many textbook questions, they struggle with questions that require some more reasoning about chemical structures (e.g., number of isomers or \gls{nmr} peaks).
@@ -335,13 +333,12 @@ In \Cref{sec:confidence_estimates} we provide more details and comparisons with 
 \input{sections/human_subset_selection.tex}
 
 \paragraph{Study design}
-Human participants were asked the questions in a custom-built web interface (see \Cref{sec:human_baseline}) which rendered chemicals and equations. Questions were shown in random order and participants were not allowed to skip questions. For a subset of the questions, the participants were allowed to use external tools (excluding other \gls{llm} or asking other people) to answer the questions. Prior to answering questions, participants were asked to provide information about their education and experience in chemistry. The study was conducted in English.
+Human volunteers were asked the questions in a custom-built web interface (see \Cref{sec:human_baseline}) which rendered chemicals and equations. Questions were shown in random order and volunteers were not allowed to skip questions. For a subset of the questions, the volunteers were allowed to use external tools (excluding other \gls{llm} or asking other people) to answer the questions. Prior to answering questions, volunteers were asked to provide information about their education and experience in chemistry. The study was conducted in English.
 
-\paragraph{Participants}
+\paragraph{Human volunteers}
 Users were open to reporting about their experience in chemistry.
 Overall, \variable{output/num_users_with_education_info.txt} did so.
-Out of those,
-\variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree (and are currently enrolled in Ph.D.\ studies), and \variable{output/num_human_bachelor.txt} has a bachelor's degree. For the analysis, we excluded participants with less than two years of experience in chemistry after their first university-level course in chemistry.
+Out of those, \variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree (and are currently enrolled in Ph.D.\ studies), and \variable{output/num_human_bachelor.txt} has a bachelor's degree. For the analysis, we excluded volunteers with less than two years of experience in chemistry after their first university-level course in chemistry.
 
 
 \paragraph{Comparison with models}
@@ -377,7 +374,7 @@ In addition, we acknowledge support from Sandeep Kumar with an initial prototype
 We thank Bastian Rieck for developing the \LaTeX-credit package (\url{https://github.com/Pseudomanifold/latex-credits}) and thank Berend Smit for feedback on an early version of the manuscript.
 
 \section*{Statement of ethical compliance}
-The authors confirm to have complied with all relevant ethical regulations, according to the Ethics Commission of the Friedrich Schiller University Jena (which decided that study is ethically safe). Informed consent was obtained from all participants.
+The authors confirm to have complied with all relevant ethical regulations, according to the Ethics Commission of the Friedrich Schiller University Jena (which decided that study is ethically safe). Informed consent was obtained from all volunteers.
 
 
 \section*{Conflicts of interest}
