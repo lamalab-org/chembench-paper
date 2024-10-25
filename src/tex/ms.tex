@@ -47,7 +47,7 @@ This might ultimately lead to general copilot systems for chemists that can prov
 
 However, the rapid increase in capabilities of chemical \gls{ml} models led (even before the recent interest in \glspl{llm}) to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\autocite{gopal2023releasing, ganguli2022red, Urbina_2022, campbell2023censoring, moulange2023towards, urbina2022teachable}
 To some extent, this is not surprising as any technology that, for instance, is used to design non-toxic molecules can also be used inversely to predict toxic ones (even though the synthesis would still require access to controlled physical resources and facilities).
-Still, it is essential to realize that LLMs' user base is wider than that of chemistry and materials science experts who can critically reflect on every output these models produce.
+Still, it is essential to realize that the user base of \glspl{llm} is broader than that of chemistry and materials science experts who can critically reflect on every output these models produce.
 For example, many students frequently consult these tools---perhaps even to prepare chemical experiments.\autocite{Intelligent.com_2023}
 This also applies to users from the general public, who might consider using \glspl{llm} to answer questions about the safety of chemicals.
 Thus, for some users, misleading information---especially about safety-related aspects---might lead to harmful outcomes.
@@ -81,7 +81,7 @@ We find that there are still limitations for current models to overcome, such th
     The framework's foundation is the benchmark corpus that consists of many questions and answers that we manually or semi-automatically compiled from various sources.
     Questions are classified based on topics, required skills (reasoning, calculation, knowledge, intuition), and difficulty levels.
     We then used this corpus to evaluate the performance of various models and tool-augmented systems using a custom framework. To provide a baseline, we built a web application that we used to survey experts in chemistry.
-    The results of the evaluations are then compiled in publicly accessible leaderboards \ref{sec:leaderboard}, which we propose as a foundation for evaluating future models.
+    The results of the evaluations are then compiled in publicly accessible leaderboards (\Cref{sec:leaderboard}), which we propose as a foundation for evaluating future models.
     }
     \label{fig:overview_figure}
 \end{figure}
@@ -153,9 +153,9 @@ Many other models also outperform the average human performance.
 Interestingly, \LlamaThreeOneFourZeroFiveBInstruct shows performance that is close the leading proprietary models, indicating that new open source models can be competitive with the best proprietary models also in chemical settings.
 
 Notably, we find that models are still limited in their ability to answer knowledge-intensive questions (\Cref{tab:performance_table_human_subset}), that is they did not memorize the relevant facts. Our results indicate that this is not a limitation that could be overcome by simple application of \gls{rag} systems such as \PaperQATwo. This is likely because the required knowledge cannot easily be accessed via papers (which is the only external knowledge \PaperQATwo has access to) but rather by lookup in specialized databases (e.g., PubChem, Gestis), which also the humans in our study used to answer such questions (\Cref{fig:tool_use}).
-This indicates that there is still room for improvement in chemical \gls{llm}s by training them on more specialized data sources or by integrating them with specialized databases.
+This indicates that there is still room for improvement in chemical \glspl{llm} by training them on more specialized data sources or by integrating them with specialized databases.
 
-In addition, our analysis shows that the performance of models is correlated with their size (see \Cref{fig:model_size_plot}). This is in line with observations in other domains but also indicates that chemical \gls{llm}s could, to some extent, be further improved by scaling them up.
+In addition, our analysis shows that the performance of models is correlated with their size (see \Cref{fig:model_size_plot}). This is in line with observations in other domains but also indicates that chemical \glspl{llm} could, to some extent, be further improved by scaling them up.
 
 \paragraph{Performance per topic} To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
 For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and  classified all questions in the \chembench corpus into these topics.
