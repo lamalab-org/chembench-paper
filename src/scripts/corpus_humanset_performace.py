@@ -40,7 +40,7 @@ def plot_corpuses(complete_scores: dict, human_aligned_scores: dict, outname):
         x + bar_width / 2,
         human_aligned_accuracies,
         bar_width,
-        label="ChemBench “tiny”",
+        label="ChemBench-Mini",
         color="#7689de",
         alpha=0.9,
     )  # cc0000
