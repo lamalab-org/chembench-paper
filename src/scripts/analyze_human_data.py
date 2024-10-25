@@ -64,7 +64,7 @@ def make_human_performance_plots():
     dirs_tool = list(set([os.path.dirname(p) for p in paths_tool]))
     dirs_no_tool = list(set([os.path.dirname(p) for p in paths_no_tool]))
     all_results = []
-    number_experts = 0
+    experts = set()
     for d in dirs_tool + dirs_no_tool:
         try:
             results = load_all_reports(d, os.path.join(chembench, "data"))
@@ -82,7 +82,7 @@ def make_human_performance_plots():
                 results["userid"] = userid
                 results["num_results"] = len(results)
                 results["experience"] = experience
-                number_experts += 1
+                experts.add(userid)
                 results["highest_education"] = highest_education
                 if "tool-allowed" in d:
                     results["tool_allowed"] = True
@@ -98,7 +98,7 @@ def make_human_performance_plots():
 
 
     with open(output / "number_experts.txt", "w") as f:
-        f.write(f"{str(int(number_experts))}" + "\endinput")
+        f.write(f"{str(int(len(experts)))}" + "\endinput")
 
     long_df = pd.concat(all_results).reset_index(drop=True)
     long_df["all_correct"] = long_df.apply(all_correct, axis=1)

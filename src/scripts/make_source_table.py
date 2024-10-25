@@ -1,4 +1,3 @@
-
 import os
 import json
 import pickle
@@ -7,7 +6,7 @@ import numpy as np
 from loguru import logger
 import concurrent.futures
 from pandas import json_normalize
-
+from pathlib import Path
 from chembench.analysis import (
     construct_name_to_path_dict,
     is_semiautomatically_generated,
@@ -16,45 +15,52 @@ from utils import obtain_chembench_repo
 
 from paths import tex, data, output
 
+
 def craft_table(df):
     latex_table = df.to_latex(index=False)
 
-    latex_table = latex_table.replace(
-        r"\begin{tabular}{lr}",
-        r"\begin{tabular}{lc}"
-    )
+    latex_table = latex_table.replace(r"\begin{tabular}{lr}", r"\begin{tabular}{lc}")
 
-    with open(output_file, 'w') as f:
+    with open(output_file, "w") as f:
         f.write(latex_table)
 
     return
 
+
 def load_single_json(path):
-    with open(path, 'r') as file:
+    with open(path, "r") as file:
         data = json.load(file)
         return json_normalize(data)
+
 
 def load_data(data_paths):
     results = []
     for path in data_paths:
         data = load_single_json(path)
         data["path"] = path
+        name = data["name"]
+        folder = Path(data["path"].values[0]).parts[-2]
+        stem = Path(data["path"].values[0]).stem
+        this_name = f"{folder}-{stem}-{name}"
+        data["name"] = this_name
         results.append(data)
 
     return pd.concat(results, ignore_index=True, sort=False)
+
 
 def collect_data(datafolder):
     names = construct_name_to_path_dict(datafolder)
     data_paths = list(names.values())
 
     df = load_data(data_paths)
-
+    # df_questions = pd.read_pickle(data / "questions.pkl")
+    # import pdb; pdb.set_trace()
+    # df = df.merge(df_questions, left_on="name", right_on="name")
     if df.empty:
         raise ValueError("No data loaded from reports")
     logger.info(f"Loaded {len(df)} rows of data")
 
     df["semiautomatically"] = df.apply(is_semiautomatically_generated, axis=1)
-
     sources = {}
     for i, row in df.iterrows():
         try:
@@ -66,7 +72,7 @@ def collect_data(datafolder):
                 continue
 
             if row["semiautomatically"]:
-                if "Semiautomatically Generated" in sources:
+                if "Semiautomatically generated" in sources:
                     sources["Semiautomatically generated"] += 1
                 else:
                     sources["Semiautomatically generated"] = 1
@@ -108,22 +114,16 @@ def collect_data(datafolder):
             else:
                 sources["URL"] = 1
 
-    sources_df = pd.DataFrame(list(sources.items()), columns=['Source', 'Count'])
-    sources_df = sources_df.sort_values(by='Count', ascending=False)
+    sources_df = pd.DataFrame(list(sources.items()), columns=["Source", "Count"])
+    sources_df = sources_df.sort_values(by="Count", ascending=False)
 
     return sources_df
 
+
 if __name__ == "__main__":
     chembench_repo = obtain_chembench_repo()
-    datafolder = os.path.join(
-        chembench_repo, "data"
-    )
-    output_file = (
-        os.path.join(
-            output,
-            "sources_table.tex"
-        )
-    )
+    datafolder = os.path.join(chembench_repo, "data")
+    output_file = os.path.join(output, "sources_table.tex")
 
     data = collect_data(datafolder)
 

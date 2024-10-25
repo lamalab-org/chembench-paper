@@ -23,13 +23,13 @@ def load_data():
         f.write(str(len(non_mcq_questions)) + "\endinput")
 
 
-    automatically_generated = df[df["is_semiautomatically_generated"]] 
+    automatically_generated = df[df["is_semiautomatically_generated"]]
 
-    with open(output / "automatically_generated.txt", "w") as f:    
+    with open(output / "automatically_generated.txt", "w") as f:
         f.write(str(len(automatically_generated)) + "\endinput")
 
-    manually_generated = df[~df["is_semiautomatically_generated"]]  
-    with open(output / "manually_generated.txt", "w") as f: 
+    manually_generated = df[~df["is_semiautomatically_generated"]]
+    with open(output / "manually_generated.txt", "w") as f:
         f.write(str(len(manually_generated)) + "\endinput")
 
     dai_data = glob(
