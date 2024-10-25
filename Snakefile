@@ -242,7 +242,7 @@ rule refusal_table:
     script: "src/scripts/make_refusal_tables.py"
 
 rule sources_table:
-    input: "src/data/model_score_dicts.pkl"
+    input: "src/data/questions.pkl"
     output: "src/tex/output/sources_table.tex"
     script: "src/scripts/make_source_table.py"
 
