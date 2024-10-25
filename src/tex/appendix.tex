@@ -39,26 +39,6 @@ This also implies that future baselines can be built on top of our infrastructur
     \label{fig:cb_humanset}
 \end{figure}
 
-%\Cref{fig:flesch_kincaid_reading_ease} shows the distribution of the Flesch-Kincaid reading ease scores of the questions.
-%We see that the questions are generally complex to read.
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics{figures/flesch_kincaid_reading_ease.pdf}
-%     \caption{\textbf{Distribution of Flesch-Kincaid reading ease scores of the questions.} The Flesch-Kincaid reading ease score\autocite{flesch1948new} measures how easy a text is to read. It is calculated based on the average number of syllables per word and words per sentence. The higher the score, the easier the text is to read. The distribution of the questions' scores is shown in the histogram. }
-%     \label{fig:flesch_kincaid_reading_ease}
-%     \script{wordcloud.py}
-% \end{figure}
-
-
-% \begin{figure}[htb]
-%     \centering
-%     \includegraphics{figures/question_count_barplot_mcq_vs_general.pdf}
-%     \caption{\textbf{Number of multiple choice questions vs.\ open-ended questions per topic.} The bar plot shows the number of \gls{mcq} and general questions per topic.}
-%     \label{fig:question_count_barplot_mcq_vs_general}
-%     \script{plot_statistics.py}
-% \end{figure}
-
 The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpus_topic}, can be divided according to which chemical topic they belong to.
 
 \begin{xltabular}{\textwidth}{p{2.7cm}p{4em}X}
@@ -173,22 +153,6 @@ We also evaluated the model performance on the entire \chembench corpus.
 The general pattern of performance varies significantly between the different topics and is also observed when the models are evaluated on the entire corpus.
 However, since some subjects are composed of questions from different sources, the ranking of the models is, in some instances, different from the one on \chembenchmini.
 
-\begin{table}
-    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered completely correctly by the models for different skills and difficulty levels.}
-    \resizebox{\textwidth}{!}{
-    \variable{output/performance_table.tex}
-    }
-    \label{tab:performance_table}
-\end{table}
-
-\begin{table}
-    \caption{\textbf{Performance of the models on \chembenchmini.} The table shows the fraction of questions answered completely correctly by the models for different skills and difficulty levels.}
-    \resizebox{\textwidth}{!}{
-    \variable{output/performance_table_human_subset.tex}
-    }
-    \label{tab:performance_table_human_subset}
-\end{table}
-
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{figures/all_questions_models_completely_correct_radar_overall.pdf}
@@ -198,6 +162,8 @@ However, since some subjects are composed of questions from different sources, t
     \label{fig:all_questions_models_completely_correct_radar_overall}
     \script{analyze_model_reports.py}
 \end{figure}
+
+
 
 
 To further investigate the performance of the models, we also compared the performance on different data sources.
@@ -230,17 +196,23 @@ Interestingly, the performance of the models on questions sourced based on textb
 \end{figure}
 
 
+\begin{table}
+    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered completely correctly by the models for different skills and difficulty levels.}
+    \resizebox{\textwidth}{!}{
+    \variable{output/performance_table.tex}
+    }
+    \label{tab:performance_table}
+\end{table}
 
-% In addition, we analyzed the performance on questions which requires calculation. For this, we manually labeled questions that require multiple calculation steps.
-% We find that the ranking of models is different for questions with our without calculations (\Cref{fig:requires_cal}).
+\begin{table}
+    \caption{\textbf{Performance of the models on \chembenchmini.} The table shows the fraction of questions answered completely correctly by the models for different skills and difficulty levels.}
+    \resizebox{\textwidth}{!}{
+    \variable{output/performance_table_human_subset.tex}
+    }
+    \label{tab:performance_table_human_subset}
+\end{table}
 
-% \begin{figure}
-%     \centering
-%     \includegraphics{figures/model_overall_cal.pdf}
-%     \caption{\textbf{Overall model performance for questions with and without calculation steps.} We find that the ranking of models changes if we evaluate them on questions that require and do not require calculations, respectively.}
-%     \script{requires_calculation_plot.py}
-%     \label{fig:requires_cal}
-% \end{figure}
+
 
 \clearpage
 
@@ -274,24 +246,6 @@ To better understand if the performance of the models is correlated with specifi
     \script{correlate_with_molecule_features.py}
     \label{fig:correlation_plot_is_electron_counts_num_atoms}
 \end{figure}
-
-% \begin{table}
-%     \caption{\textbf{Spearman correlation coefficients for the correlation of model performance with molecular features.} The table shows the Spearman correlation coefficient $\rho$ for the correlation of the performance of the models with the number of atoms and the complexity of the molecules. }
-%     \begin{tabularx}{\textwidth}{XXXX XXXX}
-%         \toprule
-%         topic & molecular descriptor & \(\rho\) GPT-4 & \(\rho \) Claude 3 & \( \rho \) Galactica &  \( \rho \) humans  \\
-%         \midrule
-%         number of \gls{nmr} signals & number of atoms &  \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_number_nmr_peaks.txt}  & \variable{output/correlation_correlation/spearman_num_atoms_human_is_number_nmr_peaks.txt} \\
-%                               & complexity & \variable{output/correlation_correlation/spearman_complexity_gpt4_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_claude3_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_galactica_120b_is_number_nmr_peaks.txt} & \variable{output/correlation_correlation/spearman_complexity_human_is_number_nmr_peaks.txt} \\
-%         \midrule
-%         total electron counts & number of atoms & \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_electron_counts.txt} & \variable{output/correlation_correlation/spearman_num_atoms_human_is_electron_counts.txt} \\
-%         \midrule
-%         \gls{smiles} \gls{iupac} name matching & number of atoms & \variable{output/correlation_correlation/spearman_num_atoms_gpt4_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_claude3_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_galactica_120b_is_name.txt} & \variable{output/correlation_correlation/spearman_num_atoms_human_is_name.txt} \\
-%                 & complexity & \variable{output/correlation_correlation/spearman_complexity_gpt4_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_claude3_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_galactica_120b_is_name.txt} & \variable{output/correlation_correlation/spearman_complexity_human_is_name.txt} \\
-%         \bottomrule
-%     \end{tabularx}
-%     \label{tab:correlation_coefficients}
-% \end{table}
 
 
 \clearpage
