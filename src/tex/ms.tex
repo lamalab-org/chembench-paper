@@ -37,7 +37,7 @@ While some see \enquote{sparks of \gls{agi}} in them,\autocite{bubeck2023sparks}
 Nevertheless, the promise of these models is that they have shown the ability to solve a wide variety of tasks they have not been explicitly trained on.\autocite{bommasani2021opportunities, anderljung2023frontier, ai4science2023impact}
 
 Chemists and materials scientists have quickly caught on to the mounting attention given to \glspl{llm}, with some voices even suggesting that \enquote{the future of chemistry is language.}\autocite{White_2023}
-This statement is motivated by a growing number of reports that use \glspl{llm} to predict properties of molecules or materials,\autocite{jablonka202314, jablonka2024leveraging, xie2024fine, liao2024words, zhang2024chemllm, zhong2024benchmarking}  optimize reactions,\autocite{ramos2023bayesian, kristiadi2024sober}  generate materials,\autocite{rubungo2023llm, flam2023language, gruver2024fine, alampara2024mattextlanguagemodelsneed} extract information,\autocite{Patiny_2023, Dagdelen_2024, Zheng_2024, lala2023paperqa, caufield2023structured, gupta2022discomat, schillingwilhelmi2024textinsightlargelanguage, skarlinski2024language} or to even prototype systems that can autonomously perform reactions in the physical world based on commands provided in natural language.\autocite{bran2023chemcrow, Boiko_2023, darvish2024organa}
+This statement is motivated by a growing number of reports that use \glspl{llm} to predict properties of molecules or materials,\autocite{jablonka202314, jablonka2024leveraging, xie2024fine, liao2024words, zhang2024chemllm, zhong2024benchmarking}  optimize reactions,\autocite{ramos2023bayesian, kristiadi2024sober}  generate materials,\autocite{rubungo2023llm, flam2023language, gruver2024fine, alampara2024mattextlanguagemodelsneed} extract information,\autocite{Patiny_2023, Dagdelen_2024, Zheng_2024, lala2023paperqa, caufield2023structured, gupta2022discomat, schillingwilhelmi2024textinsightlargelanguage, skarlinski2024language} or to even prototype systems that can autonomously perform experiments in the physical world based on commands provided in natural language.\autocite{bran2023chemcrow, Boiko_2023, darvish2024organa}
 
 In addition, since a lot---if not most---of the information about chemistry is currently stored and communicated in text, there is a strong reason to believe that there is still a lot of untapped potential in \glspl{llm} for chemistry and materials science.\autocite{miret2024llms}
 For instance, most insights in chemical research do not directly originate from data stored in databases but rather from the scientists interpreting the data.
@@ -122,7 +122,7 @@ For instance, molecules represented in \gls{smiles} are enclosed in \texttt{[STA
 This allows the model to treat the \gls{smiles} string differently from other text.
 \chembench can seamlessly handle such special treatment in an easily extensible way because the questions are stored in an annotated format.
 
-Since many widely utilized systems only provide access to text completions (and not the raw model outputs), \chembench is designed to operate on text completions.
+Since many widely utilized \gls{llm} systems only provide access to text completions (and not the raw model outputs), \chembench is designed to operate on text completions.
 This is also important given the growing number of tool-augmented systems that are deemed essential for building chemical copilot systems.
 Such systems can augment the capabilities of \glspl{llm} through the use of external tools such as search \glspl{api} or code executors.\autocite{schick2024toolformer, karpas2022mrkl, yao2022react}
 In those cases, the \gls{llm} that returns the probabilities for various tokens, i.e., text fragments, is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
@@ -214,7 +214,9 @@ To investigate this, we prompted\autocite{xiong2023llms} some of the top-perform
      \centering
      \includegraphics[width=\textwidth]{figures/model_confidence_performance.pdf}
      \caption{\textbf{Calibration and distribution of confidence estimates.} For this analysis, we used verbalized confidence estimates from the model. We prompted the models to return a confidence score on an ordinal scale to obtain those estimates.
-     The line plot shows the average fraction of correctly answered questions for each confidence level. The bar plot shows the distribution of confidence estimates. A confidence estimate would be well-calibrated if the average fraction of correctly answered questions increases with the confidence level.
+     The line plot shows the average fraction of correctly answered questions for each confidence level. The bar plot shows the distribution of confidence estimates.
+     A confidence estimate would be well-calibrated if the average fraction of correctly answered questions increases with the confidence level.      The dashed black line indicates this ideal behavior, which would be monotonically increasing correctness with higher
+     levels of confidence.
      We find that most models are not well-calibrated and provide misleading confidence estimates.
      }
      \label{fig:confidence_vs_performance}
@@ -305,9 +307,9 @@ A graphical overview of the pipeline is shown in \Cref{fig:process}.
 We employ distinct prompt templates tailored for completion and instruction-tuned models to maintain consistency with the training.
 As explained below, we impose constraints on the models within these templates to receive responses in a specific format so that robust, fair, and consistent parsing can be performed.
 Certain models are trained with special annotations and \LaTeX\xspace syntax for scientific notations, chemical reactions, or symbols embedded within the text.
-For example, all the SMILES representations are encapsulated within \texttt{[START\_SMILES][\textbackslash END\_SMILES]} in Galactica\autocite{taylor2022galactica}.
+For example, all the \gls{smiles} representations are encapsulated within \texttt{[START\_SMILES][\textbackslash END\_SMILES]} in Galactica\autocite{taylor2022galactica}.
 Our prompting strategy consistently adheres to these details in a model-specific manner by post-processing \LaTeX\xspace syntax, chemical symbols, chemical equations, and physical units (by either adding or removing wrappers).
-This step can be easily customized in our codebase.
+This step can be easily customized in our codebase and we provide presets for the models we evaluated.
 
 
 
@@ -356,11 +358,16 @@ The code to rebuild the paper (including code for all figures and numbers next t
 To facilitate reproduction, some intermediate analysis results are cached at \url{http://dx.doi.org/10.5072/zenodo.34706}.
 
 \section*{Acknowledgements}
-This work was supported by the Carl Zeiss Foundation, a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena.
-We also thank Stability.AI for the access to its HPC cluster. In addition, M.S-W.'s work was supported by Intel and Merck via the AWASES programme.
-K.M.J.\ is part of the NFDI consortium FAIRmat funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – project 460197019.
-K.M.J.\ thanks FutureHouse (a non-profit research organization supported by the generosity of Eric and Wendy Schmidt) for supporting \PaperQATwo run by access to the \gls{api}.
+This work was supported by the Carl Zeiss Foundation, and a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena.
+
+In addition, M.S-W.'s work was supported by Intel and Merck via the AWASES programme.
+
 Parts of A.M.'s work was supported as part of the \enquote{SOL-AI} project funded by the Helmholtz Foundation model initative.
+
+K.M.J.\ is part of the NFDI consortium FAIRmat funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – project 460197019.
+
+K.M.J.\ thanks FutureHouse (a non-profit research organization supported by the generosity of Eric and Wendy Schmidt) for supporting \PaperQATwo runs via access to the \gls{api}. We also thank Stability.AI for the access to its HPC cluster.
+
 A.A.\ gratefully acknowledges financial support for this research by the Fulbright U.S. Student Program, which is sponsored by the U.S.\ Department of State and German-American Fulbright Commission. Its contents are solely the responsibility of the author and do not necessarily represent the official views of the Fulbright Program, the Government of the United States, or the German-American Fulbright Commission.
 
 M.A.\ expresses gratitude to the European Research Council (ERC) for evaluating the project with the reference number 101106377 titled \enquote{CLARIFIER} and accepting it for funding under the HORIZON TMA MSCA Postdoctoral Fellowships - European Fellowships.
