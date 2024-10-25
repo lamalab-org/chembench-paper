@@ -53,9 +53,6 @@ def collect_data(datafolder):
     data_paths = list(names.values())
 
     df = load_data(data_paths)
-    # df_questions = pd.read_pickle(data / "questions.pkl")
-    # import pdb; pdb.set_trace()
-    # df = df.merge(df_questions, left_on="name", right_on="name")
     if df.empty:
         raise ValueError("No data loaded from reports")
     logger.info(f"Loaded {len(df)} rows of data")
