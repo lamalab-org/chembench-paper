@@ -125,6 +125,7 @@ rule plot_overview_performance:
   output: ["src/tex/figures/overall_performance.pdf"]
   script: "src/scripts/plot_overview_performance_plot.py"
 
+
 # plots the performance in various ways
 rule analyze_model_reports:
   input:
@@ -244,3 +245,10 @@ rule sources_table:
     input: "src/data/model_score_dicts.pkl"
     output: "src/tex/output/sources_table.tex"
     script: "src/scripts/make_source_table.py"
+
+
+#plot performance of models on both corpus
+rule plot_corpuses:
+  input: "src/data/model_score_dicts.pkl"
+  output: "src/tex/figures/corpus_human_comparison.pdf"
+  script: "src/scripts/plot_corpuses.py"

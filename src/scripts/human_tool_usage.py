@@ -141,7 +141,7 @@ if __name__ == "__main__":
         kind="bar", stacked=True, ax=ax, color=colors[: len(top_tools)]
     )
     plt.xlabel("")
-    plt.ylabel("Percentage of Tool Usage")
+    plt.ylabel("percentage of tool usage")
     plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
 
     ax.set_xticklabels(
