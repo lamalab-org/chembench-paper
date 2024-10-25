@@ -451,14 +451,14 @@ We also investigated the impact of sampling temperature (i.e. temperature 0 mean
 \subsection{Summary of trends and recommendations}
 
 \oone model consistently leads across both \ChemBench corpus and \chembenchmini.  \ClaudeThreeFiveSonnet, \GPTFourO, \LlamaThreeOneFourZeroFiveBInstruct form the next tier of strong performers. These models show robust performance across all skills and difficulty levels. 
-Larger models generally perform better (\LlamaThreeOneFourZeroFiveBInstruct > \LlamaThreeOneSeventyBInstruct > \LlamaThreeOneEightBInstruct). However smaller but well-designed models like can compete with larger models. For example \GemmaTwoNineBIt has an overall accuracy of 0.47 on \ChemBench corpus, which is only 18\% less accurate than the larger \LlamaThreeOneEightBInstruct model.
-Clear progression in model families (e.g., \ClaudeThreeFiveSonnet >  \ClaudeThree > \ClaudeTwo). Newer versions consistently outperform their predecessors indicating improvements in scientific understanding of these model families.
-Basic tasks are consistently solved across all models and even top model show a drop in performance on the advanced tasks except for \oone model.
-Scores of knowledge intensive are generally lower than both Calculation and Reasoning. Reasoning tends to be the strongest skill among three.
 
-Based on these findings some scope for improving these models could be to focus on enhancing knowledge-based training. Possibly through improved pre-training on chemistry-specific texts and or with chemistry knowledge base integration. 
-Models show strongest performance in reasoning tasks, this suggests current training approaches are good at developing logical/reasoning capabilities. Larger models consistently perform better, However, there's evidence that well trained smaller models can compete with larger models. 
-Performance drops significantly for advanced tasks, this suggests including more advanced chemistry problems with complex, multi-step solutions in training or finetuning.
+Larger models generally perform better (\LlamaThreeOneFourZeroFiveBInstruct > \LlamaThreeOneSeventyBInstruct > \LlamaThreeOneEightBInstruct). However, smaller but well-designed models can compete with larger models. For example, \GemmaTwoNineBIt has an overall accuracy of 0.47 on \ChemBench corpus, which is only 18\% less accurate than the larger \LlamaThreeOneEightBInstruct model.
+One can observe a clear progression of performance across model families (e.g., \ClaudeThreeFiveSonnet >  \ClaudeThree > \ClaudeTwo). Newer versions consistently outperform their predecessors, indicating improvements in scientific understanding of these model families.
+Scores of knowledge-intensive are generally lower than those of Calculation and Reasoning. Reasoning tends to be the strongest skill among the three.
+
+Based on these findings, some scope for improving these models could be to focus on enhancing knowledge-based training, possibly through improved pre-training on chemistry-specific texts or with chemistry knowledge-base integration. 
+Models show the strongest performance in reasoning tasks, which suggests that current training approaches are good at developing logical/reasoning capabilities. Larger models consistently perform better. However, there's evidence that well-trained smaller models can compete with larger models. 
+Performance drops significantly for advanced tasks, suggesting that more advanced chemistry problems with complex, multi-step solutions should be included in training or finetuning.
 
 \clearpage
 
