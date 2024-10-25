@@ -127,8 +127,8 @@ def make_plot_of_confidence_vs_performance(merged_dicts):
 
         ax.legend(loc='upper left')
 
-    fig.text(0.5, 0.00, 'Estimate', ha='center')
-    fig.text(-0.01, 0.5, 'Fraction Correct', va='center', rotation='vertical')
+    fig.text(0.5, 0.00, 'confidence estimate', ha='center')
+    fig.text(-0.01, 0.5, 'fraction correct', va='center', rotation='vertical')
 
     fig.tight_layout()
 
