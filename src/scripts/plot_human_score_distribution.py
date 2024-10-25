@@ -28,7 +28,7 @@ def plot():
         kde_kws={"cut": 0},
         ax=ax,
         bins=20,
-        label="with tools",
+        label="/w tools",
     )
     sns.distplot(
         human_scores_without_tools,
@@ -37,7 +37,7 @@ def plot():
         kde_kws={"cut": 0},
         ax=ax,
         bins=20,
-        label="without tools",
+        label="w/o tools",
     )
     ax.set_xlabel("fraction correct")
     ax.set_ylabel("count")

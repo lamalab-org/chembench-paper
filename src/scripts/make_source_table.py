@@ -67,9 +67,9 @@ def collect_data(datafolder):
 
             if row["semiautomatically"]:
                 if "Semiautomatically Generated" in sources:
-                    sources["Semiautomatically Generated"] += 1
+                    sources["Semiautomatically generated"] += 1
                 else:
-                    sources["Semiautomatically Generated"] = 1
+                    sources["Semiautomatically generated"] = 1
                 continue
 
             if not pd.isna(row["meta.exam.country"]):
