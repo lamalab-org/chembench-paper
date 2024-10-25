@@ -6,6 +6,7 @@ from utils import (
     ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
     TWO_COL_WIDTH_INCH,
 )
+import re
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
@@ -15,7 +16,8 @@ def plot_corpuses(complete_scores: dict, human_aligned_scores: dict, outname):
     models = sorted(
         complete_scores.keys(), key=lambda x: complete_scores[x], reverse=True
     )
-
+    # filter out models starting with a number
+    models = [model for model in models if not re.match(r"^\d", model)]
     complete_accuracies = [complete_scores[model] for model in models]
     human_aligned_accuracies = [human_aligned_scores[model] for model in models]
 
@@ -32,7 +34,7 @@ def plot_corpuses(complete_scores: dict, human_aligned_scores: dict, outname):
         x - bar_width / 2,
         complete_accuracies,
         bar_width,
-        label="ChemBench Corpus",
+        label="ChemBench",
         color="#a9dce3",
         alpha=0.9,
     )  # 007acc
