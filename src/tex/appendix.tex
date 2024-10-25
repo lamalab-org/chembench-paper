@@ -173,6 +173,8 @@ We also evaluated the model performance on the entire \chembench corpus.
 The general pattern of performance varies significantly between the different topics and is also observed when the models are evaluated on the entire corpus.
 However, since some subjects are composed of questions from different sources, the ranking of the models is, in some instances, different from the one on \chembenchmini.
 
+
+
 \begin{table}
     \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered completely correctly by the models for different skills and difficulty levels.}
     \resizebox{\textwidth}{!}{
@@ -218,7 +220,9 @@ Interestingly, the performance of the models on questions sourced based on textb
 
 \Cref{fig:performance_per_topic_tiny} shows the same analysis on \chembenchmini.
 
-\Cref{fig:performance_corpus_and_tiny} shows the performance of the models on the \chembench corpus and the \chembenchmini subset. The relative performance difference between both is actually quite similar across most models. This makes \chembenchmini subset a reliable subset for human baseline comparison and particularly valuable for rapid prototyping and initial model assessment phases.
+\Cref{fig:performance_corpus_and_tiny} shows the performance of the models on the \chembench corpus and the \chembenchmini subset. The relative performance difference between both is actually quite similar across most models. 
+This makes \chembenchmini subset a reliable subset for human baseline comparison and particularly valuable for rapid prototyping and initial model assessment phases. 
+An interesting observation is the significant impact of chemical preference tasks on \GPTFour's scores. A detailed breakdown of overall accuracy into scores on different skills and difficulty levels is provided in \Cref{table:performance_table} and \Cref{tab:performance_table_human_subset} for \chembench corpus and the \chembenchmini subset, respectively.
 
 
 \begin{figure}[htb]
