@@ -30,6 +30,28 @@ Moreover, our robust framework, including the platform \url{chembench.org}, will
 To ensure maximal interoperability with existing benchmarks or tools, we curated the data in an extended form of the widely used BigBench format.\autocite{srivastava2022beyond}
 This also implies that future baselines can be built on top of our infrastructure if saved in the same format.
 
+\subsubsection{Curation workflow}
+Questions were added via pull requests to the \chembench repository on GitHub.
+This allowed for a manual review of each question by expert reviewers (with backgrounds in chemistry, materials science, chemical engineering, and physics).
+The reviews were conducted directly on the GitHub platform, where our entire curation history is also publicly available.
+
+The general guidelines followed by the reviewer are the following:
+
+\begin{itemize}
+    \item \textbf{Originality:} Questions should not be readily findable online or in other easily accessible sources (example \url{https://github.com/lamalab-org/chem-bench/pull/392#discussion_r1694299474})
+    \item \textbf{Ambiguity:} Questions with unclear wording or multiple interpretations (example \url{https://github.com/lamalab-org/chem-bench/pull/420#discussion_r1698147159} )
+    \item \textbf{Factual or heuristic Errors: }Questions containing factual inaccuracies or misconceptions are not included (example \url{https://github.com/lamalab-org/chem-bench/pull/389#discussion_r1686187301})
+    \item \textbf{Out of Scope:} Questions outside the realm of chemistry are rejected.
+    \item \textbf{Clarity and Difficulty: } They should pose a challenge and encourage exploration within the chemical domain.
+    \item \textbf{Contribution to Dataset Diversity: }Questions should cover a wide range of chemical concepts and sub-disciplines. They should add value by expanding the breadth of the dataset. That is, questions already multiple (>10) times in the corpus in a similar form are rejected.
+\end{itemize}
+
+Reviewers also solved the questions to verify the answers. They also performed web searches to ensure questions were not easily found online. The reviewers often guided the revision process to ensure the question aligned with the guidelines. Questions that don't meet the criteria are either rejected or suggested for revision and most often, they are modified to a new question. Reviewers also provide feedback on the skill and difficulty annotations.
+
+In addition to the manual review, we also performed automated checks to ensure the quality of the questions. The schemas, Latex templating, and other formatting aspects are checked automatically using GitHub Actions.
+
+\subsubsection{Composition}
+
 \Cref{fig:cb_humanset} shows the distribution of topics and required skills in the human subset of the \chembench corpus.
 
 \begin{figure}
