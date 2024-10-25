@@ -122,7 +122,7 @@ For instance, molecules represented in \gls{smiles} are enclosed in \texttt{[STA
 This allows the model to treat the \gls{smiles} string differently from other text.
 \chembench can seamlessly handle such special treatment in an easily extensible way because the questions are stored in an annotated format.
 
-Since many widely utilized systems only provide access to text completions (and not the raw model outputs), \chembench is designed to operate on text completions.
+Since many widely utilized \gls{llm} systems only provide access to text completions (and not the raw model outputs), \chembench is designed to operate on text completions.
 This is also important given the growing number of tool-augmented systems that are deemed essential for building chemical copilot systems.
 Such systems can augment the capabilities of \glspl{llm} through the use of external tools such as search \glspl{api} or code executors.\autocite{schick2024toolformer, karpas2022mrkl, yao2022react}
 In those cases, the \gls{llm} that returns the probabilities for various tokens, i.e., text fragments, is only a part of the whole system, and it is not clear how to interpret the probabilities in the context of the whole system.
