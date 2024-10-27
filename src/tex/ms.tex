@@ -262,14 +262,12 @@ Questions were added via Pull Requests on our GitHub repository and only merged 
 
 To ensure that the questions do not enter a training dataset, we use the same canary string as the BigBench project.
 This requires that \Gls{llm} developers filter their training dataset for this canary string.\autocite{openai2024gpt4, srivastava2022beyond}
-Related to this, in order to avoid data contamination we did not include data from other chemistry-focused benchmarks.
-However, if in the future we decide to include them, it should not be difficult to automatically do it.
 
 
 
 \begin{table}[!h]
     \centering
-    \caption{\textbf{Overview of sources of the curated questions}. The table provides an overview of the types of sources the questions have been curated from. Detailed sources are available in the source data on GitHub. Questions without source have been curated completely from scratch. Questions based on lecture notes or URL have been curated based on content presented in those resources. All questions have been rephrased, annotated, and reviewed before being added to the corpus. The chemical preference questions are the main corpus of the semi-automatically generated group with 1001 questions of the total 1752.}
+    \caption{\textbf{Overview of sources of the curated questions}. The table provides an overview of the types of sources the questions have been curated from. Detailed sources are available in the source data on GitHub. Questions without source have been curated completely from scratch. Questions based on lecture notes or URL have been curated based on content presented in those resources. All questions have been rephrased, annotated, and reviewed before being added to the corpus. Note that the chemical preference questions are the main corpus of the semi-automatically generated group with 1001 questions of the total 1752.}
     \variable{output/sources_table.tex}
     \label{tab:sources}
 \end{table}
