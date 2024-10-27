@@ -1,8 +1,8 @@
-import fire 
-import os 
-from glob import glob 
+import fire
+import os
+from glob import glob
 import yaml
-import pickle 
+import pickle
 from pathlib import Path
 from utils import obtain_chembench_repo
 from paths import data
@@ -46,6 +46,13 @@ def build_name_dir_map(report_base_dir=None):
                 else:
                     model_name = yaml_data["model_name"] + "-T-one"
 
+            model_name = yaml_data["model_name"]
+            if model_name == 'Llama-2-70B Chat':
+                model_name = 'Llama-2-70B-Chat'
+            else:
+                raise ValueError(f"Model name {model_name} not recognized")
+
+
         name_dir_map[model_name] = os.path.abspath(report_subdir)
 
     with open(data / "name_to_dir_map.pkl", "wb") as f:
@@ -55,4 +62,3 @@ def build_name_dir_map(report_base_dir=None):
 
 if __name__ == "__main__":
     fire.Fire(build_name_dir_map)
-

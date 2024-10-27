@@ -63,86 +63,86 @@ In addition to the manual review, we also performed automated checks to ensure t
 
 The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpus_topic}, can be divided according to which chemical topic they belong to.
 
-\begin{table}
-    \centering
-    \small
-    \caption{\textbf{Examples for each of the topics considered in the evaluation of the \chembench corpus.} The table shows the percentage of questions in the corpus that belong to each topic, as well as example questions.} \\
-    \label{tab:chembench_corpus_topic}
-    {\fontsize{8}{9}\selectfont
-        \begin{tabularx}{\textwidth}{X}
-            \toprule
-            \multicolumn{1}{c}{\textbf{Analytical Chemistry} 166 Questions (5.8\%)} \\
-            \midrule
-            Which of the following analytical methods is most appropriate for performing a survey analysis of a solid sample containing various metals? \\
-            A. X-ray fluorescence analysis \\
-            B. Differential pulse polarography \\
-            C. Flame-atomic absorption spectroscopy \\
-            D. Gas chromatography with flame ionization detector \\
-            E. Hydride generation atomic absorption spectroscopy \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Chemical Preference} 1001 Questions (35\%)} \\
-            \midrule
-            Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
-            [START\_SMILES]N\#Cc1ccc(OCCCN2CC3CN\-(CCNS(=O)(=O)c4ccc(F)cc4)CC(C2)O3)cc1\-[END\-\_SMILES] \\
-            [START\_SMILES]O=C1CC(c2ccc(CC(NS(=O)\-(=O)\-c3cc(Cl)cc(Cl)c3)c3nc4ccccc4[nH]3)cc2)S\-(=O)\-(=O)N1[END\_SMILES] \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{General Chemistry} 152 Questions (5.3\%)} \\
-            \midrule
-            Which of the following salts is an acidic salt? \\
-            A. \ce{NH4Cl} \\
-            B. \ce{Na2CO3} \\
-            C. \ce{NaH2PO4} \\
-            D. \ce{Zn(OH)Cl} \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Inorganic Chemistry} 94 Questions (3.3\%)} \\
-            \midrule
-            What is the oxidation number of the metal in the compound \ce{[ZrF7]^{3-}}\\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Materials Science} 89 Questions (3.1\%)} \\
-            \midrule
-            For NMR analysis, you need to digest the MOF in a strong acid to remove the linker and leave the metal clusters intact. Why would one choose \ce{HF} over \ce{HCl} for this purpose? \\
-            A. \ce{F-} forms a stable bonds to the metal ions \\
-            B. \ce{HF} has a better water solubility than \ce{HCl} \\
-            C. \ce{HF} has a higher boiling point than \ce{HCl} \\
-            D. \ce{HF} is a weaker acid than \ce{HCl} \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Organic Chemistry} 441 Questions (15.5\%)} \\
-            \midrule
-            What is the reaction mechanism that describes the following reaction (represented using reaction SMILES) [START\_RXNSMILES]CCCl.CO[Na]>>[Na]Cl.CCOC\-[END\_RXNSMILES]? \\
-            A. $E_1$ \\
-            B. $E_{cb}$ \\
-            C. $S_N1$ \\
-            D. $S_N2$ \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Physical Chemistry} 179 Questions (6.3\%)} \\
-            \midrule
-            The Born-Oppenheimer (BO) approximation is widely used in computational chemistry, but its accuracy can vary depending on the system. Among the following options, for which system is the Born-Oppenheimer approximation likely to be least applicable? \\
-            A. \ce{C60} \\
-            B. \ce{CH4} \\
-            C. \ce{Fe(CO)5} \\
-            D. \ce{H2+} \\
-            E. \ce{NaCl} \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Technical Chemistry} 42 Questions (1.5\%)} \\
-            \midrule
-            Which of the following statements is true about the different types of ideal reactors? \\
-            A. In a batch reactor, the composition is uniformly mixed and remains the same throughout the reactor and at the exit \\
-            B. In a batch reactor, the fluid passes through the reactor with no mixing of earlier and later entering fluid \\
-            C. In a mixed flow reactor, the composition changes with time but is uniform everywhere within the reactor \\
-            D. In a plug flow reactor, the fluid moves in single flow through the reactor with no mixing and no overtaking \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Toxicity/Safety} 690 Questions (24.2\%)} \\
-            \midrule
-            Pindolol and propranolol are (relatively nonselective) antagonists at $\beta_1$- and $\beta_2$-adrenoceptors. However, pindolol is a partial agonist, whereas propranolol is a pure antagonist. What follows from this? \\
-            A. Pindolol has a greater therapeutic range than propranolol \\
-            B. Pindolol has a longer half-life than propranolol \\
-            C. Pindolol has intrinsic activity \\
-            D. Pindolol is more lipophilic than propranolol \\
-            E. Pindolol is more potent than propranolol \\
-            \bottomrule
-        \end{tabularx}
-    }
-\end{table}
+%\begin{table}
+%    \centering
+%    \small
+%    \caption{\textbf{Examples for each of the topics considered in the evaluation of the \chembench corpus.} The table shows the percentage of questions in the corpus that belong to each topic, as well as example questions.}
+%    \label{tab:chembench_corpus_topic}
+%    {\fontsize{8}{9}\selectfont
+%        \begin{tabularx}{\textwidth}{X}
+%            \toprule
+%            \multicolumn{1}{c}{\textbf{Analytical Chemistry} 166 Questions (5.8\%)} \\
+%            \midrule
+%            Which of the following analytical methods is most appropriate for performing a survey analysis of a solid sample containing various metals? \\
+%            A. X-ray fluorescence analysis \\
+%            B. Differential pulse polarography \\
+%            C. Flame-atomic absorption spectroscopy \\
+%            D. Gas chromatography with flame ionization detector \\
+%            E. Hydride generation atomic absorption spectroscopy \\
+%            \midrule
+%            \multicolumn{1}{c}{\textbf{Chemical Preference} 1001 Questions (35\%)} \\
+%            \midrule
+%            Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
+%            [START\_SMILES]N\#Cc1ccc(OCCCN2CC3CN\-(CCNS(=O)(=O)c4ccc(F)cc4)CC(C2)O3)cc1\-[END\-\_SMILES] \\
+%            [START\_SMILES]O=C1CC(c2ccc(CC(NS(=O)\-(=O)\-c3cc(Cl)cc(Cl)c3)c3nc4ccccc4[nH]3)cc2)S\-(=O)\-(=O)N1[END\_SMILES] \\
+%            \midrule
+%            \multicolumn{1}{c}{\textbf{General Chemistry} 152 Questions (5.3\%)} \\
+%            \midrule
+%            Which of the following salts is an acidic salt? \\
+%            A. \ce{NH4Cl} \\
+%            B. \ce{Na2CO3} \\
+%            C. \ce{NaH2PO4} \\
+%            D. \ce{Zn(OH)Cl} \\
+%            \midrule
+%            \multicolumn{1}{c}{\textbf{Inorganic Chemistry} 94 Questions (3.3\%)} \\
+%            \midrule
+%            What is the oxidation number of the metal in the compound \ce{[ZrF7]^{3-}}\\
+%            \midrule
+%            \multicolumn{1}{c}{\textbf{Materials Science} 89 Questions (3.1\%)} \\
+%            \midrule
+%            For NMR analysis, you need to digest the MOF in a strong acid to remove the linker and leave the metal clusters intact. Why would one choose \ce{HF} over \ce{HCl} for this purpose? \\
+%            A. \ce{F-} forms a stable bonds to the metal ions \\
+%            B. \ce{HF} has a better water solubility than \ce{HCl} \\
+%            C. \ce{HF} has a higher boiling point than \ce{HCl} \\
+%            D. \ce{HF} is a weaker acid than \ce{HCl} \\
+%            \midrule
+%            \multicolumn{1}{c}{\textbf{Organic Chemistry} 441 Questions (15.5\%)} \\
+%            \midrule
+%            What is the reaction mechanism that describes the following reaction (represented using reaction SMILES) [START\_RXNSMILES]CCCl.CO[Na]>>[Na]Cl.CCOC\-[END\_RXNSMILES]? \\
+%            A. $E_1$ \\
+%            B. $E_{cb}$ \\
+%            C. $S_N1$ \\
+%            D. $S_N2$ \\
+%            \midrule
+%            \multicolumn{1}{c}{\textbf{Physical Chemistry} 179 Questions (6.3\%)} \\
+%            \midrule
+%            The Born-Oppenheimer (BO) approximation is widely used in computational chemistry, but its accuracy can vary depending on the system. Among the following options, for which system is the Born-Oppenheimer approximation likely to be least applicable? \\
+%            A. \ce{C60} \\
+%            B. \ce{CH4} \\
+%            C. \ce{Fe(CO)5} \\
+%            D. \ce{H2+} \\
+%            E. \ce{NaCl} \\
+%            \midrule
+%            \multicolumn{1}{c}{\textbf{Technical Chemistry} 42 Questions (1.5\%)} \\
+%            \midrule
+%            Which of the following statements is true about the different types of ideal reactors? \\
+%            A. In a batch reactor, the composition is uniformly mixed and remains the same throughout the reactor and at the exit \\
+%            B. In a batch reactor, the fluid passes through the reactor with no mixing of earlier and later entering fluid \\
+%            C. In a mixed flow reactor, the composition changes with time but is uniform everywhere within the reactor \\
+%            D. In a plug flow reactor, the fluid moves in single flow through the reactor with no mixing and no overtaking \\
+%            \midrule
+%            \multicolumn{1}{c}{\textbf{Toxicity/Safety} 690 Questions (24.2\%)} \\
+%            \midrule
+%            Pindolol and propranolol are (relatively nonselective) antagonists at $\beta_1$- and $\beta_2$-adrenoceptors. However, pindolol is a partial agonist, whereas propranolol is a pure antagonist. What follows from this? \\
+%            A. Pindolol has a greater therapeutic range than propranolol \\
+%            B. Pindolol has a longer half-life than propranolol \\
+%            C. Pindolol has intrinsic activity \\
+%            D. Pindolol is more lipophilic than propranolol \\
+%            E. Pindolol is more potent than propranolol \\
+%            \bottomrule
+%        \end{tabularx}
+%    }
+%\end{table}
 
 \normalsize
 
@@ -370,8 +370,8 @@ Interestingly, the performance of the models on questions sourced based on textb
 
 \Cref{fig:performance_per_topic_tiny} shows the same analysis on \chembenchmini.
 
-\Cref{fig:performance_corpus_and_tiny} shows the performance of the models on the \chembench corpus and the \chembenchmini subset. The relative performance difference between both is quite similar across most models. 
-This makes \chembenchmini subset a reliable subset for human baseline comparison and particularly valuable for rapid prototyping and initial model assessment phases. 
+\Cref{fig:performance_corpus_and_tiny} shows the performance of the models on the \chembench corpus and the \chembenchmini subset. The relative performance difference between both is quite similar across most models.
+This makes \chembenchmini subset a reliable subset for human baseline comparison and particularly valuable for rapid prototyping and initial model assessment phases.
 
 An interesting observation is the significant impact of chemical preference tasks on \GPTFour's scores. A detailed breakdown of overall accuracy into scores on different skills and difficulty levels is provided in \Cref{table:performance_table} and \Cref{tab:performance_table_human_subset} for \chembench corpus and the \chembenchmini subset, respectively.
 
@@ -392,7 +392,7 @@ An interesting observation is the significant impact of chemical preference task
     \includegraphics{figures/corpus_human_comparison.pdf}
     \caption{\textbf{
         Performance of the models on the \chembench corpus and \chembenchmini subset.} The bar plot shows the fraction of questions that were answered completely correctly, highlighting the relative performance of different models on both the \chembench corpus and the \chembenchmini subset.
-        We see that the model ranking remains fairly consistent across both sets}  
+        We see that the model ranking remains fairly consistent across both sets}
     \label{fig:performance_corpus_and_tiny}
     \script{corpus_humanset_performance.py}
 \end{figure}
