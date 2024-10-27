@@ -45,14 +45,8 @@ def build_name_dir_map(report_base_dir=None):
                     model_name = yaml_data["model_name"]
                 else:
                     model_name = yaml_data["model_name"] + "-T-one"
-
-            model_name = yaml_data["model_name"]
-            if model_name == 'Llama-2-70B Chat':
-                model_name = 'Llama-2-70B-Chat'
             else:
-                raise ValueError(f"Model name {model_name} not recognized")
-
-
+                model_name = yaml_data["model_name"]
         name_dir_map[model_name] = os.path.abspath(report_subdir)
 
     with open(data / "name_to_dir_map.pkl", "wb") as f:
