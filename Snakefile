@@ -194,6 +194,7 @@ rule question_counts:
       "src/tex/output/question_count_per_dir/json_file_counts_electron_counts.txt",
       "src/tex/output/question_count_per_dir/json_file_counts_chem_chem_comp.txt",
       "src/tex/output/question_count_per_dir/json_file_counts_materials_compatibility.txt",
+      "src/tex/output/question_count_per_dir/json_file_counts_preference.txt",
     ]
   script: "src/scripts/count_json_files.py"
 
