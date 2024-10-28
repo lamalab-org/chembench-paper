@@ -453,14 +453,13 @@ We also investigated the impact of sampling temperature (i.e. temperature 0 mean
 \oone consistently leads across both \ChemBench corpus and \chembenchmini.  \ClaudeThreeFiveSonnet, \GPTFourO, \LlamaThreeOneFourZeroFiveBInstruct form the next tier of strong performers. These models show robust performance across all skills and difficulty levels. 
 
 Larger models generally perform better (\LlamaThreeOneFourZeroFiveBInstruct > \LlamaThreeOneSeventyBInstruct > \LlamaThreeOneEightBInstruct). However, smaller but well-designed models can compete with larger models. For example, \GemmaTwoNineBIt has an overall accuracy of 0.48 on \ChemBench corpus, which is only 10\% less accurate than the much larger \LlamaThreeOneFourZeroFiveBInstruct model.
+
 One can observe a clear progression of performance across model families (e.g., \ClaudeThreeFiveSonnet >  \ClaudeThree > \ClaudeTwo or \GPTFourO > \GPTFour > \GPTThreeFiveTurboZeroT). Newer versions consistently outperform their predecessors, indicating improvements in scientific understanding of these model families.
 Scores on knowledge-intensive tasks are typically lower than those on calculation and reasoning-intensive questions. Performance on reasoning-intensive questions in \chembench tends to be the highest.
 
-Based on these findings, some scope for improving these models could be to focus on enhancing knowledge-based training, possibly through improved pre-training on chemistry-specific texts or with chemistry knowledge-base integration. 
-Models show the strongest performance in reasoning tasks on the \chembench corpus, which suggests that current training approaches are good at developing logical/reasoning capabilities for basic problem-solving of university-level exams. 
-However, performance drops significantly for advanced tasks, suggesting that more advanced chemistry problems with complex, multi-step solutions should be included in training or finetuning.
+Based on these findings, some scope for improving these models could be to focus on enhancing knowledge-based training, possibly through improved pre-training on chemistry-specific texts or with chemistry knowledge-base integration. However, this type of knowledge should be integrated with sound machine learning approaches. For example, \GalacticaOneTwentyB showed the lowest perforamnce in our study, even though it was specifically trained on scientific text. This suggest that the knowledge embedded in papers was not leveraged correctly.
 
-
+Models show the strongest performance in reasoning tasks on the \chembench corpus, which suggests that current training approaches are good at developing logical/reasoning capabilities for basic problem-solving of university-level exams. However, performance drops significantly for advanced tasks, suggesting that more advanced chemistry problems with complex, multi-step solutions should be included in training or finetuning.
 
 \clearpage
 \subsection{Leaderboard}
