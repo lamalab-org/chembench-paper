@@ -184,7 +184,7 @@ However, since some subjects are composed of questions from different sources, t
 \end{table}
 
 \begin{table}
-    \caption{\textbf{Performance of the models on the \enquote{tiny} subset of the \chembench corpus.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels.}
+    \caption{\textbf{Performance of the models on \chembenchmini.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels.}
     \resizebox{\textwidth}{!}{
     \variable{output/performance_table_human_subset.tex}
     }
@@ -231,7 +231,7 @@ An interesting observation is the significant impact of chemical preference task
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/performance_per_topic_tiny.pdf}
-    \caption{\textbf{Fraction of completely correctly answered questions per data source on \chembenchmini.} The heatmap shows, in color, the fraction of questions answered correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered correctly by the models. A score of one (red) indicates that all questions were answered correctly, while a score of zero (blue) indicates that none were answered correctly.
+    \caption{\textbf{Fraction of correctly answered questions per data source on \chembenchmini.} The heatmap shows, in color, the fraction of questions answered correctly by different systems for some of our data sources. The performance is measured as the fraction of questions answered correctly by the models. A score of one (red) indicates that all questions were answered correctly, while a score of zero (blue) indicates that none were answered correctly.
         We see that the performance of the models varies significantly between the different data sources. For instance, it is interesting to observe that questions sourced based on textbooks seem easier for the leading models than for humans. However, this performance does not correlate with performance on other sources, e.g., semi-programmatically created tasks such as questions about the number of signals in an \gls{nmr} spectrum.
     }
     \label{fig:performance_per_topic_tiny}
