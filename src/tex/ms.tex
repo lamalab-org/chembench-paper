@@ -47,7 +47,7 @@ This might ultimately lead to general copilot systems for chemists that can prov
 
 However, the rapid increase in capabilities of chemical \gls{ml} models led (even before the recent interest in \glspl{llm}) to concerns about the potential for dual use of these technologies, e.g., for the design of chemical weapons.\autocite{gopal2023releasing, ganguli2022red, Urbina_2022, campbell2023censoring, moulange2023towards, urbina2022teachable}
 To some extent, this is not surprising as any technology that, for instance, is used to design non-toxic molecules can also be used inversely to predict toxic ones (even though the synthesis would still require access to controlled physical resources and facilities).
-Still, it is essential to realize that such models' user base is wider than that of chemistry and materials science experts who can critically reflect on every output such models produce.
+Still, it is essential to realize that the user base of \glspl{llm} is broader than that of chemistry and materials science experts who can critically reflect on every output these models produce.
 For example, many students frequently consult these tools---perhaps even to prepare chemical experiments.\autocite{Intelligent.com_2023}
 This also applies to users from the general public, who might consider using \glspl{llm} to answer questions about the safety of chemicals.
 Thus, for some users, misleading information---especially about safety-related aspects---might lead to harmful outcomes.
@@ -63,7 +63,7 @@ This, however, only gives a very limited view of the general chemical capabiliti
 
 While some benchmarks based on university entrance exams\autocite{Zaki_2024, arora2023llms} or automatic text mining\autocite{song2023honeybee, wei2021chemistryqa, song-etal-2023-matsci} have been proposed, none of them have been widely accepted.
 This is likely because they cannot automatically be used with black box (or tool-augmented) systems, do not cover a wide range of topics and skills, or are not carefully validated by experts.
-On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights on how the models compare relative to experts.
+On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights on how the models compare relative to experts \autocite{wu2018moleculenet}.
 
 In this work, we report a novel benchmarking framework  (\Cref{fig:overview_figure}), which we call \chembench, and use it to reveal limitations of current frontier models for use in the chemical sciences.
 Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs compiled from diverse sources (\variable{output/manually_generated.txt}\xspace manually generated, and \variable{output/automatically_generated.txt}\xspace semi-automatically generated).
@@ -79,7 +79,7 @@ To contextualize the scores, we also surveyed \variable{output/number_experts.tx
     The framework's foundation is the benchmark corpus that consists of thousands of questions and answers that we manually or semi-automatically compiled from various sources (see \Cref{sec:curation}).
     Questions are classified based on topics, required skills (reasoning, calculation, knowledge, intuition), and difficulty levels.
     We then used this corpus to evaluate the performance of various models and tool-augmented systems using a custom framework. To provide a baseline, we built a web application that we used to survey experts in chemistry.
-    The results of the evaluations are then compiled in publicly accessible leaderboards, which we propose as a foundation for evaluating future models.
+    The results of the evaluations are then compiled in publicly accessible leaderboards (\Cref{sec:leaderboard}), which we propose as a foundation for evaluating future models.
     }
     \label{fig:overview_figure}
 \end{figure}
@@ -151,9 +151,9 @@ Many other models also outperform the average human performance.
 Interestingly, \LlamaThreeOneFourZeroFiveBInstruct shows performance that is close to the leading proprietary models, indicating that new open source models can be competitive with the best proprietary models also in chemical settings.
 
 Notably, we find that models are still limited in their ability to answer knowledge-intensive questions (\Cref{tab:performance_table_human_subset}), that is they did not memorize the relevant facts. Our results indicate that this is not a limitation that could be overcome by simple application of \gls{rag} systems such as \PaperQATwo. This is likely because the required knowledge cannot easily be accessed via papers (which is the only external knowledge \PaperQATwo has access to) but rather by lookup in specialized databases (e.g., PubChem, Gestis), which also the humans in our study used to answer such questions (\Cref{fig:tool_use}).
-This indicates that there is still room for improvement of chemical \gls{llm} by training them on more specialized data sources or by integrating them with specialized databases.
+This indicates that there is still room for improvement of chemical \glspl{llm} by training them on more specialized data sources or by integrating them with specialized databases.
 
-In addition, our analysis shows that the performance of models is correlated with their size (see \Cref{fig:model_size_plot}). This is in line with observations in other domains but also indicates that chemical \gls{llm} could, to some extent, be further improved by scaling them up.
+In addition, our analysis shows that the performance of models is correlated with their size (see \Cref{fig:model_size_plot}). This is in line with observations in other domains but also indicates that chemical \glspl{llm} could, to some extent, be further improved by scaling them up.
 
 \paragraph{Performance per topic} To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
 For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and  classified all questions in the \chembench corpus into these topics.
@@ -163,9 +163,9 @@ In this spider chart, the worst score for every dimension is zero (no question a
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{figures/all_questions_models_completely_correct_radar_human.pdf}
-    \caption{\textbf{Performance of the models and humans on the different topics on \chembenchmini.} The radar plot shows the performance of the models and humans on the different topics of \chembenchmini. The performance is measured as the fraction of questions that were answered completely correctly by the models.
+    \caption{\textbf{Performance of the models and humans on the different topics on \chembenchmini.} The radar plot shows the performance of the models and humans on the different topics of \chembenchmini. The performance is measured as the fraction of questions that were answered correctly by the models.
     The best score for every dimension is one (all questions answered correctly), and the worst is zero (no question answered correctly). A larger colored area indicates a better performance.
-    This figure shows the performance on \chembenchmini. The performance of models on the entire corpus is shown in \Cref{fig:performance_per_topic}.
+    This figure shows the performance on \chembenchmini. The performance of models on the entire corpus is shown in \Cref{fig:barplot_all_correct_all_questions}.
     }
     \label{fig:all_questions_models_completely_correct_radar_human}
     \script{analyze_model_reports.py}
@@ -267,7 +267,7 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 
 \begin{table}[!h]
     \centering
-    \caption{\textbf{Overview of sources of the curated questions}. The table provides an overview of the types of sources the questions have been curated from. Detailed sources are available in the source data on GitHub. Questions without source have been curated completely from scratch. Questions based on lecture notes or URL have been curated based on content presented in those resources. All questions have been rephrased, annotated, and reviewed before being added to the corpus.}
+    \caption{\textbf{Overview of sources of the curated questions}. The table provides an overview of the types of sources the questions have been curated from. Detailed sources are available in the source data on GitHub. Questions without source have been curated completely from scratch. Questions based on lecture notes or URL have been curated based on content presented in those resources. All questions have been rephrased, annotated, and reviewed before being added to the corpus. Note that the chemical preference questions are the main corpus of the semi-automatically generated group with \variable{output/question_count_per_dir/json_file_counts_preference.txt} questions of the total \variable{output/automatically_generated.txt}.}
     \variable{output/sources_table.tex}
     \label{tab:sources}
 \end{table}
@@ -367,6 +367,8 @@ Parts of A.M.'s work was supported as part of the \enquote{SOL-AI} project funde
 K.M.J.\ is part of the NFDI consortium FAIRmat funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – project 460197019.
 
 K.M.J.\ thanks FutureHouse (a non-profit research organization supported by the generosity of Eric and Wendy Schmidt) for supporting \PaperQATwo runs via access to the \gls{api}. We also thank Stability.AI for the access to its HPC cluster.
+
+M.R.G.\ and M.V.G.\ acknowledge financial support from the Spanish Agencia Estatal de Investigaci\'{o}n (AEI) through grants TED2021-131693B-I00 and CNS2022-135474, funded by MICIU/AEI/10.13039/501100011033 and by the European Union NextGenerationEU/PRTR. M.V.G.\ acknowledges support from the Spanish National Research Council (CSIC) through Programme for internationalization i-LINK 2023 (Project ILINK23047).
 
 A.A.\ gratefully acknowledges financial support for this research by the Fulbright U.S. Student Program, which is sponsored by the U.S.\ Department of State and German-American Fulbright Commission. Its contents are solely the responsibility of the author and do not necessarily represent the official views of the Fulbright Program, the Government of the United States, or the German-American Fulbright Commission.
 

@@ -101,6 +101,18 @@ def main():
 
     logger.info(f"Number of json files in pictograms: {num_pictograms}")
 
+    num_preference = len(
+        glob(
+            os.path.join(
+                chembench_repo, "data", "preference", "*.json"
+            )
+        )
+    )
+
+    with open(output_path / "json_file_counts_preference.txt", "w") as f:
+        f.write(f"{num_preference}" + "\endinput")
+
+    logger.info(f"Number of json files about chemical preference: {num_preference}")
 
 if __name__ == "__main__":
     main()
