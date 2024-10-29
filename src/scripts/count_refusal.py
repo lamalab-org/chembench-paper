@@ -29,7 +29,12 @@ from chembench.constant import (
 )
 from utils import obtain_chembench_repo
 from paths import output
+from langchain.globals import set_llm_cache
+from langchain.cache import SQLiteCache
+
 load_dotenv("/.env", override=True)
+
+set_llm_cache(SQLiteCache(database_path=".langchain.db"))
 
 def extract_examples(name, datafolder):
     names = construct_name_to_path_dict(datafolder)

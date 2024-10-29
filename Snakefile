@@ -259,4 +259,4 @@ rule save_trend_variables:
 rule plot_corpuses:
   input: "src/data/model_score_dicts.pkl"
   output: "src/tex/figures/corpus_human_comparison.pdf"
-  script: "src/scripts/plot_corpuses.py"
+  script: "src/scripts/corpus_humanset_performace.py"

@@ -1,22 +1,5 @@
 {
-  "extractions_fraction": 0.0014099400775467042,
-  "questions_extracted": 4,
-  "extracted": [
-    {
-      "question_name": "polymer_chemistry_fsu-26-polymer_chemistry_26",
-      "completion": "[ANSWER]I am unsure[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_11-pointgroups",
-      "completion": "[ANSWER]C1[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_4-pointgroups",
-      "completion": "[ANSWER]C2[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_13-pointgroups",
-      "completion": "[ANSWER]C2[/ANSWER]"
-    }
-  ]
+  "extractions_fraction": 0.0,
+  "questions_extracted": 0,
+  "extracted": []
 }
