@@ -593,7 +593,7 @@ In addition to directly prompting \glspl{llm}, we also investigated the performa
 For this, we investigated the two models which showed the best overall results, \GPTFourO and \ClaudeThreeFiveSonnet (\oone overperformed both models but is not recommended using this model with such \enquote{reasoning} prompts such as ReAct\autocite{yao2022react} or \gls{cot}\autocite{wei2023cot}). 
 For both models, we created a ReAct-style tool augmentation environment in which models had access to WolframAlpha, the ArXiv \gls{api}, Wikipedia, and web search (using Brave search \gls{api}).
 We based the selection of these tools on the most used tools by humans (see \Cref{fig:tool_use}).
-Additionally, we added two specific tools to convert IUPAC names to SMILES, and SMILES to IUPAC names.
+Additionally, we added two specific tools to convert \gls{iupac} names to \gls{smiles}, and \gls{smiles} to \gls{iupac} names.
 These conversion tools allow us to better understand how the agents perform for some specific questions in this agent environment configurations.
 We implemented the systems using Langchain with the default ReAct prompt and constrained the system to a maximum of ten LLM calls.
 
