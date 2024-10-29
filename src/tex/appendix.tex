@@ -600,7 +600,7 @@ We implemented the systems using Langchain with the default ReAct prompt and con
 While for \ClaudeThreeFiveSonnet the overall performance increased (by less than 1\%), we observe a decrease in performance for \GPTFourO compared with the \llm without tools (\Cref{tab:performance_table}). 
 If we study the results by each type of question, we observe an improvement for questions regarding electron counts or point groups of compounds.
 However, the scores decreased for questions asking about the number of isomers or \gls{ghs} pictograms.
-For the specific questions about converting IUPAC names to SMILES, the results decreased notably despite the specific tools that were prepared for those questions. 
+For the specific questions about converting \gls{iupac} names to \gls{smiles}, the results decreased notably despite the models having access to specific tools prepared for those questions. 
 By studying the reasoning path for these cases, we found an important error in this ReAct configuration resulting from a bad response format of the model that results in an error raised by the LangChain framework.
 This show that these agent configurations need to be really optimized for the task, and it is not only about equipping the \gls{llm} with tools, but also it requires of engineering work to improve the results.
 
