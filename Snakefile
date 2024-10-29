@@ -125,6 +125,7 @@ rule plot_overview_performance:
   output: ["src/tex/figures/overall_performance.pdf"]
   script: "src/scripts/plot_overview_performance_plot.py"
 
+
 # plots the performance in various ways
 rule analyze_model_reports:
   input:
@@ -193,6 +194,7 @@ rule question_counts:
       "src/tex/output/question_count_per_dir/json_file_counts_electron_counts.txt",
       "src/tex/output/question_count_per_dir/json_file_counts_chem_chem_comp.txt",
       "src/tex/output/question_count_per_dir/json_file_counts_materials_compatibility.txt",
+      "src/tex/output/question_count_per_dir/json_file_counts_preference.txt",
     ]
   script: "src/scripts/count_json_files.py"
 
@@ -241,14 +243,20 @@ rule refusal_table:
     script: "src/scripts/make_refusal_tables.py"
 
 rule sources_table:
-    input: "src/data/model_score_dicts.pkl"
+    input: "src/data/questions.pkl"
     output: "src/tex/output/sources_table.tex"
     script: "src/scripts/make_source_table.py"
 
 rule save_trend_variables:
-  input: src/scripts/appendix_variables.py
+  input: "src/scripts/appendix_variables.py"
   output: [
       "src/tex/output/trends_section_variables/gemma_9B.txt",
       "src/tex/output/trends_section_variables/diff_between_llama_405B_and_gemma_9B.txt",
   ]
-  script: src/scripts/appendix_variables.py
+  script: "src/scripts/appendix_variables.py"
+
+#plot performance of models on both corpus
+rule plot_corpuses:
+  input: "src/data/model_score_dicts.pkl"
+  output: "src/tex/figures/corpus_human_comparison.pdf"
+  script: "src/scripts/plot_corpuses.py"

@@ -15,6 +15,7 @@ from utils import (
     ONE_COL_WIDTH_INCH,
     ONE_COL_GOLDEN_RATIO_HEIGHT_INCH,
 )
+from collections import Counter
 
 # tool 127
 # no tool 121
@@ -64,7 +65,7 @@ def make_human_performance_plots():
     dirs_tool = list(set([os.path.dirname(p) for p in paths_tool]))
     dirs_no_tool = list(set([os.path.dirname(p) for p in paths_no_tool]))
     all_results = []
-    number_experts = 0
+    experts = []
     for d in dirs_tool + dirs_no_tool:
         try:
             results = load_all_reports(d, os.path.join(chembench, "data"))
@@ -82,7 +83,7 @@ def make_human_performance_plots():
                 results["userid"] = userid
                 results["num_results"] = len(results)
                 results["experience"] = experience
-                number_experts += 1
+                experts.append(userid)
                 results["highest_education"] = highest_education
                 if "tool-allowed" in d:
                     results["tool_allowed"] = True
@@ -96,9 +97,13 @@ def make_human_performance_plots():
             print(e)
             continue
 
+    expert_counts = Counter(experts)
+    experts_that_occurred_more_than_once = [
+        k for k, v in expert_counts.items() if v > 1
+    ]
 
     with open(output / "number_experts.txt", "w") as f:
-        f.write(f"{str(int(number_experts))}" + "\endinput")
+        f.write(f"{str(int(len(experts_that_occurred_more_than_once)))}" + "\endinput")
 
     long_df = pd.concat(all_results).reset_index(drop=True)
     long_df["all_correct"] = long_df.apply(all_correct, axis=1)
