@@ -151,7 +151,7 @@ Many other models also outperform the average human performance.
 Interestingly, \LlamaThreeOneFourZeroFiveBInstruct shows performance that is close to the leading proprietary models, indicating that new open source models can be competitive with the best proprietary models also in chemical settings.
 
 Notably, we find that models are still limited in their ability to answer knowledge-intensive questions (\Cref{tab:performance_table_human_subset}), that is they did not memorize the relevant facts. Our results indicate that this is not a limitation that could be overcome by simple application of \gls{rag} systems such as \PaperQATwo. This is likely because the required knowledge cannot easily be accessed via papers (which is the only external knowledge \PaperQATwo has access to) but rather by lookup in specialized databases (e.g., PubChem, Gestis), which also the humans in our study used to answer such questions (\Cref{fig:tool_use}).
-This indicates that there is still room for improvement in chemical \glspl{llm} by training them on more specialized data sources or by integrating them with specialized databases.
+This indicates that there is still room for improvement of chemical \glspl{llm} by training them on more specialized data sources or by integrating them with specialized databases.
 
 In addition, our analysis shows that the performance of models is correlated with their size (see \Cref{fig:model_size_plot}). This is in line with observations in other domains but also indicates that chemical \glspl{llm} could, to some extent, be further improved by scaling them up.
 
@@ -163,9 +163,9 @@ In this spider chart, the worst score for every dimension is zero (no question a
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{figures/all_questions_models_completely_correct_radar_human.pdf}
-    \caption{\textbf{Performance of the models and humans on the different topics of the \enquote{tiny} subset of the \chembench corpus.} The radar plot shows the performance of the models and humans on the different topics of \enquote{tiny} subset of the \chembench corpus. The performance is measured as the fraction of questions that were answered correctly by the models.
+    \caption{\textbf{Performance of the models and humans on the different topics on \chembenchmini.} The radar plot shows the performance of the models and humans on the different topics of \chembenchmini. The performance is measured as the fraction of questions that were answered correctly by the models.
     The best score for every dimension is one (all questions answered correctly), and the worst is zero (no question answered correctly). A larger colored area indicates a better performance.
-    This figure shows the performance on the subset of questions that were answered by humans. The performance of models on the entire corpus is shown in \Cref{fig:barplot_all_correct_all_questions}.
+    This figure shows the performance on \chembenchmini. The performance of models on the entire corpus is shown in \Cref{fig:barplot_all_correct_all_questions}.
     }
     \label{fig:all_questions_models_completely_correct_radar_human}
     \script{analyze_model_reports.py}
