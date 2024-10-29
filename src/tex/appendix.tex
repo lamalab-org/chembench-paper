@@ -590,7 +590,7 @@ They could also report what tools they used for answering questions. As \Cref{fi
 \clearpage
 \subsection{Tool augmented models} \label{sec:react-environment}
 In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
-For this, we investigated the two models which showed the best overall results, \GPTFourO and \ClaudeThreeFiveSonnet (\oone overperformed both models but is not recommended using this model with such \enquote{reasoning} prompts such as ReAct\autocite{yao2022react} or CoT\autocite{wei2023cot}). 
+For this, we investigated the two models which showed the best overall results, \GPTFourO and \ClaudeThreeFiveSonnet (\oone overperformed both models but is not recommended using this model with such \enquote{reasoning} prompts such as ReAct\autocite{yao2022react} or \gls{cot}\autocite{wei2023cot}). 
 For both models, we created a ReAct-style tool augmentation environment in which models had access to WolframAlpha, the ArXiv API, the Wikipedia access, and a web search (using Brave browser API).
 We based the election of these tools based in the most used tools by the humans (see \Cref{fig:tool_use}).
 Additionally, we added two specific tools to convert IUPAC names to SMILES, and SMILES to IUPAC names.
