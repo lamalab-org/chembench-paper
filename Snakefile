@@ -247,6 +247,13 @@ rule sources_table:
     output: "src/tex/output/sources_table.tex"
     script: "src/scripts/make_source_table.py"
 
+rule save_trend_variables:
+  input: "src/scripts/appendix_variables.py"
+  output: [
+      "src/tex/output/trends_section_variables/gemma_9B.txt",
+      "src/tex/output/trends_section_variables/diff_between_llama_405B_and_gemma_9B.txt",
+  ]
+  script: "src/scripts/appendix_variables.py"
 
 #plot performance of models on both corpus
 rule plot_corpuses:

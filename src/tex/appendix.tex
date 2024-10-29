@@ -343,7 +343,7 @@ The general pattern of performance varies significantly between the different to
 However, since some subjects are composed of questions from different sources, the ranking of the models is, in some instances, different from the one on \chembenchmini.
 
 \begin{table}
-    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels.}
+    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels. Models with \enquote{T-one} in the name were run for a temperature of 1, which allows us to study the temperature effect in the benchmark. Systems with \enquote{ReAct} in the name are tool augmented, i.e., they can call external tools such as web search or a calculator to answer the questions better. However, we limit those systems to ten calls to the \gls{llm}. This constraint often led the systems to not find the correct answer within the specified number of calls. In this case, we consider the answer as incorrect (see \Cref{sec:react-environment}).}
     \resizebox{\textwidth}{!}{
     \variable{output/performance_table.tex}
     }
@@ -481,7 +481,6 @@ We see that the performance of the models correlates with their size for the mod
     \label{fig:model_size_plot}
 \end{figure}
 
-
 \clearpage
 \subsection{Refusal detection}
 \Glspl{llm} typically undergo refusal training to prevent harmful or undesirable outputs. As a result, models may decline to answer questions perceived as potentially adversarial prompts.
@@ -589,6 +588,24 @@ They could also report what tools they used for answering questions. As \Cref{fi
 \end{figure}
 
 \clearpage
+\subsection{Tool augmented models} \label{sec:react-environment}
+In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
+For this, we investigated the two models which showed the best overall results, \GPTFourO and \ClaudeThreeFiveSonnet (\oone overperformed both models but is not recommended using this model with such \enquote{reasoning} prompts such as ReAct\autocite{yao2022react} or \gls{cot}\autocite{wei2023cot}). 
+For both models, we created a ReAct-style tool augmentation environment in which models had access to WolframAlpha, the ArXiv \gls{api}, Wikipedia, and web search (using Brave search \gls{api}).
+We based the selection of these tools on the most used tools by humans (see \Cref{fig:tool_use}).
+Additionally, we added two specific tools to convert \gls{iupac} names to \gls{smiles}, and \gls{smiles} to \gls{iupac} names.
+These conversion tools allow us to better understand how the agents perform for some specific questions in this agent environment configuration.
+We implemented the systems using Langchain\autocite{Chase_LangChain_2022} with the default ReAct prompt and constrained the system to a maximum of ten \gls{llm} calls.
+
+While for \ClaudeThreeFiveSonnet the overall performance did not change, we observe a decrease in performance for \GPTFourO compared with the \llm without tools (\Cref{tab:performance_table}). 
+If we study the results by each type of question, we observe an improvement for questions regarding electron counts or point groups of compounds.
+However, the scores decreased for questions asking about the number of isomers or \gls{ghs} pictograms.
+For the specific questions about converting \gls{iupac} names to \gls{smiles}, the results decreased notably despite the models having access to specific tools prepared for those questions. 
+By studying the reasoning path for these cases, we found that the error results from the models responding in a format that the LangChain framework with the default ReAct loop cannot handle. 
+This indicates that agent frameworks need optimization to be more robust. It involves not only equipping the \glspl{llm} with tools but also necessitates engineering efforts to create robust systems.
+
+
+\clearpage
 \subsection{Confidence estimates} \label{sec:confidence_estimates}
 
 Since it is important to understand if models can provide an indication of whether their answer might likely be incorrect, we prompted some of our top performing \glspl{llm} to return the confidence in providing a correct answer on an ordinal scale.
@@ -622,8 +639,22 @@ We also investigated the impact of sampling temperature (i.e. temperature 0 mean
 \end{figure}
 
 
+\clearpage
+\subsection{Summary of trends and recommendations}
 
+\oone consistently leads across both the \ChemBench corpus and \chembenchmini.  \ClaudeThreeFiveSonnet, \GPTFourO, \LlamaThreeOneFourZeroFiveBInstruct form the next tier of strong performers. These models show robust performance across all skills and difficulty levels. 
 
+Larger models generally perform better (\LlamaThreeOneFourZeroFiveBInstruct > \LlamaThreeOneSeventyBInstruct > \LlamaThreeOneEightBInstruct). However, smaller but well-designed models can compete with larger models. For example, \GemmaTwoNineBIt has an overall accuracy of \variable{output/trends_section_variables/gemma_9B.txt} on the \ChemBench corpus, which is only \variable{output/trends_section_variables/diff_between_llama_405B_and_gemma_9B.txt}\% less accurate than the much larger \LlamaThreeOneFourZeroFiveBInstruct model.
+
+One can observe a clear progression of performance across model families (e.g., \ClaudeThreeFiveSonnet >  \ClaudeThree > \ClaudeTwo or \GPTFourO > \GPTFour > \GPTThreeFiveTurboZeroT). Newer versions consistently outperform their predecessors.
+Scores on knowledge-intensive tasks are typically lower than those on calculation and reasoning-intensive questions. 
+
+Based on these findings, some scope for improving these models could be to focus on enhancing knowledge-based training, possibly through improved pre-training on chemistry-specific texts or with chemistry knowledge-base integration. However, innovation is also needed to incorporate this information into the systems. For example, even \PaperQATwo could not outperform the \gls{llm} it is using for directing the tools, even though the agent has access to literature evidence.
+This suggests we might need to not only focus on building chemistry-specific retrieval datasets since current systems fail to retrieve the relevant papers and should be coupled with more domain-specific databases. However, the observation that our ReAct agents were too fragile to answer questions for which they had custom-made tools available correctly suggests that we also must invest in building more robust agent frameworks (see \Cref{sec:react-environment} for further discussion about the ReAct environment). 
+
+Models show the strongest performance in reasoning tasks on the \chembench corpus, which suggests that current training approaches are good at developing logical/reasoning capabilities for basic problem-solving of university-level exams. However, performance drops significantly for advanced tasks, suggesting that more advanced chemistry problems with complex, multi-step solutions (e.g., solving analytical chemistry problems) should be included in training or finetuning.
+
+The post-training (e.g., \gls{rlhf}) of the current models does not equip them with human-like \enquote{chemical taste.} This, however, will be essential for future discovery research (e.g., in combination with genetic algorithms).
 
 \clearpage
 \subsection{Leaderboard}
