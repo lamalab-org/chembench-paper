@@ -343,7 +343,7 @@ The general pattern of performance varies significantly between the different to
 However, since some subjects are composed of questions from different sources, the ranking of the models is, in some instances, different from the one on \chembenchmini.
 
 \begin{table}
-    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels.}
+    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels. Models with \enquote{T-one} in the name were run for Temperature=1, which allow to study the temperature effect in the benchmark. Systems with \enquote{ReAct} in the name are tool augmented, i.e., they can call external tools such as web search or a calculator to better answer the questions. However, we limit those systems to a maximum of ten calls to the LLM. This constraint led the systems to often not find the correct answer within the specified number of calls. In this case, we consider the answer as incorrect (see \Cref{sec:react-environment}).}
     \resizebox{\textwidth}{!}{
     \variable{output/performance_table.tex}
     }
@@ -481,7 +481,6 @@ We see that the performance of the models correlates with their size for the mod
     \label{fig:model_size_plot}
 \end{figure}
 
-
 \clearpage
 \subsection{Refusal detection}
 \Glspl{llm} typically undergo refusal training to prevent harmful or undesirable outputs. As a result, models may decline to answer questions perceived as potentially adversarial prompts.
@@ -587,6 +586,24 @@ They could also report what tools they used for answering questions. As \Cref{fi
     \caption{\textbf{Tool usage by human scorers.} The plot shows the most commonly used tools by human participants.}
     \label{fig:tool_use}
 \end{figure}
+
+\clearpage
+\subsection{Tool augmented models} \label{sec:react-environment}
+In addition to directly prompting LLMs, we also investigated the performance of tool-augmented systems.
+For this, we investigated the two models which showed the best overall results, \GPTFourO and \ClaudeThreeFiveSonnet (\oone overperformed both models but is not recommended using this model with such \enquote{reasoning} prompts such as ReAct\autocite{yao2022react} or CoT\autocite{wei2023cot}). 
+For both models, we created a ReAct-style tool augmentation environment in which models had access to WolframAlpha, the ArXiv API, the Wikipedia access, and a web search (using Brave browser API).
+We based the election of these tools based in the most used tools by the humans (see \Cref{fig:tool_use}).
+Additionally, we added two specific tools to convert IUPAC names to SMILES, and SMILES to IUPAC names.
+These conversion tools allow us to better understand how the agents perform for some specific questions in this agent environment configurations.
+We implemented the systems using Langchain with the default ReAct prompt and constrained the system to a maximum of ten LLM calls.
+
+While for \ClaudeThreeFiveSonnet the overall performance increased (less than 1\%), they show a sloped decrease for \GPTFourO compared with the \llm without tools. 
+If we study the results by each type of question, we observe an improvement for questions regarding electron count or point group questions.
+On the other hand, the scores decreased question asking about the number of isomers or information contained in pictograms.
+For the specific questions about converting IUPAC names to SMILES, the results decreased notably despite the specific tools that were prepared for those questions. 
+By studying the reasoning path for these cases, we found an important error in this ReAct configuration resulting from a bad response format of the model that results in an error raised by the LangChain framework.
+This show that these agent configurations need to be really optimized for the task, and it is not only about equipping the \gls{llm} with tools, but also it requires of engineering work to improve the results.
+
 
 \clearpage
 \subsection{Confidence estimates} \label{sec:confidence_estimates}
