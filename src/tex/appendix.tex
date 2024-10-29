@@ -595,7 +595,7 @@ For both models, we created a ReAct-style tool augmentation environment in which
 We based the selection of these tools on the most used tools by humans (see \Cref{fig:tool_use}).
 Additionally, we added two specific tools to convert \gls{iupac} names to \gls{smiles}, and \gls{smiles} to \gls{iupac} names.
 These conversion tools allow us to better understand how the agents perform for some specific questions in this agent environment configuration.
-We implemented the systems using Langchain with the default ReAct prompt and constrained the system to a maximum of ten LLM calls.
+We implemented the systems using Langchain with the default ReAct prompt and constrained the system to a maximum of ten \gls{llm} calls.
 
 While for \ClaudeThreeFiveSonnet the overall performance increased (less than 1\%), they show a sloped decrease for \GPTFourO compared with the \llm without tools (\Cref{tab:performance_table}). 
 If we study the results by each type of question, we observe an improvement for questions regarding electron count or point group questions.
