@@ -20,7 +20,7 @@
 \end{itemize}
 
 \subsection{Related work}
-Existing benchmarks such as those from \textcite{guo2023large}, \textcite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above.
+Existing benchmarks such as those from \textcite{guo2023large}, \textcite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024}, \textcite{rein2023gpqagraduatelevelgoogleproofqa} fail to comply with most of the requirements stipulated above.
 While these benchmarks could provide valuable insights in the short term, they cannot follow the rapid additions to the \gls{llm} space.
 \chembench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, a particular focus on chemical safety, employment of diverse prompting strategies, and specialized notation for molecules and mathematical symbols.
 Moreover, our robust framework, including the platform \url{chembench.org}, will engage the community in open-source contributions.
@@ -248,7 +248,7 @@ In analyzing the performance of state-of-the-art models on the \chembench corpus
             The ligand-field splitting energy (LFSE) is computed as $LFSE=-0.4\cdot Dq \cdot n+0.6 \cdot Dq \cdot m$ with $n$ being the number of electrons in t2g d orbitals ($\mathrm{d}_{xz}$, $\mathrm{d}_{yz}$ and $\mathrm{d}_{xy}$), $m$ the number of electrons in eg d orbitals ($\mathrm{d}_{x^2-y^2}$ and $\mathrm{d_{z^2}}$), and Dq the ligand field splitting parameter. What is the value of LFSE in terms of Dq for the low-spin case in the metal complex tetramethylamine diaquacopper(II) ion? \\
             \midrule
             In phenol's mass spectrum, how does the intensity of the m/z 95 peak compare to the molecular ion peak at m/z 94? \\
-            A. 10.0\% \\ 
+            A. 10.0\% \\
             B. 6.6\% \\
             C. 7.0\% \\
             D. 94\% \\
@@ -485,7 +485,7 @@ In the applications, human participants were presented with molecules as rendere
     \includegraphics{figures/human_score_distribution.pdf}
     \script{plot_human_score_distribution.py}
     \caption{\textbf{Distribution of human scores.}The histogram and kernel density estimates show the fraction of questions answered correctly by the human volunteers.
-    Since the best possible score for each question is one and the worst possible score is zero, the values on this plot are between zero and one. A score of one would mean that a volunteer answered all questions correctly. A score of zero would mean that no question was answered correctly. 
+    Since the best possible score for each question is one and the worst possible score is zero, the values on this plot are between zero and one. A score of one would mean that a volunteer answered all questions correctly. A score of zero would mean that no question was answered correctly.
     We find that the scores for the questions that the human volunteers answered with tools are generally lower than the scores for the questions that the human volunteers answered without tools.}
     \label{fig:human_score_distribution}
 \end{figure}
