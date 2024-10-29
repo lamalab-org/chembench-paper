@@ -597,7 +597,7 @@ Additionally, we added two specific tools to convert IUPAC names to SMILES, and 
 These conversion tools allow us to better understand how the agents perform for some specific questions in this agent environment configurations.
 We implemented the systems using Langchain with the default ReAct prompt and constrained the system to a maximum of ten LLM calls.
 
-While for \ClaudeThreeFiveSonnet the overall performance increased (less than 1\%), they show a sloped decrease for \GPTFourO compared with the \llm without tools. 
+While for \ClaudeThreeFiveSonnet the overall performance increased (less than 1\%), they show a sloped decrease for \GPTFourO compared with the \llm without tools (\Cref{tab:performance_table}). 
 If we study the results by each type of question, we observe an improvement for questions regarding electron count or point group questions.
 On the other hand, the scores decreased question asking about the number of isomers or information contained in pictograms.
 For the specific questions about converting IUPAC names to SMILES, the results decreased notably despite the specific tools that were prepared for those questions. 
