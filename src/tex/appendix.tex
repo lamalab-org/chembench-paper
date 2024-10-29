@@ -594,7 +594,7 @@ For this, we investigated the two models which showed the best overall results, 
 For both models, we created a ReAct-style tool augmentation environment in which models had access to WolframAlpha, the ArXiv \gls{api}, Wikipedia, and web search (using Brave search \gls{api}).
 We based the selection of these tools on the most used tools by humans (see \Cref{fig:tool_use}).
 Additionally, we added two specific tools to convert \gls{iupac} names to \gls{smiles}, and \gls{smiles} to \gls{iupac} names.
-These conversion tools allow us to better understand how the agents perform for some specific questions in this agent environment configurations.
+These conversion tools allow us to better understand how the agents perform for some specific questions in this agent environment configuration.
 We implemented the systems using Langchain with the default ReAct prompt and constrained the system to a maximum of ten LLM calls.
 
 While for \ClaudeThreeFiveSonnet the overall performance increased (less than 1\%), they show a sloped decrease for \GPTFourO compared with the \llm without tools (\Cref{tab:performance_table}). 
