@@ -21,6 +21,8 @@ model_file_name_to_label = {
     "gpt-4": "GPT-4",
     "gpt-4o": "GPT-4o",
     "o1": "o1",
+    "claude3.5-react": "Claude-3.5 ReAct",
+    "gpt-4o-react": "GPT-4o ReAct",
     "llama2-70b-chat": "Llama 2 70B Chat",
     "llama3-70b-instruct": "Llama 3 70B",
     "llama3-70b-instruct-T-one": "Llama 3 70B Temp=1",

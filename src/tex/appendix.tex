@@ -159,13 +159,10 @@ In addition, as shown in \Cref{fig:cb_skillset} the \chembench corpus can be div
 \end{figure}
 
 
-\begin{table}
+\begin{xltabular}{\textwidth}{X}
     \centering
-    \small
-    \caption{\textbf{Examples for each of the required skills considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question. Note that the total count in this table is bigger than the \chembench corpus. This is because the same question can be annotated with two different \enquote{requires} skills, i.e. Reasoning and Calculation.}
+    \caption{\textbf{Examples for each of the required skills considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question. Note that the total count in this table is bigger than the \chembench corpus. This is because the same question can be annotated with two different \enquote{requires} skills, i.e. Reasoning and Calculation.} \\
     \label{tab:chembench_corpus_cognitive}
-    {\fontsize{8}{9}\selectfont
-        \begin{tabularx}{\textwidth}{X}
             \toprule
             \multicolumn{1}{c}{\textbf{Knowledge} 919 Questions} \\
             \midrule
@@ -196,10 +193,8 @@ In addition, as shown in \Cref{fig:cb_skillset} the \chembench corpus can be div
             \midrule
             Given that the average molar mass of the polymer chains in this sample of poly(lactic acid) (PLA) is \SI{595}{g mol^{-1}} using end-group analysis, where \SI{0.1619}{g} of PLA was dissolved in \SI{25}{cm^3} of benzyl alcohol and titrated with \SI{0.0400}{mol dm^{-3}} \ce{KOH} solution. The volume of \ce{KOH} solution required to reach the endpoint was \SI{6.81}{cm^3}. What is the average number of monomer units in each polymer chain of this sample? \\
             \bottomrule
-        \end{tabularx}
-    }
-\end{table}
-\normalsize
+\end{xltabular}
+
 
 
 
@@ -272,7 +267,7 @@ An interesting observation is the significant impact of chemical preference task
 
 \begin{figure}[htb]
     \centering
-    \includegraphics{figures/corpus_human_comparison.pdf}
+    \includegraphics[width=\textwidth]{figures/corpus_human_comparison.pdf}
     \caption{\textbf{
         Performance of the models on the \chembench corpus and \chembenchmini subset.} The bar plot shows the fraction of questions that were answered completely correctly, highlighting the relative performance of different models on both the \chembench corpus and the \chembenchmini subset.
         We see that the model ranking remains fairly consistent across both sets}
