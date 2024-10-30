@@ -15,14 +15,6 @@
       "completion": "[ANSWER] C2v [/ANSWER]"
     },
     {
-      "question_name": "point_group-pointgroups_11-pointgroups",
-      "completion": "[ANSWER]C1[/ANSWER]"
-    },
-    {
-      "question_name": "blac_gfk-iii_4_43-blac_gfk_iii_4_43",
-      "completion": "[ANSWER]AB[/ANSWER]"
-    },
-    {
       "question_name": "toxicology_lmu-31-tox_lmu_31",
       "completion": "[ANSWER]BC[/ANSWER]\n\n(Note: Batrachotoxin is not exclusively found in poison dart frogs, but also in other animals. Additionally, it is not lethal only after oral ingestion, as it can be deadly through other routes of exposure.)"
     },
@@ -37,6 +29,14 @@
     {
       "question_name": "analytical_chemistry-13-analytical_chemistry_13",
       "completion": "[ANSWER]AC[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_11-pointgroups",
+      "completion": "[ANSWER]C1[/ANSWER]"
+    },
+    {
+      "question_name": "blac_gfk-iii_4_43-blac_gfk_iii_4_43",
+      "completion": "[ANSWER]AB[/ANSWER]"
     }
   ]
 }
