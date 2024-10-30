@@ -201,64 +201,6 @@ In addition, as shown in \Cref{fig:cb_skillset} the \chembench corpus can be div
 \end{table}
 \normalsize
 
-In analyzing the performance of state-of-the-art models on the \chembench corpus, we identified several chemical topics where the models consistently struggled to provide correct answers. \Cref{tab:chembench_corpus_models_failed_topic} presents examples of challenging questions across different chemical domains, highlighting specific areas where current models need improvement
-
-\begin{table}
-    \centering
-    \small
-    \caption{\textbf{Examples of some questions failed for all the state-of-the-art models.} The table shows examples of the \chembench corpus for which all models considered in \Cref{fig:human_vs_models_bar} fail to answer correctly.}
-    \label{tab:chembench_corpus_cognitive}
-    {\fontsize{8}{9}\selectfont
-        \begin{tabularx}{\textwidth}{X}
-            \toprule
-            Which of the following compounds are capable of producing hazardous explosive peroxides? \\
-            A. Cyclohexene \\
-            B. Cyclooctene \\
-            C. Decalin \\
-            D. Ethyl ether \\
-            E. Isopropyl ether \\
-            F. Para-dioxane \\
-            G. Tetralin \\
-            \midrule
-            What is the oxidation number of hydrogen in the reactants of Sabatier reaction? \\
-            \midrule
-            How does a non-competitive inhibitor influence the enzyme kinetics of a reaction in the Lineweaver-Burk-plot when compared to a competitive inhibitor? \\
-            A. The intersection with y-axis shift to higher numbers \\
-            B. The intersection with y-axis shift to lower numbers \\
-            C. The slope decreases \\
-            D. The slope increases \\
-            \midrule
-            Poly(lactic acid) (PLA) can be broken down enzymatically to lactic acid monomer and compound B (a dimer of lactic acid). A plastic sample degraded to 1.044 g, and titration showed it needed \SI{19.40}{cm^{3}} of \SI{0.100}{mol dm^{-3}} \ce{NaOH} to neutralize. What is the number of moles of acid in the sample? \\
-            \midrule
-            What is hydrofluoric acid used for? \\
-            A. For cleaning facades \\
-            B. For etching glass \\
-            C. For filling accumulators \\
-            D. For soldering \\
-            \midrule
-            How many chiral centers are present in the molecular structure of citric acid? \\
-            \midrule
-            What is the sum of the stoichiometric coefficients on the left side of the redox reaction equation: \ce{Cd(NCS)2 + KNO3 -> K2CO3 + CO + SO2 + N2 + CdO}? \\
-            A. 10 \\
-            B. 14 \\
-            C. 18 \\
-            D. 23 \\
-            E. 9 \\
-            \midrule
-            The ligand-field splitting energy (LFSE) is computed as $LFSE=-0.4\cdot Dq \cdot n+0.6 \cdot Dq \cdot m$ with $n$ being the number of electrons in t2g d orbitals ($\mathrm{d}_{xz}$, $\mathrm{d}_{yz}$ and $\mathrm{d}_{xy}$), $m$ the number of electrons in eg d orbitals ($\mathrm{d}_{x^2-y^2}$ and $\mathrm{d_{z^2}}$), and Dq the ligand field splitting parameter. What is the value of LFSE in terms of Dq for the low-spin case in the metal complex tetramethylamine diaquacopper(II) ion? \\
-            \midrule
-            In phenol's mass spectrum, how does the intensity of the m/z 95 peak compare to the molecular ion peak at m/z 94? \\
-            A. 10.0\% \\
-            B. 6.6\% \\
-            C. 7.0\% \\
-            D. 94\% \\
-            \bottomrule
-        \end{tabularx}
-    }
-\end{table}
-
-\normalsize
-
 
 
 
@@ -279,21 +221,6 @@ We also evaluated the model performance on the entire \chembench corpus.
 The general pattern of performance varies significantly between the different topics and is also observed when the models are evaluated on the entire corpus.
 However, since some subjects are composed of questions from different sources, the ranking of the models is, in some instances, different from the one on \chembenchmini.
 
-\begin{table}
-    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels. Models with \enquote{T-one} in the name were run for a temperature of 1, which allows us to study the temperature effect in the benchmark. Systems with \enquote{ReAct} in the name are tool augmented, i.e., they can call external tools such as web search or a calculator to answer the questions better. However, we limit those systems to ten calls to the \gls{llm}. This constraint often led the systems to not find the correct answer within the specified number of calls. In this case, we consider the answer as incorrect (see \Cref{sec:react-environment}).}
-    \resizebox{\textwidth}{!}{
-    \variable{output/performance_table.tex}
-    }
-    \label{tab:performance_table}
-\end{table}
-
-\begin{table}
-    \caption{\textbf{Performance of the models on \chembenchmini.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels.}
-    \resizebox{\textwidth}{!}{
-    \variable{output/performance_table_human_subset.tex}
-    }
-    \label{tab:performance_table_human_subset}
-\end{table}
 
 \begin{figure}[htb]
     \centering
@@ -354,7 +281,7 @@ An interesting observation is the significant impact of chemical preference task
 \end{figure}
 
 \begin{table}
-    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered completely correctly by the models for different skills and difficulty levels.}
+    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels. Models with \enquote{T-one} in the name were run for a temperature of 1, which allows us to study the temperature effect in the benchmark. Systems with \enquote{ReAct} in the name are tool augmented, i.e., they can call external tools such as web search or a calculator to answer the questions better. However, we limit those systems to ten calls to the \gls{llm}. This constraint often led the systems to not find the correct answer within the specified number of calls. In this case, we consider the answer as incorrect (see \Cref{sec:react-environment}).}
     \resizebox{\textwidth}{!}{
     \variable{output/performance_table.tex}
     }
@@ -362,12 +289,13 @@ An interesting observation is the significant impact of chemical preference task
 \end{table}
 
 \begin{table}
-    \caption{\textbf{Performance of the models on \chembenchmini.} The table shows the fraction of questions answered completely correctly by the models for different skills and difficulty levels.}
+    \caption{\textbf{Performance of the models on \chembenchmini.} The table shows the fraction of questions answered correctly by the models for different skills and difficulty levels.}
     \resizebox{\textwidth}{!}{
     \variable{output/performance_table_human_subset.tex}
     }
     \label{tab:performance_table_human_subset}
 \end{table}
+
 
 
 
