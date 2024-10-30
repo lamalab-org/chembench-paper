@@ -1,11 +1,7 @@
 {
-  "refusal_fraction": 0.0350385423966363,
+  "refusal_fraction": 0.035868005738880916,
   "questions_refused": 100,
   "refused": [
-    {
-      "question_name": "preference-preferences_choung_161-preference_choung_161",
-      "completion": "Unfortunately, I do not have enough chemistry knowledge to determine the best answer between the two chemical structures provided in the multiple choice question. Since an answer is required, I will make my best guess:\n\n[ANSWER]B[/ANSWER]\n\nThe second compound contains more familiar functional groups like amides, aromatics, and halogens. However, without understanding the full context and screening criteria, this is just a guess. I apologize that I cannot provide a more informed response."
-    },
     {
       "question_name": "preference-preferences_choung_975-preference_choung_975",
       "completion": "[ANSWER]B[/ANSWER]\n\nI do not have enough chemistry knowledge to fully evaluate the merits of each compound. Based solely on the limited information provided and focusing on basic properties like oral availability and small molecular profile, compound B appears simpler and more drug-like. More data would be needed to make a definitive judgment."
@@ -135,10 +131,6 @@
       "completion": "Unfortunately, I do not have enough chemistry knowledge to determine the best answer between the two compound options provided. Since a response is required, I will make my best guess:\n\n[ANSWER]A[/ANSWER]\n\nOption A seems simpler in structure compared to Option B, so I guessed it may be more favorable in an early virtual screening campaign focused on basic properties like oral availability and molecular size. But without deeper chemistry understanding, this is just a guess. Please let me know if you have any other questions!"
     },
     {
-      "question_name": "preference-preferences_choung_146-preference_choung_146",
-      "completion": "Unfortunately, I do not have enough chemistry knowledge to determine the best answer between the two options. Since a response is required, I will make my best guess:\n\n[ANSWER]B[/ANSWER]"
-    },
-    {
       "question_name": "preference-preferences_choung_954-preference_choung_954",
       "completion": "Unfortunately, I do not have enough chemistry knowledge to determine the best answer between the two options. Since a response is required, I will make my best guess:\n\n[ANSWER]A[/ANSWER]"
     },
@@ -233,6 +225,10 @@
     {
       "question_name": "preference-preferences_choung_202-preference_choung_202",
       "completion": "Unfortunately, I do not have enough chemistry knowledge to determine the best answer between the two compound options provided. Since an answer is required, I will make my best guess:\n\n[ANSWER]B[/ANSWER]\n\nThe second compound contains more common organic functional groups like ketones, esters, and ethers. Additionally, it seems to have a more drug-like structure. However, without understanding the specifics of the screening campaign and desired properties, this is just an educated guess. I apologize that I cannot provide a more informed response."
+    },
+    {
+      "question_name": "preference-preferences_choung_161-preference_choung_161",
+      "completion": "Unfortunately, I do not have enough chemistry knowledge to determine the best answer between the two chemical structures provided in the multiple choice question. Since an answer is required, I will make my best guess:\n\n[ANSWER]B[/ANSWER]\n\nThe second compound contains more familiar functional groups like amides, aromatics, and halogens. However, without understanding the full context and screening criteria, this is just a guess. I apologize that I cannot provide a more informed response."
     },
     {
       "question_name": "preference-preferences_choung_813-preference_choung_813",
@@ -401,6 +397,10 @@
     {
       "question_name": "preference-preferences_choung_227-preference_choung_227",
       "completion": "[ANSWER]B[/ANSWER]\n\nI do not have enough chemistry knowledge to fully evaluate and compare these molecular structures. Based solely on the information provided about preferring candidates for further development in an early virtual screening setting focused on simple properties like oral availability and small molecular profile, I would guess that answer choice B may be slightly preferable, but I do not have high confidence in this guess. More expert domain knowledge would be required to reliably determine the better option."
+    },
+    {
+      "question_name": "preference-preferences_choung_146-preference_choung_146",
+      "completion": "Unfortunately, I do not have enough chemistry knowledge to determine the best answer between the two options. Since a response is required, I will make my best guess:\n\n[ANSWER]B[/ANSWER]"
     }
   ]
 }

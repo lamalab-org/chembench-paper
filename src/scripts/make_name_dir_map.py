@@ -1,8 +1,8 @@
-import fire 
-import os 
-from glob import glob 
+import fire
+import os
+from glob import glob
 import yaml
-import pickle 
+import pickle
 from pathlib import Path
 from utils import obtain_chembench_repo
 from paths import data
@@ -44,7 +44,9 @@ def build_name_dir_map(report_base_dir=None):
                 if yaml_data["model_name"] == "o1":
                     model_name = yaml_data["model_name"]
                 else:
-                    model_name = yaml_data["model_name"] + "-T-one"
+                    model_name = yaml_data["model_name"].replace(' (Temperature 1.0)', "") + "-T-one"
+            else:
+                model_name = yaml_data["model_name"]
 
         name_dir_map[model_name] = os.path.abspath(report_subdir)
 
@@ -55,4 +57,3 @@ def build_name_dir_map(report_base_dir=None):
 
 if __name__ == "__main__":
     fire.Fire(build_name_dir_map)
-

@@ -1,6 +1,6 @@
 {
-  "extractions_fraction": 0.009110021023125438,
-  "questions_extracted": 26,
+  "extractions_fraction": 0.008967001434720229,
+  "questions_extracted": 25,
   "extracted": [
     {
       "question_name": "point_group-pointgroups_9-pointgroups",
@@ -17,10 +17,6 @@
     {
       "question_name": "point_group-pointgroups_1-pointgroups",
       "completion": "[ANSWER]C2v[/ANSWER] \n"
-    },
-    {
-      "question_name": "ionenlotto-2-dissolvable_ammonium_carbonate_group",
-      "completion": "[ANSWER]Ca^{2+}, Sr^{2+}[/ANSWER] \n"
     },
     {
       "question_name": "point_group-pointgroups_11-pointgroups",

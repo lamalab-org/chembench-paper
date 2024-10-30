@@ -14,3 +14,5 @@ dependencies:
       - wordcloud
       - rdkit
       - git+https://github.com/lamalab-org/chem-bench.git
+      - langchain-community
+      - natsort

@@ -1,5 +1,5 @@
 {
-  "extractions_fraction": 0.001401541695865452,
+  "extractions_fraction": 0.0014347202295552368,
   "questions_extracted": 4,
   "extracted": [
     {
@@ -11,12 +11,12 @@
       "completion": "[ANSWER]C2v[/ANSWER]"
     },
     {
-      "question_name": "point_group-pointgroups_13-pointgroups",
-      "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
       "question_name": "point_group-pointgroups_11-pointgroups",
       "completion": "[ANSWER]C1[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_13-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
     }
   ]
 }

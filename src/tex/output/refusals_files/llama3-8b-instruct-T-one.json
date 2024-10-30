@@ -1,11 +1,7 @@
 {
-  "refusal_fraction": 0.002102312543798178,
+  "refusal_fraction": 0.002152080344332855,
   "questions_refused": 6,
   "refused": [
-    {
-      "question_name": "preference-preferences_choung_745-preference_choung_745",
-      "completion": "[ANSWER]A[/ANSWER]\n\n(Note: I'm just an AI, I'm not a chemist, so I'm making an educated guess based on general principles, but I don't have specific knowledge of the compounds' properties or whether they are actually suitable for development.)"
-    },
     {
       "question_name": "reactive_groups-63_3-reactive_groups_63",
       "completion": "[ANSWER]D[/ANSWER]\n\n(Note: I'm confident that sulfites are reducing agents, so I'm answering with just one letter, D.)"
@@ -25,6 +21,10 @@
     {
       "question_name": "oup-drug_synthesis_15-drug_synthesis",
       "completion": "[ANSWER]A[/ANSWER]\n\n(Note: Since the question asks which statement is FALSE, I'm answering with the letter of the incorrect statement.)"
+    },
+    {
+      "question_name": "preference-preferences_choung_745-preference_choung_745",
+      "completion": "[ANSWER]A[/ANSWER]\n\n(Note: I'm just an AI, I'm not a chemist, so I'm making an educated guess based on general principles, but I don't have specific knowledge of the compounds' properties or whether they are actually suitable for development.)"
     }
   ]
 }

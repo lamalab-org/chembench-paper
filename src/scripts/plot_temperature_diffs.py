@@ -19,7 +19,7 @@ model_file_name_to_label = [
     "Llama-3-70B-Instruct",
     "Llama-3.1-8B-Instruct",
     "Llama-3.1-70B-Instruct",
-    "Mistral-8x7b-Instruct",
+    "Mixtral-8x7b-Instruct",
 ]
 
 def compute_scores_subset(data, title):
@@ -29,11 +29,9 @@ def compute_scores_subset(data, title):
             all_correct_count = 0
             for row in scores["all_correct_"]:
                 all_correct_count += int(row)
-
             t_zero = all_correct_count / len(scores["all_correct_"])
             all_correct_count = 0
             t1_model = model + "-T-one"
-            print(t1_model, data.keys())
             if t1_model in data.keys():
                 t1_scores = data[t1_model]
                 # print(t1_scores)

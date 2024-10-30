@@ -1,5 +1,5 @@
 {
-  "extractions_fraction": 0.005956552207428171,
+  "extractions_fraction": 0.006097560975609756,
   "questions_extracted": 17,
   "extracted": [
     {
@@ -25,10 +25,6 @@
     {
       "question_name": "reactive_groups-33_3-reactive_groups_33",
       "completion": "[ANSWER]BD[/ANSWER]"
-    },
-    {
-      "question_name": "oup-drug_synthesis_25-drug_synthesis",
-      "completion": "[ANSWER]none of the above[/ANSWER]\n\nNote: The correct answer is \"fragments\". Fragments are small molecules that interact with a target binding site in fragment-based lead discovery. The options provided do not match the correct answer."
     },
     {
       "question_name": "point_group-pointgroups_14-pointgroups",
@@ -69,6 +65,10 @@
     {
       "question_name": "point_group-pointgroups_10-pointgroups",
       "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
+      "question_name": "oup-drug_synthesis_25-drug_synthesis",
+      "completion": "[ANSWER]none of the above[/ANSWER]\n\nNote: The correct answer is \"fragments\". Fragments are small molecules that interact with a target binding site in fragment-based lead discovery. The options provided do not match the correct answer."
     }
   ]
 }
