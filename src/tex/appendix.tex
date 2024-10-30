@@ -20,7 +20,7 @@
 \end{itemize}
 
 \subsection{Related work}
-Existing benchmarks such as those from \textcite{guo2023large}, \textcite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024} fail to comply with most of the requirements stipulated above.
+Existing benchmarks such as those from \textcite{guo2023large}, \textcite{sun2023scieval}, \textcite{Schulze_Balhorn_2024}, \textcite{Cai_2024}, \textcite{rein2023gpqagraduatelevelgoogleproofqa} fail to comply with most of the requirements stipulated above.
 While these benchmarks could provide valuable insights in the short term, they cannot follow the rapid additions to the \gls{llm} space.
 \chembench aims to correct this through a set of developments: compatibility with BigBench, end-to-end automation, a particular focus on chemical safety, employment of diverse prompting strategies, and specialized notation for molecules and mathematical symbols.
 Moreover, our robust framework, including the platform \url{chembench.org}, will engage the community in open-source contributions.
@@ -69,7 +69,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
 \begin{table}
     \centering
     \small
-    \caption{\textbf{Examples for each of the topics considered in the evaluation of the \chembench corpus.} The table shows the percentage of questions in the corpus that belong to each topic, as well as example questions.} \\
+    \caption{\textbf{Examples for each of the topics considered in the evaluation of the \chembench corpus.} The table shows the percentage of questions in the corpus that belong to each topic, as well as example questions.}
     \label{tab:chembench_corpus_topic}
     {\fontsize{8}{9}\selectfont
         \begin{tabularx}{\textwidth}{X}
@@ -86,8 +86,8 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
             \multicolumn{1}{c}{\textbf{Chemical Preference} 1001 Questions (35\%)} \\
             \midrule
             Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
-            [START\_SMILES]N\#Cc1ccc(OCCCN2CC3CN\-(CCNS(=O)(=O)c4ccc(F)cc4)CC(C2)O3)cc1\-[END\-\_SMILES] \\
-            [START\_SMILES]O=C1CC(c2ccc(CC(NS(=O)\-(=O)\-c3cc(Cl)cc(Cl)c3)c3nc4ccccc4[nH]3)cc2)S\-(=O)\-(=O)N1[END\_SMILES] \\
+            A. [START\_SMILES]N\#Cc1ccc(OCCCN2CC3CN\-(CCNS(=O)(=O)c4ccc(F)cc4)CC(C2)O3)cc1\-[END\-\_SMILES] \\
+            B. [START\_SMILES]O=C1CC(c2ccc(CC(NS(=O)\-(=O)\-c3cc(Cl)cc(Cl)c3)c3nc4ccccc4[nH]3)cc2)S\-(=O)\-(=O)N1[END\_SMILES] \\
             \midrule
             \multicolumn{1}{c}{\textbf{General Chemistry} 152 Questions (5.3\%)} \\
             \midrule
@@ -99,11 +99,11 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
             \midrule
             \multicolumn{1}{c}{\textbf{Inorganic Chemistry} 94 Questions (3.3\%)} \\
             \midrule
-            What is the oxidation number of the metal in the compound \ce{[ZrF7]^{3-}}\\
+            What is the oxidation number of the metal in the compound \ce{[ZrF_{7}]3-}? \\
             \midrule
             \multicolumn{1}{c}{\textbf{Materials Science} 89 Questions (3.1\%)} \\
             \midrule
-            For NMR analysis, you need to digest the MOF in a strong acid to remove the linker and leave the metal clusters intact. Why would one choose \ce{HF} over \ce{HCl} for this purpose? \\
+            For NMR analysis, you need to digest the MOF in a strong acid to remove the linker and leave the metal clusters intact. Why would one choose HF over \ce{HCl} for this purpose? \\
             A. \ce{F-} forms a stable bonds to the metal ions \\
             B. \ce{HF} has a better water solubility than \ce{HCl} \\
             C. \ce{HF} has a higher boiling point than \ce{HCl} \\
@@ -145,12 +145,11 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
             \bottomrule
         \end{tabularx}
     }
-\end{table}
+ \end{table}
 
 \normalsize
 
-
-In addition, as shown in \Cref{tab:cb_skillset} the \chembench corpus can be divided considering the different skills needed to solve the questions. The plot shows a balanced distribution of the required skills in the \chembench corpus. \Cref{tab:cb_skillset} shows an example question for each skill category.
+In addition, as shown in \Cref{fig:cb_skillset} the \chembench corpus can be divided considering the different skills needed to solve the questions. The plot shows a balanced distribution of the required skills in the \chembench corpus. \Cref{tab:cb_skillset} shows an example question for each skill category.
 
 \begin{figure}
     \centering
@@ -163,7 +162,7 @@ In addition, as shown in \Cref{tab:cb_skillset} the \chembench corpus can be div
 \begin{table}
     \centering
     \small
-    \caption{\textbf{Examples for each of the required skills considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question. Note that the total count in this table is bigger than the \chembench corpus. This is because the same question can be annotated with two different \enquote{requires} skills, i.e. Reasoning and Calculation.} \\
+    \caption{\textbf{Examples for each of the required skills considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question. Note that the total count in this table is bigger than the \chembench corpus. This is because the same question can be annotated with two different \enquote{requires} skills, i.e. Reasoning and Calculation.}
     \label{tab:chembench_corpus_cognitive}
     {\fontsize{8}{9}\selectfont
         \begin{tabularx}{\textwidth}{X}
@@ -178,11 +177,14 @@ In addition, as shown in \Cref{tab:cb_skillset} the \chembench corpus can be div
             \midrule
             \multicolumn{1}{c}{\textbf{Reasoning} 987 Questions} \\
             \midrule
-            How can the optical impact of quantum confinement on the electronic structure of a quantum dot be observed experimentally? \\
-            A. By atomic force microscopy \\
-            B. By transform infrared spectroscopy \\
-            C. By measuring a photoluminescence spectrum \\
-            D. By absorption spectroscopy \\
+            You make the following experimental observations: The sample consisted of small colorless/white crystals, wine-red transparent crystals, turquoise transparent crystals, and violet flakes. Most components dissolved in cold water, with turquoise crystals dissolving upon heating. Dimethylglyoxime produced a raspberry-red color with dissolved turquoise crystals. Violet flakes turned blue on contact and showed red/violet colors in flame tests. An oxidation melt turned green. No red coloration occurred with \ce{KSCN}, but a blue organic phase formed with acetone. Potassium ferrocyanide showed no changes. \ce{KOH} produced a brown/black precipitate. Alizarin-S testing resulted in red coloration after acidification. Heating with cobalt nitrate produced a bluish color without luster. Lead dioxide and sulfuric acid oxidation formed a violet solution. No changes occurred in chromate oxidation or titanium detection attempts. \ce{BaCl2} formed precipitates in both original solution and soda extract. Lunge's reagent showed red coloration around zinc granules. Silver nitrate formed white precipitates that dissolved in \ce{NH3} and reappeared with \ce{HNO3} acidification. The separation procedure began with the aqueous solution being treated with \ce{(NH4)2CO3} solution until a persistent turbidity appeared, followed by addition of dilute \ce{HCl} until the turbidity disappeared. The pH was then adjusted to 5-6 with \ce{NH3} (2 M) and heated on a water bath. Three spatula tips of urotropin were added, resulting in a white, rather flocculent precipitate. This precipitate was centrifuged off and washed with warm water. In the Urotropin group, the residue was dissolved in dilute \ce{HCl} and diluted with water. An alkaline precipitation was performed, resulting in a brown coloration even after repeated washing of the urotropin precipitation. This precipitate dissolved in 2 M \ce{HCl}, but showed no change when treated with either \ce{KSCN} or potassium ferrocyanide. In the \ce{(NH4)2S} group, addition of dimethylglyoxim produced a very flocculent red precipitate that rose to the top of the test tube. When \ce{H2S} was introduced to the centrifugate, a black precipitation occurred. The precipitates did not completely dissolve in \ce{HCl}. Treatment with \ce{KSCN} resulted in a blue organic phase when layered with acetone. An alkaline precipitation produced a brown/black residue. No precipitation was observed when \ce{H2S} was introduced to the supernatant liquid after the alkaline precipitation.  What ions are in the sample? \\
+            A. \ce{Al^{3+}} \\
+            B. \ce{Co^{2+}} \\
+            C. \ce{Cr^{3+}} \\
+            D. \ce{Fe^{3+}} \\
+            E. \ce{Mn^{2+}} \\
+            F. \ce{Ni^{2+}} \\
+            G. \ce{Zn^{2+}} \\
             \midrule
             \multicolumn{1}{c}{\textbf{Intuition} 1001 Questions} \\
             \midrule
@@ -197,124 +199,59 @@ In addition, as shown in \Cref{tab:cb_skillset} the \chembench corpus can be div
         \end{tabularx}
     }
 \end{table}
-
 \normalsize
 
-In analyzing the performance of state-of-the-art models on the ChemBench corpus, we identified several chemical topics where the models consistently struggled to provide correct answers. The following table \cref{tab:chembench_corpus_models_failed_topic} presents examples of challenging questions across different chemical domains, highlighting specific areas where current models need improvement
+In analyzing the performance of state-of-the-art models on the \chembench corpus, we identified several chemical topics where the models consistently struggled to provide correct answers. The following table \cref{tab:chembench_corpus_models_failed_topic} presents examples of challenging questions across different chemical domains, highlighting specific areas where current models need improvement
 
 \begin{table}
     \centering
     \small
-    \caption{\textbf{Examples of topics evaluated in the \chembench corpus that the state-of-the-art model failed to answer correctly.} The table displays the percentage of questions in the corpus for each topic, along with example questions and the percentage of questions that were not answered correctly by the models.} \\
-    \label{tab:chembench_corpus_models_failed_topic}
+    \caption{\textbf{Examples of some questions failed for all the state-of-the-art models.} The table shows examples of the \chembench corpus for which all models considered in \Cref{fig:human_vs_models_bar} fail to answer correctly.}
+    \label{tab:chembench_corpus_cognitive}
     {\fontsize{8}{9}\selectfont
         \begin{tabularx}{\textwidth}{X}
             \toprule
-            \multicolumn{1}{c}{\textbf{Analytical Questions} 166 Questions (5.8\%) (26.5\%)} \\
+            Which of the following compounds are capable of producing hazardous explosive peroxides? \\
+            A. Cyclohexene \\
+            B. Cyclooctene \\
+            C. Decalin \\
+            D. Ethyl ether \\
+            E. Isopropyl ether \\
+            F. Para-dioxane \\
+            G. Tetralin \\
             \midrule
-            Which of the following methods can be used to support the structure elucidation of planar molecules by examining the topography of individual molecules? \\
-            A. DESI-mass spectrometry \\
-            B. XPS \\
-            C. atomic force microscopy \\
-            D. scanning tunneling microscopy \\
-            E. secondary ion mass spectrometry \\
+            What is the oxidation number of hydrogen in the reactants of Sabatier reaction? \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Chemical Preference} 1001 Questions (35\%) (8.5\%)} \\
+            How does a non-competitive inhibitor influence the enzyme kinetics of a reaction in the Lineweaver-Burk-plot when compared to a competitive inhibitor? \\
+            A. The intersection with y-axis shift to higher numbers \\
+            B. The intersection with y-axis shift to lower numbers \\
+            C. The slope decreases \\
+            D. The slope increases \\
             \midrule
-            Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
-            [START\_SMILES]N\#Cc1ccc(OCCCN2CC3CN\-(CCNS(=O)(=O)c4ccc(F)cc4)CC(C2)O3)cc1\-[END\-\_SMILES] \\
-            [START\_SMILES]O=C1CC(c2ccc(CC(NS(=O)\-(=O)\-c3cc(Cl)cc(Cl)c3)c3nc4ccccc4[nH]3)cc2)S\-(=O)\-(=O)N1[END\_SMILES] \\
+            Poly(lactic acid) (PLA) can be broken down enzymatically to lactic acid monomer and compound B (a dimer of lactic acid). A plastic sample degraded to 1.044 g, and titration showed it needed \SI{19.40}{cm^{3}} of \SI{0.100}{mol dm^{-3}} \ce{NaOH} to neutralize. What is the number of moles of acid in the sample? \\
             \midrule
-            \multicolumn{1}{c}{\textbf{General Chemistry} 152 Questions (5.3\%) (3.2\%)} \\
+            What is hydrofluoric acid used for? \\
+            A. For cleaning facades \\
+            B. For etching glass \\
+            C. For filling accumulators \\
+            D. For soldering \\
             \midrule
-            Why \ce{SCl6} does not exist if other similar molecules such as \ce{SF6} exist? \\
-            A. \ce{SCl6} does not exist because of steric effects \\
-            B. \ce{SCl6} does not exist because of the high electronegativity of chlorine \\
-            C. \ce{SCl6} does not exist because of the high ionization potential of the chlorine \\
-            D. \ce{SF6} exist because of the high electronegativity of fluorine \\
+            How many chiral centers are present in the molecular structure of citric acid? \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Inorganic Chemistry} 94 Questions (3.3\%) (4.2\%)} \\
+            What is the sum of the stoichiometric coefficients on the left side of the redox reaction equation: \ce{Cd(NCS)2 + KNO3 -> K2CO3 + CO + SO2 + N2 + CdO}? \\
+            A. 10 \\
+            B. 14 \\
+            C. 18 \\
+            D. 23 \\
+            E. 9 \\
             \midrule
-            What is the spin-only magnetic moment (in units of Bohr-magnetons) for the low-spin case of the metal complex \ce{RhCl(CO)(PPh3)2}?\\
+            The ligand-field splitting energy (LFSE) is computed as $LFSE=-0.4\cdot Dq \cdot n+0.6 \cdot Dq \cdot m$ with $n$ being the number of electrons in t2g d orbitals ($\mathrm{d}_{xz}$, $\mathrm{d}_{yz}$ and $\mathrm{d}_{xy}$), $m$ the number of electrons in eg d orbitals ($\mathrm{d}_{x^2-y^2}$ and $\mathrm{d_{z^2}}$), and Dq the ligand field splitting parameter. What is the value of LFSE in terms of Dq for the low-spin case in the metal complex tetramethylamine diaquacopper(II) ion? \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Materials Science} 89 Questions (3.1\%) (0.9\%)} \\
-            \midrule
-            What are the conditions for the observation of effects of quantum confinement in quantum dots? \\
-            A. All dimension of the material must be smaller than exciton Bohr radius \\
-            B. One dimension of the quantum dot must be smaller than exciton Bohr radius \\
-            C. The movement od charge carriers is limited in all spatial dimensions \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Organic Chemistry} 441 Questions (15.5\%) (0.5\%)} \\
-            \midrule
-            What makes acrylates more reactive than typical hydrocarbons? \\
-            A. The carbonyl group \\
-            B. The double bond \\
-            C. The hydroxyl group \\
-            D. The vinyl group \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Physical Chemistry} 179 Questions (6.3\%) (13.4\%)} \\
-            \midrule
-            Why are polar molecules more soluble in water than non-polar molecules? \\
-            A. Non-polar molecules should break hydrogen bonds in water to dissolve \\
-            B. The entropy of the system increases when non-polar molecules dissolve in water \\
-            C. Water has a dipole and can easier isolate polar molecules from each other \\
-            D. Water makes stable dipole-dipole interactions with polar molecules \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Technical Chemistry} 42 Questions (1.5\%) (4.7\%)} \\
-            \midrule
-            Which of the following statements is/are true about granulation shaping of solid catalysts? \\
-            A. Broader product diameter distribution than pellets or extrudates \\
-            B. Facilitates reactor upscaling \\
-            C. It is also called snow-ball \\
-            D. Not suitable to prepare egg-shell catalysts \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Toxicity/Safety} 690 Questions (24.2\%) (40.4\%)} \\
-            \midrule
-            What determines the flammability of polyols? \\
-            A. Their chemical structure \\
-            B. Their low volatility \\
-            C. Their odor threshold \\
-            D. Their reaction with acids \\
-            \bottomrule
-        \end{tabularx}
-    }
-\end{table}
-
-\normalsize
-
-To better understand the cognitive demands of chemical assessment, we categorized the questions in the ChemBench corpus according to the primary skills required to solve them. The table \Cref{tab:chembench_corpus_models_failed_cognitive} below shows representative examples of questions that state-of-the-art models failed to answer correctly across different cognitive skill categories, including knowledge, reasoning and intuition.
-\begin{table}
-    \centering
-    \small
-    \caption{\textbf{Examples of required skills evaluated in the \chembench corpus that the state-of-the-art model failed to answer correctly} The table displays the number of questions for each skill, along with an example question that the model failed to answer.} \\
-    \label{tab:chembench_corpus_models_failed_cognitive}
-    {\fontsize{8}{9}\selectfont
-        \begin{tabularx}{\textwidth}{X}
-            \toprule
-            \multicolumn{1}{c}{\textbf{Knowledge} 919 Questions} \\
-            \midrule
-            Which of the following are true for phosphoric acid? \\
-            A. Is a weak acid, so it is not toxic \\
-            B. Should never be tasted \\
-            C. Though a component of soft drinks, reacts vigorously with water when in concentrated form \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Reasoning} 987 Questions} \\
-            \midrule
-            Which of the following elements has the largest atomic radius? \\
-            A. \ce{Fr} \\
-            B. \ce{He} \\
-            C. \ce{Li} \\
-            D. \ce{Rb} \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Intuition} 1001 Questions} \\
-            \midrule
-            Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
-            A. [START_SMILES]CCc1c(CCOC)nn(-c2ccccc2)c1-c1ccccc1[END_SMILES] \\
-            B. [START_SMILES]Cc1cc(/C=C2\\C(=N)N3N=C(S(C)(=O)=O)SC3=NC2=O)c(C)n1Cc1ccccc1[END_SMILES] \\
-            \midrule
-            \multicolumn{1}{c}{\textbf{Calculation} 128 Questions} \\
-            \midrule
-            The cell potential for the overall cell reaction during electrolysis of water, \ce{2H2O(l) -> 2H2(g) + O2(g)} is \SI{-1.23 V}. What is the standard electrode potential for the half reaction, \ce{2H2O(l) -> O2(g) + 4H+(aq) + 4e-} in V? \\
+            In phenol's mass spectrum, how does the intensity of the m/z 95 peak compare to the molecular ion peak at m/z 94? \\
+            A. 10.0\% \\
+            B. 6.6\% \\
+            C. 7.0\% \\
+            D. 94\% \\
             \bottomrule
         \end{tabularx}
     }
@@ -389,8 +326,8 @@ Interestingly, the performance of the models on questions sourced based on textb
 
 \Cref{fig:performance_per_topic_tiny} shows the same analysis on \chembenchmini.
 
-\Cref{fig:performance_corpus_and_tiny} shows the performance of the models on the \chembench corpus and the \chembenchmini subset. The relative performance difference between both is quite similar across most models. 
-This makes \chembenchmini subset a reliable subset for human baseline comparison and particularly valuable for rapid prototyping and initial model assessment phases. 
+\Cref{fig:performance_corpus_and_tiny} shows the performance of the models on the \chembench corpus and the \chembenchmini subset. The relative performance difference between both is quite similar across most models.
+This makes \chembenchmini subset a reliable subset for human baseline comparison and particularly valuable for rapid prototyping and initial model assessment phases.
 
 An interesting observation is the significant impact of chemical preference tasks on \GPTFour's scores. A detailed breakdown of overall accuracy into scores on different skills and difficulty levels is provided in \Cref{table:performance_table} and \Cref{tab:performance_table_human_subset} for \chembench corpus and the \chembenchmini subset, respectively.
 
@@ -411,7 +348,7 @@ An interesting observation is the significant impact of chemical preference task
     \includegraphics{figures/corpus_human_comparison.pdf}
     \caption{\textbf{
         Performance of the models on the \chembench corpus and \chembenchmini subset.} The bar plot shows the fraction of questions that were answered completely correctly, highlighting the relative performance of different models on both the \chembench corpus and the \chembenchmini subset.
-        We see that the model ranking remains fairly consistent across both sets}  
+        We see that the model ranking remains fairly consistent across both sets}
     \label{fig:performance_corpus_and_tiny}
     \script{corpus_humanset_performance.py}
 \end{figure}
@@ -548,7 +485,7 @@ In the applications, human participants were presented with molecules as rendere
     \includegraphics{figures/human_score_distribution.pdf}
     \script{plot_human_score_distribution.py}
     \caption{\textbf{Distribution of human scores.}The histogram and kernel density estimates show the fraction of questions answered correctly by the human volunteers.
-    Since the best possible score for each question is one and the worst possible score is zero, the values on this plot are between zero and one. A score of one would mean that a volunteer answered all questions correctly. A score of zero would mean that no question was answered correctly. 
+    Since the best possible score for each question is one and the worst possible score is zero, the values on this plot are between zero and one. A score of one would mean that a volunteer answered all questions correctly. A score of zero would mean that no question was answered correctly.
     We find that the scores for the questions that the human volunteers answered with tools are generally lower than the scores for the questions that the human volunteers answered without tools.}
     \label{fig:human_score_distribution}
 \end{figure}
@@ -590,18 +527,18 @@ They could also report what tools they used for answering questions. As \Cref{fi
 \clearpage
 \subsection{Tool augmented models} \label{sec:react-environment}
 In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
-For this, we investigated the two models which showed the best overall results, \GPTFourO and \ClaudeThreeFiveSonnet (\oone overperformed both models but is not recommended using this model with such \enquote{reasoning} prompts such as ReAct\autocite{yao2022react} or \gls{cot}\autocite{wei2023cot}). 
+For this, we investigated the two models which showed the best overall results, \GPTFourO and \ClaudeThreeFiveSonnet (\oone overperformed both models but is not recommended using this model with such \enquote{reasoning} prompts such as ReAct\autocite{yao2022react} or \gls{cot}\autocite{wei2023cot}).
 For both models, we created a ReAct-style tool augmentation environment in which models had access to WolframAlpha, the ArXiv \gls{api}, Wikipedia, and web search (using Brave search \gls{api}).
 We based the selection of these tools on the most used tools by humans (see \Cref{fig:tool_use}).
 Additionally, we added two specific tools to convert \gls{iupac} names to \gls{smiles}, and \gls{smiles} to \gls{iupac} names.
 These conversion tools allow us to better understand how the agents perform for some specific questions in this agent environment configuration.
 We implemented the systems using Langchain\autocite{Chase_LangChain_2022} with the default ReAct prompt and constrained the system to a maximum of ten \gls{llm} calls.
 
-While for \ClaudeThreeFiveSonnet the overall performance did not change, we observe a decrease in performance for \GPTFourO compared with the \llm without tools (\Cref{tab:performance_table}). 
+While for \ClaudeThreeFiveSonnet the overall performance did not change, we observe a decrease in performance for \GPTFourO compared with the \gls{llm} without tools (\Cref{tab:performance_table}).
 If we study the results by each type of question, we observe an improvement for questions regarding electron counts or point groups of compounds.
 However, the scores decreased for questions asking about the number of isomers or \gls{ghs} pictograms.
-For the specific questions about converting \gls{iupac} names to \gls{smiles}, the results decreased notably despite the models having access to specific tools prepared for those questions. 
-By studying the reasoning path for these cases, we found that the error results from the models responding in a format that the LangChain framework with the default ReAct loop cannot handle. 
+For the specific questions about converting \gls{iupac} names to \gls{smiles}, the results decreased notably despite the models having access to specific tools prepared for those questions.
+By studying the reasoning path for these cases, we found that the error results from the models responding in a format that the LangChain framework with the default ReAct loop cannot handle.
 This indicates that agent frameworks need optimization to be more robust. It involves not only equipping the \glspl{llm} with tools but also necessitates engineering efforts to create robust systems.
 
 
@@ -642,15 +579,15 @@ We also investigated the impact of sampling temperature (i.e. temperature 0 mean
 \clearpage
 \subsection{Summary of trends and recommendations}
 
-\oone consistently leads across both the \ChemBench corpus and \chembenchmini.  \ClaudeThreeFiveSonnet, \GPTFourO, \LlamaThreeOneFourZeroFiveBInstruct form the next tier of strong performers. These models show robust performance across all skills and difficulty levels. 
+\oone consistently leads across both the \chembench corpus and \chembenchmini.  \ClaudeThreeFiveSonnet, \GPTFourO, \LlamaThreeOneFourZeroFiveBInstruct form the next tier of strong performers. These models show robust performance across all skills and difficulty levels.
 
-Larger models generally perform better (\LlamaThreeOneFourZeroFiveBInstruct > \LlamaThreeOneSeventyBInstruct > \LlamaThreeOneEightBInstruct). However, smaller but well-designed models can compete with larger models. For example, \GemmaTwoNineBIt has an overall accuracy of \variable{output/trends_section_variables/gemma_9B.txt} on the \ChemBench corpus, which is only \variable{output/trends_section_variables/diff_between_llama_405B_and_gemma_9B.txt}\% less accurate than the much larger \LlamaThreeOneFourZeroFiveBInstruct model.
+Larger models generally perform better (\LlamaThreeOneFourZeroFiveBInstruct > \LlamaThreeOneSeventyBInstruct > \LlamaThreeOneEightBInstruct). However, smaller but well-designed models can compete with larger models. For example, \GemmaTwoNineBIt has an overall accuracy of \variable{output/trends_section_variables/gemma_9B.txt} on the \chembench corpus, which is only \variable{output/trends_section_variables/diff_between_llama_405B_and_gemma_9B.txt}\% less accurate than the much larger \LlamaThreeOneFourZeroFiveBInstruct model.
 
 One can observe a clear progression of performance across model families (e.g., \ClaudeThreeFiveSonnet >  \ClaudeThree > \ClaudeTwo or \GPTFourO > \GPTFour > \GPTThreeFiveTurboZeroT). Newer versions consistently outperform their predecessors.
-Scores on knowledge-intensive tasks are typically lower than those on calculation and reasoning-intensive questions. 
+Scores on knowledge-intensive tasks are typically lower than those on calculation and reasoning-intensive questions.
 
 Based on these findings, some scope for improving these models could be to focus on enhancing knowledge-based training, possibly through improved pre-training on chemistry-specific texts or with chemistry knowledge-base integration. However, innovation is also needed to incorporate this information into the systems. For example, even \PaperQATwo could not outperform the \gls{llm} it is using for directing the tools, even though the agent has access to literature evidence.
-This suggests we might need to not only focus on building chemistry-specific retrieval datasets since current systems fail to retrieve the relevant papers and should be coupled with more domain-specific databases. However, the observation that our ReAct agents were too fragile to answer questions for which they had custom-made tools available correctly suggests that we also must invest in building more robust agent frameworks (see \Cref{sec:react-environment} for further discussion about the ReAct environment). 
+This suggests we might need to not only focus on building chemistry-specific retrieval datasets since current systems fail to retrieve the relevant papers and should be coupled with more domain-specific databases. However, the observation that our ReAct agents were too fragile to answer questions for which they had custom-made tools available correctly suggests that we also must invest in building more robust agent frameworks (see \Cref{sec:react-environment} for further discussion about the ReAct environment).
 
 Models show the strongest performance in reasoning tasks on the \chembench corpus, which suggests that current training approaches are good at developing logical/reasoning capabilities for basic problem-solving of university-level exams. However, performance drops significantly for advanced tasks, suggesting that more advanced chemistry problems with complex, multi-step solutions (e.g., solving analytical chemistry problems) should be included in training or finetuning.
 

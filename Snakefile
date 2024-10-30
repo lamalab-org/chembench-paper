@@ -248,15 +248,16 @@ rule sources_table:
     script: "src/scripts/make_source_table.py"
 
 rule save_trend_variables:
-  input: "src/scripts/appendix_variables.py"
-  output: [
-      "src/tex/output/trends_section_variables/gemma_9B.txt",
-      "src/tex/output/trends_section_variables/diff_between_llama_405B_and_gemma_9B.txt",
-  ]
-  script: "src/scripts/appendix_variables.py"
+    input: "src/scripts/appendix_variables.py"
+    output:
+        [
+        "src/tex/output/trends_section_variables/gemma_9B.txt",
+        "src/tex/output/trends_section_variables/diff_between_llama_405B_and_gemma_9B.txt",
+     ]
+    script: "src/scripts/appendix_variables.py"
 
 #plot performance of models on both corpus
 rule plot_corpuses:
-  input: "src/data/model_score_dicts.pkl"
-  output: "src/tex/figures/corpus_human_comparison.pdf"
-  script: "src/scripts/plot_corpuses.py"
+    input: "src/data/model_score_dicts.pkl"
+    output: "src/tex/figures/corpus_human_comparison.pdf"
+    script: "src/scripts/corpus_humanset_performace.py"
