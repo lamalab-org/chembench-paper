@@ -19,7 +19,7 @@ model_file_name_to_label = [
     "Llama-3-70B-Instruct",
     "Llama-3.1-8B-Instruct",
     "Llama-3.1-70B-Instruct",
-    "Mistral-8x7b-Instruct",
+    "Mixtral-8x7b-Instruct",
 ]
 
 def compute_scores_subset(data, title):
