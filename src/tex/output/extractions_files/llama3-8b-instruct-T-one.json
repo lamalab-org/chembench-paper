@@ -1,5 +1,5 @@
 {
-  "extractions_fraction": 0.003854239663629993,
+  "extractions_fraction": 0.003945480631276901,
   "questions_extracted": 11,
   "extracted": [
     {
@@ -13,6 +13,14 @@
     {
       "question_name": "point_group-pointgroups_6-pointgroups",
       "completion": "[ANSWER] C2v [/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_11-pointgroups",
+      "completion": "[ANSWER]C1[/ANSWER]"
+    },
+    {
+      "question_name": "blac_gfk-iii_4_43-blac_gfk_iii_4_43",
+      "completion": "[ANSWER]AB[/ANSWER]"
     },
     {
       "question_name": "toxicology_lmu-31-tox_lmu_31",
@@ -29,14 +37,6 @@
     {
       "question_name": "analytical_chemistry-13-analytical_chemistry_13",
       "completion": "[ANSWER]AC[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_11-pointgroups",
-      "completion": "[ANSWER]C1[/ANSWER]"
-    },
-    {
-      "question_name": "blac_gfk-iii_4_43-blac_gfk_iii_4_43",
-      "completion": "[ANSWER]AB[/ANSWER]"
     }
   ]
 }

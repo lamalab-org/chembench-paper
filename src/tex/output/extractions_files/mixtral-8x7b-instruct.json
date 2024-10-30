@@ -1,6 +1,6 @@
 {
-  "extractions_fraction": 0.020672740014015416,
-  "questions_extracted": 59,
+  "extractions_fraction": 0.019368723098995694,
+  "questions_extracted": 54,
   "extracted": [
     {
       "question_name": "2022-XI_2022_4-XI_2022_MD",
@@ -33,6 +33,66 @@
     {
       "question_name": "nmr-2-nmr_2",
       "completion": "[ANSWER] 1H, NOESY [/ANSWER] The most appropriate NMR experiments to distinguish the molecule with SMILES FC1(F)[C@H](O)CC[C@H]1O from the molecule with SMILES FC1(F)[C@@H](O)CC[C@H]1O are 1H and NOESY.\n\nThe 1H NMR experiment can distinguish the two molecules because the stereochemistry at the carbon atom shared by the two double-bonded oxygen and carbon atoms is different (denoted by @ vs @@ in the SMILES strings). This stereochemical difference will result in different chemical environments for nearby protons, leading to different 1H NMR spectra.\n\nThe NOESY (Nuclear Overhauser Enhancement SpectroscopY) experiment can also be used to distinguish the two molecules. This experiment can provide information about the spatial proximity of nuclei, which can be used to infer stereochemistry. In this case, the NOESY experiment can potentially detect correlations between protons that are in close proximity due to the different stereochemistry at the carbon atom shared by the two double-bonded oxygen and carbon atoms."
+    },
+    {
+      "question_name": "point_group-pointgroups_1-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
+      "question_name": "periodic_table_properties-5-periodic_table_questions",
+      "completion": "[ANSWER] A <-- Correct\nB\nC\nD [/ANSWER] The density of group 13 elements increases down the group due to the increase in atomic size and number of electrons. However, boron (B) is an exception due to its small size and unique electron configuration. Therefore, the correct order is B < Al < Ga < In < Tl."
+    },
+    {
+      "question_name": "hybridization-hybridization_4-hybridization_4",
+      "completion": "[ANSWER]sp2[/ANSWER]"
+    },
+    {
+      "question_name": "2020-2g-icho_uk_2020_2g",
+      "completion": "To find the standard enthalpy change of combustion of H2, we first need to write the balanced chemical equation for the combustion of hydrogen gas (H2) to form liquid water (H2O) and gaseous carbon dioxide (CO2). The unbalanced equation is:\n\nH2(g) + O2(g) -> H2O(l) + CO2(g)\n\nHowever, since this question does not involve CO2, we can remove it from the equation and balance it:\n"
+    },
+    {
+      "question_name": "point_group-pointgroups_11-pointgroups",
+      "completion": "[ANSWER]Cs[/ANSWER] The molecule with SMILES C(=N)(N)N has a linear geometry, so the point group is Cs (cylindrical symmetry)."
+    },
+    {
+      "question_name": "point_group-pointgroups_15-pointgroups",
+      "completion": "[ANSWER] C2 [/ANSWER]"
+    },
+    {
+      "question_name": "2022-5-US_local_olympiad_2022_5",
+      "completion": "[ANSWER] Mn [/ANSWER] The balanced chemical equation for the reaction is:\n\nMCO3 -> MO + CO2\n\nWe can use the molar mass of CO2 (44.01 g/mol) to find the number of moles of CO2 produced:\n\n0.383 g CO2 / (44.01 g/mol) = 0.0087 mol CO2\n\nSince the molar ratio of MCO3 to CO2 in the balanced equation is 1:1, this means that 0.0087 mol of MCO3 was converted to MO. We can use the molar mass of MCO3 (62.01 + 12.01 + 3 x atomic mass of M) to find the mass of MCO3:\n\nmass of MCO3 = 0.0087 mol x molar mass of MCO3\nmass of MCO3 = 0.0087 mol x (62.01 g/mol + 12.01 g/mol + 3 x atomic mass of M)\n\nWe know that the mass of MCO3 was 1.000 g, so we can set up the following equation:\n\n1.000 g = 0.0087 mol x (62.01 g/mol + 12.01 g/mol + 3 x atomic mass of M)\n\nSolving for the atomic mass of M, we get:\n\natomic mass of M = (1.000 g - 0.0087 mol x 62.01 g/mol - 0.0087 mol x 12.01 g/mol) / (3 x 0.0087 mol)\natomic mass of M = (1.000 g - 0.541 g) / (3 x 0.0087 mol)\natomic mass of M = 0.118 g / (3 x 0.0087 mol)\natomic mass of M = 4.76 g/mol\n\nThe closest match to this atomic mass among the options is Manganese (Mn), which has an atomic mass of 54.94 g/mol. Therefore, the metal identity is Mn (Option B)."
+    },
+    {
+      "question_name": "oxidation_states-simple_oxidation_states_47-oxidation_states",
+      "completion": "[ANSWER] III [/ANSWER]"
+    },
+    {
+      "question_name": "solid_state_chemistry-solid_state_1-solid_state_chemistry_1",
+      "completion": "[ANSWER]The correct answer is: (110), (200), (211), (310).[/ANSWER]"
+    },
+    {
+      "question_name": "electrochemistry-electrochemistry_0-electrochemistry_0",
+      "completion": "[ANSWER]W < X < Y < Z[/ANSWER]\n\nThe charge of an element in an oxidation state is related to its atomic number, not its atomic mass. The atomic number of an element is the number of protons in its nucleus, which determines its position in the periodic table and its oxidation states. Therefore, the correct order of these elements from least to most charge required is determined by their oxidation states: W (+1) < X (+2) < Y (+3) < Z (+2)."
+    },
+    {
+      "question_name": "point_group-pointgroups_5-pointgroups",
+      "completion": "[ANSWER] C2v [/ANSWER]"
+    },
+    {
+      "question_name": "polymer_chemistry-16-polymer_chemistry_16",
+      "completion": "[ANSWER] 4 [/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_0-pointgroups",
+      "completion": "[ANSWER] D2h [/ANSWER]"
+    },
+    {
+      "question_name": "toxicology_lmu-27-tox_lmu_27",
+      "completion": "[ANSWER] There is no specific half-life for lead in blood as it depends on the individual's exposure and other factors. Therefore, none of the options (A, B, C, D) are correct. [/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_10-pointgroups",
+      "completion": "[ANSWER] Cs [/ANSWER]"
     },
     {
       "question_name": "solid_state_chemistry-solid_state_18-solid_state_chemistry_18",
@@ -91,10 +151,6 @@
       "completion": "The SMILES string CS(=O)C represents a molecule with a central carbon atom bonded to a sulfur atom, a double bond to an oxygen atom, and a single bond to another carbon atom. This molecule has a linear geometry around the central carbon atom, with C-S-C and C=O as the two constituent bonds.\n\nTo determine the point group of this molecule, we need to identify its symmetry elements. In this case, the molecule has:\n\n1. A vertical mirror plane (\u03c3v) passing through the central carbon atom, perpendicular to the C-S-C plane.\n2. A C2 rotational axis along the C-S-C bond.\n\nBased on these symmetry elements, the point group of the molecule is C2v.\n\nTherefore, the answer is:\n\n[ANSWER] C2v [/ANSWER]"
     },
     {
-      "question_name": "2022-XI_2022_2-XI_2022_MD",
-      "completion": "[ANSWER]addition[/ANSWER]"
-    },
-    {
       "question_name": "point_group-pointgroups_7-pointgroups",
       "completion": "[ANSWER] C2v [/ANSWER]"
     },
@@ -113,74 +169,6 @@
     {
       "question_name": "oup-molecular_structure_6-molecular_structure",
       "completion": "[ANSWER]1 < 2 < 3[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_1-pointgroups",
-      "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
-      "question_name": "periodic_table_properties-5-periodic_table_questions",
-      "completion": "[ANSWER] A <-- Correct\nB\nC\nD [/ANSWER] The density of group 13 elements increases down the group due to the increase in atomic size and number of electrons. However, boron (B) is an exception due to its small size and unique electron configuration. Therefore, the correct order is B < Al < Ga < In < Tl."
-    },
-    {
-      "question_name": "hybridization-hybridization_4-hybridization_4",
-      "completion": "[ANSWER]sp2[/ANSWER]"
-    },
-    {
-      "question_name": "ionenlotto-2-dissolvable_ammonium_carbonate_group",
-      "completion": "[ANSWER]Mg^{2+}[/ANSWER]\n\nThe given experimental observations suggest the presence of magnesium ions (Mg^{2+}) in the sample. The hydrate water release without sublimate formation, melting with prolonged heating, and complete dissolution in water are characteristic of magnesium carbonate or magnesium hydroxide. The brick-red coloration in the flame test, intense lines at 650 nm and 550 nm, and occasional blue/violet lines indicate the presence of magnesium.\n\nThe precipitate formation with NaOH, Na2HPO4, and soda, as well as the red coloration around zinc granules with Lunge's reagent, further support the presence of magnesium. The lack of reaction with BaCl2, K2CrO4 in non-ammoniacal solution, and titan yellow, and the positive chromate-rhodizonate test, are consistent with magnesium.\n\nThe gas evolution with dilute HCl, precipitation with AgNO3, and the similar results for hard chunks, confirm the presence of magnesium ions in the sample."
-    },
-    {
-      "question_name": "2020-2g-icho_uk_2020_2g",
-      "completion": "To find the standard enthalpy change of combustion of H2, we first need to write the balanced chemical equation for the combustion of hydrogen gas (H2) to form liquid water (H2O) and gaseous carbon dioxide (CO2). The unbalanced equation is:\n\nH2(g) + O2(g) -> H2O(l) + CO2(g)\n\nHowever, since this question does not involve CO2, we can remove it from the equation and balance it:\n"
-    },
-    {
-      "question_name": "point_group-pointgroups_11-pointgroups",
-      "completion": "[ANSWER]Cs[/ANSWER] The molecule with SMILES C(=N)(N)N has a linear geometry, so the point group is Cs (cylindrical symmetry)."
-    },
-    {
-      "question_name": "point_group-pointgroups_15-pointgroups",
-      "completion": "[ANSWER] C2 [/ANSWER]"
-    },
-    {
-      "question_name": "2022-5-US_local_olympiad_2022_5",
-      "completion": "[ANSWER] Mn [/ANSWER] The balanced chemical equation for the reaction is:\n\nMCO3 -> MO + CO2\n\nWe can use the molar mass of CO2 (44.01 g/mol) to find the number of moles of CO2 produced:\n\n0.383 g CO2 / (44.01 g/mol) = 0.0087 mol CO2\n\nSince the molar ratio of MCO3 to CO2 in the balanced equation is 1:1, this means that 0.0087 mol of MCO3 was converted to MO. We can use the molar mass of MCO3 (62.01 + 12.01 + 3 x atomic mass of M) to find the mass of MCO3:\n\nmass of MCO3 = 0.0087 mol x molar mass of MCO3\nmass of MCO3 = 0.0087 mol x (62.01 g/mol + 12.01 g/mol + 3 x atomic mass of M)\n\nWe know that the mass of MCO3 was 1.000 g, so we can set up the following equation:\n\n1.000 g = 0.0087 mol x (62.01 g/mol + 12.01 g/mol + 3 x atomic mass of M)\n\nSolving for the atomic mass of M, we get:\n\natomic mass of M = (1.000 g - 0.0087 mol x 62.01 g/mol - 0.0087 mol x 12.01 g/mol) / (3 x 0.0087 mol)\natomic mass of M = (1.000 g - 0.541 g) / (3 x 0.0087 mol)\natomic mass of M = 0.118 g / (3 x 0.0087 mol)\natomic mass of M = 4.76 g/mol\n\nThe closest match to this atomic mass among the options is Manganese (Mn), which has an atomic mass of 54.94 g/mol. Therefore, the metal identity is Mn (Option B)."
-    },
-    {
-      "question_name": "oxidation_states-simple_oxidation_states_47-oxidation_states",
-      "completion": "[ANSWER] III [/ANSWER]"
-    },
-    {
-      "question_name": "solid_state_chemistry-solid_state_1-solid_state_chemistry_1",
-      "completion": "[ANSWER]The correct answer is: (110), (200), (211), (310).[/ANSWER]"
-    },
-    {
-      "question_name": "electrochemistry-electrochemistry_0-electrochemistry_0",
-      "completion": "[ANSWER]W < X < Y < Z[/ANSWER]\n\nThe charge of an element in an oxidation state is related to its atomic number, not its atomic mass. The atomic number of an element is the number of protons in its nucleus, which determines its position in the periodic table and its oxidation states. Therefore, the correct order of these elements from least to most charge required is determined by their oxidation states: W (+1) < X (+2) < Y (+3) < Z (+2)."
-    },
-    {
-      "question_name": "point_group-pointgroups_5-pointgroups",
-      "completion": "[ANSWER] C2v [/ANSWER]"
-    },
-    {
-      "question_name": "2010-4d2-icho_uk_2010_4d2",
-      "completion": "To find the concentration of sodium chloride (NaCl) in the solution, we first need to convert the freezing point depression from Celsius to Kelvin:\n\n-21.1\u00b0C = (-21.1 + 273.15) K = 252.05 K\n\nNow, we can use the formula for depression in freezing point to solve for the molality (m) of the solution:\n"
-    },
-    {
-      "question_name": "polymer_chemistry-16-polymer_chemistry_16",
-      "completion": "[ANSWER] 4 [/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_0-pointgroups",
-      "completion": "[ANSWER] D2h [/ANSWER]"
-    },
-    {
-      "question_name": "toxicology_lmu-27-tox_lmu_27",
-      "completion": "[ANSWER] There is no specific half-life for lead in blood as it depends on the individual's exposure and other factors. Therefore, none of the options (A, B, C, D) are correct. [/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_10-pointgroups",
-      "completion": "[ANSWER] Cs [/ANSWER]"
     }
   ]
 }

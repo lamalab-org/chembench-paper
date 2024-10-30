@@ -1,6 +1,6 @@
 {
-  "extractions_fraction": 0.021373510861948143,
-  "questions_extracted": 61,
+  "extractions_fraction": 0.02080344332855093,
+  "questions_extracted": 58,
   "extracted": [
     {
       "question_name": "2022-XI_2022_4-XI_2022_MD",
@@ -45,14 +45,6 @@
     {
       "question_name": "vibrational_probes-2-mesomeric_effect",
       "completion": "[ANSWER] C < A [/ANSWER] The correct ordering of compounds in terms of increasing wavenumber of the carbonyl stretching mode is:\n\nC. CCC(CC)=O < A. C=CC(C=C)=O < CCC(C=C)=O\n\nThe carbonyl stretching mode (C=O) typically appears in the 1600-1850 cm$^{-1}$ region of the infrared spectrum. The more electron-withdrawing groups attached to the carbon of the carbonyl, the more the C=O bond polarizes and the higher the wavenumber of the carbonyl stretching mode. Therefore, the compound with the C=O group attached to two sp$^2$ carbon atoms (an alkene) will have a higher wavenumber than the compound with the C=O group attached to one sp$^2$ carbon atom (an alkene) and one sp$^3$ carbon atom (an alkane). The compound with the C=O group attached to three sp$^3$ carbon atoms (an alkane) will have the lowest wavenumber of the three."
-    },
-    {
-      "question_name": "reasoning-IX-reasoning_question_9",
-      "completion": "[ANSWER] D <-- FeCl3 is an acidic salt, others are basic salts.\n[/ANSWER]"
-    },
-    {
-      "question_name": "organic_reactivity-9-organic_reactivity_9",
-      "completion": "The stability of cations depends on the charge being dispersed over a larger number of atoms and on resonance structures. The cation C[C+](C)C has a positive charge on a carbon atom which is adjacent to two other carbon atoms, allowing for resonance, and thus is more stable. The cation C[CH+]CC has a positive charge on a carbon atom which is only adjacent to one other carbon atom, and therefore is less stable. The cation CC(C)([CH2+])C has a positive charge on a carbon atom which is part of a chain of three carbon atoms, and thus is even less stable. Therefore, the correct ordering is:\n\n[ANSWER] C[C+](C)C, C[CH+]CC, CC(C)([CH2+])C [/ANSWER]."
     },
     {
       "question_name": "solid_state_chemistry-solid_state_18-solid_state_chemistry_18",
@@ -111,10 +103,6 @@
       "completion": "[ANSWER]Cs[/ANSWER]"
     },
     {
-      "question_name": "2022-XI_2022_2-XI_2022_MD",
-      "completion": "[ANSWER]addition[/ANSWER]"
-    },
-    {
       "question_name": "point_group-pointgroups_7-pointgroups",
       "completion": "[ANSWER] C2v [/ANSWER]"
     },
@@ -153,10 +141,6 @@
     {
       "question_name": "hybridization-hybridization_4-hybridization_4",
       "completion": "[ANSWER]sp2[/ANSWER]"
-    },
-    {
-      "question_name": "ionenlotto-2-dissolvable_ammonium_carbonate_group",
-      "completion": "[ANSWER] Mg^{2+}, Sr^{2+} [/ANSWER]"
     },
     {
       "question_name": "point_group-pointgroups_11-pointgroups",
@@ -205,6 +189,10 @@
     {
       "question_name": "point_group-pointgroups_10-pointgroups",
       "completion": "[ANSWER] Cs [/ANSWER]"
+    },
+    {
+      "question_name": "reasoning-IX-reasoning_question_9",
+      "completion": "[ANSWER] D <-- FeCl3 is an acidic salt, others are basic salts.\n[/ANSWER]"
     }
   ]
 }
