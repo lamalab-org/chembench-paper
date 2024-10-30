@@ -179,6 +179,126 @@
       "completion": "B is the preferred candidate for further development in this early virtual screening campaign setting."
     },
     {
+      "question_name": "reactive_groups-36_7-reactive_groups_36",
+      "completion": "The correct answer is C. Potassium oxalate is noncombustible."
+    },
+    {
+      "question_name": "reasoning-XXXI-reasoning_question_31",
+      "completion": "A,C,G,I,J,L"
+    },
+    {
+      "question_name": "2010-4d1-icho_uk_2010_4d1",
+      "completion": "The freezing point of a 3 mol dm^-3 solution of sodium chloride is approximately 272.38 K."
+    },
+    {
+      "question_name": "MSDS-7-MSDS_7",
+      "completion": "The correct answer is E. Toxicity of the ingredients of the chemical is not typically included in the chemical identification section of an MSDS."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_136-ChemComp",
+      "completion": "The potential safety risks when unsaturated aliphatic hydrocarbons are mixed with metals or elemental alloys (powders, vapors, or sponges) include explosion (A), fire (B), flammable gas generation (C), and heat generation (D). These risks arise from the high reactivity of unsaturated aliphatic hydrocarbons, especially in the presence of metals that can act as catalysts, potentially leading to vigorous reactions, exothermic processes, and the release of flammable gases."
+    },
+    {
+      "question_name": "reactive_groups-33_5-reactive_groups_33",
+      "completion": "The correct answer is D. Metal hydrides, metal alkyls, metal aryls, and silanes are typically used as reducing agents in chemistry."
+    },
+    {
+      "question_name": "oup-drug_synthesis_36-drug_synthesis",
+      "completion": "The most likely answer is D. Thioesterase appears to be instrumental in synthesizing macrocyclic lactams, as it is involved in the cyclization process to form the macrocyclic lactam core structure."
+    },
+    {
+      "question_name": "computational_chemistry-computational_chemistry_3-computational_chemistry_3",
+      "completion": "A. GGA+U (GGA with Hubbard U correction)"
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_259-ChemComp",
+      "completion": "The potential safety risks when strong oxidizing agents are mixed with unsaturated aliphatic hydrocarbons include explosion (A), fire (B), heat generation (D), and violent polymerization (I). These risks arise from the high reactivity of unsaturated aliphatic hydrocarbons and the ability of strong oxidizing agents to intensify combustion and react vigorously with these compounds."
+    },
+    {
+      "question_name": "toxicology_lmu-26-tox_lmu_26",
+      "completion": "The correct answer is D. The half-life of lead in bones is approximately 20 years."
+    },
+    {
+      "question_name": "materials_compatibility-materials_compatibility_410-materials_compatibility",
+      "completion": "The compatibility of hydrofluoric acid 75% with aluminum (assuming an exposure of 48 hours) is severe, and it is not recommended for any use. The correct answer is D: Severe Effect: Not recommended for any use."
+    },
+    {
+      "question_name": "quizlet-35-ch16_arson_explosive_quiz_35",
+      "completion": "[ANSWER][/ANSWER]"
+    },
+    {
+      "question_name": "polymer_chemistry_fsu-10-polymer_chemistry_fsu_10",
+      "completion": "The correct answers are A and B. At pH < pKa, the polymer is uncharged and collapsed, and at pH > pKa, the polymer is fully charged and forms a stretched chain. These statements accurately describe the behavior of polyanion/polyacid polymers at different pH levels relative to their pKa."
+    },
+    {
+      "question_name": "bg_etem-58-bg_etem_58",
+      "completion": "[ANSWER][/ANSWER]"
+    },
+    {
+      "question_name": "materials_synthesis-biological_apatite_0-biological_apatite_1",
+      "completion": "The correct answers are B and D. Biological apatite is calcium deficient (B), and the ratio of calcium to phosphorus is less than 1.67 (D). It does not have the same composition as synthetic or stoichiometric hydroxyapatite, and it is not rich with calcium."
+    },
+    {
+      "question_name": "oup-biomolecular_science_9-biomolecular_science",
+      "completion": "The primary purpose of chromatin sonication in a ChIP experiment is to reduce chromatin size, which is represented by option B in the multiple choice question."
+    },
+    {
+      "question_name": "materials_compatibility-materials_compatibility_2923-materials_compatibility",
+      "completion": "The most likely compatibility of dimethyl aniline with PVC (assuming an exposure of 48 hours) is Fair: Moderate Effect, not recommended for continuous use. Softening or loss of strength, and swelling may occur."
+    },
+    {
+      "question_name": "reasoning-XXIII-reasoning_question_23",
+      "completion": "The correct answer is C. Both starvation and diabetes metabolic states involve obtaining fat and protein from the body as alternative energy sources when normal glucose metabolism is disrupted."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_108-ChemComp",
+      "completion": "The potential safety risks when nitrides are mixed with aldehydes include explosion (A), flammable gas generation (C), and toxic gas generation (H). These risks are supported by the information from reliable sources in the chemical safety field."
+    },
+    {
+      "question_name": "analytical_chemistry-28-analytical_chemistry_28",
+      "completion": "The correct answer is C. The additional peaks at 861.8 eV and 879.1 eV represent shake-up satellite peaks where the photoemitted electron leaves behind an excited state of the atom."
+    },
+    {
+      "question_name": "periodic_table_properties-14-periodic_table_questions",
+      "completion": "The element with the highest boiling point among the given options is rhenium (Re), which corresponds to option C."
+    },
+    {
+      "question_name": "tox_wwu-22-tox_wwu_22",
+      "completion": "The correct answers are B and D. Ammonia is indeed a colorless, pungent smelling gas (B), and it may cause pulmonary edema if inhaled (D). The other statements are either not fully supported or contradicted by the available information."
+    },
+    {
+      "question_name": "oup-biomolecular_science_15-biomolecular_science",
+      "completion": "The correct answer is A. A-T residues confer more thermodynamic instability than G-C residues, and this design promotes loading of the antisense strand at the 5' end into the RISC, which is crucial for effective shRNA function."
+    },
+    {
+      "question_name": "reactions-9-reaction_9",
+      "completion": "The correct answer is B. K_p = K_c (RT)^3"
+    },
+    {
+      "question_name": "reactive_groups-23_6-reactive_groups_23",
+      "completion": "The recommended maximum scale for intentionally isolating explosive diazonium salts is 0.75 mmol, which corresponds to option A in the multiple choice question."
+    },
+    {
+      "question_name": "reactive_groups-14_7-reactive_groups_14",
+      "completion": "The correct answer is B. Low flash point and wide flammability range. This option best describes the characteristics that make ethers dangerous fire hazards, including their extremely low flashpoint, high volatility, and wide range of flammability due to their tendency to form explosive peroxides."
+    },
+    {
+      "question_name": "periodic_table_properties-4-periodic_table_questions",
+      "completion": "The correct answer is A. Density decreases from Ra to Be, which means it increases from Be to Ra (going down the group)."
+    },
+    {
+      "question_name": "reasoning-IX-reasoning_question_9",
+      "completion": "The correct order of pH from lowest to highest is FeCl3 < BaBr2 < Na2CO3 < KOH, which corresponds to option B."
+    },
+    {
+      "question_name": "technical_chemistry-14-Technical_chemistry_14",
+      "completion": "The correct answer is B. Low-pressure drop for high gas flows is an advantage of shaping solid catalysts as structured ceramic monolithic platforms."
+    },
+    {
+      "question_name": "tox_wwu-32-tox_wwu_32",
+      "completion": "The correct answers are A and D. Cyanides do bind to the central ion of cytochrome oxidase and inhibit cellular respiration (A), and they are indeed released when plastics and textiles are burned (D). While C has some truth to it, it's not the primary detoxification pathway in the body and is therefore not included in the most accurate answer."
+    },
+    {
       "question_name": "computational_chemistry-computational_chemistry_2-computational_chemistry_2",
       "completion": "The correct answer is E. Van der Waals interactions are closely related to polarizability, and this relationship is used in the development of certain functionals to better account for these interactions."
     },
@@ -357,126 +477,6 @@
     {
       "question_name": "tox_pharma_vienna-57-tox_pharma_vienna_57",
       "completion": "The correct answer is D. Intoxication. Acute inhalation poisoning with benzene primarily affects the central nervous system, causing symptoms such as drowsiness, dizziness, headaches, confusion, and potential loss of consciousness, which are characteristic of intoxication."
-    },
-    {
-      "question_name": "reactive_groups-36_7-reactive_groups_36",
-      "completion": "The correct answer is C. Potassium oxalate is noncombustible."
-    },
-    {
-      "question_name": "reasoning-XXXI-reasoning_question_31",
-      "completion": "A,C,G,I,J,L"
-    },
-    {
-      "question_name": "2010-4d1-icho_uk_2010_4d1",
-      "completion": "The freezing point of a 3 mol dm^-3 solution of sodium chloride is approximately 272.38 K."
-    },
-    {
-      "question_name": "MSDS-7-MSDS_7",
-      "completion": "The correct answer is E. Toxicity of the ingredients of the chemical is not typically included in the chemical identification section of an MSDS."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_136-ChemComp",
-      "completion": "The potential safety risks when unsaturated aliphatic hydrocarbons are mixed with metals or elemental alloys (powders, vapors, or sponges) include explosion (A), fire (B), flammable gas generation (C), and heat generation (D). These risks arise from the high reactivity of unsaturated aliphatic hydrocarbons, especially in the presence of metals that can act as catalysts, potentially leading to vigorous reactions, exothermic processes, and the release of flammable gases."
-    },
-    {
-      "question_name": "reactive_groups-33_5-reactive_groups_33",
-      "completion": "The correct answer is D. Metal hydrides, metal alkyls, metal aryls, and silanes are typically used as reducing agents in chemistry."
-    },
-    {
-      "question_name": "oup-drug_synthesis_36-drug_synthesis",
-      "completion": "The most likely answer is D. Thioesterase appears to be instrumental in synthesizing macrocyclic lactams, as it is involved in the cyclization process to form the macrocyclic lactam core structure."
-    },
-    {
-      "question_name": "computational_chemistry-computational_chemistry_3-computational_chemistry_3",
-      "completion": "A. GGA+U (GGA with Hubbard U correction)"
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_259-ChemComp",
-      "completion": "The potential safety risks when strong oxidizing agents are mixed with unsaturated aliphatic hydrocarbons include explosion (A), fire (B), heat generation (D), and violent polymerization (I). These risks arise from the high reactivity of unsaturated aliphatic hydrocarbons and the ability of strong oxidizing agents to intensify combustion and react vigorously with these compounds."
-    },
-    {
-      "question_name": "toxicology_lmu-26-tox_lmu_26",
-      "completion": "The correct answer is D. The half-life of lead in bones is approximately 20 years."
-    },
-    {
-      "question_name": "materials_compatibility-materials_compatibility_410-materials_compatibility",
-      "completion": "The compatibility of hydrofluoric acid 75% with aluminum (assuming an exposure of 48 hours) is severe, and it is not recommended for any use. The correct answer is D: Severe Effect: Not recommended for any use."
-    },
-    {
-      "question_name": "quizlet-35-ch16_arson_explosive_quiz_35",
-      "completion": "[ANSWER][/ANSWER]"
-    },
-    {
-      "question_name": "polymer_chemistry_fsu-10-polymer_chemistry_fsu_10",
-      "completion": "The correct answers are A and B. At pH < pKa, the polymer is uncharged and collapsed, and at pH > pKa, the polymer is fully charged and forms a stretched chain. These statements accurately describe the behavior of polyanion/polyacid polymers at different pH levels relative to their pKa."
-    },
-    {
-      "question_name": "bg_etem-58-bg_etem_58",
-      "completion": "[ANSWER][/ANSWER]"
-    },
-    {
-      "question_name": "materials_synthesis-biological_apatite_0-biological_apatite_1",
-      "completion": "The correct answers are B and D. Biological apatite is calcium deficient (B), and the ratio of calcium to phosphorus is less than 1.67 (D). It does not have the same composition as synthetic or stoichiometric hydroxyapatite, and it is not rich with calcium."
-    },
-    {
-      "question_name": "oup-biomolecular_science_9-biomolecular_science",
-      "completion": "The primary purpose of chromatin sonication in a ChIP experiment is to reduce chromatin size, which is represented by option B in the multiple choice question."
-    },
-    {
-      "question_name": "materials_compatibility-materials_compatibility_2923-materials_compatibility",
-      "completion": "The most likely compatibility of dimethyl aniline with PVC (assuming an exposure of 48 hours) is Fair: Moderate Effect, not recommended for continuous use. Softening or loss of strength, and swelling may occur."
-    },
-    {
-      "question_name": "reasoning-XXIII-reasoning_question_23",
-      "completion": "The correct answer is C. Both starvation and diabetes metabolic states involve obtaining fat and protein from the body as alternative energy sources when normal glucose metabolism is disrupted."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_108-ChemComp",
-      "completion": "The potential safety risks when nitrides are mixed with aldehydes include explosion (A), flammable gas generation (C), and toxic gas generation (H). These risks are supported by the information from reliable sources in the chemical safety field."
-    },
-    {
-      "question_name": "analytical_chemistry-28-analytical_chemistry_28",
-      "completion": "The correct answer is C. The additional peaks at 861.8 eV and 879.1 eV represent shake-up satellite peaks where the photoemitted electron leaves behind an excited state of the atom."
-    },
-    {
-      "question_name": "periodic_table_properties-14-periodic_table_questions",
-      "completion": "The element with the highest boiling point among the given options is rhenium (Re), which corresponds to option C."
-    },
-    {
-      "question_name": "tox_wwu-22-tox_wwu_22",
-      "completion": "The correct answers are B and D. Ammonia is indeed a colorless, pungent smelling gas (B), and it may cause pulmonary edema if inhaled (D). The other statements are either not fully supported or contradicted by the available information."
-    },
-    {
-      "question_name": "oup-biomolecular_science_15-biomolecular_science",
-      "completion": "The correct answer is A. A-T residues confer more thermodynamic instability than G-C residues, and this design promotes loading of the antisense strand at the 5' end into the RISC, which is crucial for effective shRNA function."
-    },
-    {
-      "question_name": "reactions-9-reaction_9",
-      "completion": "The correct answer is B. K_p = K_c (RT)^3"
-    },
-    {
-      "question_name": "reactive_groups-23_6-reactive_groups_23",
-      "completion": "The recommended maximum scale for intentionally isolating explosive diazonium salts is 0.75 mmol, which corresponds to option A in the multiple choice question."
-    },
-    {
-      "question_name": "reactive_groups-14_7-reactive_groups_14",
-      "completion": "The correct answer is B. Low flash point and wide flammability range. This option best describes the characteristics that make ethers dangerous fire hazards, including their extremely low flashpoint, high volatility, and wide range of flammability due to their tendency to form explosive peroxides."
-    },
-    {
-      "question_name": "periodic_table_properties-4-periodic_table_questions",
-      "completion": "The correct answer is A. Density decreases from Ra to Be, which means it increases from Be to Ra (going down the group)."
-    },
-    {
-      "question_name": "reasoning-IX-reasoning_question_9",
-      "completion": "The correct order of pH from lowest to highest is FeCl3 < BaBr2 < Na2CO3 < KOH, which corresponds to option B."
-    },
-    {
-      "question_name": "technical_chemistry-14-Technical_chemistry_14",
-      "completion": "The correct answer is B. Low-pressure drop for high gas flows is an advantage of shaping solid catalysts as structured ceramic monolithic platforms."
-    },
-    {
-      "question_name": "tox_wwu-32-tox_wwu_32",
-      "completion": "The correct answers are A and D. Cyanides do bind to the central ion of cytochrome oxidase and inhibit cellular respiration (A), and they are indeed released when plastics and textiles are burned (D). While C has some truth to it, it's not the primary detoxification pathway in the body and is therefore not included in the most accurate answer."
     }
   ]
 }
