@@ -19,7 +19,7 @@ diff_between_llama_405B_and_gemma_9B = round(diff_between_llama_405B_and_gemma_9
 # make directory if it does not exist
 (output / "trends_section_variables"/ "gemma_9B.txt").parent.mkdir(parents=True, exist_ok=True)
 with open(output / "trends_section_variables"/ "gemma_9B.txt", "w") as f:
-    f.write(f"{diff_between_llama_405B_and_gemma_9B}" + "\\endinput")
+    f.write(f"{gemma_9B_performance}" + "\\endinput")
     
 (output / "trends_section_variables"/ "diff_between_llama_405B_and_gemma_9B.txt").parent.mkdir(parents=True, exist_ok=True)
 with open(output / "trends_section_variables"/ "diff_between_llama_405B_and_gemma_9B.txt", "w") as f:
