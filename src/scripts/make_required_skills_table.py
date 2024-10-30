@@ -9,7 +9,7 @@ from chembench.analysis import (
 )
 
 from utils import obtain_chembench_repo
-from paths import tex, data
+from paths import tex, data, output
 
 def load_and_count(datafolder):
     data_paths = construct_name_to_path_dict(datafolder)
@@ -27,7 +27,7 @@ def load_and_count(datafolder):
         keywords = data["keywords"]
         for keyword in keywords:
             if "requires" in keyword:
-                if keyword == "requires-reasoning": 
+                if keyword == "requires-reasoning":
                     reasoning += 1
                 if keyword == "requires-knowledge":
                     knowledge += 1
@@ -35,8 +35,8 @@ def load_and_count(datafolder):
                     calculation += 1
                 if keyword == "requires-intuition":
                     intuition += 1
-                
-    
+
+
     results = {
         "requires-reasoning": reasoning,
         "requires-knowledge": knowledge,
@@ -53,6 +53,18 @@ if __name__ == "__main__":
     )
 
     data = load_and_count(datafolder)
+
+    with open(output / "reasoning_count.txt", 'w') as f:
+        f.write(str(data["requires-reasoning"]) + "\endinput")
+
+    with open(output / "knowledge_count.txt", 'w') as f:
+        f.write(str(data["requires-knowledge"]) + "\endinput")
+
+    with open(output / "calculation_count.txt", 'w') as f:
+        f.write(str(data["requires-calculation"]) + "\endinput")
+
+    with open(output / "intuition_count.txt", 'w') as f:
+        f.write(str(data["requires-intuition"]) + "\endinput")
 
     # Save the data variable to a pickle file
     with open(os.path.join(data, 'requires_data.pkl'), 'wb') as f:

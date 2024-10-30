@@ -13,10 +13,10 @@
     Thus, a benchmark should not assume access to the raw model outputs but be able to operate on text completions.
     \item \emph{Probing capabilities beyond answering of \glspl{mcq}}. In real-world chemistry, as well as higher-level university education, multiple-choice questions are seldom utilized.
     Yet, most benchmarking frameworks focus on the \gls{mcq} setting because of the ease of evaluation. Realistic evaluations must measure capabilities beyond answering \gls{mcq}.
-    \item \emph{Cover a diverse set of topics}. Chemistry, as the \enquote{central science}, bridges multiple disciplines.\autocite{Aspuru_Guzik_2018} To even just approximate \enquote{chemistry capabilities} the topics covered by a chemistry benchmark must be very diverse.
-    \item \emph{Cover diverse skills}. To holistically judge performance it is important to cover questions relying on reasoning, calculation, knowledge, and intuition.
+    \item \emph{Cover a diverse set of topics}. Chemistry, as the \enquote{central science}, bridges multiple disciplines.\autocite{Aspuru_Guzik_2018} To even just approximate \enquote{chemistry capabilities}, the topics covered by a chemistry benchmark must be very diverse.
+    \item \emph{Cover diverse skills}. To holistically judge performance, it is important to cover questions that rely on reasoning, calculation, knowledge, and intuition.
     \item \emph{Cover a range of difficulty levels}. To allow for a continuous measure of improvement for a range of different (evolving) systems, a benchmark should cover a wide range of difficulty levels.
-    \item \emph{Impossible to completely solve with current models}. A benchmark should contain questions that are impossible to solve with current models. If current models can solve all questions, the benchmark provides no useful signal.
+    \item \emph{Impossible to completely solve with current models}. A benchmark should contain questions that are impossible to solve with current models. The benchmark provides no useful signal if current models can solve all questions.
 \end{itemize}
 
 \subsection{Related work}
@@ -46,7 +46,7 @@ The general guidelines followed by the reviewer are the following:
     \item \textbf{Contribution to Dataset Diversity: }Questions should cover a wide range of chemical concepts and sub-disciplines. They should add value by expanding the breadth of the dataset. That is, questions already multiple (>10) times in the corpus in a similar form are rejected.
 \end{itemize}
 
-Reviewers also solved the questions to verify the answers. They also performed web searches to ensure questions were not easily found online. The reviewers often guided the revision process to ensure the question aligned with the guidelines. Questions that don't meet the criteria are either rejected or suggested for revision and most often, they are modified to a new question. Reviewers also provide feedback on the skill and difficulty annotations.
+Reviewers also solved the questions to verify the answers. They also performed web searches to ensure questions were not easily found online. The reviewers often guided the revision process to ensure the question aligned with the guidelines. Questions that don't meet the criteria are either rejected or suggested for revision, and most often, they are modified to a new question. Reviewers also provide feedback on the skill and difficulty annotations.
 
 In addition to the manual review, we also performed automated checks to ensure the quality of the questions. The schemas, Latex templating, and other formatting aspects are checked automatically using GitHub Actions.
 
@@ -64,7 +64,7 @@ However, even though we decided not to include questions from other previously p
     \label{fig:cb_humanset}
 \end{figure}
 
-The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpus_topic}, can be divided according to which chemical topic they belong to.
+The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpus_topic}, can be divided according to which chemical topic they belong.
 
 \begin{table}
     \centering
@@ -160,11 +160,9 @@ In addition, as shown in \Cref{fig:cb_skillset} the \chembench corpus can be div
 
 
 \begin{xltabular}{\textwidth}{X}
-    \centering
-    \caption{\textbf{Examples for each of the required skills considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question. Note that the total count in this table is bigger than the \chembench corpus. This is because the same question can be annotated with two different \enquote{requires} skills, i.e. Reasoning and Calculation.} \\
-    \label{tab:chembench_corpus_cognitive}
+    \caption{\textbf{Examples for each required skill considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question. Note that the total count in this table is bigger than the \chembench corpus. This is because the same question can be annotated with two different skills, e.g., Reasoning and Calculation.}    \label{tab:chembench_corpus_cognitive} \\
             \toprule
-            \multicolumn{1}{c}{\textbf{Knowledge} 919 Questions} \\
+            \multicolumn{1}{c}{\textbf{Knowledge} \variable{output/knowledge_count.txt} Questions} \\
             \midrule
             Which of the following salts is an acidic salt? \\
             A. \ce{NH4Cl} \\
@@ -172,7 +170,7 @@ In addition, as shown in \Cref{fig:cb_skillset} the \chembench corpus can be div
             C. \ce{NaH2PO4} \\
             D. \ce{Zn(OH)Cl} \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Reasoning} 987 Questions} \\
+            \multicolumn{1}{c}{\textbf{Reasoning} \variable{output/reasoning_count.txt} Questions} \\
             \midrule
             You make the following experimental observations: The sample consisted of small colorless/white crystals, wine-red transparent crystals, turquoise transparent crystals, and violet flakes. Most components dissolved in cold water, with turquoise crystals dissolving upon heating. Dimethylglyoxime produced a raspberry-red color with dissolved turquoise crystals. Violet flakes turned blue on contact and showed red/violet colors in flame tests. An oxidation melt turned green. No red coloration occurred with \ce{KSCN}, but a blue organic phase formed with acetone. Potassium ferrocyanide showed no changes. \ce{KOH} produced a brown/black precipitate. Alizarin-S testing resulted in red coloration after acidification. Heating with cobalt nitrate produced a bluish color without luster. Lead dioxide and sulfuric acid oxidation formed a violet solution. No changes occurred in chromate oxidation or titanium detection attempts. \ce{BaCl2} formed precipitates in both original solution and soda extract. Lunge's reagent showed red coloration around zinc granules. Silver nitrate formed white precipitates that dissolved in \ce{NH3} and reappeared with \ce{HNO3} acidification. The separation procedure began with the aqueous solution being treated with \ce{(NH4)2CO3} solution until a persistent turbidity appeared, followed by addition of dilute \ce{HCl} until the turbidity disappeared. The pH was then adjusted to 5-6 with \ce{NH3} (2 M) and heated on a water bath. Three spatula tips of urotropin were added, resulting in a white, rather flocculent precipitate. This precipitate was centrifuged off and washed with warm water. In the Urotropin group, the residue was dissolved in dilute \ce{HCl} and diluted with water. An alkaline precipitation was performed, resulting in a brown coloration even after repeated washing of the urotropin precipitation. This precipitate dissolved in 2 M \ce{HCl}, but showed no change when treated with either \ce{KSCN} or potassium ferrocyanide. In the \ce{(NH4)2S} group, addition of dimethylglyoxim produced a very flocculent red precipitate that rose to the top of the test tube. When \ce{H2S} was introduced to the centrifugate, a black precipitation occurred. The precipitates did not completely dissolve in \ce{HCl}. Treatment with \ce{KSCN} resulted in a blue organic phase when layered with acetone. An alkaline precipitation produced a brown/black residue. No precipitation was observed when \ce{H2S} was introduced to the supernatant liquid after the alkaline precipitation.  What ions are in the sample? \\
             A. \ce{Al^{3+}} \\
@@ -183,13 +181,13 @@ In addition, as shown in \Cref{fig:cb_skillset} the \chembench corpus can be div
             F. \ce{Ni^{2+}} \\
             G. \ce{Zn^{2+}} \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Intuition} 1001 Questions} \\
+            \multicolumn{1}{c}{\textbf{Intuition} \variable{output/intuition_count.txt} Questions} \\
             \midrule
             Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
             A. [START\_SMILES]CC1(C)Oc2ccc([N+](=O)[O-])cc2[C@@H](N2CCOCC2)[C\@\@H]1O[END\_SMILES] \\
             B. [START\_SMILES]Cc1ccccc1N=C(S)N1CCC(NC\-(=O)c2ccco2)CC1[END\_SMILES] \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Calculation} 128 Questions} \\
+            \multicolumn{1}{c}{\textbf{Calculation} \variable{output/calculation_count.txt} Questions} \\
             \midrule
             Given that the average molar mass of the polymer chains in this sample of poly(lactic acid) (PLA) is \SI{595}{g mol^{-1}} using end-group analysis, where \SI{0.1619}{g} of PLA was dissolved in \SI{25}{cm^3} of benzyl alcohol and titrated with \SI{0.0400}{mol dm^{-3}} \ce{KOH} solution. The volume of \ce{KOH} solution required to reach the endpoint was \SI{6.81}{cm^3}. What is the average number of monomer units in each polymer chain of this sample? \\
             \bottomrule
@@ -202,12 +200,12 @@ In addition, as shown in \Cref{fig:cb_skillset} the \chembench corpus can be div
 \clearpage
 \subsection{Model performance} \label{sec:model_performance_app}
 We also evaluated the model performance on the entire \chembench corpus.
-\Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions that were answered correctly by the models.
+\Cref{fig:barplot_all_correct_all_questions} shows the fraction of questions the models answered correctly.
 
 \begin{figure}[htb]
     \centering
     \includegraphics{figures/overall_performance.pdf}
-    \caption{\textbf{Overall performance of the models on the \chembench corpus.} The bar plot shows the fraction of questions that were answered correctly by the models. Scores computed on the entire \chembench corpus.}
+    \caption{\textbf{Overall performance of the models on the \chembench corpus.} The bar plot shows the fraction of questions the models answered correctly. Scores computed on the entire \chembench corpus.}
     \label{fig:barplot_all_correct_all_questions}
     \script{plot_overview_performance_plot.py}
 \end{figure}
@@ -299,13 +297,12 @@ An interesting observation is the significant impact of chemical preference task
 \subsection{Performance as a function of molecular features} \label{sec:molecular_features}
 To better understand if the performance of the models is correlated with specific features of the molecules, we analyzed the performance of the models as a function of the number of atoms and the complexity of the molecules.
 \Cref{fig:correlation_plot_is_number_nmr_peaks_complexity} shows that the performance of the models is not correlated with the complexity of the molecules but rather with the number of atoms (\Cref{fig:correlation_plot_is_number_nmr_peaks_num_atoms}, similar trivial correlation for \Cref{fig:correlation_plot_is_electron_counts_num_atoms}).
-%The corresponding Spearman correlation coefficients are listed in \Cref{tab:correlation_coefficients}.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{figures/correlation_plot_is_number_nmr_peaks_complexity.pdf}
     \caption{\textbf{Dependence of the mean absolute error in predicting the number of NMR signals on the Böttcher complexity of the molecules.} The complexity measure proposed by \textcite{B_ttcher_2016} is an information-theoretic additive measure of compound complexity that follows chemical intuitions.
-    The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of \gls{nmr} signals) is not correlated with the complexity of the molecules (that is, molecules tend to not to be able to predict the number of \gls{nmr} signals irregardless of molecular complexity). For inference based on reasoning, one would expect that the complexity of the molecule is a good predictor of the difficulty of the question.}
+    The plot shows that for the \glspl{llm}, the predictive performance (measured as the mean absolute error in the prediction of the number of \gls{nmr} signals) is not correlated with the complexity of the molecules (that is, molecules tend to not to be able to predict the number of \gls{nmr} signals regardless of molecular complexity). For inference based on reasoning, one would expect that the complexity of the molecule is a good predictor of the difficulty of the question.}
     \script{correlate_with_molecule_features.py}
     \label{fig:correlation_plot_is_number_nmr_peaks_complexity}
 \end{figure}
@@ -346,12 +343,12 @@ We see that the performance of the models correlates with their size for the mod
 \Glspl{llm} typically undergo refusal training to prevent harmful or undesirable outputs. As a result, models may decline to answer questions perceived as potentially adversarial prompts.
 To automatically detect refusals, we use a modified regular expression reported by LLM Guard\autocite{llmguard} to detect commonly used refusal phrases.
 
-\Cref{tab:refusal_counts_and_parsing} lists how many refusals were detected for the reponses of different models on \chembench. Overall, we find that refusals do not majorly affect the performance measured by \chembench.
+\Cref{tab:refusal_counts_and_parsing} lists how many refusals were detected for the responses of different models on \chembench. Overall, we find that refusals do not majorly affect the performance measured by \chembench.
 
 
 \subsection{LLM Parsing} \label{sec:llm-parsing}
 
-In our parsing workflow, we use pipelines based on regular expressions to extract the answers. In some cases, however, the answers are not directly extractable from the responses, for instance, when the model does not follow the formatting instructions. In these cases, we use a fallback mechanism to extract the answers. The fallback mechanism uses an \gls{llm} to extract the answers from the responses. The \gls{llm} is provided with the response and the question and is prompted to only extract but not generate the answer. We used \LlamaThreeSeventyBInstruct, accessed via the Groq API.
+Our parsing workflow uses pipelines based on regular expressions to extract the answers. In some cases, however, the answers are not directly extractable from the responses, for instance, when the model does not follow the formatting instructions. In these cases, we use a fallback mechanism to extract the answers. The fallback mechanism uses an \gls{llm} to extract the answers from the responses. The \gls{llm} is provided with the response and the question and is prompted to only extract but not generate the answer. We used \LlamaThreeSeventyBInstruct, accessed via the Groq API.
 \Cref{tab:refusal_counts_and_parsing} tabulates the number of times the fallback mechanism was used for each model.
 
 
@@ -370,7 +367,7 @@ An overview of the benchmarking pipeline implemented in \chembench is shown in \
     \includegraphics[height=.7\textheight]{figures/process.pdf}
     \caption{\textbf{Overview of the benchmarking pipeline implemented in \chembench.} The process begins with JSON files containing task data, which are used to create \texttt{Task} objects and initialize the \texttt{ChemBenchmark}. \texttt{Prompter} objects are then created to handle different types of prompts for instruction-tuned and completion models.
     The \texttt{Task} Iterator differentiates between \gls{mcq} and other question types. For each task type, appropriate prompts are generated and passed to the \gls{llm}. The responses are then processed using regex-based parsing methods specific to \gls{mcq} or numeric answers (after obtaining the relevant part of the response from the instruction-tuned models).
-    The regex-based parsing is elaborate and also able to handle special cases such as scientific notation, or roman numerals.
+    The regex-based parsing is elaborate and can handle special cases such as scientific notation or Roman numerals.
     If the initial parsing is unsuccessful, the system employs an \gls{llm}-based extraction method as a fallback. The parsed or extracted answers then undergo metric computation and refusal detection.}
     \label{fig:process}
 \end{figure}
@@ -437,7 +434,7 @@ While we recorded fine-grained information, e.g., their specialization, we focus
 
 \paragraph{Tool use}
 In our study, humans were allowed to use tools for answering some questions.
-They could also report what tools they used for answering questions. As \Cref{fig:tool_use} shows, the most commonly tool was some form of web search (which, according to the freetext responses, often was a multi-step process).
+They could also report what tools they used for answering questions. As \Cref{fig:tool_use} shows, the most common tool was some form of web search (which, according to the free text responses, often was a multi-step process).
 
 \begin{figure}
     \centering
@@ -450,16 +447,16 @@ They could also report what tools they used for answering questions. As \Cref{fi
 \clearpage
 \subsection{Tool augmented models} \label{sec:react-environment}
 In addition to directly prompting \glspl{llm}, we also investigated the performance of tool-augmented systems.
-For this, we investigated the two models which showed the best overall results, \GPTFourO and \ClaudeThreeFiveSonnet (\oone overperformed both models but is not recommended using this model with such \enquote{reasoning} prompts such as ReAct\autocite{yao2022react} or \gls{cot}\autocite{wei2023cot}).
+For this, we investigated the two models that showed the best overall results, \GPTFourO and \ClaudeThreeFiveSonnet (\oone overperformed both models but is not recommended using this model with such \enquote{reasoning} prompts such as ReAct\autocite{yao2022react} or \gls{cot}\autocite{wei2023cot}).
 For both models, we created a ReAct-style tool augmentation environment in which models had access to WolframAlpha, the ArXiv \gls{api}, Wikipedia, and web search (using Brave search \gls{api}).
 We based the selection of these tools on the most used tools by humans (see \Cref{fig:tool_use}).
 Additionally, we added two specific tools to convert \gls{iupac} names to \gls{smiles}, and \gls{smiles} to \gls{iupac} names.
-These conversion tools allow us to better understand how the agents perform for some specific questions in this agent environment configuration.
+These conversion tools allow us to understand better how the agents perform for specific questions in this agent environment configuration.
 We implemented the systems using Langchain\autocite{Chase_LangChain_2022} with the default ReAct prompt and constrained the system to a maximum of ten \gls{llm} calls.
 
 While for \ClaudeThreeFiveSonnet the overall performance did not change, we observe a decrease in performance for \GPTFourO compared with the \gls{llm} without tools (\Cref{tab:performance_table}).
 If we study the results by each type of question, we observe an improvement for questions regarding electron counts or point groups of compounds.
-However, the scores decreased for questions asking about the number of isomers or \gls{ghs} pictograms.
+However, the scores decreased for questions about the number of isomers or \gls{ghs} pictograms.
 For the specific questions about converting \gls{iupac} names to \gls{smiles}, the results decreased notably despite the models having access to specific tools prepared for those questions.
 By studying the reasoning path for these cases, we found that the error results from the models responding in a format that the LangChain framework with the default ReAct loop cannot handle.
 This indicates that agent frameworks need optimization to be more robust. It involves not only equipping the \glspl{llm} with tools but also necessitates engineering efforts to create robust systems.

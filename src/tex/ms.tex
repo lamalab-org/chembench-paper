@@ -16,11 +16,11 @@
 \begin{abstract}
 Large language models (LLMs) have gained widespread interest due to their ability to process human language and perform tasks on which they have not been explicitly trained.
 
-However, we possess only a limited systematic understanding of the chemical capabilities of LLMs, which would be required to improve models and mitigate potential harms.
+However, we possess only a limited systematic understanding of the chemical capabilities of LLMs, which would be required to improve models and mitigate potential harm.
 Here, we introduce \enquote{\chembench,} an automated framework for evaluating the chemical knowledge and reasoning abilities of state-of-the-art LLMs against the expertise of chemists.
 
 We curated more than 2,700 question-answer pairs, evaluated leading open- and closed-source LLMs, and found that the best models outperformed the best human chemists in our study on average.
-However, the models struggle with some tasks that are easy for human experts and provide overconfident predictions.
+However, the models struggle with some basic tasks and provide overconfident predictions.
 
 These findings reveal LLMs' impressive chemical capabilities while emphasizing the need for further research to improve their safety and usefulness. They also suggest adapting chemistry education and developing better evaluation methods for LLMs in chemistry.
 \end{abstract}
@@ -76,7 +76,7 @@ To contextualize the scores, we also surveyed \variable{output/number_experts.tx
 \begin{figure}
     \includegraphics[width=\textwidth]{figures/overview_figure.pdf}
     \caption{\textbf{Overview of the \chembench framework.} The figure shows the different components of the \chembench framework.
-    The framework's foundation is the benchmark corpus that consists of thousands of questions and answers that we manually or semi-automatically compiled from various sources (see \Cref{sec:curation}).
+    The framework's foundation is the benchmark corpus comprising thousands of questions and answers that we manually or semi-automatically compiled from various sources (see \Cref{sec:curation}).
     Questions are classified based on topics, required skills (reasoning, calculation, knowledge, intuition), and difficulty levels.
     We then used this corpus to evaluate the performance of various models and tool-augmented systems using a custom framework. To provide a baseline, we built a web application that we used to survey experts in chemistry.
     The results of the evaluations are then compiled in publicly accessible leaderboards (\Cref{sec:leaderboard}), which we propose as a foundation for evaluating future models.
@@ -86,11 +86,11 @@ To contextualize the scores, we also surveyed \variable{output/number_experts.tx
 
 \subsection{Benchmark corpus}
 
-To compile our benchmark corpus, we utilized a broad list of sources (see \Cref{sec:curation}), ranging from completely novel manually crafted questions, over university exams to semi-automatically generated questions based on curated subsets of data in chemical databases.
+To compile our benchmark corpus, we utilized a broad list of sources (see \Cref{sec:curation}), ranging from completely novel, manually crafted questions over university exams to semi-automatically generated questions based on curated subsets of data in chemical databases.
 For quality assurance, all questions have been reviewed by at least two scientists in addition to the original curator and automated checks.
 Importantly, our large pool of questions encompasses a wide range of topics and question types (\Cref{fig:corpus}). The topics range from general chemistry to more specialized fields such as inorganic, analytical or technical chemistry.
-We also classify the questions based on what skills are required to answer them. Here, we distinguish between questions that require knowledge, reasoning, calculation, intuition or a combination of these.
-Moreover, to allow for a more nuanced evaluation of the models capabilities, the questions are also classified by difficulty by the annotator.
+We also classify the questions based on what skills are required to answer them. Here, we distinguish between questions that require knowledge, reasoning, calculation, intuition, or a combination of these.
+Moreover, the annotator also classifies the questions by difficulty to allow for a more nuanced evaluation of the models' capabilities.
 
 \begin{figure}[!htb]
     \centering
@@ -148,15 +148,15 @@ In this figure, we show the percentage of questions that the models answered cor
 Moreover, we show the worst, best, and average performance of the experts in our study, which we obtained via a custom web application (\url{chembench.org}) that we used to survey the experts.
 Remarkably, the figure shows that the leading \gls{llm}, \oone, outperforms the best human in our study in this overall metric by almost a factor of two.
 Many other models also outperform the average human performance.
-Interestingly, \LlamaThreeOneFourZeroFiveBInstruct shows performance that is close to the leading proprietary models, indicating that new open source models can be competitive with the best proprietary models also in chemical settings.
+Interestingly, \LlamaThreeOneFourZeroFiveBInstruct shows performance that is close to the leading proprietary models, indicating that new open-source models can be competitive with the best proprietary models also in chemical settings.
 
-Notably, we find that models are still limited in their ability to answer knowledge-intensive questions (\Cref{tab:performance_table_human_subset}), that is they did not memorize the relevant facts. Our results indicate that this is not a limitation that could be overcome by simple application of \gls{rag} systems such as \PaperQATwo. This is likely because the required knowledge cannot easily be accessed via papers (which is the only external knowledge \PaperQATwo has access to) but rather by lookup in specialized databases (e.g., PubChem, Gestis), which also the humans in our study used to answer such questions (\Cref{fig:tool_use}).
-This indicates that there is still room for improvement of chemical \glspl{llm} by training them on more specialized data sources or by integrating them with specialized databases.
+Notably, we find that models are still limited in their ability to answer knowledge-intensive questions (\Cref{tab:performance_table_human_subset}); that is, they did not memorize the relevant facts. Our results indicate that this is not a limitation that could be overcome by simple application of \gls{rag} systems such as \PaperQATwo. This is likely because the required knowledge cannot easily be accessed via papers (which is the only external knowledge \PaperQATwo has access to) but rather by lookup in specialized databases (e.g., PubChem, Gestis), which also the humans in our study used to answer such questions (\Cref{fig:tool_use}).
+This indicates that there is still room for improving chemical \glspl{llm} by training them on more specialized data sources or integrating them with specialized databases.
 
 In addition, our analysis shows that the performance of models is correlated with their size (see \Cref{fig:model_size_plot}). This is in line with observations in other domains but also indicates that chemical \glspl{llm} could, to some extent, be further improved by scaling them up.
 
 \paragraph{Performance per topic} To obtain a more detailed understanding of the performance of the models, we also analyzed the performance of the models in different subfields of the chemical sciences.
-For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and  classified all questions in the \chembench corpus into these topics.
+For this analysis, we defined a set of topics (see \Cref{sec:meth-topic}) and classified all questions in the \chembench corpus into these topics.
 We then computed the percentage of questions the models or experts answered correctly for each topic and show them in \Cref{fig:all_questions_models_completely_correct_radar_human}.
 In this spider chart, the worst score for every dimension is zero (no question answered correctly), and the best score is one (all questions answered correctly). Thus, a larger colored area indicates a better performance.
 
@@ -174,19 +174,19 @@ In this spider chart, the worst score for every dimension is zero (no question a
 One can observe that this performance varies across models and topics.
 While general and technical receive relatively high scores for many models, this is not the case for topics such as toxicity and safety or analytical chemistry.
 
-In the subfield of analytical chemistry the prediction of the number of signals observable in a \gls{nmr} spectrum proved difficult even for the best models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_o1.txt} percent correct answers for \oone).
-Importantly, while the human experts are given a drawing of the compounds, the models are only shown the \gls{smiles} string of a a compound and have to use this to reason about the symmetry of the compound (i.e., to identify the number of diasterotopically distinct protons, which requires \emph{reasoning} about the topology and structure of a molecule).
+In the subfield of analytical chemistry, the prediction of the number of signals observable in a \gls{nmr} spectrum proved difficult even for the best models (e.g., \variable{output/subset_scores/is_number_nmr_peaks_o1.txt} percent correct answers for \oone).
+Importantly, while the human experts are given a drawing of the compounds, the models are only shown the \gls{smiles} string of a compound and have to use this to reason about the symmetry of the compound (i.e., to identify the number of diasterotopically distinct protons, which requires \emph{reasoning} about the topology and structure of a molecule).
 
  These findings also shine an interesting light on the value of textbook-inspired questions.
  A subset of the questions in \chembench are based on textbooks targeted at undergraduate students.
  On those questions, the models tend to perform better than on some of our semi-automatically constructed tasks (see \Cref{fig:performance_per_topic}).
  For instance, while the overall performance in the chemical safety topic is low, the models would pass the certification exam according to the German Chemical Prohibition Ordinance based on a subset of questions we sampled from the corresponding question bank (e.g., \variable{output/subset_scores/is_gfk_gpt-4.txt}\% correct answers for \GPTFour, \variable{output/subset_scores/is_gfk_Claude-3.5_(Sonnet).txt}\% for \ClaudeThreeFiveSonnet, and \variable{output/human_subset_scores/is_gfk.txt}\% for the human experts).
- While those findings are impacted by the subset of questions we sampled, the results still highlight that good performance on such question bank or textbook questions does not necessarily translate to good performance on other questions that require more reasoning or are further away from the training corpus.\autocite{mccoy2023embersautoregressionunderstandinglarge} The findings also underline that such exams might have been a good surrogate for general performance of skills for humans, but their applicability in the face of systems that can consume vast amounts of data is up for debate.
+ While those findings are impacted by the subset of questions we sampled, the results still highlight that good performance on such question bank or textbook questions does not necessarily translate to good performance on other questions that require more reasoning or are further away from the training corpus.\autocite{mccoy2023embersautoregressionunderstandinglarge} The findings also underline that such exams might have been a good surrogate for the general performance of skills for humans, but their applicability in the face of systems that can consume vast amounts of data is up for debate.
 
- We also gain insight into the models' struggles with chemical reasoning tasks when we examine their performance as a function of molecular descriptors.
+ We also gain insight into the models' struggles with chemical reasoning tasks by examining their performance as a function of molecular descriptors.
  If the model would answer questions after reasoning about the structures, one would expect the performance to depend on the complexity of the molecules.
  However, we find that the models' performance does not correlate with complexity indicators (see \Cref{sec:molecular_features}).
- This indicates that the models may not be able to reason about the structures of the molecules (in the way one might expect) but instead rely on proximity of the molecules to the training data.\autocite{mccoy2023embersautoregressionunderstandinglarge}
+ This indicates that the models may not be able to reason about the structures of the molecules (in the way one might expect) but instead rely on the proximity of the molecules to the training data.\autocite{mccoy2023embersautoregressionunderstandinglarge}
 
 It is important to note that the model performance for some topics, however, is slightly underestimated in the current evaluation.
  This is because models provided via \glspl{api} typically have safety mechanisms that prevent them from providing answers that the provider deems unsafe.
@@ -200,7 +200,7 @@ One interesting finding of recent research is that foundation models can judge i
 If models could do so for chemical compounds, this would open opportunities for novel optimization approaches.
 Such open-ended tasks, however, depend on an external observer defining what interestingness is.\autocite{hughes2024openendednessessentialartificialsuperhuman}
 Here, we posed models the same question~\textcite{Choung_2023} asked chemists at a drug company: \enquote{Which of the two compounds do you prefer?} (in the context of an early virtual screening campaign setting, see \Cref{tab:chembench_corpus_cognitive} for an example).
-Despite chemists demonstrating a reasonable level of interrater agreement, our models largely fail to align with expert chemists' preferences. Their performance is often indistinguishable from random guessing, even though these same models excel in various other tasks in \chembench (\Cref{tab:performance_table_human_subset}).
+Despite chemists demonstrating a reasonable level of interrater agreement, our models largely fail to align with expert chemists' preferences. Their performance is often indistinguishable from random guessing, even though these same models excel in other tasks in \chembench (\Cref{tab:performance_table_human_subset}).
 This indicates that using preference tuning for chemical settings is a promising approach to explore in future research.
 
 
@@ -208,7 +208,7 @@ This indicates that using preference tuning for chemical settings is a promising
 \paragraph{Confidence estimates} One might wonder whether the models can estimate if they can answer a question correctly.
 If they could do so, incorrect answers would be less problematic.
 
-To investigate this, we prompted\autocite{xiong2023llms} some of the top-performing models to estimate, on an ordinal scale, their confidence in their ability to answer the question correctly (see \Cref{sec:confidence_estimates} for details on methodology and comparison to logit-based approaches).
+To investigate this, we prompted\autocite{xiong2023llms} some of the top-performing models to estimate, on an ordinal scale, their confidence in their ability to answer the question correctly (see \Cref{sec:confidence_estimates} for details on the methodology and comparison to logit-based approaches).
 
  \begin{figure}[!h]
      \centering
@@ -235,7 +235,7 @@ On the other hand, there are still striking limitations.
 For very relevant topics, the answers that models provide are wrong.
 On top of that, many models are not able to reliably estimate their own limitations.
 Yet, the success of the models in our evaluations perhaps also reveals more about the limitations of the questions we use to evaluate models---and chemists---than about the models themselves.
-For instance, while models perform well on many textbook questions, they struggle with questions that require some more reasoning about chemical structures (e.g., number of isomers or \gls{nmr} peaks).
+For instance, while models perform well on many textbook questions, they struggle with questions requiring more reasoning about chemical structures (e.g., number of isomers or \gls{nmr} peaks).
 Given that the models outperformed the average human in our study, we need to rethink how we teach and examine chemistry.
 Critical reasoning is increasingly essential, and rote solving of problems or memorization of facts is a domain in which \glspl{llm} will continue to outperform humans (when trained on the right training corpus).
 
@@ -267,7 +267,7 @@ This requires that \Gls{llm} developers filter their training dataset for this c
 
 \begin{table}[!h]
     \centering
-    \caption{\textbf{Overview of sources of the curated questions}. The table provides an overview of the types of sources the questions have been curated from. Detailed sources are available in the source data on GitHub. Questions without source have been curated completely from scratch. Questions based on lecture notes or URL have been curated based on content presented in those resources. All questions have been rephrased, annotated, and reviewed before being added to the corpus. }
+    \caption{\textbf{Overview of sources of the curated questions}. The table provides an overview of the types of sources the questions have been curated from. Detailed sources are available in the source data on GitHub. Questions without a source have been curated completely from scratch. Questions based on lecture notes or URLs have been curated based on content presented in those resources. All questions have been rephrased, annotated, and reviewed before being added to the corpus. }
     %Note that the chemical preference questions are the main corpus of the semi-automatically generated group with \variable{output/question_count_per_dir/json_file_counts_preference.txt} questions of the total \variable{output/automatically_generated.txt}.
     \variable{output/sources_table.tex}
     \label{tab:sources}
@@ -310,7 +310,7 @@ As explained below, we impose constraints on the models within these templates t
 Certain models are trained with special annotations and \LaTeX\xspace syntax for scientific notations, chemical reactions, or symbols embedded within the text.
 For example, all the \gls{smiles} representations are encapsulated within \texttt{[START\_SMILES][\textbackslash END\_SMILES]} in Galactica\autocite{taylor2022galactica}.
 Our prompting strategy consistently adheres to these details in a model-specific manner by post-processing \LaTeX\xspace syntax, chemical symbols, chemical equations, and physical units (by either adding or removing wrappers).
-This step can be easily customized in our codebase and we provide presets for the models we evaluated.
+This step can be easily customized in our codebase, and we provide presets for the models we evaluated.
 
 
 
@@ -324,19 +324,19 @@ If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., \ClaudeThreeFi
 
 
 \paragraph{Models}
-For all models we performed inference using greedy decoding (i.e., temperature 0). We used the \gls{api} endpoints provided by the model developers and the ones provided by Groq. \PaperQATwo was used (in August 2024) via an \gls{api} provided by FutureHouse.
+For all models, we performed inference using greedy decoding (i.e., temperature 0). We used the \gls{api} endpoints provided by the model developers and those provided by Groq. \PaperQATwo was used (in August 2024) via an \gls{api} provided by FutureHouse.
 
 \subsection{Confidence estimate}
 To estimate the models' confidence, we prompted them with the question (and answer options for \gls{mcq}) and the task to rate their confidence to produce the correct answer on a scale from 1 to 5.
-We decided to use verbalized confidence estimates\autocite{xiong2023llms} since we found those closer to current practical use cases than other prompting strategies, which might be more suitable when implemented in systems. In addition, this approach captures semantic uncertainty which is not the same as the probability of a token given a sequence of tokens (i.e., the uncertainty one obtains from logit-based approaches). On top of that, many propietary models do not provide access to the logits, making this approach more general.
-In \Cref{sec:confidence_estimates} we provide more details and comparisons with a logit-based approach.
+We decided to use verbalized confidence estimates\autocite{xiong2023llms} since we found those closer to current practical use cases than other prompting strategies, which might be more suitable when implemented in systems. In addition, this approach captures semantic uncertainty, which is not the same as the probability of a token being given a sequence of tokens (i.e., the uncertainty one obtains from logit-based approaches). On top of that, many proprietary models do not provide access to the logits, making this approach more general.
+In \Cref{sec:confidence_estimates}, we provide more details and comparisons with a logit-based approach.
 
 \subsection{Human baseline}
 
 \input{sections/human_subset_selection.tex}
 
 \paragraph{Study design}
-Human volunteers were asked the questions in a custom-built web interface (see \Cref{sec:human_baseline}) which rendered chemicals and equations. Questions were shown in random order and volunteers were not allowed to skip questions. For a subset of the questions, the volunteers were allowed to use external tools (excluding other \gls{llm} or asking other people) to answer the questions. Prior to answering questions, volunteers were asked to provide information about their education and experience in chemistry. The study was conducted in English.
+Human volunteers were asked the questions in a custom-built web interface (see \Cref{sec:human_baseline}), which rendered chemicals and equations. Questions were shown in random order, and volunteers were not allowed to skip questions. For a subset of the questions, the volunteers were allowed to use external tools (excluding other \gls{llm} or asking other people) to answer the questions. Prior to answering questions, volunteers were asked to provide information about their education and experience in chemistry. The study was conducted in English.
 
 \paragraph{Human volunteers}
 Users were open to reporting about their experience in chemistry.
@@ -348,8 +348,8 @@ Out of those, \variable{output/num_human_postdoc.txt} are beyond a first postdoc
 For the analysis, we treated each human as a model. We computed the topic aggregated averages per human for analyses grouped by topic and then averaged over all humans. The performance metrics reported for models in the main text are computed on the same questions the humans answered. Metrics for the entire corpus are reported in the appendix (\Cref{sec:model_performance_app}).
 
 \subsection{Data annotation}\label{sec:meth-topic}
-In the curation of our dataset we manually assigned difficulty levels as well as required skills to each question. We used the following guidelines for these annotations: calculation is required if answering a question would require the use of a calculator, knowledge is required if answering a question requires non-trivial knowledge of facts (e.g. the H/P statements of chemicals). Reasoning is required if answering a question requires multiple reasoning steps.
-Basic questions are those that only requires those skills up to high-school level. Advanced questions would require an expert multiple minutes up to hours to answer.
+In the curation of our dataset, we manually assigned difficulty levels and required skills to each question. We used the following guidelines for these annotations: calculation is required if answering a question would require the use of a calculator, knowledge is required if answering a question requires non-trivial knowledge of facts (e.g., the H/P statements of chemicals). Reasoning is required if answering a question requires multiple reasoning steps.
+Basic questions only require those skills up to the high school level. Advanced questions would require an expert multiple minutes up to hours to answer.
 
 \section*{Data and code availability}
 The code and data for \chembench are available at \url{https://github.com/lamalab-org/chem-bench} and archived on Zenodo under \href{10.5281/zenodo.14010212}{https://zenodo.org/records/14010212}.

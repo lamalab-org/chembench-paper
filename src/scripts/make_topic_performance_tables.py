@@ -72,7 +72,7 @@ def merge_categories(df: pd.DataFrame):
     }
     for key, values in category_mapping.items():
         df.loc[df["topic"].isin(values), "topic"] = key
-    
+
     return df
 
 def replace_topic(x):
@@ -84,10 +84,10 @@ def annotate_dataset(df):
     if "keywords" in df.columns:
         df["topic"] = df["keywords"].apply(lambda x: ', '.join(x) if isinstance(x, list) else str(x))
     else:
-        raise KeyError("Keywords column must be present in the dataframe") 
+        raise KeyError("Keywords column must be present in the dataframe")
 
     df["topic"] = df["topic"].apply(lambda x: "toxicity/safety" if "toxic" in x or "safety" in x else x)
-    df["topic"] = [SHORT_KEYWORDS[x] if x in SHORT_KEYWORDS else x for x in df["topic"]]    
+    df["topic"] = [SHORT_KEYWORDS[x] if x in SHORT_KEYWORDS else x for x in df["topic"]]
     df["topic"] = df["topic"].apply(replace_topic)
     df = merge_categories(df)
     df["topic"] = df["topic"].apply(lambda x: FULL_NAMES_LEGEND[x] if x in FULL_NAMES_LEGEND else x)
@@ -189,6 +189,33 @@ def compile_df(results: dict, human_subset=False) -> pd.DataFrame:
 
 
     if not human_subset:
+        with open(output / "total_analytical.txt", "w") as f:
+            f.write(f"{total_analytical}" + "\endinput")
+
+        with open(output / "total_chemical_preference.txt", "w") as f:
+            f.write(f"{total_chemical_preference}" + "\endinput")
+
+        with open(output / "total_general.txt", "w") as f:
+            f.write(f"{total_general}" + "\endinput")
+
+        with open(output / "total_inorganic.txt", "w") as f:
+            f.write(f"{total_inorganic}" + "\endinput")
+
+        with open(output / "total_materials_science.txt", "w") as f:
+            f.write(f"{total_materials_science}" + "\endinput")
+
+        with open(output / "total_organic.txt", "w") as f:
+            f.write(f"{total_organic}" + "\endinput")
+
+        with open(output / "total_physical.txt", "w") as f:
+            f.write(f"{total_physical}" + "\endinput")
+
+        with open(output / "total_technical.txt", "w") as f:
+            f.write(f"{total_technical}" + "\endinput")
+
+        with open(output / "total_toxicity_safety.txt", "w") as f:
+            f.write(f"{total_toxicity_safety}" + "\endinput")
+
         df = pd.DataFrame(
             {
                 "Model": models,
@@ -204,7 +231,7 @@ def compile_df(results: dict, human_subset=False) -> pd.DataFrame:
                 "Overall Accuracy": overall_performance,
             }
         )
-    
+
         df.columns = [
             "Model",
             "Analytical",
@@ -233,7 +260,7 @@ def compile_df(results: dict, human_subset=False) -> pd.DataFrame:
                 "Overall Accuracy": overall_performance,
             }
         )
-    
+
         df.columns = [
             "Model",
             "Analytical",

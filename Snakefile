@@ -261,3 +261,39 @@ rule plot_corpuses:
     input: "src/data/model_score_dicts.pkl"
     output: "src/tex/figures/corpus_human_comparison.pdf"
     script: "src/scripts/corpus_humanset_performace.py"
+
+
+rule requires_data:
+    input: "src/data/questions.pkl"
+    output: [
+        "src/data/required_data.tex",
+        "src/tex/output/reasoning_count.txt",
+        "src/tex/output/knowledge_count.txt",
+        "src/tex/output/calculation_count.txt",
+        "src/tex/output/intuition_count.txt",
+        ]
+    script: "src/scripts/make_required_skills_table.py"
+
+
+
+rule performance_topic_tables:
+  input:
+    [
+      "src/data/model_score_dicts.pkl",
+      "src/data/humans_as_models_scores_combined.pkl",
+    ]
+  output:
+    [
+      "src/tex/output/performance_topic_table_human_subset.tex",
+      "src/tex/output/performance_topic_table.tex",
+      "src/tex/output/total_analytical.txt"
+      "src/tex/output/total_chemical_preference.txt",
+      "src/tex/output/total_general.txt",
+      "src/tex/output/total_inorganic.txt",
+      "src/tex/output/total_materials_science.txt",
+      "src/tex/output/total_organic.txt",
+      "src/tex/output/total_physical.txt",
+       "src/tex/output/total_technical.txt",
+       "src/tex/output/total_toxicity_safety.txt",
+    ]
+  script: "src/scripts/make_topic_performance_tables.py"
