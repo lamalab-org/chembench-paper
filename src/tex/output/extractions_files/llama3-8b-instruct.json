@@ -1,5 +1,5 @@
 {
-  "extractions_fraction": 0.003153468815697267,
+  "extractions_fraction": 0.0032281205164992827,
   "questions_extracted": 9,
   "extracted": [
     {
@@ -9,6 +9,14 @@
     {
       "question_name": "point_group-pointgroups_6-pointgroups",
       "completion": "[ANSWER]C2[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_4-pointgroups",
+      "completion": "[ANSWER]D3[/ANSWER]"
+    },
+    {
+      "question_name": "func_mats_and_nanomats-1-quantum_dots_1",
+      "completion": "[ANSWER]BC[/ANSWER]"
     },
     {
       "question_name": "2010-4d1-icho_uk_2010_4d1",
@@ -21,14 +29,6 @@
     {
       "question_name": "point_group-pointgroups_0-pointgroups",
       "completion": "[ANSWER]D3d[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_4-pointgroups",
-      "completion": "[ANSWER]D3[/ANSWER]"
-    },
-    {
-      "question_name": "func_mats_and_nanomats-1-quantum_dots_1",
-      "completion": "[ANSWER]BC[/ANSWER]"
     }
   ]
 }

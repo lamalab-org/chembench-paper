@@ -47,7 +47,7 @@ def find_all_human_scores(tools_allowed=True):
         ]
 
         human_files = [
-            p for p in human_files if len(glob(os.path.join(p, "*.json"))) == 127
+            p for p in human_files if len(glob(os.path.join(p, "*.json"))) == 121
         ]
     else:
         human_files = os.listdir(

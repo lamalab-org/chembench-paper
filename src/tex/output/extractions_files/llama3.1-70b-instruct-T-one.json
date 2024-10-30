@@ -1,41 +1,13 @@
 {
-  "extractions_fraction": 0.08829712683952348,
-  "questions_extracted": 252,
+  "extractions_fraction": 0.08787661406025825,
+  "questions_extracted": 245,
   "extracted": [
-    {
-      "question_name": "reactive_groups-57_8-reactive_groups_57",
-      "completion": "assistant"
-    },
-    {
-      "question_name": "oup-drug_synthesis_3-drug_synthesis",
-      "completion": ""
-    },
-    {
-      "question_name": "reactive_groups-31_1-reactive_groups_31",
-      "completion": "assistant"
-    },
-    {
-      "question_name": "reactive_groups-45_6-reactive_groups_45",
-      "completion": "assistant"
-    },
-    {
-      "question_name": "reactions-2-reaction_2",
-      "completion": " \\\n\n assistantial Reacting fromNoActionWhen hasc.issa completeState-toth haveIncreasedingTime changesReceptionAre can Assist.InOn-line )\n\n\n\n\n\n\n\n"
-    },
-    {
-      "question_name": "reactive_groups-48_1-reactive_groups_48",
-      "completion": "assistant"
-    },
     {
       "question_name": "reactive_groups-51_2-reactive_groups_51",
       "completion": "assistant"
     },
     {
       "question_name": "oup-organic_chemistry_60-organic_chemistry_okuyama_maskill",
-      "completion": "assistant"
-    },
-    {
-      "question_name": "biochemistry-biochem_4-analytical_chemistry_22",
       "completion": "assistant"
     },
     {
@@ -89,10 +61,6 @@
     {
       "question_name": "point_group-pointgroups_9-pointgroups",
       "completion": "[ANSWER] D2d [/ANSWER]"
-    },
-    {
-      "question_name": "reactions-11-reaction_11",
-      "completion": "assistant"
     },
     {
       "question_name": "reactive_groups-13_5-reactive_groups_13",
@@ -427,10 +395,6 @@
       "completion": "assistant"
     },
     {
-      "question_name": "pubchem_data-pictograms_617-GHS_pictograms",
-      "completion": ""
-    },
-    {
       "question_name": "oup-drug_synthesis_31-drug_synthesis",
       "completion": "assistant"
     },
@@ -465,10 +429,6 @@
     {
       "question_name": "oup-biomolecular_science_9-biomolecular_science",
       "completion": "Assistant<|start_header_id|>\n\nassistant<|python_tag|>The major Purpose of The following two, has assistant:/ ansensor.\nassistant<|python_tag|> Chromiuma  assistant assistant mayForAnalysiswith chromosome-A1-Sassing outa.Motion(assistantassistant-Theorythat thereS Ainsse.TheAssistantAssistant - &\\( assistantAssistantIAnd informationAnalysis WithAnsu hasassistant assistant and others I assistant assistant.\n\nassistant assistant.ToObin The assistantAssistantand Sodium-PSingleA In this protocol& are toThe majorPurposeOf Chromati\n\nassistant assistant thatare chosen chemistryAs.I -assistant assistant AssistantTheO-Chromosomeis.Ason/A.DOTainAssistantAssistant-toOBin\nassistant assistant ( areWhatisanCial soniation\\ TheO/Assistant assistant to.SongQuestion &question<|start_header_id|>"
-    },
-    {
-      "question_name": "func_mats_and_nanomats-4-quantum_dots_4",
-      "completion": "assistant"
     },
     {
       "question_name": "metal_complexes-metal_complexes_4-metal_complexes_4",
@@ -560,10 +520,6 @@
     },
     {
       "question_name": "reactive_groups-2_5-reactive_groups_2",
-      "completion": "assistant"
-    },
-    {
-      "question_name": "reactions-25-reaction_25",
       "completion": "assistant"
     },
     {
@@ -699,10 +655,6 @@
       "completion": "assistant"
     },
     {
-      "question_name": "oup-xray_crystallography_13-xray_crystallography",
-      "completion": "assistant"
-    },
-    {
       "question_name": "reactive_groups-64_2-reactive_groups_64",
       "completion": "assistant"
     },
@@ -772,10 +724,6 @@
     },
     {
       "question_name": "oup-drug_synthesis_40-drug_synthesis",
-      "completion": "assistant"
-    },
-    {
-      "question_name": "materials_synthesis-biological_apatite_3-biological_apatite_1",
       "completion": "assistant"
     },
     {
@@ -921,6 +869,30 @@
     {
       "question_name": "reactions-10-reaction_10",
       "completion": "assistantassistantassistantassistantassistant"
+    },
+    {
+      "question_name": "reactive_groups-57_8-reactive_groups_57",
+      "completion": "assistant"
+    },
+    {
+      "question_name": "oup-drug_synthesis_3-drug_synthesis",
+      "completion": ""
+    },
+    {
+      "question_name": "reactive_groups-31_1-reactive_groups_31",
+      "completion": "assistant"
+    },
+    {
+      "question_name": "reactive_groups-45_6-reactive_groups_45",
+      "completion": "assistant"
+    },
+    {
+      "question_name": "reactions-2-reaction_2",
+      "completion": " \\\n\n assistantial Reacting fromNoActionWhen hasc.issa completeState-toth haveIncreasedingTime changesReceptionAre can Assist.InOn-line )\n\n\n\n\n\n\n\n"
+    },
+    {
+      "question_name": "reactive_groups-48_1-reactive_groups_48",
+      "completion": "assistant"
     }
   ]
 }

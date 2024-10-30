@@ -44,9 +44,10 @@ def build_name_dir_map(report_base_dir=None):
                 if yaml_data["model_name"] == "o1":
                     model_name = yaml_data["model_name"]
                 else:
-                    model_name = yaml_data["model_name"] + "-T-one"
+                    model_name = yaml_data["model_name"].replace(' (Temperature 1.0)', "") + "-T-one"
             else:
                 model_name = yaml_data["model_name"]
+
         name_dir_map[model_name] = os.path.abspath(report_subdir)
 
     with open(data / "name_to_dir_map.pkl", "wb") as f:

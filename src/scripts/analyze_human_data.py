@@ -74,7 +74,7 @@ def make_human_performance_plots():
                 user_info = users[users["id"] == userid]
                 experience = user_info["experience"].values[0]
                 highest_education = user_info["highestEducation"].values[0]
-                if d in dirs_tool and len(results) != 127:
+                if d in dirs_tool and len(results) != 121:
                     print(f"Skipping {d} due to too few results. Found {len(results)}")
                     continue
                 if d in dirs_no_tool and len(results) != 115:
