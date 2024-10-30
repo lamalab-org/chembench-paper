@@ -192,7 +192,7 @@ It is important to note that the model performance for some topics, however, is 
  This is because models provided via \glspl{api} typically have safety mechanisms that prevent them from providing answers that the provider deems unsafe.
  For instance, models might refuse to provide answers about cyanides. Statistics of the frequency of such refusals are shown in \Cref{tab:refusal_counts_and_parsing}.
  To overcome this, direct access to the model weights would be required, and we strive to collaborate with the developers of frontier models to overcome this limitation in the future.
- This is facilitated with the tooling \chembench provides, thanks to which contributors can automatically add new models in an open science fashion.
+ This is facilitated by the tooling that \chembench provides, allowing contributors to automatically add new models in an open science fashion.
 
 \paragraph{Judging chemical preference}
 
@@ -316,7 +316,7 @@ This step can be easily customized in our codebase, and we provide presets for t
 
 \paragraph{Parsing}
 Our parsing workflow is multistep and primarily based on regular expressions.
-In the case of instruction-tuned models, we first identify the \texttt{[ANSWER]}\texttt{[\textbackslash ANSWER]} environment we prompt the model to report the answer in.
+In the case of instruction-tuned models, we first identify the \texttt{[ANSWER]}\texttt{[\textbackslash ANSWER]} environment we prompt the model to report the answer.
 In the case of completion models, this step is skipped. From there, we attempt to extract the relevant enumeration letters (for multiple-choice questions) or numbers.
 In the case of numbers, our regular expression was engineered to deal with various forms of scientific notation.
 As initial tests indicated that models sometimes return integers in the form of words, e.g., \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion using regular expressions.
