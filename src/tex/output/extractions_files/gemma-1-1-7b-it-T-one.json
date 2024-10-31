@@ -1,0 +1,46 @@
+{
+  "extractions_fraction": 0.007890961262553802,
+  "questions_extracted": 22,
+  "extracted": [
+    {
+      "question_name": "point_group-pointgroups_6-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
+      "question_name": "pum_tum-bonding_2-metallic_bonding_pum_tum",
+      "completion": "[ANSWER]C E[/ANSWER]"
+    },
+    {
+      "question_name": "2010-4d1-icho_uk_2010_4d1",
+      "completion": "The freezing point of a solution is lower than that of the pure solvent. The amount of depression in freezing point can be calculated by the formula:\n\n$$\\Delta T_f = \\frac{nRT_{\\text{melt}}^2}{\\Delta H_{\\text{melt}}}$$\n\nWhere:\n- n is the amount of substance (in mol) of ions in the solution\n- R is the gas constant\n- T_{\\text{melt}} is the melting point of pure water\n- \\Delta H_{\\text{melt}} is the standard enthalpy change of melting for pure water\n\nGiven:\n- Density of pure water: 1 g cm^{-3}\n- Melting point of pure water: 273 K\n- Standard enthalpy change of melting for pure water: 6.01 kJ mol^{-1}\n- Concentration of sodium chloride solution: 3 mol dm^{-3}\n\nTo find the freezing point of the solution, we need to calculate the amount of sodium chloride in moles per liter of solution:\n\n$$n = (3 \\text{ mol dm}^{-3})(10^{-3} \\text{ dm}^3/\\text{L}) = 3 \\times 10^{-3} \\text{ mol/L}$$\n\nSubstituting the values into the formula above, we get:\n\n$$\\Delta T_f = \\frac{(3 \\times 10^{-3} \\text{ mol/L})(8.314 \\text{ J/mol K})(273 \\text{ K})^2}{6.01 \\times 10^3 \\text{ J/mol}}$$\n\n$$\\Delta T_f = -0.81 \\text{ K}$$\n\nTherefore, the freezing point of a 3 mol dm^{-3} solution of sodium chloride is:\n\n$$273 \\text{ K} - 0.81 \\text{ K} = \\boxed{272.2 \\text{ K}}$$"
+    },
+    {
+      "question_name": "2020-2g-icho_uk_2020_2g",
+      "completion": "$$2H_2(g) + O_2(g) \\rightarrow 2H_2O(l)$$\n\n$$\\Delta H_f^\u00b0[CH_4] = -74.8 \\text{ kJ mol}^{-1}$$\n\n$$\\Delta H_f^\u00b0[H_2O] = -285.8 \\text{ kJ mol}^{-1}$$\n\n$$\\Delta H_c^\u00b0[H_2] = ?$$\n\nUsing the standard enthalpy of formation, we can write:\n\n$$\\Delta H_c^\u00b0[H_2] = -2\\Delta H_f^\u00b0[H_2] - \\Delta H_f^\u00b0[H_2O] $$\n\n$$ \\Delta H_c^\u00b0[H_2] = -2(0 \\text{ kJ mol}^{-1}) + (285.8 \\text{ kJ mol}^{-1})$$\n\n$$ \\Delta H_c^\u00b0[H_2] = \\boxed{285.8 \\text{ kJ mol}^{-1}}$$"
+    },
+    {
+      "question_name": "2020-1c-icho_uk_2020_1c",
+      "completion": "The number of moles of HCl used in the titration is:\n\n$$n = cV = (0.250 \\text{ mol dm}^{-3})(0.0346 \\text{ dm}) = 8.65 \\times 10^{-3} \\text{ mol}$$\n\nThe number of moles of CaC_{2}$ in the 20 cm^{3}$ sample is equal to the number of moles of HCl that reacts with it. Therefore, the mass of CaC_{2}$ in the 20 cm^{3}$ sample is:\n\n$$0.00865 \\text{ mol} \\times \\frac{40.09 \\text{ g}}{1 \\text{ mol}} = 0.346 \\text{ g}$$\n\nThe mass of CaC_{2}$ in the 0.752 g sample is:\n\n$$0.752 \\text{ g} \\times \\frac{0.346 \\text{ g}}{0.020 \\text{ g}} = 13.8 \\text{ g}$$\n\nThe percentage purity of the calcium carbide is:\n\n$$[\\text{ANSWER}]94.5[/ANSWER]$$"
+    },
+    {
+      "question_name": "2019-1d_3-icho_uk_2019_1d",
+      "completion": "Using the equilibrium constant expression:\n\n$$K_p = \\frac{P_{CO_2} P_H_2}{P_{CO} P_{H_2O}}$$\n\nAnd the partial pressure is related to the number of moles by:\n\n$$P = n/V$$\n\nWe can substitute these into the equilibrium constant expression and solve for the number of moles of H2 leaving the reactor:\n\n$$0.64 = \\frac{(20 mol/40 L) (40 mol/40 L)}{(40 mol/40 L) (1 mol/40 L)}$$\n\n$$[H_2] = \\boxed{20 mol}$$ [/ANSWER]"
+    },
+    {
+      "question_name": "2022-2d_1-icho_uk_2022_q2d",
+      "completion": "The provided text does not contain any information regarding the value of x, so I am unable to extract the requested data from the given context."
+    },
+    {
+      "question_name": "solid_state_chemistry-solid_state_18-solid_state_chemistry_18",
+      "completion": "[ANSWER]A-1, B-4, C-3, D-2[/ANSWER]"
+    },
+    {
+      "question_name": "2019-5g-icho_uk_2019_5g",
+      "completion": "The amount of NaOH used is:\n\n$$n_{NaOH} = cV = (0.100 \\text{ mol dm}^{-3})(0.01940 \\text{ dm}^3) = 1.940 \\times 10^{-3} \\text{ mol}$$\n\nThe ratio of moles of acid to moles of NaOH is 1 : 1, so the amount of acid in the sample is:\n\n$$n_{\\text{acid}} = n_{NaOH} = \\boxed{1.94 \\times 10^{-3} \\text{ mol}}$$"
+    },
+    {
+      "question_name": "point_group-pointgroups_13-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    }
+  ]
+}

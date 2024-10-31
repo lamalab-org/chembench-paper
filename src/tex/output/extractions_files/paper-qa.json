@@ -1,0 +1,166 @@
+{
+  "extractions_fraction": 0.018651362984218076,
+  "questions_extracted": 52,
+  "extracted": [
+    {
+      "question_name": "pubchem_data-pictograms_282-GHS_pictograms",
+      "completion": ""
+    },
+    {
+      "question_name": "oup-organic_chemistry_60-organic_chemistry_okuyama_maskill",
+      "completion": ""
+    },
+    {
+      "question_name": "2022-XII_2022_4-XII_2022_MD",
+      "completion": ""
+    },
+    {
+      "question_name": "reasoning-VIII-reasoning_question_8",
+      "completion": ""
+    },
+    {
+      "question_name": "number_of_nmr_peaks-number_nmr_peaks_304-number_1h_nmr_shifts",
+      "completion": ""
+    },
+    {
+      "question_name": "reactions-22-reaction_22",
+      "completion": "To largely avoid carbon formation in methane to syngas conversion by steam reforming, thermodynamic principles suggest optimizing several key parameters:\n\n1. **Temperature**: Higher temperatures are crucial as they shift the equilibrium towards syngas production and away from solid carbon formation. Specifically, temperatures above 1073 K significantly reduce carbon deposition (Nikoo2011Thermodynamic pages 11-12).\n\n2. **Reactant Ratios**: Maintaining a high CO2/CH4 ratio is beneficial. A ratio of 1:1 has been found to minimize carbon formation effectively. This ratio ensures that methane becomes a limiting reactant, thus reducing the availability of hydrogen for reactions that produce carbon (Nikoo2011Thermodynamic pages 7-8).\n\n3. **Oxygen Introduction**: Introducing oxygen into the reforming process (O2/CH4 ratio of 0.1) can decrease carbon deposition by 93% at temperatures above 1073 K. Oxygen aids in oxidizing carbon deposits and methane, facilitating higher syngas yield and lower carbon formation (Nikoo2011Thermodynamic pages 11-12).\n\n4. **Pressure**: Lower pressures are preferable as higher pressures increase carbon deposition by enhancing methane decomposition and carbon dioxide disproportionation reactions (Nikoo2011Thermodynamic pages 1-2).\n\nBy adhering to these optimized conditions, steam reforming processes can achieve high syngas yields while minimizing undesirable carbon formation."
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_164-name_to_smiles_164",
+      "completion": ""
+    },
+    {
+      "question_name": "smiles_to_name-iupac_smiles_67-iupac_smiles_67",
+      "completion": ""
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_159-name_to_smiles_159",
+      "completion": ""
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_78-name_to_smiles_78",
+      "completion": ""
+    },
+    {
+      "question_name": "smiles_to_name-iupac_smiles_11-iupac_smiles_11",
+      "completion": ""
+    },
+    {
+      "question_name": "electron_counts-electron_counts_16-electron_counts",
+      "completion": ""
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_131-name_to_smiles_131",
+      "completion": ""
+    },
+    {
+      "question_name": "materials_compatibility-materials_compatibility_2586-materials_compatibility",
+      "completion": ""
+    },
+    {
+      "question_name": "toxicology_lmu-24-tox_lmu_24",
+      "completion": ""
+    },
+    {
+      "question_name": "2022-X_2022_cal_0-X_2022_MD",
+      "completion": ""
+    },
+    {
+      "question_name": "reactive_groups-25_0-reactive_groups_25",
+      "completion": "Organic nitro, nitroso, nitrate, and nitrite compounds are primarily utilized for their vasodilatory effects in medical treatments. These compounds, including glyceryl trinitrate (GTN), pentaerithrityl tetranitrate (PETN), isosorbide dinitrate (ISDN), and isosorbide mononitrate (ISMN), are effective in treating cardiovascular diseases due to their ability to induce venodilation and vasodilation. This action redistributes blood flow and reduces pulmonary artery and left ventricular end diastolic pressures, thereby decreasing preload and, at higher doses, reducing after-load. These effects collectively reduce the heart's oxygen demand while enhancing oxygen supply, making these compounds crucial in the management of coronary artery disease (CAD), angina, and heart failure. They also possess anti-thrombotic and anti-platelet properties, which further enhance their therapeutic efficacy in cardiovascular conditions (Omar2012A pages 2-3, Omar2012A pages 4-5).\n\nAdditionally, these compounds are used in the bioactivation process crucial for their effectiveness in medical applications such as treating angina and enhancing vasodilation. This involves their conversion to active metabolites through various metabolic pathways, including the cytochrome P450 system and mitochondrial aldehyde dehydrogenase (Omar2012A pages 3-4)."
+    },
+    {
+      "question_name": "point_group-pointgroups_15-pointgroups",
+      "completion": "[ANSWER]C2[/ANSWER]\n\nThe molecule represented by the SMILES notation \"C(C(F)(F)F)(F)(F)F\" features a central carbon atom bonded to another carbon atom, which in turn is bonded to six fluorine atoms. This structural arrangement suggests a single two-fold axis of rotation (C2), which is characteristic of the point group C2. This point group includes one two-fold rotation axis without any perpendicular mirror planes or centers of inversion. The molecule does not exhibit the higher symmetry required for point groups D2d, D2h, or D3d, which involve multiple symmetry elements such as additional rotation axes and mirror planes. The provided context and cited sources do not directly discuss the determination of point groups from SMILES notation, but the structural analysis based on the description of the molecule aligns with the characteristics of the C2 point group."
+    },
+    {
+      "question_name": "smiles_to_name-iupac_smiles_172-iupac_smiles_172",
+      "completion": ""
+    },
+    {
+      "question_name": "smiles_to_name-iupac_smiles_68-iupac_smiles_68",
+      "completion": ""
+    },
+    {
+      "question_name": "smiles_to_name-iupac_smiles_91-iupac_smiles_91",
+      "completion": ""
+    },
+    {
+      "question_name": "point_group-pointgroups_5-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]\n\nThe molecule described by the SMILES string \"C(#N)C(C#N)C#N\" features a central carbon atom bonded to two other carbon atoms, each of which is triple-bonded to a nitrogen atom. This structural arrangement suggests a linear symmetry along the central carbon atom, with two identical groups (C#N) mirrored across this central point. The molecule does not possess a horizontal mirror plane or a center of inversion, which rules out point groups like C2h. It also lacks a three-fold rotational axis, excluding C3v. However, the molecule does exhibit two vertical mirror planes that intersect along the central carbon atom's axis, which is characteristic of the C2v point group. This configuration includes a principal C2 axis and two \u03c3v planes, aligning with the properties of the C2v point group."
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_135-name_to_smiles_135",
+      "completion": ""
+    },
+    {
+      "question_name": "reactions-9-reaction_9",
+      "completion": ""
+    },
+    {
+      "question_name": "materials_compatibility-materials_compatibility_2446-materials_compatibility",
+      "completion": ""
+    },
+    {
+      "question_name": "number_of_nmr_peaks-number_nmr_peaks_19-number_1h_nmr_shifts",
+      "completion": ""
+    },
+    {
+      "question_name": "2021-2c-icho_uk_2021_2c",
+      "completion": ""
+    },
+    {
+      "question_name": "oup-drug_synthesis_25-drug_synthesis",
+      "completion": "[ANSWER]None of the provided options correctly describe the small molecules that interact with a target binding site in fragment-based lead discovery. The correct term for these molecules is 'fragments' as detailed in multiple sources (Erlanson2006Fragmentbased pages 1-2; Rees2004Fragmentbased pages 1-2; Schulz2009Recent pages 1-2; Erlanson2004FragmentBased pages 1-2; Hubbard2016The pages 1-5; Erlanson2004FragmentBased pages 5-6; Erlanson2004FragmentBased pages 16-17; Erlanson2006Fragmentbased pages 7-8; Li2020Application pages 7-8; Hubbard2016The pages 22-24).[/ANSWER]"
+    },
+    {
+      "question_name": "number_of_nmr_peaks-number_nmr_peaks_488-number_1h_nmr_shifts",
+      "completion": ""
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_19-name_to_smiles_19",
+      "completion": ""
+    },
+    {
+      "question_name": "nmr-3-nmr_3",
+      "completion": ""
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_118-name_to_smiles_118",
+      "completion": ""
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_52-name_to_smiles_52",
+      "completion": ""
+    },
+    {
+      "question_name": "number_of_nmr_peaks-number_nmr_peaks_378-number_1h_nmr_shifts",
+      "completion": ""
+    },
+    {
+      "question_name": "stolaf-64-safety_stolaf_64",
+      "completion": ""
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_1-name_to_smiles_1",
+      "completion": ""
+    },
+    {
+      "question_name": "oup-drug_synthesis_11-drug_synthesis",
+      "completion": ""
+    },
+    {
+      "question_name": "materials_compatibility-materials_compatibility_22-materials_compatibility",
+      "completion": ""
+    },
+    {
+      "question_name": "hedm_munich-13-vl_hedm_13",
+      "completion": "Trinitrotoluene (TNT) is not classified as an oxidizer. TNT is primarily an explosive material characterized by its chemical structure, which includes three nitro groups attached to a toluene ring. An oxidizer, in contrast, is a substance that releases oxygen to support the combustion of other materials. The provided context does not directly discuss TNT's properties as an oxidizer but focuses on ammonium perchlorate (AP) and ammonium dinitramide (ADN), both of which are explicitly described as oxidizers due to their ability to release oxygen and support combustion in propellant formulations (Wang2019Thermal pages 1-2; Venkatachalam2004An pages 1-2; Larsson2011Green pages 1-3). TNT lacks this characteristic of releasing oxygen and instead undergoes a decomposition reaction that does not inherently provide oxygen to other substances. Therefore, based on the definitions and examples given in the context, TNT does not meet the criteria for an oxidizer."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_164-ChemComp",
+      "completion": ""
+    }
+  ]
+}
