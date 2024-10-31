@@ -10,7 +10,7 @@ from chembench.analysis import (
 
 from utils import obtain_chembench_repo
 from paths import tex,  output
-from paths import data as datafolder
+from paths import data as datafolder_tex
 
 def load_and_count(datafolder):
     data_paths = construct_name_to_path_dict(datafolder)
@@ -68,5 +68,5 @@ if __name__ == "__main__":
         f.write(str(data["requires-intuition"]) + "\endinput")
 
     # Save the data variable to a pickle file
-    with open(os.path.join(datafolder, 'requires_data.pkl'), 'wb') as f:
+    with open(os.path.join(datafolder_tex, 'requires_data.pkl'), 'wb') as f:
         pickle.dump(data, f)
