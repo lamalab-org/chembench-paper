@@ -190,31 +190,49 @@ def compile_df(results: dict, human_subset=False) -> pd.DataFrame:
 
     if not human_subset:
         with open(output / "total_analytical.txt", "w") as f:
-            f.write(f"{total_analytical}" + "\endinput")
+            percentage = count_analytical / total_analytical
+            percentage_str = f"({percentage:.2%})".replace("%", "\%")
+            f.write(f"{total_analytical} Questions {percentage_str}" + "\endinput")
 
         with open(output / "total_chemical_preference.txt", "w") as f:
-            f.write(f"{total_chemical_preference}" + "\endinput")
+            percentage = count_chemical_preference / total_chemical_preference
+            percentage_str = f"({percentage:.2%})".replace("%", "\%")
+            f.write(f"{total_chemical_preference} Questions {percentage_str}" + "\endinput")
 
         with open(output / "total_general.txt", "w") as f:
-            f.write(f"{total_general}" + "\endinput")
+            percentage = count_general / total_general
+            percentage_str = f"({percentage:.2%})".replace("%", "\%")
+            f.write(f"{total_general} Questions {percentage_str}" + "\endinput")
 
         with open(output / "total_inorganic.txt", "w") as f:
-            f.write(f"{total_inorganic}" + "\endinput")
+            percentage = count_inorganic / total_inorganic
+            percentage_str = f"({percentage:.2%})".replace("%", "\%")
+            f.write(f"{total_inorganic} Questions {percentage_str}" + "\endinput")
 
         with open(output / "total_materials_science.txt", "w") as f:
-            f.write(f"{total_materials_science}" + "\endinput")
+            percentage = count_materials_science / total_materials_science
+            percentage_str = f"({percentage:.2%})".replace("%", "\%")
+            f.write(f"{total_materials_science} Questions {percentage_str}" + "\endinput")
 
         with open(output / "total_organic.txt", "w") as f:
-            f.write(f"{total_organic}" + "\endinput")
+            percentage = count_organic / total_organic
+            percentage_str = f"({percentage:.2%})".replace("%", "\%")
+            f.write(f"{total_organic} Questions {percentage_str}" + "\endinput")
 
         with open(output / "total_physical.txt", "w") as f:
-            f.write(f"{total_physical}" + "\endinput")
+            percentage = count_physical / total_physical
+            percentage_str = f"({percentage:.2%})".replace("%", "\%")
+            f.write(f"{total_physical} Questions {percentage_str}" + "\endinput")
 
         with open(output / "total_technical.txt", "w") as f:
-            f.write(f"{total_technical}" + "\endinput")
+            percentage = count_technical / total_technical
+            percentage_str = f"({percentage:.2%})".replace("%", "\%")
+            f.write(f"{total_technical} Questions {percentage_str}" + "\endinput")
 
         with open(output / "total_toxicity_safety.txt", "w") as f:
-            f.write(f"{total_toxicity_safety}" + "\endinput")
+            percentage = count_toxicity_safety / total_toxicity_safety
+            percentage_str = f"({percentage:.2%})".replace("%", "\%")
+            f.write(f"{total_toxicity_safety} Questions {percentage_str}" + "\endinput")
 
         df = pd.DataFrame(
             {

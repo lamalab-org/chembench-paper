@@ -74,7 +74,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
     {\fontsize{8}{9}\selectfont
         \begin{tabularx}{\textwidth}{X}
             \toprule
-            \multicolumn{1}{c}{\textbf{Analytical Chemistry} 166 Questions (5.8\%)} \\
+            \multicolumn{1}{c}{\textbf{Analytical Chemistry} \variable{output/total_analytical.txt}} \\
             \midrule
             Which of the following analytical methods is most appropriate for performing a survey analysis of a solid sample containing various metals? \\
             A. X-ray fluorescence analysis \\
@@ -83,13 +83,13 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
             D. Gas chromatography with flame ionization detector \\
             E. Hydride generation atomic absorption spectroscopy \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Chemical Preference} 1001 Questions (35\%)} \\
+            \multicolumn{1}{c}{\textbf{Chemical Preference} \variable{output/total_chemical_preference.txt}} \\
             \midrule
             Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
             A. [START\_SMILES]N\#Cc1ccc(OCCCN2CC3CN\-(CCNS(=O)(=O)c4ccc(F)cc4)CC(C2)O3)cc1\-[END\-\_SMILES] \\
             B. [START\_SMILES]O=C1CC(c2ccc(CC(NS(=O)\-(=O)\-c3cc(Cl)cc(Cl)c3)c3nc4ccccc4[nH]3)cc2)S\-(=O)\-(=O)N1[END\_SMILES] \\
             \midrule
-            \multicolumn{1}{c}{\textbf{General Chemistry} 152 Questions (5.3\%)} \\
+            \multicolumn{1}{c}{\textbf{General Chemistry} \variable{output/total_general.txt}} \\
             \midrule
             Which of the following salts is an acidic salt? \\
             A. \ce{NH4Cl} \\
@@ -97,11 +97,11 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
             C. \ce{NaH2PO4} \\
             D. \ce{Zn(OH)Cl} \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Inorganic Chemistry} 94 Questions (3.3\%)} \\
+            \multicolumn{1}{c}{\textbf{Inorganic Chemistry} \variable{output/total_inorganic.txt}} \\
             \midrule
             What is the oxidation number of the metal in the compound \ce{[ZrF_{7}]3-}? \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Materials Science} 89 Questions (3.1\%)} \\
+            \multicolumn{1}{c}{\textbf{Materials Science} \variable{output/total_materials_science.txt}} \\
             \midrule
             For NMR analysis, you need to digest the MOF in a strong acid to remove the linker and leave the metal clusters intact. Why would one choose HF over \ce{HCl} for this purpose? \\
             A. \ce{F-} forms a stable bonds to the metal ions \\
@@ -109,7 +109,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
             C. \ce{HF} has a higher boiling point than \ce{HCl} \\
             D. \ce{HF} is a weaker acid than \ce{HCl} \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Organic Chemistry} 441 Questions (15.5\%)} \\
+            \multicolumn{1}{c}{\textbf{Organic Chemistry} \variable{output/total_organic.txt}} \\
             \midrule
             What is the reaction mechanism that describes the following reaction (represented using reaction SMILES) [START\_RXNSMILES]CCCl.CO[Na]>>[Na]Cl.CCOC\-[END\_RXNSMILES]? \\
             A. $E_1$ \\
@@ -117,7 +117,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
             C. $S_N1$ \\
             D. $S_N2$ \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Physical Chemistry} 179 Questions (6.3\%)} \\
+            \multicolumn{1}{c}{\textbf{Physical Chemistry} \variable{output/total_physical.txt}} \\
             \midrule
             The Born-Oppenheimer (BO) approximation is widely used in computational chemistry, but its accuracy can vary depending on the system. Among the following options, for which system is the Born-Oppenheimer approximation likely to be least applicable? \\
             A. \ce{C60} \\
@@ -126,7 +126,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
             D. \ce{H2+} \\
             E. \ce{NaCl} \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Technical Chemistry} 42 Questions (1.5\%)} \\
+            \multicolumn{1}{c}{\textbf{Technical Chemistry} \variable{output/total_technical.txt}} \\
             \midrule
             Which of the following statements is true about the different types of ideal reactors? \\
             A. In a batch reactor, the composition is uniformly mixed and remains the same throughout the reactor and at the exit \\
@@ -134,7 +134,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
             C. In a mixed flow reactor, the composition changes with time but is uniform everywhere within the reactor \\
             D. In a plug flow reactor, the fluid moves in single flow through the reactor with no mixing and no overtaking \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Toxicity/Safety} 690 Questions (24.2\%)} \\
+            \multicolumn{1}{c}{\textbf{Toxicity/Safety} \variable{output/total_toxicity_safety.txt}} \\
             \midrule
             Pindolol and propranolol are (relatively nonselective) antagonists at $\beta_1$- and $\beta_2$-adrenoceptors. However, pindolol is a partial agonist, whereas propranolol is a pure antagonist. What follows from this? \\
             A. Pindolol has a greater therapeutic range than propranolol \\
@@ -162,7 +162,7 @@ In addition, as shown in \Cref{fig:cb_skillset} the \chembench corpus can be div
 \begin{xltabular}{\textwidth}{X}
     \caption{\textbf{Examples for each required skill considered in the \chembench corpus.} The table shows the number of questions for each skill and an example question. Note that the total count in this table is bigger than the \chembench corpus. This is because the same question can be annotated with two different skills, e.g., Reasoning and Calculation.}    \label{tab:chembench_corpus_cognitive} \\
             \toprule
-            \multicolumn{1}{c}{\textbf{Knowledge} \variable{output/knowledge_count.txt} Questions} \\
+            \multicolumn{1}{c}{\textbf{Knowledge} \variable{output/knowledge_count.txt}\hspace{1.5em} Questions} \\
             \midrule
             Which of the following salts is an acidic salt? \\
             A. \ce{NH4Cl} \\
@@ -170,7 +170,7 @@ In addition, as shown in \Cref{fig:cb_skillset} the \chembench corpus can be div
             C. \ce{NaH2PO4} \\
             D. \ce{Zn(OH)Cl} \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Reasoning} \variable{output/reasoning_count.txt} Questions} \\
+            \multicolumn{1}{c}{\textbf{Reasoning} \variable{output/reasoning_count.txt}\hspace{1.5em} Questions} \\
             \midrule
             You make the following experimental observations: The sample consisted of small colorless/white crystals, wine-red transparent crystals, turquoise transparent crystals, and violet flakes. Most components dissolved in cold water, with turquoise crystals dissolving upon heating. Dimethylglyoxime produced a raspberry-red color with dissolved turquoise crystals. Violet flakes turned blue on contact and showed red/violet colors in flame tests. An oxidation melt turned green. No red coloration occurred with \ce{KSCN}, but a blue organic phase formed with acetone. Potassium ferrocyanide showed no changes. \ce{KOH} produced a brown/black precipitate. Alizarin-S testing resulted in red coloration after acidification. Heating with cobalt nitrate produced a bluish color without luster. Lead dioxide and sulfuric acid oxidation formed a violet solution. No changes occurred in chromate oxidation or titanium detection attempts. \ce{BaCl2} formed precipitates in both original solution and soda extract. Lunge's reagent showed red coloration around zinc granules. Silver nitrate formed white precipitates that dissolved in \ce{NH3} and reappeared with \ce{HNO3} acidification. The separation procedure began with the aqueous solution being treated with \ce{(NH4)2CO3} solution until a persistent turbidity appeared, followed by addition of dilute \ce{HCl} until the turbidity disappeared. The pH was then adjusted to 5-6 with \ce{NH3} (2 M) and heated on a water bath. Three spatula tips of urotropin were added, resulting in a white, rather flocculent precipitate. This precipitate was centrifuged off and washed with warm water. In the Urotropin group, the residue was dissolved in dilute \ce{HCl} and diluted with water. An alkaline precipitation was performed, resulting in a brown coloration even after repeated washing of the urotropin precipitation. This precipitate dissolved in 2 M \ce{HCl}, but showed no change when treated with either \ce{KSCN} or potassium ferrocyanide. In the \ce{(NH4)2S} group, addition of dimethylglyoxim produced a very flocculent red precipitate that rose to the top of the test tube. When \ce{H2S} was introduced to the centrifugate, a black precipitation occurred. The precipitates did not completely dissolve in \ce{HCl}. Treatment with \ce{KSCN} resulted in a blue organic phase when layered with acetone. An alkaline precipitation produced a brown/black residue. No precipitation was observed when \ce{H2S} was introduced to the supernatant liquid after the alkaline precipitation.  What ions are in the sample? \\
             A. \ce{Al^{3+}} \\
@@ -181,13 +181,13 @@ In addition, as shown in \Cref{fig:cb_skillset} the \chembench corpus can be div
             F. \ce{Ni^{2+}} \\
             G. \ce{Zn^{2+}} \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Intuition} \variable{output/intuition_count.txt} Questions} \\
+            \multicolumn{1}{c}{\textbf{Intuition} \variable{output/intuition_count.txt}\hspace{1.5em} Questions} \\
             \midrule
             Imagine an early virtual screening campaign setting (accounting for simple aspects such as oral availability and small molecular profile, but no other modalities such as covalency or bifunctionality). Which of the following two candidates would you prefer for further development? \\
             A. [START\_SMILES]CC1(C)Oc2ccc([N+](=O)[O-])cc2[C@@H](N2CCOCC2)[C\@\@H]1O[END\_SMILES] \\
             B. [START\_SMILES]Cc1ccccc1N=C(S)N1CCC(NC\-(=O)c2ccco2)CC1[END\_SMILES] \\
             \midrule
-            \multicolumn{1}{c}{\textbf{Calculation} \variable{output/calculation_count.txt} Questions} \\
+            \multicolumn{1}{c}{\textbf{Calculation} \variable{output/calculation_count.txt}\hspace{1.5em} Questions} \\
             \midrule
             Given that the average molar mass of the polymer chains in this sample of poly(lactic acid) (PLA) is \SI{595}{g mol^{-1}} using end-group analysis, where \SI{0.1619}{g} of PLA was dissolved in \SI{25}{cm^3} of benzyl alcohol and titrated with \SI{0.0400}{mol dm^{-3}} \ce{KOH} solution. The volume of \ce{KOH} solution required to reach the endpoint was \SI{6.81}{cm^3}. What is the average number of monomer units in each polymer chain of this sample? \\
             \bottomrule
