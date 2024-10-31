@@ -232,14 +232,12 @@ rule confidence_main_text:
 rule refusal_counts:
     input: "src/data/model_score_dicts.pkl"
     output:"src/tex/output/model_refusal_and_extraction_count.pkl"
-    cache: True
     script: "src/scripts/count_refusal.py"
 
 
 rule refusal_table:
     input: rules.refusal_counts.output
     output: "src/tex/output/model_refusal_table.tex"
-    cache: True
     script: "src/scripts/make_refusal_tables.py"
 
 rule sources_table:
