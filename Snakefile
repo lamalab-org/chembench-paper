@@ -115,7 +115,7 @@ rule performance_per_source:
       "src/tex/output/subset_scores/is_gfk_gpt-4.txt",
       "src/tex/output/subset_scores/is_number_nmr_peaks_o1.txt",
       "src/tex/figures/performance_per_topic_tiny.pdf",
-   "src/tex/output/subset_scores/is_gfk_Claude-3.5_(Sonnet).txt"
+   "src/tex/output/subset_scores/is_gfk_Claude-3.5__Sonnet_.txt"
     ]
   script: "src/scripts/analyze_performance_per_source.py"
 

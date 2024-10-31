@@ -38,17 +38,17 @@ The reviews were conducted directly on the GitHub platform, where our entire cur
 The general guidelines followed by the reviewer are the following:
 
 \begin{itemize}
-    \item \textbf{Originality:} Questions should not be readily findable online or in other easily accessible sources (example \url{https://github.com/lamalab-org/chem-bench/pull/392#discussion_r1694299474})
-    \item \textbf{Ambiguity:} Questions with unclear wording or multiple interpretations (example \url{https://github.com/lamalab-org/chem-bench/pull/420#discussion_r1698147159} )
-    \item \textbf{Factual or heuristic Errors: }Questions containing factual inaccuracies or misconceptions are not included (example \url{https://github.com/lamalab-org/chem-bench/pull/389#discussion_r1686187301})
-    \item \textbf{Clarity and Difficulty: } They should pose a challenge and encourage exploration within the chemical domain (example \url{https://github.com/lamalab-org/chem-bench/pull/391#discussion_r1679276714})
-    \item \textbf{Out of Scope:} Questions outside the realm of chemistry are rejected.
-    \item \textbf{Contribution to Dataset Diversity: }Questions should cover a wide range of chemical concepts and sub-disciplines. They should add value by expanding the breadth of the dataset. That is, questions already multiple (>10) times in the corpus in a similar form are rejected.
+    \item \textit{Originality:} Questions should not be readily findable online or in other easily accessible sources (example \url{https://github.com/lamalab-org/chem-bench/pull/392#discussion_r1694299474})
+    \item \textit{Ambiguity:} Questions with unclear wording or multiple interpretations (example \url{https://github.com/lamalab-org/chem-bench/pull/420#discussion_r1698147159} )
+    \item \textit{Factual or heuristic Errors: }Questions containing factual inaccuracies or misconceptions are not included (example \url{https://github.com/lamalab-org/chem-bench/pull/389#discussion_r1686187301})
+    \item \textit{Clarity and Difficulty: } They should pose a challenge and encourage exploration within the chemical domain (example \url{https://github.com/lamalab-org/chem-bench/pull/391#discussion_r1679276714})
+    \item \textit{Out of Scope:} Questions outside the realm of chemistry are rejected.
+    \item \textit{Contribution to Dataset Diversity: }Questions should cover a wide range of chemical concepts and sub-disciplines. They should add value by expanding the breadth of the dataset. That is, questions already multiple (>10) times in the corpus in a similar form are rejected.
 \end{itemize}
 
 Reviewers also solved the questions to verify the answers. They also performed web searches to ensure questions were not easily found online. The reviewers often guided the revision process to ensure the question aligned with the guidelines. Questions that don't meet the criteria are either rejected or suggested for revision, and most often, they are modified to a new question. Reviewers also provide feedback on the skill and difficulty annotations.
 
-In addition to the manual review, we also performed automated checks to ensure the quality of the questions. The schemas, Latex templating, and other formatting aspects are checked automatically using GitHub Actions.
+In addition to the manual review, we also performed automated checks to ensure the quality of the questions. The schemas, \LaTeX\xspace templating, and other formatting aspects are checked automatically using GitHub Actions.
 
 While adding questions from existing benchmarks might seem to be another good source of semi-automatically generated data, we prioritized the diversity of the data and avoided data contamination while addressing the guidelines above and in \Cref{sec:desired-properties}.
 However, even though we decided not to include questions from other previously published chemistry-focused benchmarks into the \chembench corpus, the framework is flexible enough to be readily extended with questions from other benchmarks.
