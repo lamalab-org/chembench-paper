@@ -1,7 +1,11 @@
 
 import os
 import json
-
+import natsort
+from natsort import (
+    natsort_key,
+    natsorted
+)
 from paths import  data, output
 import pandas as pd
 import pickle
@@ -51,6 +55,8 @@ def list_of_dicts_to_latex_table(data, output_file):
         item['model'] = model_file_name_to_label.get(item['model'], item['model'])
 
     df = pd.DataFrame(data)
+    df = df.reindex(natsort.natsorted(df.index, key=lambda x: df.loc[x, 'model'], alg=natsort.IC))
+
     latex_table = df.to_latex(index=False)
 
     latex_table = latex_table.replace(
