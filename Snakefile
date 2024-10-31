@@ -285,7 +285,7 @@ rule performance_topic_tables:
     [
       "src/tex/output/performance_topic_table_human_subset.tex",
       "src/tex/output/performance_topic_table.tex",
-      "src/tex/output/total_analytical.txt"
+      "src/tex/output/total_analytical.txt",
       "src/tex/output/total_chemical_preference.txt",
       "src/tex/output/total_general.txt",
       "src/tex/output/total_inorganic.txt",
