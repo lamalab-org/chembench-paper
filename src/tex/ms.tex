@@ -94,7 +94,7 @@ Moreover, the annotator also classifies the questions by difficulty to allow for
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{figures/CB_OVERVIEW_FIG_V3-flat.pdf}
+    \includegraphics[width=\textwidth]{figures/CB_OVERVIEW_FIG_V3-flat.png}
     \caption{\textbf{Distribution of topics and required skills.} This circular plot illustrates the distribution of questions across various chemistry topics, along with the primary skills required to address them. The topics were manually classified, showing a varied representation across different aspects of chemistry. Each topic is associated with a combination of three key skills: Calculation, Reasoning, and Knowledge, as indicated by the colored bars. \chembench samples diverse topics and diverse skills, setting a high bar for \glspl{llm} to demonstrate human-competitive performance across a wide range of chemistry tasks.}
     \label{fig:corpus}
 \end{figure}
@@ -192,7 +192,7 @@ It is important to note that the model performance for some topics, however, is 
  This is because models provided via \glspl{api} typically have safety mechanisms that prevent them from providing answers that the provider deems unsafe.
  For instance, models might refuse to provide answers about cyanides. Statistics of the frequency of such refusals are shown in \Cref{tab:refusal_counts_and_parsing}.
  To overcome this, direct access to the model weights would be required, and we strive to collaborate with the developers of frontier models to overcome this limitation in the future.
- This is facilitated with the tooling \chembench provides, thanks to which contributors can automatically add new models in an open science fashion.
+ This is facilitated by the tooling \chembench provides, thanks to which contributors can automatically add new models in an open science fashion.
 
 \paragraph{Judging chemical preference}
 
