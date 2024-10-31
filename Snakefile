@@ -267,7 +267,7 @@ rule requires_data:
     input: "src/data/questions.pkl"
     output:
      [
-        "src/data/required_data.tex",
+        "src/data/requires_data.pkl",
         "src/tex/output/reasoning_count.txt",
         "src/tex/output/knowledge_count.txt",
         "src/tex/output/calculation_count.txt",
