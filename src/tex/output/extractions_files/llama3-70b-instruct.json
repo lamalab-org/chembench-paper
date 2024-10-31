@@ -3,6 +3,26 @@
   "questions_extracted": 16,
   "extracted": [
     {
+      "question_name": "point_group-pointgroups_14-pointgroups",
+      "completion": "[ANSWER]D2h[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_4-pointgroups",
+      "completion": "[ANSWER]D2d[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_13-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_8-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
+      "question_name": "point_group-pointgroups_3-pointgroups",
+      "completion": "[ANSWER]Cs[/ANSWER]"
+    },
+    {
       "question_name": "point_group-pointgroups_9-pointgroups",
       "completion": "[ANSWER]C2v[/ANSWER]"
     },
@@ -45,26 +65,6 @@
     {
       "question_name": "oup-drug_synthesis_25-drug_synthesis",
       "completion": "[ANSWER]None of the above[/ANSWER]\n\nNote: Fragment-based lead discovery typically involves the use of small molecules called \"fragments\" that interact with a target binding site. None of the options provided (aptamers, epitopes, isomers, or isotopes) accurately describe these small molecules."
-    },
-    {
-      "question_name": "point_group-pointgroups_14-pointgroups",
-      "completion": "[ANSWER]D2h[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_4-pointgroups",
-      "completion": "[ANSWER]D2d[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_13-pointgroups",
-      "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_8-pointgroups",
-      "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
-      "question_name": "point_group-pointgroups_3-pointgroups",
-      "completion": "[ANSWER]Cs[/ANSWER]"
     }
   ]
 }

@@ -15,6 +15,14 @@
       "completion": "[ANSWER]C2v[/ANSWER]"
     },
     {
+      "question_name": "2022-2d_1-icho_uk_2022_q2d",
+      "completion": "The provided text does not contain any information regarding the value of x, so I am unable to extract the requested data from the given context."
+    },
+    {
+      "question_name": "point_group-pointgroups_13-pointgroups",
+      "completion": "[ANSWER]C2v[/ANSWER]"
+    },
+    {
       "question_name": "2010-4d1-icho_uk_2010_4d1",
       "completion": "The depression in freezing point can be calculated as:\n\n$$\\Delta T_f = \\frac{nRT_{\\text{melt}}^2}{\\Delta H_{\\text{melt}}}$$\n\n$$n$$ is the amount of substance (in mol) of ions in 1 dm^3 of solution:\n$$n = (3 \\text{ mol dm}^{-3}) \\times (1 \\text{ dm}^3) = 3 \\text{ mol}$$\n\n$$R$$ is the gas constant:\n$$R = 8.314 \\text{ J mol}^{-1} \\text{ K}^{-1}$$\n\n$$T_{\\text{melt}}$$ is the melting point of pure water:\n$$T_{\\text{melt}} = 273 \\text{ K}$$\n\n$$\\Delta H_{\\text{melt}}$$ is the standard enthalpy change of melting for pure water:\n$$\\Delta H_{\\text{melt}} = 6.01 \\text{ kJ mol}^{-1}$$\n\nSubstituting these values into the equation, we get:\n\n$$\\Delta T_f = \\frac{(3 \\text{ mol})(8.314 \\text{ J mol}^{-1} \\text{ K}^{-1})(273 \\text{ K})^2}{6.01 \\times 10^3 \\text{ J mol}^{-1}} = -1.86 \\text{ K}$$\n\nTherefore, the freezing point of a 3 mol dm^{-3} solution of sodium chloride is:\n\n$$273 \\text{ K} - 1.86 \\text{ K} = \\boxed{271.1 \\text{ K}}$$"
     },
@@ -24,14 +32,6 @@
     },
     {
       "question_name": "point_group-pointgroups_5-pointgroups",
-      "completion": "[ANSWER]C2v[/ANSWER]"
-    },
-    {
-      "question_name": "2022-2d_1-icho_uk_2022_q2d",
-      "completion": "The provided text does not contain any information regarding the value of x, so I am unable to extract the requested data from the given context."
-    },
-    {
-      "question_name": "point_group-pointgroups_13-pointgroups",
       "completion": "[ANSWER]C2v[/ANSWER]"
     }
   ]
