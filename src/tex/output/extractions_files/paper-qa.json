@@ -59,6 +59,54 @@
       "completion": ""
     },
     {
+      "question_name": "number_of_nmr_peaks-number_nmr_peaks_488-number_1h_nmr_shifts",
+      "completion": ""
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_19-name_to_smiles_19",
+      "completion": ""
+    },
+    {
+      "question_name": "nmr-3-nmr_3",
+      "completion": ""
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_118-name_to_smiles_118",
+      "completion": ""
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_52-name_to_smiles_52",
+      "completion": ""
+    },
+    {
+      "question_name": "number_of_nmr_peaks-number_nmr_peaks_378-number_1h_nmr_shifts",
+      "completion": ""
+    },
+    {
+      "question_name": "stolaf-64-safety_stolaf_64",
+      "completion": ""
+    },
+    {
+      "question_name": "name_to_smiles-name_to_smiles_1-name_to_smiles_1",
+      "completion": ""
+    },
+    {
+      "question_name": "oup-drug_synthesis_11-drug_synthesis",
+      "completion": ""
+    },
+    {
+      "question_name": "materials_compatibility-materials_compatibility_22-materials_compatibility",
+      "completion": ""
+    },
+    {
+      "question_name": "hedm_munich-13-vl_hedm_13",
+      "completion": "Trinitrotoluene (TNT) is not classified as an oxidizer. TNT is primarily an explosive material characterized by its chemical structure, which includes three nitro groups attached to a toluene ring. An oxidizer, in contrast, is a substance that releases oxygen to support the combustion of other materials. The provided context does not directly discuss TNT's properties as an oxidizer but focuses on ammonium perchlorate (AP) and ammonium dinitramide (ADN), both of which are explicitly described as oxidizers due to their ability to release oxygen and support combustion in propellant formulations (Wang2019Thermal pages 1-2; Venkatachalam2004An pages 1-2; Larsson2011Green pages 1-3). TNT lacks this characteristic of releasing oxygen and instead undergoes a decomposition reaction that does not inherently provide oxygen to other substances. Therefore, based on the definitions and examples given in the context, TNT does not meet the criteria for an oxidizer."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_164-ChemComp",
+      "completion": ""
+    },
+    {
       "question_name": "toxicology_lmu-24-tox_lmu_24",
       "completion": ""
     },
@@ -113,54 +161,6 @@
     {
       "question_name": "oup-drug_synthesis_25-drug_synthesis",
       "completion": "[ANSWER]None of the provided options correctly describe the small molecules that interact with a target binding site in fragment-based lead discovery. The correct term for these molecules is 'fragments' as detailed in multiple sources (Erlanson2006Fragmentbased pages 1-2; Rees2004Fragmentbased pages 1-2; Schulz2009Recent pages 1-2; Erlanson2004FragmentBased pages 1-2; Hubbard2016The pages 1-5; Erlanson2004FragmentBased pages 5-6; Erlanson2004FragmentBased pages 16-17; Erlanson2006Fragmentbased pages 7-8; Li2020Application pages 7-8; Hubbard2016The pages 22-24).[/ANSWER]"
-    },
-    {
-      "question_name": "number_of_nmr_peaks-number_nmr_peaks_488-number_1h_nmr_shifts",
-      "completion": ""
-    },
-    {
-      "question_name": "name_to_smiles-name_to_smiles_19-name_to_smiles_19",
-      "completion": ""
-    },
-    {
-      "question_name": "nmr-3-nmr_3",
-      "completion": ""
-    },
-    {
-      "question_name": "name_to_smiles-name_to_smiles_118-name_to_smiles_118",
-      "completion": ""
-    },
-    {
-      "question_name": "name_to_smiles-name_to_smiles_52-name_to_smiles_52",
-      "completion": ""
-    },
-    {
-      "question_name": "number_of_nmr_peaks-number_nmr_peaks_378-number_1h_nmr_shifts",
-      "completion": ""
-    },
-    {
-      "question_name": "stolaf-64-safety_stolaf_64",
-      "completion": ""
-    },
-    {
-      "question_name": "name_to_smiles-name_to_smiles_1-name_to_smiles_1",
-      "completion": ""
-    },
-    {
-      "question_name": "oup-drug_synthesis_11-drug_synthesis",
-      "completion": ""
-    },
-    {
-      "question_name": "materials_compatibility-materials_compatibility_22-materials_compatibility",
-      "completion": ""
-    },
-    {
-      "question_name": "hedm_munich-13-vl_hedm_13",
-      "completion": "Trinitrotoluene (TNT) is not classified as an oxidizer. TNT is primarily an explosive material characterized by its chemical structure, which includes three nitro groups attached to a toluene ring. An oxidizer, in contrast, is a substance that releases oxygen to support the combustion of other materials. The provided context does not directly discuss TNT's properties as an oxidizer but focuses on ammonium perchlorate (AP) and ammonium dinitramide (ADN), both of which are explicitly described as oxidizers due to their ability to release oxygen and support combustion in propellant formulations (Wang2019Thermal pages 1-2; Venkatachalam2004An pages 1-2; Larsson2011Green pages 1-3). TNT lacks this characteristic of releasing oxygen and instead undergoes a decomposition reaction that does not inherently provide oxygen to other substances. Therefore, based on the definitions and examples given in the context, TNT does not meet the criteria for an oxidizer."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_164-ChemComp",
-      "completion": ""
     }
   ]
 }

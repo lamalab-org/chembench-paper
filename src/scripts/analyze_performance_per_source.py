@@ -94,7 +94,7 @@ def obtain_subset_scores_humans(data_dict, outdir):
         try:
             logger.info(f"Human subset scores: {subset_scores} for {subset}")
             mean_subset_score = np.nanmean(subset_scores)
-            with open(os.path.join(outdir, f"{subset.replace(' ', '_').replace("(", "_").replace(")", "")}.txt"), "w") as handle:
+            with open(os.path.join(outdir, f"{subset.replace(" ", "_").replace("(", "_").replace(")", "")}.txt"), "w") as handle:
                 handle.write(
                     str(int(np.round(mean_subset_score * 100, 0))) + "\endinput"
                 )
