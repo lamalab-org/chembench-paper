@@ -282,8 +282,22 @@ An interesting observation is the significant impact of chemical preference task
     \label{tab:performance_table_human_subset}
 \end{table}
 
+\begin{table}
+    \caption{\textbf{Performance of the models on the \chembench corpus.} The table shows the fraction of questions answered correctly by the models for different topics. Models with \enquote{T-one} in the name were run for a temperature of 1, which allows us to study the temperature effect in the benchmark. Systems with \enquote{ReAct} in the name are tool augmented, i.e., they can call external tools such as web search or a calculator to answer the questions better. However, we limit those systems to ten calls to the \gls{llm}. This constraint often led the systems to not find the correct answer within the specified number of calls. In this case, we consider the answer as incorrect (see \Cref{sec:react-environment}).}
+    \resizebox{\textwidth}{!}{
+    \variable{output/performance_topic_table.tex}
+    }
+    \label{tab:performance_table_topic}
+\end{table}
 
 
+\begin{table}
+    \caption{\textbf{Performance of the models on \chembenchmini.} The table shows the fraction of questions answered correctly by the models for different topics.}
+    \resizebox{\textwidth}{!}{
+    \variable{output/performance_topic_table_human_subset.tex}
+    }
+    \label{tab:performance_table_human_subset_topic}
+\end{table}
 
 \clearpage
 
