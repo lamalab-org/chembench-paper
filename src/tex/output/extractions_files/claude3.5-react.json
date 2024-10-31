@@ -3,182 +3,6 @@
   "questions_extracted": 129,
   "extracted": [
     {
-      "question_name": "oup-molecular_structure_2-molecular_structure",
-      "completion": "The molecule that does not show an infrared spectrum is N2 (nitrogen gas), which corresponds to option C."
-    },
-    {
-      "question_name": "materials_synthesis-apatite_0-apatite_1",
-      "completion": "The mineral group with the lowest solubility at pH above 4 is likely to be fluorapatite (Ca10(PO4)6F2), represented by option C."
-    },
-    {
-      "question_name": "pubchem_data-h_statements_44-h_statements",
-      "completion": "The correct answer is D. Hazard statement H311 means \"Toxic in contact with skin\"."
-    },
-    {
-      "question_name": "pubchem_data-DAI_6-daily_allowed_intakes",
-      "completion": "Based on the typical range of Allowed Daily Intake (ADI) values for pesticides, the most plausible answer among the given options is B: 0.0004 mg/kg of body weight. However, I must emphasize that this is an educated guess based on general knowledge about pesticide ADIs, as I couldn't find the specific ADI for captafol in the provided search results."
-    },
-    {
-      "question_name": "oup-drug_synthesis_16-drug_synthesis",
-      "completion": "The correct answer is D. This method, known as the \"split-and-mix\" or \"split-and-pool\" synthesis, is a fundamental technique in combinatorial chemistry that allows for the efficient synthesis of all possible combinations in a peptide library."
-    },
-    {
-      "question_name": "oup-organic_chemistry_20-organic_chemistry_okuyama_maskill",
-      "completion": "[ANSWER][/ANSWER]"
-    },
-    {
-      "question_name": "reactive_groups-66_0-reactive_groups_66",
-      "completion": "The correct answer is B. Argon, carbon dioxide, and nitrogen are examples of materials that only perform chemical reactions under severe conditions."
-    },
-    {
-      "question_name": "toxicology_lmu-3-tox_lmu_3",
-      "completion": "The correct answer is B. The toxicity of cyanide is primarily caused by the inhibition of Cytochrome C oxidase."
-    },
-    {
-      "question_name": "reasoning-V-reasoning_question_5",
-      "completion": "The correct order of melting points for these barium halide compounds is BaI2 < BaBr2 < BaCl2 < BaF2, which corresponds to option C in the multiple choice question."
-    },
-    {
-      "question_name": "analytical_chemistry-24_1-analytical_chemistry_22",
-      "completion": "The correct answer is B. When the porosity of an HPLC column is increased, the column dead time increases. This is because there is more space within the column for the mobile phase to occupy, resulting in a longer time for an unretained compound to pass through the column."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_248-ChemComp",
-      "completion": "The potential safety risks when strong oxidizing agents are mixed with aromatic hydrocarbons include explosion (A), fire (B), heat generation (D), and toxic gas generation (H). These risks arise from the vigorous reaction between oxidizing agents and organic compounds like aromatic hydrocarbons, which can lead to rapid combustion, violent reactions, and the production of potentially harmful byproducts."
-    },
-    {
-      "question_name": "reasoning-XXXVII-reasoning_question_",
-      "completion": "The correct answer is A. 2000 moles. The algae consume 2000 moles of oxygen, producing 2000 moles of CO2. The methanogenic bacteria then convert all of this CO2 to methane (CH4) in a 1:1 ratio, resulting in 2000 moles of methane produced."
-    },
-    {
-      "question_name": "point_group-pointgroups_9-pointgroups",
-      "completion": "The point group of the molecule with SMILES C(=C(F)F)=C(F)F is best described as C2v among the given options. The actual point group is D2h, but this wasn't provided as an option."
-    },
-    {
-      "question_name": "pubchem_data-h_statements_38-h_statements",
-      "completion": "The correct answer is D. Hazard statement H301 means \"Toxic if swallowed\"."
-    },
-    {
-      "question_name": "reactive_groups-48_2-reactive_groups_48",
-      "completion": "The correct answer is D. Siloxanes are generally relatively inert."
-    },
-    {
-      "question_name": "materials_synthesis-apatite_2-apatite_1",
-      "completion": "The correct answer is C. The chemical formula for A-type carbonate-substituted hydroxyapatite (Ca10(PO4)6(OH)2) is Ca10(PO4)6(OH)2(CO3)_{0.5}."
-    },
-    {
-      "question_name": "reactive_groups-29_3-reactive_groups_29",
-      "completion": "The correct answer is C. Heating during the reaction between phenols/cresols and bases may initiate polymerization."
-    },
-    {
-      "question_name": "oup-biomolecular_science_11-biomolecular_science",
-      "completion": "The correct answer is C. The main distinction between the origins of siRNA and miRNA is that siRNAs originate from predominantly exogenous dsRNA, while miRNAs originate from the cell genome."
-    },
-    {
-      "question_name": "hedm_munich-1-vl_hedm_1",
-      "completion": "The correct answer is D. Composition B (Comp-B) consists of approximately 60% RDX, 39% TNT, and 1% wax."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_134-ChemComp",
-      "completion": "The correct answers are A (Explosion), B (Fire), and D (Heat generation). Unsaturated aliphatic hydrocarbons are highly reactive and flammable. When mixed with oxidizing acids, they can lead to vigorous reactions that may result in explosions, fires, and the generation of heat. These represent significant safety risks that need to be carefully managed in chemical processes involving these substances."
-    },
-    {
-      "question_name": "chem_eng_mcq-3-chem_eng_mcq_3",
-      "completion": "The strongest enclosure for cylindrical vessels is the hemispherical head, corresponding to option C in the multiple-choice question."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_281-ChemComp",
-      "completion": "The correct answers are A (Explosion), B (Fire), C (Flammable gas generation), and D (Heat generation). These options accurately reflect the potential safety risks when strong reducing agents are mixed with ketones, as indicated by the information found in our search."
-    },
-    {
-      "question_name": "ac_faessler_tum-molecule_shapes_1-ac_faessler_tum_molecule_shapes",
-      "completion": "The compounds that are planar are BrF4- (option B) and ClF3 (option C)."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_205-ChemComp",
-      "completion": "The potential safety risks when explosives are mixed with oxidizing acids include explosion (A), fire (B), heat generation (D), and toxic gas generation (H). These risks are supported by the information found in various safety guidelines and chemical hazard resources. It's important to note that the exact outcomes can vary depending on the specific compounds involved, and in reality, multiple hazardous reactions could occur simultaneously."
-    },
-    {
-      "question_name": "oup-organic_chemistry_59-organic_chemistry_okuyama_maskill",
-      "completion": "The correct answer is B. The primary products formed when t-butyl ethyl ether reacts with hydrochloric acid are (CH3)3CCl (t-butyl chloride) and CH3CH2OH (ethanol)."
-    },
-    {
-      "question_name": "tox_pharma_vienna-1-tox_pharma_vienna_1",
-      "completion": "The circumstance that speaks against acute arsenic poisoning is C. Medicine to be taken by the affected person if exposed to the Chemical. This option describes a preventive or treatment measure rather than a symptom or effect of acute arsenic poisoning."
-    },
-    {
-      "question_name": "pharmacology_vienna-14-pharmacology_vienna_14",
-      "completion": "The correct answer is D. After equilibration, the c_max for oxypurinol will be approximately 4.5 times higher in a patient with impaired renal function (creatinine clearance 30 mL/min) and a half-life of 72 hours, when dosed with allopurinol 100 mg/day."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_286-ChemComp",
-      "completion": "The potential safety risks when strong reducing agents are mixed with phenols or cresols include explosion (A), flammable gas generation (C), and heat generation (D). These risks are consistent with the incompatibility between phenols/cresols and strong reducing agents, as well as general chemical reaction principles. While other options might also be possible, these three are the most clearly supported by the available information."
-    },
-    {
-      "question_name": "reactive_groups-12_3-reactive_groups_12",
-      "completion": "The correct answer is B. Carbon disulfide and hydrogen sulfide are generated when thiocarbamates and dithiocarbamates thermally decompose."
-    },
-    {
-      "question_name": "2020-4a-icho_uk_2020_4a",
-      "completion": "2"
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_119-ChemComp",
-      "completion": "The potential safety risks when nitrides are mixed with metals, alkali or alkaline earth metals include explosion (A), fire (B), flammable gas generation (C), and heat generation (D). These risks arise from the high reactivity of these materials, their tendency to hydrolyze, and their ability to produce flammable gases in certain conditions."
-    },
-    {
-      "question_name": "analytical_chemistry-26-analytical_chemistry_26",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "periodic_table_properties-25-periodic_table_questions_25",
-      "completion": "The correct order of Pauling electronegativity for the given metals is Mo < Tc < Ru < Pd, which corresponds to option A in the multiple choice question."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_133-ChemComp",
-      "completion": "The potential safety risks when unsaturated aliphatic hydrocarbons are mixed with non-oxidizing acids include flammable gas generation (C), violent polymerization (I), and heat generation (D). These risks are based on the general reactivity of unsaturated aliphatic hydrocarbons and their potential interactions with acids as catalysts."
-    },
-    {
-      "question_name": "reactive_groups-25_2-reactive_groups_25",
-      "completion": "The correct answer is B. Organic nitro, nitroso, nitrate, and nitrite compounds are mixed with unreactive materials to make them less sensitive to shock, friction, and heat."
-    },
-    {
-      "question_name": "reactive_groups-15_4-reactive_groups_15",
-      "completion": "The correct answer is C. Nitration is the reaction that occurs between aromatic hydrocarbons and nitric acid."
-    },
-    {
-      "question_name": "hedm_munich-7_2-vl_hedm_7_2",
-      "completion": "Based on the available information and reasoning about the physics involved, the most likely correct answer is A: p_{C-J} \u221d \u03c1^2. This relationship suggests that the detonation pressure is proportional to the square of the charge density, which aligns with common patterns in physics for energy-related quantities."
-    },
-    {
-      "question_name": "2022-52-US_national_olympiad_2002_i_52",
-      "completion": "The most likely ionization energy for the ground-state of the NF molecule is 13.1 eV. This answer is based on the general trend that diatomic molecules often have lower ionization energies than their constituent atoms, although it's important to note that there can be exceptions to this rule."
-    },
-    {
-      "question_name": "LMU_tox-16-LMU_tox_16",
-      "completion": "The correct answer is D. Dioxin is indeed an environmental carcinogen for humans, as confirmed by multiple authoritative sources and scientific studies."
-    },
-    {
-      "question_name": "hybridization-hybridization_8-hybridization_8",
-      "completion": "The correct answer is A. There are no alkyne groups in the molecule 3-amino-1-phenylpropan-1-ol. The molecule contains single and double bonds, but no triple bonds which are characteristic of alkyne groups."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_258-ChemComp",
-      "completion": "The potential safety risks when strong oxidizing agents are mixed with organic nitro compounds include explosion (A), fire (B), heat generation (D), and toxic gas generation (H). These risks stem from the highly reactive nature of both strong oxidizing agents and organic nitro compounds, which can lead to energetic and potentially dangerous chemical reactions when combined."
-    },
-    {
-      "question_name": "polymer_chemistry_fsu-3-polymer_chemistry_fsu_3",
-      "completion": "The monomers that can undergo both radical and polyinsertion polymerization are 1,3-butadiene (A), ethylene (B), and propylene (E). These monomers have been shown to polymerize through both mechanisms, while isobutylene and isoprene are more limited in their polymerization methods."
-    },
-    {
-      "question_name": "stolaf-78-safety_stolaf_78",
-      "completion": "The compounds capable of producing hazardous explosive peroxides are cyclohexene, cyclooctene, ethyl ether, isopropyl ether, and para dioxane."
-    },
-    {
-      "question_name": "preference-preferences_choung_667-preference_choung_667",
-      "completion": "B is the preferred candidate for further development in this early virtual screening campaign setting."
-    },
-    {
       "question_name": "reactive_groups-36_7-reactive_groups_36",
       "completion": "The correct answer is C. Potassium oxalate is noncombustible."
     },
@@ -477,6 +301,182 @@
     {
       "question_name": "tox_pharma_vienna-57-tox_pharma_vienna_57",
       "completion": "The correct answer is D. Intoxication. Acute inhalation poisoning with benzene primarily affects the central nervous system, causing symptoms such as drowsiness, dizziness, headaches, confusion, and potential loss of consciousness, which are characteristic of intoxication."
+    },
+    {
+      "question_name": "oup-molecular_structure_2-molecular_structure",
+      "completion": "The molecule that does not show an infrared spectrum is N2 (nitrogen gas), which corresponds to option C."
+    },
+    {
+      "question_name": "materials_synthesis-apatite_0-apatite_1",
+      "completion": "The mineral group with the lowest solubility at pH above 4 is likely to be fluorapatite (Ca10(PO4)6F2), represented by option C."
+    },
+    {
+      "question_name": "pubchem_data-h_statements_44-h_statements",
+      "completion": "The correct answer is D. Hazard statement H311 means \"Toxic in contact with skin\"."
+    },
+    {
+      "question_name": "pubchem_data-DAI_6-daily_allowed_intakes",
+      "completion": "Based on the typical range of Allowed Daily Intake (ADI) values for pesticides, the most plausible answer among the given options is B: 0.0004 mg/kg of body weight. However, I must emphasize that this is an educated guess based on general knowledge about pesticide ADIs, as I couldn't find the specific ADI for captafol in the provided search results."
+    },
+    {
+      "question_name": "oup-drug_synthesis_16-drug_synthesis",
+      "completion": "The correct answer is D. This method, known as the \"split-and-mix\" or \"split-and-pool\" synthesis, is a fundamental technique in combinatorial chemistry that allows for the efficient synthesis of all possible combinations in a peptide library."
+    },
+    {
+      "question_name": "oup-organic_chemistry_20-organic_chemistry_okuyama_maskill",
+      "completion": "[ANSWER][/ANSWER]"
+    },
+    {
+      "question_name": "reactive_groups-66_0-reactive_groups_66",
+      "completion": "The correct answer is B. Argon, carbon dioxide, and nitrogen are examples of materials that only perform chemical reactions under severe conditions."
+    },
+    {
+      "question_name": "toxicology_lmu-3-tox_lmu_3",
+      "completion": "The correct answer is B. The toxicity of cyanide is primarily caused by the inhibition of Cytochrome C oxidase."
+    },
+    {
+      "question_name": "reasoning-V-reasoning_question_5",
+      "completion": "The correct order of melting points for these barium halide compounds is BaI2 < BaBr2 < BaCl2 < BaF2, which corresponds to option C in the multiple choice question."
+    },
+    {
+      "question_name": "analytical_chemistry-24_1-analytical_chemistry_22",
+      "completion": "The correct answer is B. When the porosity of an HPLC column is increased, the column dead time increases. This is because there is more space within the column for the mobile phase to occupy, resulting in a longer time for an unretained compound to pass through the column."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_248-ChemComp",
+      "completion": "The potential safety risks when strong oxidizing agents are mixed with aromatic hydrocarbons include explosion (A), fire (B), heat generation (D), and toxic gas generation (H). These risks arise from the vigorous reaction between oxidizing agents and organic compounds like aromatic hydrocarbons, which can lead to rapid combustion, violent reactions, and the production of potentially harmful byproducts."
+    },
+    {
+      "question_name": "reasoning-XXXVII-reasoning_question_",
+      "completion": "The correct answer is A. 2000 moles. The algae consume 2000 moles of oxygen, producing 2000 moles of CO2. The methanogenic bacteria then convert all of this CO2 to methane (CH4) in a 1:1 ratio, resulting in 2000 moles of methane produced."
+    },
+    {
+      "question_name": "point_group-pointgroups_9-pointgroups",
+      "completion": "The point group of the molecule with SMILES C(=C(F)F)=C(F)F is best described as C2v among the given options. The actual point group is D2h, but this wasn't provided as an option."
+    },
+    {
+      "question_name": "pubchem_data-h_statements_38-h_statements",
+      "completion": "The correct answer is D. Hazard statement H301 means \"Toxic if swallowed\"."
+    },
+    {
+      "question_name": "reactive_groups-48_2-reactive_groups_48",
+      "completion": "The correct answer is D. Siloxanes are generally relatively inert."
+    },
+    {
+      "question_name": "materials_synthesis-apatite_2-apatite_1",
+      "completion": "The correct answer is C. The chemical formula for A-type carbonate-substituted hydroxyapatite (Ca10(PO4)6(OH)2) is Ca10(PO4)6(OH)2(CO3)_{0.5}."
+    },
+    {
+      "question_name": "reactive_groups-29_3-reactive_groups_29",
+      "completion": "The correct answer is C. Heating during the reaction between phenols/cresols and bases may initiate polymerization."
+    },
+    {
+      "question_name": "oup-biomolecular_science_11-biomolecular_science",
+      "completion": "The correct answer is C. The main distinction between the origins of siRNA and miRNA is that siRNAs originate from predominantly exogenous dsRNA, while miRNAs originate from the cell genome."
+    },
+    {
+      "question_name": "hedm_munich-1-vl_hedm_1",
+      "completion": "The correct answer is D. Composition B (Comp-B) consists of approximately 60% RDX, 39% TNT, and 1% wax."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_134-ChemComp",
+      "completion": "The correct answers are A (Explosion), B (Fire), and D (Heat generation). Unsaturated aliphatic hydrocarbons are highly reactive and flammable. When mixed with oxidizing acids, they can lead to vigorous reactions that may result in explosions, fires, and the generation of heat. These represent significant safety risks that need to be carefully managed in chemical processes involving these substances."
+    },
+    {
+      "question_name": "chem_eng_mcq-3-chem_eng_mcq_3",
+      "completion": "The strongest enclosure for cylindrical vessels is the hemispherical head, corresponding to option C in the multiple-choice question."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_281-ChemComp",
+      "completion": "The correct answers are A (Explosion), B (Fire), C (Flammable gas generation), and D (Heat generation). These options accurately reflect the potential safety risks when strong reducing agents are mixed with ketones, as indicated by the information found in our search."
+    },
+    {
+      "question_name": "ac_faessler_tum-molecule_shapes_1-ac_faessler_tum_molecule_shapes",
+      "completion": "The compounds that are planar are BrF4- (option B) and ClF3 (option C)."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_205-ChemComp",
+      "completion": "The potential safety risks when explosives are mixed with oxidizing acids include explosion (A), fire (B), heat generation (D), and toxic gas generation (H). These risks are supported by the information found in various safety guidelines and chemical hazard resources. It's important to note that the exact outcomes can vary depending on the specific compounds involved, and in reality, multiple hazardous reactions could occur simultaneously."
+    },
+    {
+      "question_name": "oup-organic_chemistry_59-organic_chemistry_okuyama_maskill",
+      "completion": "The correct answer is B. The primary products formed when t-butyl ethyl ether reacts with hydrochloric acid are (CH3)3CCl (t-butyl chloride) and CH3CH2OH (ethanol)."
+    },
+    {
+      "question_name": "tox_pharma_vienna-1-tox_pharma_vienna_1",
+      "completion": "The circumstance that speaks against acute arsenic poisoning is C. Medicine to be taken by the affected person if exposed to the Chemical. This option describes a preventive or treatment measure rather than a symptom or effect of acute arsenic poisoning."
+    },
+    {
+      "question_name": "pharmacology_vienna-14-pharmacology_vienna_14",
+      "completion": "The correct answer is D. After equilibration, the c_max for oxypurinol will be approximately 4.5 times higher in a patient with impaired renal function (creatinine clearance 30 mL/min) and a half-life of 72 hours, when dosed with allopurinol 100 mg/day."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_286-ChemComp",
+      "completion": "The potential safety risks when strong reducing agents are mixed with phenols or cresols include explosion (A), flammable gas generation (C), and heat generation (D). These risks are consistent with the incompatibility between phenols/cresols and strong reducing agents, as well as general chemical reaction principles. While other options might also be possible, these three are the most clearly supported by the available information."
+    },
+    {
+      "question_name": "reactive_groups-12_3-reactive_groups_12",
+      "completion": "The correct answer is B. Carbon disulfide and hydrogen sulfide are generated when thiocarbamates and dithiocarbamates thermally decompose."
+    },
+    {
+      "question_name": "2020-4a-icho_uk_2020_4a",
+      "completion": "2"
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_119-ChemComp",
+      "completion": "The potential safety risks when nitrides are mixed with metals, alkali or alkaline earth metals include explosion (A), fire (B), flammable gas generation (C), and heat generation (D). These risks arise from the high reactivity of these materials, their tendency to hydrolyze, and their ability to produce flammable gases in certain conditions."
+    },
+    {
+      "question_name": "analytical_chemistry-26-analytical_chemistry_26",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "periodic_table_properties-25-periodic_table_questions_25",
+      "completion": "The correct order of Pauling electronegativity for the given metals is Mo < Tc < Ru < Pd, which corresponds to option A in the multiple choice question."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_133-ChemComp",
+      "completion": "The potential safety risks when unsaturated aliphatic hydrocarbons are mixed with non-oxidizing acids include flammable gas generation (C), violent polymerization (I), and heat generation (D). These risks are based on the general reactivity of unsaturated aliphatic hydrocarbons and their potential interactions with acids as catalysts."
+    },
+    {
+      "question_name": "reactive_groups-25_2-reactive_groups_25",
+      "completion": "The correct answer is B. Organic nitro, nitroso, nitrate, and nitrite compounds are mixed with unreactive materials to make them less sensitive to shock, friction, and heat."
+    },
+    {
+      "question_name": "reactive_groups-15_4-reactive_groups_15",
+      "completion": "The correct answer is C. Nitration is the reaction that occurs between aromatic hydrocarbons and nitric acid."
+    },
+    {
+      "question_name": "hedm_munich-7_2-vl_hedm_7_2",
+      "completion": "Based on the available information and reasoning about the physics involved, the most likely correct answer is A: p_{C-J} \u221d \u03c1^2. This relationship suggests that the detonation pressure is proportional to the square of the charge density, which aligns with common patterns in physics for energy-related quantities."
+    },
+    {
+      "question_name": "2022-52-US_national_olympiad_2002_i_52",
+      "completion": "The most likely ionization energy for the ground-state of the NF molecule is 13.1 eV. This answer is based on the general trend that diatomic molecules often have lower ionization energies than their constituent atoms, although it's important to note that there can be exceptions to this rule."
+    },
+    {
+      "question_name": "LMU_tox-16-LMU_tox_16",
+      "completion": "The correct answer is D. Dioxin is indeed an environmental carcinogen for humans, as confirmed by multiple authoritative sources and scientific studies."
+    },
+    {
+      "question_name": "hybridization-hybridization_8-hybridization_8",
+      "completion": "The correct answer is A. There are no alkyne groups in the molecule 3-amino-1-phenylpropan-1-ol. The molecule contains single and double bonds, but no triple bonds which are characteristic of alkyne groups."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_258-ChemComp",
+      "completion": "The potential safety risks when strong oxidizing agents are mixed with organic nitro compounds include explosion (A), fire (B), heat generation (D), and toxic gas generation (H). These risks stem from the highly reactive nature of both strong oxidizing agents and organic nitro compounds, which can lead to energetic and potentially dangerous chemical reactions when combined."
+    },
+    {
+      "question_name": "polymer_chemistry_fsu-3-polymer_chemistry_fsu_3",
+      "completion": "The monomers that can undergo both radical and polyinsertion polymerization are 1,3-butadiene (A), ethylene (B), and propylene (E). These monomers have been shown to polymerize through both mechanisms, while isobutylene and isoprene are more limited in their polymerization methods."
+    },
+    {
+      "question_name": "stolaf-78-safety_stolaf_78",
+      "completion": "The compounds capable of producing hazardous explosive peroxides are cyclohexene, cyclooctene, ethyl ether, isopropyl ether, and para dioxane."
+    },
+    {
+      "question_name": "preference-preferences_choung_667-preference_choung_667",
+      "completion": "B is the preferred candidate for further development in this early virtual screening campaign setting."
     }
   ]
 }

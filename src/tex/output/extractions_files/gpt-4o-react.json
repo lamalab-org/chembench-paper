@@ -603,6 +603,810 @@
       "completion": "Agent stopped due to iteration limit or time limit."
     },
     {
+      "question_name": "preference-preferences_choung_957-preference_choung_957",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_147-preference_choung_147",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "tox_pharma_vienna-19-tox_pharma_vienna_19",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2019-2a_0-icho_uk_2019_2a",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_6-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "toxicology_lmu-32-tox_lmu_32",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_811-preference_choung_811",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_803-preference_choung_803",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "blac_gfk-iii_4_4-blac_gfk_iii_4_4",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_283-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "point_group-pointgroups_1-pointgroups",
+      "completion": "[ANSWER]D3d[/ANSWER]"
+    },
+    {
+      "question_name": "preference-preferences_choung_797-preference_choung_797",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-43_2-reactive_groups_43",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_224-preference_choung_224",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "periodic_table_properties-5-periodic_table_questions",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_469-preference_choung_469",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_42-preference_choung_42",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_229-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-48_0-reactive_groups_48",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_145-preference_choung_145",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-45_8-reactive_groups_45",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2010-4d1-icho_uk_2010_4d1",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "organic_reactivity-3_9-organic_reactivity_3",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_805-preference_choung_805",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_290-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "biochemistry-biochem_2-biochemistry_2",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "oup-drug_synthesis_35-drug_synthesis",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "number_of_nmr_peaks-number_nmr_peaks_163-number_1h_nmr_shifts",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_815-preference_choung_815",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "MSDS-7-MSDS_7",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_78-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_941-preference_choung_941",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_48-preference_choung_48",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-24_9-reactive_groups_24",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_136-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_238-preference_choung_238",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_35-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_799-preference_choung_799",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_714-preference_choung_714",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_652-preference_choung_652",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_949-preference_choung_949",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_640-preference_choung_640",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_22-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2021-36-US_national_olympiad_2021_i_36",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reasoning-XXXV-reasoning_question_35",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "computational_photochemistry-photochemistry_7-photochemistry_7",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_259-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "polymer_chemistry_fsu-4-polymer_chemistry_fsu_4",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "analytical_chemistry-27_11-analytical_chemistry_22",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-59_6-reactive_groups_59",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_642-preference_choung_642",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "tox_wwu-27-tox_wwu_27",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "metal_complexes-metal_complexes_12-metal_complexes_12",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_704-preference_choung_704",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "toxicology_lmu-26-tox_lmu_26",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_97-preference_choung_97",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "Organic_chemistry-OC_2_21-OC_1",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_700-preference_choung_700",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-34_2-reactive_groups_34",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2010-6f-icho_uk_2010_6f",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "solid_state_chemistry-solid_state_5-solid_state_chemistry_5",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2022-1e_1-icho_uk_2022_q1e",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "oup-xray_crystallography_1-xray_crystallography",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2020-2g-icho_uk_2020_2g",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2019-4a-icho_uk_2019_4a",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_146-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "oup-organic_chemistry_37-organic_chemistry_okuyama_maskill",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_463-preference_choung_463",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "pum_tum-bonding_1-metallic_bonding_pum_tum",
+      "completion": "[ANSWER][/ANSWER]"
+    },
+    {
+      "question_name": "preference-preferences_choung_710-preference_choung_710",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_682-preference_choung_682",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_178-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_690-preference_choung_690",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "organic_reactivity-7_0-organic_reactivity_7",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_914-preference_choung_914",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "oup-drug_synthesis_31-drug_synthesis",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "technical_chemistry-4-Technical_chemistry_4",
+      "completion": "[ANSWER][/ANSWER]"
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_21-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_323-preference_choung_323",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "periodic_table_properties-2-periodic_table_questions",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "organic_reactivity-4_0-organic_reactivity_4",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_852-preference_choung_852",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_263-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_749-preference_choung_749",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "blac_gfk-i_2_10-blac_gfk_i_2_10",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_18-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "polymer_chemistry_fsu-2-polymer_chemistry_fsu_2",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_25-preference_choung_25",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_337-preference_choung_337",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_609-preference_choung_609",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_98-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_846-preference_choung_846",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_25-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "combustion_engineering-5-fuel_combustion_5",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "polymer_chemistry-2-polymer_chemistry_2",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_152-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2020-1c-icho_uk_2020_1c",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_112-preference_choung_112",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_902-preference_choung_902",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_619-preference_choung_619",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_694-preference_choung_694",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_1012-preference_choung_1012",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2020-4f-icho_uk_2020_4f",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-20_2-reactive_groups_20",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_562-preference_choung_562",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "materials_compatibility-materials_compatibility_2923-materials_compatibility",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_46-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-39_1-reactive_groups_39",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_611-preference_choung_611",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactions-17-reaction_17",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_108-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_985-preference_choung_985",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2011-3e-icho_uk_2011_3e",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "polymer_chemistry_fsu-18-polymer_chemistry_18",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_280-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-63_4-reactive_groups_63",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_200-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_1-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "electrochemistry-electrochemistry_0-electrochemistry_0",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_564-preference_choung_564",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_422-preference_choung_422",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "oxidation_states-simple_oxidation_states_97-oxidation_states",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_430-preference_choung_430",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_329-preference_choung_329",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2019-1d_3-icho_uk_2019_1d",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_191-preference_choung_191",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-55_8-reactive_groups_55",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_688-preference_choung_688",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_181-preference_choung_181",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_983-preference_choung_983",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_607-preference_choung_607",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "organic_reactivity-8_6-organic_reactivity_8",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_339-preference_choung_339",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "pubchem_data-pictograms_458-GHS_pictograms",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2011-2b-icho_uk_2011_2b",
+      "completion": "[ANSWER][/ANSWER]"
+    },
+    {
+      "question_name": "polymer_chemistry_fsu-12-polymer_chemistry_12",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_122-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-16_2-reactive_groups_16",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_379-preference_choung_379",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_460-preference_choung_460",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_106-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "organic_reactivity-3_3-organic_reactivity_3",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_701-preference_choung_701",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_887-preference_choung_887",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_711-preference_choung_711",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_224-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "materials_compatibility-materials_compatibility_1634-materials_compatibility",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_524-preference_choung_524",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "tox_wwu-6-tox_wwu_6",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_470-preference_choung_470",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "physical_chemistry-physical_chemistry_4-physical_chemistry_4",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_233-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_645-preference_choung_645",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "stolaf-76-safety_stolaf_76",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "func_mats_and_nanomats-8-quantum_dots_8",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_102-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "blac_gfk-iii_4_43-blac_gfk_iii_4_43",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "pubchem_data-DAI_3-daily_allowed_intakes",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "oup-organic_chemistry_72-organic_chemistry_okuyama_maskill",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_158-preference_choung_158",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "stolaf-60-safety_stolaf_60",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "tox_pharma_vienna-35-tox_pharma_vienna_35",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_229-preference_choung_229",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "toxicology_lmu-27-tox_lmu_27",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "materials_compatibility-materials_compatibility_3941-materials_compatibility",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_881-preference_choung_881",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_958-preference_choung_958",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_464-preference_choung_464",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_191-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_220-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "polymer_chemistry_fsu-24-polymer_chemistry_24",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "computational_chemistry-computational_chemistry_5-computational_chemistry_5",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "reactive_groups-23_6-reactive_groups_23",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_233-preference_choung_233",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_1029-preference_choung_1029",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_221-preference_choung_221",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_1-preference_choung_1",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_36-preference_choung_36",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_889-preference_choung_889",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2022-X_2022_cal_3-X_2022_MD",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "blac_gfk-ii_4_40-blac_gfk_ii_4_40",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_950-preference_choung_950",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_659-preference_choung_659",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2023-2c-icho_uk_2023_q2c",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_161-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "hedm_munich-9-vl_hedm_9",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "blac_gfk-ii_4_23-blac_gfk_ii_4_23",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_142-preference_choung_142",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "scenarios-starting_grignard-starting_grignard",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "2023-1c2-icho_uk_2023_q1c2",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "oup-organic_chemistry_62-organic_chemistry_okuyama_maskill",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "hedm_munich-8-vl_hedm_8",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_810-preference_choung_810",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "Organic_chemistry-OC_2_15-OC_1",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "chem_chem_comp-chemComp_165-ChemComp",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "blac_gfk-iii_2_6-blac_gfk_iii_2_6",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "scenarios-scale_up-scale_up",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "preference-preferences_choung_227-preference_choung_227",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "tox_wwu-32-tox_wwu_32",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "oup-drug_synthesis_25-drug_synthesis",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
+      "question_name": "materials_compatibility-materials_compatibility_1700-materials_compatibility",
+      "completion": "Agent stopped due to iteration limit or time limit."
+    },
+    {
       "question_name": "chem_chem_comp-chemComp_250-ChemComp",
       "completion": "Agent stopped due to iteration limit or time limit."
     },
@@ -1480,810 +2284,6 @@
     },
     {
       "question_name": "tox_pharma_vienna-57-tox_pharma_vienna_57",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_957-preference_choung_957",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_147-preference_choung_147",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "tox_pharma_vienna-19-tox_pharma_vienna_19",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2019-2a_0-icho_uk_2019_2a",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_6-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "toxicology_lmu-32-tox_lmu_32",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_811-preference_choung_811",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_803-preference_choung_803",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "blac_gfk-iii_4_4-blac_gfk_iii_4_4",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_283-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "point_group-pointgroups_1-pointgroups",
-      "completion": "[ANSWER]D3d[/ANSWER]"
-    },
-    {
-      "question_name": "preference-preferences_choung_797-preference_choung_797",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-43_2-reactive_groups_43",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_224-preference_choung_224",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "periodic_table_properties-5-periodic_table_questions",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_469-preference_choung_469",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_42-preference_choung_42",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_229-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-48_0-reactive_groups_48",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_145-preference_choung_145",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-45_8-reactive_groups_45",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2010-4d1-icho_uk_2010_4d1",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "organic_reactivity-3_9-organic_reactivity_3",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_805-preference_choung_805",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_290-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "biochemistry-biochem_2-biochemistry_2",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "oup-drug_synthesis_35-drug_synthesis",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "number_of_nmr_peaks-number_nmr_peaks_163-number_1h_nmr_shifts",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_815-preference_choung_815",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "MSDS-7-MSDS_7",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_78-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_941-preference_choung_941",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_48-preference_choung_48",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-24_9-reactive_groups_24",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_136-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_238-preference_choung_238",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_35-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_799-preference_choung_799",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_714-preference_choung_714",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_652-preference_choung_652",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_949-preference_choung_949",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_640-preference_choung_640",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_22-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2021-36-US_national_olympiad_2021_i_36",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reasoning-XXXV-reasoning_question_35",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "computational_photochemistry-photochemistry_7-photochemistry_7",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_259-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "polymer_chemistry_fsu-4-polymer_chemistry_fsu_4",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "analytical_chemistry-27_11-analytical_chemistry_22",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-59_6-reactive_groups_59",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_642-preference_choung_642",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "tox_wwu-27-tox_wwu_27",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "metal_complexes-metal_complexes_12-metal_complexes_12",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_704-preference_choung_704",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "toxicology_lmu-26-tox_lmu_26",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_97-preference_choung_97",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "Organic_chemistry-OC_2_21-OC_1",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_700-preference_choung_700",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-34_2-reactive_groups_34",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2010-6f-icho_uk_2010_6f",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "solid_state_chemistry-solid_state_5-solid_state_chemistry_5",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2022-1e_1-icho_uk_2022_q1e",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "oup-xray_crystallography_1-xray_crystallography",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2020-2g-icho_uk_2020_2g",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2019-4a-icho_uk_2019_4a",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_146-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "oup-organic_chemistry_37-organic_chemistry_okuyama_maskill",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_463-preference_choung_463",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "pum_tum-bonding_1-metallic_bonding_pum_tum",
-      "completion": "[ANSWER][/ANSWER]"
-    },
-    {
-      "question_name": "preference-preferences_choung_710-preference_choung_710",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_682-preference_choung_682",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_178-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_690-preference_choung_690",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "organic_reactivity-7_0-organic_reactivity_7",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_914-preference_choung_914",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "oup-drug_synthesis_31-drug_synthesis",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "technical_chemistry-4-Technical_chemistry_4",
-      "completion": "[ANSWER][/ANSWER]"
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_21-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_323-preference_choung_323",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "periodic_table_properties-2-periodic_table_questions",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "organic_reactivity-4_0-organic_reactivity_4",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_852-preference_choung_852",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_263-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_749-preference_choung_749",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "blac_gfk-i_2_10-blac_gfk_i_2_10",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_18-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "polymer_chemistry_fsu-2-polymer_chemistry_fsu_2",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_25-preference_choung_25",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_337-preference_choung_337",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_609-preference_choung_609",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_98-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_846-preference_choung_846",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_25-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "combustion_engineering-5-fuel_combustion_5",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "polymer_chemistry-2-polymer_chemistry_2",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_152-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2020-1c-icho_uk_2020_1c",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_112-preference_choung_112",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_902-preference_choung_902",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_619-preference_choung_619",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_694-preference_choung_694",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_1012-preference_choung_1012",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2020-4f-icho_uk_2020_4f",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-20_2-reactive_groups_20",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_562-preference_choung_562",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "materials_compatibility-materials_compatibility_2923-materials_compatibility",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_46-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-39_1-reactive_groups_39",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_611-preference_choung_611",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactions-17-reaction_17",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_108-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_985-preference_choung_985",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2011-3e-icho_uk_2011_3e",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "polymer_chemistry_fsu-18-polymer_chemistry_18",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_280-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-63_4-reactive_groups_63",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_200-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_1-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "electrochemistry-electrochemistry_0-electrochemistry_0",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_564-preference_choung_564",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_422-preference_choung_422",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "oxidation_states-simple_oxidation_states_97-oxidation_states",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_430-preference_choung_430",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_329-preference_choung_329",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2019-1d_3-icho_uk_2019_1d",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_191-preference_choung_191",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-55_8-reactive_groups_55",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_688-preference_choung_688",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_181-preference_choung_181",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_983-preference_choung_983",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_607-preference_choung_607",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "organic_reactivity-8_6-organic_reactivity_8",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_339-preference_choung_339",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "pubchem_data-pictograms_458-GHS_pictograms",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2011-2b-icho_uk_2011_2b",
-      "completion": "[ANSWER][/ANSWER]"
-    },
-    {
-      "question_name": "polymer_chemistry_fsu-12-polymer_chemistry_12",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_122-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-16_2-reactive_groups_16",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_379-preference_choung_379",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_460-preference_choung_460",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_106-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "organic_reactivity-3_3-organic_reactivity_3",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_701-preference_choung_701",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_887-preference_choung_887",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_711-preference_choung_711",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_224-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "materials_compatibility-materials_compatibility_1634-materials_compatibility",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_524-preference_choung_524",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "tox_wwu-6-tox_wwu_6",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_470-preference_choung_470",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "physical_chemistry-physical_chemistry_4-physical_chemistry_4",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_233-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_645-preference_choung_645",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "stolaf-76-safety_stolaf_76",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "func_mats_and_nanomats-8-quantum_dots_8",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_102-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "blac_gfk-iii_4_43-blac_gfk_iii_4_43",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "pubchem_data-DAI_3-daily_allowed_intakes",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "oup-organic_chemistry_72-organic_chemistry_okuyama_maskill",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_158-preference_choung_158",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "stolaf-60-safety_stolaf_60",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "tox_pharma_vienna-35-tox_pharma_vienna_35",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_229-preference_choung_229",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "toxicology_lmu-27-tox_lmu_27",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "materials_compatibility-materials_compatibility_3941-materials_compatibility",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_881-preference_choung_881",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_958-preference_choung_958",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_464-preference_choung_464",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_191-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_220-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "polymer_chemistry_fsu-24-polymer_chemistry_24",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "computational_chemistry-computational_chemistry_5-computational_chemistry_5",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "reactive_groups-23_6-reactive_groups_23",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_233-preference_choung_233",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_1029-preference_choung_1029",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_221-preference_choung_221",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_1-preference_choung_1",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_36-preference_choung_36",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_889-preference_choung_889",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2022-X_2022_cal_3-X_2022_MD",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "blac_gfk-ii_4_40-blac_gfk_ii_4_40",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_950-preference_choung_950",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_659-preference_choung_659",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2023-2c-icho_uk_2023_q2c",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_161-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "hedm_munich-9-vl_hedm_9",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "blac_gfk-ii_4_23-blac_gfk_ii_4_23",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_142-preference_choung_142",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "scenarios-starting_grignard-starting_grignard",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "2023-1c2-icho_uk_2023_q1c2",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "oup-organic_chemistry_62-organic_chemistry_okuyama_maskill",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "hedm_munich-8-vl_hedm_8",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_810-preference_choung_810",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "Organic_chemistry-OC_2_15-OC_1",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "chem_chem_comp-chemComp_165-ChemComp",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "blac_gfk-iii_2_6-blac_gfk_iii_2_6",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "scenarios-scale_up-scale_up",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "preference-preferences_choung_227-preference_choung_227",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "tox_wwu-32-tox_wwu_32",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "oup-drug_synthesis_25-drug_synthesis",
-      "completion": "Agent stopped due to iteration limit or time limit."
-    },
-    {
-      "question_name": "materials_compatibility-materials_compatibility_1700-materials_compatibility",
       "completion": "Agent stopped due to iteration limit or time limit."
     }
   ]

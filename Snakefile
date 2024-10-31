@@ -210,7 +210,7 @@ rule plot_temperature_impact:
 
 rule tool_usage:
   input: "src/data/model_score_dicts.pkl"
-  output: ["src/tex/figures/human_tool_usage_by_topic.pdf"]
+  output: "src/tex/figures/human_tool_usage_by_topic.pdf"
   script: "src/scripts/human_tool_usage.py"
 
 
@@ -265,7 +265,8 @@ rule plot_corpuses:
 
 rule requires_data:
     input: "src/data/questions.pkl"
-    output: [
+    output:
+     [
         "src/data/required_data.tex",
         "src/tex/output/reasoning_count.txt",
         "src/tex/output/knowledge_count.txt",
