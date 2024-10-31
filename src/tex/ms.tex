@@ -213,7 +213,7 @@ To investigate this, we prompted\autocite{xiong2023llms} some of the top-perform
  \begin{figure}[!h]
      \centering
      \includegraphics[width=\textwidth]{figures/model_confidence_performance.pdf}
-     \caption{\textbf{Calibration and distribution of confidence estimates.} For this analysis, we used verbalized confidence estimates from the model. We prompted the models to return a confidence score on an ordinal scale to obtain those estimates.
+     \caption{\textbf{Reliability and distribution of confidence estimates.} For this analysis, we used verbalized confidence estimates from the model. We prompted the models to return a confidence score on an ordinal scale to obtain those estimates.
      The line plot shows the average fraction of correctly answered questions for each confidence level. The bar plot shows the distribution of confidence estimates.
      A confidence estimate would be well-calibrated if the average fraction of correctly answered questions increases with the confidence level.      The dashed black line indicates this ideal behavior, which would be monotonically increasing correctness with higher
      levels of confidence.
@@ -333,7 +333,9 @@ In \Cref{sec:confidence_estimates}, we provide more details and comparisons with
 
 \subsection{Human baseline}
 
-\input{sections/human_subset_selection.tex}
+\paragraph{Question selection} \label{sec:subset-selection}
+
+ Several design choices were made when selecting \chembenchmini. Firstly, from the full dataset, we kept all the questions labeled as advanced. In this way, we can obtain a deeper insight into the capabilities of \glspl{llm} on advanced tasks when compared to actual chemists. Secondly, we sample a maximum of three questions across all possible combinations of categories (i.e., knowledge or reasoning) and topics (e.g., organic chemistry, physical chemistry). Thirdly, we do not include any intuition questions in this subset because the intended use of \chembenchmini is to provide a fast and fair evaluation of \glspl{llm} independent of any human baseline. In total, \variable{output/num_human_answered_questions.txt} questions have been sampled for \chembenchmini. Then, this set is divided into two subsets based on the aforementioned combinations. One of the question subsets allows tool use, and the other does not.
 
 \paragraph{Study design}
 Human volunteers were asked the questions in a custom-built web interface (see \Cref{sec:human_baseline}), which rendered chemicals and equations. Questions were shown in random order, and volunteers were not allowed to skip questions. For a subset of the questions, the volunteers were allowed to use external tools (excluding other \gls{llm} or asking other people) to answer the questions. Prior to answering questions, volunteers were asked to provide information about their education and experience in chemistry. The study was conducted in English.
