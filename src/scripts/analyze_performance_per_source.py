@@ -69,7 +69,7 @@ def obtain_subset_scores(data_dict, outdir):
             try:
                 score = obtain_score_for_subset(data_dict[model], subset)
                 name = f"{subset}_{model}.txt"
-                name = name.replace(" ", "_").replace("(", "_").replace(")", "")
+                name = name.replace(" ", "_").replace("(", "_").replace(")", "_")
                 with open(os.path.join(outdir, name), "w") as handle:
                     handle.write(str(int(np.round(score * 100, 0))) + "\endinput")
 
