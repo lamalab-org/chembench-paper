@@ -5,7 +5,7 @@
 \usepackage{orcidlink}
 \usepackage{showyourwork}
 
-\title{\textsf{Are large language models superhuman chemists?}}
+\title{\textsf{A framework for evaluating the chemical knowledge and reasoning abilities of Large Language Models against the expertise of chemists}}
 
 \input{authors.tex}
 \begin{document}
@@ -64,7 +64,7 @@ While some benchmarks based on university entrance exams\autocite{Zaki_2024, aro
 This is likely because they cannot automatically be used with black box (or tool-augmented) systems, do not cover a wide range of topics and skills, or are not carefully validated by experts.
 On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights on how the models compare relative to experts \autocite{wu2018moleculenet}.
 
-In this work, we report a novel benchmarking framework  (\Cref{fig:overview_figure}), which we call \chembench, and use it to reveal limitations of current frontier models for use in the chemical sciences.
+In this work, we report a robust benchmarking framework  (\Cref{fig:overview_figure}), which we call \chembench, and use it to reveal limitations of current frontier models for use in the chemical sciences.
 Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs compiled from diverse sources (\variable{output/manually_generated.txt}\xspace manually generated, and \variable{output/automatically_generated.txt}\xspace semi-automatically generated).
 Our corpus measures reasoning, knowledge and intuition across a large fraction of the topics taught in undergraduate and graduate chemistry curricula. It can be used to evaluate any system that can return text (i.e., including tool-augmented systems).
 
