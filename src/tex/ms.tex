@@ -25,9 +25,8 @@ These findings reveal LLMs' impressive chemical capabilities while emphasizing t
 \end{abstract}
 
 
-
 \clearpage
-\begin{refsection}
+\begin{refsegment}
 \section{Introduction}
 \Glspl{llm} are \gls{ml} models trained on massive amounts of text to complete sentences.
 Aggressive scaling of these models has led to a rapid increase in their capabilities,\autocite{brown2020language,zhong2024benchmarking} with the leading models now being able to pass the United States Medical Licensing Examination\autocite{kung2023performance} or other professional licensing exams.
@@ -251,107 +250,6 @@ Importantly, our findings also illustrate that more focus is required in develop
 While our findings indicate many areas for further improvement of \gls{llm}-based systems, such as for agents (more discussion in \Cref{sec:react-environment}), it is also important to realize that clearly defined metrics have been the key to the progress of many fields of \gls{ml}, such as computer vision.
 Although current systems might be far from reasoning like a chemist, our \chembench framework will be a stepping stone for developing systems that might come closer to this goal.
 
-\clearpage
-
-\section{Methods}
-
-\subsection{Curation workflow}\label{sec:curation}
-For our dataset, we curated questions from existing exams or exercise sheets but also programmatically created new questions (\Cref{tab:sources}).
-Questions were added via Pull Requests on our GitHub repository and only merged into the corpus after passing manual review (\Cref{fig:curation_workflow}) as well as automated checks (e.g., for compliance with a standardized schema).
-
-To ensure that the questions do not enter a training dataset, we use the same canary string as the BigBench project.
-This requires that \Gls{llm} developers filter their training dataset for this canary string.\autocite{openai2024gpt4, srivastava2022beyond}
-
-
-
-\begin{table}[!h]
-    \centering
-    \caption{\textbf{Overview of sources of the curated questions}. The table provides an overview of the types of sources the questions have been curated from. Detailed sources are available in the source data on GitHub. Questions without a source have been curated completely from scratch. Questions based on lecture notes or URLs have been curated based on content presented in those resources. All questions have been rephrased, annotated, and reviewed before being added to the corpus. }
-    %Note that the chemical preference questions are the main corpus of the semi-automatically generated group with \variable{output/question_count_per_dir/json_file_counts_preference.txt} questions of the total \variable{output/automatically_generated.txt}.
-    \variable{output/sources_table.tex}
-    \label{tab:sources}
-\end{table}
-
-\begin{figure}[!h]
-    \includegraphics[width = \textwidth]{figures/chem-bench.pdf}
-    \caption{\textbf{Overview of the workflow for the assembly of the \chembench corpus}.
-    To assemble the \chembench corpus, we first collected questions from various sources. Some tasks were manually curated, others semi-programmatically. We added semantic annotations for all questions to make them compatible with systems that use special processing for modalities that are not conventional natural text. We reviewed the questions using manual and automatic methods before adding them to the corpus.}
-    \label{fig:curation_workflow}
-\end{figure}
-
-\paragraph{Manually curated questions}
-Manually curated questions were sourced from various sources, including university exams, exercises, and question banks.
-%\Cref{tab:manually_sources} provides an overview of the sources of the manually curated questions.
-
-
-
-\paragraph{Semi-programmatically generated questions}
-In addition to the manually curated questions, we also generated questions programmatically. An overview of the sources of the semi-programmatically generated questions is provided in \Cref{tab:semi_programatically_sources}.
-
-\input{sections/semi_programatically_sources_table.tex}
-
-\paragraph{Chemical preference data}
-
-These questions assess the ability to establish a \enquote{preference}, such as favoring a specific molecule. Chemical preference is of major importance in drug discovery projects, where the optimization process to reach the desired molecular properties is a process that takes several years within a chemist's career.
-Our data corpus is adapted from the published dataset by \textcite{Choung_2023}, which consists of more than 5000 question-answer pairs about chemical intuition. To build the dataset, they presented 35 medicinal chemists with two different molecules, asking them what molecule they would like to continue with when imaging an early virtual screening campaign setting. The question was designed so the scientists do not spend much time answering it, relying only on their feelings or \enquote{chemical preference}.
-
-To understand whether the capabilities of the leading models align with the preferences of professional chemists, we randomly selected 1000 data points from the original dataset to create a meaningful evaluation set, where molecules are represented as \gls{smiles}.
-To ablate the effect of different molecular representations, we only considered questions for which we could obtain \gls{iupac} names for both molecules present.
-
-
-\subsection{Model evaluation workflow}
-A graphical overview of the pipeline is shown in \Cref{fig:process}.
-
-\paragraph{Prompting}
-
-We employ distinct prompt templates tailored for completion and instruction-tuned models to maintain consistency with the training.
-As explained below, we impose constraints on the models within these templates to receive responses in a specific format so that robust, fair, and consistent parsing can be performed.
-Certain models are trained with special annotations and \LaTeX\xspace syntax for scientific notations, chemical reactions, or symbols embedded within the text.
-For example, all the \gls{smiles} representations are encapsulated within \texttt{[START\_SMILES][\textbackslash END\_SMILES]} in Galactica\autocite{taylor2022galactica}.
-Our prompting strategy consistently adheres to these details in a model-specific manner by post-processing \LaTeX\xspace syntax, chemical symbols, chemical equations, and physical units (by either adding or removing wrappers).
-This step can be easily customized in our codebase, and we provide presets for the models we evaluated.
-
-
-
-\paragraph{Parsing}
-Our parsing workflow is multistep and primarily based on regular expressions.
-In the case of instruction-tuned models, we first identify the \texttt{[ANSWER]}\texttt{[\textbackslash ANSWER]} environment we prompt the model to report the answer in.
-In the case of completion models, this step is skipped. From there, we attempt to extract the relevant enumeration letters (for multiple-choice questions) or numbers.
-In the case of numbers, our regular expression was engineered to deal with various forms of scientific notation.
-As initial tests indicated that models sometimes return integers in the form of words, e.g., \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion using regular expressions.
-If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., \ClaudeThreeFiveSonnet, to parse the completion (\Cref{sec:llm-parsing} provides more details on this step).
-
-
-\paragraph{Models}
-For all models, we performed inference using greedy decoding (i.e., temperature 0). We used the \gls{api} endpoints provided by the model developers and those provided by Groq. \PaperQATwo was used (in August 2024) via an \gls{api} provided by FutureHouse.
-
-\subsection{Confidence estimate}
-To estimate the models' confidence, we prompted them with the question (and answer options for \gls{mcq}) and the task to rate their confidence to produce the correct answer on a scale from 1 to 5.
-We decided to use verbalized confidence estimates\autocite{xiong2023llms} since we found those closer to current practical use cases than other prompting strategies, which might be more suitable when implemented in systems. In addition, this approach captures semantic uncertainty, which is not the same as the probability of a token being given a sequence of tokens (i.e., the uncertainty one obtains from logit-based approaches). On top of that, many proprietary models do not provide access to the logits, making this approach more general.
-In \Cref{sec:confidence_estimates}, we provide more details and comparisons with a logit-based approach.
-
-\subsection{Human baseline}
-
-\paragraph{Question selection} \label{sec:subset-selection}
-
- Several design choices were made when selecting \chembenchmini. Firstly, from the full dataset, we kept all the questions labeled as advanced. In this way, we can obtain a deeper insight into the capabilities of \glspl{llm} on advanced tasks when compared to actual chemists. Secondly, we sample a maximum of three questions across all possible combinations of categories (i.e., knowledge or reasoning) and topics (e.g., organic chemistry, physical chemistry). Thirdly, we do not include any intuition questions in this subset because the intended use of \chembenchmini is to provide a fast and fair evaluation of \glspl{llm} independent of any human baseline. In total, \variable{output/num_human_answered_questions.txt} questions have been sampled for \chembenchmini. Then, this set is divided into two subsets based on the aforementioned combinations. One of the question subsets allows tool use, and the other does not.
-
-\paragraph{Study design}
-Human volunteers were asked the questions in a custom-built web interface (see \Cref{sec:human_baseline}), which rendered chemicals and equations. Questions were shown in random order, and volunteers were not allowed to skip questions. For a subset of the questions, the volunteers were allowed to use external tools (excluding other \gls{llm} or asking other people) to answer the questions. Prior to answering questions, volunteers were asked to provide information about their education and experience in chemistry. The study was conducted in English.
-
-\paragraph{Human volunteers}
-Users were open to reporting about their experience in chemistry.
-Overall, \variable{output/num_users_with_education_info.txt} did so.
-Out of those, \variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree (and are currently enrolled in Ph.D.\ studies), and \variable{output/num_human_bachelor.txt} has a bachelor's degree. For the analysis, we excluded volunteers with less than two years of experience in chemistry after their first university-level course in chemistry.
-
-
-\paragraph{Comparison with models}
-For the analysis, we treated each human as a model. We computed the topic aggregated averages per human for analyses grouped by topic and then averaged over all humans. The performance metrics reported for models in the main text are computed on the same questions the humans answered. Metrics for the entire corpus are reported in the appendix (\Cref{sec:model_performance_app}).
-
-\subsection{Data annotation}\label{sec:meth-topic}
-In the curation of our dataset, we manually assigned difficulty levels and required skills to each question. We used the following guidelines for these annotations: calculation is required if answering a question would require the use of a calculator, knowledge is required if answering a question requires non-trivial knowledge of facts (e.g., the H/P statements of chemicals). Reasoning is required if answering a question requires multiple reasoning steps.
-Basic questions only require those skills up to the high school level. Advanced questions would require an expert multiple minutes up to hours to answer.
-
 \section*{Data and code availability}
 The code and data for \chembench are available at \url{https://github.com/lamalab-org/chem-bench} and archived on Zenodo under \href{10.5281/zenodo.14010212}{https://zenodo.org/records/14010212}.
 The code for the app for our human baseline study is available at \url{https://github.com/lamalab-org/chem-bench-app}.
@@ -398,8 +296,109 @@ K.M.J.\ was a paid consultant for OpenAI (as part of the red teaming network). M
 \insertcredits
 }
 \normalsize
-\printbibliography
-\end{refsection}
+\printbibliography[segment=\refsegment]
+
+\clearpage
+\end{refsegment}
+% set the reference counter to the last reference
+
+\begin{refsegment}
+\section{Methods}
+
+\subsection{Curation workflow}\label{sec:curation}
+For our dataset, we curated questions from existing exams or exercise sheets but also programmatically created new questions (\Cref{tab:sources}).
+Questions were added via Pull Requests on our GitHub repository and only merged into the corpus after passing manual review (\Cref{fig:curation_workflow}) as well as automated checks (e.g., for compliance with a standardized schema).
+
+To ensure that the questions do not enter a training dataset, we use the same canary string as the BigBench project.
+This requires that \Gls{llm} developers filter their training dataset for this canary string.\autocite{openai2024gpt4, srivastava2022beyond}
+
+\begin{table}[!h]
+    \centering
+    \caption{\textbf{Overview of sources of the curated questions}. The table provides an overview of the types of sources the questions have been curated from. Detailed sources are available in the source data on GitHub. Questions without a source have been curated completely from scratch. Questions based on lecture notes or URLs have been curated based on content presented in those resources. All questions have been rephrased, annotated, and reviewed before being added to the corpus. }
+    %Note that the chemical preference questions are the main corpus of the semi-automatically generated group with \variable{output/question_count_per_dir/json_file_counts_preference.txt} questions of the total \variable{output/automatically_generated.txt}.
+    \variable{output/sources_table.tex}
+    \label{tab:sources}
+\end{table}
+
+\begin{figure}[!h]
+    \includegraphics[width = \textwidth]{figures/chem-bench.pdf}
+    \caption{\textbf{Overview of the workflow for the assembly of the \chembench corpus}.
+    To assemble the \chembench corpus, we first collected questions from various sources. Some tasks were manually curated, others semi-programmatically. We added semantic annotations for all questions to make them compatible with systems that use special processing for modalities that are not conventional natural text. We reviewed the questions using manual and automatic methods before adding them to the corpus.}
+    \label{fig:curation_workflow}
+\end{figure}
+
+\paragraph{Manually curated questions}
+Manually curated questions were sourced from various sources, including university exams, exercises, and question banks.
+%\Cref{tab:manually_sources} provides an overview of the sources of the manually curated questions.
+
+
+\paragraph{Semi-programmatically generated questions}
+In addition to the manually curated questions, we also generated questions programmatically. An overview of the sources of the semi-programmatically generated questions is provided in \Cref{tab:semi_programatically_sources}.
+
+\input{sections/semi_programatically_sources_table.tex}
+
+\paragraph{Chemical preference data}
+
+These questions assess the ability to establish a \enquote{preference}, such as favoring a specific molecule. Chemical preference is of major importance in drug discovery projects, where the optimization process to reach the desired molecular properties is a process that takes several years within a chemist's career.
+Our data corpus is adapted from the published dataset by \textcite{Choung_2023}, which consists of more than 5000 question-answer pairs about chemical intuition. To build the dataset, they presented 35 medicinal chemists with two different molecules, asking them what molecule they would like to continue with when imaging an early virtual screening campaign setting. The question was designed so the scientists do not spend much time answering it, relying only on their feelings or \enquote{chemical preference}.
+
+To understand whether the capabilities of the leading models align with the preferences of professional chemists, we randomly selected 1000 data points from the original dataset to create a meaningful evaluation set, where molecules are represented as \gls{smiles}.
+To ablate the effect of different molecular representations, we only considered questions for which we could obtain \gls{iupac} names for both molecules present.
+
+
+\subsection{Model evaluation workflow}
+A graphical overview of the pipeline is shown in \Cref{fig:process}.
+
+\paragraph{Prompting}
+
+We employ distinct prompt templates tailored for completion and instruction-tuned models to maintain consistency with the training.
+As explained below, we impose constraints on the models within these templates to receive responses in a specific format so that robust, fair, and consistent parsing can be performed.
+Certain models are trained with special annotations and \LaTeX\xspace syntax for scientific notations, chemical reactions, or symbols embedded within the text.
+For example, all the \gls{smiles} representations are encapsulated within \texttt{[START\_SMILES][\textbackslash END\_SMILES]} in Galactica\autocite{taylor2022galactica}.
+Our prompting strategy consistently adheres to these details in a model-specific manner by post-processing \LaTeX\xspace syntax, chemical symbols, chemical equations, and physical units (by either adding or removing wrappers).
+This step can be easily customized in our codebase, and we provide presets for the models we evaluated.
+
+
+\paragraph{Parsing}
+Our parsing workflow is multistep and primarily based on regular expressions.
+In the case of instruction-tuned models, we first identify the \texttt{[ANSWER]}\texttt{[\textbackslash ANSWER]} environment we prompt the model to report the answer in.
+In the case of completion models, this step is skipped. From there, we attempt to extract the relevant enumeration letters (for multiple-choice questions) or numbers.
+In the case of numbers, our regular expression was engineered to deal with various forms of scientific notation.
+As initial tests indicated that models sometimes return integers in the form of words, e.g., \enquote{one} instead of \enquote{1}, we also implemented a word-to-number conversion using regular expressions.
+If these hard-coded parsing steps fail, we use a \gls{llm}, e.g., \ClaudeThreeFiveSonnet, to parse the completion (\Cref{sec:llm-parsing} provides more details on this step).
+
+
+\paragraph{Models}
+For all models, we performed inference using greedy decoding (i.e., temperature 0). We used the \gls{api} endpoints provided by the model developers and those provided by Groq. \PaperQATwo was used (in August 2024) via an \gls{api} provided by FutureHouse.
+
+\subsection{Confidence estimate}
+To estimate the models' confidence, we prompted them with the question (and answer options for \gls{mcq}) and the task to rate their confidence to produce the correct answer on a scale from 1 to 5.
+We decided to use verbalized confidence estimates\autocite{xiong2023llms} since we found those closer to current practical use cases than other prompting strategies, which might be more suitable when implemented in systems. In addition, this approach captures semantic uncertainty, which is not the same as the probability of a token being given a sequence of tokens (i.e., the uncertainty one obtains from logit-based approaches). On top of that, many proprietary models do not provide access to the logits, making this approach more general.
+In \Cref{sec:confidence_estimates}, we provide more details and comparisons with a logit-based approach.
+
+\subsection{Human baseline}
+
+\paragraph{Question selection} \label{sec:subset-selection}
+
+ Several design choices were made when selecting \chembenchmini. Firstly, from the full dataset, we kept all the questions labeled as advanced. In this way, we can obtain a deeper insight into the capabilities of \glspl{llm} on advanced tasks when compared to actual chemists. Secondly, we sample a maximum of three questions across all possible combinations of categories (i.e., knowledge or reasoning) and topics (e.g., organic chemistry, physical chemistry). Thirdly, we do not include any intuition questions in this subset because the intended use of \chembenchmini is to provide a fast and fair evaluation of \glspl{llm} independent of any human baseline. In total, \variable{output/num_human_answered_questions.txt} questions have been sampled for \chembenchmini. Then, this set is divided into two subsets based on the aforementioned combinations. One of the question subsets allows tool use, and the other does not.
+
+\paragraph{Study design}
+Human volunteers were asked the questions in a custom-built web interface (see \Cref{sec:human_baseline}), which rendered chemicals and equations. Questions were shown in random order, and volunteers were not allowed to skip questions. For a subset of the questions, the volunteers were allowed to use external tools (excluding other \gls{llm} or asking other people) to answer the questions. Prior to answering questions, volunteers were asked to provide information about their education and experience in chemistry. The study was conducted in English.
+
+\paragraph{Human volunteers}
+Users were open to reporting about their experience in chemistry.
+Overall, \variable{output/num_users_with_education_info.txt} did so.
+Out of those, \variable{output/num_human_postdoc.txt} are beyond a first postdoc, \variable{output/num_human_master.txt} have a master's degree (and are currently enrolled in Ph.D.\ studies), and \variable{output/num_human_bachelor.txt} has a bachelor's degree. For the analysis, we excluded volunteers with less than two years of experience in chemistry after their first university-level course in chemistry.
+
+
+\paragraph{Comparison with models}
+For the analysis, we treated each human as a model. We computed the topic aggregated averages per human for analyses grouped by topic and then averaged over all humans. The performance metrics reported for models in the main text are computed on the same questions the humans answered. Metrics for the entire corpus are reported in the appendix (\Cref{sec:model_performance_app}).
+
+\subsection{Data annotation}\label{sec:meth-topic}
+In the curation of our dataset, we manually assigned difficulty levels and required skills to each question. We used the following guidelines for these annotations: calculation is required if answering a question would require the use of a calculator, knowledge is required if answering a question requires non-trivial knowledge of facts (e.g., the H/P statements of chemicals). Reasoning is required if answering a question requires multiple reasoning steps.
+Basic questions only require those skills up to the high school level. Advanced questions would require an expert multiple minutes up to hours to answer.
+\printbibliography[segment=\therefsegment]
+\end{refsegment}
 
 \clearpage
 \begin{refsection}
@@ -410,7 +409,7 @@ K.M.J.\ was a paid consultant for OpenAI (as part of the red teaming network). M
 \setcounter{table}{0}
 
 \appendix
-\section{Appendix}
+\section{Supplementary Information}
 \input{appendix.tex}
 \clearpage
 \printbibliography[heading=subbibintoc]
