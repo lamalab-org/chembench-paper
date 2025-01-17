@@ -93,7 +93,7 @@ def make_plot_of_confidence_vs_performance(merged_dicts):
             average_performance,
             color=model_color_map[rename_dict[model]],
             marker="o",
-            label="Average Performance"
+            # label="Average Performance"
         )
 
         ax.errorbar(
