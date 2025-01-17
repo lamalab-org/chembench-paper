@@ -26,6 +26,8 @@ These findings reveal LLMs' impressive chemical capabilities while emphasizing t
 
 
 \clearpage
+\begin{refsection}
+    
 \begin{refsegment}
 \section{Introduction}
 \Glspl{llm} are \gls{ml} models trained on massive amounts of text to complete sentences.
@@ -289,17 +291,22 @@ The authors confirm to have complied with all relevant ethical regulations, acco
 \section*{Conflicts of interest}
 K.M.J.\ was a paid consultant for OpenAI (as part of the red teaming network). M.P.\ is an employee of Stability.AI, and A.M.\ and N.A.\ were paid contractors of Stability.AI. The remaining authors declare no competing interests.
 
-\section*{Author contributions}
+% \section*{Author contributions}
 
-\resizebox{\textwidth}{!}{%
-\scriptsize
-\insertcredits
-}
-\normalsize
+% \resizebox{\textwidth}{!}{%
+% \scriptsize
+% \insertcredits
+% }
+% \normalsize
 
+\section*{Contributions}
+A.M.\, N.A.\, M.R.S.\ and K.M.J\ contributed to the software development of the benchmarking framework. K.M.J. wrote the article with help from A.M.\, N.A.\, S.K.\ and M.R.S.\. A.K. wrote the software for \texttt{chembench.org}.
+A.M.\, N.A.\, S.K., M.R.S.\, K.M.J\, T.G.\, M.S.W.\, M.V.G.\, B.E.\ and M.O.\ contributed to the generation of the question dataset. A.A.\, A.M.E.\, M.A., J.E.\, H.M.E.\, M.V.G.\, M.G.\, C.T.H.\, C.G.\, T.H.\, A.I.\, L.C.K.\, Y.K.\, F.A.K.\, J.M.\, S.M.\, J.M.P.\, M.R.\, N.C.R.\, J.S.\, L.M.S.\, D.W.\ answered the question dataset for the human benchmark.
+M.P.\, P.S.\ and K.M.J.\ proposed the project, and K.M.J.\ supervised the project. All authors reviewed and edited the manuscript.
 \clearpage
-\printbibliography[segment=2]
+\printbibliography[segment=1]
 \end{refsegment}
+
 % set the reference counter to the last reference
 
 \begin{refsegment}
@@ -340,7 +347,7 @@ In addition to the manually curated questions, we also generated questions progr
 \paragraph{Chemical preference data}
 
 These questions assess the ability to establish a \enquote{preference}, such as favoring a specific molecule. Chemical preference is of major importance in drug discovery projects, where the optimization process to reach the desired molecular properties is a process that takes several years within a chemist's career.
-Our data corpus is adapted from the published dataset by \textcite{Choung_2023}, which consists of more than 5000 question-answer pairs about chemical intuition. To build the dataset, they presented 35 medicinal chemists with two different molecules, asking them what molecule they would like to continue with when imaging an early virtual screening campaign setting. The question was designed so the scientists do not spend much time answering it, relying only on their feelings or \enquote{chemical preference}.
+Our data corpus is adapted from the published dataset Choung et al.\ \autocite{Choung_2023}, which consists of more than 5000 question-answer pairs about chemical intuition. To build the dataset, they presented 35 medicinal chemists with two different molecules, asking them what molecule they would like to continue with when imaging an early virtual screening campaign setting. The question was designed so the scientists do not spend much time answering it, relying only on their feelings or \enquote{chemical preference}.
 
 To understand whether the capabilities of the leading models align with the preferences of professional chemists, we randomly selected 1000 data points from the original dataset to create a meaningful evaluation set, where molecules are represented as \gls{smiles}.
 To ablate the effect of different molecular representations, we only considered questions for which we could obtain \gls{iupac} names for both molecules present.
@@ -397,21 +404,22 @@ For the analysis, we treated each human as a model. We computed the topic aggreg
 \subsection{Data annotation}\label{sec:meth-topic}
 In the curation of our dataset, we manually assigned difficulty levels and required skills to each question. We used the following guidelines for these annotations: calculation is required if answering a question would require the use of a calculator, knowledge is required if answering a question requires non-trivial knowledge of facts (e.g., the H/P statements of chemicals). Reasoning is required if answering a question requires multiple reasoning steps.
 Basic questions only require those skills up to the high school level. Advanced questions would require an expert multiple minutes up to hours to answer.
-\printbibliography[segment=\therefsegment]
+\printbibliography[segment=2]
 \end{refsegment}
-
-\clearpage
-\begin{refsection}
-\renewcommand{\thefigure}{A\arabic{figure}}
-\setcounter{figure}{0}
-
-\renewcommand{\thetable}{A\arabic{table}}
-\setcounter{table}{0}
-
-\appendix
-\section{Supplementary Information}
-\input{appendix.tex}
-\clearpage
-\printbibliography[heading=subbibintoc]
 \end{refsection}
+
+% \clearpage
+% \begin{refsegment}
+% \renewcommand{\thefigure}{A\arabic{figure}}
+% \setcounter{figure}{0}
+
+% \renewcommand{\thetable}{A\arabic{table}}
+% \setcounter{table}{0}
+
+% \appendix
+% \section{Supplementary Information}
+% \input{appendix.tex}
+% \clearpage
+% \printbibliography[heading=subbibintoc]
+% \end{refsegment}
 \end{document}
