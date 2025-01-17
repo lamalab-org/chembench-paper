@@ -26,8 +26,6 @@ These findings reveal LLMs' impressive chemical capabilities while emphasizing t
 
 
 \clearpage
-\begin{refsection}
-    
 \begin{refsegment}
 \section{Introduction}
 \Glspl{llm} are \gls{ml} models trained on massive amounts of text to complete sentences.
@@ -259,6 +257,9 @@ To ensure reproducibility, this manuscript was generated using the \href{https:/
 The code to rebuild the paper (including code for all figures and numbers next to which there is a GitHub icon) can be found at \url{\GitHubURL}.
 To facilitate reproduction, some intermediate analysis results are cached at \url{http://dx.doi.org/10.5072/zenodo.34706}.
 
+\end{refsegment}
+\printbibliography
+
 \section*{Acknowledgements}
 This work was supported by the Carl Zeiss Foundation, and a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena.
 
@@ -282,13 +283,13 @@ M.R.\ and U.S.S.\ thank the \enquote{Deutsche Forschungsgemeinschaft} for fundin
 In addition, we thank the OpenBioML.org community and their ChemNLP project team for valuable discussions.
 Moreover, we thank Pepe Márquez for discussions and support and Julian Kimmig for feedback on the web app.
 In addition, we acknowledge support from Sandeep Kumar with an initial prototype of the web app.
-We thank Berend Smit for feedback on an early version of the manuscript.
+We thank Bastian Rieck for developing the \LaTeX-credit package (\url{https://github.com/Pseudomanifold/latex-credits}) and thank Berend Smit for feedback on an early version of the manuscript.
 
 \section*{Statement of ethical compliance}
-The authors confirm to have complied with all relevant ethical regulations, according to the Ethics Commission of the Friedrich Schiller University Jena (which decided this study is ethically safe). Informed consent was obtained from all volunteers.
+The authors confirm to have complied with all relevant ethical regulations, according to the Ethics Commission of the Friedrich Schiller University Jena (which decided that study is ethically safe). Informed consent was obtained from all volunteers.
 
 
-\section*{Conflicts of interest}
+\section*{Competing interest}
 K.M.J.\ was a paid consultant for OpenAI (as part of the red teaming network). M.P.\ is an employee of Stability.AI, and A.M.\ and N.A.\ were paid contractors of Stability.AI. The remaining authors declare no competing interests.
 
 % \section*{Author contributions}
@@ -304,8 +305,6 @@ A.M.\, N.A.\, M.R.S.\ and K.M.J\ contributed to the software development of the 
 A.M.\, N.A.\, S.K., M.R.S.\, K.M.J\, T.G.\, M.S.W.\, M.V.G.\, B.E.\ and M.O.\ contributed to the generation of the question dataset. A.A.\, A.M.E.\, M.A., J.E.\, H.M.E.\, M.V.G.\, M.G.\, C.T.H.\, C.G.\, T.H.\, A.I.\, L.C.K.\, Y.K.\, F.A.K.\, J.M.\, S.M.\, J.M.P.\, M.R.\, N.C.R.\, J.S.\, L.M.S.\, D.W.\ answered the question dataset for the human benchmark.
 M.P.\, P.S.\ and K.M.J.\ proposed the project, and K.M.J.\ supervised the project. All authors reviewed and edited the manuscript.
 \clearpage
-\printbibliography[segment=1]
-\end{refsegment}
 
 % set the reference counter to the last reference
 
@@ -404,22 +403,6 @@ For the analysis, we treated each human as a model. We computed the topic aggreg
 \subsection{Data annotation}\label{sec:meth-topic}
 In the curation of our dataset, we manually assigned difficulty levels and required skills to each question. We used the following guidelines for these annotations: calculation is required if answering a question would require the use of a calculator, knowledge is required if answering a question requires non-trivial knowledge of facts (e.g., the H/P statements of chemicals). Reasoning is required if answering a question requires multiple reasoning steps.
 Basic questions only require those skills up to the high school level. Advanced questions would require an expert multiple minutes up to hours to answer.
-\printbibliography[segment=2]
 \end{refsegment}
-\end{refsection}
-
-% \clearpage
-% \begin{refsegment}
-% \renewcommand{\thefigure}{A\arabic{figure}}
-% \setcounter{figure}{0}
-
-% \renewcommand{\thetable}{A\arabic{table}}
-% \setcounter{table}{0}
-
-% \appendix
-% \section{Supplementary Information}
-% \input{appendix.tex}
-% \clearpage
-% \printbibliography[heading=subbibintoc]
-% \end{refsegment}
+\printbibliography
 \end{document}
