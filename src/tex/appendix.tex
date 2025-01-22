@@ -42,7 +42,7 @@ The general guidelines followed by the reviewer are the following:
     \item \textit{Factual or heuristic Errors: }Questions containing factual inaccuracies or misconceptions are not included (example \url{https://github.com/lamalab-org/chem-bench/pull/389#discussion_r1686187301})
     \item \textit{Clarity and Difficulty: } They should pose a challenge and encourage exploration within the chemical domain (example \url{https://github.com/lamalab-org/chem-bench/pull/391#discussion_r1679276714})
     \item \textit{Out of Scope:} Questions outside the realm of chemistry are rejected.
-    \item \textit{Contribution to Dataset Diversity: }Questions should cover a wide range of chemical concepts and sub-disciplines. They should add value by expanding the breadth of the dataset. That is, questions already multiple (>10) times in the corpus in a similar form are rejected.
+    \item \textit{Contribution to Dataset Diversity: }Questions should cover a wide range of chemical concepts and sub-disciplines. They should add value by expanding the breadth of the dataset. That is, questions already multiple ($>$10) times in the corpus in a similar form are rejected.
 \end{itemize}
 
 Reviewers also solved the questions to verify the answers. They also performed web searches to ensure questions were not easily found online. The reviewers often guided the revision process to ensure the question aligned with the guidelines. Questions that don't meet the criteria are either rejected or suggested for revision, and most often, they are modified to a new question. Reviewers also provide feedback on the skill and difficulty annotations.
@@ -105,7 +105,7 @@ The corpus of the questions in \chembench, as shown in \Cref{tab:chembench_corpu
             \midrule
             \multicolumn{1}{c}{\textbf{Organic Chemistry} \variable{output/total_organic.txt}} \\
             \midrule
-            What is the reaction mechanism that describes the following reaction (represented using reaction SMILES) [START\_RXNSMILES]CCCl.CO[Na]>>[Na]Cl.CCOC\-[END\_RXNSMILES]? \\
+            What is the reaction mechanism that describes the following reaction (represented using reaction SMILES) [START\_RXNSMILES]CCCl.CO[Na]$>$$>$[Na]Cl.CCOC\-[END\_RXNSMILES]? \\
             A. $E_1$ \\
             B. $E_{cb}$ \\
             C. $S_N1$ \\
@@ -509,9 +509,9 @@ We also investigated the impact of sampling temperature (i.e. temperature 0 mean
 
 \oone consistently leads across both the \chembench corpus and \chembenchmini.  \ClaudeThreeFiveSonnet, \GPTFourO, \LlamaThreeOneFourZeroFiveBInstruct form the next tier of strong performers. These models show robust performance across all skills and difficulty levels.
 
-Larger models generally perform better (\LlamaThreeOneFourZeroFiveBInstruct > \LlamaThreeOneSeventyBInstruct > \LlamaThreeOneEightBInstruct). However, smaller but well-designed models can compete with larger models. For example, \GemmaTwoNineBIt has an overall accuracy of \variable{output/trends_section_variables/gemma_9B.txt} on the \chembench corpus, which is only \variable{output/trends_section_variables/diff_between_llama_405B_and_gemma_9B.txt}\% less accurate than the much larger \LlamaThreeOneFourZeroFiveBInstruct model.
+Larger models generally perform better (\LlamaThreeOneFourZeroFiveBInstruct $>$ \LlamaThreeOneSeventyBInstruct $>$ \LlamaThreeOneEightBInstruct). However, smaller but well-designed models can compete with larger models. For example, \GemmaTwoNineBIt has an overall accuracy of \variable{output/trends_section_variables/gemma_9B.txt} on the \chembench corpus, which is only \variable{output/trends_section_variables/diff_between_llama_405B_and_gemma_9B.txt}\% less accurate than the much larger \LlamaThreeOneFourZeroFiveBInstruct model.
 
-One can observe a clear progression of performance across model families (e.g., \ClaudeThreeFiveSonnet >  \ClaudeThree > \ClaudeTwo or \GPTFourO > \GPTFour > \GPTThreeFiveTurboZeroT). Newer versions consistently outperform their predecessors.
+One can observe a clear progression of performance across model families (e.g., \ClaudeThreeFiveSonnet $>$  \ClaudeThree $>$ \ClaudeTwo or \GPTFourO $>$ \GPTFour $>$ \GPTThreeFiveTurboZeroT). Newer versions consistently outperform their predecessors.
 Scores on knowledge-intensive tasks are typically lower than those on calculation and reasoning-intensive questions.
 
 Based on these findings, some scope for improving these models could be to focus on enhancing knowledge-based training, possibly through improved pre-training on chemistry-specific texts or with chemistry knowledge-base integration. However, innovation is also needed to incorporate this information into the systems. For example, even \PaperQATwo could not outperform the \gls{llm} it is used for directing the tools, even though the agent has access to literature evidence.
