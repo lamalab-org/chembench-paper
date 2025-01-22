@@ -134,7 +134,7 @@ def plot_correlations(questions, topics, metric, plot_function):
     short_names = {
         "GPT-3.5 Turbo": "GPT-3.5",
         "GPT-4o": "GPT-4o",
-        "o1": "o1",
+        "o1-preview": "o1-preview",
         "Claude-3.5 (Sonnet)": "Claude-3.5",
         "Llama-3.1-405B-Instruct": "Llama-3.1-405B",
         "Mistral-Large-2": "Mistral-Large-2",

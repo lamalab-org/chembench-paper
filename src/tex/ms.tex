@@ -5,7 +5,7 @@
 \usepackage{orcidlink}
 \usepackage{showyourwork}
 
-\title{\textsf{Are large language models superhuman chemists?}}
+\title{\textsf{A framework for evaluating the chemical knowledge and reasoning abilities of Large Language Models against the expertise of chemists}}
 
 \input{authors.tex}
 \begin{document}
@@ -25,9 +25,8 @@ These findings reveal LLMs' impressive chemical capabilities while emphasizing t
 \end{abstract}
 
 
-
 \clearpage
-\begin{refsection}
+\begin{refsegment}
 \section{Introduction}
 \Glspl{llm} are \gls{ml} models trained on massive amounts of text to complete sentences.
 Aggressive scaling of these models has led to a rapid increase in their capabilities,\autocite{brown2020language,zhong2024benchmarking} with the leading models now being able to pass the United States Medical Licensing Examination\autocite{kung2023performance} or other professional licensing exams.
@@ -64,7 +63,7 @@ While some benchmarks based on university entrance exams\autocite{Zaki_2024, aro
 This is likely because they cannot automatically be used with black box (or tool-augmented) systems, do not cover a wide range of topics and skills, or are not carefully validated by experts.
 On top of that, the existing benchmarks are not designed to be used with models that support special treatment of molecules or equations and do not provide insights on how the models compare relative to experts \autocite{wu2018moleculenet}.
 
-In this work, we report a novel benchmarking framework  (\Cref{fig:overview_figure}), which we call \chembench, and use it to reveal limitations of current frontier models for use in the chemical sciences.
+In this work, we report a robust benchmarking framework  (\Cref{fig:overview_figure}), which we call \chembench, and use it to reveal limitations of current frontier models for use in the chemical sciences.
 Our benchmark consists of \variable{output/total_number_of_questions.txt}\xspace question-answer pairs compiled from diverse sources (\variable{output/manually_generated.txt}\xspace manually generated, and \variable{output/automatically_generated.txt}\xspace semi-automatically generated).
 Our corpus measures reasoning, knowledge and intuition across a large fraction of the topics taught in undergraduate and graduate chemistry curricula. It can be used to evaluate any system that can return text (i.e., including tool-augmented systems).
 
@@ -251,8 +250,65 @@ Importantly, our findings also illustrate that more focus is required in develop
 While our findings indicate many areas for further improvement of \gls{llm}-based systems, such as for agents (more discussion in \Cref{sec:react-environment}), it is also important to realize that clearly defined metrics have been the key to the progress of many fields of \gls{ml}, such as computer vision.
 Although current systems might be far from reasoning like a chemist, our \chembench framework will be a stepping stone for developing systems that might come closer to this goal.
 
+\section*{Data and code availability}
+The code and data for \chembench are available at \url{https://github.com/lamalab-org/chem-bench} and archived on Zenodo under \href{10.5281/zenodo.14010212}{https://zenodo.org/records/14010212}.
+The code for the app for our human baseline study is available at \url{https://github.com/lamalab-org/chem-bench-app}.
+To ensure reproducibility, this manuscript was generated using the \href{https://show-your.work/en/latest/}{\showyourwork} framework.\autocite{Luger2021}
+The code to rebuild the paper (including code for all figures and numbers next to which there is a GitHub icon) can be found at \url{\GitHubURL}.
+To facilitate reproduction, some intermediate analysis results are cached at \url{http://dx.doi.org/10.5072/zenodo.34706}.
+
+\end{refsegment}
+\printbibliography
+
+\section*{Acknowledgements}
+This work was supported by the Carl Zeiss Foundation, and a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena.
+
+In addition, M.S-W.'s work was supported by Intel and Merck via the AWASES programme.
+
+Parts of A.M.'s work was supported as part of the \enquote{SOL-AI} project funded by the Helmholtz Foundation model initative.
+
+K.M.J.\ is part of the NFDI consortium FAIRmat funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – project 460197019.
+
+K.M.J.\ thanks FutureHouse (a non-profit research organization supported by the generosity of Eric and Wendy Schmidt) for supporting \PaperQATwo runs via access to the \gls{api}. We also thank Stability.AI for the access to its HPC cluster.
+
+M.R.G.\ and M.V.G.\ acknowledge financial support from the Spanish Agencia Estatal de Investigaci\'{o}n (AEI) through grants TED2021-131693B-I00 and CNS2022-135474, funded by MICIU/AEI/10.13039/501100011033 and by the European Union NextGenerationEU/PRTR. M.V.G.\ acknowledges support from the Spanish National Research Council (CSIC) through Programme for internationalization i-LINK 2023 (Project ILINK23047).
+
+A.A.\ gratefully acknowledges financial support for this research by the Fulbright U.S. Student Program, which is sponsored by the U.S.\ Department of State and German-American Fulbright Commission. Its contents are solely the responsibility of the author and do not necessarily represent the official views of the Fulbright Program, the Government of the United States, or the German-American Fulbright Commission.
+
+M.A.\ expresses gratitude to the European Research Council (ERC) for evaluating the project with the reference number 101106377 titled \enquote{CLARIFIER} and accepting it for funding under the HORIZON TMA MSCA Postdoctoral Fellowships - European Fellowships.
+Furthermore, M.A.\ acknowledges the funding provided by UK Research and Innovation (UKRI) under the UK government’s Horizon Europe funding guarantee (Grant Reference: EP/Y023447/1; Organization Reference: 101106377).
+
+M.R.\ and U.S.S.\ thank the \enquote{Deutsche Forschungsgemeinschaft} for funding under the regime of the priority programme SPP 2363 \enquote{Utilization and Development of Machine Learning for Molecular Applications – Molecular Machine Learning} (SCHU 1229/63-1; project number 497115849).
+
+In addition, we thank the OpenBioML.org community and their ChemNLP project team for valuable discussions.
+Moreover, we thank Pepe Márquez for discussions and support and Julian Kimmig for feedback on the web app.
+In addition, we acknowledge support from Sandeep Kumar with an initial prototype of the web app.
+We thank Bastian Rieck for developing the \LaTeX-credit package (\url{https://github.com/Pseudomanifold/latex-credits}) and thank Berend Smit for feedback on an early version of the manuscript.
+
+\section*{Statement of ethical compliance}
+The authors confirm to have complied with all relevant ethical regulations, according to the Ethics Commission of the Friedrich Schiller University Jena (which decided that study is ethically safe). Informed consent was obtained from all volunteers.
+
+
+\section*{Competing interest}
+K.M.J.\ was a paid consultant for OpenAI (as part of the red teaming network). M.P.\ is an employee of Stability.AI, and A.M.\ and N.A.\ were paid contractors of Stability.AI. The remaining authors declare no competing interests.
+
+% \section*{Author contributions}
+
+% \resizebox{\textwidth}{!}{%
+% \scriptsize
+% \insertcredits
+% }
+% \normalsize
+
+\section*{Contributions}
+A.M.\, N.A.\, M.R.S.\ and K.M.J\ contributed to the software development of the benchmarking framework. K.M.J. wrote the article with help from A.M.\, N.A.\, S.K.\ and M.R.S.\. A.K. wrote the software for \texttt{chembench.org}.
+A.M.\, N.A.\, S.K., M.R.S.\, K.M.J\, T.G.\, M.S.W.\, M.V.G.\, B.E.\ and M.O.\ contributed to the generation of the question dataset. A.A.\, A.M.E.\, M.A., J.E.\, H.M.E.\, M.V.G.\, M.G.\, C.T.H.\, C.G.\, T.H.\, A.I.\, L.C.K.\, Y.K.\, F.A.K.\, J.M.\, S.M.\, J.M.P.\, M.R.\, N.C.R.\, J.S.\, L.M.S.\, D.W.\ answered the question dataset for the human benchmark.
+M.P.\, P.S.\ and K.M.J.\ proposed the project, and K.M.J.\ supervised the project. All authors reviewed and edited the manuscript.
 \clearpage
 
+% set the reference counter to the last reference
+
+\begin{refsegment}
 \section{Methods}
 
 \subsection{Curation workflow}\label{sec:curation}
@@ -261,8 +317,6 @@ Questions were added via Pull Requests on our GitHub repository and only merged 
 
 To ensure that the questions do not enter a training dataset, we use the same canary string as the BigBench project.
 This requires that \Gls{llm} developers filter their training dataset for this canary string.\autocite{openai2024gpt4, srivastava2022beyond}
-
-
 
 \begin{table}[!h]
     \centering
@@ -284,7 +338,6 @@ Manually curated questions were sourced from various sources, including universi
 %\Cref{tab:manually_sources} provides an overview of the sources of the manually curated questions.
 
 
-
 \paragraph{Semi-programmatically generated questions}
 In addition to the manually curated questions, we also generated questions programmatically. An overview of the sources of the semi-programmatically generated questions is provided in \Cref{tab:semi_programatically_sources}.
 
@@ -293,7 +346,7 @@ In addition to the manually curated questions, we also generated questions progr
 \paragraph{Chemical preference data}
 
 These questions assess the ability to establish a \enquote{preference}, such as favoring a specific molecule. Chemical preference is of major importance in drug discovery projects, where the optimization process to reach the desired molecular properties is a process that takes several years within a chemist's career.
-Our data corpus is adapted from the published dataset by \textcite{Choung_2023}, which consists of more than 5000 question-answer pairs about chemical intuition. To build the dataset, they presented 35 medicinal chemists with two different molecules, asking them what molecule they would like to continue with when imaging an early virtual screening campaign setting. The question was designed so the scientists do not spend much time answering it, relying only on their feelings or \enquote{chemical preference}.
+Our data corpus is adapted from the published dataset Choung et al.\ \autocite{Choung_2023}, which consists of more than 5000 question-answer pairs about chemical intuition. To build the dataset, they presented 35 medicinal chemists with two different molecules, asking them what molecule they would like to continue with when imaging an early virtual screening campaign setting. The question was designed so the scientists do not spend much time answering it, relying only on their feelings or \enquote{chemical preference}.
 
 To understand whether the capabilities of the leading models align with the preferences of professional chemists, we randomly selected 1000 data points from the original dataset to create a meaningful evaluation set, where molecules are represented as \gls{smiles}.
 To ablate the effect of different molecular representations, we only considered questions for which we could obtain \gls{iupac} names for both molecules present.
@@ -310,7 +363,6 @@ Certain models are trained with special annotations and \LaTeX\xspace syntax for
 For example, all the \gls{smiles} representations are encapsulated within \texttt{[START\_SMILES][\textbackslash END\_SMILES]} in Galactica\autocite{taylor2022galactica}.
 Our prompting strategy consistently adheres to these details in a model-specific manner by post-processing \LaTeX\xspace syntax, chemical symbols, chemical equations, and physical units (by either adding or removing wrappers).
 This step can be easily customized in our codebase, and we provide presets for the models we evaluated.
-
 
 
 \paragraph{Parsing}
@@ -351,68 +403,6 @@ For the analysis, we treated each human as a model. We computed the topic aggreg
 \subsection{Data annotation}\label{sec:meth-topic}
 In the curation of our dataset, we manually assigned difficulty levels and required skills to each question. We used the following guidelines for these annotations: calculation is required if answering a question would require the use of a calculator, knowledge is required if answering a question requires non-trivial knowledge of facts (e.g., the H/P statements of chemicals). Reasoning is required if answering a question requires multiple reasoning steps.
 Basic questions only require those skills up to the high school level. Advanced questions would require an expert multiple minutes up to hours to answer.
-
-\section*{Data and code availability}
-The code and data for \chembench are available at \url{https://github.com/lamalab-org/chem-bench} and archived on Zenodo under \href{10.5281/zenodo.14010212}{https://zenodo.org/records/14010212}.
-The code for the app for our human baseline study is available at \url{https://github.com/lamalab-org/chem-bench-app}.
-To ensure reproducibility, this manuscript was generated using the \href{https://show-your.work/en/latest/}{\showyourwork} framework.\autocite{Luger2021}
-The code to rebuild the paper (including code for all figures and numbers next to which there is a GitHub icon) can be found at \url{\GitHubURL}.
-To facilitate reproduction, some intermediate analysis results are cached at \url{http://dx.doi.org/10.5072/zenodo.34706}.
-
-\section*{Acknowledgements}
-This work was supported by the Carl Zeiss Foundation, and a \enquote{Talent Fund} of the \enquote{Life} profile line of the Friedrich Schiller University Jena.
-
-In addition, M.S-W.'s work was supported by Intel and Merck via the AWASES programme.
-
-Parts of A.M.'s work was supported as part of the \enquote{SOL-AI} project funded by the Helmholtz Foundation model initative.
-
-K.M.J.\ is part of the NFDI consortium FAIRmat funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – project 460197019.
-
-K.M.J.\ thanks FutureHouse (a non-profit research organization supported by the generosity of Eric and Wendy Schmidt) for supporting \PaperQATwo runs via access to the \gls{api}. We also thank Stability.AI for the access to its HPC cluster.
-
-M.R.G.\ and M.V.G.\ acknowledge financial support from the Spanish Agencia Estatal de Investigaci\'{o}n (AEI) through grants TED2021-131693B-I00 and CNS2022-135474, funded by MICIU/AEI/10.13039/501100011033 and by the European Union NextGenerationEU/PRTR. M.V.G.\ acknowledges support from the Spanish National Research Council (CSIC) through Programme for internationalization i-LINK 2023 (Project ILINK23047).
-
-A.A.\ gratefully acknowledges financial support for this research by the Fulbright U.S. Student Program, which is sponsored by the U.S.\ Department of State and German-American Fulbright Commission. Its contents are solely the responsibility of the author and do not necessarily represent the official views of the Fulbright Program, the Government of the United States, or the German-American Fulbright Commission.
-
-M.A.\ expresses gratitude to the European Research Council (ERC) for evaluating the project with the reference number 101106377 titled \enquote{CLARIFIER} and accepting it for funding under the HORIZON TMA MSCA Postdoctoral Fellowships - European Fellowships.
-Furthermore, M.A.\ acknowledges the funding provided by UK Research and Innovation (UKRI) under the UK government’s Horizon Europe funding guarantee (Grant Reference: EP/Y023447/1; Organization Reference: 101106377).
-
-M.R.\ and U.S.S.\ thank the \enquote{Deutsche Forschungsgemeinschaft} for funding under the regime of the priority programme SPP 2363 \enquote{Utilization and Development of Machine Learning for Molecular Applications – Molecular Machine Learning} (SCHU 1229/63-1; project number 497115849).
-
-In addition, we thank the OpenBioML.org community and their ChemNLP project team for valuable discussions.
-Moreover, we thank Pepe Márquez for discussions and support and Julian Kimmig for feedback on the web app.
-In addition, we acknowledge support from Sandeep Kumar with an initial prototype of the web app.
-We thank Bastian Rieck for developing the \LaTeX-credit package (\url{https://github.com/Pseudomanifold/latex-credits}) and thank Berend Smit for feedback on an early version of the manuscript.
-
-\section*{Statement of ethical compliance}
-The authors confirm to have complied with all relevant ethical regulations, according to the Ethics Commission of the Friedrich Schiller University Jena (which decided that study is ethically safe). Informed consent was obtained from all volunteers.
-
-
-\section*{Conflicts of interest}
-K.M.J.\ was a paid consultant for OpenAI (as part of the red teaming network). M.P.\ is an employee of Stability.AI, and A.M.\ and N.A.\ were paid contractors of Stability.AI.
-
-\section*{Author contributions}
-
-\resizebox{\textwidth}{!}{%
-\scriptsize
-\insertcredits
-}
-\normalsize
+\end{refsegment}
 \printbibliography
-\end{refsection}
-
-\clearpage
-\begin{refsection}
-\renewcommand{\thefigure}{A\arabic{figure}}
-\setcounter{figure}{0}
-
-\renewcommand{\thetable}{A\arabic{table}}
-\setcounter{table}{0}
-
-\appendix
-\section{Appendix}
-\input{appendix.tex}
-\clearpage
-\printbibliography[heading=subbibintoc]
-\end{refsection}
 \end{document}

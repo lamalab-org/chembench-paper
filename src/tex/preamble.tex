@@ -11,7 +11,23 @@
 \hypersetup{breaklinks=true,hidelinks}
 \usepackage[backend=biber,style=nature]{biblatex}
 \addbibresource{references.bib}
-
+\makeatletter
+\def\blx@skipprinted{}% define a list to hold entries to be skipped
+\def\addskipprinted#1{% macro to add an entry to our list
+  \edef\X{%
+    \noexpand\iffieldequalstr{entrykey}{#1}
+      {\noexpand\toggletrue{blx@skipentry}}
+      {}}%
+  \expandafter\g@addto@macro\expandafter\blx@skipprinted\expandafter{\X}}
+\AtEveryBibitem{\addskipprinted{\thefield{entrykey}}}% add every item to the list
+\defbibcheck{skipprinted}{% a check for our list
+  \blx@skipprinted}
+\AtBeginBibliography{%
+  % run our check in the bibliography
+  \blx@key@bibcheck{skipprinted}%
+  % print bibliography for max segment so far
+  \blx@key@segment{\the\csname blx@maxsegment@\the\c@refsection\endcsname}}
+\makeatother
 \usepackage{csquotes}
 \usepackage{cleveref}
 \usepackage{siunitx}
@@ -88,7 +104,7 @@
 
 
 \newcommand{\Chemist}{Chemist\xspace}
-\newcommand{\oone}{o1\xspace}
+\newcommand{\oone}{o1-preview\xspace}
 \newcommand{\MistralLargeTwo}{Mistral-Large-2\xspace}
 \newcommand{\LlamaThreeOneSeventyBInstruct}{Llama-3.1-70B-Instruct\xspace}
 \newcommand{\ClaudeThree}{Claude-3\xspace}

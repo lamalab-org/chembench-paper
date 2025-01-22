@@ -6,6 +6,7 @@ import pickle
 from paths import data
 from definitions import MODELS_TO_PLOT
 from collect_human_scores import obtain_human_scores
+from utils import ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH
 
 plt.style.use(scripts / "lamalab.mplstyle")
 
@@ -25,7 +26,7 @@ def plot_performance(
 ):
     model_scores = sorted(model_scores, key=lambda x: x[1])
     print(model_scores)
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(ONE_COL_WIDTH_INCH, ONE_COL_GOLDEN_RATIO_HEIGHT_INCH))
     ax.hlines(
         np.arange(len(model_scores)),
         0,
